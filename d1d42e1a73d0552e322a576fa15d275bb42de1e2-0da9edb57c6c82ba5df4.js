@@ -8884,8 +8884,8 @@ function registerDataSolver(block) {
 var flags = __webpack_require__(21258);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/dsl.ts
 var dsl_dsl = __webpack_require__(94113);
-// EXTERNAL MODULE: ./src/components/blockly/fields/ReactField.tsx
-var ReactField = __webpack_require__(77576);
+// EXTERNAL MODULE: ./src/components/blockly/fields/ReactFieldBase.ts
+var ReactFieldBase = __webpack_require__(34964);
 ;// CONCATENATED MODULE: ./src/components/blockly/jsongenerator.ts
 function jsongenerator_createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = jsongenerator_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
@@ -8965,7 +8965,7 @@ function domToJSON(workspace, dsls) {
   var fieldToJSON = function fieldToJSON(field) {
     if (field.isSerializable()) {
       // custom field can just return the value
-      if (field instanceof ReactField/* default */.ZP) {
+      if (field instanceof ReactFieldBase/* ReactFieldBase */.y) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         var value = field.value;
         return {
@@ -15920,8 +15920,7 @@ function PointerBoundary(props) {
 /* harmony export */   "_t": function() { return /* binding */ toShadowDefinition; }
 /* harmony export */ });
 /* unused harmony exports SOURCE_BLOCK_CHANGE, MOUNT, UNMOUNT */
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(5991);
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(73935);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(74640);
@@ -15930,17 +15929,18 @@ function PointerBoundary(props) {
 /* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(19640);
 /* harmony import */ var _ui_DarkModeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7796);
 /* harmony import */ var _ui_AppTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(25853);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(33287);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(33287);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(81794);
 /* harmony import */ var _ValueContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(86415);
 /* harmony import */ var _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(45484);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(71815);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(89801);
 /* harmony import */ var _ui_WebAudioContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(94564);
-
+/* harmony import */ var _ReactFieldBase__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(34964);
 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 
 
@@ -15960,17 +15960,19 @@ var VALUE_CHANGE = "valueChange";
 var MOUNT = "mount";
 var UNMOUNT = "unmount";
 
-var ReactField = /*#__PURE__*/function (_Blockly$Field) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z)(ReactField, _Blockly$Field);
+var ReactField = /*#__PURE__*/function (_ReactFieldBase) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(ReactField, _ReactFieldBase);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function ReactField(value, validator, options, size) {
+  function ReactField() {
     var _this;
 
-    _this = _Blockly$Field.call(this, value, validator, options) || this;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _ReactFieldBase.call.apply(_ReactFieldBase, [this].concat(args)) || this;
     _this.SERIALIZABLE = true;
     _this.events = new _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__/* .JDEventSource */ .a();
-    if (size) _this.size_ = new (blockly__WEBPACK_IMPORTED_MODULE_2___default().utils.Size)(size.width, size.height);
     return _this;
   }
 
@@ -16012,7 +16014,7 @@ var ReactField = /*#__PURE__*/function (_Blockly$Field) {
   _proto.setSourceBlock = function setSourceBlock(block) {
     var changed = block !== this.sourceBlock_;
 
-    _Blockly$Field.prototype.setSourceBlock.call(this, block);
+    _ReactFieldBase.prototype.setSourceBlock.call(this, block);
 
     if (changed) {
       var bs = block;
@@ -16039,11 +16041,11 @@ var ReactField = /*#__PURE__*/function (_Blockly$Field) {
 
   _proto.initView = function initView() {
     this.view = this.initCustomView();
-    if (this.view) this.updateView();else _Blockly$Field.prototype.initView.call(this);
+    if (this.view) this.updateView();else _ReactFieldBase.prototype.initView.call(this);
   };
 
   _proto.updateSize_ = function updateSize_() {
-    if (!this.view) _Blockly$Field.prototype.updateSize_.call(this);
+    if (!this.view) _ReactFieldBase.prototype.updateSize_.call(this);
   };
 
   _proto.doValueUpdate_ = function doValueUpdate_(newValue) {
@@ -16052,7 +16054,7 @@ var ReactField = /*#__PURE__*/function (_Blockly$Field) {
     if (this.view) {
       this.value_ = newValue;
       this.updateView();
-    } else _Blockly$Field.prototype.doValueUpdate_.call(this, newValue);
+    } else _ReactFieldBase.prototype.doValueUpdate_.call(this, newValue);
 
     if (change) {
       this.events.emit(VALUE_CHANGE, this.value);
@@ -16103,7 +16105,7 @@ var ReactField = /*#__PURE__*/function (_Blockly$Field) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_use_id_hook__WEBPACK_IMPORTED_MODULE_4__/* .IdProvider */ .vc, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_WebAudioContext__WEBPACK_IMPORTED_MODULE_12__/* .WebAudioProvider */ .IH, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_jacdac_Provider__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_AppTheme__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ValueContext__WEBPACK_IMPORTED_MODULE_8__/* .ValueProvider */ .Lt, {
       value: this.value,
       onValueChange: onValueChange
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
       m: 0.5,
       borderRadius: "0.25rem",
       bgcolor: "background.paper"
@@ -16117,10 +16119,60 @@ var ReactField = /*#__PURE__*/function (_Blockly$Field) {
   _proto.dispose = function dispose() {
     this.view = undefined;
 
-    _Blockly$Field.prototype.dispose.call(this);
+    _ReactFieldBase.prototype.dispose.call(this);
   };
 
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(ReactField, [{
+  return ReactField;
+}(_ReactFieldBase__WEBPACK_IMPORTED_MODULE_13__/* .ReactFieldBase */ .y); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+
+function toShadowDefinition(fieldType) {
+  (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_7__/* .assert */ .hu)(!!fieldType.KEY);
+  var type = fieldType.KEY + "_shadow";
+  return {
+    kind: "block",
+    type: type,
+    message0: "%1",
+    args0: [{
+      type: fieldType.KEY,
+      name: "value"
+    }],
+    style: "math_blocks",
+    output: "Number",
+    template: "shadow"
+  };
+}
+
+/***/ }),
+
+/***/ 34964:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "y": function() { return /* binding */ ReactFieldBase; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5991);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41788);
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74640);
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_0__);
+
+
+
+var ReactFieldBase = /*#__PURE__*/function (_Blockly$Field) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(ReactFieldBase, _Blockly$Field);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function ReactFieldBase(value, validator, options, size) {
+    var _this;
+
+    _this = _Blockly$Field.call(this, value, validator, options) || this;
+    if (size) _this.size_ = new (blockly__WEBPACK_IMPORTED_MODULE_0___default().utils.Size)(size.width, size.height);
+    return _this;
+  }
+
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(ReactFieldBase, [{
     key: "defaultValue",
     get: function get() {
       return {};
@@ -16141,27 +16193,8 @@ var ReactField = /*#__PURE__*/function (_Blockly$Field) {
     }
   }]);
 
-  return ReactField;
-}((blockly__WEBPACK_IMPORTED_MODULE_2___default().Field)); // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-
-
-function toShadowDefinition(fieldType) {
-  (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_7__/* .assert */ .hu)(!!fieldType.KEY);
-  var type = fieldType.KEY + "_shadow";
-  return {
-    kind: "block",
-    type: type,
-    message0: "%1",
-    args0: [{
-      type: fieldType.KEY,
-      name: "value"
-    }],
-    style: "math_blocks",
-    output: "Number",
-    template: "shadow"
-  };
-}
+  return ReactFieldBase;
+}((blockly__WEBPACK_IMPORTED_MODULE_0___default().Field));
 
 /***/ }),
 
