@@ -54174,9 +54174,9 @@ function isRegister(pkt) {
 function isReading(pkt) {
   return pkt && pkt.kind == "ro" && pkt.identifier == constants/* SystemReg.Reading */.ZJq.Reading;
 }
-var includedRegisters = [constants/* SystemReg.Reading */.ZJq.Reading, constants/* SystemReg.Value */.ZJq.Value, constants/* SystemReg.Intensity */.ZJq.Intensity];
+var ignoredRegister = [constants/* SystemReg.StatusCode */.ZJq.StatusCode, constants/* SystemReg.InstanceName */.ZJq.InstanceName, constants/* SystemReg.StreamingInterval */.ZJq.StreamingInterval, constants/* SystemReg.StreamingPreferredInterval */.ZJq.StreamingPreferredInterval, constants/* SystemReg.StreamingSamples */.ZJq.StreamingSamples, constants/* SystemReg.ReadingError */.ZJq.ReadingError, constants/* SystemReg.ReadingResolution */.ZJq.ReadingResolution, constants/* SystemReg.MinReading */.ZJq.MinReading, constants/* SystemReg.MaxReading */.ZJq.MaxReading, constants/* SystemReg.MinValue */.ZJq.MinValue, constants/* SystemReg.MaxValue */.ZJq.MaxValue, constants/* SystemReg.MaxPower */.ZJq.MaxPower];
 function isHighLevelRegister(pkt) {
-  return isRegister(pkt) && !pkt.lowLevel && includedRegisters.indexOf(pkt.identifier) > -1;
+  return isRegister(pkt) && !pkt.lowLevel && ignoredRegister.indexOf(pkt.identifier) < 0;
 }
 var ignoredEvents = [constants/* SystemEvent.StatusCodeChanged */.nSK.StatusCodeChanged];
 function isHighLevelEvent(pkt) {
@@ -69773,7 +69773,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "cac8b52bdc6fddb27003bc46ba68e8da852d2bc1";
+  var sha = "6c57ca7f0089d8a804e72de62b45993cb2b92b99";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -79154,7 +79154,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.13.95"};
+var package_namespaceObject = {"i8":"1.13.96"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
