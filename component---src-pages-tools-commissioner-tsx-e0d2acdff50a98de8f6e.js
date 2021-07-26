@@ -1013,7 +1013,7 @@ function SimulateDeviceAlert() {
 }
 ;// CONCATENATED MODULE: ./src/components/dashboard/Dashboard.tsx
 
-var Dashboard_excluded = ["showConnect", "showStartSimulators", "deviceSort", "deviceFilter"];
+var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators", "deviceSort", "deviceFilter"];
 
 
 
@@ -1068,7 +1068,8 @@ function defaultDeviceFilter(d) {
 }
 
 function Dashboard(props) {
-  var showConnect = props.showConnect,
+  var hideSimulators = props.hideSimulators,
+      showConnect = props.showConnect,
       showStartSimulators = props.showStartSimulators,
       _props$deviceSort = props.deviceSort,
       deviceSort = _props$deviceSort === void 0 ? defaultDeviceSort : _props$deviceSort,
@@ -1112,7 +1113,7 @@ function Dashboard(props) {
     return roleManager === null || roleManager === void 0 ? void 0 : roleManager.startSimulators();
   };
 
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(DeviceGroup, Object.assign({
+  return /*#__PURE__*/react.createElement(react.Fragment, null, !hideSimulators && /*#__PURE__*/react.createElement(DeviceGroup, Object.assign({
     title: "Simulators",
     action: /*#__PURE__*/react.createElement(react.Fragment, null, showStartSimulators && !!roleManager && /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
       title: "start missing simulators",
@@ -1326,12 +1327,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(95393);
 /* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(65063);
 /* harmony import */ var _components_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(99808);
-
-// tslint:disable-next-line: no-submodule-imports
-
+ // tslint:disable-next-line: no-submodule-imports
 
 
+
+ // tslint:disable-next-line: no-submodule-imports match-default-export-name
 // tslint:disable-next-line: no-submodule-imports match-default-export-name
+// tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
  // tslint:disable-next-line: no-submodule-imports
 
@@ -1415,8 +1418,7 @@ function DataSetTable(props) {
       maxRows = props.maxRows,
       minRows = props.minRows,
       className = props.className;
-  var headers = dataSet.headers,
-      descriptors = dataSet.descriptors;
+  var headers = dataSet.headers;
   var classes = useStyles();
   var data = (_dataSet$descriptors = dataSet.descriptors) === null || _dataSet$descriptors === void 0 ? void 0 : _dataSet$descriptors.slice(maxRows !== undefined ? -maxRows : 0);
 
@@ -1594,6 +1596,7 @@ function Commissioner() {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Commissioner"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
+    hideSimulators: true,
     showAvatar: true,
     showHeader: true,
     showConnect: true,

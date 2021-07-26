@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-cbcced89defc6bd60945.js"
+    "url": "webpack-runtime-cf0048af06a8e2f10ed2.js"
   },
   {
     "url": "styles.93b64694aab152332397.css"
@@ -43,7 +43,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "c8577b285a20e9a696b180b220386a5b"
+    "revision": "3ab1fb8d51263ae9df5ff3d1199e933d"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -63,11 +63,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/2307937736.json",
-    "revision": "fda236697815ad4d3e78127122a305a1"
+    "revision": "fb09f00d5fbfbeb63c3a8e404a03e9e6"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "5ed53be81f42f54adcb51041a9d90d58"
+    "revision": "870ee94db8a0164ea7cfb910911960f2"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -75,7 +75,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "866950816159bf97fd3a187b256f533a"
+    "revision": "1f1d0f8dff97e196b22d9421acc60985"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -83,7 +83,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "dc80608c863d7a59c991c8c49122d7ad"
+    "revision": "34e16b595e421a3c4d1999e02164bddf"
   },
   {
     "url": "polyfill-b85ba5557898c2964643.js"
@@ -107,7 +107,7 @@ self.__precacheManifest = [
     "revision": "9be0850a21e1c0fbd7afa699649413b0"
   },
   {
-    "url": "component---src-pages-dashboard-tsx-116df367117d4fc73718.js"
+    "url": "component---src-pages-dashboard-tsx-e957ad4d98c70eefd6bd.js"
   },
   {
     "url": "page-data/dashboard/page-data.json",
@@ -1303,7 +1303,7 @@ self.__precacheManifest = [
     "revision": "fc8bd57726b1df41cc0ec5cd57f20d3e"
   },
   {
-    "url": "component---src-pages-tools-accelerometer-theremin-tsx-0c878123594e9a68e5c2.js"
+    "url": "component---src-pages-tools-accelerometer-theremin-tsx-212c7da8f4a31bf56583.js"
   },
   {
     "url": "page-data/tools/accelerometer-theremin/page-data.json",
@@ -1324,7 +1324,7 @@ self.__precacheManifest = [
     "revision": "1572e9d03bac7733f1811a6446baf873"
   },
   {
-    "url": "component---src-pages-tools-commissioner-tsx-b847e1f256097e85c7c9.js"
+    "url": "component---src-pages-tools-commissioner-tsx-e0d2acdff50a98de8f6e.js"
   },
   {
     "url": "page-data/tools/commissioner/page-data.json",
@@ -1392,7 +1392,7 @@ self.__precacheManifest = [
     "revision": "8f6256b0f209021e94527886b16a3c47"
   },
   {
-    "url": "component---src-pages-tools-makecode-sim-tsx-d5ff8c3ea519f02a28fb.js"
+    "url": "component---src-pages-tools-makecode-sim-tsx-79c1c226ff1a70c39820.js"
   },
   {
     "url": "page-data/tools/makecode-sim/page-data.json",
@@ -1580,7 +1580,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-945b44f152e7d901ac13.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-c01c43d06602f3375cc0.js`))) {
     return await fetch(event.request)
   }
 

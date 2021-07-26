@@ -798,7 +798,7 @@ function SimulateDeviceAlert() {
 }
 ;// CONCATENATED MODULE: ./src/components/dashboard/Dashboard.tsx
 
-var Dashboard_excluded = ["showConnect", "showStartSimulators", "deviceSort", "deviceFilter"];
+var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators", "deviceSort", "deviceFilter"];
 
 
 
@@ -853,7 +853,8 @@ function defaultDeviceFilter(d) {
 }
 
 function Dashboard(props) {
-  var showConnect = props.showConnect,
+  var hideSimulators = props.hideSimulators,
+      showConnect = props.showConnect,
       showStartSimulators = props.showStartSimulators,
       _props$deviceSort = props.deviceSort,
       deviceSort = _props$deviceSort === void 0 ? defaultDeviceSort : _props$deviceSort,
@@ -897,7 +898,7 @@ function Dashboard(props) {
     return roleManager === null || roleManager === void 0 ? void 0 : roleManager.startSimulators();
   };
 
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(DeviceGroup, Object.assign({
+  return /*#__PURE__*/react.createElement(react.Fragment, null, !hideSimulators && /*#__PURE__*/react.createElement(DeviceGroup, Object.assign({
     title: "Simulators",
     action: /*#__PURE__*/react.createElement(react.Fragment, null, showStartSimulators && !!roleManager && /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
       title: "start missing simulators",

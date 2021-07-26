@@ -1,4 +1,4 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[5023],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6450],{
 
 /***/ 88880:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
@@ -335,7 +335,7 @@ function SimulateDeviceAlert() {
 }
 ;// CONCATENATED MODULE: ./src/components/dashboard/Dashboard.tsx
 
-var Dashboard_excluded = ["showConnect", "showStartSimulators", "deviceSort", "deviceFilter"];
+var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators", "deviceSort", "deviceFilter"];
 
 
 
@@ -390,7 +390,8 @@ function defaultDeviceFilter(d) {
 }
 
 function Dashboard(props) {
-  var showConnect = props.showConnect,
+  var hideSimulators = props.hideSimulators,
+      showConnect = props.showConnect,
       showStartSimulators = props.showStartSimulators,
       _props$deviceSort = props.deviceSort,
       deviceSort = _props$deviceSort === void 0 ? defaultDeviceSort : _props$deviceSort,
@@ -434,7 +435,7 @@ function Dashboard(props) {
     return roleManager === null || roleManager === void 0 ? void 0 : roleManager.startSimulators();
   };
 
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(DeviceGroup, Object.assign({
+  return /*#__PURE__*/react.createElement(react.Fragment, null, !hideSimulators && /*#__PURE__*/react.createElement(DeviceGroup, Object.assign({
     title: "Simulators",
     action: /*#__PURE__*/react.createElement(react.Fragment, null, showStartSimulators && !!roleManager && /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
       title: "start missing simulators",
@@ -548,156 +549,28 @@ function DashboardDeviceItem(props) {
 
 /***/ }),
 
-/***/ 2928:
+/***/ 98874:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ useServices; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20392);
-/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(54774);
-
-
-
-function useServices(options) {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z),
-      bus = _useContext.bus;
-
-  var services = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(bus, function (b) {
-    return b.services(options);
-  }, [JSON.stringify(options)]);
-  return services;
-}
-
-/***/ }),
-
-/***/ 95393:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ GridHeader; }
-/* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10920);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(70274);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(80838);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(33287);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(80453);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4998);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(85505);
-
-
-
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(function (theme) {
-  return (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)({
-    hr: {
-      background: theme.palette.text.disabled,
-      marginBottom: "unset"
-    },
-    start: {
-      width: theme.spacing(2)
-    }
-  });
-});
-function GridHeader(props) {
-  var title = props.title,
-      count = props.count,
-      variant = props.variant,
-      action = props.action;
-  var classes = useStyles();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
-    container: true,
-    direction: "row",
-    spacing: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
-    item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
-    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(classes.hr, classes.start)
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
-    item: true
-  }, action && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
-    component: "span",
-    mr: 1
-  }, action), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, {
-    component: "span",
-    variant: variant || "subtitle1"
-  }, title), count !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
-    component: "span",
-    ml: 0.5
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, {
-    label: count
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
-    item: true,
-    xs: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
-    className: classes.hr
-  }))));
-}
-
-/***/ }),
-
-/***/ 82702:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": function() { return /* binding */ AccelerometerTheremin; }
-});
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(92137);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(87757);
-var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
-var constants = __webpack_require__(71815);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
-var utils = __webpack_require__(81794);
-// EXTERNAL MODULE: ./src/components/hooks/useServices.ts
-var useServices = __webpack_require__(2928);
-// EXTERNAL MODULE: ./src/components/ui/GridHeader.tsx
-var GridHeader = __webpack_require__(95393);
-// EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
-var gatsby_theme_material_ui = __webpack_require__(36176);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
-var Grid = __webpack_require__(80838);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Card/Card.js
-var Card = __webpack_require__(85420);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardContent/CardContent.js
-var CardContent = __webpack_require__(29114);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
-var Typography = __webpack_require__(80453);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardActions/CardActions.js
-var CardActions = __webpack_require__(31186);
-// EXTERNAL MODULE: ./src/components/alert/ConnectAlert.tsx
-var ConnectAlert = __webpack_require__(94431);
-// EXTERNAL MODULE: ./src/components/DeviceCardHeader.tsx + 2 modules
-var DeviceCardHeader = __webpack_require__(31477);
-// EXTERNAL MODULE: ./src/jacdac/Context.tsx
-var Context = __webpack_require__(20392);
-// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 24 modules
-var servers = __webpack_require__(48363);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/packet.ts
-var packet = __webpack_require__(57683);
-// EXTERNAL MODULE: ./jacdac-ts/src/servers/buzzerserver.ts
-var buzzerserver = __webpack_require__(69589);
-// EXTERNAL MODULE: ./src/components/ui/WebAudioContext.tsx
-var WebAudioContext = __webpack_require__(94564);
-;// CONCATENATED MODULE: ./src/components/hooks/usePlayTone.tsx
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Page; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(33287);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(83332);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(70079);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(23581);
+/* harmony import */ var _components_ui_ThemedLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(56251);
+/* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13173);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81794);
+/* harmony import */ var _components_icons_MakeCodeIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(70654);
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(35414);
+/* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(65063);
+/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(20392);
+/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(54774);
+/* harmony import */ var _components_ui_DarkModeContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(91350);
 
 
 
@@ -708,251 +581,92 @@ var WebAudioContext = __webpack_require__(94564);
 
 
 
-function usePlayTone() {
-  var _useContext = (0,react.useContext)(Context/* default */.Z),
+
+
+function deviceSort(l, r) {
+  var srvScore = function srvScore(srv) {
+    return srv.packets.reduce(function (prev, pkt) {
+      return prev + ((0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .isReading */ .vz)(pkt) ? 10 : (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .isValueOrIntensity */ .sX)(pkt) ? 1 : 0);
+    }, 0) || 0;
+  };
+
+  var score = function score(srvs) {
+    return srvs.reduce(function (prev, srv) {
+      return srvScore(srv);
+    }, 0);
+  };
+
+  var ls = score(l.services().slice(1).map(function (srv) {
+    return srv.specification;
+  }).filter(function (spec) {
+    return !!spec;
+  }));
+  var rs = score(r.services().slice(1).map(function (srv) {
+    return srv.specification;
+  }).filter(function (spec) {
+    return !!spec;
+  }));
+  if (ls !== rs) return -ls + rs;
+  return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__/* .strcmp */ .eT)(l.deviceId, r.deviceId);
+}
+
+function Carousel() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z),
       bus = _useContext.bus;
 
-  var buzzers = (0,useServices/* default */.Z)({
-    serviceClass: constants/* SRV_BUZZER */.J1$
+  var iframeBridge = bus.iframeBridge;
+  var deviceFilter = iframeBridge.deviceFilter.bind(iframeBridge);
+  var serviceFilter = iframeBridge.serviceFilter.bind(iframeBridge);
+  var extensions = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)(iframeBridge, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.candidateExtensions;
   });
 
-  var _useState = (0,react.useState)(),
-      buzzerServer = _useState[0],
-      setBuzzerServer = _useState[1];
-
-  var _useContext2 = (0,react.useContext)(WebAudioContext/* default */.ZP),
-      playTone = _useContext2.playTone,
-      onClickActivateAudioContext = _useContext2.onClickActivateAudioContext,
-      activated = _useContext2.activated; // useEffect invokes a function call whenever the variables
-  // (passed as an array) change.
-  // if clean up is required, return a clean up callback
-  //
-  // listen for playTone commands from the buzzer via subscribe
-  // subscribe returns a clean up function that is invoked when the user
-  // browses away from the page.
-  // playtone uses the audio context set in handleBrowserAudioEnable
-
-
-  (0,react.useEffect)(function () {
-    return buzzerServer === null || buzzerServer === void 0 ? void 0 : buzzerServer.subscribe(buzzerserver/* default.PLAY_TONE */.Z.PLAY_TONE, function (_ref) {
-      var frequency = _ref.frequency,
-          duration = _ref.duration,
-          volume = _ref.volume;
-      return playTone(frequency, duration, volume);
-    });
-  }, [buzzerServer]); // clean out buzzer server on page close.
-  // defines an empty function that returns a function.
-  // invoked each time buzzerServer changes
-
-  (0,react.useEffect)(function () {
-    return function () {
-      return (buzzerServer === null || buzzerServer === void 0 ? void 0 : buzzerServer.device) && bus.removeServiceProvider(buzzerServer.device);
-    };
-  }, [buzzerServer]); // when start browser audio button is clicked:
-  // get a browser audio context
-  // spin up a virtual buzzer that we latermap to the browser audio engine
-
-  var toggleBrowserAudio = function toggleBrowserAudio() {
-    // browser security dictates that the audio context be used within a click event
-    // must be done once to allow background sounds
-    onClickActivateAudioContext();
-
-    if (!buzzerServer) {
-      var dev = (0,servers/* startServiceProviderFromServiceClass */.V6)(bus, constants/* SRV_BUZZER */.J1$);
-      var srv = dev.services().find(function (s) {
-        return s.serviceClass === constants/* SRV_BUZZER */.J1$;
-      });
-      setBuzzerServer(srv);
-    } else {
-      setBuzzerServer(undefined);
-    }
+  var handleAdd = function handleAdd() {
+    return iframeBridge === null || iframeBridge === void 0 ? void 0 : iframeBridge.postAddExtensions();
   };
 
-  var buzzerPlayTone = (0,react.useCallback)( /*#__PURE__*/function () {
-    var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(frequency, duration, volume) {
-      return regenerator_default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return Promise.all( // for each buzzer, map x acceleration to buzzer output
-              buzzers === null || buzzers === void 0 ? void 0 : buzzers.map( /*#__PURE__*/function () {
-                var _ref3 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(buzzer) {
-                  var pkt;
-                  return regenerator_default().wrap(function _callee$(_context) {
-                    while (1) {
-                      switch (_context.prev = _context.next) {
-                        case 0:
-                          pkt = packet/* default.from */.Z.from(constants/* BuzzerCmd.PlayTone */.Rv2.PlayTone, (0,buzzerserver/* tonePayload */.x)(frequency, duration, volume));
-                          _context.next = 3;
-                          return buzzer.sendPacketAsync(pkt);
-
-                        case 3:
-                        case "end":
-                          return _context.stop();
-                      }
-                    }
-                  }, _callee);
-                }));
-
-                return function (_x4) {
-                  return _ref3.apply(this, arguments);
-                };
-              }()));
-
-            case 2:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-
-    return function (_x, _x2, _x3) {
-      return _ref2.apply(this, arguments);
-    };
-  }(), [buzzers]);
-  var browserAudio = activated && !!buzzerServer;
-  return {
-    playTone: buzzerPlayTone,
-    toggleBrowserAudio: toggleBrowserAudio,
-    browserAudio: browserAudio
-  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, {
+    showHeader: false,
+    deviceSort: deviceSort,
+    deviceFilter: deviceFilter,
+    serviceFilter: serviceFilter,
+    showStartSimulators: false
+  }), !!(extensions !== null && extensions !== void 0 && extensions.length) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, {
+    m: 1
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, {
+    size: "medium",
+    color: "primary",
+    variant: "contained",
+    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_icons_MakeCodeIcon__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, null),
+    onClick: handleAdd,
+    "aria-label": "Add blocks"
+  }, "Add blocks")));
 }
-// EXTERNAL MODULE: ./src/components/dashboard/Dashboard.tsx + 3 modules
-var Dashboard = __webpack_require__(65063);
-// EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
-var react_use_id_hook_esm = __webpack_require__(19640);
-;// CONCATENATED MODULE: ./src/pages/tools/accelerometer-theremin.tsx
 
+function Page() {
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_components_ui_DarkModeContext__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z),
+      toggleDarkMode = _useContext2.toggleDarkMode,
+      darkModeMounted = _useContext2.darkModeMounted;
 
-
-
-
-
-
-
-
-
-
-
-
-
-var TONE_DURATION = 50;
-var TONE_THROTTLE = 100; // this is a React component that gets run numerous time,
-// whenever a change is detected in the React state
-// for example, useServices is a hook that tracks the accelerometer services,
-// so it will render again and update the accelerometers array whenever the bus connects/disconnects
-// an accelerometer
-
-function AccelerometerTheremin() {
-  var _usePlayTone = usePlayTone(),
-      playTone = _usePlayTone.playTone,
-      toggleBrowserAudio = _usePlayTone.toggleBrowserAudio,
-      browserAudio = _usePlayTone.browserAudio; // identifiers for accessibility
-
-
-  var sectionId = (0,react_use_id_hook_esm/* useId */.Me)(); // useServices accepts a number of filters and returns any services that match
-  // get all accelerometer + buzzer services
-  // under the hood, it uses the bus and events.
-
-  var accelerometers = (0,useServices/* default */.Z)({
-    serviceClass: constants/* SRV_ACCELEROMETER */.QF7
-  }); // create two state variables to hold the service selected as our accelerometer
-  // and the virtual buzzerServer created when someone turns audio on on the page
-  // when using setAccelService/setBuzzerServer, React will render again this component
-
-  var _useState = (0,react.useState)(),
-      accelService = _useState[0],
-      setAccelService = _useState[1]; // use a closure to capture accel variable
-  // act as a toggle for the button the indicates streaming state.
-
-
-  var handleSelectAccelerometerService = function handleSelectAccelerometerService(accel) {
-    return function () {
-      accelService == accel ? setAccelService(undefined) : setAccelService(accel);
-    };
-  }; // filter to only show accelerometers in dashboard
-
-
-  var dashboardDeviceFilter = function dashboardDeviceFilter(d) {
-    return d.hasService(constants/* SRV_ACCELEROMETER */.QF7);
-  }; // register for accelerometer data events
-
-
-  (0,react.useEffect)(function () {
-    // ?. checks that the callee is defined
-    var unsubs = accelService === null || accelService === void 0 ? void 0 : accelService.readingRegister.subscribe(constants/* REPORT_UPDATE */.rGZ, // don't trigger more than every 100ms
-    (0,utils/* throttle */.P2)( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-      var _accelService$reading, x;
-
-      return regenerator_default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              // get x acceleration data
-              _accelService$reading = accelService.readingRegister.unpackedValue, x = _accelService$reading[0]; // get all acceleration data
-              // const [x, y, z] = accelService.readingRegister.unpackedValue
-
-              _context.next = 3;
-              return playTone(1000 + x * 1000, TONE_DURATION, 1);
-
-            case 3:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    })), TONE_THROTTLE)); // cleanup callback
-
-    return function () {
-      return unsubs === null || unsubs === void 0 ? void 0 : unsubs();
-    };
-  }, [accelService, playTone]); // re-register if accelerometers, buzzers change
-
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("section", {
-    id: sectionId
-  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    container: true,
-    spacing: 2
-  }, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
-    title: "Audio controls"
-  }), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
-    variant: "outlined",
-    onClick: toggleBrowserAudio
-  }, browserAudio ? "Stop browser audio" : "Start browser audio")), !accelerometers.length && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
-    title: "Connect a device"
-  }), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: true
-  }, /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, {
-    serviceClass: constants/* SRV_ACCELEROMETER */.QF7
-  }))), !!accelerometers.length && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
-    title: "Available accelerometers"
-  }), accelerometers.map(function (accelerometer) {
-    return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-      item: true,
-      xs: 12,
-      sm: 6,
-      lg: 4,
-      xl: 3,
-      key: accelerometer.id
-    }, /*#__PURE__*/react.createElement(Card/* default */.Z, null, /*#__PURE__*/react.createElement(DeviceCardHeader/* default */.Z, {
-      device: accelerometer.device,
-      showAvatar: true,
-      showMedia: true
-    }), /*#__PURE__*/react.createElement(CardContent/* default */.Z, null, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-      variant: "h5"
-    }, (accelerometer === accelService ? "Streaming from " : "") + (accelerometer.device.physical ? "Physical " : "Virtual ") + ("Accelerometer " + accelerometer.friendlyName))), /*#__PURE__*/react.createElement(CardActions/* default */.Z, null, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
-      variant: "outlined",
-      onClick: handleSelectAccelerometerService(accelerometer)
-    }, accelerometer === accelService ? "Stop streaming" : "Start streaming"))));
-  })))), /*#__PURE__*/react.createElement(Dashboard/* default */.Z, {
-    deviceFilter: dashboardDeviceFilter
-  }));
+  var rawTheme = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z)({
+    palette: {
+      primary: {
+        main: "#63c"
+      },
+      secondary: {
+        main: "#ffc400"
+      },
+      type: "light",
+      contrastThreshold: 3.1
+    }
+  });
+  var theme = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z)(rawTheme);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (darkModeMounted) toggleDarkMode("light");
+  }, [darkModeMounted]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_ui_ThemedLayout__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, {
+    theme: theme
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("style", null, "\nhtml {\n    margin-right: 4px;\n}\nhtml, body {\n    background: transparent !important;\n    overflow: hidden !important;\n}\n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Carousel, null));
 }
 
 /***/ })
