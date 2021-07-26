@@ -8828,8 +8828,7 @@ function registerDataSolver(block) {
   var services = block.jacdacServices; // register data transforms
 
   var _ref = (0,toolbox/* resolveBlockDefinition */.Pq)(block.type) || {},
-      transformData = _ref.transformData,
-      alwaysTransformData = _ref.alwaysTransformData;
+      transformData = _ref.transformData;
 
   if (!transformData) return;
   services.on(constants/* CHANGE */.Ver, /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
@@ -8840,7 +8839,7 @@ function registerDataSolver(block) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            if (block.isEnabled()) {
+            if (!(!block.isEnabled() || block.isInFlyout)) {
               _context.next = 2;
               break;
             }
@@ -8848,36 +8847,32 @@ function registerDataSolver(block) {
             return _context.abrupt("return");
 
           case 2:
-            // transfer data
+            console.debug("data transform [" + block.id + "]#" + services.changeId); // transfer data
+
             next = ((_block$nextConnection = block.nextConnection) === null || _block$nextConnection === void 0 ? void 0 : _block$nextConnection.targetBlock()) || ((_block$childBlocks_ = block.childBlocks_) === null || _block$childBlocks_ === void 0 ? void 0 : _block$childBlocks_[0]);
             nextServices = next === null || next === void 0 ? void 0 : next.jacdacServices;
-
-            if (!(nextServices || alwaysTransformData)) {
-              _context.next = 15;
-              break;
-            }
-
             _context.prev = 5;
             _context.next = 8;
             return transformData(block, services.data, nextServices === null || nextServices === void 0 ? void 0 : nextServices.data);
 
           case 8:
             newData = _context.sent;
+            services.transformedData = newData;
             if (nextServices) nextServices.data = newData;
-            _context.next = 15;
+            _context.next = 16;
             break;
 
-          case 12:
-            _context.prev = 12;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](5);
             console.debug(_context.t0);
 
-          case 15:
+          case 16:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[5, 12]]);
+    }, _callee, null, [[5, 13]]);
   })));
 }
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
@@ -10080,6 +10075,8 @@ var useServices = __webpack_require__(2928);
 var useTheme = __webpack_require__(59355);
 // EXTERNAL MODULE: ./src/components/blockly/fields/fields.ts
 var fields = __webpack_require__(29434);
+// EXTERNAL MODULE: ./src/components/blockly/fields/DataPreviewField.tsx
+var DataPreviewField = __webpack_require__(16229);
 ;// CONCATENATED MODULE: ./src/components/blockly/useToolbox.ts
 
 
@@ -10089,8 +10086,8 @@ var fields = __webpack_require__(29434);
 
 
 
+ // overrides blockly emboss filter for svg elements
 
-// overrides blockly emboss filter for svg elements
 (blockly_default()).BlockSvg.prototype.setHighlighted = function (highlighted) {
   if (!this.rendered) {
     return;
@@ -10110,6 +10107,7 @@ function loadBlocks(dsls, theme) {
     return dsl === null || dsl === void 0 ? void 0 : (_dsl$createBlocks = dsl.createBlocks) === null || _dsl$createBlocks === void 0 ? void 0 : _dsl$createBlocks.call(dsl, {
       theme: theme
     }).map(function (b) {
+      (0,DataPreviewField/* addDataPreviewField */.q)(b);
       b.dsl = dsl.id; // ensure DSL is set
 
       return b;
@@ -11301,6 +11299,12 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
       },
       "& .blocklyTreeIconOpen, & .blocklyTreeIconClosed": {
         opacity: 0.5
+      },
+      "& .blocklyFieldButton.blocklyEditableText": {
+        cursor: "pointer"
+      },
+      "& .blocklyFieldButton.blocklyEditableText > .blocklyFieldRect": {
+        fill: "transparent !important"
       }
     }
   });
@@ -11489,12 +11493,10 @@ var BlockServices = /*#__PURE__*/function (_JDEventSource2) {
 
   var _proto = BlockServices.prototype;
 
-  _proto.setDataNoEvent = function setDataNoEvent(value) {
-    this._data = value;
-  };
-
   _proto.clearData = function clearData() {
-    this.data = undefined;
+    this._data = undefined;
+    this._transformedData = undefined;
+    this.emit(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .CHANGE */ .Ver);
   };
 
   (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(BlockServices, [{
@@ -11505,7 +11507,19 @@ var BlockServices = /*#__PURE__*/function (_JDEventSource2) {
     set: function set(value) {
       if (this._data !== value) {
         this._data = value;
+        this._transformedData = undefined;
         this.emit(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .CHANGE */ .Ver);
+      }
+    }
+  }, {
+    key: "transformedData",
+    get: function get() {
+      return this._transformedData;
+    },
+    set: function set(value) {
+      if (this._transformedData !== value) {
+        this._transformedData = value; // don't update immediately transformed data or it
+        // generates an update loop
       }
     }
   }, {
@@ -11680,8 +11694,6 @@ var blockly = __webpack_require__(74640);
 var BuiltinDataSetField = __webpack_require__(69223);
 // EXTERNAL MODULE: ./src/components/blockly/fields/DataColumnChooserField.ts
 var DataColumnChooserField = __webpack_require__(44393);
-// EXTERNAL MODULE: ./src/components/blockly/fields/DataTableField.tsx
-var DataTableField = __webpack_require__(54741);
 // EXTERNAL MODULE: ./src/components/blockly/toolbox.ts
 var toolbox = __webpack_require__(16582);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/workers/proxy.ts + 3 modules
@@ -11745,7 +11757,6 @@ var FileOpenField = __webpack_require__(39311);
 
 
 
-
 var DATA_ARRANGE_BLOCK = "data_arrange";
 var DATA_SELECT_BLOCK = "data_select";
 var DATA_DROP_BLOCK = "data_drop";
@@ -11761,7 +11772,6 @@ var DATA_DATAVARIABLE_READ_BLOCK = "data_dataset_read";
 var DATA_DATAVARIABLE_WRITE_BLOCK = "data_dataset_write";
 var DATA_DATASET_BUILTIN_BLOCK = "data_dataset_builtin";
 var DATA_TABLE_TYPE = "DataTable";
-var DATA_SHOW_TABLE_BLOCK = "data_show_table";
 var DATA_RECORD_WINDOW_BLOCK = "data_record_window";
 var DATA_BIN_BLOCK = "data_bin";
 var DATA_CORRELATION_BLOCK = "data_correlation";
@@ -11773,22 +11783,6 @@ var dataDsl = {
   id: "dataScience",
   createBlocks: function createBlocks() {
     return [{
-      kind: "block",
-      type: DATA_SHOW_TABLE_BLOCK,
-      message0: "show table %1 %2",
-      args0: [{
-        type: "input_dummy"
-      }, {
-        type: DataTableField/* default.KEY */.Z.KEY,
-        name: "table"
-      }],
-      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
-      template: "meta",
-      inputsInline: false,
-      transformData: toolbox/* identityTransformData */.FW
-    }, {
       kind: "block",
       type: DATA_ARRANGE_BLOCK,
       message0: "arrange %1 %2",
@@ -11803,6 +11797,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var column = b.getFieldValue("column");
@@ -11833,6 +11828,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3].map(function (column) {
@@ -11862,6 +11858,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3].map(function (column) {
@@ -11892,6 +11889,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var columns = [1, 2].map(function (column) {
@@ -11924,6 +11922,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var column = b.getFieldValue("column");
@@ -11959,6 +11958,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
@@ -11996,6 +11996,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
@@ -12027,6 +12028,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var column = b.getFieldValue("column");
@@ -12057,6 +12059,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var column = b.getFieldValue("column");
@@ -12082,6 +12085,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var column = b.getFieldValue("column");
@@ -12104,6 +12108,7 @@ var dataDsl = {
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       colour: colour,
       template: "meta",
+      dataPreviewField: true,
       transformData: toolbox/* identityTransformData */.FW
     }, {
       kind: "block",
@@ -12120,6 +12125,7 @@ var dataDsl = {
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       colour: colour,
       template: "meta",
+      dataPreviewField: true,
       transformData: function transformData(block) {
         var services = block.jacdacServices;
         var data = services === null || services === void 0 ? void 0 : services.data;
@@ -12141,7 +12147,7 @@ var dataDsl = {
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       colour: colour,
       template: "meta",
-      alwaysTransformData: true,
+      dataPreviewField: true,
       transformData: function transformData(block, data) {
         // grab the variable from the block
         var variable = block.getFieldValue("data");
@@ -12175,6 +12181,7 @@ var dataDsl = {
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       colour: colour,
       template: "meta",
+      dataPreviewField: true,
       transformData: function () {
         var _transformData = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(block, data, previousData) {
           var horizon;
@@ -12217,6 +12224,7 @@ var dataDsl = {
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       colour: colour,
       template: "meta",
+      dataPreviewField: true,
       transformData: function () {
         var _transformData2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(block, data) {
           var column;
@@ -12261,6 +12269,7 @@ var dataDsl = {
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       colour: colour,
       template: "meta",
+      dataPreviewField: true,
       transformData: function () {
         var _transformData3 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3(block, data) {
           var column1, column2;
@@ -12307,6 +12316,7 @@ var dataDsl = {
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       colour: colour,
       template: "meta",
+      dataPreviewField: true,
       transformData: function () {
         var _transformData4 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee4(block, data) {
           var column1, column2;
@@ -12349,6 +12359,7 @@ var dataDsl = {
       colour: colour,
       template: "meta",
       inputsInline: false,
+      dataPreviewField: true,
       transformData: toolbox/* identityTransformData */.FW
     }, {
       kind: "block",
@@ -12363,7 +12374,7 @@ var dataDsl = {
       colour: colour,
       template: "meta",
       inputsInline: false,
-      alwaysTransformData: true,
+      dataPreviewField: true,
       transformData: function () {
         var _transformData5 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee5(block, data) {
           var file;
@@ -12422,9 +12433,6 @@ var dataDsl = {
       name: "Operators",
       colour: colour,
       contents: [{
-        kind: "block",
-        type: DATA_SHOW_TABLE_BLOCK
-      }, {
         kind: "block",
         type: DATA_ARRANGE_BLOCK
       }, {
@@ -14251,6 +14259,82 @@ DataColumnChooserField.KEY = "jacdac_field_data_column_chooser";
 
 /***/ }),
 
+/***/ 16229:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ DataPreviewField; },
+/* harmony export */   "q": function() { return /* binding */ addDataPreviewField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _ReactField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(77576);
+/* harmony import */ var _DataTableWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11472);
+
+
+
+
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+var DataPreviewField = /*#__PURE__*/function (_ReactField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(DataPreviewField, _ReactField);
+
+  function DataPreviewField() {
+    return _ReactField.apply(this, arguments) || this;
+  }
+
+  DataPreviewField.fromJson = function fromJson(options) {
+    return new DataPreviewField(options === null || options === void 0 ? void 0 : options.value, undefined, options);
+  };
+
+  var _proto = DataPreviewField.prototype;
+
+  _proto.initCustomView = function initCustomView() {
+    var group = this.fieldGroup_;
+    group.classList.add("blocklyFieldButton");
+    return undefined;
+  };
+
+  _proto.getText_ = function getText_() {
+    return "👀";
+  };
+
+  _proto.renderField = function renderField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .DataTableWidget */ .g, {
+      tableHeight: 295,
+      empty: "no data",
+      transformed: true
+    });
+  };
+
+  return DataPreviewField;
+}(_ReactField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP);
+
+DataPreviewField.KEY = "jacdac_field_data_preview";
+DataPreviewField.EDITABLE = false;
+
+function addDataPreviewField(block) {
+  if (block !== null && block !== void 0 && block.dataPreviewField) {
+    // don't add twice
+    block.dataPreviewField = false; // parse args and add one more arg
+
+    var message0 = block.message0;
+    var i = message0.lastIndexOf("%");
+    var index = parseInt(message0.substr(i + 1));
+    block.message0 += " %" + (index + 1); // add field
+
+    block.args0.push({
+      type: DataPreviewField.KEY,
+      name: "preview"
+    });
+  }
+
+  return block;
+}
+
+/***/ }),
+
 /***/ 54741:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -14258,92 +14342,17 @@ DataColumnChooserField.KEY = "jacdac_field_data_column_chooser";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ DataTableField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10920);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(70274);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16582);
-/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(77298);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12702);
+/* harmony import */ var _DataTableWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11472);
 
 
 
 
-
-
-
-
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(function () {
-  return (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)({
-    root: {
-      paddingLeft: "0.5rem",
-      paddingRight: "0.5rem",
-      background: "#fff",
-      color: "#000",
-      borderRadius: "0.25rem",
-      width: "calc(" + _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .TABLE_WIDTH */ .KH + "px - 0.25rem)",
-      height: "calc(" + _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .TABLE_HEIGHT */ .U2 + "px - 0.25rem)",
-      overflow: "auto"
-    },
-    table: {
-      margin: 0,
-      fontSize: "0.8rem",
-      lineHeight: "1rem",
-      "& th, td": {
-        backgroundClip: "padding-box",
-        "scroll-snap-align": "start"
-      },
-      "& th": {
-        position: "sticky",
-        top: 0,
-        background: "white"
-      },
-      "& td": {
-        borderColor: "#ccc",
-        borderRightStyle: "solid 1px"
-      }
-    }
-  });
-});
-
-function DataTableWidget() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock;
-
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data;
-
-  var classes = useStyles();
-  if (!(data !== null && data !== void 0 && data.length)) return null;
-  var columns = Object.keys(data[0] || {}); // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-  var renderCell = function renderCell(v) {
-    return typeof v === "boolean" ? v ? "true" : "false" : v + "";
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_5__/* .PointerBoundary */ .A, {
-    className: classes.root
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", {
-    className: classes.table
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, columns.map(function (c) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
-      key: c
-    }, c);
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, data.map(function (r, i) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
-      key: r.id || i
-    }, columns.map(function (c) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
-        key: c
-      }, renderCell(r[c]));
-    }));
-  }))));
-}
 
 var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)(DataTableField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(DataTableField, _ReactInlineField);
 
   DataTableField.fromJson = function fromJson(options) {
     return new DataTableField(options);
@@ -14366,15 +14375,122 @@ var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
   };
 
   _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DataTableWidget, null);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .DataTableWidget */ .g, null);
   };
 
   return DataTableField;
-}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z);
 
 DataTableField.KEY = "jacdac_field_data_table";
 DataTableField.EDITABLE = false;
 
+
+/***/ }),
+
+/***/ 11472:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "g": function() { return /* binding */ DataTableWidget; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(53851);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(10920);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16582);
+/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(77298);
+
+
+
+
+
+
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(function () {
+  return {
+    empty: {
+      paddingLeft: "0.5rem",
+      paddingRight: "0.5rem",
+      background: "#fff",
+      color: "#000",
+      borderRadius: "0.25rem"
+    },
+    root: function root(props) {
+      return {
+        paddingLeft: "0.5rem",
+        paddingRight: "0.5rem",
+        background: "#fff",
+        color: "#000",
+        borderRadius: "0.25rem",
+        width: "calc(" + _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .TABLE_WIDTH */ .KH + "px - 0.25rem)",
+        height: "calc(" + props.tableHeight + "px - 0.25rem)",
+        overflow: "auto"
+      };
+    },
+    table: {
+      margin: 0,
+      fontSize: "0.8rem",
+      lineHeight: "1rem",
+      "& th, td": {
+        backgroundClip: "padding-box",
+        "scroll-snap-align": "start"
+      },
+      "& th": {
+        position: "sticky",
+        top: 0,
+        background: "white"
+      },
+      "& td": {
+        borderColor: "#ccc",
+        borderRightStyle: "solid 1px"
+      }
+    }
+  };
+});
+function DataTableWidget(props) {
+  var transformed = props.transformed,
+      _props$tableHeight = props.tableHeight,
+      tableHeight = _props$tableHeight === void 0 ? _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .TABLE_HEIGHT */ .U2 : _props$tableHeight,
+      empty = props.empty;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data,
+      transformedData = _useBlockData.transformedData;
+
+  var table = transformed ? transformedData : data;
+  var classes = useStyles({
+    tableHeight: tableHeight
+  });
+  if (!(table !== null && table !== void 0 && table.length)) return empty ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: classes.empty
+  }, empty) : null;
+  var columns = Object.keys(table[0] || {}); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+  var renderCell = function renderCell(v) {
+    return typeof v === "boolean" ? v ? "true" : "false" : v + "";
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_4__/* .PointerBoundary */ .A, {
+    className: classes.root
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", {
+    className: classes.table
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, columns.map(function (c) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+      key: c
+    }, c);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, table.map(function (r, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
+      key: r.id || i
+    }, columns.map(function (c) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+        key: c
+      }, renderCell(r[c]));
+    }));
+  }))));
+}
 
 /***/ }),
 
@@ -17089,6 +17205,8 @@ WatchValueField.EDITABLE = false;
 /* harmony import */ var _PieField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(37505);
 /* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(4383);
 /* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(39311);
+/* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(16229);
+
 
 
 
@@ -17129,7 +17247,7 @@ function registerFields() {
     if (fieldType.SHADOW) reactFieldShadows.push(fieldType.SHADOW);
   };
 
-  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _LinePlotField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _PieField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z];
+  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _LinePlotField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _PieField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z];
   fieldTypes.forEach(registerType);
 }
 function fieldShadows() {
@@ -17533,9 +17651,15 @@ function useDragDebounce(value, delay) {
 function useBlockData(block, initialValue) {
   var services = block === null || block === void 0 ? void 0 : block.jacdacServices; // data on the current node
 
-  var data = useChangeThrottled(services, function (_) {
-    return _ === null || _ === void 0 ? void 0 : _.data;
-  });
+  var _useChangeThrottled = useChangeThrottled(services, function (_) {
+    return {
+      data: _ === null || _ === void 0 ? void 0 : _.data,
+      transformedData: _ === null || _ === void 0 ? void 0 : _.transformedData
+    };
+  }),
+      data = _useChangeThrottled.data,
+      transformedData = _useChangeThrottled.transformedData;
+
   var setData = (0,react.useCallback)(function (value) {
     if (services) services.data = value;
   }, [services]); // set initial value
@@ -17544,9 +17668,16 @@ function useBlockData(block, initialValue) {
     if (services && initialValue !== undefined && services.data === undefined) services.data = initialValue;
   }, [services]); // debounce with dragging
 
-  var debounced = useDragDebounce(data);
+  var _useDragDebounce = useDragDebounce({
+    data: data,
+    transformedData: transformedData
+  }),
+      debounced = _useDragDebounce.data,
+      debouncedTransformedData = _useDragDebounce.transformedData;
+
   return {
     data: debounced,
+    transformedData: debouncedTransformedData,
     setData: setData
   };
 }

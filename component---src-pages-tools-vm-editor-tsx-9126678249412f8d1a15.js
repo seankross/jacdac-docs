@@ -6416,7 +6416,10 @@ var LinePlotField = __webpack_require__(70659);
 var BarField = __webpack_require__(9950);
 // EXTERNAL MODULE: ./src/components/blockly/fields/PieField.tsx
 var PieField = __webpack_require__(37505);
+// EXTERNAL MODULE: ./src/components/blockly/fields/DataTableField.tsx
+var DataTableField = __webpack_require__(54741);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/chartdsl.ts
+
 
 
 
@@ -6427,11 +6430,28 @@ var SCATTERPLOT_BLOCK = "chart_scatterplot";
 var LINEPLOT_BLOCK = "chart_lineplot";
 var PIEPLOT_BLOCK = "chart_pieplot";
 var BARCHART_BLOCK = "chart_bar";
+var CHART_SHOW_TABLE_BLOCK = "chart_show_table";
 var chartdsl_colour = "#999";
 var chartDSL = {
   id: "chart",
   createBlocks: function createBlocks() {
     return [{
+      kind: "block",
+      type: CHART_SHOW_TABLE_BLOCK,
+      message0: "show table %1 %2",
+      args0: [{
+        type: "input_dummy"
+      }, {
+        type: DataTableField/* default.KEY */.Z.KEY,
+        name: "table"
+      }],
+      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      colour: chartdsl_colour,
+      template: "meta",
+      inputsInline: false,
+      transformData: toolbox/* identityTransformData */.FW
+    }, {
       kind: "block",
       type: SCATTERPLOT_BLOCK,
       message0: "scatterplot x %1 y %2 %3 %4",
@@ -6545,6 +6565,9 @@ var chartDSL = {
       }, {
         kind: "block",
         type: PIEPLOT_BLOCK
+      }, {
+        kind: "block",
+        type: CHART_SHOW_TABLE_BLOCK
       }],
       colour: chartdsl_colour
     }];
