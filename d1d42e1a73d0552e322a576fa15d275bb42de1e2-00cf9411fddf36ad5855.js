@@ -10189,9 +10189,7 @@ function useToolbox(dsls, source) {
     });
     return {
       kind: "categoryToolbox",
-      contents: dslsCategories.filter(function (cat) {
-        return !!cat;
-      }).map(function (node) {
+      contents: dslsCategories.map(function (node) {
         return node.kind === "category" ? patchCategoryJSONtoXML(node) : node;
       })
     };
@@ -11756,11 +11754,14 @@ var FileSaveField = __webpack_require__(4383);
 var csv_proxy = __webpack_require__(53480);
 // EXTERNAL MODULE: ./src/components/blockly/fields/FileOpenField.ts
 var FileOpenField = __webpack_require__(39311);
+// EXTERNAL MODULE: ./src/components/blockly/dsl/palette.ts
+var palette = __webpack_require__(74602);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/datadsl.ts
 
 
 
 /* eslint-disable @typescript-eslint/ban-types */
+
 
 
 
@@ -11790,7 +11791,13 @@ var DATA_CORRELATION_BLOCK = "data_correlation";
 var DATA_LINEAR_REGRESSION_BLOCK = "data_linear_regression";
 var DATA_LOAD_FILE_BLOCK = "data_load_file";
 var DATA_SAVE_FILE_BLOCK = "data_save_file";
-var colour = "#777";
+
+var _palette = (0,palette/* default */.Z)(),
+    datasetColour = _palette[0],
+    operatorsColour = _palette[1],
+    statisticsColour = _palette[2];
+
+var dataVariablesColour = "%{BKY_VARIABLES_HUE}";
 var dataDsl = {
   id: "dataScience",
   createBlocks: function createBlocks() {
@@ -11798,7 +11805,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_ARRANGE_BLOCK,
       message0: "arrange %1 %2",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
         name: "column"
@@ -11827,7 +11834,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_DROP_BLOCK,
       message0: "drop %1 %2 %3",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
         name: "column1"
@@ -11859,7 +11866,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_SELECT_BLOCK,
       message0: "select %1 %2 %3",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
         name: "column1"
@@ -11891,7 +11898,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_FILTER_COLUMNS_BLOCK,
       message0: "filter %1 %2 %3",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
         name: "column1"
@@ -11926,7 +11933,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_FILTER_STRING_BLOCK,
       message0: "filter %1 %2 %3",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
         name: "column"
@@ -11959,7 +11966,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_MUTATE_COLUMNS_BLOCK,
       message0: "mutate %1 %2 %3 %4",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: "field_input",
         name: "newcolumn"
@@ -11997,7 +12004,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_MUTATE_NUMBER_BLOCK,
       message0: "mutate %1 %2 %3 %4",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: "field_input",
         name: "newcolumn"
@@ -12035,7 +12042,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_SUMMARIZE_BLOCK,
       message0: "summarize %1 calculate %2",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
         name: "column"
@@ -12063,7 +12070,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_SUMMARIZE_BY_GROUP_BLOCK,
       message0: "group %1 by %2 calculate %3",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
         name: "column"
@@ -12096,7 +12103,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_COUNT_BLOCK,
       message0: "count %1",
-      colour: colour,
+      colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
         name: "column"
@@ -12124,7 +12131,7 @@ var dataDsl = {
       }],
       inputsInline: false,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
+      colour: datasetColour,
       template: "meta",
       dataPreviewField: true,
       transformData: toolbox/* identityTransformData */.FW
@@ -12141,7 +12148,7 @@ var dataDsl = {
       }],
       inputsInline: false,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
+      colour: dataVariablesColour,
       template: "meta",
       dataPreviewField: true,
       transformData: function transformData(block) {
@@ -12163,7 +12170,7 @@ var dataDsl = {
       inputsInline: false,
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
+      colour: dataVariablesColour,
       template: "meta",
       dataPreviewField: true,
       transformData: function transformData(block, data) {
@@ -12197,7 +12204,7 @@ var dataDsl = {
       inputsInline: false,
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
+      colour: operatorsColour,
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
@@ -12240,7 +12247,7 @@ var dataDsl = {
       inputsInline: false,
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
+      colour: operatorsColour,
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
@@ -12285,7 +12292,7 @@ var dataDsl = {
       inputsInline: false,
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
+      colour: statisticsColour,
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
@@ -12332,7 +12339,7 @@ var dataDsl = {
       inputsInline: false,
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
+      colour: statisticsColour,
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
@@ -12374,7 +12381,7 @@ var dataDsl = {
         name: "file"
       }],
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
+      colour: datasetColour,
       template: "meta",
       inputsInline: false,
       dataPreviewField: true,
@@ -12389,7 +12396,7 @@ var dataDsl = {
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
+      colour: datasetColour,
       template: "meta",
       inputsInline: false,
       dataPreviewField: true,
@@ -12435,7 +12442,7 @@ var dataDsl = {
     }, {
       kind: "category",
       name: "Data sets",
-      colour: colour,
+      colour: datasetColour,
       contents: [{
         kind: "block",
         type: DATA_DATASET_BUILTIN_BLOCK
@@ -12449,7 +12456,7 @@ var dataDsl = {
     }, {
       kind: "category",
       name: "Operators",
-      colour: colour,
+      colour: operatorsColour,
       contents: [{
         kind: "block",
         type: DATA_ARRANGE_BLOCK
@@ -12490,7 +12497,7 @@ var dataDsl = {
     }, {
       kind: "category",
       name: "Statistics",
-      colour: colour,
+      colour: statisticsColour,
       contents: [{
         kind: "block",
         type: DATA_CORRELATION_BLOCK
@@ -12501,7 +12508,7 @@ var dataDsl = {
     }, {
       kind: "category",
       name: "Data variables",
-      colour: colour,
+      colour: dataVariablesColour,
       contents: [{
         kind: "button",
         text: "Add dataset variable",
@@ -12636,6 +12643,30 @@ var fieldsDsl = {
 
 /***/ }),
 
+/***/ 74602:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ palette; },
+/* harmony export */   "W": function() { return /* binding */ paletteColorByIndex; }
+/* harmony export */ });
+// see https://developers.google.com/blockly/guides/create-custom-blocks/block-colour
+// and https://mkweb.bcgsc.ca/colorblind/palettes.mhtml#page-container
+var _palette = ["#2271b2", "#3db7e9", "#f748a5", "#359b73", "#d55e00", "e69f00"];
+function palette() {
+  return _palette.slice(0);
+}
+function paletteColorByIndex(i) {
+  while (i < 0) {
+    i += _palette.length;
+  }
+
+  return _palette[i % _palette.length];
+}
+
+/***/ }),
+
 /***/ 21910:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -12652,7 +12683,7 @@ var fieldsDsl = {
 /* harmony export */   "wi": function() { return /* binding */ getServiceInfo; },
 /* harmony export */   "Hy": function() { return /* binding */ ServicesBaseDSL; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(85061);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(85061);
 /* harmony import */ var core_js_modules_es_array_flat_map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86535);
 /* harmony import */ var core_js_modules_es_array_flat_map_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_flat_map_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_array_unscopables_flat_map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(99244);
@@ -12670,6 +12701,8 @@ var fieldsDsl = {
 /* harmony import */ var _vm_VMgenerator__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(15056);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(74640);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(74602);
+
 
 
 
@@ -12851,10 +12884,10 @@ var fieldsToMessage = function fieldsToMessage(info) {
 var serviceHelp = function serviceHelp(service) {
   return (0,gatsby__WEBPACK_IMPORTED_MODULE_2__.withPrefix)("/services/" + service.shortId);
 };
-var createServiceColor = function createServiceColor(theme) {
-  var sensorColor = theme.palette.success.main;
-  var otherColor = theme.palette.info.main;
+var sensorColor = (0,_palette__WEBPACK_IMPORTED_MODULE_14__/* .paletteColorByIndex */ .W)(1);
+var otherColor = (0,_palette__WEBPACK_IMPORTED_MODULE_14__/* .paletteColorByIndex */ .W)(3); // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+var createServiceColor = function createServiceColor(theme) {
   var serviceColor = function serviceColor(srv) {
     return (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_6__/* .isSensor */ .rq)(srv) ? sensorColor : otherColor;
   };
@@ -13016,7 +13049,7 @@ var ServicesBaseDSL = /*#__PURE__*/function () {
         kind: "block",
         type: "jacdac_set_" + service.shortId + "_" + register.name + (client ? "" : "_server"),
         message0: isEnabledRegister(register) ? "set %1 %2" : "set %1 " + register.name + " to " + (register.fields.length === 1 ? "%2" : fieldsToMessage(register)),
-        args0: [roleVariable(service, client)].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(fieldsToFieldInputs(register))),
+        args0: [roleVariable(service, client)].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(fieldsToFieldInputs(register))),
         values: fieldsToValues(service, register),
         inputsInline: true,
         colour: _this2.serviceColor(service),
@@ -13051,7 +13084,7 @@ var ServicesBaseDSL = /*#__PURE__*/function () {
         kind: "block",
         type: "jacdac_change_by_events_" + service.shortId + "_" + register.name + (client ? "" : "_server"),
         message0: "on %1 " + (0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_3__/* .humanify */ .lW)(register.name) + " change by %2",
-        args0: [roleVariable(service, client)].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(fieldsToFieldInputs(register))).filter(function (v) {
+        args0: [roleVariable(service, client)].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(fieldsToFieldInputs(register))).filter(function (v) {
           return !!v;
         }),
         values: fieldsToValues(service, register),
@@ -13240,13 +13273,13 @@ var ServicesBaseDSL = /*#__PURE__*/function () {
     }, function (block) {
       return block.service;
     });
-    var toolboxServices = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_7__/* .uniqueMap */ .EM)(_jacdac_ts_src_jdom_flags__WEBPACK_IMPORTED_MODULE_5__/* .default.diagnostics */ .Z.diagnostics ? services : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(blockServices.map(function (pair) {
+    var toolboxServices = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_7__/* .uniqueMap */ .EM)(_jacdac_ts_src_jdom_flags__WEBPACK_IMPORTED_MODULE_5__/* .default.diagnostics */ .Z.diagnostics ? services : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(blockServices.map(function (pair) {
       return services.find(function (service) {
         return service.classIdentifier === pair.serviceClass;
       });
     }).filter(function (srv) {
       return !!srv;
-    })), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(liveServices.map(function (s) {
+    })), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(liveServices.map(function (s) {
       return s.specification;
     }))), function (srv) {
       return srv.shortId;
@@ -13282,13 +13315,13 @@ var ServicesBaseDSL = /*#__PURE__*/function () {
           callback: function callback(workspace) {
             return blockly__WEBPACK_IMPORTED_MODULE_13__.Variables.createVariableButtonHandler(workspace, null, toRoleType(service, isClient));
           }
-        }].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(serviceBlocks.map(function (block) {
+        }].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(serviceBlocks.map(function (block) {
           return {
             kind: "block",
             type: block.type,
             values: block.values
           };
-        })), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(getFieldBlocks(service, eventFieldBLocks)))
+        })), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(getFieldBlocks(service, eventFieldBLocks)))
       };
     };
 
@@ -13464,7 +13497,7 @@ var ServicesBaseDSL = /*#__PURE__*/function () {
           return {
             cmd: (0,_vm_VMgenerator__WEBPACK_IMPORTED_MODULE_12__/* .makeVMBase */ .IZ)(block, {
               type: "CallExpression",
-              arguments: [(0,_jacdac_ts_src_vm_compile__WEBPACK_IMPORTED_MODULE_8__/* .toMemberExpression */ .vf)(role, register.name)].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(exprsErrors.map(function (p) {
+              arguments: [(0,_jacdac_ts_src_vm_compile__WEBPACK_IMPORTED_MODULE_8__/* .toMemberExpression */ .vf)(role, register.name)].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(exprsErrors.map(function (p) {
                 return p.expr;
               }))),
               callee: (0,_jacdac_ts_src_vm_compile__WEBPACK_IMPORTED_MODULE_8__/* .toIdentifier */ .EB)("writeRegister")
@@ -17429,6 +17462,8 @@ function visitWorkspace(workspace, visitor) {
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _dsl_palette__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(74602);
+
 
 
 
@@ -17467,7 +17502,7 @@ var BUILTIN_TYPES = [""].concat(PRIMITIVE_TYPES);
 var CODE_STATEMENT_TYPE = "Code";
 var DATA_SCIENCE_STATEMENT_TYPE = "DataScienceStatement";
 var TWIN_BLOCK = "jacdac_tools_twin";
-var toolsColour = "#888";
+var toolsColour = (0,_dsl_palette__WEBPACK_IMPORTED_MODULE_3__/* .paletteColorByIndex */ .W)(-1);
 var CHART_WIDTH = 388;
 var CHART_HEIGHT = 240;
 var TABLE_WIDTH = CHART_WIDTH;

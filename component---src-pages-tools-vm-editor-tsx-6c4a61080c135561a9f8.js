@@ -5780,14 +5780,17 @@ var toolsDSL = {
   }
 };
 /* harmony default export */ var toolsdsl = (toolsDSL);
+// EXTERNAL MODULE: ./src/components/blockly/dsl/palette.ts
+var palette = __webpack_require__(74602);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/loopsdsl.ts
+
 
 
 
 var WAIT_BLOCK = "jacdac_wait";
 var ON_START_BLOCK = "jacdac_start";
 var REPEAT_EVERY_BLOCK = "jacdac_repeat_every";
-var loopsdsl_colour = "#4fbac9";
+var loopsdsl_colour = (0,palette/* paletteColorByIndex */.W)(0);
 var loopsDsl = {
   id: "loops",
   createBlocks: function createBlocks() {
@@ -6260,7 +6263,8 @@ var fieldsdsl = __webpack_require__(76658);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/jsondsl.ts
 
 
-var jsondsl_colour = "#ff8c00";
+
+var jsondsl_colour = (0,palette/* paletteColorByIndex */.W)(-2);
 var JSON_FIELD_TYPE = "JSONField";
 var JSON_OBJECT_BLOCK = "json_object";
 var JSON_FIELD_SET_BLOCK = "json_field_set";
@@ -6426,12 +6430,13 @@ var DataTableField = __webpack_require__(54741);
 
 
 
+
 var SCATTERPLOT_BLOCK = "chart_scatterplot";
 var LINEPLOT_BLOCK = "chart_lineplot";
 var PIEPLOT_BLOCK = "chart_pieplot";
 var BARCHART_BLOCK = "chart_bar";
 var CHART_SHOW_TABLE_BLOCK = "chart_show_table";
-var chartdsl_colour = "#999";
+var chartdsl_colour = (0,palette/* paletteColorByIndex */.W)(3);
 var chartDSL = {
   id: "chart",
   createBlocks: function createBlocks() {
@@ -6583,7 +6588,7 @@ var GaugeWidgetField = __webpack_require__(61162);
 
 
 var DASHBOARD_GAUGE_BLOCK = "jacdac_widget_gauge";
-var widgetdsl_colour = "#999";
+var widgetdsl_colour = toolbox/* toolsColour */.FR;
 var widgetDSL = {
   id: "widget",
   createBlocks: function createBlocks() {
