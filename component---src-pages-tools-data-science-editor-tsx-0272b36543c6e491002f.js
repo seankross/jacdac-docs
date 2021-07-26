@@ -32,8 +32,8 @@ var fieldsdsl = __webpack_require__(76658);
 var flags = __webpack_require__(21258);
 // EXTERNAL MODULE: ./src/components/blockly/BlockDiagnostics.tsx
 var BlockDiagnostics = __webpack_require__(9370);
-// EXTERNAL MODULE: ./src/components/blockly/jsonvisitor.ts
-var jsonvisitor = __webpack_require__(32641);
+// EXTERNAL MODULE: ./jacdac-ts/src/dsl/workspacevisitor.ts
+var workspacevisitor = __webpack_require__(78870);
 ;// CONCATENATED MODULE: ./src/components/data-science/DSBlockEditor.tsx
 
 
@@ -56,7 +56,7 @@ function DSEditorWithContext() {
 
 
   (0,react.useEffect)(function () {
-    (0,jsonvisitor/* visitWorkspace */.R1)(workspaceJSON, {
+    (0,workspacevisitor/* visitWorkspace */.R1)(workspaceJSON, {
       visitBlock: function visitBlock(block) {
         return console.log("block " + block.type, {
           block: block
