@@ -8831,49 +8831,61 @@ function registerDataSolver(block) {
       transformData = _ref.transformData;
 
   if (!transformData) return;
-  services.on(constants/* CHANGE */.Ver, /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-    var _block$nextConnection, _block$childBlocks_;
 
-    var next, nextServices, newData;
-    return regenerator_default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            if (!(!block.isEnabled() || block.isInFlyout)) {
-              _context.next = 2;
+  var applyTransform = /*#__PURE__*/function () {
+    var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
+      var _block$nextConnection, _block$childBlocks_;
+
+      var next, nextServices, newData;
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (!(!block.isEnabled() || block.isInFlyout)) {
+                _context.next = 2;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 2:
+              console.debug("data transform [" + block.id + "]#" + services.changeId); // transfer data
+
+              next = ((_block$nextConnection = block.nextConnection) === null || _block$nextConnection === void 0 ? void 0 : _block$nextConnection.targetBlock()) || ((_block$childBlocks_ = block.childBlocks_) === null || _block$childBlocks_ === void 0 ? void 0 : _block$childBlocks_[0]);
+              nextServices = next === null || next === void 0 ? void 0 : next.jacdacServices;
+              _context.prev = 5;
+              _context.next = 8;
+              return transformData(block, services.data, nextServices === null || nextServices === void 0 ? void 0 : nextServices.data);
+
+            case 8:
+              newData = _context.sent;
+              services.transformedData = newData;
+              if (nextServices) nextServices.data = newData;
+              _context.next = 16;
               break;
-            }
 
-            return _context.abrupt("return");
+            case 13:
+              _context.prev = 13;
+              _context.t0 = _context["catch"](5);
+              console.debug(_context.t0);
 
-          case 2:
-            console.debug("data transform [" + block.id + "]#" + services.changeId); // transfer data
-
-            next = ((_block$nextConnection = block.nextConnection) === null || _block$nextConnection === void 0 ? void 0 : _block$nextConnection.targetBlock()) || ((_block$childBlocks_ = block.childBlocks_) === null || _block$childBlocks_ === void 0 ? void 0 : _block$childBlocks_[0]);
-            nextServices = next === null || next === void 0 ? void 0 : next.jacdacServices;
-            _context.prev = 5;
-            _context.next = 8;
-            return transformData(block, services.data, nextServices === null || nextServices === void 0 ? void 0 : nextServices.data);
-
-          case 8:
-            newData = _context.sent;
-            services.transformedData = newData;
-            if (nextServices) nextServices.data = newData;
-            _context.next = 16;
-            break;
-
-          case 13:
-            _context.prev = 13;
-            _context.t0 = _context["catch"](5);
-            console.debug(_context.t0);
-
-          case 16:
-          case "end":
-            return _context.stop();
+            case 16:
+            case "end":
+              return _context.stop();
+          }
         }
-      }
-    }, _callee, null, [[5, 13]]);
-  })));
+      }, _callee, null, [[5, 13]]);
+    }));
+
+    return function applyTransform() {
+      return _ref2.apply(this, arguments);
+    };
+  }(); // apply transform, then register for change
+
+
+  applyTransform().then(function () {
+    return services.on(constants/* CHANGE */.Ver, applyTransform);
+  });
 }
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
 var flags = __webpack_require__(21258);
