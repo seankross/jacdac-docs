@@ -11346,7 +11346,7 @@ function BlockEditor(props) {
     workspaceConfiguration: {
       collapse: false,
       disable: false,
-      comments: false,
+      comments: true,
       css: true,
       trashcan: false,
       sounds: false,
