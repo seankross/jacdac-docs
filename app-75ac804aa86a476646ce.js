@@ -69773,7 +69773,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2700a121e3792eceb612cb49c82616bd5dbd7678";
+  var sha = "89cc990aa4ec6b3b2d2bd065143f1e993527868a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -73580,9 +73580,13 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   };
 
   _proto.initServices = function initServices(force) {
+    var _this2 = this;
+
     if (force) this._services = undefined;
 
     if (!this._services && this._servicesData) {
+      var _this$_services;
+
       this._statusLight = undefined;
       var n = this.serviceLength;
       var s = [];
@@ -73592,7 +73596,15 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
       }
 
       this._services = s;
-      this.lastServiceUpdate = this.bus.timestamp;
+      this.lastServiceUpdate = this.bus.timestamp; // listen for specific registers
+
+      var ctrl = (_this$_services = this._services) === null || _this$_services === void 0 ? void 0 : _this$_services[0];
+      var codes = [constants/* ControlReg.FirmwareIdentifier */.toU.FirmwareIdentifier];
+      codes.forEach(function (code) {
+        return ctrl.register(code).once(constants/* REPORT_UPDATE */.rGZ, function () {
+          return _this2.emit(constants/* CHANGE */.Ver);
+        });
+      });
     }
   };
 
@@ -73604,7 +73616,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   };
 
   _proto.services = function services(options) {
-    var _this$_services;
+    var _this$_services2;
 
     if (!this.announced) return [];
     if ((options === null || options === void 0 ? void 0 : options.serviceIndex) >= 0) return [this.service(options === null || options === void 0 ? void 0 : options.serviceIndex)];
@@ -73613,7 +73625,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     if (sc === undefined || sc < 0) sc = options === null || options === void 0 ? void 0 : options.serviceClass;
     if (sc === undefined) sc = -1;
     this.initServices();
-    var r = ((_this$_services = this._services) === null || _this$_services === void 0 ? void 0 : _this$_services.slice()) || [];
+    var r = ((_this$_services2 = this._services) === null || _this$_services2 === void 0 ? void 0 : _this$_services2.slice()) || [];
     if (sc > -1) r = r.filter(function (s) {
       return s.serviceClass == sc;
     });
@@ -73799,7 +73811,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   }();
 
   _proto.initAcks = function initAcks() {
-    var _this2 = this;
+    var _this3 = this;
 
     if (this._ackAwaiting) return;
     this._ackAwaiting = [];
@@ -73807,7 +73819,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
       if (rep.serviceIndex != constants/* JD_SERVICE_INDEX_CRC_ACK */.$rs) return;
       var numdone = 0;
 
-      for (var _iterator = device_createForOfIteratorHelperLoose(_this2._ackAwaiting), _step; !(_step = _iterator()).done;) {
+      for (var _iterator = device_createForOfIteratorHelperLoose(_this3._ackAwaiting), _step; !(_step = _iterator()).done;) {
         var aa = _step.value;
 
         if (aa.pkt && aa.pkt.crc == rep.serviceCommand) {
@@ -73818,7 +73830,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
         }
       }
 
-      if (numdone) _this2._ackAwaiting = _this2._ackAwaiting.filter(function (aa) {
+      if (numdone) _this3._ackAwaiting = _this3._ackAwaiting.filter(function (aa) {
         return !!aa.pkt;
       });
     });
@@ -73826,7 +73838,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     var resend = function resend() {
       var numdrop = 0;
 
-      for (var _iterator2 = device_createForOfIteratorHelperLoose(_this2._ackAwaiting), _step2; !(_step2 = _iterator2()).done;) {
+      for (var _iterator2 = device_createForOfIteratorHelperLoose(_this3._ackAwaiting), _step2; !(_step2 = _iterator2()).done;) {
         var aa = _step2.value;
 
         if (aa.pkt) {
@@ -73836,12 +73848,12 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
             aa.errCb();
             numdrop++;
           } else {
-            aa.pkt.sendCmdAsync(_this2);
+            aa.pkt.sendCmdAsync(_this3);
           }
         }
       }
 
-      if (numdrop) _this2._ackAwaiting = _this2._ackAwaiting.filter(function (aa) {
+      if (numdrop) _this3._ackAwaiting = _this3._ackAwaiting.filter(function (aa) {
         return !!aa.pkt;
       });
       setTimeout(resend, Math.random() * (constants/* ACK_MAX_DELAY */.Iwd - constants/* ACK_MIN_DELAY */.V7w) + constants/* ACK_MIN_DELAY */.V7w);
@@ -73852,7 +73864,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   };
 
   _proto.sendPktWithAck = function sendPktWithAck(pkt) {
-    var _this3 = this;
+    var _this4 = this;
 
     pkt.requiresAck = true;
     this.initAcks();
@@ -73868,9 +73880,9 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
         }
       };
 
-      _this3._ackAwaiting.push(ack);
+      _this4._ackAwaiting.push(ack);
 
-      pkt.sendCmdAsync(_this3);
+      pkt.sendCmdAsync(_this4);
     });
   };
 
@@ -79325,25 +79337,15 @@ function useChangeAsync(node, query, deps) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ useDeviceSpecification; }
 /* harmony export */ });
-/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
-/* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13173);
-/* harmony import */ var _useChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(54774);
-/* harmony import */ var _useRegisterValue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(89196);
-
-
+/* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13173);
+/* harmony import */ var _useChange__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(54774);
 
 
 function useDeviceSpecification(device) {
-  var firmwareIdentifierRegister = (0,_useChange__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(device, function (_) {
-    var _device$service;
-
-    return device === null || device === void 0 ? void 0 : (_device$service = device.service(0)) === null || _device$service === void 0 ? void 0 : _device$service.register(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .ControlReg.FirmwareIdentifier */ .toU.FirmwareIdentifier);
+  var firmwareIdentifier = (0,_useChange__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(device, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.firmwareIdentifier;
   });
-
-  var _useRegisterUnpackedV = (0,_useRegisterValue__WEBPACK_IMPORTED_MODULE_3__/* .useRegisterUnpackedValue */ .Pf)(firmwareIdentifierRegister),
-      firmwareIdentifier = _useRegisterUnpackedV[0];
-
-  var specification = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .deviceSpecificationFromFirmwareIdentifier */ .IL)(firmwareIdentifier);
+  var specification = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .deviceSpecificationFromFirmwareIdentifier */ .IL)(firmwareIdentifier);
   return specification;
 }
 
