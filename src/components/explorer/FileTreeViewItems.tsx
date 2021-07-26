@@ -1,8 +1,5 @@
 import React from "react"
-import {
-    FILE_NODE_NAME,
-    FOLDER_NODE_NAME,
-} from "../../../jacdac-ts/src/jdom/constants"
+import { FILE_NODE_NAME, FOLDER_NODE_NAME } from "../constants"
 import { StyledTreeItem } from "../ui/StyledTreeView"
 
 export function FileSystemHandleFileTreeViewItem(props: {

@@ -47,8 +47,6 @@ import {
     PACKET_KIND_ANNOUNCE,
     SERVICE_TEST_NODE_NAME,
     SERVICE_MIXIN_NODE_NAME,
-    FILE_NODE_NAME,
-    FOLDER_NODE_NAME,
 } from "../../jacdac-ts/src/jdom/constants"
 import JacdacIcon from "./icons/JacdacIcon"
 import FolderIcon from "@material-ui/icons/Folder"
