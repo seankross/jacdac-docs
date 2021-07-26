@@ -14193,10 +14193,12 @@ BuiltinDataSetField.KEY = "jacdac_field_data_builtin_dataset";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ DataColumnChooserField; }
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85061);
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(41788);
 /* harmony import */ var _nivo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8844);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 
@@ -14243,7 +14245,7 @@ var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
       return [h, h];
     }) || [];
     var value = this.getValue();
-    return options.length < 1 ? [[value || "", value || ""]] : options;
+    return options.length < 1 ? [[value || "", value || ""]] : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(options), [["", ""]]);
   };
 
   _proto.doClassValidation_ = function doClassValidation_(newValue) {
