@@ -13,7 +13,7 @@ import ConnectAlert from "./alert/ConnectAlert"
 
 const Toc = lazy(() => import("./Toc"))
 const PacketView = lazy(() => import("./tools/PacketView"))
-const JDomTreeView = lazy(() => import("./tools/JDomTreeView"))
+const JDomTreeView = lazy(() => import("./explorer/JDomTreeView"))
 const DrawerSearchResults = lazy(() => import("./DrawerSearchResults"))
 const DrawerSearchInput = lazy(() => import("./DrawerSearchInput"))
 

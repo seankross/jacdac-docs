@@ -47,8 +47,12 @@ import {
     PACKET_KIND_ANNOUNCE,
     SERVICE_TEST_NODE_NAME,
     SERVICE_MIXIN_NODE_NAME,
+    FILE_NODE_NAME,
+    FOLDER_NODE_NAME,
 } from "../../jacdac-ts/src/jdom/constants"
 import JacdacIcon from "./icons/JacdacIcon"
+import FolderIcon from "@material-ui/icons/Folder"
+import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile"
 
 export default function KindIcon(props: {
     kind: string
@@ -105,6 +109,12 @@ export default function KindIcon(props: {
             break
         case SERVICE_TEST_NODE_NAME:
             icon = <CheckCircleIcon {...rest} />
+            break
+        case FILE_NODE_NAME:
+            icon = <InsertDriveFileIcon {...rest} />
+            break
+        case FOLDER_NODE_NAME:
+            icon = <FolderIcon {...rest} />
             break
         default:
             icon = <DeviceUnknownIcon {...rest} />

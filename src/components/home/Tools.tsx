@@ -17,7 +17,7 @@ import {
 import useServiceProviderFromServiceClass from "../hooks/useServiceProviderFromServiceClass"
 import useDevices from "../hooks/useDevices"
 import DashboardDevice from "../dashboard/DashboardDevice"
-const JDomTreeView = lazy(() => import("../tools/JDomTreeView"))
+const JDomTreeView = lazy(() => import("../explorer/JDomTreeView"))
 const PacketView = lazy(() => import("../tools/PacketView"))
 
 export default function Tools() {
