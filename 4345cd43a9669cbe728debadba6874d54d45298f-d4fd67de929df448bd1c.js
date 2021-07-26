@@ -1,4 +1,395 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[5023],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[1326],{
+
+/***/ 87198:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ Radio_Radio; }
+});
+
+// UNUSED EXPORTS: styles
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
+var esm_extends = __webpack_require__(22122);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(81253);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
+var clsx_m = __webpack_require__(85505);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/internal/SwitchBase.js
+var SwitchBase = __webpack_require__(49044);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/createSvgIcon.js
+var createSvgIcon = __webpack_require__(6018);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/internal/svg-icons/RadioButtonUnchecked.js
+
+
+/**
+ * @ignore - internal component.
+ */
+
+/* harmony default export */ var RadioButtonUnchecked = ((0,createSvgIcon/* default */.Z)( /*#__PURE__*/react.createElement("path", {
+  d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+}), 'RadioButtonUnchecked'));
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/internal/svg-icons/RadioButtonChecked.js
+
+
+/**
+ * @ignore - internal component.
+ */
+
+/* harmony default export */ var RadioButtonChecked = ((0,createSvgIcon/* default */.Z)( /*#__PURE__*/react.createElement("path", {
+  d: "M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+}), 'RadioButtonChecked'));
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/withStyles.js
+var withStyles = __webpack_require__(34621);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Radio/RadioButtonIcon.js
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    root: {
+      position: 'relative',
+      display: 'flex',
+      '&$checked $layer': {
+        transform: 'scale(1)',
+        transition: theme.transitions.create('transform', {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.shortest
+        })
+      }
+    },
+    layer: {
+      left: 0,
+      position: 'absolute',
+      transform: 'scale(0)',
+      transition: theme.transitions.create('transform', {
+        easing: theme.transitions.easing.easeIn,
+        duration: theme.transitions.duration.shortest
+      })
+    },
+    checked: {}
+  };
+};
+/**
+ * @ignore - internal component.
+ */
+
+function RadioButtonIcon(props) {
+  var checked = props.checked,
+      classes = props.classes,
+      fontSize = props.fontSize;
+  return /*#__PURE__*/react.createElement("div", {
+    className: (0,clsx_m/* default */.Z)(classes.root, checked && classes.checked)
+  }, /*#__PURE__*/react.createElement(RadioButtonUnchecked, {
+    fontSize: fontSize
+  }), /*#__PURE__*/react.createElement(RadioButtonChecked, {
+    fontSize: fontSize,
+    className: classes.layer
+  }));
+}
+
+ false ? 0 : void 0;
+/* harmony default export */ var Radio_RadioButtonIcon = ((0,withStyles/* default */.Z)(styles, {
+  name: 'PrivateRadioButtonIcon'
+})(RadioButtonIcon));
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/colorManipulator.js
+var colorManipulator = __webpack_require__(37595);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/capitalize.js
+var capitalize = __webpack_require__(81664);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/createChainedFunction.js
+var createChainedFunction = __webpack_require__(88231);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/RadioGroup/RadioGroupContext.js
+var RadioGroupContext = __webpack_require__(98358);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/RadioGroup/useRadioGroup.js
+
+
+function useRadioGroup() {
+  return react.useContext(RadioGroupContext/* default */.Z);
+}
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Radio/Radio.js
+
+
+
+
+
+
+
+
+
+
+
+
+var Radio_styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      color: theme.palette.text.secondary
+    },
+
+    /* Pseudo-class applied to the root element if `checked={true}`. */
+    checked: {},
+
+    /* Pseudo-class applied to the root element if `disabled={true}`. */
+    disabled: {},
+
+    /* Styles applied to the root element if `color="primary"`. */
+    colorPrimary: {
+      '&$checked': {
+        color: theme.palette.primary.main,
+        '&:hover': {
+          backgroundColor: (0,colorManipulator/* alpha */.Fq)(theme.palette.primary.main, theme.palette.action.hoverOpacity),
+          // Reset on touch devices, it doesn't add specificity
+          '@media (hover: none)': {
+            backgroundColor: 'transparent'
+          }
+        }
+      },
+      '&$disabled': {
+        color: theme.palette.action.disabled
+      }
+    },
+
+    /* Styles applied to the root element if `color="secondary"`. */
+    colorSecondary: {
+      '&$checked': {
+        color: theme.palette.secondary.main,
+        '&:hover': {
+          backgroundColor: (0,colorManipulator/* alpha */.Fq)(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
+          // Reset on touch devices, it doesn't add specificity
+          '@media (hover: none)': {
+            backgroundColor: 'transparent'
+          }
+        }
+      },
+      '&$disabled': {
+        color: theme.palette.action.disabled
+      }
+    }
+  };
+};
+var defaultCheckedIcon = /*#__PURE__*/react.createElement(Radio_RadioButtonIcon, {
+  checked: true
+});
+var defaultIcon = /*#__PURE__*/react.createElement(Radio_RadioButtonIcon, null);
+var Radio = /*#__PURE__*/react.forwardRef(function Radio(props, ref) {
+  var checkedProp = props.checked,
+      classes = props.classes,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'secondary' : _props$color,
+      nameProp = props.name,
+      onChangeProp = props.onChange,
+      _props$size = props.size,
+      size = _props$size === void 0 ? 'medium' : _props$size,
+      other = (0,objectWithoutProperties/* default */.Z)(props, ["checked", "classes", "color", "name", "onChange", "size"]);
+
+  var radioGroup = useRadioGroup();
+  var checked = checkedProp;
+  var onChange = (0,createChainedFunction/* default */.Z)(onChangeProp, radioGroup && radioGroup.onChange);
+  var name = nameProp;
+
+  if (radioGroup) {
+    if (typeof checked === 'undefined') {
+      checked = radioGroup.value === props.value;
+    }
+
+    if (typeof name === 'undefined') {
+      name = radioGroup.name;
+    }
+  }
+
+  return /*#__PURE__*/react.createElement(SwitchBase/* default */.Z, (0,esm_extends/* default */.Z)({
+    color: color,
+    type: "radio",
+    icon: /*#__PURE__*/react.cloneElement(defaultIcon, {
+      fontSize: size === 'small' ? 'small' : 'medium'
+    }),
+    checkedIcon: /*#__PURE__*/react.cloneElement(defaultCheckedIcon, {
+      fontSize: size === 'small' ? 'small' : 'medium'
+    }),
+    classes: {
+      root: (0,clsx_m/* default */.Z)(classes.root, classes["color".concat((0,capitalize/* default */.Z)(color))]),
+      checked: classes.checked,
+      disabled: classes.disabled
+    },
+    name: name,
+    checked: checked,
+    onChange: onChange,
+    ref: ref
+  }, other));
+});
+ false ? 0 : void 0;
+/* harmony default export */ var Radio_Radio = ((0,withStyles/* default */.Z)(Radio_styles, {
+  name: 'MuiRadio'
+})(Radio));
+
+/***/ }),
+
+/***/ 92206:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ RadioGroup_RadioGroup; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
+var esm_extends = __webpack_require__(22122);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 1 modules
+var slicedToArray = __webpack_require__(28481);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(81253);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
+var clsx_m = __webpack_require__(85505);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/withStyles.js
+var withStyles = __webpack_require__(34621);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/FormGroup/FormGroup.js
+
+
+
+
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap'
+  },
+
+  /* Styles applied to the root element if `row={true}`. */
+  row: {
+    flexDirection: 'row'
+  }
+};
+/**
+ * `FormGroup` wraps controls such as `Checkbox` and `Switch`.
+ * It provides compact row layout.
+ * For the `Radio`, you should be using the `RadioGroup` component instead of this one.
+ */
+
+var FormGroup = /*#__PURE__*/react.forwardRef(function FormGroup(props, ref) {
+  var classes = props.classes,
+      className = props.className,
+      _props$row = props.row,
+      row = _props$row === void 0 ? false : _props$row,
+      other = (0,objectWithoutProperties/* default */.Z)(props, ["classes", "className", "row"]);
+
+  return /*#__PURE__*/react.createElement("div", (0,esm_extends/* default */.Z)({
+    className: (0,clsx_m/* default */.Z)(classes.root, className, row && classes.row),
+    ref: ref
+  }, other));
+});
+ false ? 0 : void 0;
+/* harmony default export */ var FormGroup_FormGroup = ((0,withStyles/* default */.Z)(styles, {
+  name: 'MuiFormGroup'
+})(FormGroup));
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/useForkRef.js
+var useForkRef = __webpack_require__(11291);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/useControlled.js
+var useControlled = __webpack_require__(12933);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/RadioGroup/RadioGroupContext.js
+var RadioGroupContext = __webpack_require__(98358);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/unstable_useId.js
+var unstable_useId = __webpack_require__(15126);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/RadioGroup/RadioGroup.js
+
+
+
+
+
+
+
+
+
+var RadioGroup = /*#__PURE__*/react.forwardRef(function RadioGroup(props, ref) {
+  var actions = props.actions,
+      children = props.children,
+      nameProp = props.name,
+      valueProp = props.value,
+      onChange = props.onChange,
+      other = (0,objectWithoutProperties/* default */.Z)(props, ["actions", "children", "name", "value", "onChange"]);
+
+  var rootRef = react.useRef(null);
+
+  var _useControlled = (0,useControlled/* default */.Z)({
+    controlled: valueProp,
+    default: props.defaultValue,
+    name: 'RadioGroup'
+  }),
+      _useControlled2 = (0,slicedToArray/* default */.Z)(_useControlled, 2),
+      value = _useControlled2[0],
+      setValue = _useControlled2[1];
+
+  react.useImperativeHandle(actions, function () {
+    return {
+      focus: function focus() {
+        var input = rootRef.current.querySelector('input:not(:disabled):checked');
+
+        if (!input) {
+          input = rootRef.current.querySelector('input:not(:disabled)');
+        }
+
+        if (input) {
+          input.focus();
+        }
+      }
+    };
+  }, []);
+  var handleRef = (0,useForkRef/* default */.Z)(ref, rootRef);
+
+  var handleChange = function handleChange(event) {
+    setValue(event.target.value);
+
+    if (onChange) {
+      onChange(event, event.target.value);
+    }
+  };
+
+  var name = (0,unstable_useId/* default */.Z)(nameProp);
+  return /*#__PURE__*/react.createElement(RadioGroupContext/* default.Provider */.Z.Provider, {
+    value: {
+      name: name,
+      onChange: handleChange,
+      value: value
+    }
+  }, /*#__PURE__*/react.createElement(FormGroup_FormGroup, (0,esm_extends/* default */.Z)({
+    role: "radiogroup",
+    ref: handleRef
+  }, other), children));
+});
+ false ? 0 : void 0;
+/* harmony default export */ var RadioGroup_RadioGroup = (RadioGroup);
+
+/***/ }),
+
+/***/ 98358:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+
+/**
+ * @ignore - internal component.
+ */
+
+var RadioGroupContext = react__WEBPACK_IMPORTED_MODULE_0__.createContext();
+
+if (false) {}
+
+/* harmony default export */ __webpack_exports__["Z"] = (RadioGroupContext);
+
+/***/ }),
 
 /***/ 88880:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
@@ -549,6 +940,148 @@ function DashboardDeviceItem(props) {
 
 /***/ }),
 
+/***/ 2058:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "v": function() { return /* binding */ usePlayTone; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
+/* harmony import */ var _jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(48363);
+/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(71815);
+/* harmony import */ var _jacdac_ts_src_jdom_packet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(57683);
+/* harmony import */ var _useServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2928);
+/* harmony import */ var _jacdac_ts_src_servers_buzzerserver__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(69589);
+/* harmony import */ var _ui_WebAudioContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(94564);
+
+
+
+
+
+
+
+
+
+
+function usePlayTone() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z),
+      bus = _useContext.bus;
+
+  var buzzers = (0,_useServices__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)({
+    serviceClass: _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_BUZZER */ .J1$
+  });
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+      buzzerServer = _useState[0],
+      setBuzzerServer = _useState[1];
+
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_ui_WebAudioContext__WEBPACK_IMPORTED_MODULE_8__/* .default */ .ZP),
+      playTone = _useContext2.playTone,
+      onClickActivateAudioContext = _useContext2.onClickActivateAudioContext,
+      activated = _useContext2.activated; // useEffect invokes a function call whenever the variables
+  // (passed as an array) change.
+  // if clean up is required, return a clean up callback
+  //
+  // listen for playTone commands from the buzzer via subscribe
+  // subscribe returns a clean up function that is invoked when the user
+  // browses away from the page.
+  // playtone uses the audio context set in handleBrowserAudioEnable
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return buzzerServer === null || buzzerServer === void 0 ? void 0 : buzzerServer.subscribe(_jacdac_ts_src_servers_buzzerserver__WEBPACK_IMPORTED_MODULE_7__/* .default.PLAY_TONE */ .Z.PLAY_TONE, function (_ref) {
+      var frequency = _ref.frequency,
+          duration = _ref.duration,
+          volume = _ref.volume;
+      return playTone(frequency, duration, volume);
+    });
+  }, [buzzerServer]); // clean out buzzer server on page close.
+  // defines an empty function that returns a function.
+  // invoked each time buzzerServer changes
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return function () {
+      return (buzzerServer === null || buzzerServer === void 0 ? void 0 : buzzerServer.device) && bus.removeServiceProvider(buzzerServer.device);
+    };
+  }, [buzzerServer]); // when start browser audio button is clicked:
+  // get a browser audio context
+  // spin up a virtual buzzer that we latermap to the browser audio engine
+
+  var toggleBrowserAudio = function toggleBrowserAudio() {
+    // browser security dictates that the audio context be used within a click event
+    // must be done once to allow background sounds
+    onClickActivateAudioContext();
+
+    if (!buzzerServer) {
+      var dev = (0,_jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_3__/* .startServiceProviderFromServiceClass */ .V6)(bus, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_BUZZER */ .J1$);
+      var srv = dev.services().find(function (s) {
+        return s.serviceClass === _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_BUZZER */ .J1$;
+      });
+      setBuzzerServer(srv);
+    } else {
+      setBuzzerServer(undefined);
+    }
+  };
+
+  var buzzerPlayTone = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)( /*#__PURE__*/function () {
+    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(frequency, duration, volume) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return Promise.all( // for each buzzer, map x acceleration to buzzer output
+              buzzers === null || buzzers === void 0 ? void 0 : buzzers.map( /*#__PURE__*/function () {
+                var _ref3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(buzzer) {
+                  var pkt;
+                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+                    while (1) {
+                      switch (_context.prev = _context.next) {
+                        case 0:
+                          pkt = _jacdac_ts_src_jdom_packet__WEBPACK_IMPORTED_MODULE_5__/* .default.from */ .Z.from(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .BuzzerCmd.PlayTone */ .Rv2.PlayTone, (0,_jacdac_ts_src_servers_buzzerserver__WEBPACK_IMPORTED_MODULE_7__/* .tonePayload */ .x)(frequency, duration, volume));
+                          _context.next = 3;
+                          return buzzer.sendPacketAsync(pkt);
+
+                        case 3:
+                        case "end":
+                          return _context.stop();
+                      }
+                    }
+                  }, _callee);
+                }));
+
+                return function (_x4) {
+                  return _ref3.apply(this, arguments);
+                };
+              }()));
+
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function (_x, _x2, _x3) {
+      return _ref2.apply(this, arguments);
+    };
+  }(), [buzzers]);
+  var browserAudio = activated && !!buzzerServer;
+  return {
+    playTone: buzzerPlayTone,
+    toggleBrowserAudio: toggleBrowserAudio,
+    browserAudio: browserAudio
+  };
+}
+
+/***/ }),
+
 /***/ 2928:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -641,319 +1174,6 @@ function GridHeader(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
     className: classes.hr
   }))));
-}
-
-/***/ }),
-
-/***/ 82702:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": function() { return /* binding */ AccelerometerTheremin; }
-});
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(92137);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(87757);
-var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
-var constants = __webpack_require__(71815);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
-var utils = __webpack_require__(81794);
-// EXTERNAL MODULE: ./src/components/hooks/useServices.ts
-var useServices = __webpack_require__(2928);
-// EXTERNAL MODULE: ./src/components/ui/GridHeader.tsx
-var GridHeader = __webpack_require__(95393);
-// EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
-var gatsby_theme_material_ui = __webpack_require__(36176);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
-var Grid = __webpack_require__(80838);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Card/Card.js
-var Card = __webpack_require__(85420);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardContent/CardContent.js
-var CardContent = __webpack_require__(29114);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
-var Typography = __webpack_require__(80453);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardActions/CardActions.js
-var CardActions = __webpack_require__(31186);
-// EXTERNAL MODULE: ./src/components/alert/ConnectAlert.tsx
-var ConnectAlert = __webpack_require__(94431);
-// EXTERNAL MODULE: ./src/components/DeviceCardHeader.tsx + 2 modules
-var DeviceCardHeader = __webpack_require__(31477);
-// EXTERNAL MODULE: ./src/jacdac/Context.tsx
-var Context = __webpack_require__(20392);
-// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 24 modules
-var servers = __webpack_require__(48363);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/packet.ts
-var packet = __webpack_require__(57683);
-// EXTERNAL MODULE: ./jacdac-ts/src/servers/buzzerserver.ts
-var buzzerserver = __webpack_require__(69589);
-// EXTERNAL MODULE: ./src/components/ui/WebAudioContext.tsx
-var WebAudioContext = __webpack_require__(94564);
-;// CONCATENATED MODULE: ./src/components/hooks/usePlayTone.tsx
-
-
-
-
-
-
-
-
-
-
-function usePlayTone() {
-  var _useContext = (0,react.useContext)(Context/* default */.Z),
-      bus = _useContext.bus;
-
-  var buzzers = (0,useServices/* default */.Z)({
-    serviceClass: constants/* SRV_BUZZER */.J1$
-  });
-
-  var _useState = (0,react.useState)(),
-      buzzerServer = _useState[0],
-      setBuzzerServer = _useState[1];
-
-  var _useContext2 = (0,react.useContext)(WebAudioContext/* default */.ZP),
-      playTone = _useContext2.playTone,
-      onClickActivateAudioContext = _useContext2.onClickActivateAudioContext,
-      activated = _useContext2.activated; // useEffect invokes a function call whenever the variables
-  // (passed as an array) change.
-  // if clean up is required, return a clean up callback
-  //
-  // listen for playTone commands from the buzzer via subscribe
-  // subscribe returns a clean up function that is invoked when the user
-  // browses away from the page.
-  // playtone uses the audio context set in handleBrowserAudioEnable
-
-
-  (0,react.useEffect)(function () {
-    return buzzerServer === null || buzzerServer === void 0 ? void 0 : buzzerServer.subscribe(buzzerserver/* default.PLAY_TONE */.Z.PLAY_TONE, function (_ref) {
-      var frequency = _ref.frequency,
-          duration = _ref.duration,
-          volume = _ref.volume;
-      return playTone(frequency, duration, volume);
-    });
-  }, [buzzerServer]); // clean out buzzer server on page close.
-  // defines an empty function that returns a function.
-  // invoked each time buzzerServer changes
-
-  (0,react.useEffect)(function () {
-    return function () {
-      return (buzzerServer === null || buzzerServer === void 0 ? void 0 : buzzerServer.device) && bus.removeServiceProvider(buzzerServer.device);
-    };
-  }, [buzzerServer]); // when start browser audio button is clicked:
-  // get a browser audio context
-  // spin up a virtual buzzer that we latermap to the browser audio engine
-
-  var toggleBrowserAudio = function toggleBrowserAudio() {
-    // browser security dictates that the audio context be used within a click event
-    // must be done once to allow background sounds
-    onClickActivateAudioContext();
-
-    if (!buzzerServer) {
-      var dev = (0,servers/* startServiceProviderFromServiceClass */.V6)(bus, constants/* SRV_BUZZER */.J1$);
-      var srv = dev.services().find(function (s) {
-        return s.serviceClass === constants/* SRV_BUZZER */.J1$;
-      });
-      setBuzzerServer(srv);
-    } else {
-      setBuzzerServer(undefined);
-    }
-  };
-
-  var buzzerPlayTone = (0,react.useCallback)( /*#__PURE__*/function () {
-    var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(frequency, duration, volume) {
-      return regenerator_default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return Promise.all( // for each buzzer, map x acceleration to buzzer output
-              buzzers === null || buzzers === void 0 ? void 0 : buzzers.map( /*#__PURE__*/function () {
-                var _ref3 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(buzzer) {
-                  var pkt;
-                  return regenerator_default().wrap(function _callee$(_context) {
-                    while (1) {
-                      switch (_context.prev = _context.next) {
-                        case 0:
-                          pkt = packet/* default.from */.Z.from(constants/* BuzzerCmd.PlayTone */.Rv2.PlayTone, (0,buzzerserver/* tonePayload */.x)(frequency, duration, volume));
-                          _context.next = 3;
-                          return buzzer.sendPacketAsync(pkt);
-
-                        case 3:
-                        case "end":
-                          return _context.stop();
-                      }
-                    }
-                  }, _callee);
-                }));
-
-                return function (_x4) {
-                  return _ref3.apply(this, arguments);
-                };
-              }()));
-
-            case 2:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-
-    return function (_x, _x2, _x3) {
-      return _ref2.apply(this, arguments);
-    };
-  }(), [buzzers]);
-  var browserAudio = activated && !!buzzerServer;
-  return {
-    playTone: buzzerPlayTone,
-    toggleBrowserAudio: toggleBrowserAudio,
-    browserAudio: browserAudio
-  };
-}
-// EXTERNAL MODULE: ./src/components/dashboard/Dashboard.tsx + 3 modules
-var Dashboard = __webpack_require__(65063);
-// EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
-var react_use_id_hook_esm = __webpack_require__(19640);
-;// CONCATENATED MODULE: ./src/pages/tools/accelerometer-theremin.tsx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var TONE_DURATION = 50;
-var TONE_THROTTLE = 100; // this is a React component that gets run numerous time,
-// whenever a change is detected in the React state
-// for example, useServices is a hook that tracks the accelerometer services,
-// so it will render again and update the accelerometers array whenever the bus connects/disconnects
-// an accelerometer
-
-function AccelerometerTheremin() {
-  var _usePlayTone = usePlayTone(),
-      playTone = _usePlayTone.playTone,
-      toggleBrowserAudio = _usePlayTone.toggleBrowserAudio,
-      browserAudio = _usePlayTone.browserAudio; // identifiers for accessibility
-
-
-  var sectionId = (0,react_use_id_hook_esm/* useId */.Me)(); // useServices accepts a number of filters and returns any services that match
-  // get all accelerometer + buzzer services
-  // under the hood, it uses the bus and events.
-
-  var accelerometers = (0,useServices/* default */.Z)({
-    serviceClass: constants/* SRV_ACCELEROMETER */.QF7
-  }); // create two state variables to hold the service selected as our accelerometer
-  // and the virtual buzzerServer created when someone turns audio on on the page
-  // when using setAccelService/setBuzzerServer, React will render again this component
-
-  var _useState = (0,react.useState)(),
-      accelService = _useState[0],
-      setAccelService = _useState[1]; // use a closure to capture accel variable
-  // act as a toggle for the button the indicates streaming state.
-
-
-  var handleSelectAccelerometerService = function handleSelectAccelerometerService(accel) {
-    return function () {
-      accelService == accel ? setAccelService(undefined) : setAccelService(accel);
-    };
-  }; // filter to only show accelerometers in dashboard
-
-
-  var dashboardDeviceFilter = function dashboardDeviceFilter(d) {
-    return d.hasService(constants/* SRV_ACCELEROMETER */.QF7);
-  }; // register for accelerometer data events
-
-
-  (0,react.useEffect)(function () {
-    // ?. checks that the callee is defined
-    var unsubs = accelService === null || accelService === void 0 ? void 0 : accelService.readingRegister.subscribe(constants/* REPORT_UPDATE */.rGZ, // don't trigger more than every 100ms
-    (0,utils/* throttle */.P2)( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-      var _accelService$reading, x;
-
-      return regenerator_default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              // get x acceleration data
-              _accelService$reading = accelService.readingRegister.unpackedValue, x = _accelService$reading[0]; // get all acceleration data
-              // const [x, y, z] = accelService.readingRegister.unpackedValue
-
-              _context.next = 3;
-              return playTone(1000 + x * 1000, TONE_DURATION, 1);
-
-            case 3:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    })), TONE_THROTTLE)); // cleanup callback
-
-    return function () {
-      return unsubs === null || unsubs === void 0 ? void 0 : unsubs();
-    };
-  }, [accelService, playTone]); // re-register if accelerometers, buzzers change
-
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("section", {
-    id: sectionId
-  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    container: true,
-    spacing: 2
-  }, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
-    title: "Audio controls"
-  }), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
-    variant: "outlined",
-    onClick: toggleBrowserAudio
-  }, browserAudio ? "Stop browser audio" : "Start browser audio")), !accelerometers.length && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
-    title: "Connect a device"
-  }), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: true
-  }, /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, {
-    serviceClass: constants/* SRV_ACCELEROMETER */.QF7
-  }))), !!accelerometers.length && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
-    title: "Available accelerometers"
-  }), accelerometers.map(function (accelerometer) {
-    return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-      item: true,
-      xs: 12,
-      sm: 6,
-      lg: 4,
-      xl: 3,
-      key: accelerometer.id
-    }, /*#__PURE__*/react.createElement(Card/* default */.Z, null, /*#__PURE__*/react.createElement(DeviceCardHeader/* default */.Z, {
-      device: accelerometer.device,
-      showAvatar: true,
-      showMedia: true
-    }), /*#__PURE__*/react.createElement(CardContent/* default */.Z, null, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-      variant: "h5"
-    }, (accelerometer === accelService ? "Streaming from " : "") + (accelerometer.device.physical ? "Physical " : "Virtual ") + ("Accelerometer " + accelerometer.friendlyName))), /*#__PURE__*/react.createElement(CardActions/* default */.Z, null, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
-      variant: "outlined",
-      onClick: handleSelectAccelerometerService(accelerometer)
-    }, accelerometer === accelService ? "Stop streaming" : "Start streaming"))));
-  })))), /*#__PURE__*/react.createElement(Dashboard/* default */.Z, {
-    deviceFilter: dashboardDeviceFilter
-  }));
 }
 
 /***/ })

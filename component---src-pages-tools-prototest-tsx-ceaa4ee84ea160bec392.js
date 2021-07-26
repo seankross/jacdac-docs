@@ -788,8 +788,8 @@ var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 var Grid = __webpack_require__(80838);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Switch/Switch.js + 1 modules
-var Switch = __webpack_require__(76544);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Switch/Switch.js
+var Switch = __webpack_require__(6210);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
