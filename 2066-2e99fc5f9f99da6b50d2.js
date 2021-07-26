@@ -2642,14 +2642,14 @@ var handlers = {
   select: function select(props) {
     var columns = props.columns,
         data = props.data;
-    if (!columns) return data;else return tidy(data, _select2(columns.map(function (column) {
+    if (!(columns != null && columns.length)) return data;else return tidy(data, _select2(columns.map(function (column) {
       return "".concat(column);
     })));
   },
   drop: function drop(props) {
     var columns = props.columns,
         data = props.data;
-    if (!columns) return data;else return tidy(data, _select2(columns.map(function (column) {
+    if (!(columns != null && columns.length)) return data;else return tidy(data, _select2(columns.map(function (column) {
       return "-".concat(column);
     })));
   },

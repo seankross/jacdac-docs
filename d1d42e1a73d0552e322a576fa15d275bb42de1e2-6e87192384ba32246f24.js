@@ -11845,6 +11845,8 @@ var dataDsl = {
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3].map(function (column) {
           return b.getFieldValue("column" + column);
+        }).filter(function (c) {
+          return !!c;
         });
         return postTransformData({
           type: "drop",
@@ -11875,6 +11877,8 @@ var dataDsl = {
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3].map(function (column) {
           return b.getFieldValue("column" + column);
+        }).filter(function (c) {
+          return !!c;
         });
         return postTransformData({
           type: "select",
@@ -11906,6 +11910,8 @@ var dataDsl = {
       transformData: function transformData(b, data) {
         var columns = [1, 2].map(function (column) {
           return b.getFieldValue("column" + column);
+        }).filter(function (c) {
+          return !!c;
         });
         var logic = b.getFieldValue("logic");
         return postTransformData({
