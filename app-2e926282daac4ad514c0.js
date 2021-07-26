@@ -57393,9 +57393,6 @@ var pack = __webpack_require__(91635);
 
 
 
-var HOLD_TIME = 500;
-var INACTIVE_VALUE = 0;
-var ACTIVE_VALUE = 1;
 
 var ButtonServer = /*#__PURE__*/function (_SensorServer) {
   (0,inheritsLoose/* default */.Z)(ButtonServer, _SensorServer);
@@ -57405,7 +57402,7 @@ var ButtonServer = /*#__PURE__*/function (_SensorServer) {
 
     _this = _SensorServer.call(this, constants/* SRV_BUTTON */.XJR, {
       instanceName: instanceName,
-      readingValues: [INACTIVE_VALUE],
+      readingValues: [ButtonServer.INACTIVE_VALUE],
       streamingInterval: 50
     }) || this;
     _this.analog = _this.addRegister(constants/* ButtonReg.Analog */.CP7.Analog, [!!analog]);
@@ -57449,7 +57446,7 @@ var ButtonServer = /*#__PURE__*/function (_SensorServer) {
               }
 
               this._downTime = now;
-              this._nextHold = this._downTime + HOLD_TIME;
+              this._nextHold = this._downTime + ButtonServer.HOLD_TIME;
               _context.next = 7;
               return this.sendEvent(constants/* ButtonEvent.Down */.XKP.Down);
 
@@ -57464,7 +57461,7 @@ var ButtonServer = /*#__PURE__*/function (_SensorServer) {
               }
 
               time = now - this._downTime;
-              this._nextHold = this.device.bus.timestamp + HOLD_TIME;
+              this._nextHold = this.device.bus.timestamp + ButtonServer.HOLD_TIME;
               _context.next = 14;
               return this.sendEvent(constants/* ButtonEvent.Hold */.XKP.Hold, (0,pack/* jdpack */.AV)("u32", [time]));
 
@@ -57505,7 +57502,7 @@ var ButtonServer = /*#__PURE__*/function (_SensorServer) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              this.reading.setValues([ACTIVE_VALUE]);
+              this.reading.setValues([ButtonServer.ACTIVE_VALUE]);
 
             case 1:
             case "end":
@@ -57528,7 +57525,7 @@ var ButtonServer = /*#__PURE__*/function (_SensorServer) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              this.reading.setValues([INACTIVE_VALUE]);
+              this.reading.setValues([ButtonServer.INACTIVE_VALUE]);
 
             case 1:
             case "end":
@@ -57562,6 +57559,9 @@ var ButtonServer = /*#__PURE__*/function (_SensorServer) {
   return ButtonServer;
 }(sensorserver/* default */.Z);
 
+ButtonServer.HOLD_TIME = 500;
+ButtonServer.INACTIVE_VALUE = 0;
+ButtonServer.ACTIVE_VALUE = 1;
 
 // EXTERNAL MODULE: ./jacdac-ts/src/servers/buzzerserver.ts
 var buzzerserver = __webpack_require__(69589);
@@ -69773,7 +69773,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "40a798c99aefd9a2db1229cfefa497d95c6e16c6";
+  var sha = "c3fafd721d55ca50dcb92d245d969fad0e90b563";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
