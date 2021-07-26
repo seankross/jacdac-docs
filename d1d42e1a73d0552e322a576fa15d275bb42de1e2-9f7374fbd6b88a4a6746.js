@@ -10333,11 +10333,26 @@ function useToolbox(dsls, source) {
     }).sort(function (l, r) {
       return -(l.order - r.order);
     });
+    var contents = dslsCategories.map(function (node) {
+      return node.kind === "category" ? patchCategoryJSONtoXML(node) : node;
+    }); // remove trailing separators
+
+    while (((_contents$ = contents[0]) === null || _contents$ === void 0 ? void 0 : _contents$.kind) === "sep") {
+      var _contents$;
+
+      contents.shift();
+    }
+
+    while (((_contents = contents[contents.length - 1]) === null || _contents === void 0 ? void 0 : _contents.kind) === "sep") {
+      var _contents;
+
+      contents.pop();
+    } //
+
+
     return {
       kind: "categoryToolbox",
-      contents: dslsCategories.map(function (node) {
-        return node.kind === "category" ? patchCategoryJSONtoXML(node) : node;
-      })
+      contents: contents
     };
   }, [theme, dsls, source, (liveServices || []).map(function (srv) {
     return srv.id;
