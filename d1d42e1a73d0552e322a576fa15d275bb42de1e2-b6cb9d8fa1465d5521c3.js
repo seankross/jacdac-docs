@@ -10354,7 +10354,7 @@ function BlockProvider(props) {
 
   var _useState4 = (0,react.useState)(undefined),
       workspaceJSON = _useState4[0],
-      setWorkspaceJSON = _useState4[1];
+      _setWorkspaceJSON = _useState4[1];
 
   var _useState5 = (0,react.useState)([]),
       warnings = _useState5[0],
@@ -10368,32 +10368,37 @@ function BlockProvider(props) {
       editorId = _useState7[0],
       setEditorId = _useState7[1];
 
-  var setWorkspaceXml = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(xml) {
+  var setWorkspaceXml = function setWorkspaceXml(xml) {
+    _setWorkspaceXml(xml);
+
+    setStoredXml(xml);
+  };
+
+  var setWorkspaceJSON = /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(json) {
       var _file, fileContent;
 
       return regenerator_default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              setStoredXml(xml);
-
-              _setWorkspaceXml(xml);
+              _setWorkspaceJSON(json);
 
               if (!setWorkspaceFileContent) {
-                _context.next = 7;
+                _context.next = 6;
                 break;
               }
 
               _file = {
                 editor: editorId,
-                xml: xml
+                xml: workspaceXml,
+                json: json
               };
               fileContent = JSON.stringify(_file);
-              _context.next = 7;
+              _context.next = 6;
               return setWorkspaceFileContent(fileContent);
 
-            case 7:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -10401,7 +10406,7 @@ function BlockProvider(props) {
       }, _callee);
     }));
 
-    return function setWorkspaceXml(_x) {
+    return function setWorkspaceJSON(_x) {
       return _ref.apply(this, arguments);
     };
   }();
