@@ -8600,10 +8600,10 @@ __webpack_require__.d(__webpack_exports__, {
   "C": function() { return /* binding */ blockly_BlockContext; }
 });
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(85061);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
 var asyncToGenerator = __webpack_require__(92137);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
+var toConsumableArray = __webpack_require__(85061);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__(87757);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
@@ -10444,7 +10444,10 @@ function useFileStorage(fileHandle) {
 
   return save;
 }
+// EXTERNAL MODULE: ./src/components/useEffectAsync.ts
+var useEffectAsync = __webpack_require__(7751);
 ;// CONCATENATED MODULE: ./src/components/blockly/BlockContext.tsx
+
 
 
 
@@ -10515,7 +10518,7 @@ function BlockProvider(props) {
 
   var _useState4 = (0,react.useState)(undefined),
       workspaceJSON = _useState4[0],
-      _setWorkspaceJSON = _useState4[1];
+      setWorkspaceJSON = _useState4[1];
 
   var _useState5 = (0,react.useState)([]),
       warnings = _useState5[0],
@@ -10534,43 +10537,6 @@ function BlockProvider(props) {
 
     setStoredXml(xml);
   };
-
-  var setWorkspaceJSON = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(json) {
-      var _file, fileContent;
-
-      return regenerator_default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _setWorkspaceJSON(json);
-
-              if (!setWorkspaceFileContent) {
-                _context.next = 6;
-                break;
-              }
-
-              _file = {
-                editor: editorId,
-                xml: workspaceXml,
-                json: json
-              };
-              fileContent = JSON.stringify(_file);
-              _context.next = 6;
-              return setWorkspaceFileContent(fileContent);
-
-            case 6:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function setWorkspaceJSON(_x) {
-      return _ref.apply(this, arguments);
-    };
-  }();
 
   var setWarnings = function setWarnings(category, entries) {
     var i = warnings.findIndex(function (w) {
@@ -10599,9 +10565,9 @@ function BlockProvider(props) {
         var _i$fieldRow;
 
         return (_i$fieldRow = i.fieldRow) === null || _i$fieldRow === void 0 ? void 0 : _i$fieldRow.forEach(function (f) {
-          var _notifyServicesChange, _ref2;
+          var _notifyServicesChange, _ref;
 
-          return (_notifyServicesChange = (_ref2 = f).notifyServicesChanged) === null || _notifyServicesChange === void 0 ? void 0 : _notifyServicesChange.call(_ref2);
+          return (_notifyServicesChange = (_ref = f).notifyServicesChanged) === null || _notifyServicesChange === void 0 ? void 0 : _notifyServicesChange.call(_ref);
         });
       });
     }
@@ -10647,39 +10613,39 @@ function BlockProvider(props) {
   };
 
   var setWorkspaceFileHandle = (0,useDirectoryHandle/* fileSystemHandleSupported */.o)() ? /*#__PURE__*/function () {
-    var _ref3 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(f) {
-      var _file2, text, json, _ref4, editor, xml, dom;
+    var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(f) {
+      var _file, text, json, _ref3, editor, xml, dom;
 
-      return regenerator_default().wrap(function _callee2$(_context2) {
+      return regenerator_default().wrap(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
               if (f) {
-                _context2.next = 3;
+                _context.next = 3;
                 break;
               }
 
               setFileHandle(f);
-              return _context2.abrupt("return");
+              return _context.abrupt("return");
 
             case 3:
-              _context2.prev = 3;
+              _context.prev = 3;
               console.debug("reading " + f.name);
-              _context2.next = 7;
+              _context.next = 7;
               return f.getFile();
 
             case 7:
-              _file2 = _context2.sent;
-              _context2.next = 10;
-              return _file2.text();
+              _file = _context.sent;
+              _context.next = 10;
+              return _file.text();
 
             case 10:
-              text = _context2.sent;
+              text = _context.sent;
               json = JSON.parse(text);
-              _ref4 = json || {}, editor = _ref4.editor, xml = _ref4.xml;
+              _ref3 = json || {}, editor = _ref3.editor, xml = _ref3.xml;
 
               if (!(editor !== editorId)) {
-                _context2.next = 15;
+                _context.next = 15;
                 break;
               }
 
@@ -10692,25 +10658,25 @@ function BlockProvider(props) {
               workspace.clear();
               blockly.Xml.domToWorkspace(dom, workspace);
               setFileHandle(f);
-              _context2.next = 25;
+              _context.next = 25;
               break;
 
             case 21:
-              _context2.prev = 21;
-              _context2.t0 = _context2["catch"](3);
-              setError(_context2.t0);
+              _context.prev = 21;
+              _context.t0 = _context["catch"](3);
+              setError(_context.t0);
               setFileHandle(undefined);
 
             case 25:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2, null, [[3, 21]]);
+      }, _callee, null, [[3, 21]]);
     }));
 
-    return function (_x2) {
-      return _ref3.apply(this, arguments);
+    return function (_x) {
+      return _ref2.apply(this, arguments);
     };
   }() : undefined; // plugins
 
@@ -10736,13 +10702,40 @@ function BlockProvider(props) {
   (0,react.useEffect)(function () {
     if (!workspace || dragging) return;
     var newWorkspaceJSON = domToJSON(workspace, dsls);
-
-    if (JSON.stringify(newWorkspaceJSON) !== JSON.stringify(workspaceJSON)) {
-      setWorkspaceJSON(newWorkspaceJSON);
-      var newWarnings = collectWarnings(newWorkspaceJSON);
-      setWarnings(toolbox/* JSON_WARNINGS_CATEGORY */.FD, newWarnings);
-    }
+    setWorkspaceJSON(newWorkspaceJSON);
+    var newWarnings = collectWarnings(newWorkspaceJSON);
+    setWarnings(toolbox/* JSON_WARNINGS_CATEGORY */.FD, newWarnings);
   }, [dsls, workspace, dragging, workspaceXml]);
+  (0,useEffectAsync/* default */.Z)( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2() {
+    var file, fileContent;
+    return regenerator_default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            if (workspaceFileHandle) {
+              _context2.next = 2;
+              break;
+            }
+
+            return _context2.abrupt("return");
+
+          case 2:
+            file = {
+              editor: editorId,
+              xml: workspaceXml,
+              json: workspaceJSON
+            };
+            fileContent = JSON.stringify(file);
+            _context2.next = 6;
+            return setWorkspaceFileContent(fileContent);
+
+          case 6:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  })), [editorId, workspaceFileHandle, workspaceJSON]);
   (0,react.useEffect)(function () {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     var ws = workspace;
