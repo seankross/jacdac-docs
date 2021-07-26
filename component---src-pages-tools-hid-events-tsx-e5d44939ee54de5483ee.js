@@ -465,8 +465,8 @@ function useServices(options) {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z),
       bus = _useContext.bus;
 
-  var services = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(bus, function (b) {
-    return b.services(options);
+  var services = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(bus, function (_) {
+    return (_ === null || _ === void 0 ? void 0 : _.services(options)) || [];
   }, [JSON.stringify(options)]);
   return services;
 }

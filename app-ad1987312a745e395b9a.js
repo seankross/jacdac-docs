@@ -65684,7 +65684,7 @@ var DashboardRainGauge = /*#__PURE__*/(0,react.lazy)(function () {
   return __webpack_require__.e(/* import() */ 6214).then(__webpack_require__.bind(__webpack_require__, 46214));
 });
 var DashboardLEDMatrix = /*#__PURE__*/(0,react.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(9979)]).then(__webpack_require__.bind(__webpack_require__, 79979));
+  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(3867)]).then(__webpack_require__.bind(__webpack_require__, 79979));
 });
 var DashboardWindDirection = /*#__PURE__*/(0,react.lazy)(function () {
   return __webpack_require__.e(/* import() */ 6902).then(__webpack_require__.bind(__webpack_require__, 26902));
@@ -69773,7 +69773,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "869cc83381a375be787dbb01ab7eb59aab4b4304";
+  var sha = "2700a121e3792eceb612cb49c82616bd5dbd7678";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70613,7 +70613,7 @@ function LayoutWithContext(props) {
       frontmatter = _ref3.frontmatter;
 
   var makeCodeTool = /tools\/makecode-/.test(path);
-  var fullWidthTools = /^\/(tools\/(makecode-|vm-editor)|dashboard)/.test(path);
+  var fullWidthTools = /^\/(tools\/(makecode-|vm-editor|data-science-editor)|dashboard)/.test(path);
 
   var _ref4 = frontmatter || {
     hideMainMenu: makeCodeTool,
@@ -79154,7 +79154,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.13.97"};
+var package_namespaceObject = {"i8":"1.13.98"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
@@ -81633,7 +81633,7 @@ exports.components = {
     return Promise.all(/* import() | component---src-pages-tools-updater-tsx */[__webpack_require__.e(7684), __webpack_require__.e(5224), __webpack_require__.e(7788), __webpack_require__.e(5092), __webpack_require__.e(6366)]).then(__webpack_require__.bind(__webpack_require__, 5179));
   },
   "component---src-pages-tools-vm-editor-tsx": function componentSrcPagesToolsVmEditorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-vm-editor-tsx */[__webpack_require__.e(9978), __webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(5917), __webpack_require__.e(1762)]).then(__webpack_require__.bind(__webpack_require__, 89978));
+    return Promise.all(/* import() | component---src-pages-tools-vm-editor-tsx */[__webpack_require__.e(9978), __webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(5917), __webpack_require__.e(1762)]).then(__webpack_require__.bind(__webpack_require__, 24539));
   },
   "component---src-pages-traces-mdx": function componentSrcPagesTracesMdx() {
     return __webpack_require__.e(/* import() | component---src-pages-traces-mdx */ 1356).then(__webpack_require__.bind(__webpack_require__, 23478));

@@ -1,468 +1,5 @@
 (self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[1762],{
 
-/***/ 4998:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": function() { return /* binding */ Chip_Chip; }
-});
-
-// UNUSED EXPORTS: styles
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(22122);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(81253);
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
-var clsx_m = __webpack_require__(85505);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/createSvgIcon.js
-var createSvgIcon = __webpack_require__(6018);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/internal/svg-icons/Cancel.js
-
-
-/**
- * @ignore - internal component.
- */
-
-/* harmony default export */ var Cancel = ((0,createSvgIcon/* default */.Z)( /*#__PURE__*/react.createElement("path", {
-  d: "M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
-}), 'Cancel'));
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/withStyles.js
-var withStyles = __webpack_require__(34621);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/colorManipulator.js
-var colorManipulator = __webpack_require__(37595);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/useForkRef.js
-var useForkRef = __webpack_require__(11291);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/capitalize.js
-var capitalize = __webpack_require__(81664);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ButtonBase/ButtonBase.js + 4 modules
-var ButtonBase = __webpack_require__(67055);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Chip/Chip.js
-
-
-
-
-
-
-
-
-
-
-
-var styles = function styles(theme) {
-  var backgroundColor = theme.palette.type === 'light' ? theme.palette.grey[300] : theme.palette.grey[700];
-  var deleteIconColor = (0,colorManipulator/* alpha */.Fq)(theme.palette.text.primary, 0.26);
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.pxToRem(13),
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 32,
-      color: theme.palette.getContrastText(backgroundColor),
-      backgroundColor: backgroundColor,
-      borderRadius: 32 / 2,
-      whiteSpace: 'nowrap',
-      transition: theme.transitions.create(['background-color', 'box-shadow']),
-      // label will inherit this from root, then `clickable` class overrides this for both
-      cursor: 'default',
-      // We disable the focus ring for mouse, touch and keyboard users.
-      outline: 0,
-      textDecoration: 'none',
-      border: 'none',
-      // Remove `button` border
-      padding: 0,
-      // Remove `button` padding
-      verticalAlign: 'middle',
-      boxSizing: 'border-box',
-      '&$disabled': {
-        opacity: 0.5,
-        pointerEvents: 'none'
-      },
-      '& $avatar': {
-        marginLeft: 5,
-        marginRight: -6,
-        width: 24,
-        height: 24,
-        color: theme.palette.type === 'light' ? theme.palette.grey[700] : theme.palette.grey[300],
-        fontSize: theme.typography.pxToRem(12)
-      },
-      '& $avatarColorPrimary': {
-        color: theme.palette.primary.contrastText,
-        backgroundColor: theme.palette.primary.dark
-      },
-      '& $avatarColorSecondary': {
-        color: theme.palette.secondary.contrastText,
-        backgroundColor: theme.palette.secondary.dark
-      },
-      '& $avatarSmall': {
-        marginLeft: 4,
-        marginRight: -4,
-        width: 18,
-        height: 18,
-        fontSize: theme.typography.pxToRem(10)
-      }
-    },
-
-    /* Styles applied to the root element if `size="small"`. */
-    sizeSmall: {
-      height: 24
-    },
-
-    /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText
-    },
-
-    /* Styles applied to the root element if `color="secondary"`. */
-    colorSecondary: {
-      backgroundColor: theme.palette.secondary.main,
-      color: theme.palette.secondary.contrastText
-    },
-
-    /* Pseudo-class applied to the root element if `disabled={true}`. */
-    disabled: {},
-
-    /* Styles applied to the root element if `onClick` is defined or `clickable={true}`. */
-    clickable: {
-      userSelect: 'none',
-      WebkitTapHighlightColor: 'transparent',
-      cursor: 'pointer',
-      '&:hover, &:focus': {
-        backgroundColor: (0,colorManipulator/* emphasize */._4)(backgroundColor, 0.08)
-      },
-      '&:active': {
-        boxShadow: theme.shadows[1]
-      }
-    },
-
-    /* Styles applied to the root element if `onClick` and `color="primary"` is defined or `clickable={true}`. */
-    clickableColorPrimary: {
-      '&:hover, &:focus': {
-        backgroundColor: (0,colorManipulator/* emphasize */._4)(theme.palette.primary.main, 0.08)
-      }
-    },
-
-    /* Styles applied to the root element if `onClick` and `color="secondary"` is defined or `clickable={true}`. */
-    clickableColorSecondary: {
-      '&:hover, &:focus': {
-        backgroundColor: (0,colorManipulator/* emphasize */._4)(theme.palette.secondary.main, 0.08)
-      }
-    },
-
-    /* Styles applied to the root element if `onDelete` is defined. */
-    deletable: {
-      '&:focus': {
-        backgroundColor: (0,colorManipulator/* emphasize */._4)(backgroundColor, 0.08)
-      }
-    },
-
-    /* Styles applied to the root element if `onDelete` and `color="primary"` is defined. */
-    deletableColorPrimary: {
-      '&:focus': {
-        backgroundColor: (0,colorManipulator/* emphasize */._4)(theme.palette.primary.main, 0.2)
-      }
-    },
-
-    /* Styles applied to the root element if `onDelete` and `color="secondary"` is defined. */
-    deletableColorSecondary: {
-      '&:focus': {
-        backgroundColor: (0,colorManipulator/* emphasize */._4)(theme.palette.secondary.main, 0.2)
-      }
-    },
-
-    /* Styles applied to the root element if `variant="outlined"`. */
-    outlined: {
-      backgroundColor: 'transparent',
-      border: "1px solid ".concat(theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.23)' : 'rgba(255, 255, 255, 0.23)'),
-      '$clickable&:hover, $clickable&:focus, $deletable&:focus': {
-        backgroundColor: (0,colorManipulator/* alpha */.Fq)(theme.palette.text.primary, theme.palette.action.hoverOpacity)
-      },
-      '& $avatar': {
-        marginLeft: 4
-      },
-      '& $avatarSmall': {
-        marginLeft: 2
-      },
-      '& $icon': {
-        marginLeft: 4
-      },
-      '& $iconSmall': {
-        marginLeft: 2
-      },
-      '& $deleteIcon': {
-        marginRight: 5
-      },
-      '& $deleteIconSmall': {
-        marginRight: 3
-      }
-    },
-
-    /* Styles applied to the root element if `variant="outlined"` and `color="primary"`. */
-    outlinedPrimary: {
-      color: theme.palette.primary.main,
-      border: "1px solid ".concat(theme.palette.primary.main),
-      '$clickable&:hover, $clickable&:focus, $deletable&:focus': {
-        backgroundColor: (0,colorManipulator/* alpha */.Fq)(theme.palette.primary.main, theme.palette.action.hoverOpacity)
-      }
-    },
-
-    /* Styles applied to the root element if `variant="outlined"` and `color="secondary"`. */
-    outlinedSecondary: {
-      color: theme.palette.secondary.main,
-      border: "1px solid ".concat(theme.palette.secondary.main),
-      '$clickable&:hover, $clickable&:focus, $deletable&:focus': {
-        backgroundColor: (0,colorManipulator/* alpha */.Fq)(theme.palette.secondary.main, theme.palette.action.hoverOpacity)
-      }
-    },
-    // TODO v5: remove
-
-    /* Styles applied to the `avatar` element. */
-    avatar: {},
-
-    /* Styles applied to the `avatar` element if `size="small"`. */
-    avatarSmall: {},
-
-    /* Styles applied to the `avatar` element if `color="primary"`. */
-    avatarColorPrimary: {},
-
-    /* Styles applied to the `avatar` element if `color="secondary"`. */
-    avatarColorSecondary: {},
-
-    /* Styles applied to the `icon` element. */
-    icon: {
-      color: theme.palette.type === 'light' ? theme.palette.grey[700] : theme.palette.grey[300],
-      marginLeft: 5,
-      marginRight: -6
-    },
-
-    /* Styles applied to the `icon` element if `size="small"`. */
-    iconSmall: {
-      width: 18,
-      height: 18,
-      marginLeft: 4,
-      marginRight: -4
-    },
-
-    /* Styles applied to the `icon` element if `color="primary"`. */
-    iconColorPrimary: {
-      color: 'inherit'
-    },
-
-    /* Styles applied to the `icon` element if `color="secondary"`. */
-    iconColorSecondary: {
-      color: 'inherit'
-    },
-
-    /* Styles applied to the label `span` element. */
-    label: {
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      paddingLeft: 12,
-      paddingRight: 12,
-      whiteSpace: 'nowrap'
-    },
-
-    /* Styles applied to the label `span` element if `size="small"`. */
-    labelSmall: {
-      paddingLeft: 8,
-      paddingRight: 8
-    },
-
-    /* Styles applied to the `deleteIcon` element. */
-    deleteIcon: {
-      WebkitTapHighlightColor: 'transparent',
-      color: deleteIconColor,
-      height: 22,
-      width: 22,
-      cursor: 'pointer',
-      margin: '0 5px 0 -6px',
-      '&:hover': {
-        color: (0,colorManipulator/* alpha */.Fq)(deleteIconColor, 0.4)
-      }
-    },
-
-    /* Styles applied to the `deleteIcon` element if `size="small"`. */
-    deleteIconSmall: {
-      height: 16,
-      width: 16,
-      marginRight: 4,
-      marginLeft: -4
-    },
-
-    /* Styles applied to the deleteIcon element if `color="primary"` and `variant="default"`. */
-    deleteIconColorPrimary: {
-      color: (0,colorManipulator/* alpha */.Fq)(theme.palette.primary.contrastText, 0.7),
-      '&:hover, &:active': {
-        color: theme.palette.primary.contrastText
-      }
-    },
-
-    /* Styles applied to the deleteIcon element if `color="secondary"` and `variant="default"`. */
-    deleteIconColorSecondary: {
-      color: (0,colorManipulator/* alpha */.Fq)(theme.palette.secondary.contrastText, 0.7),
-      '&:hover, &:active': {
-        color: theme.palette.secondary.contrastText
-      }
-    },
-
-    /* Styles applied to the deleteIcon element if `color="primary"` and `variant="outlined"`. */
-    deleteIconOutlinedColorPrimary: {
-      color: (0,colorManipulator/* alpha */.Fq)(theme.palette.primary.main, 0.7),
-      '&:hover, &:active': {
-        color: theme.palette.primary.main
-      }
-    },
-
-    /* Styles applied to the deleteIcon element if `color="secondary"` and `variant="outlined"`. */
-    deleteIconOutlinedColorSecondary: {
-      color: (0,colorManipulator/* alpha */.Fq)(theme.palette.secondary.main, 0.7),
-      '&:hover, &:active': {
-        color: theme.palette.secondary.main
-      }
-    }
-  };
-};
-
-function isDeleteKeyboardEvent(keyboardEvent) {
-  return keyboardEvent.key === 'Backspace' || keyboardEvent.key === 'Delete';
-}
-/**
- * Chips represent complex entities in small blocks, such as a contact.
- */
-
-
-var Chip = /*#__PURE__*/react.forwardRef(function Chip(props, ref) {
-  var avatarProp = props.avatar,
-      classes = props.classes,
-      className = props.className,
-      clickableProp = props.clickable,
-      _props$color = props.color,
-      color = _props$color === void 0 ? 'default' : _props$color,
-      ComponentProp = props.component,
-      deleteIconProp = props.deleteIcon,
-      _props$disabled = props.disabled,
-      disabled = _props$disabled === void 0 ? false : _props$disabled,
-      iconProp = props.icon,
-      label = props.label,
-      onClick = props.onClick,
-      onDelete = props.onDelete,
-      onKeyDown = props.onKeyDown,
-      onKeyUp = props.onKeyUp,
-      _props$size = props.size,
-      size = _props$size === void 0 ? 'medium' : _props$size,
-      _props$variant = props.variant,
-      variant = _props$variant === void 0 ? 'default' : _props$variant,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["avatar", "classes", "className", "clickable", "color", "component", "deleteIcon", "disabled", "icon", "label", "onClick", "onDelete", "onKeyDown", "onKeyUp", "size", "variant"]);
-
-  var chipRef = react.useRef(null);
-  var handleRef = (0,useForkRef/* default */.Z)(chipRef, ref);
-
-  var handleDeleteIconClick = function handleDeleteIconClick(event) {
-    // Stop the event from bubbling up to the `Chip`
-    event.stopPropagation();
-
-    if (onDelete) {
-      onDelete(event);
-    }
-  };
-
-  var handleKeyDown = function handleKeyDown(event) {
-    // Ignore events from children of `Chip`.
-    if (event.currentTarget === event.target && isDeleteKeyboardEvent(event)) {
-      // will be handled in keyUp, otherwise some browsers
-      // might init navigation
-      event.preventDefault();
-    }
-
-    if (onKeyDown) {
-      onKeyDown(event);
-    }
-  };
-
-  var handleKeyUp = function handleKeyUp(event) {
-    // Ignore events from children of `Chip`.
-    if (event.currentTarget === event.target) {
-      if (onDelete && isDeleteKeyboardEvent(event)) {
-        onDelete(event);
-      } else if (event.key === 'Escape' && chipRef.current) {
-        chipRef.current.blur();
-      }
-    }
-
-    if (onKeyUp) {
-      onKeyUp(event);
-    }
-  };
-
-  var clickable = clickableProp !== false && onClick ? true : clickableProp;
-  var small = size === 'small';
-  var Component = ComponentProp || (clickable ? ButtonBase/* default */.Z : 'div');
-  var moreProps = Component === ButtonBase/* default */.Z ? {
-    component: 'div'
-  } : {};
-  var deleteIcon = null;
-
-  if (onDelete) {
-    var customClasses = (0,clsx_m/* default */.Z)(color !== 'default' && (variant === "default" ? classes["deleteIconColor".concat((0,capitalize/* default */.Z)(color))] : classes["deleteIconOutlinedColor".concat((0,capitalize/* default */.Z)(color))]), small && classes.deleteIconSmall);
-    deleteIcon = deleteIconProp && /*#__PURE__*/react.isValidElement(deleteIconProp) ? /*#__PURE__*/react.cloneElement(deleteIconProp, {
-      className: (0,clsx_m/* default */.Z)(deleteIconProp.props.className, classes.deleteIcon, customClasses),
-      onClick: handleDeleteIconClick
-    }) : /*#__PURE__*/react.createElement(Cancel, {
-      className: (0,clsx_m/* default */.Z)(classes.deleteIcon, customClasses),
-      onClick: handleDeleteIconClick
-    });
-  }
-
-  var avatar = null;
-
-  if (avatarProp && /*#__PURE__*/react.isValidElement(avatarProp)) {
-    avatar = /*#__PURE__*/react.cloneElement(avatarProp, {
-      className: (0,clsx_m/* default */.Z)(classes.avatar, avatarProp.props.className, small && classes.avatarSmall, color !== 'default' && classes["avatarColor".concat((0,capitalize/* default */.Z)(color))])
-    });
-  }
-
-  var icon = null;
-
-  if (iconProp && /*#__PURE__*/react.isValidElement(iconProp)) {
-    icon = /*#__PURE__*/react.cloneElement(iconProp, {
-      className: (0,clsx_m/* default */.Z)(classes.icon, iconProp.props.className, small && classes.iconSmall, color !== 'default' && classes["iconColor".concat((0,capitalize/* default */.Z)(color))])
-    });
-  }
-
-  if (false) {}
-
-  return /*#__PURE__*/react.createElement(Component, (0,esm_extends/* default */.Z)({
-    role: clickable || onDelete ? 'button' : undefined,
-    className: (0,clsx_m/* default */.Z)(classes.root, className, color !== 'default' && [classes["color".concat((0,capitalize/* default */.Z)(color))], clickable && classes["clickableColor".concat((0,capitalize/* default */.Z)(color))], onDelete && classes["deletableColor".concat((0,capitalize/* default */.Z)(color))]], variant !== "default" && [classes.outlined, {
-      'primary': classes.outlinedPrimary,
-      'secondary': classes.outlinedSecondary
-    }[color]], disabled && classes.disabled, small && classes.sizeSmall, clickable && classes.clickable, onDelete && classes.deletable),
-    "aria-disabled": disabled ? true : undefined,
-    tabIndex: clickable || onDelete ? 0 : undefined,
-    onClick: onClick,
-    onKeyDown: handleKeyDown,
-    onKeyUp: handleKeyUp,
-    ref: handleRef
-  }, moreProps, other), avatar || icon, /*#__PURE__*/react.createElement("span", {
-    className: (0,clsx_m/* default */.Z)(classes.label, small && classes.labelSmall)
-  }, label), deleteIcon);
-});
- false ? 0 : void 0;
-/* harmony default export */ var Chip_Chip = ((0,withStyles/* default */.Z)(styles, {
-  name: 'MuiChip'
-})(Chip));
-
-/***/ }),
-
 /***/ 62481:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -514,34 +51,6 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
 }), 'Cancel');
-
-exports.Z = _default;
-
-/***/ }),
-
-/***/ 95552:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-var __webpack_unused_export__;
-
-
-var _interopRequireDefault = __webpack_require__(95318);
-
-var _interopRequireWildcard = __webpack_require__(20862);
-
-__webpack_unused_export__ = ({
-  value: true
-});
-exports.Z = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(67294));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"
-}), 'OpenInBrowser');
 
 exports.Z = _default;
 
@@ -1217,86 +726,7 @@ var VMExprEvaluator = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 68786:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": function() { return /* binding */ useKeyboardNavigationProps; }
-});
-
-// EXTERNAL MODULE: ./src/components/hooks/useFireKey.ts
-var useFireKey = __webpack_require__(8966);
-;// CONCATENATED MODULE: ./src/components/hooks/useArrowKeys.ts
-
-var LEFT_KEY = 37;
-var UP_KEY = 38;
-var RIGHT_KEY = 39;
-var DOWN_KEY = 40;
-function useArrowKeys(options) {
-  var _handlers;
-
-  var onLeft = options.onLeft,
-      onUp = options.onUp,
-      onRight = options.onRight,
-      onDown = options.onDown,
-      symmetric = options.symmetric;
-  if (!onLeft && !onUp && !onRight && !onDown) return undefined;
-  var handlers = (_handlers = {}, _handlers[LEFT_KEY] = onLeft, _handlers[RIGHT_KEY] = onRight, _handlers[UP_KEY] = onUp || symmetric && onRight, _handlers[DOWN_KEY] = onDown || symmetric && onLeft, _handlers);
-  return function (e) {
-    var charCode = (0,useFireKey/* keyCodeFromEvent */.$)(e);
-    var handler = handlers[charCode];
-
-    if (handler) {
-      e.preventDefault();
-      handler();
-    }
-  };
-}
-;// CONCATENATED MODULE: ./src/components/hooks/useKeyboardNavigation.ts
-function useKeyboardNavigation(parentRef) {
-  var query = '[tabindex="0"]';
-
-  var onMove = function onMove(offset) {
-    return function () {
-      console.log('keyboard move', {
-        offset: offset
-      });
-      var focusable = Array.from((parentRef === null || parentRef === void 0 ? void 0 : parentRef.querySelectorAll(query)) || []);
-
-      if (focusable.length) {
-        var me = focusable.findIndex(function (f) {
-          return f === document.activeElement;
-        });
-        var next = (me + offset + focusable.length) % focusable.length;
-        focusable[next].focus();
-      }
-    };
-  };
-
-  return onMove;
-}
-;// CONCATENATED MODULE: ./src/components/hooks/useKeyboardNavigationProps.ts
-
-
-function useKeyboardNavigationProps(parentRef, vertical) {
-  var onMove = useKeyboardNavigation(parentRef);
-  var onKeyDown = useArrowKeys({
-    onLeft: !vertical && onMove(-1),
-    onRight: !vertical && onMove(1),
-    onDown: vertical && onMove(1),
-    onUp: vertical && onMove(-1)
-  });
-  return {
-    onKeyDown: parentRef && onKeyDown
-  };
-}
-
-/***/ }),
-
-/***/ 89978:
+/***/ 24539:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2026,8 +1456,368 @@ var VMEnvironment = /*#__PURE__*/function (_JDEventSource) {
 }(eventsource/* JDEventSource */.a);
 // EXTERNAL MODULE: ./jacdac-ts/src/vm/expr.ts
 var vm_expr = __webpack_require__(18108);
-// EXTERNAL MODULE: ./jacdac-ts/src/vm/compile.ts + 1 modules
-var compile = __webpack_require__(79973);
+;// CONCATENATED MODULE: ./jacdac-ts/src/vm/ir.ts
+var VMFunctions = [{
+  id: "start",
+  args: [],
+  prompt: "start block",
+  context: "command"
+}, {
+  id: "halt",
+  args: [],
+  prompt: "terminates the current handler",
+  context: "command"
+}, {
+  id: "nop",
+  args: [],
+  prompt: "no operation",
+  context: "command"
+}, {
+  id: "label",
+  args: ["Identifier"],
+  prompt: "label target {1}",
+  context: "command"
+}, {
+  id: "jump",
+  args: ["Identifier"],
+  prompt: "jump to label {1}",
+  context: "command"
+}, {
+  id: "branchOnCondition",
+  args: ["boolean", "Identifier"],
+  prompt: "if {1} then jump to label {2}",
+  context: "command"
+}, {
+  id: "wait",
+  args: ["number"],
+  prompt: "wait for {1} milliseconds",
+  context: "command"
+}, {
+  id: "awaitRegister",
+  args: ["register"],
+  prompt: "wait on register {1} to change value",
+  context: "command"
+}, {
+  id: "awaitChange",
+  args: ["register", "number"],
+  prompt: "wait for register {1} to change by {2}",
+  context: "command"
+}, {
+  id: "awaitEvent",
+  args: ["event", ["boolean", true]],
+  prompt: "wait for event {1} and then check {2} (other events ignored)",
+  context: "command"
+}, {
+  id: "awaitCondition",
+  args: ["boolean"],
+  prompt: "wait for condition {1}",
+  context: "command"
+}, {
+  id: "writeRegister",
+  args: ["register", "number"],
+  prompt: "write value {2:val} to {1}",
+  context: "command"
+}, {
+  id: "writeLocal",
+  args: ["register", "number"],
+  prompt: "write value {2:val} to {1}",
+  context: "command"
+}, {
+  id: "watch",
+  args: ["number"],
+  prompt: "watch expression {1}",
+  context: "command"
+}, {
+  id: "log",
+  args: ["number"],
+  prompt: "not used",
+  context: "command"
+}, {
+  id: "roleBound",
+  args: ["Identifier", "Identifier"],
+  prompt: "role {1} {2}",
+  context: "command"
+}, {
+  id: "roleBoundExpression",
+  args: ["Identifier"],
+  prompt: "is role {1} bound?",
+  context: "expression"
+}, {
+  id: "onRoleConnected",
+  args: ["Identifier"],
+  prompt: "fires when a role is connected",
+  context: "command"
+}, {
+  id: "onRoleDisconnected",
+  args: ["Identifier"],
+  prompt: "fires when a role is disconnected",
+  context: "command"
+}];
+// EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdutils.ts
+var jdutils = __webpack_require__(30055);
+;// CONCATENATED MODULE: ./jacdac-ts/src/vm/compile.ts
+
+
+
+
+function toIdentifier(id) {
+  return {
+    type: "Identifier",
+    name: id
+  };
+}
+function toMemberExpression(root, field) {
+  return {
+    type: "MemberExpression",
+    object: toIdentifier(root),
+    property: typeof field === "string" ? toIdentifier(field) : field,
+    computed: false
+  };
+}
+
+function handlerVisitor(handler, visitITE, visitCommand) {
+  handler.commands.forEach(visitBase);
+
+  function visitBase(base) {
+    switch (base.type) {
+      case "cmd":
+        {
+          if (visitCommand) visitCommand(base);
+          break;
+        }
+
+      case "ite":
+        {
+          var _ite$else, _ite$then;
+
+          var _ite = base;
+          if (visitITE) visitITE(_ite, 0);
+          _ite === null || _ite === void 0 ? void 0 : (_ite$else = _ite.else) === null || _ite$else === void 0 ? void 0 : _ite$else.forEach(visitBase);
+          if (visitITE) visitITE(_ite, 1);
+          _ite === null || _ite === void 0 ? void 0 : (_ite$then = _ite.then) === null || _ite$then === void 0 ? void 0 : _ite$then.forEach(visitBase);
+          if (visitITE) visitITE(_ite, 2);
+        }
+    }
+  }
+}
+
+function compileProgram(_ref) {
+  var roles = _ref.roles,
+      serverRoles = _ref.serverRoles,
+      handlers = _ref.handlers;
+  var newProgram = {
+    roles: roles,
+    serverRoles: serverRoles,
+    handlers: []
+  }; // process start blocks
+
+  handlers.forEach(startBlock); // remove if-then-else
+
+  newProgram.handlers = handlers.map(function (h) {
+    return {
+      commands: removeIfThenElse(h),
+      errors: h === null || h === void 0 ? void 0 : h.errors
+    };
+  });
+  return newProgram;
+}
+
+function checkCall(cmd, id) {
+  if (cmd.type === "cmd") {
+    var callee = cmd.command.callee;
+
+    if (callee.type === "Identifier") {
+      var cid = callee.name;
+      return id === cid;
+    }
+  }
+
+  return undefined;
+}
+
+function startBlock(handler) {
+  if (handler.commands.length && checkCall(handler.commands[0], "start")) {
+    handler.commands.shift();
+    handler.commands.push({
+      type: "cmd",
+      command: {
+        type: "CallExpression",
+        callee: toIdentifier("halt"),
+        arguments: []
+      }
+    });
+  }
+}
+
+function removeIfThenElse(handler) {
+  var newSequence = [];
+  var labels = [];
+  var labelId = 1;
+  handlerVisitor(handler, function (ite, time) {
+    switch (time) {
+      case 0:
+        {
+          // create the labels and branch instruction
+          var then = "then_" + labelId;
+          var end = "end_" + labelId;
+          labels.push({
+            then: then,
+            end: end
+          });
+          labelId++;
+          newSequence.push({
+            type: "cmd",
+            command: {
+              type: "CallExpression",
+              callee: toIdentifier("branchOnCondition"),
+              arguments: [ite.expr, toIdentifier(then)]
+            }
+          });
+          break;
+        }
+
+      case 1:
+        {
+          // insert the jump and then label
+          var _labels = labels[labels.length - 1],
+              _then = _labels.then,
+              _end = _labels.end;
+          newSequence.push({
+            type: "cmd",
+            command: {
+              type: "CallExpression",
+              callee: toIdentifier("jump"),
+              arguments: [toIdentifier(_end)]
+            }
+          });
+          newSequence.push({
+            type: "cmd",
+            command: {
+              type: "CallExpression",
+              callee: toIdentifier("label"),
+              arguments: [toIdentifier(_then)]
+            }
+          });
+          break;
+        }
+
+      case 2:
+        {
+          (0,utils/* assert */.hu)(labels.length > 0);
+          var _end2 = labels[labels.length - 1].end;
+          newSequence.push({
+            type: "cmd",
+            command: {
+              type: "CallExpression",
+              callee: toIdentifier("label"),
+              arguments: [toIdentifier(_end2)]
+            }
+          });
+          labels.pop();
+        }
+    }
+  }, function (cmd) {
+    newSequence.push(cmd);
+  });
+  return newSequence;
+}
+
+var getServiceFromRole = function getServiceFromRole(info) {
+  return function (role) {
+    // lookup in roles first
+    var roleFound = info.roles.find(function (pair) {
+      return pair.role === role;
+    });
+    var client = true;
+
+    if (!roleFound) {
+      roleFound = info.serverRoles.find(function (pair) {
+        return pair.role === role;
+      });
+      client = false;
+    }
+
+    if (roleFound) {
+      // must succeed
+      var spec = (0,jdom_spec/* serviceSpecificationFromClassIdentifier */.d5)(roleFound.serviceClass);
+      (0,utils/* assert */.hu)(!!spec, "service class " + roleFound.serviceClass + " not resolved");
+      return {
+        spec: spec,
+        client: client
+      };
+    } else {
+      var _spec = (0,jdom_spec/* serviceSpecificationFromName */.kB)(role);
+
+      return {
+        spec: _spec,
+        client: true
+      };
+    }
+  };
+};
+function checkProgram(prog) {
+  var allErrors = [];
+  var goodHandlers = [];
+
+  var errorFun = function errorFun(e) {
+    allErrors.push({
+      sourceId: undefined,
+      message: e
+    });
+  };
+
+  var symbolResolver = new jdutils/* SpecSymbolResolver */.ll(undefined, getServiceFromRole(prog), errorFun);
+  var checker = new jdutils/* VMChecker */.Ys(symbolResolver, function (_) {
+    return true;
+  }, errorFun);
+  prog.handlers.forEach(function (h) {
+    if (h !== null && h !== void 0 && h.errors.length) {
+      h === null || h === void 0 ? void 0 : h.errors.forEach(function (e) {
+        return allErrors.push(e);
+      });
+      return;
+    }
+
+    var errorCount = allErrors.length;
+    symbolResolver.roles = [];
+    handlerVisitor(h, undefined, function (c) {
+      return checker.checkCommand(c.command, VMFunctions);
+    });
+
+    if ((h === null || h === void 0 ? void 0 : h.errors.length) === 0 && allErrors.length === errorCount) {
+      h.roles = symbolResolver.roles;
+      goodHandlers.push(h);
+    } else {
+      h === null || h === void 0 ? void 0 : h.errors.forEach(function (e) {
+        return allErrors.push(e);
+      });
+    }
+  });
+  prog.handlers = goodHandlers;
+  return {
+    registers: symbolResolver.registers.map(function (s) {
+      var _s$split = s.split("."),
+          root = _s$split[0],
+          fld = _s$split[1];
+
+      return {
+        role: root,
+        register: fld
+      };
+    }),
+    events: symbolResolver.events.map(function (e) {
+      var _e$split = e.split("."),
+          root = _e$split[0],
+          fld = _e$split[1];
+
+      return {
+        role: root,
+        event: fld
+      };
+    }),
+    errors: allErrors
+  };
+}
 // EXTERNAL MODULE: ./jacdac-ts/src/vm/events.ts
 var vm_events = __webpack_require__(59448);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/vm/utils.ts
@@ -3111,9 +2901,9 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
     _this7._in_run = false;
     _this7.roleManager = roleManager;
     _this7.program = program;
-    var compiled = (0,compile/* compileProgram */.IJ)(program);
+    var compiled = compileProgram(program);
 
-    var _checkProgram = (0,compile/* checkProgram */.i_)(compiled),
+    var _checkProgram = checkProgram(compiled),
         registers = _checkProgram.registers,
         events = _checkProgram.events,
         errors = _checkProgram.errors;
@@ -4588,8 +4378,8 @@ function VMDiagnostics(props) {
 }
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
 var useChange = __webpack_require__(54774);
-// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 17 modules
-var BlockContext = __webpack_require__(76349);
+// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 18 modules
+var BlockContext = __webpack_require__(19054);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
 // EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 3 modules
@@ -5035,25 +4825,31 @@ function VMToolbar(props) {
 }
 // EXTERNAL MODULE: ./src/components/blockly/BlockDiagnostics.tsx
 var BlockDiagnostics = __webpack_require__(9370);
-// EXTERNAL MODULE: ./src/components/vm/VMgenerator.ts
-var VMgenerator = __webpack_require__(15056);
-// EXTERNAL MODULE: ./src/components/blockly/BlockEditor.tsx + 4 modules
-var BlockEditor = __webpack_require__(81753);
-// EXTERNAL MODULE: ./src/components/blockly/fields/KeyboardKeyField.tsx
-var KeyboardKeyField = __webpack_require__(90422);
-// EXTERNAL MODULE: ./src/components/blockly/fields/LEDColorField.tsx
-var LEDColorField = __webpack_require__(68514);
-// EXTERNAL MODULE: ./src/components/blockly/fields/LEDMatrixField.tsx + 1 modules
-var LEDMatrixField = __webpack_require__(11772);
-// EXTERNAL MODULE: ./src/components/blockly/fields/JDomTreeField.tsx
-var JDomTreeField = __webpack_require__(90263);
-// EXTERNAL MODULE: ./src/components/blockly/fields/TwinField.tsx
-var TwinField = __webpack_require__(35361);
-// EXTERNAL MODULE: ./src/components/blockly/dsl/servicesbase.ts
-var servicesbase = __webpack_require__(21910);
+// EXTERNAL MODULE: ./node_modules/blockly/index.js
+var blockly = __webpack_require__(74640);
+var blockly_default = /*#__PURE__*/__webpack_require__.n(blockly);
+// EXTERNAL MODULE: ./src/components/blockly/dsl/dsl.ts
+var dsl_dsl = __webpack_require__(94113);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.flat-map.js
+var es_array_flat_map = __webpack_require__(86535);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.unscopables.flat-map.js
+var es_array_unscopables_flat_map = __webpack_require__(99244);
+// EXTERNAL MODULE: ./.cache/gatsby-browser-entry.js
+var gatsby_browser_entry = __webpack_require__(35313);
 // EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdspec.ts
 var jdspec = __webpack_require__(13996);
-;// CONCATENATED MODULE: ./src/components/blockly/dsl/servicesdsl.ts
+// EXTERNAL MODULE: ./src/components/blockly/fields/NoteField.tsx
+var NoteField = __webpack_require__(50585);
+// EXTERNAL MODULE: ./src/components/blockly/fields/ServoAngleField.tsx + 1 modules
+var ServoAngleField = __webpack_require__(891);
+// EXTERNAL MODULE: ./src/components/blockly/dsl/palette.ts
+var palette = __webpack_require__(74602);
+;// CONCATENATED MODULE: ./src/components/blockly/dsl/servicesbase.ts
+
+
+
+
+
 
 
 
@@ -5068,6 +4864,1242 @@ var jdspec = __webpack_require__(13996);
 var SET_STATUS_LIGHT_BLOCK = "jacdac_set_status_light";
 var ROLE_BOUND_EVENT_BLOCK = "jacdac_role_bound_event";
 var ROLE_BOUND_BLOCK = "jacdac_role_bound";
+
+function isBooleanField(field) {
+  return field.type === "bool";
+}
+
+function isStringField(field) {
+  return field.type === "string";
+}
+
+function toBlocklyType(field) {
+  return field.encoding === "JSON" ? toolbox/* JSON_TYPE */.oj : isBooleanField(field) ? toolbox/* BOOLEAN_TYPE */.lu : isStringField(field) ? toolbox/* STRING_TYPE */.jt : (0,jdspec/* isNumericType */.FV)(field) ? toolbox/* NUMBER_TYPE */.sS : undefined;
+}
+
+function enumInfo(srv, field) {
+  var _srv$enums;
+
+  var e = (_srv$enums = srv.enums) === null || _srv$enums === void 0 ? void 0 : _srv$enums[field.type];
+  return e;
+}
+
+var ignoredServices = [constants/* SRV_CONTROL */.gm9, constants/* SRV_LOGGER */.w9j, constants/* SRV_ROLE_MANAGER */.igi, constants/* SRV_PROTO_TEST */.$Bn, constants/* SRV_BOOTLOADER */.PWm];
+var customMessages = [{
+  service: constants/* SRV_JOYSTICK */.vRO,
+  register: constants/* JoystickReg.Direction */.ztd.Direction,
+  field: "buttons",
+  get: "is %1 %2 pressed"
+}]; // internal helper functions
+
+var customShadows = [{
+  serviceClass: constants/* SRV_SERVO */.$X_,
+  kind: "rw",
+  identifier: constants/* ServoReg.Angle */.pmu.Angle,
+  field: "_",
+  shadow: {
+    kind: "block",
+    type: ServoAngleField/* default.SHADOW.type */.Z.SHADOW.type
+  }
+}, {
+  serviceClass: constants/* SRV_BUZZER */.J1$,
+  kind: "command",
+  identifier: constants/* BuzzerCmd.PlayNote */.Rv2.PlayNote,
+  field: "frequency",
+  shadow: {
+    kind: "block",
+    type: NoteField/* default.SHADOW.type */.Z.SHADOW.type
+  }
+}];
+
+var lookupCustomShadow = function lookupCustomShadow(service, info, field) {
+  var _customShadows$find;
+
+  return (_customShadows$find = customShadows.find(function (cs) {
+    return cs.serviceClass === service.classIdentifier && cs.kind == info.kind && cs.identifier === info.identifier && cs.field == field.name;
+  })) === null || _customShadows$find === void 0 ? void 0 : _customShadows$find.shadow;
+};
+
+var fieldsSupported = function fieldsSupported(pkt) {
+  return pkt.fields.every(toBlocklyType);
+};
+
+var fieldName = function fieldName(reg, field) {
+  return field.name === "_" ? reg.name : field.name;
+};
+
+var fieldToShadow = function fieldToShadow(service, info, field) {
+  return lookupCustomShadow(service, info, field) || (isBooleanField(field) ? {
+    kind: "block",
+    type: "jacdac_on_off"
+  } : isStringField(field) ? {
+    kind: "block",
+    type: "text"
+  } : field.unit === "°" ? {
+    kind: "block",
+    type: "jacdac_angle"
+  } : field.unit === "/" ? {
+    kind: "block",
+    type: "jacdac_ratio"
+  } : /^%/.test(field.unit) ? {
+    kind: "block",
+    type: "jacdac_percent"
+  } : field.type === "u8" ? {
+    kind: "block",
+    type: "jacdac_byte"
+  } : {
+    kind: "block",
+    type: "math_number",
+    value: field.defaultValue || 0,
+    min: field.typicalMin || field.absoluteMin,
+    max: field.typicalMax || field.absoluteMax
+  });
+};
+
+var variableName = function variableName(srv, client) {
+  return "" + (0,jdspec/* humanify */.lW)(srv.camelName).toLowerCase() + (client ? "" : " server") + " 1";
+};
+
+var isEnabledRegister = function isEnabledRegister(info) {
+  return info.fields.length === 1 && info.fields[0].type === "bool" && info.name === "enabled";
+};
+
+var customMessage = function customMessage(srv, reg, field) {
+  return customMessages.find(function (m) {
+    return m.service === srv.classIdentifier && m.register === reg.identifier && m.field === field.name;
+  });
+};
+
+var eventFieldGroups = [{
+  output: toolbox/* NUMBER_TYPE */.sS,
+  filter: jdspec/* isNumericType */.FV
+}, {
+  output: toolbox/* BOOLEAN_TYPE */.lu,
+  filter: isBooleanField
+}, {
+  output: toolbox/* STRING_TYPE */.jt,
+  filter: function filter(f) {
+    return isStringField(f) && f.encoding !== "JSON";
+  }
+}, {
+  output: toolbox/* JSON_TYPE */.oj,
+  filter: function filter(f) {
+    return isStringField(f) && f.encoding === "JSON";
+  }
+}];
+// exports
+function toRoleType(service, client) {
+  if (client === void 0) {
+    client = true;
+  }
+
+  return service.classIdentifier + ":" + (client ? "client" : "server");
+}
+function parseRoleType(v) {
+  var split = v.type.split(":");
+  return {
+    role: v.name,
+    serviceClass: parseInt(split[0]),
+    client: split.length === 2 ? split[1] === "client" : true
+  };
+}
+var fieldsToFieldInputs = function fieldsToFieldInputs(info) {
+  return info.fields.map(function (field) {
+    return {
+      type: "input_value",
+      name: fieldName(info, field),
+      check: toBlocklyType(field)
+    };
+  });
+};
+var fieldsToValues = function fieldsToValues(service, info) {
+  return (0,utils/* toMap */.qL)(info.fields, function (field) {
+    return fieldName(info, field);
+  }, function (field) {
+    return fieldToShadow(service, info, field);
+  });
+};
+var fieldsToMessage = function fieldsToMessage(info) {
+  return info.fields.map(function (field, i) {
+    return (0,jdspec/* humanify */.lW)(field.name) + " %" + (2 + i);
+  }).join(" ");
+};
+var serviceHelp = function serviceHelp(service) {
+  return (0,gatsby_browser_entry.withPrefix)("/services/" + service.shortId);
+};
+var sensorColor = (0,palette/* paletteColorByIndex */.W)(1);
+var otherColor = (0,palette/* paletteColorByIndex */.W)(3); // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+var createServiceColor = function createServiceColor(theme) {
+  var serviceColor = function serviceColor(srv) {
+    return (0,jdom_spec/* isSensor */.rq)(srv) ? sensorColor : otherColor;
+  };
+
+  return serviceColor;
+};
+var roleVariable = function roleVariable(service, client) {
+  if (client === void 0) {
+    client = true;
+  }
+
+  return {
+    type: "field_variable",
+    name: "role",
+    variable: variableName(service, client),
+    variableTypes: [toRoleType(service, client)],
+    defaultType: toRoleType(service, client)
+  };
+};
+var getServiceInfo = function getServiceInfo() {
+  var allServices = (0,jdom_spec/* serviceSpecifications */.Le)();
+  var supportedServices = allServices.filter(function (service) {
+    return !/^_/.test(service.shortId) && service.status !== "deprecated";
+  }).filter(function (service) {
+    return ignoredServices.indexOf(service.classIdentifier) < 0;
+  });
+  var registers = (0,utils/* arrayConcatMany */.ue)(supportedServices.map(function (service) {
+    return service.packets.filter(jdom_spec/* isHighLevelRegister */.vr).map(function (register) {
+      return {
+        service: service,
+        register: register
+      };
+    });
+  }));
+
+  var _splitFilter = (0,utils/* splitFilter */.ap)(registers, function (reg) {
+    return reg.register.fields.length == 1;
+  }),
+      registerSimples = _splitFilter[0],
+      registerComposites = _splitFilter[1];
+
+  var _splitFilter2 = (0,utils/* splitFilter */.ap)(registerSimples, function (_ref) {
+    var register = _ref.register;
+    return !!toBlocklyType(register.fields[0]);
+  }),
+      registerSimpleTypes = _splitFilter2[0],
+      registerSimpleOthers = _splitFilter2[1];
+
+  var registerSimpleEnumTypes = registerSimpleOthers.filter(function (_ref2) {
+    var service = _ref2.service,
+        register = _ref2.register;
+    return !!enumInfo(service, register.fields[0]);
+  }).map(function (_ref3) {
+    var service = _ref3.service,
+        register = _ref3.register;
+    return {
+      service: service,
+      register: register,
+      field: register.fields[0],
+      einfo: enumInfo(service, register.fields[0])
+    };
+  });
+  var registerCompositeEnumTypes = (0,utils/* arrayConcatMany */.ue)(registerComposites.map(function (_ref4) {
+    var service = _ref4.service,
+        register = _ref4.register;
+    return register.fields.map(function (field) {
+      return {
+        service: service,
+        register: register,
+        field: field,
+        einfo: enumInfo(service, field)
+      };
+    }).filter(function (_ref5) {
+      var einfo = _ref5.einfo;
+      return !!einfo;
+    });
+  }));
+  return {
+    allServices: allServices,
+    supportedServices: supportedServices,
+    registers: registers,
+    registerSimpleTypes: registerSimpleTypes,
+    registerComposites: registerComposites,
+    registerSimpleEnumTypes: registerSimpleEnumTypes,
+    registerCompositeEnumTypes: registerCompositeEnumTypes,
+    events: supportedServices.map(function (service) {
+      return {
+        service: service,
+        events: service.packets.filter(jdom_spec/* isHighLevelEvent */.jl)
+      };
+    }).filter(function (kv) {
+      return !!kv.events.length;
+    }),
+    commands: (0,utils/* arrayConcatMany */.ue)(supportedServices.map(function (service) {
+      return service.packets.filter(function (pkt) {
+        return (0,jdom_spec/* isCommand */.ao)(pkt) && !pkt.lowLevel && fieldsSupported(pkt);
+      }).map(function (pkt) {
+        return {
+          service: service,
+          command: pkt
+        };
+      });
+    }))
+  };
+};
+var ServicesBaseDSL = /*#__PURE__*/function () {
+  function ServicesBaseDSL() {}
+
+  var _proto = ServicesBaseDSL.prototype;
+
+  // only state required across methods of class
+  _proto.makeRegisterSimpleGetBlocks = function makeRegisterSimpleGetBlocks(registers, client) {
+    var _this = this;
+
+    if (client === void 0) {
+      client = true;
+    }
+
+    return registers.map(function (_ref6) {
+      var _customMessage;
+
+      var service = _ref6.service,
+          register = _ref6.register;
+      return {
+        kind: "block",
+        type: "jacdac_get_simple_" + service.shortId + "_" + register.name + (client ? "" : "_server"),
+        message0: ((_customMessage = customMessage(service, register, register.fields[0])) === null || _customMessage === void 0 ? void 0 : _customMessage.get) || "%1 " + (0,jdspec/* humanify */.lW)(register.name),
+        args0: [roleVariable(service, client)],
+        inputsInline: true,
+        output: toBlocklyType(register.fields[0]),
+        colour: _this.serviceColor(service),
+        tooltip: register.description,
+        helpUrl: serviceHelp(service),
+        service: service,
+        register: register,
+        field: register.fields[0],
+        template: "register_get"
+      };
+    });
+  };
+
+  _proto.makeRegisterSetBlocks = function makeRegisterSetBlocks(registers, client) {
+    var _this2 = this;
+
+    if (client === void 0) {
+      client = true;
+    }
+
+    return registers.filter(function (_ref7) {
+      var register = _ref7.register;
+      return !client || register.kind === "rw";
+    }).filter(function (_ref8) {
+      var register = _ref8.register;
+      return fieldsSupported(register);
+    }).map(function (_ref9) {
+      var service = _ref9.service,
+          register = _ref9.register;
+      return {
+        kind: "block",
+        type: "jacdac_set_" + service.shortId + "_" + register.name + (client ? "" : "_server"),
+        message0: isEnabledRegister(register) ? "set %1 %2" : "set %1 " + register.name + " to " + (register.fields.length === 1 ? "%2" : fieldsToMessage(register)),
+        args0: [roleVariable(service, client)].concat((0,toConsumableArray/* default */.Z)(fieldsToFieldInputs(register))),
+        values: fieldsToValues(service, register),
+        inputsInline: true,
+        colour: _this2.serviceColor(service),
+        tooltip: register.description,
+        helpUrl: serviceHelp(service),
+        service: service,
+        register: register,
+        previousStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
+        nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
+        template: "register_set"
+      };
+    });
+  };
+
+  _proto.makeRegisterChangeByEventBlocks = function makeRegisterChangeByEventBlocks(registers, client) {
+    var _this3 = this;
+
+    if (client === void 0) {
+      client = true;
+    }
+
+    return registers.filter(function (_ref10) {
+      var service = _ref10.service;
+      return !service.packets.some(jdom_spec/* isHighLevelEvent */.jl);
+    }).filter(function (_ref11) {
+      var register = _ref11.register;
+      return register.fields.length === 1 && (0,jdspec/* isNumericType */.FV)(register.fields[0]) && register.identifier !== constants/* SystemReg.Intensity */.ZJq.Intensity;
+    }).map(function (_ref12) {
+      var service = _ref12.service,
+          register = _ref12.register;
+      return {
+        kind: "block",
+        type: "jacdac_change_by_events_" + service.shortId + "_" + register.name + (client ? "" : "_server"),
+        message0: "on %1 " + (0,jdspec/* humanify */.lW)(register.name) + " change by %2",
+        args0: [roleVariable(service, client)].concat((0,toConsumableArray/* default */.Z)(fieldsToFieldInputs(register))).filter(function (v) {
+          return !!v;
+        }),
+        values: fieldsToValues(service, register),
+        inputsInline: true,
+        nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
+        colour: _this3.serviceColor(service),
+        tooltip: "Event raised when " + register.name + " changes",
+        helpUrl: serviceHelp(service),
+        service: service,
+        register: register,
+        template: "register_change_event"
+      };
+    });
+  };
+
+  _proto.makeRegisterNumericsGetBlocks = function makeRegisterNumericsGetBlocks(registers, client) {
+    var _this4 = this;
+
+    if (client === void 0) {
+      client = true;
+    }
+
+    return registers.filter(function (re) {
+      return re.register.fields.some(jdspec/* isNumericType */.FV);
+    }).map(function (_ref13) {
+      var service = _ref13.service,
+          register = _ref13.register;
+      return {
+        kind: "block",
+        type: "jacdac_get_numerics_" + service.shortId + "_" + register.name + (client ? "" : "_server"),
+        message0: "%1 " + (0,jdspec/* humanify */.lW)(register.name) + (register.fields.length > 1 ? " %2" : ""),
+        args0: [roleVariable(service, client), register.fields.length > 1 ? {
+          type: "field_dropdown",
+          name: "field",
+          options: register.fields.filter(function (f) {
+            return (0,jdspec/* isNumericType */.FV)(f);
+          }).map(function (field) {
+            return [(0,jdspec/* humanify */.lW)(field.name), fieldName(register, field)];
+          })
+        } : undefined].filter(function (v) {
+          return !!v;
+        }),
+        inputsInline: true,
+        output: "Number",
+        colour: _this4.serviceColor(service),
+        tooltip: register.description,
+        helpUrl: serviceHelp(service),
+        service: service,
+        register: register,
+        template: "register_get"
+      };
+    });
+  };
+
+  _proto.makeRegisterEnumGetBlocks = function makeRegisterEnumGetBlocks(registers, client) {
+    var _this5 = this;
+
+    if (client === void 0) {
+      client = true;
+    }
+
+    return registers.map(function (_ref14) {
+      var _customMessage2;
+
+      var service = _ref14.service,
+          register = _ref14.register,
+          field = _ref14.field,
+          einfo = _ref14.einfo;
+      return {
+        kind: "block",
+        type: "jacdac_get_enum_" + service.shortId + "_" + register.name + "_" + field.name + (client ? "" : "_server"),
+        message0: ((_customMessage2 = customMessage(service, register, field)) === null || _customMessage2 === void 0 ? void 0 : _customMessage2.get) || "%1 " + (0,jdspec/* humanify */.lW)(register.name) + (field.name === "_" ? "" : " " + field.name) + " %2",
+        args0: [roleVariable(service, client), {
+          type: "field_dropdown",
+          name: field.name,
+          options: Object.keys(einfo.members).map(function (member) {
+            return [(0,jdspec/* humanify */.lW)(member), member];
+          })
+        }],
+        inputsInline: true,
+        output: "Boolean",
+        colour: _this5.serviceColor(service),
+        tooltip: register.description,
+        helpUrl: serviceHelp(service),
+        service: service,
+        register: register,
+        field: field,
+        template: "register_get"
+      };
+    });
+  } // generate accessor blocks for event/command data with numbers
+  ;
+
+  _proto.makeFieldBlocks = function makeFieldBlocks(sps, client) {
+    var _this6 = this;
+
+    if (client === void 0) {
+      client = true;
+    }
+
+    var worker = function worker(sp, output, filter) {
+      var service = sp.service,
+          packets = sp.packets;
+      return packets.filter(function (pkt) {
+        return pkt.fields.filter(filter).length > 0;
+      }).map(function (pkt) {
+        return {
+          service: service,
+          pkt: pkt
+        };
+      }).map(function (_ref15) {
+        var service = _ref15.service,
+            pkt = _ref15.pkt;
+        return {
+          kind: "block",
+          type: "jacdac_event_field_" + output.toLowerCase() + "_" + service.shortId + "_" + pkt.name + (client ? "" : "_server"),
+          message0: pkt.name + " %1",
+          args0: [{
+            type: "field_dropdown",
+            name: "field",
+            options: pkt.fields.map(function (field) {
+              return [(0,jdspec/* humanify */.lW)(field.name), field.name];
+            })
+          }],
+          colour: _this6.serviceColor(service),
+          inputsInline: true,
+          tooltip: "Data fields of the " + pkt.name + " " + (client ? "event" : "command"),
+          helpUrl: serviceHelp(service),
+          service: service,
+          event: pkt,
+          output: output,
+          template: "event_field"
+        };
+      });
+    };
+
+    return (0,utils/* arrayConcatMany */.ue)((0,utils/* arrayConcatMany */.ue)(eventFieldGroups.map(function (_ref16) {
+      var output = _ref16.output,
+          filter = _ref16.filter;
+      return sps.map(function (sp) {
+        return worker(sp, output, filter);
+      });
+    })));
+  };
+
+  _proto.createCategoryHelper = function createCategoryHelper(options) {
+    var _source$blocks,
+        _this7 = this;
+
+    var theme = options.theme,
+        source = options.source,
+        liveServices = options.liveServices;
+    this.serviceColor = createServiceColor(theme);
+    var blockServices = (source === null || source === void 0 ? void 0 : source.variables.map(parseRoleType).filter(function (vt) {
+      return !!(0,jdom_spec/* serviceSpecificationFromClassIdentifier */.d5)(vt.serviceClass);
+    })) || [];
+    var usedEvents = new Set(source === null || source === void 0 ? void 0 : (_source$blocks = source.blocks) === null || _source$blocks === void 0 ? void 0 : _source$blocks.map(function (block) {
+      return {
+        block: block,
+        definition: (0,toolbox/* resolveBlockDefinition */.Pq)(block.type)
+      };
+    }).filter(function (_ref17) {
+      var definition = _ref17.definition;
+      return (definition === null || definition === void 0 ? void 0 : definition.template) === "event";
+    }).map(function (_ref18) {
+      var block = _ref18.block,
+          definition = _ref18.definition;
+      var _ref19 = definition,
+          events = _ref19.events;
+      if (events.length === 1) return events[0];else {
+        var eventName = block.inputs[0].fields["event"].value;
+        return events.find(function (ev) {
+          return ev.name === eventName;
+        });
+      }
+    }).filter(function (ev) {
+      return !!ev;
+    }));
+
+    var jdBlocks = this._serviceBlocks.filter(function (block) {
+      return !!block.service;
+    });
+
+    var services = (0,utils/* uniqueMap */.EM)(jdBlocks, function (block) {
+      return block.service.shortId;
+    }, function (block) {
+      return block.service;
+    });
+    var toolboxServices = (0,utils/* uniqueMap */.EM)(flags/* default.diagnostics */.Z.diagnostics ? services : [].concat((0,toConsumableArray/* default */.Z)(blockServices.map(function (pair) {
+      return services.find(function (service) {
+        return service.classIdentifier === pair.serviceClass;
+      });
+    }).filter(function (srv) {
+      return !!srv;
+    })), (0,toConsumableArray/* default */.Z)(liveServices.map(function (s) {
+      return s.specification;
+    }))), function (srv) {
+      return srv.shortId;
+    }, function (srv) {
+      return srv;
+    }).filter(function (srv) {
+      return srv && ignoredServices.indexOf(srv.classIdentifier) < 0;
+    }).sort(function (l, r) {
+      return l.name.localeCompare(r.name);
+    });
+
+    var getFieldBlocks = function getFieldBlocks(service, fieldBlocks) {
+      return fieldBlocks.filter(function (ev) {
+        return ev.service === service && usedEvents.has(ev.event);
+      }).map(function (block) {
+        return {
+          kind: "block",
+          type: block.type,
+          values: block.values
+        };
+      });
+    };
+
+    var makeCategory = function makeCategory(service, isClient, serviceBlocks, eventFieldBLocks) {
+      return {
+        kind: "category",
+        name: service.name + (isClient ? "" : " Server"),
+        colour: _this7.serviceColor(service),
+        contents: [{
+          kind: "button",
+          text: "Add " + service.name + " " + (isClient ? "role" : "server"),
+          callbackKey: "jacdac_add_role_callback_" + toRoleType(service, isClient),
+          callback: function callback(workspace) {
+            return blockly.Variables.createVariableButtonHandler(workspace, null, toRoleType(service, isClient));
+          }
+        }].concat((0,toConsumableArray/* default */.Z)(serviceBlocks.map(function (block) {
+          return {
+            kind: "block",
+            type: block.type,
+            values: block.values
+          };
+        })), (0,toConsumableArray/* default */.Z)(getFieldBlocks(service, eventFieldBLocks)))
+      };
+    };
+
+    return function (serviceBlocks, eventFieldBlocks, client) {
+      if (client === void 0) {
+        client = true;
+      }
+
+      return toolboxServices.map(function (serviceClient) {
+        return {
+          serviceClient: serviceClient,
+          serviceBlocks: serviceBlocks.filter(function (block) {
+            return block.service === serviceClient;
+          })
+        };
+      }).map(function (sc) {
+        return makeCategory(sc.serviceClient, client, sc.serviceBlocks, eventFieldBlocks);
+      });
+    };
+  };
+
+  _proto.compileEventToVM = function compileEventToVM(options) {
+    var makeAwaitEvent = function makeAwaitEvent(cmd, role, eventName) {
+      return {
+        expression: {
+          type: "CallExpression",
+          arguments: cmd == "awaitEvent" ? [toMemberExpression(role.toString(), eventName.toString())] : [toIdentifier(role.toString()), toIdentifier(eventName.toString())],
+          callee: toIdentifier(cmd)
+        },
+        event: {
+          role: role.toString(),
+          event: eventName.toString()
+        }
+      };
+    };
+
+    var block = options.block,
+        definition = options.definition,
+        blockToExpression = options.blockToExpression;
+    var inputs = block.inputs;
+    var template = definition.template;
+
+    switch (template) {
+      case "event":
+        {
+          var role = inputs[0].fields["role"].value;
+          var eventName = inputs[0].fields["event"].value;
+          return makeAwaitEvent("awaitEvent", role.toString(), eventName.toString());
+        }
+
+      case "register_change_event":
+        {
+          var _role = inputs[0].fields["role"].value;
+          var _ref20 = definition,
+              register = _ref20.register;
+
+          var _blockToExpression = blockToExpression(undefined, inputs[0].child),
+              expr = _blockToExpression.expr,
+              errors = _blockToExpression.errors;
+
+          return {
+            expression: {
+              type: "CallExpression",
+              arguments: [toMemberExpression(_role.toString(), register.name), expr],
+              callee: toIdentifier("awaitChange")
+            },
+            errors: errors
+          };
+        }
+
+      default:
+        {
+          var type = block.type;
+
+          switch (type) {
+            case ROLE_BOUND_EVENT_BLOCK:
+              {
+                var _role2 = inputs[0].fields["role"].value;
+                var _eventName = inputs[0].fields["event"].value;
+                return makeAwaitEvent("roleBound", _role2.toString(), _eventName.toString());
+              }
+          }
+        }
+    }
+
+    return undefined;
+  };
+
+  _proto.compileExpressionToVM = function compileExpressionToVM(options) {
+    var event = options.event,
+        definition = options.definition,
+        block = options.block;
+    var inputs = block.inputs,
+        id = block.id;
+    var template = definition.template;
+
+    switch (template) {
+      case "register_get":
+        {
+          var _ref21 = definition,
+              register = _ref21.register;
+          var role = inputs[0].fields["role"].value;
+          var _field = inputs[0].fields["field"];
+          return {
+            expr: toMemberExpression(role, _field ? toMemberExpression(register.name, _field.value) : register.name),
+            errors: []
+          };
+        }
+
+      case "event_field":
+        {
+          var _ref22 = definition,
+              eventInfo = _ref22.event;
+          var errors = [];
+
+          if (event.event !== eventInfo.name) {
+            errors.push({
+              sourceId: id,
+              message: "Event " + eventInfo.name + " is not available in this handler."
+            });
+          }
+
+          var _field2 = inputs[0].fields["field"];
+          return {
+            expr: toMemberExpression(event.role, toMemberExpression(event.event, _field2.value)),
+            errors: errors
+          };
+        }
+
+      default:
+        {
+          var type = block.type;
+          var _errors = [];
+
+          switch (type) {
+            case ROLE_BOUND_BLOCK:
+              {
+                var _role3 = inputs[0].fields["role"].value;
+                return {
+                  expr: {
+                    type: "CallExpression",
+                    arguments: [toIdentifier(_role3.toString())],
+                    callee: toMemberExpression("$fun", "roleBoundExpression")
+                  },
+                  errors: _errors
+                };
+              }
+          }
+        }
+    }
+
+    return undefined;
+  };
+
+  _proto.compileCommandToVM = function compileCommandToVM(options) {
+    var event = options.event,
+        block = options.block,
+        definition = options.definition,
+        blockToExpression = options.blockToExpression;
+    var template = definition.template;
+    var inputs = block.inputs;
+
+    switch (template) {
+      case "register_set":
+        {
+          // TODO: need to handle the case of writing a register with fields
+          var _ref23 = definition,
+              register = _ref23.register;
+          var exprsErrors = inputs.map(function (a) {
+            return blockToExpression(event, a.child);
+          });
+          var role = inputs[0].fields.role.value;
+          return {
+            cmd: makeVMBase(block, {
+              type: "CallExpression",
+              arguments: [toMemberExpression(role, register.name)].concat((0,toConsumableArray/* default */.Z)(exprsErrors.map(function (p) {
+                return p.expr;
+              }))),
+              callee: toIdentifier("writeRegister")
+            }),
+            errors: exprsErrors.flatMap(function (p) {
+              return p.errors;
+            })
+          };
+        }
+
+      case "raiseNo":
+      case "raiseArgs":
+      case "command":
+        {
+          var _ref24 = definition,
+              serviceCommand = _ref24.command;
+          var _role4 = inputs[0].fields.role.value;
+          var eventName = template === "raiseNo" ? inputs[0].fields["event"].value.toString() : "";
+
+          var _exprsErrors = template === "raiseNo" ? [] : inputs.map(function (a) {
+            return blockToExpression(event, a.child);
+          });
+
+          return {
+            cmd: makeVMBase(block, {
+              type: "CallExpression",
+              arguments: _exprsErrors.map(function (p) {
+                return p.expr;
+              }),
+              callee: toMemberExpression(_role4, eventName ? eventName : serviceCommand.name)
+            }),
+            errors: _exprsErrors.flatMap(function (p) {
+              return p.errors;
+            })
+          };
+        }
+
+      case "server":
+        {
+          return {
+            cmd: makeVMBase(block, {
+              type: "CallExpression",
+              arguments: [],
+              callee: toIdentifier("nop")
+            }),
+            errors: []
+          };
+        }
+
+      default:
+        {
+          var type = block.type;
+
+          switch (type) {
+            case SET_STATUS_LIGHT_BLOCK:
+              {
+                console.log("SET_STATUS");
+              }
+          }
+        }
+    }
+
+    return undefined;
+  };
+
+  return ServicesBaseDSL;
+}();
+;// CONCATENATED MODULE: ./src/components/vm/VMgenerator.ts
+
+
+
+
+
+
+
+
+
+var makeVMBase = function makeVMBase(block, command) {
+  return {
+    sourceId: block.id,
+    type: "cmd",
+    command: command
+  };
+};
+var processErrors = function processErrors(block, errors) {
+  return errors.map(function (e) {
+    return {
+      sourceId: e.sourceId ? e.sourceId : block.id,
+      message: e.message
+    };
+  });
+};
+function workspaceJSONToVMProgram(workspace, dsls) {
+  console.debug("compile vm", {
+    workspace: workspace,
+    dsls: dsls
+  });
+  if (!workspace) return undefined;
+
+  var _splitFilter = (0,utils/* splitFilter */.ap)(workspace.variables.filter(function (v) {
+    return toolbox/* BUILTIN_TYPES.indexOf */.Nd.indexOf(v.type) < 0;
+  }).map(parseRoleType), function (r) {
+    return r.client;
+  }),
+      roles = _splitFilter[0],
+      serverRoles = _splitFilter[1];
+
+  var EmptyExpression = /*#__PURE__*/function (_Error) {
+    (0,inheritsLoose/* default */.Z)(EmptyExpression, _Error);
+
+    function EmptyExpression() {
+      return _Error.apply(this, arguments) || this;
+    }
+
+    return EmptyExpression;
+  }( /*#__PURE__*/(0,wrapNativeSuper/* default */.Z)(Error));
+
+  var blockToExpression = function blockToExpression(ev, blockIn) {
+    var errors = [];
+
+    var blockToExpressionInner = function blockToExpressionInner(ev, block) {
+      if (!block) {
+        throw new EmptyExpression();
+      }
+
+      var type = block.type,
+          value = block.value,
+          inputs = block.inputs;
+      console.log("block2e", {
+        ev: ev,
+        block: block,
+        type: type,
+        value: value,
+        inputs: inputs
+      });
+      if (value !== undefined) // literal
+        return {
+          type: "Literal",
+          value: value,
+          raw: value + ""
+        };
+      var dsl = (0,dsl_dsl/* resolveDsl */.u)(dsls, type);
+
+      if (!dsl) {
+        console.warn("unknown block " + type, {
+          type: type,
+          ev: ev,
+          block: block,
+          d: (blockly_default()).Blocks[type]
+        });
+        errors.push({
+          sourceId: block.id,
+          message: "unknown block " + type
+        });
+      } else {
+        var _dsl$compileExpressio;
+
+        var definition = (0,toolbox/* resolveBlockDefinition */.Pq)(type);
+        var res = (_dsl$compileExpressio = dsl.compileExpressionToVM) === null || _dsl$compileExpressio === void 0 ? void 0 : _dsl$compileExpressio.call(dsl, {
+          event: ev,
+          definition: definition,
+          block: block,
+          blockToExpressionInner: blockToExpressionInner
+        });
+
+        if (res) {
+          if (res.errors) res.errors.forEach(function (e) {
+            return errors.push(e);
+          });
+          return res.expr;
+        }
+
+        var template = definition.template;
+
+        if (template === "shadow") {
+          var field = inputs[0].fields["value"];
+          var v = field.value;
+          return {
+            type: "Literal",
+            value: v,
+            raw: v + ""
+          };
+        }
+
+        errors.push({
+          sourceId: block.id,
+          message: "unknown block " + type
+        });
+        console.warn("unsupported expression block " + type, {
+          ev: ev,
+          block: block,
+          definition: definition
+        });
+      }
+
+      throw new EmptyExpression();
+    };
+
+    return {
+      expr: blockToExpressionInner(ev, blockIn),
+      errors: errors
+    };
+  };
+
+  var blockToCommand = function blockToCommand(event, block) {
+    var type = block.type,
+        inputs = block.inputs;
+    console.debug("block2c", {
+      event: event,
+      type: type,
+      block: block,
+      inputs: inputs
+    });
+
+    switch (type) {
+      case "dynamic_if":
+        {
+          var _inputs$, _inputs$2;
+
+          var thenHandler = {
+            commands: [],
+            errors: []
+          };
+          var elseHandler = {
+            commands: [],
+            errors: []
+          };
+          var t = (_inputs$ = inputs[1]) === null || _inputs$ === void 0 ? void 0 : _inputs$.child;
+          var e = (_inputs$2 = inputs[2]) === null || _inputs$2 === void 0 ? void 0 : _inputs$2.child;
+
+          if (t) {
+            addCommands(event, [t].concat((0,toConsumableArray/* default */.Z)(t.children ? t.children : [])), thenHandler);
+          }
+
+          if (e) {
+            addCommands(event, [e].concat((0,toConsumableArray/* default */.Z)(e.children ? e.children : [])), elseHandler);
+          }
+
+          var exprErrors = undefined;
+
+          try {
+            var _inputs$3;
+
+            exprErrors = blockToExpression(event, (_inputs$3 = inputs[0]) === null || _inputs$3 === void 0 ? void 0 : _inputs$3.child);
+          } catch (e) {
+            if (e instanceof EmptyExpression) {
+              exprErrors = {
+                expr: {
+                  type: "Literal",
+                  value: false,
+                  raw: "false "
+                },
+                errors: []
+              };
+            } else {
+              throw e;
+            }
+          }
+
+          var _exprErrors = exprErrors,
+              expr = _exprErrors.expr,
+              errors = _exprErrors.errors;
+          var ifThenElse = {
+            sourceId: block.id,
+            type: "ite",
+            expr: expr,
+            then: thenHandler.commands,
+            else: elseHandler.commands
+          };
+          console.log("dynamic if");
+          return {
+            cmd: ifThenElse,
+            errors: processErrors(block, errors.concat(thenHandler.errors).concat(elseHandler.errors))
+          };
+        }
+      // more builts
+
+      default:
+        {
+          var dsl = (0,dsl_dsl/* resolveDsl */.u)(dsls, type);
+
+          if (dsl) {
+            var _dsl$compileCommandTo;
+
+            var definition = (0,toolbox/* resolveBlockDefinition */.Pq)(type);
+            var template = definition === null || definition === void 0 ? void 0 : definition.template;
+            if (template === "meta") return undefined;
+            var dslRes = (_dsl$compileCommandTo = dsl.compileCommandToVM) === null || _dsl$compileCommandTo === void 0 ? void 0 : _dsl$compileCommandTo.call(dsl, {
+              event: event,
+              block: block,
+              definition: definition,
+              blockToExpression: blockToExpression
+            });
+
+            if (dslRes) {
+              dslRes.errors = processErrors(block, dslRes.errors);
+              return dslRes;
+            }
+          }
+
+          console.warn("unsupported command block " + type, {
+            block: block
+          });
+          return {
+            cmd: undefined,
+            errors: [{
+              sourceId: block.id,
+              message: "unsupported command block " + type
+            }]
+          };
+        }
+    }
+  };
+
+  var nop = {
+    type: "CallExpression",
+    arguments: [],
+    callee: toIdentifier("nop")
+  };
+
+  var addCommands = function addCommands(event, blocks, handler) {
+    blocks === null || blocks === void 0 ? void 0 : blocks.filter(function (child) {
+      return !!child;
+    }).forEach(function (child) {
+      try {
+        var _ref = blockToCommand(event, child) || {},
+            cmd = _ref.cmd,
+            errors = _ref.errors;
+
+        if (cmd) handler.commands.push(cmd);
+        errors === null || errors === void 0 ? void 0 : errors.forEach(function (e) {
+          return handler.errors.push(e);
+        });
+      } catch (e) {
+        if (e instanceof EmptyExpression) {
+          handler.commands.push({
+            sourceId: child.id,
+            type: "cmd",
+            command: nop
+          });
+        } else {
+          console.debug(e);
+        }
+      }
+    });
+  };
+
+  var handlers = workspace.blocks.map(function (top) {
+    var _topErrors2;
+
+    var type = top.type;
+    var command;
+    var topEvent;
+    var topErrors;
+    var topMeta = false;
+
+    try {
+      var _dsl$compileEventToVM, _topErrors;
+
+      var dsl = (0,dsl_dsl/* resolveDsl */.u)(dsls, type);
+      var definition = (0,toolbox/* resolveBlockDefinition */.Pq)(type);
+
+      var _ref2 = (dsl === null || dsl === void 0 ? void 0 : (_dsl$compileEventToVM = dsl.compileEventToVM) === null || _dsl$compileEventToVM === void 0 ? void 0 : _dsl$compileEventToVM.call(dsl, {
+        block: top,
+        definition: definition,
+        blockToExpression: blockToExpression
+      })) || {},
+          expression = _ref2.expression,
+          errors = _ref2.errors,
+          event = _ref2.event,
+          meta = _ref2.meta;
+
+      command = expression;
+      topErrors = errors;
+      topEvent = event;
+      topMeta = meta; // if dsl didn't compile anything try again
+
+      var _ref3 = definition || {},
+          template = _ref3.template;
+
+      if (!command && !((_topErrors = topErrors) !== null && _topErrors !== void 0 && _topErrors.length)) {
+        switch (template) {
+          case "meta":
+            {
+              break;
+            }
+
+          default:
+            {
+              topErrors = [{
+                sourceId: top.id,
+                message: "unsupported handler block " + type
+              }];
+              console.debug("unsupported handler template " + template + " for " + type, {
+                top: top
+              });
+              break;
+            }
+        }
+      }
+    } catch (e) {
+      console.debug(e);
+
+      if (e instanceof EmptyExpression) {
+        return undefined;
+      } else {
+        throw e;
+      }
+    } // nothing to compile here
+
+
+    if (!command && !((_topErrors2 = topErrors) !== null && _topErrors2 !== void 0 && _topErrors2.length)) return undefined;
+    var handler = {
+      commands: [{
+        sourceId: top.id,
+        type: "cmd",
+        command: command
+      }],
+      errors: topErrors || [],
+      meta: !!topMeta
+    };
+    addCommands(topEvent, top.children, handler);
+    return handler;
+  }).filter(function (handler) {
+    return !!handler;
+  });
+  return {
+    roles: roles,
+    serverRoles: serverRoles,
+    handlers: handlers
+  };
+}
+// EXTERNAL MODULE: ./src/components/blockly/BlockEditor.tsx + 4 modules
+var BlockEditor = __webpack_require__(81753);
+// EXTERNAL MODULE: ./src/components/blockly/fields/KeyboardKeyField.tsx
+var KeyboardKeyField = __webpack_require__(90422);
+// EXTERNAL MODULE: ./src/components/blockly/fields/LEDColorField.tsx
+var LEDColorField = __webpack_require__(68514);
+// EXTERNAL MODULE: ./src/components/blockly/fields/LEDMatrixField.tsx + 1 modules
+var LEDMatrixField = __webpack_require__(11772);
+// EXTERNAL MODULE: ./src/components/blockly/fields/JDomTreeField.tsx
+var JDomTreeField = __webpack_require__(90263);
+// EXTERNAL MODULE: ./src/components/blockly/fields/TwinField.tsx
+var TwinField = __webpack_require__(35361);
+;// CONCATENATED MODULE: ./src/components/blockly/dsl/servicesdsl.ts
+
+
+
+
+
+
+
+
+
+
+
+var servicesdsl_SET_STATUS_LIGHT_BLOCK = "jacdac_set_status_light";
+var servicesdsl_ROLE_BOUND_EVENT_BLOCK = "jacdac_role_bound_event";
+var servicesdsl_ROLE_BOUND_BLOCK = "jacdac_role_bound";
 var INSPECT_BLOCK = "jacdac_tools_inspect";
 var commandColor = "#8c6a1d";
 var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDSL) {
@@ -5091,9 +6123,9 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
     var _this2 = this;
 
     var theme = options.theme;
-    this.serviceColor = (0,servicesbase/* createServiceColor */.JO)(theme); // pure service information here
+    this.serviceColor = createServiceColor(theme); // pure service information here
 
-    var _getServiceInfo = (0,servicesbase/* getServiceInfo */.wi)(),
+    var _getServiceInfo = getServiceInfo(),
         allServices = _getServiceInfo.allServices,
         supportedServices = _getServiceInfo.supportedServices,
         registers = _getServiceInfo.registers,
@@ -5115,7 +6147,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         kind: "block",
         type: "key",
         message0: "%1 %2 key %3",
-        args0: [(0,servicesbase/* roleVariable */.xH)(service), {
+        args0: [roleVariable(service), {
           type: "field_dropdown",
           name: "action",
           options: [["press", "press"], ["down", "down"], ["up", "up"]]
@@ -5128,7 +6160,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         previousStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         tooltip: "Send a keyboard key combo",
-        helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+        helpUrl: serviceHelp(service),
         service: service,
         expression: "role.key(combo.selectors, combo.modifiers, action)",
         template: "custom"
@@ -5138,7 +6170,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         kind: "block",
         type: "fade",
         message0: "fade %1 to %2 at speed %3",
-        args0: [(0,servicesbase/* roleVariable */.xH)(service), {
+        args0: [roleVariable(service), {
           type: "input_value",
           name: "color",
           check: "Number"
@@ -5162,7 +6194,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         previousStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         tooltip: "Fade LED color",
-        helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+        helpUrl: serviceHelp(service),
         service: service,
         expression: "role.animate((color >> 16) & 0xff, (color >> 8) & 0xff, (color >> 0) & 0xff, speed * 0xff)",
         template: "custom"
@@ -5172,7 +6204,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         kind: "block",
         type: "set_digits",
         message0: "set %1 digits to %2",
-        args0: [(0,servicesbase/* roleVariable */.xH)(service), {
+        args0: [roleVariable(service), {
           type: "input_value",
           name: "digits",
           check: "Number"
@@ -5188,7 +6220,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         previousStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         tooltip: "Display a number of the screen",
-        helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+        helpUrl: serviceHelp(service),
         service: service,
         template: "custom"
       };
@@ -5197,7 +6229,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         kind: "block",
         type: "show_leds",
         message0: "show %1 leds %2",
-        args0: [(0,servicesbase/* roleVariable */.xH)(service), {
+        args0: [roleVariable(service), {
           type: LEDMatrixField/* default.KEY */.Z.KEY,
           name: "leds"
         }],
@@ -5206,7 +6238,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         previousStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         tooltip: "Display LEDs on the LED matrix",
-        helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+        helpUrl: serviceHelp(service),
         service: service,
         // encode digits
         template: "custom"
@@ -5222,7 +6254,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         kind: "block",
         type: "jacdac_events_" + service.shortId,
         message0: "on %1 %2",
-        args0: [(0,servicesbase/* roleVariable */.xH)(service), {
+        args0: [roleVariable(service), {
           type: "field_dropdown",
           name: "event",
           options: events.map(function (event) {
@@ -5233,7 +6265,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         inputsInline: true,
         nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         tooltip: "Events for the " + service.name + " service",
-        helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+        helpUrl: serviceHelp(service),
         service: service,
         events: events,
         template: "event"
@@ -5250,13 +6282,13 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
       return {
         kind: "block",
         type: "jacdac_command_" + service.shortId + "_" + command.name,
-        message0: !command.fields.length ? (0,jdspec/* humanify */.lW)(command.name) + " %1" : (0,jdspec/* humanify */.lW)(command.name) + " %1 with " + (0,servicesbase/* fieldsToMessage */.Bo)(command),
-        args0: [(0,servicesbase/* roleVariable */.xH)(service)].concat((0,toConsumableArray/* default */.Z)((0,servicesbase/* fieldsToFieldInputs */.GB)(command))),
-        values: (0,servicesbase/* fieldsToValues */.ki)(service, command),
+        message0: !command.fields.length ? (0,jdspec/* humanify */.lW)(command.name) + " %1" : (0,jdspec/* humanify */.lW)(command.name) + " %1 with " + fieldsToMessage(command),
+        args0: [roleVariable(service)].concat((0,toConsumableArray/* default */.Z)(fieldsToFieldInputs(command))),
+        values: fieldsToValues(service, command),
         inputsInline: true,
         colour: _this2.serviceColor(service),
         tooltip: command.description,
-        helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+        helpUrl: serviceHelp(service),
         service: service,
         command: command,
         previousStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
@@ -5274,14 +6306,14 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
 
     this._roleBlocks = [{
       kind: "block",
-      type: ROLE_BOUND_EVENT_BLOCK,
+      type: servicesdsl_ROLE_BOUND_EVENT_BLOCK,
       message0: "on %1 %2",
       args0: [{
         type: "field_variable",
         name: "role",
         variable: "any",
         variableTypes: ["client"].concat((0,toConsumableArray/* default */.Z)(supportedServices.map(function (srv) {
-          return (0,servicesbase/* toRoleType */.tT)(srv);
+          return toRoleType(srv);
         }))),
         defaultType: "client"
       }, {
@@ -5297,14 +6329,14 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
       template: "role_binding_event"
     }, {
       kind: "block",
-      type: ROLE_BOUND_BLOCK,
+      type: servicesdsl_ROLE_BOUND_BLOCK,
       message0: "%1 bound",
       args0: [{
         type: "field_variable",
         name: "role",
         variable: "any",
         variableTypes: ["client"].concat((0,toConsumableArray/* default */.Z)(supportedServices.map(function (srv) {
-          return (0,servicesbase/* toRoleType */.tT)(srv);
+          return toRoleType(srv);
         }))),
         defaultType: "client"
       }],
@@ -5316,14 +6348,14 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
       template: "role_bound"
     }, {
       kind: "block",
-      type: SET_STATUS_LIGHT_BLOCK,
+      type: servicesdsl_SET_STATUS_LIGHT_BLOCK,
       message0: "set %1 status light to %2",
       args0: [{
         type: "field_variable",
         name: "role",
         variable: "all",
         variableTypes: ["client"].concat((0,toConsumableArray/* default */.Z)(supportedServices.map(function (srv) {
-          return (0,servicesbase/* toRoleType */.tT)(srv);
+          return toRoleType(srv);
         }))),
         defaultType: "client"
       }, {
@@ -5353,9 +6385,9 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         name: "role",
         variable: "none",
         variableTypes: ["client"].concat((0,toConsumableArray/* default */.Z)(supportedServices.map(function (srv) {
-          return (0,servicesbase/* toRoleType */.tT)(srv);
+          return toRoleType(srv);
         })), (0,toConsumableArray/* default */.Z)(supportedServices.map(function (srv) {
-          return (0,servicesbase/* toRoleType */.tT)(srv, false);
+          return toRoleType(srv, false);
         }))),
         defaultType: "client"
       }, {
@@ -5380,7 +6412,7 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
         name: "role",
         variable: "none",
         variableTypes: ["client"].concat((0,toConsumableArray/* default */.Z)(supportedServices.map(function (srv) {
-          return (0,servicesbase/* toRoleType */.tT)(srv);
+          return toRoleType(srv);
         }))),
         defaultType: "client"
       }, {
@@ -5407,13 +6439,13 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
       colour: commandColor,
       contents: [{
         kind: "block",
-        type: ROLE_BOUND_EVENT_BLOCK
+        type: servicesdsl_ROLE_BOUND_EVENT_BLOCK
       }, {
         kind: "block",
-        type: ROLE_BOUND_BLOCK
+        type: servicesdsl_ROLE_BOUND_BLOCK
       }, {
         kind: "block",
-        type: SET_STATUS_LIGHT_BLOCK,
+        type: servicesdsl_SET_STATUS_LIGHT_BLOCK,
         values: {
           color: {
             kind: "block",
@@ -5438,13 +6470,9 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
   };
 
   return ServicesBlockDomainSpecificLanguage;
-}(servicesbase/* ServicesBaseDSL */.Hy);
+}(ServicesBaseDSL);
 var servicesDSL = new ServicesBlockDomainSpecificLanguage();
 /* harmony default export */ var servicesdsl = (servicesDSL);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.flat-map.js
-var es_array_flat_map = __webpack_require__(86535);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.unscopables.flat-map.js
-var es_array_unscopables_flat_map = __webpack_require__(99244);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/serverservicesdsl.ts
 
 
@@ -5483,12 +6511,12 @@ var ServerServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_Services
         kind: "block",
         type: "jacdac_register_" + (isGet ? "get" : "set") + "_request_" + service.shortId + "_" + register.name,
         message0: "on register " + (isGet ? "get" : "set") + " %1 " + (0,jdspec/* humanify */.lW)(register.name),
-        args0: [(0,servicesbase/* roleVariable */.xH)(service, false)],
+        args0: [roleVariable(service, false)],
         colour: _this2.serviceColor(service),
         inputsInline: true,
         nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         tooltip: register.description,
-        helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+        helpUrl: serviceHelp(service),
         service: service,
         events: [register],
         template: "event"
@@ -5500,9 +6528,9 @@ var ServerServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_Services
     var _this3 = this;
 
     var theme = options.theme;
-    this.serviceColor = (0,servicesbase/* createServiceColor */.JO)(theme); // pure service information here
+    this.serviceColor = createServiceColor(theme); // pure service information here
 
-    var _getServiceInfo = (0,servicesbase/* getServiceInfo */.wi)(),
+    var _getServiceInfo = getServiceInfo(),
         registers = _getServiceInfo.registers,
         events = _getServiceInfo.events,
         commands = _getServiceInfo.commands,
@@ -5521,7 +6549,7 @@ var ServerServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_Services
         kind: "block",
         type: "jacdac_raise_event_" + service.shortId,
         message0: "raise %1 %2",
-        args0: [(0,servicesbase/* roleVariable */.xH)(service, false), {
+        args0: [roleVariable(service, false), {
           type: "field_dropdown",
           name: "event",
           options: eventsNoArgs.map(function (event) {
@@ -5531,7 +6559,7 @@ var ServerServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_Services
         inputsInline: true,
         colour: _this3.serviceColor(service),
         tooltip: "Events for the " + service.name + " service",
-        helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+        helpUrl: serviceHelp(service),
         service: service,
         command: undefined,
         previousStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
@@ -5545,13 +6573,13 @@ var ServerServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_Services
         return {
           kind: "block",
           type: "jacdac_raise_event_" + service.shortId + "_" + ev.name,
-          message0: !ev.fields.length ? "raise %1 " + (0,jdspec/* humanify */.lW)(ev.name) : "raise %1 " + (0,jdspec/* humanify */.lW)(ev.name) + " with " + (0,servicesbase/* fieldsToMessage */.Bo)(ev),
-          args0: [(0,servicesbase/* roleVariable */.xH)(service, false)].concat((0,toConsumableArray/* default */.Z)((0,servicesbase/* fieldsToFieldInputs */.GB)(ev))),
-          values: (0,servicesbase/* fieldsToValues */.ki)(service, ev),
+          message0: !ev.fields.length ? "raise %1 " + (0,jdspec/* humanify */.lW)(ev.name) : "raise %1 " + (0,jdspec/* humanify */.lW)(ev.name) + " with " + fieldsToMessage(ev),
+          args0: [roleVariable(service, false)].concat((0,toConsumableArray/* default */.Z)(fieldsToFieldInputs(ev))),
+          values: fieldsToValues(service, ev),
           inputsInline: true,
           colour: _this3.serviceColor(service),
           tooltip: ev.description,
-          helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+          helpUrl: serviceHelp(service),
           service: service,
           command: ev,
           previousStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
@@ -5574,12 +6602,12 @@ var ServerServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_Services
         kind: "block",
         type: "jacdac_command_server_" + service.shortId + "_" + command.name,
         message0: "on " + (0,jdspec/* humanify */.lW)(command.name) + " %1",
-        args0: [(0,servicesbase/* roleVariable */.xH)(service, false)],
+        args0: [roleVariable(service, false)],
         colour: _this3.serviceColor(service),
         inputsInline: true,
         nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
         tooltip: command.description,
-        helpUrl: (0,servicesbase/* serviceHelp */.me)(service),
+        helpUrl: serviceHelp(service),
         service: service,
         events: [command],
         template: "event"
@@ -5609,7 +6637,7 @@ var ServerServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_Services
   };
 
   return ServerServicesBlockDomainSpecificLanguage;
-}(servicesbase/* ServicesBaseDSL */.Hy);
+}(ServicesBaseDSL);
 var serverServicesDSL = new ServerServicesBlockDomainSpecificLanguage();
 /* harmony default export */ var serverservicesdsl = (serverServicesDSL);
 // EXTERNAL MODULE: ./src/components/blockly/fields/LogViewField.tsx
@@ -5742,10 +6770,10 @@ var toolsDSL = {
           errors = _blockToExpression.errors;
 
       return {
-        cmd: (0,VMgenerator/* makeVMBase */.IZ)(block, {
+        cmd: makeVMBase(block, {
           type: "CallExpression",
           arguments: [expr],
-          callee: (0,compile/* toIdentifier */.EB)("log")
+          callee: toIdentifier("log")
         }),
         errors: errors
       };
@@ -5769,7 +6797,7 @@ var toolsDSL = {
         expression: {
           type: "CallExpression",
           arguments: [expr],
-          callee: (0,compile/* toIdentifier */.EB)("watch")
+          callee: toIdentifier("watch")
         },
         errors: errors,
         meta: true
@@ -5780,8 +6808,6 @@ var toolsDSL = {
   }
 };
 /* harmony default export */ var toolsdsl = (toolsDSL);
-// EXTERNAL MODULE: ./src/components/blockly/dsl/palette.ts
-var palette = __webpack_require__(74602);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/loopsdsl.ts
 
 
@@ -5875,12 +6901,12 @@ var loopsDsl = {
 
     if (type === ON_START_BLOCK) {
       return {
-        expression: (0,VMgenerator/* makeVMBase */.IZ)(block, {
+        expression: makeVMBase(block, {
           type: "CallExpression",
           arguments: [],
-          callee: (0,compile/* toIdentifier */.EB)("start")
+          callee: toIdentifier("start")
         }).command,
-        errors: (0,VMgenerator/* processErrors */.cC)(block, [])
+        errors: processErrors(block, [])
       };
     } else if (type === REPEAT_EVERY_BLOCK) {
       var inputs = block.inputs;
@@ -5890,12 +6916,12 @@ var loopsDsl = {
           errors = _blockToExpression.errors;
 
       return {
-        expression: (0,VMgenerator/* makeVMBase */.IZ)(block, {
+        expression: makeVMBase(block, {
           type: "CallExpression",
           arguments: [time],
-          callee: (0,compile/* toIdentifier */.EB)("wait")
+          callee: toIdentifier("wait")
         }).command,
-        errors: (0,VMgenerator/* processErrors */.cC)(block, errors)
+        errors: processErrors(block, errors)
       };
     }
 
@@ -5915,12 +6941,12 @@ var loopsDsl = {
             errors = _blockToExpression2.errors;
 
         return {
-          cmd: (0,VMgenerator/* makeVMBase */.IZ)(block, {
+          cmd: makeVMBase(block, {
             type: "CallExpression",
             arguments: [time],
-            callee: (0,compile/* toIdentifier */.EB)("wait")
+            callee: toIdentifier("wait")
           }),
-          errors: (0,VMgenerator/* processErrors */.cC)(block, errors)
+          errors: processErrors(block, errors)
         };
       }
     }
@@ -6254,10 +7280,199 @@ var mathDsl = {
   }
 };
 /* harmony default export */ var mathdsl = (mathDsl);
-// EXTERNAL MODULE: ./src/components/blockly/dsl/variablesdsl.ts
-var variablesdsl = __webpack_require__(86947);
-// EXTERNAL MODULE: ./src/components/blockly/dsl/shadowdsl.ts
-var shadowdsl = __webpack_require__(96958);
+;// CONCATENATED MODULE: ./src/components/blockly/dsl/variablesdsl.ts
+
+
+var variablesDsl = {
+  id: "variables",
+  types: ["variables_get", "variables_set", "math_change"],
+  createCategory: function createCategory() {
+    return [{
+      kind: "category",
+      name: "Variables",
+      colour: "%{BKY_VARIABLES_HUE}",
+      custom: "VARIABLE"
+    }];
+  },
+  compileExpressionToVM: function compileExpressionToVM(_ref) {
+    var block = _ref.block;
+    var type = block.type,
+        inputs = block.inputs;
+
+    if (type === "variables_get") {
+      var variable = inputs[0].fields.var.value;
+      var ret = {
+        expr: toMemberExpression("$var", variable.toString()),
+        errors: []
+      };
+      return ret;
+    }
+
+    return undefined;
+  },
+  compileCommandToVM: function compileCommandToVM(_ref2) {
+    var event = _ref2.event,
+        block = _ref2.block,
+        blockToExpression = _ref2.blockToExpression;
+    var type = block.type,
+        inputs = block.inputs;
+
+    if (type === "math_change" || type === "variables_set") {
+      var _blockToExpression = blockToExpression(event, inputs[0].child),
+          expr = _blockToExpression.expr,
+          errors = _blockToExpression.errors;
+
+      var variable = inputs[0].fields.var.value;
+      return {
+        cmd: makeVMBase(block, {
+          type: "CallExpression",
+          arguments: [toMemberExpression("$var", variable.toString()), type === "variables_set" ? expr : {
+            type: "BinaryExpression",
+            operator: "+",
+            left: toMemberExpression("$var", variable.toString()),
+            right: expr
+          }],
+          callee: toIdentifier("writeLocal")
+        }),
+        errors: errors
+      };
+    }
+
+    return undefined;
+  }
+};
+/* harmony default export */ var variablesdsl = (variablesDsl);
+;// CONCATENATED MODULE: ./src/components/blockly/dsl/shadowdsl.ts
+var builtins = {
+  jacdac_on_off: function jacdac_on_off(block) {
+    return block.getFieldValue("value") === "on";
+  },
+  jacdac_yes_no: function jacdac_yes_no(block) {
+    return block.getFieldValue("value") === "on";
+  },
+  jacdac_time_picker: function jacdac_time_picker(block) {
+    return Number(block.getFieldValue("value") || "0");
+  },
+  jacdac_angle: function jacdac_angle(block) {
+    return Number(block.getFieldValue("value") || "0");
+  },
+  jacdac_percent: function jacdac_percent(block) {
+    return Number(block.getFieldValue("value") || "0");
+  },
+  jacdac_ratio: function jacdac_ratio(block) {
+    return Number(block.getFieldValue("value") || "0");
+  }
+};
+var shadowDsl = {
+  id: "shadow",
+  createBlocks: function createBlocks() {
+    return [{
+      kind: "block",
+      type: "jacdac_on_off",
+      message0: "%1",
+      args0: [{
+        type: "field_dropdown",
+        name: "value",
+        options: [["enabled", "on"], ["disabled", "off"]]
+      }],
+      style: "logic_blocks",
+      output: "Boolean"
+    }, {
+      kind: "block",
+      type: "jacdac_yes_no",
+      message0: "%1",
+      args0: [{
+        type: "field_dropdown",
+        name: "value",
+        options: [["yes", "on"], ["no", "off"]]
+      }],
+      style: "logic_blocks",
+      output: "Boolean"
+    }, {
+      kind: "block",
+      type: "jacdac_time_picker",
+      message0: "%1",
+      args0: [{
+        type: "field_dropdown",
+        name: "value",
+        options: [["0.1", "0.1"], ["1", "1"], ["5", "5"], ["30", "30"], ["60", "60"]]
+      }],
+      style: "math_blocks",
+      output: "Number"
+    }, {
+      kind: "block",
+      type: "jacdac_angle",
+      message0: "%1",
+      args0: [{
+        type: "field_angle",
+        name: "value",
+        min: 0,
+        max: 360,
+        precision: 10
+      }],
+      style: "math_blocks",
+      output: "Number"
+    }, {
+      kind: "block",
+      type: "jacdac_percent",
+      message0: "%1",
+      args0: [{
+        type: "field_slider",
+        name: "value",
+        min: 0,
+        max: 100,
+        precision: 1
+      }],
+      style: "math_blocks",
+      output: "Number"
+    }, {
+      kind: "block",
+      type: "jacdac_byte",
+      message0: "%1",
+      args0: [{
+        type: "field_slider",
+        name: "value",
+        min: 0,
+        max: 255,
+        precision: 1
+      }],
+      style: "math_blocks",
+      output: "Number"
+    }, {
+      kind: "block",
+      type: "jacdac_ratio",
+      message0: "%1",
+      args0: [{
+        type: "field_slider",
+        name: "value",
+        min: 0,
+        max: 1,
+        precision: 0.1
+      }],
+      style: "math_blocks",
+      output: "Number"
+    }, {
+      kind: "block",
+      type: "jacdac_color",
+      message0: "%1",
+      args0: [{
+        type: "field_colour",
+        name: "col",
+        colour: "#ff0000",
+        colourOptions: ["#ff0000", "#ff8000", "#ffff00", "#ff9da5", "#00ff00", "#b09eff", "#00ffff", "#007fff", "#65471f", "#0000ff", "#7f00ff", "#ff0080", "#ff00ff", "#ffffff", "#999999", "#000000"],
+        columns: 4
+      }],
+      style: "math_blocks",
+      output: "Color"
+    }];
+  },
+  blockToValue: function blockToValue(block) {
+    var _builtins$block$type;
+
+    return (_builtins$block$type = builtins[block.type]) === null || _builtins$block$type === void 0 ? void 0 : _builtins$block$type.call(builtins, block);
+  }
+};
+/* harmony default export */ var shadowdsl = (shadowDsl);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/fieldsdsl.ts
 var fieldsdsl = __webpack_require__(76658);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/jsondsl.ts
@@ -6410,177 +7625,12 @@ var jsonDSL = {
   }
 };
 /* harmony default export */ var jsondsl = (jsonDSL);
-// EXTERNAL MODULE: ./src/components/blockly/fields/ScatterPlotField.tsx
-var ScatterPlotField = __webpack_require__(97884);
-// EXTERNAL MODULE: ./src/components/blockly/fields/DataColumnChooserField.ts
-var DataColumnChooserField = __webpack_require__(44393);
-// EXTERNAL MODULE: ./src/components/blockly/fields/LinePlotField.tsx
-var LinePlotField = __webpack_require__(70659);
-// EXTERNAL MODULE: ./src/components/blockly/fields/BarField.tsx
-var BarField = __webpack_require__(9950);
-// EXTERNAL MODULE: ./src/components/blockly/fields/PieField.tsx
-var PieField = __webpack_require__(37505);
-// EXTERNAL MODULE: ./src/components/blockly/fields/DataTableField.tsx
-var DataTableField = __webpack_require__(54741);
-;// CONCATENATED MODULE: ./src/components/blockly/dsl/chartdsl.ts
-
-
-
-
-
-
-
-
-var SCATTERPLOT_BLOCK = "chart_scatterplot";
-var LINEPLOT_BLOCK = "chart_lineplot";
-var PIEPLOT_BLOCK = "chart_pieplot";
-var BARCHART_BLOCK = "chart_bar";
-var CHART_SHOW_TABLE_BLOCK = "chart_show_table";
-var chartdsl_colour = (0,palette/* paletteColorByIndex */.W)(3);
-var chartDSL = {
-  id: "chart",
-  createBlocks: function createBlocks() {
-    return [{
-      kind: "block",
-      type: CHART_SHOW_TABLE_BLOCK,
-      message0: "show table %1 %2",
-      args0: [{
-        type: "input_dummy"
-      }, {
-        type: DataTableField/* default.KEY */.Z.KEY,
-        name: "table"
-      }],
-      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: chartdsl_colour,
-      template: "meta",
-      inputsInline: false,
-      transformData: toolbox/* identityTransformData */.FW
-    }, {
-      kind: "block",
-      type: SCATTERPLOT_BLOCK,
-      message0: "scatterplot x %1 y %2 %3 %4",
-      args0: [{
-        type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "x",
-        dataType: "number"
-      }, {
-        type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "y",
-        dataType: "number"
-      }, {
-        type: "input_dummy"
-      }, {
-        type: ScatterPlotField/* default.KEY */.Z.KEY,
-        name: "plot"
-      }],
-      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: chartdsl_colour,
-      template: "meta",
-      inputsInline: false,
-      transformData: toolbox/* identityTransformData */.FW
-    }, {
-      kind: "block",
-      type: BARCHART_BLOCK,
-      message0: "bar index %1 value %2 %3 %4",
-      args0: [{
-        type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "index",
-        dataType: "number"
-      }, {
-        type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "value",
-        dataType: "number"
-      }, {
-        type: "input_dummy"
-      }, {
-        type: BarField/* default.KEY */.Z.KEY,
-        name: "plot"
-      }],
-      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: chartdsl_colour,
-      template: "meta",
-      inputsInline: false,
-      transformData: toolbox/* identityTransformData */.FW
-    }, {
-      kind: "block",
-      type: LINEPLOT_BLOCK,
-      message0: "line x %1 y %2 %3 %4",
-      args0: [{
-        type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "x",
-        dataType: "number"
-      }, {
-        type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "y",
-        dataType: "number"
-      }, {
-        type: "input_dummy"
-      }, {
-        type: LinePlotField/* default.KEY */.Z.KEY,
-        name: "plot"
-      }],
-      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: chartdsl_colour,
-      template: "meta",
-      inputsInline: false,
-      transformData: toolbox/* identityTransformData */.FW
-    }, {
-      kind: "block",
-      type: PIEPLOT_BLOCK,
-      message0: "pie name %1 value %2 %3 %4",
-      args0: [{
-        type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "id",
-        dataType: "string"
-      }, {
-        type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "value",
-        dataType: "number"
-      }, {
-        type: "input_dummy"
-      }, {
-        type: PieField/* default.KEY */.Z.KEY,
-        name: "plot"
-      }],
-      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: chartdsl_colour,
-      template: "meta",
-      inputsInline: false,
-      transformData: toolbox/* identityTransformData */.FW
-    }];
-  },
-  createCategory: function createCategory() {
-    return [{
-      kind: "category",
-      name: "Charts",
-      contents: [{
-        kind: "block",
-        type: SCATTERPLOT_BLOCK
-      }, {
-        kind: "block",
-        type: BARCHART_BLOCK
-      }, {
-        kind: "block",
-        type: LINEPLOT_BLOCK
-      }, {
-        kind: "block",
-        type: PIEPLOT_BLOCK
-      }, {
-        kind: "block",
-        type: CHART_SHOW_TABLE_BLOCK
-      }],
-      colour: chartdsl_colour
-    }];
-  }
-};
-/* harmony default export */ var chartdsl = (chartDSL);
+// EXTERNAL MODULE: ./src/components/blockly/dsl/chartdsl.ts
+var chartdsl = __webpack_require__(57611);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/datadsl.ts + 1 modules
 var datadsl = __webpack_require__(79018);
+// EXTERNAL MODULE: ./src/components/blockly/fields/DataColumnChooserField.ts
+var DataColumnChooserField = __webpack_require__(44393);
 // EXTERNAL MODULE: ./src/components/blockly/fields/GaugeWidgetField.tsx
 var GaugeWidgetField = __webpack_require__(61162);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/widgetdsl.ts
@@ -6647,423 +7697,10 @@ var widgetDSL = {
 
 
 
-var vmDsls = [servicesdsl, serverservicesdsl, loopsdsl, logicdsl, mathdsl, jsondsl, variablesdsl/* default */.Z, toolsdsl, widgetdsl, chartdsl, datadsl/* default */.Z, shadowdsl/* default */.Z, fieldsdsl/* default */.Z];
+var vmDsls = [servicesdsl, serverservicesdsl, loopsdsl, logicdsl, mathdsl, jsondsl, variablesdsl, toolsdsl, widgetdsl, datadsl/* default */.Z, chartdsl/* default */.Z, shadowdsl, fieldsdsl/* default */.Z];
 /* harmony default export */ var vmdsls = (vmDsls);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Dialog/Dialog.js
-var Dialog = __webpack_require__(52468);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogContent/DialogContent.js
-var DialogContent = __webpack_require__(65733);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogContentText/DialogContentText.js
-var DialogContentText = __webpack_require__(32253);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TextField/TextField.js
-var TextField = __webpack_require__(1059);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js
-var DialogActions = __webpack_require__(89952);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
-var Button = __webpack_require__(83332);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-var objectWithoutPropertiesLoose = __webpack_require__(19756);
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncIterator.js
-function _asyncIterator(iterable) {
-  var method;
-
-  if (typeof Symbol !== "undefined") {
-    if (Symbol.asyncIterator) method = iterable[Symbol.asyncIterator];
-    if (method == null && Symbol.iterator) method = iterable[Symbol.iterator];
-  }
-
-  if (method == null) method = iterable["@@asyncIterator"];
-  if (method == null) method = iterable["@@iterator"];
-  if (method == null) throw new TypeError("Object is not async iterable");
-  return method.call(iterable);
-}
-// EXTERNAL MODULE: ./src/components/useEffectAsync.ts
-var useEffectAsync = __webpack_require__(7751);
-// EXTERNAL MODULE: ./src/components/hooks/useDirectoryHandle.ts
-var useDirectoryHandle = __webpack_require__(254);
-;// CONCATENATED MODULE: ./src/components/hooks/useDirectoryFileHandles.ts
-
-
-
-
-var _excluded = ["directory"];
-
-function useDirectoryFileHandles_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function useDirectoryFileHandles_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { useDirectoryFileHandles_ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { useDirectoryFileHandles_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
-
-
-
-function useDirectoryFileHandles(storageKey) {
-  var _useDirectoryHandle = (0,useDirectoryHandle/* default */.Z)(storageKey),
-      directory = _useDirectoryHandle.directory,
-      rest = (0,objectWithoutPropertiesLoose/* default */.Z)(_useDirectoryHandle, _excluded);
-
-  var _useContext = (0,react.useContext)(AppContext/* default */.ZP),
-      setError = _useContext.setError;
-
-  var _useState = (0,react.useState)([]),
-      files = _useState[0],
-      setFiles = _useState[1];
-
-  var refresh = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-      var values, newFiles, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, _value, entry;
-
-      return regenerator_default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              values = directory === null || directory === void 0 ? void 0 : directory.values();
-              newFiles = [];
-
-              if (!values) {
-                _context.next = 36;
-                break;
-              }
-
-              _iteratorNormalCompletion = true;
-              _didIteratorError = false;
-              _context.prev = 5;
-              _iterator = _asyncIterator(values);
-
-            case 7:
-              _context.next = 9;
-              return _iterator.next();
-
-            case 9:
-              _step = _context.sent;
-              _iteratorNormalCompletion = _step.done;
-              _context.next = 13;
-              return _step.value;
-
-            case 13:
-              _value = _context.sent;
-
-              if (_iteratorNormalCompletion) {
-                _context.next = 20;
-                break;
-              }
-
-              entry = _value;
-              if (entry.kind === "file") newFiles.push(entry);
-
-            case 17:
-              _iteratorNormalCompletion = true;
-              _context.next = 7;
-              break;
-
-            case 20:
-              _context.next = 26;
-              break;
-
-            case 22:
-              _context.prev = 22;
-              _context.t0 = _context["catch"](5);
-              _didIteratorError = true;
-              _iteratorError = _context.t0;
-
-            case 26:
-              _context.prev = 26;
-              _context.prev = 27;
-
-              if (!(!_iteratorNormalCompletion && _iterator.return != null)) {
-                _context.next = 31;
-                break;
-              }
-
-              _context.next = 31;
-              return _iterator.return();
-
-            case 31:
-              _context.prev = 31;
-
-              if (!_didIteratorError) {
-                _context.next = 34;
-                break;
-              }
-
-              throw _iteratorError;
-
-            case 34:
-              return _context.finish(31);
-
-            case 35:
-              return _context.finish(26);
-
-            case 36:
-              setFiles(newFiles);
-              return _context.abrupt("return", newFiles);
-
-            case 38:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[5, 22, 26, 36], [27,, 31, 35]]);
-    }));
-
-    return function refresh() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-
-  var createFile = /*#__PURE__*/function () {
-    var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(filename, content) {
-      var fileHandle, file, newFiles;
-      return regenerator_default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.prev = 0;
-              _context2.next = 3;
-              return directory.getFileHandle(filename, {
-                create: true
-              });
-
-            case 3:
-              fileHandle = _context2.sent;
-              _context2.next = 6;
-              return fileHandle.createWritable({
-                keepExistingData: false
-              });
-
-            case 6:
-              file = _context2.sent;
-              _context2.next = 9;
-              return file.write(content);
-
-            case 9:
-              _context2.next = 11;
-              return file.close();
-
-            case 11:
-              _context2.next = 13;
-              return refresh();
-
-            case 13:
-              newFiles = _context2.sent;
-              return _context2.abrupt("return", newFiles.find(function (f) {
-                return f.name === filename;
-              }));
-
-            case 17:
-              _context2.prev = 17;
-              _context2.t0 = _context2["catch"](0);
-              setError(_context2.t0);
-              return _context2.abrupt("return", undefined);
-
-            case 21:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2, null, [[0, 17]]);
-    }));
-
-    return function createFile(_x, _x2) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
-  (0,useEffectAsync/* default */.Z)( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3() {
-    return regenerator_default().wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return refresh();
-
-          case 2:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  })), [directory]);
-  return useDirectoryFileHandles_objectSpread({
-    directory: directory,
-    files: files,
-    createFile: createFile,
-    refresh: refresh
-  }, rest);
-}
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/OpenInBrowser.js
-var OpenInBrowser = __webpack_require__(95552);
-// EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
-var react_use_id_hook_esm = __webpack_require__(19640);
-// EXTERNAL MODULE: ./src/components/hooks/useKeyboardNavigationProps.ts + 2 modules
-var useKeyboardNavigationProps = __webpack_require__(68786);
-;// CONCATENATED MODULE: ./src/components/fs/FileTabs.tsx
-
-
-
-
-
-
-
-
-
-
-function FileChip(props) {
-  var file = props.file,
-      selected = props.selected,
-      onClick = props.onClick;
-  var name = file.name;
-  return /*#__PURE__*/react.createElement(Chip/* default */.Z, {
-    clickable: true,
-    label: name.replace(/\.json$/i, ""),
-    color: selected ? "primary" : undefined,
-    onClick: onClick
-  });
-}
-
-function NewFileDialogButton(props) {
-  var createFile = props.createFile,
-      newFileContent = props.newFileContent,
-      onFileHandleCreated = props.onFileHandleCreated;
-
-  var _useState = (0,react.useState)(false),
-      open = _useState[0],
-      setOpen = _useState[1];
-
-  var _useState2 = (0,react.useState)(""),
-      value = _useState2[0],
-      setValue = _useState2[1];
-
-  var valueId = (0,react_use_id_hook_esm/* useId */.Me)();
-
-  var handleOpen = function handleOpen() {
-    setValue("");
-    setOpen(true);
-  };
-
-  var handleOk = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-      var filename, fileHandle;
-      return regenerator_default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              setOpen(false);
-              filename = value.toLocaleLowerCase().replace(/\s+/g, "") + ".json";
-              _context.next = 4;
-              return createFile(filename, newFileContent);
-
-            case 4:
-              fileHandle = _context.sent;
-              if (fileHandle) onFileHandleCreated(fileHandle);
-
-            case 6:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function handleOk() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-
-  var handleCancel = function handleCancel() {
-    return setOpen(false);
-  };
-
-  var handleValueChange = function handleValueChange(event) {
-    setValue(event.target.value);
-  };
-
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
-    clickable: true,
-    label: "new file...",
-    icon: /*#__PURE__*/react.createElement(Add/* default */.Z, null),
-    onClick: handleOpen
-  }), /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
-    open: open
-  }, /*#__PURE__*/react.createElement(DialogContent/* default */.Z, null, /*#__PURE__*/react.createElement(DialogContentText/* default */.Z, null, "Choose a file name"), /*#__PURE__*/react.createElement(TextField/* default */.Z, {
-    id: valueId,
-    value: value,
-    label: "Value",
-    fullWidth: true,
-    onChange: handleValueChange
-  })), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(Button/* default */.Z, {
-    variant: "contained",
-    onClick: handleCancel
-  }, "Cancel"), /*#__PURE__*/react.createElement(Button/* default */.Z, {
-    variant: "contained",
-    color: "primary",
-    disabled: !value,
-    onClick: handleOk
-  }, "Ok"))));
-}
-
-function FileTabs(props) {
-  var storageKey = props.storageKey,
-      selectedFileHandle = props.selectedFileHandle,
-      onFileHandleSelected = props.onFileHandleSelected,
-      newFileContent = props.newFileContent,
-      onFileHandleCreated = props.onFileHandleCreated;
-
-  var _useDirectoryFileHand = useDirectoryFileHandles(storageKey),
-      files = _useDirectoryFileHand.files,
-      directory = _useDirectoryFileHand.directory,
-      supported = _useDirectoryFileHand.supported,
-      showDirectoryPicker = _useDirectoryFileHand.showDirectoryPicker,
-      clearDirectory = _useDirectoryFileHand.clearDirectory,
-      createFile = _useDirectoryFileHand.createFile;
-
-  var gridRef = (0,react.useRef)();
-  var keyboardProps = (0,useKeyboardNavigationProps/* default */.Z)(gridRef.current);
-
-  var handleOpenDirectory = function handleOpenDirectory() {
-    return showDirectoryPicker();
-  };
-
-  var handleCloseDirectory = function handleCloseDirectory() {
-    return clearDirectory();
-  };
-
-  var handleFileHandleSelected = function handleFileHandleSelected(file) {
-    return function () {
-      return onFileHandleSelected(file);
-    };
-  };
-
-  if (!supported) return null;
-  return /*#__PURE__*/react.createElement(Grid/* default */.Z, Object.assign({
-    ref: gridRef,
-    container: true,
-    spacing: 1
-  }, keyboardProps), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true
-  }, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
-    clickable: true,
-    avatar: /*#__PURE__*/react.createElement(OpenInBrowser/* default */.Z, null),
-    label: (directory === null || directory === void 0 ? void 0 : directory.name) || "open directory",
-    onClick: handleOpenDirectory,
-    onDelete: directory ? handleCloseDirectory : undefined
-  })), files === null || files === void 0 ? void 0 : files.map(function (file) {
-    return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-      item: true,
-      key: file.name
-    }, /*#__PURE__*/react.createElement(FileChip, {
-      file: file,
-      selected: file === selectedFileHandle,
-      onClick: handleFileHandleSelected(file)
-    }));
-  }), directory && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true
-  }, /*#__PURE__*/react.createElement(NewFileDialogButton, {
-    createFile: createFile,
-    newFileContent: newFileContent,
-    onFileHandleCreated: onFileHandleCreated
-  })));
-}
+// EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx + 2 modules
+var FileTabs = __webpack_require__(69469);
 ;// CONCATENATED MODULE: ./src/components/vm/VMEditor.tsx
 
 
@@ -7116,7 +7753,7 @@ function VMEditorWithContext() {
   }, [runner, dragging]);
   (0,react.useEffect)(function () {
     try {
-      var newProgram = (0,VMgenerator/* default */.ZP)(workspaceJSON, dsls);
+      var newProgram = workspaceJSONToVMProgram(workspaceJSON, dsls);
       if (JSON.stringify(newProgram) !== JSON.stringify(program)) setProgram(newProgram);
     } catch (e) {
       console.error(e);
@@ -7153,7 +7790,7 @@ function VMEditorWithContext() {
   }, !!setWorkspaceFileHandle && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react.createElement(FileTabs, {
+  }, /*#__PURE__*/react.createElement(FileTabs/* default */.Z, {
     storageKey: VM_SOURCE_STORAGE_KEY,
     selectedFileHandle: workspaceFileHandle,
     onFileHandleSelected: setWorkspaceFileHandle,
