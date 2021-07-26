@@ -16887,13 +16887,8 @@ function useBlockData(block, initialValue) {
     if (services && initialValue !== undefined && services.data === undefined) services.data = initialValue;
   }, [services]); // debounce with dragging
 
-  var _useDragDebounce = useDragDebounce({
-    data: data,
-    transformedData: transformedData
-  }),
-      debounced = _useDragDebounce.data,
-      debouncedTransformedData = _useDragDebounce.transformedData;
-
+  var debounced = useDragDebounce(data);
+  var debouncedTransformedData = useDragDebounce(transformedData);
   return {
     data: debounced,
     transformedData: debouncedTransformedData,

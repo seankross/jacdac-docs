@@ -69773,7 +69773,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "89cc990aa4ec6b3b2d2bd065143f1e993527868a";
+  var sha = "6276f848198a61402bd431342e32d88c34146ed8";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -79166,7 +79166,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.13.98"};
+var package_namespaceObject = {"i8":"1.13.99"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
@@ -79259,9 +79259,7 @@ var bus = cachedBus() || createBus();
 
 
 function useChange(node, query, deps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((node === null || node === void 0 ? void 0 : node.changeId) || 0),
-      version = _useState[0],
       setVersion = _useState[1];
 
   var value = query ? query(node) : undefined;
