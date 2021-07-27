@@ -16410,7 +16410,8 @@ function VegaLiteWidget(props) {
     width: _toolbox__WEBPACK_IMPORTED_MODULE_5__/* .CHART_WIDTH */ .xx,
     height: _toolbox__WEBPACK_IMPORTED_MODULE_5__/* .CHART_HEIGHT */ .Fh,
     spec: spec,
-    data: vegaData
+    data: vegaData,
+    renderer: "svg"
   })))));
 }
 
