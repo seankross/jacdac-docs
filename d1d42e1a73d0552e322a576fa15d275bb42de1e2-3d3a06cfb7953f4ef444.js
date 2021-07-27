@@ -14228,7 +14228,7 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
 
   _proto.toXml = function toXml(fieldElement) {
     var text = JSON.stringify(this.value_);
-    if (text.length < MAX_SIZE) fieldElement.textContent = text;else fieldElement.textContent = "";
+    if ((text === null || text === void 0 ? void 0 : text.length) < MAX_SIZE) fieldElement.textContent = text;else fieldElement.textContent = "";
     return fieldElement;
   };
 
