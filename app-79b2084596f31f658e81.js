@@ -65048,34 +65048,32 @@ function DashboardDevice(props) {
       variant = props.variant,
       showAvatar = props.showAvatar,
       showHeader = props.showHeader;
-  var name = (0,useDeviceName/* default */.Z)(device);
-  var services = (0,useChange/* default */.Z)(device, function () {
-    return device.services({
-      specification: true
-    }).filter(function (service) {
-      return ignoredServices.indexOf(service.serviceClass) < 0;
-    });
-  });
-  var specification = (0,useDeviceSpecification/* default */.Z)(device);
-
-  var _useMediaQueries = (0,useMediaQueries/* default */.Z)(),
-      mobile = _useMediaQueries.xs;
-
-  var serviceGridRef = (0,react.useRef)();
-  var intersection = useIntersectionObserver(serviceGridRef);
-  var visible = !!(intersection !== null && intersection !== void 0 && intersection.isIntersecting);
 
   var _useContext = (0,react.useContext)(AppContext/* default */.ZP),
       enqueueSnackbar = _useContext.enqueueSnackbar;
 
+  var _useMediaQueries = (0,useMediaQueries/* default */.Z)(),
+      mobile = _useMediaQueries.xs;
+
+  var name = (0,useDeviceName/* default */.Z)(device);
+  var specification = (0,useDeviceSpecification/* default */.Z)(device);
+  var services = (0,useChange/* default */.Z)(device, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.services({
+      specification: true
+    }).filter(function (service) {
+      return ignoredServices.indexOf(service.serviceClass) < 0;
+    });
+  }); // refresh when visible
+
+  var serviceGridRef = (0,react.useRef)();
+  var intersection = useIntersectionObserver(serviceGridRef);
+  var visible = !!(intersection !== null && intersection !== void 0 && intersection.isIntersecting); // track restart events
+
   (0,react.useEffect)(function () {
     return device === null || device === void 0 ? void 0 : device.subscribe(constants/* RESTART */.d0K, function () {
-      console.debug(device.shortId + " restarted...");
-      enqueueSnackbar(device.shortId + " restarted...", {
-        variant: "warning"
-      });
+      return enqueueSnackbar(device.shortId + " restarted...", "info");
     });
-  });
+  }, [device]);
   var ServiceWidgets = (0,react.useCallback)(function () {
     var _services$filter, _services$filter$filt;
 
@@ -69795,7 +69793,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "e5a9f14c27f81280b74120e2e7705d1b6fa86ae3";
+  var sha = "4e8e5e58e942e254241dd358a6e80e93b633641a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer

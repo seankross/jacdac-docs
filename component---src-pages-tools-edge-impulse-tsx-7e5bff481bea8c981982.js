@@ -729,7 +729,6 @@ function ApiKeyAccordion(props) {
     severity: "success"
   }, "API key ready!"), instructions, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: apiKeyId,
-    autoFocus: true,
     label: "API key",
     fullWidth: true,
     value: key,
