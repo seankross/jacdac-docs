@@ -760,7 +760,7 @@ exports.Z = _default;
 
 /***/ }),
 
-/***/ 25494:
+/***/ 52905:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -775,12 +775,13 @@ __webpack_require__.d(__webpack_exports__, {
   "sy": function() { return /* reexport */ sliceHead; },
   "$H": function() { return /* reexport */ sliceMax; },
   "so": function() { return /* reexport */ sliceMin; },
+  "FZ": function() { return /* reexport */ sliceSample; },
   "bs": function() { return /* reexport */ sliceTail; },
   "Iz": function() { return /* reexport */ summarize; },
   "lu": function() { return /* reexport */ tidy_tidy; }
 });
 
-// UNUSED EXPORTS: TMath, addItems, addRows, arrange, asc, complete, contains, count, cumsum, debug, desc, deviation, distinct, endsWith, everything, expand, fill, filter, first, fixedOrder, fullJoin, fullSeq, fullSeqDate, fullSeqDateISOString, groupBy, innerJoin, lag, last, lead, leftJoin, map, matches, mean, meanRate, median, mutateWithSummary, n, nDistinct, negate, numRange, pick, pivotLonger, pivotWider, rate, replaceNully, roll, slice, sliceSample, sort, startsWith, sum, summarizeAll, summarizeAt, summarizeIf, tally, total, totalAll, totalAt, totalIf, transmute, variance, vectorSeq, vectorSeqDate, when
+// UNUSED EXPORTS: TMath, addItems, addRows, arrange, asc, complete, contains, count, cumsum, debug, desc, deviation, distinct, endsWith, everything, expand, fill, filter, first, fixedOrder, fullJoin, fullSeq, fullSeqDate, fullSeqDateISOString, groupBy, innerJoin, lag, last, lead, leftJoin, map, matches, mean, meanRate, median, mutateWithSummary, n, nDistinct, negate, numRange, pick, pivotLonger, pivotWider, rate, replaceNully, roll, slice, sort, startsWith, sum, summarizeAll, summarizeAt, summarizeIf, tally, total, totalAll, totalAt, totalIf, transmute, variance, vectorSeq, vectorSeqDate, when
 
 ;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/tidy.js
 function tidy_tidy(items) {
@@ -1781,6 +1782,24 @@ function rename(renameSpec) {
 }
 
 
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/shuffle.js
+/* harmony default export */ var shuffle = (shuffler(Math.random));
+function shuffler(random) {
+  return function shuffle(array) {
+    var i0 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var i1 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : array.length;
+    var m = i1 - (i0 = +i0);
+
+    while (m) {
+      var i = random() * m-- | 0,
+          t = array[m + i0];
+      array[m + i0] = array[i + i0];
+      array[i + i0] = t;
+    }
+
+    return array;
+  };
+}
 ;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/ascending.js
 /* harmony default export */ function ascending(a, b) {
   return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
@@ -14739,7 +14758,7 @@ FileSaveField.KEY = "jacdac_field_file_save";
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
 /* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(69672);
 /* harmony import */ var _nivo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8844);
-/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(25494);
+/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(52905);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(80838);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(81794);
 
@@ -15715,7 +15734,7 @@ var Pie = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
 });
 
 function PieChartWidget() {
-  var _series$, _chartProps$data;
+  var _chartProps$data2;
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
       sourceBlock = _useContext.sourceBlock,
@@ -15772,8 +15791,14 @@ function PieChartWidget() {
   }),
       chartProps = _useBlockChartProps.chartProps;
 
-  if (chartProps) chartProps.data = series === null || series === void 0 ? void 0 : (_series$ = series[0]) === null || _series$ === void 0 ? void 0 : _series$.data;
-  var hasData = (labels === null || labels === void 0 ? void 0 : labels.length) === 2 && labels[0] !== labels[1] && !!(chartProps !== null && chartProps !== void 0 && (_chartProps$data = chartProps.data) !== null && _chartProps$data !== void 0 && _chartProps$data.length);
+  if (chartProps) {
+    var _series$, _chartProps$data;
+
+    chartProps.data = series === null || series === void 0 ? void 0 : (_series$ = series[0]) === null || _series$ === void 0 ? void 0 : _series$.data;
+    chartProps.animate = !dragging && ((_chartProps$data = chartProps.data) === null || _chartProps$data === void 0 ? void 0 : _chartProps$data.length) < _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .ANIMATE_MAX_ITEMS */ .qV;
+  }
+
+  var hasData = (labels === null || labels === void 0 ? void 0 : labels.length) === 2 && labels[0] !== labels[1] && !!(chartProps !== null && chartProps !== void 0 && (_chartProps$data2 = chartProps.data) !== null && _chartProps$data2 !== void 0 && _chartProps$data2.length);
   if (!hasData) return null;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     style: {
@@ -16320,7 +16345,9 @@ function ScatterChartWidget() {
   var x = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x");
   var y = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y");
 
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [x, y], ["x", "y"]),
+  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [x, y], ["x", "y"], {
+    sliceSample: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .SCATTER_MAX_ITEMS */ .VN
+  }),
       series = _tidyToNivo.series,
       labels = _tidyToNivo.labels; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
@@ -16369,7 +16396,9 @@ function ScatterChartWidget() {
       chartProps = _useBlockChartProps.chartProps;
 
   if (chartProps) {
-    chartProps.animate = !dragging;
+    var _series$, _series$$data;
+
+    chartProps.animate = !dragging && (series === null || series === void 0 ? void 0 : (_series$ = series[0]) === null || _series$ === void 0 ? void 0 : (_series$$data = _series$.data) === null || _series$$data === void 0 ? void 0 : _series$$data.length) < _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .ANIMATE_MAX_ITEMS */ .qV;
     chartProps.data = series;
   }
 
@@ -17089,7 +17118,7 @@ function fieldShadows() {
 /* harmony export */   "pc": function() { return /* binding */ tidyFindLastValue; },
 /* harmony export */   "tL": function() { return /* binding */ tidyToNivo; }
 /* harmony export */ });
-/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(25494);
+/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52905);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81794);
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -17141,7 +17170,7 @@ data, columns, toColumns, options) {
   // todo handle time
 
   var _index = 0;
-  var tidied = data ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .tidy */ .lu)(data, options.sliceHead ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceHead */ .sy)(options.sliceHead) : undefined, options.sliceTail ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceTail */ .bs)(options.sliceTail) : undefined, options.sliceMin ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceMin */ .so)(options.sliceMin, options.sliceColumn) : undefined, options.sliceMax ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceMax */ .$H)(options.sliceMax, options.sliceColumn) : undefined, (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .mutate */ .JG)({
+  var tidied = data ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .tidy */ .lu)(data, options.sliceSample ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceSample */ .FZ)(options.sliceSample) : undefined, options.sliceHead ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceHead */ .sy)(options.sliceHead) : undefined, options.sliceTail ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceTail */ .bs)(options.sliceTail) : undefined, options.sliceMin ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceMin */ .so)(options.sliceMin, options.sliceColumn) : undefined, options.sliceMax ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceMax */ .$H)(options.sliceMax, options.sliceColumn) : undefined, (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .mutate */ .JG)({
     index: function index() {
       return _index++;
     }
@@ -17180,7 +17209,9 @@ data, columns, toColumns, options) {
 /* harmony export */   "Fh": function() { return /* binding */ CHART_HEIGHT; },
 /* harmony export */   "KH": function() { return /* binding */ TABLE_WIDTH; },
 /* harmony export */   "U2": function() { return /* binding */ TABLE_HEIGHT; },
+/* harmony export */   "qV": function() { return /* binding */ ANIMATE_MAX_ITEMS; },
 /* harmony export */   "DZ": function() { return /* binding */ PIE_MAX_ITEMS; },
+/* harmony export */   "VN": function() { return /* binding */ SCATTER_MAX_ITEMS; },
 /* harmony export */   "nY": function() { return /* binding */ VM_WARNINGS_CATEGORY; },
 /* harmony export */   "FD": function() { return /* binding */ JSON_WARNINGS_CATEGORY; },
 /* harmony export */   "j2": function() { return /* binding */ visitToolbox; }
@@ -17235,7 +17266,9 @@ var CHART_WIDTH = 388;
 var CHART_HEIGHT = 240;
 var TABLE_WIDTH = CHART_WIDTH;
 var TABLE_HEIGHT = 480;
+var ANIMATE_MAX_ITEMS = 128;
 var PIE_MAX_ITEMS = 12;
+var SCATTER_MAX_ITEMS = 1 << 13;
 var VM_WARNINGS_CATEGORY = "vm";
 var JSON_WARNINGS_CATEGORY = "json";
 function visitToolbox(node, visitor) {
