@@ -10257,11 +10257,14 @@ var chartDsl = {
     }, {
       kind: "block",
       type: HISTOGRAM_BLOCK,
-      message0: "histogram of %1 %2 %3",
+      message0: "histogram of %1 %2 %3 %4",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "index",
         dataType: "number"
+      }, {
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        name: "preview"
       }, {
         type: "input_dummy"
       }, {
@@ -10277,7 +10280,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: BOX_PLOT_BLOCK,
-      message0: "box plot of %1 by %2 %3 %4",
+      message0: "box plot of %1 by %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "index"
@@ -10285,6 +10288,9 @@ var chartDsl = {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "value",
         dataType: "number"
+      }, {
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        name: "preview"
       }, {
         type: "input_dummy"
       }, {
