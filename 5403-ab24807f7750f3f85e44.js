@@ -542,7 +542,7 @@ var Suspense = __webpack_require__(69672);
 
 
 var ColorInput = /*#__PURE__*/(0,react.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(2851)]).then(__webpack_require__.bind(__webpack_require__, 52851));
+  return __webpack_require__.e(/* import() */ 2851).then(__webpack_require__.bind(__webpack_require__, 52851));
 });
 /*
 0xD6: range P=0 N=length W=1 S=0- range from pixel P, Npixels long (currently unsupported: every Wpixels skip Spixels)

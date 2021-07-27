@@ -7631,8 +7631,8 @@ var chartdsl = __webpack_require__(57611);
 var datadsl = __webpack_require__(79018);
 // EXTERNAL MODULE: ./src/components/blockly/fields/DataColumnChooserField.ts
 var DataColumnChooserField = __webpack_require__(44393);
-// EXTERNAL MODULE: ./src/components/blockly/fields/GaugeWidgetField.tsx
-var GaugeWidgetField = __webpack_require__(61162);
+// EXTERNAL MODULE: ./src/components/blockly/fields/GaugeWidgetField.tsx + 22 modules
+var GaugeWidgetField = __webpack_require__(95548);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/widgetdsl.ts
 
 

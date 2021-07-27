@@ -760,2019 +760,6 @@ exports.Z = _default;
 
 /***/ }),
 
-/***/ 52905:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Fp": function() { return /* reexport */ max_max; },
-  "VV": function() { return /* reexport */ min_min; },
-  "JG": function() { return /* reexport */ mutate; },
-  "PQ": function() { return /* reexport */ rename; },
-  "Ys": function() { return /* reexport */ select_select; },
-  "sy": function() { return /* reexport */ sliceHead; },
-  "$H": function() { return /* reexport */ sliceMax; },
-  "so": function() { return /* reexport */ sliceMin; },
-  "FZ": function() { return /* reexport */ sliceSample; },
-  "bs": function() { return /* reexport */ sliceTail; },
-  "Iz": function() { return /* reexport */ summarize; },
-  "lu": function() { return /* reexport */ tidy_tidy; }
-});
-
-// UNUSED EXPORTS: TMath, addItems, addRows, arrange, asc, complete, contains, count, cumsum, debug, desc, deviation, distinct, endsWith, everything, expand, fill, filter, first, fixedOrder, fullJoin, fullSeq, fullSeqDate, fullSeqDateISOString, groupBy, innerJoin, lag, last, lead, leftJoin, map, matches, mean, meanRate, median, mutateWithSummary, n, nDistinct, negate, numRange, pick, pivotLonger, pivotWider, rate, replaceNully, roll, slice, sort, startsWith, sum, summarizeAll, summarizeAt, summarizeIf, tally, total, totalAll, totalAt, totalIf, transmute, variance, vectorSeq, vectorSeqDate, when
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/tidy.js
-function tidy_tidy(items) {
-  if (typeof items === "function") {
-    throw new Error("You must supply the data as the first argument to tidy()");
-  }
-
-  var result = items;
-
-  for (var _len = arguments.length, fns = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    fns[_key - 1] = arguments[_key];
-  }
-
-  for (var _i = 0, _fns = fns; _i < _fns.length; _i++) {
-    var fn = _fns[_i];
-
-    if (fn) {
-      result = fn(result);
-    }
-  }
-
-  return result;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/summarize.js
-
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-function summarize(summarizeSpec, options) {
-  var _summarize = function _summarize(items) {
-    options = options != null ? options : {};
-    var summarized = {};
-    var keys = Object.keys(summarizeSpec);
-
-    for (var _i = 0, _keys = keys; _i < _keys.length; _i++) {
-      var key = _keys[_i];
-      summarized[key] = summarizeSpec[key](items);
-    }
-
-    if (options.rest && items.length) {
-      var objectKeys = Object.keys(items[0]);
-
-      for (var _i2 = 0, _objectKeys = objectKeys; _i2 < _objectKeys.length; _i2++) {
-        var objKey = _objectKeys[_i2];
-
-        if (keys.includes(objKey)) {
-          continue;
-        }
-
-        summarized[objKey] = options.rest(objKey)(items);
-      }
-    }
-
-    return [summarized];
-  };
-
-  return _summarize;
-}
-
-function _summarizeHelper(items, summaryFn, predicateFn, keys) {
-  if (!items.length) return [];
-  var summarized = {};
-  var keysArr;
-
-  if (keys == null) {
-    keysArr = Object.keys(items[0]);
-  } else {
-    keysArr = [];
-
-    var _iterator = _createForOfIteratorHelper(singleOrArray(keys)),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var keyInput = _step.value;
-
-        if (typeof keyInput === "function") {
-          var _keysArr;
-
-          (_keysArr = keysArr).push.apply(_keysArr, _toConsumableArray(keyInput(items)));
-        } else {
-          keysArr.push(keyInput);
-        }
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-  }
-
-  var _iterator2 = _createForOfIteratorHelper(keysArr),
-      _step2;
-
-  try {
-    var _loop = function _loop() {
-      var key = _step2.value;
-
-      if (predicateFn) {
-        var vector = items.map(function (d) {
-          return d[key];
-        });
-
-        if (!predicateFn(vector)) {
-          return "continue";
-        }
-      }
-
-      summarized[key] = summaryFn(key)(items);
-    };
-
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-      var _ret = _loop();
-
-      if (_ret === "continue") continue;
-    }
-  } catch (err) {
-    _iterator2.e(err);
-  } finally {
-    _iterator2.f();
-  }
-
-  return [summarized];
-}
-
-function summarizeAll(summaryFn) {
-  var _summarizeAll = function _summarizeAll(items) {
-    return _summarizeHelper(items, summaryFn);
-  };
-
-  return _summarizeAll;
-}
-
-function summarizeIf(predicateFn, summaryFn) {
-  var _summarizeIf = function _summarizeIf(items) {
-    return _summarizeHelper(items, summaryFn, predicateFn);
-  };
-
-  return _summarizeIf;
-}
-
-function summarizeAt(keys, summaryFn) {
-  var _summarizeAt = function _summarizeAt(items) {
-    return _summarizeHelper(items, summaryFn, void 0, keys);
-  };
-
-  return _summarizeAt;
-}
-
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 1 modules
-var slicedToArray = __webpack_require__(28481);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(85061);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
-var defineProperty = __webpack_require__(96156);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.flat.js
-var es_array_flat = __webpack_require__(84944);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__(6610);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
-var createClass = __webpack_require__(5991);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(63349);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/get.js + 1 modules
-var esm_get = __webpack_require__(66213);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js
-var inherits = __webpack_require__(10379);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(46070);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(77608);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js + 1 modules
-var wrapNativeSuper = __webpack_require__(57869);
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/internmap/src/index.js
-
-
-
-
-
-
-
-
-
-
-function src_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = src_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function src_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return src_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return src_arrayLikeToArray(o, minLen); }
-
-function src_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0,getPrototypeOf/* default */.Z)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0,getPrototypeOf/* default */.Z)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,possibleConstructorReturn/* default */.Z)(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-var InternMap = /*#__PURE__*/function (_Map) {
-  (0,inherits/* default */.Z)(InternMap, _Map);
-
-  var _super = _createSuper(InternMap);
-
-  function InternMap(entries) {
-    var _this;
-
-    var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : keyof;
-
-    (0,classCallCheck/* default */.Z)(this, InternMap);
-
-    _this = _super.call(this);
-    Object.defineProperties((0,assertThisInitialized/* default */.Z)(_this), {
-      _intern: {
-        value: new Map()
-      },
-      _key: {
-        value: key
-      }
-    });
-
-    if (entries != null) {
-      var _iterator = src_createForOfIteratorHelper(entries),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var _step$value = (0,slicedToArray/* default */.Z)(_step.value, 2),
-              _key2 = _step$value[0],
-              value = _step$value[1];
-
-          _this.set(_key2, value);
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    }
-
-    return _this;
-  }
-
-  (0,createClass/* default */.Z)(InternMap, [{
-    key: "get",
-    value: function get(key) {
-      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternMap.prototype), "get", this).call(this, intern_get(this, key));
-    }
-  }, {
-    key: "has",
-    value: function has(key) {
-      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternMap.prototype), "has", this).call(this, intern_get(this, key));
-    }
-  }, {
-    key: "set",
-    value: function set(key, value) {
-      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternMap.prototype), "set", this).call(this, intern_set(this, key), value);
-    }
-  }, {
-    key: "delete",
-    value: function _delete(key) {
-      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternMap.prototype), "delete", this).call(this, intern_delete(this, key));
-    }
-  }]);
-
-  return InternMap;
-}( /*#__PURE__*/(0,wrapNativeSuper/* default */.Z)(Map));
-var InternSet = /*#__PURE__*/function (_Set) {
-  (0,inherits/* default */.Z)(InternSet, _Set);
-
-  var _super2 = _createSuper(InternSet);
-
-  function InternSet(values) {
-    var _this2;
-
-    var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : keyof;
-
-    (0,classCallCheck/* default */.Z)(this, InternSet);
-
-    _this2 = _super2.call(this);
-    Object.defineProperties((0,assertThisInitialized/* default */.Z)(_this2), {
-      _intern: {
-        value: new Map()
-      },
-      _key: {
-        value: key
-      }
-    });
-
-    if (values != null) {
-      var _iterator2 = src_createForOfIteratorHelper(values),
-          _step2;
-
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var value = _step2.value;
-
-          _this2.add(value);
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
-    }
-
-    return _this2;
-  }
-
-  (0,createClass/* default */.Z)(InternSet, [{
-    key: "has",
-    value: function has(value) {
-      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternSet.prototype), "has", this).call(this, intern_get(this, value));
-    }
-  }, {
-    key: "add",
-    value: function add(value) {
-      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternSet.prototype), "add", this).call(this, intern_set(this, value));
-    }
-  }, {
-    key: "delete",
-    value: function _delete(value) {
-      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternSet.prototype), "delete", this).call(this, intern_delete(this, value));
-    }
-  }]);
-
-  return InternSet;
-}( /*#__PURE__*/(0,wrapNativeSuper/* default */.Z)(Set));
-
-function intern_get(_ref, value) {
-  var _intern = _ref._intern,
-      _key = _ref._key;
-
-  var key = _key(value);
-
-  return _intern.has(key) ? _intern.get(key) : value;
-}
-
-function intern_set(_ref2, value) {
-  var _intern = _ref2._intern,
-      _key = _ref2._key;
-
-  var key = _key(value);
-
-  if (_intern.has(key)) return _intern.get(key);
-
-  _intern.set(key, value);
-
-  return value;
-}
-
-function intern_delete(_ref3, value) {
-  var _intern = _ref3._intern,
-      _key = _ref3._key;
-
-  var key = _key(value);
-
-  if (_intern.has(key)) {
-    value = _intern.get(value);
-
-    _intern.delete(key);
-  }
-
-  return value;
-}
-
-function keyof(value) {
-  return value !== null && typeof value === "object" ? value.valueOf() : value;
-}
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/identity.js
-/* harmony default export */ function src_identity(x) {
-  return x;
-}
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/group.js
-
-
-function group_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = group_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function group_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return group_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return group_arrayLikeToArray(o, minLen); }
-
-function group_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-function group(values) {
-  for (var _len = arguments.length, keys = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    keys[_key - 1] = arguments[_key];
-  }
-
-  return nest(values, src_identity, src_identity, keys);
-}
-function groups(values) {
-  for (var _len2 = arguments.length, keys = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    keys[_key2 - 1] = arguments[_key2];
-  }
-
-  return nest(values, Array.from, identity, keys);
-}
-function rollup(values, reduce) {
-  for (var _len3 = arguments.length, keys = new Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
-    keys[_key3 - 2] = arguments[_key3];
-  }
-
-  return nest(values, identity, reduce, keys);
-}
-function rollups(values, reduce) {
-  for (var _len4 = arguments.length, keys = new Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
-    keys[_key4 - 2] = arguments[_key4];
-  }
-
-  return nest(values, Array.from, reduce, keys);
-}
-function index(values) {
-  for (var _len5 = arguments.length, keys = new Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
-    keys[_key5 - 1] = arguments[_key5];
-  }
-
-  return nest(values, identity, unique, keys);
-}
-function indexes(values) {
-  for (var _len6 = arguments.length, keys = new Array(_len6 > 1 ? _len6 - 1 : 0), _key6 = 1; _key6 < _len6; _key6++) {
-    keys[_key6 - 1] = arguments[_key6];
-  }
-
-  return nest(values, Array.from, unique, keys);
-}
-
-function unique(values) {
-  if (values.length !== 1) throw new Error("duplicate key");
-  return values[0];
-}
-
-function nest(values, map, reduce, keys) {
-  return function regroup(values, i) {
-    if (i >= keys.length) return reduce(values);
-    var groups = new InternMap();
-    var keyof = keys[i++];
-    var index = -1;
-
-    var _iterator = group_createForOfIteratorHelper(values),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var value = _step.value;
-        var key = keyof(value, ++index, values);
-
-        var _group = groups.get(key);
-
-        if (_group) _group.push(value);else groups.set(key, [value]);
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-
-    var _iterator2 = group_createForOfIteratorHelper(groups),
-        _step2;
-
-    try {
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        var _step2$value = (0,slicedToArray/* default */.Z)(_step2.value, 2),
-            _key7 = _step2$value[0],
-            _values = _step2$value[1];
-
-        groups.set(_key7, regroup(_values, i));
-      }
-    } catch (err) {
-      _iterator2.e(err);
-    } finally {
-      _iterator2.f();
-    }
-
-    return map(groups);
-  }(values, 0);
-}
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.from-entries.js
-var es_object_from_entries = __webpack_require__(38559);
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/assignGroupKeys.js
-
-
-function assignGroupKeys(d, keys) {
-  if (d == null || typeof d !== "object" || Array.isArray(d)) return d;
-  var keysObj = Object.fromEntries(keys.filter(function (key) {
-    return typeof key[0] !== "function";
-  }));
-  return Object.assign(keysObj, d);
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/groupTraversal.js
-
-
-
-function groupTraversal_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = groupTraversal_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function groupTraversal_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return groupTraversal_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return groupTraversal_arrayLikeToArray(o, minLen); }
-
-function groupTraversal_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function groupTraversal(grouped, outputGrouped, keys, addSubgroup, addLeaves) {
-  var level = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
-
-  var _iterator = groupTraversal_createForOfIteratorHelper(grouped.entries()),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var _step$value = (0,slicedToArray/* default */.Z)(_step.value, 2),
-          key = _step$value[0],
-          value = _step$value[1];
-
-      var keysHere = [].concat((0,toConsumableArray/* default */.Z)(keys), [key]);
-
-      if (value instanceof Map) {
-        var subgroup = addSubgroup(outputGrouped, keysHere, level);
-        groupTraversal(value, subgroup, keysHere, addSubgroup, addLeaves, level + 1);
-      } else {
-        addLeaves(outputGrouped, keysHere, value, level);
-      }
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-
-  return outputGrouped;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/groupMap.js
-
-
-function groupMap(grouped, groupFn) {
-  var keyFn = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (keys) {
-    return keys[keys.length - 1];
-  };
-
-  function addSubgroup(parentGrouped, keys) {
-    var subgroup = new Map();
-    parentGrouped.set(keyFn(keys), subgroup);
-    return subgroup;
-  }
-
-  function addLeaves(parentGrouped, keys, values) {
-    parentGrouped.set(keyFn(keys), groupFn(values, keys));
-  }
-
-  var outputGrouped = new Map();
-  groupTraversal(grouped, outputGrouped, [], addSubgroup, addLeaves);
-  return outputGrouped;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/identity.js
-var identity_identity = function identity(d) {
-  return d;
-};
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/singleOrArray.js
-function singleOrArray_singleOrArray(d) {
-  return d == null ? [] : Array.isArray(d) ? d : [d];
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/groupBy.js
-
-
-
-
-
-function groupBy_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = groupBy_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function groupBy_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return groupBy_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return groupBy_arrayLikeToArray(o, minLen); }
-
-function groupBy_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
-
-
-
-
-
-function groupBy_groupBy(groupKeys, fns, options) {
-  if (typeof fns === "function") {
-    fns = [fns];
-  } else if (arguments.length === 2 && fns != null && !Array.isArray(fns)) {
-    options = fns;
-  }
-
-  var _groupBy = function _groupBy(items) {
-    var grouped = makeGrouped(items, groupKeys);
-    var results = runFlow(grouped, fns, options == null ? void 0 : options.addGroupKeys);
-
-    if (options == null ? void 0 : options.export) {
-      switch (options.export) {
-        case "grouped":
-          return results;
-
-        case "levels":
-          return exportLevels(results, options);
-
-        case "entries-obj":
-        case "entriesObject":
-          return exportLevels(results, _objectSpread(_objectSpread({}, options), {}, {
-            export: "levels",
-            levels: ["entries-object"]
-          }));
-
-        default:
-          return exportLevels(results, _objectSpread(_objectSpread({}, options), {}, {
-            export: "levels",
-            levels: [options.export]
-          }));
-      }
-    }
-
-    var ungrouped = ungroup(results, options == null ? void 0 : options.addGroupKeys);
-    return ungrouped;
-  };
-
-  return _groupBy;
-}
-
-groupBy_groupBy.grouped = function (options) {
-  return _objectSpread(_objectSpread({}, options), {}, {
-    export: "grouped"
-  });
-};
-
-groupBy_groupBy.entries = function (options) {
-  return _objectSpread(_objectSpread({}, options), {}, {
-    export: "entries"
-  });
-};
-
-groupBy_groupBy.entriesObject = function (options) {
-  return _objectSpread(_objectSpread({}, options), {}, {
-    export: "entries-object"
-  });
-};
-
-groupBy_groupBy.object = function (options) {
-  return _objectSpread(_objectSpread({}, options), {}, {
-    export: "object"
-  });
-};
-
-groupBy_groupBy.map = function (options) {
-  return _objectSpread(_objectSpread({}, options), {}, {
-    export: "map"
-  });
-};
-
-groupBy_groupBy.keys = function (options) {
-  return _objectSpread(_objectSpread({}, options), {}, {
-    export: "keys"
-  });
-};
-
-groupBy_groupBy.values = function (options) {
-  return _objectSpread(_objectSpread({}, options), {}, {
-    export: "values"
-  });
-};
-
-groupBy_groupBy.levels = function (options) {
-  return _objectSpread(_objectSpread({}, options), {}, {
-    export: "levels"
-  });
-};
-
-function runFlow(items, fns, addGroupKeys) {
-  var result = items;
-  if (!(fns == null ? void 0 : fns.length)) return result;
-
-  var _iterator = groupBy_createForOfIteratorHelper(fns),
-      _step;
-
-  try {
-    var _loop = function _loop() {
-      var fn = _step.value;
-      if (!fn) return "continue";
-      result = groupMap(result, function (items2, keys) {
-        var context = {
-          groupKeys: keys
-        };
-        var leafItemsMapped = fn(items2, context);
-
-        if (addGroupKeys !== false) {
-          leafItemsMapped = leafItemsMapped.map(function (item) {
-            return assignGroupKeys(item, keys);
-          });
-        }
-
-        return leafItemsMapped;
-      });
-    };
-
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var _ret = _loop();
-
-      if (_ret === "continue") continue;
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-
-  return result;
-}
-
-function makeGrouped(items, groupKeys) {
-  var groupKeyFns = singleOrArray_singleOrArray(groupKeys).map(function (key, i) {
-    var keyFn = typeof key === "function" ? key : function (d) {
-      return d[key];
-    };
-    var keyCache = new Map();
-    return function (d) {
-      var keyValue = keyFn(d);
-
-      if (keyCache.has(keyValue)) {
-        return keyCache.get(keyValue);
-      }
-
-      var keyWithName = [key, keyValue];
-      keyCache.set(keyValue, keyWithName);
-      return keyWithName;
-    };
-  });
-  var grouped = group.apply(void 0, [items].concat((0,toConsumableArray/* default */.Z)(groupKeyFns)));
-  return grouped;
-}
-
-function ungroup(grouped, addGroupKeys) {
-  var items = [];
-  groupTraversal(grouped, items, [], identity_identity, function (root, keys, values) {
-    var valuesToAdd = values;
-
-    if (addGroupKeys !== false) {
-      valuesToAdd = values.map(function (d) {
-        return assignGroupKeys(d, keys);
-      });
-    }
-
-    root.push.apply(root, (0,toConsumableArray/* default */.Z)(valuesToAdd));
-  });
-  return items;
-}
-
-var defaultCompositeKey = function defaultCompositeKey(keys) {
-  return keys.join("/");
-};
-
-function processFromGroupsOptions(options) {
-  var _a;
-
-  var flat = options.flat,
-      single = options.single,
-      _options$mapLeaf = options.mapLeaf,
-      mapLeaf = _options$mapLeaf === void 0 ? identity_identity : _options$mapLeaf,
-      _options$mapLeaves = options.mapLeaves,
-      mapLeaves = _options$mapLeaves === void 0 ? identity_identity : _options$mapLeaves,
-      addGroupKeys = options.addGroupKeys;
-  var compositeKey;
-
-  if (options.flat) {
-    compositeKey = (_a = options.compositeKey) != null ? _a : defaultCompositeKey;
-  }
-
-  var groupFn = function groupFn(values, keys) {
-    return single ? mapLeaf(addGroupKeys === false ? values[0] : assignGroupKeys(values[0], keys)) : mapLeaves(values.map(function (d) {
-      return mapLeaf(addGroupKeys === false ? d : assignGroupKeys(d, keys));
-    }));
-  };
-
-  var keyFn = flat ? function (keys) {
-    return compositeKey(keys.map(function (d) {
-      return d[1];
-    }));
-  } : function (keys) {
-    return keys[keys.length - 1][1];
-  };
-  return {
-    groupFn: groupFn,
-    keyFn: keyFn
-  };
-}
-
-function exportLevels(grouped, options) {
-  var _processFromGroupsOpt = processFromGroupsOptions(options),
-      groupFn = _processFromGroupsOpt.groupFn,
-      keyFn = _processFromGroupsOpt.keyFn;
-
-  var _options$mapEntry = options.mapEntry,
-      mapEntry = _options$mapEntry === void 0 ? identity_identity : _options$mapEntry;
-  var _options$levels = options.levels,
-      levels = _options$levels === void 0 ? ["entries"] : _options$levels;
-  var levelSpecs = [];
-
-  var _iterator2 = groupBy_createForOfIteratorHelper(levels),
-      _step2;
-
-  try {
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-      var levelOption = _step2.value;
-
-      switch (levelOption) {
-        case "entries":
-        case "entries-object":
-        case "entries-obj":
-        case "entriesObject":
-          {
-            var _ret2 = function () {
-              var levelMapEntry = (levelOption === "entries-object" || levelOption === "entries-obj" || levelOption === "entriesObject") && options.mapEntry == null ? function (_ref) {
-                var _ref2 = (0,slicedToArray/* default */.Z)(_ref, 2),
-                    key = _ref2[0],
-                    values = _ref2[1];
-
-                return {
-                  key: key,
-                  values: values
-                };
-              } : mapEntry;
-              levelSpecs.push({
-                id: "entries",
-                createEmptySubgroup: function createEmptySubgroup() {
-                  return [];
-                },
-                addSubgroup: function addSubgroup(parentGrouped, newSubgroup, key, level) {
-                  parentGrouped.push(levelMapEntry([key, newSubgroup], level));
-                },
-                addLeaf: function addLeaf(parentGrouped, key, values, level) {
-                  parentGrouped.push(levelMapEntry([key, values], level));
-                }
-              });
-              return "break";
-            }();
-
-            if (_ret2 === "break") break;
-          }
-
-        case "map":
-          levelSpecs.push({
-            id: "map",
-            createEmptySubgroup: function createEmptySubgroup() {
-              return new Map();
-            },
-            addSubgroup: function addSubgroup(parentGrouped, newSubgroup, key) {
-              parentGrouped.set(key, newSubgroup);
-            },
-            addLeaf: function addLeaf(parentGrouped, key, values) {
-              parentGrouped.set(key, values);
-            }
-          });
-          break;
-
-        case "object":
-          levelSpecs.push({
-            id: "object",
-            createEmptySubgroup: function createEmptySubgroup() {
-              return {};
-            },
-            addSubgroup: function addSubgroup(parentGrouped, newSubgroup, key) {
-              parentGrouped[key] = newSubgroup;
-            },
-            addLeaf: function addLeaf(parentGrouped, key, values) {
-              parentGrouped[key] = values;
-            }
-          });
-          break;
-
-        case "keys":
-          levelSpecs.push({
-            id: "keys",
-            createEmptySubgroup: function createEmptySubgroup() {
-              return [];
-            },
-            addSubgroup: function addSubgroup(parentGrouped, newSubgroup, key) {
-              parentGrouped.push([key, newSubgroup]);
-            },
-            addLeaf: function addLeaf(parentGrouped, key) {
-              parentGrouped.push(key);
-            }
-          });
-          break;
-
-        case "values":
-          levelSpecs.push({
-            id: "values",
-            createEmptySubgroup: function createEmptySubgroup() {
-              return [];
-            },
-            addSubgroup: function addSubgroup(parentGrouped, newSubgroup) {
-              parentGrouped.push(newSubgroup);
-            },
-            addLeaf: function addLeaf(parentGrouped, key, values) {
-              parentGrouped.push(values);
-            }
-          });
-          break;
-
-        default:
-          {
-            if (typeof levelOption === "object") {
-              levelSpecs.push(levelOption);
-            }
-          }
-      }
-    }
-  } catch (err) {
-    _iterator2.e(err);
-  } finally {
-    _iterator2.f();
-  }
-
-  var addSubgroup = function addSubgroup(parentGrouped, keys, level) {
-    var _a, _b;
-
-    if (options.flat) {
-      return parentGrouped;
-    }
-
-    var levelSpec = (_a = levelSpecs[level]) != null ? _a : levelSpecs[levelSpecs.length - 1];
-    var nextLevelSpec = (_b = levelSpecs[level + 1]) != null ? _b : levelSpec;
-    var newSubgroup = nextLevelSpec.createEmptySubgroup();
-    levelSpec.addSubgroup(parentGrouped, newSubgroup, keyFn(keys), level);
-    return newSubgroup;
-  };
-
-  var addLeaf = function addLeaf(parentGrouped, keys, values, level) {
-    var _a;
-
-    var levelSpec = (_a = levelSpecs[level]) != null ? _a : levelSpecs[levelSpecs.length - 1];
-    levelSpec.addLeaf(parentGrouped, keyFn(keys), groupFn(values, keys), level);
-  };
-
-  var initialOutputObject = levelSpecs[0].createEmptySubgroup();
-  return groupTraversal(grouped, initialOutputObject, [], addSubgroup, addLeaf);
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/count.js
-
-
-
-
-
-
-function count(groupKeys, options) {
-  var _count = function _count(items) {
-    options = options != null ? options : {};
-    var _options = options,
-        _options$name = _options.name,
-        name = _options$name === void 0 ? "n" : _options$name,
-        sort = _options.sort;
-    var results = tidy(items, groupBy(groupKeys, [tally(options)]), sort ? arrange(desc(name)) : identity);
-    return results;
-  };
-
-  return _count;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/rename.js
-function rename(renameSpec) {
-  var _rename = function _rename(items) {
-    return items.map(function (d) {
-      var _a;
-
-      var mapped = {};
-      var keys = Object.keys(d);
-
-      for (var _i = 0, _keys = keys; _i < _keys.length; _i++) {
-        var key = _keys[_i];
-        var newKey = (_a = renameSpec[key]) != null ? _a : key;
-        mapped[newKey] = d[key];
-      }
-
-      return mapped;
-    });
-  };
-
-  return _rename;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/shuffle.js
-/* harmony default export */ var shuffle = (shuffler(Math.random));
-function shuffler(random) {
-  return function shuffle(array) {
-    var i0 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var i1 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : array.length;
-    var m = i1 - (i0 = +i0);
-
-    while (m) {
-      var i = random() * m-- | 0,
-          t = array[m + i0];
-      array[m + i0] = array[i + i0];
-      array[i + i0] = t;
-    }
-
-    return array;
-  };
-}
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/ascending.js
-/* harmony default export */ function ascending(a, b) {
-  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
-}
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/arrange.js
-function arrange_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = arrange_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function arrange_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return arrange_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrange_arrayLikeToArray(o, minLen); }
-
-function arrange_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-
-function arrange_arrange(comparators) {
-  var _arrange = function _arrange(items) {
-    var comparatorFns = singleOrArray_singleOrArray(comparators).map(function (comp) {
-      return typeof comp === "function" ? comp : asc(comp);
-    });
-    return items.slice().sort(function (a, b) {
-      var _iterator = arrange_createForOfIteratorHelper(comparatorFns),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var comparator = _step.value;
-          var result = comparator(a, b);
-          if (result) return result;
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      return 0;
-    });
-  };
-
-  return _arrange;
-}
-
-function asc(key) {
-  var keyFn = typeof key === "function" ? key : function (d) {
-    return d[key];
-  };
-  return function _asc(a, b) {
-    return emptyAwareComparator(keyFn(a), keyFn(b), false);
-  };
-}
-
-function arrange_desc(key) {
-  var keyFn = typeof key === "function" ? key : function (d) {
-    return d[key];
-  };
-  return function _desc(a, b) {
-    return emptyAwareComparator(keyFn(a), keyFn(b), true);
-  };
-}
-
-function fixedOrder(key, order, options) {
-  var _ref = options != null ? options : {},
-      _ref$position = _ref.position,
-      position = _ref$position === void 0 ? "start" : _ref$position;
-
-  var positionFactor = position === "end" ? -1 : 1;
-  var indexMap = new Map();
-
-  for (var i = 0; i < order.length; ++i) {
-    indexMap.set(order[i], i);
-  }
-
-  var keyFn = typeof key === "function" ? key : function (d) {
-    return d[key];
-  };
-  return function _fixedOrder(a, b) {
-    var _a, _b;
-
-    var aIndex = (_a = indexMap.get(keyFn(a))) != null ? _a : -1;
-    var bIndex = (_b = indexMap.get(keyFn(b))) != null ? _b : -1;
-
-    if (aIndex >= 0 && bIndex >= 0) {
-      return aIndex - bIndex;
-    }
-
-    if (aIndex >= 0) {
-      return positionFactor * -1;
-    }
-
-    if (bIndex >= 0) {
-      return positionFactor * 1;
-    }
-
-    return 0;
-  };
-}
-
-function emptyAwareComparator(aInput, bInput, desc2) {
-  var a = desc2 ? bInput : aInput;
-  var b = desc2 ? aInput : bInput;
-
-  if (isEmpty(a) && isEmpty(b)) {
-    var rankA = a !== a ? 0 : a === null ? 1 : 2;
-    var rankB = b !== b ? 0 : b === null ? 1 : 2;
-    var order = rankA - rankB;
-    return desc2 ? -order : order;
-  }
-
-  if (isEmpty(a)) {
-    return desc2 ? -1 : 1;
-  }
-
-  if (isEmpty(b)) {
-    return desc2 ? 1 : -1;
-  }
-
-  return ascending(a, b);
-}
-
-function isEmpty(value) {
-  return value == null || value !== value;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/slice.js
-
-
-
-function slice(start, end) {
-  var _slice = function _slice(items) {
-    return items.slice(start, end);
-  };
-
-  return _slice;
-}
-
-var sliceHead = function sliceHead(n) {
-  return slice(0, n);
-};
-
-var sliceTail = function sliceTail(n) {
-  return slice(-n);
-};
-
-function sliceMin(n, orderBy) {
-  var _sliceMin = function _sliceMin(items) {
-    return arrange_arrange(orderBy)(items).slice(0, n);
-  };
-
-  return _sliceMin;
-}
-
-function sliceMax(n, orderBy) {
-  var _sliceMax = function _sliceMax(items) {
-    return typeof orderBy === "function" ? arrange_arrange(orderBy)(items).slice(-n).reverse() : arrange_arrange(arrange_desc(orderBy))(items).slice(0, n);
-  };
-
-  return _sliceMax;
-}
-
-function sliceSample(n, options) {
-  options = options != null ? options : {};
-  var _options = options,
-      replace = _options.replace;
-
-  var _sliceSample = function _sliceSample(items) {
-    if (!items.length) return items.slice();
-
-    if (replace) {
-      var sliced = [];
-
-      for (var i = 0; i < n; ++i) {
-        sliced.push(items[Math.floor(Math.random() * items.length)]);
-      }
-
-      return sliced;
-    }
-
-    return shuffle(items.slice()).slice(0, n);
-  };
-
-  return _sliceSample;
-}
-
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.flat-map.js
-var es_array_flat_map = __webpack_require__(86535);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.unscopables.flat-map.js
-var es_array_unscopables_flat_map = __webpack_require__(99244);
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/innerJoin.js
-
-
-function innerJoin_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function innerJoin_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { innerJoin_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { innerJoin_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
-
-function innerJoin_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = innerJoin_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function innerJoin_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return innerJoin_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return innerJoin_arrayLikeToArray(o, minLen); }
-
-function innerJoin_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function innerJoin_autodetectByMap(itemsA, itemsB) {
-  if (itemsA.length === 0 || itemsB.length === 0) return {};
-  var keysA = Object.keys(itemsA[0]);
-  var keysB = Object.keys(itemsB[0]);
-  var byMap = {};
-
-  for (var _i = 0, _keysA = keysA; _i < _keysA.length; _i++) {
-    var key = _keysA[_i];
-
-    if (keysB.includes(key)) {
-      byMap[key] = key;
-    }
-  }
-
-  return byMap;
-}
-
-function innerJoin_makeByMap(by) {
-  if (Array.isArray(by)) {
-    var byMap = {};
-
-    var _iterator = innerJoin_createForOfIteratorHelper(by),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var key = _step.value;
-        byMap[key] = key;
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-
-    return byMap;
-  } else if (typeof by === "object") {
-    return by;
-  }
-
-  return _defineProperty({}, by, by);
-}
-
-function innerJoin_isMatch(d, j, byMap) {
-  for (var jKey in byMap) {
-    var dKey = byMap[jKey];
-
-    if (d[dKey] !== j[jKey]) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-function innerJoin(itemsToJoin, options) {
-  var _innerJoin = function _innerJoin(items) {
-    var byMap = (options == null ? void 0 : options.by) == null ? innerJoin_autodetectByMap(items, itemsToJoin) : innerJoin_makeByMap(options.by);
-    var joined = items.flatMap(function (d) {
-      var matches = itemsToJoin.filter(function (j) {
-        return innerJoin_isMatch(d, j, byMap);
-      });
-      return matches.map(function (j) {
-        return innerJoin_objectSpread(innerJoin_objectSpread({}, d), j);
-      });
-    });
-    return joined;
-  };
-
-  return _innerJoin;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/leftJoin.js
-
-
-function leftJoin_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function leftJoin_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { leftJoin_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { leftJoin_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
-
-
-
-function leftJoin_leftJoin(itemsToJoin, options) {
-  var _leftJoin = function _leftJoin(items) {
-    if (!itemsToJoin.length) return items;
-    var byMap = (options == null ? void 0 : options.by) == null ? autodetectByMap(items, itemsToJoin) : makeByMap(options.by);
-    var joinObjectKeys = Object.keys(itemsToJoin[0]);
-    var joined = items.flatMap(function (d) {
-      var matches = itemsToJoin.filter(function (j) {
-        return isMatch(d, j, byMap);
-      });
-
-      if (matches.length) {
-        return matches.map(function (j) {
-          return leftJoin_objectSpread(leftJoin_objectSpread({}, d), j);
-        });
-      }
-
-      var undefinedFill = Object.fromEntries(joinObjectKeys.filter(function (key) {
-        return d[key] == null;
-      }).map(function (key) {
-        return [key, void 0];
-      }));
-      return leftJoin_objectSpread(leftJoin_objectSpread({}, d), undefinedFill);
-    });
-    return joined;
-  };
-
-  return _leftJoin;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/fullJoin.js
-
-
-function fullJoin_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = fullJoin_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function fullJoin_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return fullJoin_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return fullJoin_arrayLikeToArray(o, minLen); }
-
-function fullJoin_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function fullJoin_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function fullJoin_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { fullJoin_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { fullJoin_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
-
-
-
-function fullJoin(itemsToJoin, options) {
-  var _fullJoin = function _fullJoin(items) {
-    if (!itemsToJoin.length) return items;
-    if (!items.length) return itemsToJoin;
-    var byMap = (options == null ? void 0 : options.by) == null ? autodetectByMap(items, itemsToJoin) : makeByMap(options.by);
-    var matchMap = new Map();
-    var joinObjectKeys = Object.keys(itemsToJoin[0]);
-    var joined = items.flatMap(function (d) {
-      var matches = itemsToJoin.filter(function (j) {
-        var matched = isMatch(d, j, byMap);
-
-        if (matched) {
-          matchMap.set(j, true);
-        }
-
-        return matched;
-      });
-
-      if (matches.length) {
-        return matches.map(function (j) {
-          return fullJoin_objectSpread(fullJoin_objectSpread({}, d), j);
-        });
-      }
-
-      var undefinedFill = Object.fromEntries(joinObjectKeys.filter(function (key) {
-        return d[key] == null;
-      }).map(function (key) {
-        return [key, void 0];
-      }));
-      return fullJoin_objectSpread(fullJoin_objectSpread({}, d), undefinedFill);
-    });
-
-    if (matchMap.size < itemsToJoin.length) {
-      var leftEmptyObject = Object.fromEntries(Object.keys(items[0]).map(function (key) {
-        return [key, void 0];
-      }));
-
-      var _iterator = fullJoin_createForOfIteratorHelper(itemsToJoin),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var item = _step.value;
-
-          if (!matchMap.has(item)) {
-            joined.push(fullJoin_objectSpread(fullJoin_objectSpread({}, leftEmptyObject), item));
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    }
-
-    return joined;
-  };
-
-  return _fullJoin;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/mutate.js
-
-
-function mutate_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function mutate_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { mutate_ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { mutate_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function mutate_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = mutate_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function mutate_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return mutate_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return mutate_arrayLikeToArray(o, minLen); }
-
-function mutate_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function mutate(mutateSpec) {
-  var _mutate = function _mutate(items) {
-    var mutatedItems = [];
-
-    var _iterator = mutate_createForOfIteratorHelper(items),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var item = _step.value;
-
-        var mutatedItem = mutate_objectSpread({}, item);
-
-        for (var key in mutateSpec) {
-          var mutateSpecValue = mutateSpec[key];
-          var mutatedResult = typeof mutateSpecValue === "function" ? mutateSpecValue(mutatedItem) : mutateSpecValue;
-          mutatedItem[key] = mutatedResult;
-        }
-
-        mutatedItems.push(mutatedItem);
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-
-    return mutatedItems;
-  };
-
-  return _mutate;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/keysFromItems.js
-function keysFromItems(items) {
-  if (items.length < 1) return [];
-  var keys = Object.keys(items[0]);
-  return keys;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/selectors/everything.js
-
-
-function everything() {
-  return function (items) {
-    var keys = keysFromItems(items);
-    return keys;
-  };
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/select.js
-
-
-function select_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = select_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function select_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return select_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return select_arrayLikeToArray(o, minLen); }
-
-function select_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-
-function processSelectors(items, selectKeys) {
-  var processedSelectKeys = [];
-
-  var _iterator = select_createForOfIteratorHelper(singleOrArray_singleOrArray(selectKeys)),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var keyInput = _step.value;
-
-      if (typeof keyInput === "function") {
-        var _processedSelectKeys;
-
-        (_processedSelectKeys = processedSelectKeys).push.apply(_processedSelectKeys, (0,toConsumableArray/* default */.Z)(keyInput(items)));
-      } else {
-        processedSelectKeys.push(keyInput);
-      }
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-
-  if (processedSelectKeys.length && processedSelectKeys[0][0] === "-") {
-    processedSelectKeys = [].concat((0,toConsumableArray/* default */.Z)(everything()(items)), (0,toConsumableArray/* default */.Z)(processedSelectKeys));
-  }
-
-  var negationMap = {};
-  var keysWithoutNegations = [];
-
-  for (var k = processedSelectKeys.length - 1; k >= 0; k--) {
-    var key = processedSelectKeys[k];
-
-    if (key[0] === "-") {
-      negationMap[key.substring(1)] = true;
-      continue;
-    }
-
-    if (negationMap[key]) {
-      negationMap[key] = false;
-      continue;
-    }
-
-    keysWithoutNegations.unshift(key);
-  }
-
-  processedSelectKeys = Array.from(new Set(keysWithoutNegations));
-  return processedSelectKeys;
-}
-
-function select_select(selectKeys) {
-  var _select = function _select(items) {
-    var processedSelectKeys = processSelectors(items, selectKeys);
-    if (!processedSelectKeys.length) return items;
-    return items.map(function (d) {
-      var mapped = {};
-
-      var _iterator2 = select_createForOfIteratorHelper(processedSelectKeys),
-          _step2;
-
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var key = _step2.value;
-          mapped[key] = d[key];
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
-
-      return mapped;
-    });
-  };
-
-  return _select;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/pivotWider.js
-
-
-function pivotWider_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function pivotWider_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { pivotWider_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { pivotWider_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function pivotWider_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = pivotWider_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function pivotWider_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return pivotWider_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return pivotWider_arrayLikeToArray(o, minLen); }
-
-function pivotWider_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-
-function pivotWider(options) {
-  var _pivotWider = function _pivotWider(items) {
-    var namesFrom = options.namesFrom,
-        valuesFrom = options.valuesFrom,
-        valuesFill = options.valuesFill,
-        valuesFillMap = options.valuesFillMap,
-        _options$namesSep = options.namesSep,
-        namesSep = _options$namesSep === void 0 ? "_" : _options$namesSep;
-    var namesFromKeys = Array.isArray(namesFrom) ? namesFrom : [namesFrom];
-    var valuesFromKeys = Array.isArray(valuesFrom) ? valuesFrom : [valuesFrom];
-    var wider = [];
-    if (!items.length) return wider;
-    var idColumns = Object.keys(items[0]).filter(function (key) {
-      return !namesFromKeys.includes(key) && !valuesFromKeys.includes(key);
-    });
-    var nameValuesMap = {};
-
-    var _iterator = pivotWider_createForOfIteratorHelper(items),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var item = _step.value;
-
-        var _iterator6 = pivotWider_createForOfIteratorHelper(namesFromKeys),
-            _step6;
-
-        try {
-          for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-            var _nameKey = _step6.value;
-
-            if (nameValuesMap[_nameKey] == null) {
-              nameValuesMap[_nameKey] = {};
-            }
-
-            nameValuesMap[_nameKey][item[_nameKey]] = true;
-          }
-        } catch (err) {
-          _iterator6.e(err);
-        } finally {
-          _iterator6.f();
-        }
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-
-    var nameValuesLists = [];
-
-    for (var nameKey in nameValuesMap) {
-      nameValuesLists.push(Object.keys(nameValuesMap[nameKey]));
-    }
-
-    var baseWideObj = {};
-    var combos = makeCombinations(namesSep, nameValuesLists);
-
-    var _iterator2 = pivotWider_createForOfIteratorHelper(combos),
-        _step2;
-
-    try {
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        var _nameKey2 = _step2.value;
-
-        if (valuesFromKeys.length === 1) {
-          baseWideObj[_nameKey2] = valuesFillMap != null ? valuesFillMap[valuesFromKeys[0]] : valuesFill;
-          continue;
-        }
-
-        var _iterator7 = pivotWider_createForOfIteratorHelper(valuesFromKeys),
-            _step7;
-
-        try {
-          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-            var valueKey = _step7.value;
-            baseWideObj["".concat(valueKey).concat(namesSep).concat(_nameKey2)] = valuesFillMap != null ? valuesFillMap[valueKey] : valuesFill;
-          }
-        } catch (err) {
-          _iterator7.e(err);
-        } finally {
-          _iterator7.f();
-        }
-      }
-    } catch (err) {
-      _iterator2.e(err);
-    } finally {
-      _iterator2.f();
-    }
-
-    function widenItems(items2) {
-      if (!items2.length) return [];
-
-      var wide = pivotWider_objectSpread({}, baseWideObj);
-
-      var _iterator3 = pivotWider_createForOfIteratorHelper(idColumns),
-          _step3;
-
-      try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var idKey = _step3.value;
-          wide[idKey] = items2[0][idKey];
-        }
-      } catch (err) {
-        _iterator3.e(err);
-      } finally {
-        _iterator3.f();
-      }
-
-      var _iterator4 = pivotWider_createForOfIteratorHelper(items2),
-          _step4;
-
-      try {
-        var _loop = function _loop() {
-          var item = _step4.value;
-          var nameKey = namesFromKeys.map(function (key) {
-            return item[key];
-          }).join(namesSep);
-
-          if (valuesFromKeys.length === 1) {
-            wide[nameKey] = item[valuesFromKeys[0]];
-            return "continue";
-          }
-
-          var _iterator5 = pivotWider_createForOfIteratorHelper(valuesFromKeys),
-              _step5;
-
-          try {
-            for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-              var valueKey = _step5.value;
-              wide["".concat(valueKey).concat(namesSep).concat(nameKey)] = item[valueKey];
-            }
-          } catch (err) {
-            _iterator5.e(err);
-          } finally {
-            _iterator5.f();
-          }
-        };
-
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var _ret = _loop();
-
-          if (_ret === "continue") continue;
-        }
-      } catch (err) {
-        _iterator4.e(err);
-      } finally {
-        _iterator4.f();
-      }
-
-      return [wide];
-    }
-
-    if (!idColumns.length) {
-      return widenItems(items);
-    }
-
-    var finish = tidy(items, groupBy(idColumns, [widenItems]));
-    return finish;
-  };
-
-  return _pivotWider;
-}
-
-function makeCombinations() {
-  var separator = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "_";
-  var arrays = arguments.length > 1 ? arguments[1] : undefined;
-
-  function combine(accum, prefix, remainingArrays) {
-    if (!remainingArrays.length && prefix != null) {
-      accum.push(prefix);
-      return;
-    }
-
-    var array = remainingArrays[0];
-    var newRemainingArrays = remainingArrays.slice(1);
-
-    var _iterator8 = pivotWider_createForOfIteratorHelper(array),
-        _step8;
-
-    try {
-      for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-        var item = _step8.value;
-        combine(accum, prefix == null ? item : "".concat(prefix).concat(separator).concat(item), newRemainingArrays);
-      }
-    } catch (err) {
-      _iterator8.e(err);
-    } finally {
-      _iterator8.f();
-    }
-  }
-
-  var result = [];
-  combine(result, null, arrays);
-  return result;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/complete.js
-
-
-
-
-function complete(expandKeys, replaceNullySpec) {
-  var _complete = function _complete(items) {
-    var expanded = expand(expandKeys)(items);
-    var joined = leftJoin(items)(expanded);
-    return replaceNullySpec ? replaceNully(replaceNullySpec)(joined) : joined;
-  };
-
-  return _complete;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/min.js
-function min_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = min_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function min_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return min_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return min_arrayLikeToArray(o, minLen); }
-
-function min_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function min(values, valueof) {
-  var min;
-
-  if (valueof === undefined) {
-    var _iterator = min_createForOfIteratorHelper(values),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var value = _step.value;
-
-        if (value != null && (min > value || min === undefined && value >= value)) {
-          min = value;
-        }
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-  } else {
-    var index = -1;
-
-    var _iterator2 = min_createForOfIteratorHelper(values),
-        _step2;
-
-    try {
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        var _value = _step2.value;
-
-        if ((_value = valueof(_value, ++index, values)) != null && (min > _value || min === undefined && _value >= _value)) {
-          min = _value;
-        }
-      }
-    } catch (err) {
-      _iterator2.e(err);
-    } finally {
-      _iterator2.f();
-    }
-  }
-
-  return min;
-}
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/summary/min.js
-
-
-function min_min(key) {
-  var keyFn = typeof key === "function" ? key : function (d) {
-    return d[key];
-  };
-  return function (items) {
-    return min(items, keyFn);
-  };
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/max.js
-function max_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = max_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function max_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return max_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return max_arrayLikeToArray(o, minLen); }
-
-function max_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function max(values, valueof) {
-  var max;
-
-  if (valueof === undefined) {
-    var _iterator = max_createForOfIteratorHelper(values),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var value = _step.value;
-
-        if (value != null && (max < value || max === undefined && value >= value)) {
-          max = value;
-        }
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-  } else {
-    var index = -1;
-
-    var _iterator2 = max_createForOfIteratorHelper(values),
-        _step2;
-
-    try {
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        var _value = _step2.value;
-
-        if ((_value = valueof(_value, ++index, values)) != null && (max < _value || max === undefined && _value >= _value)) {
-          max = _value;
-        }
-      }
-    } catch (err) {
-      _iterator2.e(err);
-    } finally {
-      _iterator2.f();
-    }
-  }
-
-  return max;
-}
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/summary/max.js
-
-
-function max_max(key) {
-  var keyFn = typeof key === "function" ? key : function (d) {
-    return d[key];
-  };
-  return function (items) {
-    return max(items, keyFn);
-  };
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/index.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***/ }),
-
 /***/ 61452:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12146,13 +10133,11 @@ function WorkspaceProvider(props) {
 /* harmony import */ var _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(44393);
 /* harmony import */ var _fields_LinePlotField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(70659);
 /* harmony import */ var _fields_BarField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9950);
-/* harmony import */ var _fields_PieField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(37505);
-/* harmony import */ var _fields_HistogramField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(63511);
-/* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(54741);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(74602);
-/* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(16229);
-/* harmony import */ var _fields_BoxPlotField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(77668);
-
+/* harmony import */ var _fields_HistogramField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(63511);
+/* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(54741);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(74602);
+/* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(16229);
+/* harmony import */ var _fields_BoxPlotField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(77668);
 
 
 
@@ -12165,12 +10150,11 @@ function WorkspaceProvider(props) {
 
 var SCATTERPLOT_BLOCK = "chart_scatterplot";
 var LINEPLOT_BLOCK = "chart_lineplot";
-var PIEPLOT_BLOCK = "chart_pieplot";
 var BARCHART_BLOCK = "chart_bar";
 var HISTOGRAM_BLOCK = "chart_histogram";
 var BOX_PLOT_BLOCK = "chart_box_plot";
 var CHART_SHOW_TABLE_BLOCK = "chart_show_table";
-var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_10__/* .paletteColorByIndex */ .W)(3);
+var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_9__/* .paletteColorByIndex */ .W)(3);
 var chartDsl = {
   id: "chart",
   createBlocks: function createBlocks() {
@@ -12181,7 +10165,7 @@ var chartDsl = {
       args0: [{
         type: "input_dummy"
       }, {
-        type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_6__/* .default.KEY */ .Z.KEY,
         name: "table"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -12203,7 +10187,7 @@ var chartDsl = {
         name: "y",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
         name: "preview"
       }, {
         type: "input_dummy"
@@ -12223,14 +10207,13 @@ var chartDsl = {
       message0: "bar index %1 value %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
-        name: "index",
-        dataType: "number"
+        name: "index"
       }, {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "value",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
         name: "preview"
       }, {
         type: "input_dummy"
@@ -12257,39 +10240,12 @@ var chartDsl = {
         name: "y",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
         name: "preview"
       }, {
         type: "input_dummy"
       }, {
         type: _fields_LinePlotField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
-        name: "plot"
-      }],
-      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
-      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
-      colour: colour,
-      template: "meta",
-      inputsInline: false,
-      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
-    }, {
-      kind: "block",
-      type: PIEPLOT_BLOCK,
-      message0: "pie name %1 value %2 %3 %4 %5",
-      args0: [{
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
-        name: "id",
-        dataType: "string"
-      }, {
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
-        name: "value",
-        dataType: "number"
-      }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
-        name: "preview"
-      }, {
-        type: "input_dummy"
-      }, {
-        type: _fields_PieField__WEBPACK_IMPORTED_MODULE_5__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -12309,7 +10265,7 @@ var chartDsl = {
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_HistogramField__WEBPACK_IMPORTED_MODULE_6__/* .default.KEY */ .Z.KEY,
+        type: _fields_HistogramField__WEBPACK_IMPORTED_MODULE_5__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -12332,7 +10288,7 @@ var chartDsl = {
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_BoxPlotField__WEBPACK_IMPORTED_MODULE_9__/* .default.KEY */ .Z.KEY,
+        type: _fields_BoxPlotField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -12362,9 +10318,6 @@ var chartDsl = {
       }, {
         kind: "block",
         type: LINEPLOT_BLOCK
-      }, {
-        kind: "block",
-        type: PIEPLOT_BLOCK
       }, {
         kind: "block",
         type: CHART_SHOW_TABLE_BLOCK
@@ -13616,19 +11569,15 @@ function workerProxy(workerid) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ BarChartField; }
+/* harmony export */   "Z": function() { return /* binding */ BarField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockChartProps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53333);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(53851);
-/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(77298);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(69672);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(42862);
-/* harmony import */ var _nivo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8844);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(16582);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
 
 
 
@@ -13637,105 +11586,61 @@ function workerProxy(workerid) {
 
 
 
-
-
-
-var Bar = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(9774), __webpack_require__.e(317), __webpack_require__.e(7032)]).then(__webpack_require__.bind(__webpack_require__, 37032));
-});
-
-function BarChartWidget() {
-  var _series$, _series$2, _series$3, _series$3$data;
-
+function BarWidget() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
       sourceBlock = _useContext.sourceBlock;
 
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data; // need to map data to nivo
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
 
-
-  var index = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index");
-  var value = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value");
-
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .t)(data, [index, value], ["index", "value"], {
-    sliceHead: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .BAR_MAX_ITEMS */ .kC
-  }),
-      series = _tidyToNivo.series,
-      labels = _tidyToNivo.labels; // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-
-  var _useBlockChartProps = (0,_useBlockChartProps__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock, {
-    colors: {
-      scheme: "category10"
+  var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
+  var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"), "number");
+  if (!index || !value) return null;
+  var spec = {
+    description: "Bar plot of " + index + " x " + value,
+    mark: "bar",
+    encoding: {
+      x: {
+        field: index,
+        type: "nominal"
+      },
+      y: {
+        field: value,
+        type: "quantitative"
+      }
     },
-    data: series === null || series === void 0 ? void 0 : (_series$ = series[0]) === null || _series$ === void 0 ? void 0 : _series$.data,
-    margin: {
-      top: 8,
-      right: 8,
-      bottom: 38,
-      left: 64
-    },
-    indexBy: "index",
-    axisTop: null,
-    axisRight: null,
-    axisBottom: {
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: index,
-      legendPosition: "middle",
-      legendOffset: 34
-    },
-    axisLeft: {
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: value,
-      legendPosition: "middle",
-      legendOffset: -32
+    data: {
+      name: "values"
     }
-  }),
-      chartProps = _useBlockChartProps.chartProps;
-
-  if (chartProps) chartProps.data = series === null || series === void 0 ? void 0 : (_series$2 = series[0]) === null || _series$2 === void 0 ? void 0 : _series$2.data;
-  var hasData = !!(series !== null && series !== void 0 && (_series$3 = series[0]) !== null && _series$3 !== void 0 && (_series$3$data = _series$3.data) !== null && _series$3$data !== void 0 && _series$3$data.length);
-  if (!hasData) return null;
-  chartProps.axisBottom.legend = labels[0];
-  chartProps.axisLeft.legend = labels[1];
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    style: {
-      background: "#fff",
-      borderRadius: "0.25rem"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_5__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Bar, Object.assign({
-    width: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .CHART_WIDTH */ .xx,
-    height: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .CHART_HEIGHT */ .Fh
-  }, chartProps))))));
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec
+  });
 }
 
-var BarChartField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z)(BarChartField, _ReactInlineField);
+var BarField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(BarField, _ReactInlineField);
 
-  BarChartField.fromJson = function fromJson(options) {
-    return new BarChartField(options);
+  BarField.fromJson = function fromJson(options) {
+    return new BarField(options);
   } // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ;
 
-  function BarChartField(options) {
+  function BarField(options) {
     return _ReactInlineField.call(this, options) || this;
   }
 
-  var _proto = BarChartField.prototype;
+  var _proto = BarField.prototype;
 
   _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BarChartWidget, null);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BarWidget, null);
   };
 
-  return BarChartField;
+  return BarField;
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
-BarChartField.KEY = "jacdac_field_bar_chart";
-BarChartField.EDITABLE = false;
+BarField.KEY = "jacdac_field_bar_plot";
+BarField.EDITABLE = false;
 
 
 /***/ }),
@@ -13779,11 +11684,6 @@ function BoxPlotWidget() {
       x: {
         field: index,
         type: "nominal"
-      },
-      color: {
-        field: index,
-        type: "nominal",
-        legend: null
       },
       y: {
         field: value,
@@ -14889,23 +12789,212 @@ FileSaveField.KEY = "jacdac_field_file_save";
 
 /***/ }),
 
-/***/ 61162:
+/***/ 95548:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ GaugeWidgetField; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(41788);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(69672);
-/* harmony import */ var _nivo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8844);
-/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(52905);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(80838);
-/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(81794);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ GaugeWidgetField; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
+var inheritsLoose = __webpack_require__(41788);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./src/components/blockly/WorkspaceContext.tsx
+var WorkspaceContext = __webpack_require__(89801);
+// EXTERNAL MODULE: ./src/components/blockly/fields/ReactInlineField.tsx
+var ReactInlineField = __webpack_require__(12702);
+// EXTERNAL MODULE: ./src/components/blockly/useBlockData.ts + 3 modules
+var useBlockData = __webpack_require__(53851);
+// EXTERNAL MODULE: ./src/components/ui/Suspense.tsx
+var Suspense = __webpack_require__(69672);
+// EXTERNAL MODULE: ./src/components/blockly/fields/tidy.ts
+var fields_tidy = __webpack_require__(47554);
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/tidy.js
+function tidy_tidy(items) {
+  if (typeof items === "function") {
+    throw new Error("You must supply the data as the first argument to tidy()");
+  }
+
+  var result = items;
+
+  for (var _len = arguments.length, fns = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    fns[_key - 1] = arguments[_key];
+  }
+
+  for (var _i = 0, _fns = fns; _i < _fns.length; _i++) {
+    var fn = _fns[_i];
+
+    if (fn) {
+      result = fn(result);
+    }
+  }
+
+  return result;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/summarize.js
+
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+function summarize(summarizeSpec, options) {
+  var _summarize = function _summarize(items) {
+    options = options != null ? options : {};
+    var summarized = {};
+    var keys = Object.keys(summarizeSpec);
+
+    for (var _i = 0, _keys = keys; _i < _keys.length; _i++) {
+      var key = _keys[_i];
+      summarized[key] = summarizeSpec[key](items);
+    }
+
+    if (options.rest && items.length) {
+      var objectKeys = Object.keys(items[0]);
+
+      for (var _i2 = 0, _objectKeys = objectKeys; _i2 < _objectKeys.length; _i2++) {
+        var objKey = _objectKeys[_i2];
+
+        if (keys.includes(objKey)) {
+          continue;
+        }
+
+        summarized[objKey] = options.rest(objKey)(items);
+      }
+    }
+
+    return [summarized];
+  };
+
+  return _summarize;
+}
+
+function _summarizeHelper(items, summaryFn, predicateFn, keys) {
+  if (!items.length) return [];
+  var summarized = {};
+  var keysArr;
+
+  if (keys == null) {
+    keysArr = Object.keys(items[0]);
+  } else {
+    keysArr = [];
+
+    var _iterator = _createForOfIteratorHelper(singleOrArray(keys)),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var keyInput = _step.value;
+
+        if (typeof keyInput === "function") {
+          var _keysArr;
+
+          (_keysArr = keysArr).push.apply(_keysArr, _toConsumableArray(keyInput(items)));
+        } else {
+          keysArr.push(keyInput);
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
+
+  var _iterator2 = _createForOfIteratorHelper(keysArr),
+      _step2;
+
+  try {
+    var _loop = function _loop() {
+      var key = _step2.value;
+
+      if (predicateFn) {
+        var vector = items.map(function (d) {
+          return d[key];
+        });
+
+        if (!predicateFn(vector)) {
+          return "continue";
+        }
+      }
+
+      summarized[key] = summaryFn(key)(items);
+    };
+
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var _ret = _loop();
+
+      if (_ret === "continue") continue;
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+
+  return [summarized];
+}
+
+function summarizeAll(summaryFn) {
+  var _summarizeAll = function _summarizeAll(items) {
+    return _summarizeHelper(items, summaryFn);
+  };
+
+  return _summarizeAll;
+}
+
+function summarizeIf(predicateFn, summaryFn) {
+  var _summarizeIf = function _summarizeIf(items) {
+    return _summarizeHelper(items, summaryFn, predicateFn);
+  };
+
+  return _summarizeIf;
+}
+
+function summarizeAt(keys, summaryFn) {
+  var _summarizeAt = function _summarizeAt(items) {
+    return _summarizeHelper(items, summaryFn, void 0, keys);
+  };
+
+  return _summarizeAt;
+}
+
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 1 modules
+var slicedToArray = __webpack_require__(28481);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
+var toConsumableArray = __webpack_require__(85061);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__(96156);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.flat.js
+var es_array_flat = __webpack_require__(84944);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
+var classCallCheck = __webpack_require__(6610);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
+var createClass = __webpack_require__(5991);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+var assertThisInitialized = __webpack_require__(63349);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/get.js + 1 modules
+var esm_get = __webpack_require__(66213);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js
+var inherits = __webpack_require__(10379);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
+var possibleConstructorReturn = __webpack_require__(46070);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
+var getPrototypeOf = __webpack_require__(77608);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js + 1 modules
+var wrapNativeSuper = __webpack_require__(57869);
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/internmap/src/index.js
 
 
 
@@ -14916,21 +13005,1447 @@ FileSaveField.KEY = "jacdac_field_file_save";
 
 
 
-var GaugeWidget = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+function src_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = src_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function src_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return src_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return src_arrayLikeToArray(o, minLen); }
+
+function src_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0,getPrototypeOf/* default */.Z)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0,getPrototypeOf/* default */.Z)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,possibleConstructorReturn/* default */.Z)(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+var InternMap = /*#__PURE__*/function (_Map) {
+  (0,inherits/* default */.Z)(InternMap, _Map);
+
+  var _super = _createSuper(InternMap);
+
+  function InternMap(entries) {
+    var _this;
+
+    var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : keyof;
+
+    (0,classCallCheck/* default */.Z)(this, InternMap);
+
+    _this = _super.call(this);
+    Object.defineProperties((0,assertThisInitialized/* default */.Z)(_this), {
+      _intern: {
+        value: new Map()
+      },
+      _key: {
+        value: key
+      }
+    });
+
+    if (entries != null) {
+      var _iterator = src_createForOfIteratorHelper(entries),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var _step$value = (0,slicedToArray/* default */.Z)(_step.value, 2),
+              _key2 = _step$value[0],
+              value = _step$value[1];
+
+          _this.set(_key2, value);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+
+    return _this;
+  }
+
+  (0,createClass/* default */.Z)(InternMap, [{
+    key: "get",
+    value: function get(key) {
+      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternMap.prototype), "get", this).call(this, intern_get(this, key));
+    }
+  }, {
+    key: "has",
+    value: function has(key) {
+      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternMap.prototype), "has", this).call(this, intern_get(this, key));
+    }
+  }, {
+    key: "set",
+    value: function set(key, value) {
+      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternMap.prototype), "set", this).call(this, intern_set(this, key), value);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(key) {
+      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternMap.prototype), "delete", this).call(this, intern_delete(this, key));
+    }
+  }]);
+
+  return InternMap;
+}( /*#__PURE__*/(0,wrapNativeSuper/* default */.Z)(Map));
+var InternSet = /*#__PURE__*/function (_Set) {
+  (0,inherits/* default */.Z)(InternSet, _Set);
+
+  var _super2 = _createSuper(InternSet);
+
+  function InternSet(values) {
+    var _this2;
+
+    var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : keyof;
+
+    (0,classCallCheck/* default */.Z)(this, InternSet);
+
+    _this2 = _super2.call(this);
+    Object.defineProperties((0,assertThisInitialized/* default */.Z)(_this2), {
+      _intern: {
+        value: new Map()
+      },
+      _key: {
+        value: key
+      }
+    });
+
+    if (values != null) {
+      var _iterator2 = src_createForOfIteratorHelper(values),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var value = _step2.value;
+
+          _this2.add(value);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+    }
+
+    return _this2;
+  }
+
+  (0,createClass/* default */.Z)(InternSet, [{
+    key: "has",
+    value: function has(value) {
+      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternSet.prototype), "has", this).call(this, intern_get(this, value));
+    }
+  }, {
+    key: "add",
+    value: function add(value) {
+      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternSet.prototype), "add", this).call(this, intern_set(this, value));
+    }
+  }, {
+    key: "delete",
+    value: function _delete(value) {
+      return (0,esm_get/* default */.Z)((0,getPrototypeOf/* default */.Z)(InternSet.prototype), "delete", this).call(this, intern_delete(this, value));
+    }
+  }]);
+
+  return InternSet;
+}( /*#__PURE__*/(0,wrapNativeSuper/* default */.Z)(Set));
+
+function intern_get(_ref, value) {
+  var _intern = _ref._intern,
+      _key = _ref._key;
+
+  var key = _key(value);
+
+  return _intern.has(key) ? _intern.get(key) : value;
+}
+
+function intern_set(_ref2, value) {
+  var _intern = _ref2._intern,
+      _key = _ref2._key;
+
+  var key = _key(value);
+
+  if (_intern.has(key)) return _intern.get(key);
+
+  _intern.set(key, value);
+
+  return value;
+}
+
+function intern_delete(_ref3, value) {
+  var _intern = _ref3._intern,
+      _key = _ref3._key;
+
+  var key = _key(value);
+
+  if (_intern.has(key)) {
+    value = _intern.get(value);
+
+    _intern.delete(key);
+  }
+
+  return value;
+}
+
+function keyof(value) {
+  return value !== null && typeof value === "object" ? value.valueOf() : value;
+}
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/identity.js
+/* harmony default export */ function src_identity(x) {
+  return x;
+}
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/group.js
+
+
+function group_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = group_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function group_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return group_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return group_arrayLikeToArray(o, minLen); }
+
+function group_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+function group(values) {
+  for (var _len = arguments.length, keys = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    keys[_key - 1] = arguments[_key];
+  }
+
+  return nest(values, src_identity, src_identity, keys);
+}
+function groups(values) {
+  for (var _len2 = arguments.length, keys = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    keys[_key2 - 1] = arguments[_key2];
+  }
+
+  return nest(values, Array.from, identity, keys);
+}
+function rollup(values, reduce) {
+  for (var _len3 = arguments.length, keys = new Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
+    keys[_key3 - 2] = arguments[_key3];
+  }
+
+  return nest(values, identity, reduce, keys);
+}
+function rollups(values, reduce) {
+  for (var _len4 = arguments.length, keys = new Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+    keys[_key4 - 2] = arguments[_key4];
+  }
+
+  return nest(values, Array.from, reduce, keys);
+}
+function index(values) {
+  for (var _len5 = arguments.length, keys = new Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
+    keys[_key5 - 1] = arguments[_key5];
+  }
+
+  return nest(values, identity, unique, keys);
+}
+function indexes(values) {
+  for (var _len6 = arguments.length, keys = new Array(_len6 > 1 ? _len6 - 1 : 0), _key6 = 1; _key6 < _len6; _key6++) {
+    keys[_key6 - 1] = arguments[_key6];
+  }
+
+  return nest(values, Array.from, unique, keys);
+}
+
+function unique(values) {
+  if (values.length !== 1) throw new Error("duplicate key");
+  return values[0];
+}
+
+function nest(values, map, reduce, keys) {
+  return function regroup(values, i) {
+    if (i >= keys.length) return reduce(values);
+    var groups = new InternMap();
+    var keyof = keys[i++];
+    var index = -1;
+
+    var _iterator = group_createForOfIteratorHelper(values),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var value = _step.value;
+        var key = keyof(value, ++index, values);
+
+        var _group = groups.get(key);
+
+        if (_group) _group.push(value);else groups.set(key, [value]);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    var _iterator2 = group_createForOfIteratorHelper(groups),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var _step2$value = (0,slicedToArray/* default */.Z)(_step2.value, 2),
+            _key7 = _step2$value[0],
+            _values = _step2$value[1];
+
+        groups.set(_key7, regroup(_values, i));
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+
+    return map(groups);
+  }(values, 0);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.from-entries.js
+var es_object_from_entries = __webpack_require__(38559);
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/assignGroupKeys.js
+
+
+function assignGroupKeys(d, keys) {
+  if (d == null || typeof d !== "object" || Array.isArray(d)) return d;
+  var keysObj = Object.fromEntries(keys.filter(function (key) {
+    return typeof key[0] !== "function";
+  }));
+  return Object.assign(keysObj, d);
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/groupTraversal.js
+
+
+
+function groupTraversal_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = groupTraversal_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function groupTraversal_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return groupTraversal_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return groupTraversal_arrayLikeToArray(o, minLen); }
+
+function groupTraversal_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function groupTraversal(grouped, outputGrouped, keys, addSubgroup, addLeaves) {
+  var level = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
+
+  var _iterator = groupTraversal_createForOfIteratorHelper(grouped.entries()),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _step$value = (0,slicedToArray/* default */.Z)(_step.value, 2),
+          key = _step$value[0],
+          value = _step$value[1];
+
+      var keysHere = [].concat((0,toConsumableArray/* default */.Z)(keys), [key]);
+
+      if (value instanceof Map) {
+        var subgroup = addSubgroup(outputGrouped, keysHere, level);
+        groupTraversal(value, subgroup, keysHere, addSubgroup, addLeaves, level + 1);
+      } else {
+        addLeaves(outputGrouped, keysHere, value, level);
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  return outputGrouped;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/groupMap.js
+
+
+function groupMap(grouped, groupFn) {
+  var keyFn = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (keys) {
+    return keys[keys.length - 1];
+  };
+
+  function addSubgroup(parentGrouped, keys) {
+    var subgroup = new Map();
+    parentGrouped.set(keyFn(keys), subgroup);
+    return subgroup;
+  }
+
+  function addLeaves(parentGrouped, keys, values) {
+    parentGrouped.set(keyFn(keys), groupFn(values, keys));
+  }
+
+  var outputGrouped = new Map();
+  groupTraversal(grouped, outputGrouped, [], addSubgroup, addLeaves);
+  return outputGrouped;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/identity.js
+var identity_identity = function identity(d) {
+  return d;
+};
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/helpers/singleOrArray.js
+function singleOrArray_singleOrArray(d) {
+  return d == null ? [] : Array.isArray(d) ? d : [d];
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/groupBy.js
+
+
+
+
+
+function groupBy_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = groupBy_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function groupBy_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return groupBy_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return groupBy_arrayLikeToArray(o, minLen); }
+
+function groupBy_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+
+
+
+
+function groupBy_groupBy(groupKeys, fns, options) {
+  if (typeof fns === "function") {
+    fns = [fns];
+  } else if (arguments.length === 2 && fns != null && !Array.isArray(fns)) {
+    options = fns;
+  }
+
+  var _groupBy = function _groupBy(items) {
+    var grouped = makeGrouped(items, groupKeys);
+    var results = runFlow(grouped, fns, options == null ? void 0 : options.addGroupKeys);
+
+    if (options == null ? void 0 : options.export) {
+      switch (options.export) {
+        case "grouped":
+          return results;
+
+        case "levels":
+          return exportLevels(results, options);
+
+        case "entries-obj":
+        case "entriesObject":
+          return exportLevels(results, _objectSpread(_objectSpread({}, options), {}, {
+            export: "levels",
+            levels: ["entries-object"]
+          }));
+
+        default:
+          return exportLevels(results, _objectSpread(_objectSpread({}, options), {}, {
+            export: "levels",
+            levels: [options.export]
+          }));
+      }
+    }
+
+    var ungrouped = ungroup(results, options == null ? void 0 : options.addGroupKeys);
+    return ungrouped;
+  };
+
+  return _groupBy;
+}
+
+groupBy_groupBy.grouped = function (options) {
+  return _objectSpread(_objectSpread({}, options), {}, {
+    export: "grouped"
+  });
+};
+
+groupBy_groupBy.entries = function (options) {
+  return _objectSpread(_objectSpread({}, options), {}, {
+    export: "entries"
+  });
+};
+
+groupBy_groupBy.entriesObject = function (options) {
+  return _objectSpread(_objectSpread({}, options), {}, {
+    export: "entries-object"
+  });
+};
+
+groupBy_groupBy.object = function (options) {
+  return _objectSpread(_objectSpread({}, options), {}, {
+    export: "object"
+  });
+};
+
+groupBy_groupBy.map = function (options) {
+  return _objectSpread(_objectSpread({}, options), {}, {
+    export: "map"
+  });
+};
+
+groupBy_groupBy.keys = function (options) {
+  return _objectSpread(_objectSpread({}, options), {}, {
+    export: "keys"
+  });
+};
+
+groupBy_groupBy.values = function (options) {
+  return _objectSpread(_objectSpread({}, options), {}, {
+    export: "values"
+  });
+};
+
+groupBy_groupBy.levels = function (options) {
+  return _objectSpread(_objectSpread({}, options), {}, {
+    export: "levels"
+  });
+};
+
+function runFlow(items, fns, addGroupKeys) {
+  var result = items;
+  if (!(fns == null ? void 0 : fns.length)) return result;
+
+  var _iterator = groupBy_createForOfIteratorHelper(fns),
+      _step;
+
+  try {
+    var _loop = function _loop() {
+      var fn = _step.value;
+      if (!fn) return "continue";
+      result = groupMap(result, function (items2, keys) {
+        var context = {
+          groupKeys: keys
+        };
+        var leafItemsMapped = fn(items2, context);
+
+        if (addGroupKeys !== false) {
+          leafItemsMapped = leafItemsMapped.map(function (item) {
+            return assignGroupKeys(item, keys);
+          });
+        }
+
+        return leafItemsMapped;
+      });
+    };
+
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _ret = _loop();
+
+      if (_ret === "continue") continue;
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  return result;
+}
+
+function makeGrouped(items, groupKeys) {
+  var groupKeyFns = singleOrArray_singleOrArray(groupKeys).map(function (key, i) {
+    var keyFn = typeof key === "function" ? key : function (d) {
+      return d[key];
+    };
+    var keyCache = new Map();
+    return function (d) {
+      var keyValue = keyFn(d);
+
+      if (keyCache.has(keyValue)) {
+        return keyCache.get(keyValue);
+      }
+
+      var keyWithName = [key, keyValue];
+      keyCache.set(keyValue, keyWithName);
+      return keyWithName;
+    };
+  });
+  var grouped = group.apply(void 0, [items].concat((0,toConsumableArray/* default */.Z)(groupKeyFns)));
+  return grouped;
+}
+
+function ungroup(grouped, addGroupKeys) {
+  var items = [];
+  groupTraversal(grouped, items, [], identity_identity, function (root, keys, values) {
+    var valuesToAdd = values;
+
+    if (addGroupKeys !== false) {
+      valuesToAdd = values.map(function (d) {
+        return assignGroupKeys(d, keys);
+      });
+    }
+
+    root.push.apply(root, (0,toConsumableArray/* default */.Z)(valuesToAdd));
+  });
+  return items;
+}
+
+var defaultCompositeKey = function defaultCompositeKey(keys) {
+  return keys.join("/");
+};
+
+function processFromGroupsOptions(options) {
+  var _a;
+
+  var flat = options.flat,
+      single = options.single,
+      _options$mapLeaf = options.mapLeaf,
+      mapLeaf = _options$mapLeaf === void 0 ? identity_identity : _options$mapLeaf,
+      _options$mapLeaves = options.mapLeaves,
+      mapLeaves = _options$mapLeaves === void 0 ? identity_identity : _options$mapLeaves,
+      addGroupKeys = options.addGroupKeys;
+  var compositeKey;
+
+  if (options.flat) {
+    compositeKey = (_a = options.compositeKey) != null ? _a : defaultCompositeKey;
+  }
+
+  var groupFn = function groupFn(values, keys) {
+    return single ? mapLeaf(addGroupKeys === false ? values[0] : assignGroupKeys(values[0], keys)) : mapLeaves(values.map(function (d) {
+      return mapLeaf(addGroupKeys === false ? d : assignGroupKeys(d, keys));
+    }));
+  };
+
+  var keyFn = flat ? function (keys) {
+    return compositeKey(keys.map(function (d) {
+      return d[1];
+    }));
+  } : function (keys) {
+    return keys[keys.length - 1][1];
+  };
+  return {
+    groupFn: groupFn,
+    keyFn: keyFn
+  };
+}
+
+function exportLevels(grouped, options) {
+  var _processFromGroupsOpt = processFromGroupsOptions(options),
+      groupFn = _processFromGroupsOpt.groupFn,
+      keyFn = _processFromGroupsOpt.keyFn;
+
+  var _options$mapEntry = options.mapEntry,
+      mapEntry = _options$mapEntry === void 0 ? identity_identity : _options$mapEntry;
+  var _options$levels = options.levels,
+      levels = _options$levels === void 0 ? ["entries"] : _options$levels;
+  var levelSpecs = [];
+
+  var _iterator2 = groupBy_createForOfIteratorHelper(levels),
+      _step2;
+
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var levelOption = _step2.value;
+
+      switch (levelOption) {
+        case "entries":
+        case "entries-object":
+        case "entries-obj":
+        case "entriesObject":
+          {
+            var _ret2 = function () {
+              var levelMapEntry = (levelOption === "entries-object" || levelOption === "entries-obj" || levelOption === "entriesObject") && options.mapEntry == null ? function (_ref) {
+                var _ref2 = (0,slicedToArray/* default */.Z)(_ref, 2),
+                    key = _ref2[0],
+                    values = _ref2[1];
+
+                return {
+                  key: key,
+                  values: values
+                };
+              } : mapEntry;
+              levelSpecs.push({
+                id: "entries",
+                createEmptySubgroup: function createEmptySubgroup() {
+                  return [];
+                },
+                addSubgroup: function addSubgroup(parentGrouped, newSubgroup, key, level) {
+                  parentGrouped.push(levelMapEntry([key, newSubgroup], level));
+                },
+                addLeaf: function addLeaf(parentGrouped, key, values, level) {
+                  parentGrouped.push(levelMapEntry([key, values], level));
+                }
+              });
+              return "break";
+            }();
+
+            if (_ret2 === "break") break;
+          }
+
+        case "map":
+          levelSpecs.push({
+            id: "map",
+            createEmptySubgroup: function createEmptySubgroup() {
+              return new Map();
+            },
+            addSubgroup: function addSubgroup(parentGrouped, newSubgroup, key) {
+              parentGrouped.set(key, newSubgroup);
+            },
+            addLeaf: function addLeaf(parentGrouped, key, values) {
+              parentGrouped.set(key, values);
+            }
+          });
+          break;
+
+        case "object":
+          levelSpecs.push({
+            id: "object",
+            createEmptySubgroup: function createEmptySubgroup() {
+              return {};
+            },
+            addSubgroup: function addSubgroup(parentGrouped, newSubgroup, key) {
+              parentGrouped[key] = newSubgroup;
+            },
+            addLeaf: function addLeaf(parentGrouped, key, values) {
+              parentGrouped[key] = values;
+            }
+          });
+          break;
+
+        case "keys":
+          levelSpecs.push({
+            id: "keys",
+            createEmptySubgroup: function createEmptySubgroup() {
+              return [];
+            },
+            addSubgroup: function addSubgroup(parentGrouped, newSubgroup, key) {
+              parentGrouped.push([key, newSubgroup]);
+            },
+            addLeaf: function addLeaf(parentGrouped, key) {
+              parentGrouped.push(key);
+            }
+          });
+          break;
+
+        case "values":
+          levelSpecs.push({
+            id: "values",
+            createEmptySubgroup: function createEmptySubgroup() {
+              return [];
+            },
+            addSubgroup: function addSubgroup(parentGrouped, newSubgroup) {
+              parentGrouped.push(newSubgroup);
+            },
+            addLeaf: function addLeaf(parentGrouped, key, values) {
+              parentGrouped.push(values);
+            }
+          });
+          break;
+
+        default:
+          {
+            if (typeof levelOption === "object") {
+              levelSpecs.push(levelOption);
+            }
+          }
+      }
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+
+  var addSubgroup = function addSubgroup(parentGrouped, keys, level) {
+    var _a, _b;
+
+    if (options.flat) {
+      return parentGrouped;
+    }
+
+    var levelSpec = (_a = levelSpecs[level]) != null ? _a : levelSpecs[levelSpecs.length - 1];
+    var nextLevelSpec = (_b = levelSpecs[level + 1]) != null ? _b : levelSpec;
+    var newSubgroup = nextLevelSpec.createEmptySubgroup();
+    levelSpec.addSubgroup(parentGrouped, newSubgroup, keyFn(keys), level);
+    return newSubgroup;
+  };
+
+  var addLeaf = function addLeaf(parentGrouped, keys, values, level) {
+    var _a;
+
+    var levelSpec = (_a = levelSpecs[level]) != null ? _a : levelSpecs[levelSpecs.length - 1];
+    levelSpec.addLeaf(parentGrouped, keyFn(keys), groupFn(values, keys), level);
+  };
+
+  var initialOutputObject = levelSpecs[0].createEmptySubgroup();
+  return groupTraversal(grouped, initialOutputObject, [], addSubgroup, addLeaf);
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/count.js
+
+
+
+
+
+
+function count(groupKeys, options) {
+  var _count = function _count(items) {
+    options = options != null ? options : {};
+    var _options = options,
+        _options$name = _options.name,
+        name = _options$name === void 0 ? "n" : _options$name,
+        sort = _options.sort;
+    var results = tidy(items, groupBy(groupKeys, [tally(options)]), sort ? arrange(desc(name)) : identity);
+    return results;
+  };
+
+  return _count;
+}
+
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.flat-map.js
+var es_array_flat_map = __webpack_require__(86535);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.unscopables.flat-map.js
+var es_array_unscopables_flat_map = __webpack_require__(99244);
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/innerJoin.js
+
+
+function innerJoin_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function innerJoin_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { innerJoin_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { innerJoin_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+function innerJoin_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = innerJoin_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function innerJoin_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return innerJoin_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return innerJoin_arrayLikeToArray(o, minLen); }
+
+function innerJoin_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function innerJoin_autodetectByMap(itemsA, itemsB) {
+  if (itemsA.length === 0 || itemsB.length === 0) return {};
+  var keysA = Object.keys(itemsA[0]);
+  var keysB = Object.keys(itemsB[0]);
+  var byMap = {};
+
+  for (var _i = 0, _keysA = keysA; _i < _keysA.length; _i++) {
+    var key = _keysA[_i];
+
+    if (keysB.includes(key)) {
+      byMap[key] = key;
+    }
+  }
+
+  return byMap;
+}
+
+function innerJoin_makeByMap(by) {
+  if (Array.isArray(by)) {
+    var byMap = {};
+
+    var _iterator = innerJoin_createForOfIteratorHelper(by),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var key = _step.value;
+        byMap[key] = key;
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    return byMap;
+  } else if (typeof by === "object") {
+    return by;
+  }
+
+  return _defineProperty({}, by, by);
+}
+
+function innerJoin_isMatch(d, j, byMap) {
+  for (var jKey in byMap) {
+    var dKey = byMap[jKey];
+
+    if (d[dKey] !== j[jKey]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function innerJoin(itemsToJoin, options) {
+  var _innerJoin = function _innerJoin(items) {
+    var byMap = (options == null ? void 0 : options.by) == null ? innerJoin_autodetectByMap(items, itemsToJoin) : innerJoin_makeByMap(options.by);
+    var joined = items.flatMap(function (d) {
+      var matches = itemsToJoin.filter(function (j) {
+        return innerJoin_isMatch(d, j, byMap);
+      });
+      return matches.map(function (j) {
+        return innerJoin_objectSpread(innerJoin_objectSpread({}, d), j);
+      });
+    });
+    return joined;
+  };
+
+  return _innerJoin;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/leftJoin.js
+
+
+function leftJoin_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function leftJoin_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { leftJoin_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { leftJoin_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+
+
+function leftJoin_leftJoin(itemsToJoin, options) {
+  var _leftJoin = function _leftJoin(items) {
+    if (!itemsToJoin.length) return items;
+    var byMap = (options == null ? void 0 : options.by) == null ? autodetectByMap(items, itemsToJoin) : makeByMap(options.by);
+    var joinObjectKeys = Object.keys(itemsToJoin[0]);
+    var joined = items.flatMap(function (d) {
+      var matches = itemsToJoin.filter(function (j) {
+        return isMatch(d, j, byMap);
+      });
+
+      if (matches.length) {
+        return matches.map(function (j) {
+          return leftJoin_objectSpread(leftJoin_objectSpread({}, d), j);
+        });
+      }
+
+      var undefinedFill = Object.fromEntries(joinObjectKeys.filter(function (key) {
+        return d[key] == null;
+      }).map(function (key) {
+        return [key, void 0];
+      }));
+      return leftJoin_objectSpread(leftJoin_objectSpread({}, d), undefinedFill);
+    });
+    return joined;
+  };
+
+  return _leftJoin;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/fullJoin.js
+
+
+function fullJoin_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = fullJoin_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function fullJoin_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return fullJoin_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return fullJoin_arrayLikeToArray(o, minLen); }
+
+function fullJoin_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function fullJoin_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function fullJoin_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { fullJoin_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { fullJoin_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+
+
+function fullJoin(itemsToJoin, options) {
+  var _fullJoin = function _fullJoin(items) {
+    if (!itemsToJoin.length) return items;
+    if (!items.length) return itemsToJoin;
+    var byMap = (options == null ? void 0 : options.by) == null ? autodetectByMap(items, itemsToJoin) : makeByMap(options.by);
+    var matchMap = new Map();
+    var joinObjectKeys = Object.keys(itemsToJoin[0]);
+    var joined = items.flatMap(function (d) {
+      var matches = itemsToJoin.filter(function (j) {
+        var matched = isMatch(d, j, byMap);
+
+        if (matched) {
+          matchMap.set(j, true);
+        }
+
+        return matched;
+      });
+
+      if (matches.length) {
+        return matches.map(function (j) {
+          return fullJoin_objectSpread(fullJoin_objectSpread({}, d), j);
+        });
+      }
+
+      var undefinedFill = Object.fromEntries(joinObjectKeys.filter(function (key) {
+        return d[key] == null;
+      }).map(function (key) {
+        return [key, void 0];
+      }));
+      return fullJoin_objectSpread(fullJoin_objectSpread({}, d), undefinedFill);
+    });
+
+    if (matchMap.size < itemsToJoin.length) {
+      var leftEmptyObject = Object.fromEntries(Object.keys(items[0]).map(function (key) {
+        return [key, void 0];
+      }));
+
+      var _iterator = fullJoin_createForOfIteratorHelper(itemsToJoin),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var item = _step.value;
+
+          if (!matchMap.has(item)) {
+            joined.push(fullJoin_objectSpread(fullJoin_objectSpread({}, leftEmptyObject), item));
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+
+    return joined;
+  };
+
+  return _fullJoin;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/pivotWider.js
+
+
+function pivotWider_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function pivotWider_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { pivotWider_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { pivotWider_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function pivotWider_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = pivotWider_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function pivotWider_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return pivotWider_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return pivotWider_arrayLikeToArray(o, minLen); }
+
+function pivotWider_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+function pivotWider(options) {
+  var _pivotWider = function _pivotWider(items) {
+    var namesFrom = options.namesFrom,
+        valuesFrom = options.valuesFrom,
+        valuesFill = options.valuesFill,
+        valuesFillMap = options.valuesFillMap,
+        _options$namesSep = options.namesSep,
+        namesSep = _options$namesSep === void 0 ? "_" : _options$namesSep;
+    var namesFromKeys = Array.isArray(namesFrom) ? namesFrom : [namesFrom];
+    var valuesFromKeys = Array.isArray(valuesFrom) ? valuesFrom : [valuesFrom];
+    var wider = [];
+    if (!items.length) return wider;
+    var idColumns = Object.keys(items[0]).filter(function (key) {
+      return !namesFromKeys.includes(key) && !valuesFromKeys.includes(key);
+    });
+    var nameValuesMap = {};
+
+    var _iterator = pivotWider_createForOfIteratorHelper(items),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+
+        var _iterator6 = pivotWider_createForOfIteratorHelper(namesFromKeys),
+            _step6;
+
+        try {
+          for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+            var _nameKey = _step6.value;
+
+            if (nameValuesMap[_nameKey] == null) {
+              nameValuesMap[_nameKey] = {};
+            }
+
+            nameValuesMap[_nameKey][item[_nameKey]] = true;
+          }
+        } catch (err) {
+          _iterator6.e(err);
+        } finally {
+          _iterator6.f();
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    var nameValuesLists = [];
+
+    for (var nameKey in nameValuesMap) {
+      nameValuesLists.push(Object.keys(nameValuesMap[nameKey]));
+    }
+
+    var baseWideObj = {};
+    var combos = makeCombinations(namesSep, nameValuesLists);
+
+    var _iterator2 = pivotWider_createForOfIteratorHelper(combos),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var _nameKey2 = _step2.value;
+
+        if (valuesFromKeys.length === 1) {
+          baseWideObj[_nameKey2] = valuesFillMap != null ? valuesFillMap[valuesFromKeys[0]] : valuesFill;
+          continue;
+        }
+
+        var _iterator7 = pivotWider_createForOfIteratorHelper(valuesFromKeys),
+            _step7;
+
+        try {
+          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+            var valueKey = _step7.value;
+            baseWideObj["".concat(valueKey).concat(namesSep).concat(_nameKey2)] = valuesFillMap != null ? valuesFillMap[valueKey] : valuesFill;
+          }
+        } catch (err) {
+          _iterator7.e(err);
+        } finally {
+          _iterator7.f();
+        }
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+
+    function widenItems(items2) {
+      if (!items2.length) return [];
+
+      var wide = pivotWider_objectSpread({}, baseWideObj);
+
+      var _iterator3 = pivotWider_createForOfIteratorHelper(idColumns),
+          _step3;
+
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var idKey = _step3.value;
+          wide[idKey] = items2[0][idKey];
+        }
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
+      }
+
+      var _iterator4 = pivotWider_createForOfIteratorHelper(items2),
+          _step4;
+
+      try {
+        var _loop = function _loop() {
+          var item = _step4.value;
+          var nameKey = namesFromKeys.map(function (key) {
+            return item[key];
+          }).join(namesSep);
+
+          if (valuesFromKeys.length === 1) {
+            wide[nameKey] = item[valuesFromKeys[0]];
+            return "continue";
+          }
+
+          var _iterator5 = pivotWider_createForOfIteratorHelper(valuesFromKeys),
+              _step5;
+
+          try {
+            for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+              var valueKey = _step5.value;
+              wide["".concat(valueKey).concat(namesSep).concat(nameKey)] = item[valueKey];
+            }
+          } catch (err) {
+            _iterator5.e(err);
+          } finally {
+            _iterator5.f();
+          }
+        };
+
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var _ret = _loop();
+
+          if (_ret === "continue") continue;
+        }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+
+      return [wide];
+    }
+
+    if (!idColumns.length) {
+      return widenItems(items);
+    }
+
+    var finish = tidy(items, groupBy(idColumns, [widenItems]));
+    return finish;
+  };
+
+  return _pivotWider;
+}
+
+function makeCombinations() {
+  var separator = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "_";
+  var arrays = arguments.length > 1 ? arguments[1] : undefined;
+
+  function combine(accum, prefix, remainingArrays) {
+    if (!remainingArrays.length && prefix != null) {
+      accum.push(prefix);
+      return;
+    }
+
+    var array = remainingArrays[0];
+    var newRemainingArrays = remainingArrays.slice(1);
+
+    var _iterator8 = pivotWider_createForOfIteratorHelper(array),
+        _step8;
+
+    try {
+      for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+        var item = _step8.value;
+        combine(accum, prefix == null ? item : "".concat(prefix).concat(separator).concat(item), newRemainingArrays);
+      }
+    } catch (err) {
+      _iterator8.e(err);
+    } finally {
+      _iterator8.f();
+    }
+  }
+
+  var result = [];
+  combine(result, null, arrays);
+  return result;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/complete.js
+
+
+
+
+function complete(expandKeys, replaceNullySpec) {
+  var _complete = function _complete(items) {
+    var expanded = expand(expandKeys)(items);
+    var joined = leftJoin(items)(expanded);
+    return replaceNullySpec ? replaceNully(replaceNullySpec)(joined) : joined;
+  };
+
+  return _complete;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/min.js
+function min_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = min_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function min_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return min_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return min_arrayLikeToArray(o, minLen); }
+
+function min_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function min(values, valueof) {
+  var min;
+
+  if (valueof === undefined) {
+    var _iterator = min_createForOfIteratorHelper(values),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var value = _step.value;
+
+        if (value != null && (min > value || min === undefined && value >= value)) {
+          min = value;
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  } else {
+    var index = -1;
+
+    var _iterator2 = min_createForOfIteratorHelper(values),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var _value = _step2.value;
+
+        if ((_value = valueof(_value, ++index, values)) != null && (min > _value || min === undefined && _value >= _value)) {
+          min = _value;
+        }
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+  }
+
+  return min;
+}
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/summary/min.js
+
+
+function min_min(key) {
+  var keyFn = typeof key === "function" ? key : function (d) {
+    return d[key];
+  };
+  return function (items) {
+    return min(items, keyFn);
+  };
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/max.js
+function max_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = max_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function max_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return max_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return max_arrayLikeToArray(o, minLen); }
+
+function max_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function max(values, valueof) {
+  var max;
+
+  if (valueof === undefined) {
+    var _iterator = max_createForOfIteratorHelper(values),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var value = _step.value;
+
+        if (value != null && (max < value || max === undefined && value >= value)) {
+          max = value;
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  } else {
+    var index = -1;
+
+    var _iterator2 = max_createForOfIteratorHelper(values),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var _value = _step2.value;
+
+        if ((_value = valueof(_value, ++index, values)) != null && (max < _value || max === undefined && _value >= _value)) {
+          max = _value;
+        }
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+  }
+
+  return max;
+}
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/summary/max.js
+
+
+function max_max(key) {
+  var keyFn = typeof key === "function" ? key : function (d) {
+    return d[key];
+  };
+  return function (items) {
+    return max(items, keyFn);
+  };
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/index.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
+var Grid = __webpack_require__(80838);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
+var utils = __webpack_require__(81794);
+;// CONCATENATED MODULE: ./src/components/blockly/fields/GaugeWidgetField.tsx
+
+
+
+
+
+
+
+
+
+
+var GaugeWidget = /*#__PURE__*/(0,react.lazy)(function () {
   return Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 10719));
 });
 
 function GaugeWidgetView() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+  var _useContext = (0,react.useContext)(WorkspaceContext/* default */.ZP),
       sourceBlock = _useContext.sourceBlock; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+  var _useBlockData = (0,useBlockData/* default */.Z)(sourceBlock),
       data = _useBlockData.data;
 
   if (!(data !== null && data !== void 0 && data.length)) return null;
   var field = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("field");
-  var value = (0,_nivo__WEBPACK_IMPORTED_MODULE_5__.tidyFindLastValue)(data, field);
+  var value = (0,fields_tidy/* tidyFindLastValue */.pc)(data, field);
   if (value === undefined) return null;
   var min = Number(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("min"));
   var max = Number(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("max"));
@@ -14940,26 +14455,26 @@ function GaugeWidgetView() {
     max = undefined;
   }
 
-  if (isNaN(min)) min = (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__/* .tidy */ .lu)(data, (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__/* .summarize */ .Iz)({
-    min: (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__/* .min */ .VV)(field)
+  if (isNaN(min)) min = tidy_tidy(data, summarize({
+    min: min_min(field)
   }))[0].min;
-  if (isNaN(max)) max = (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__/* .tidy */ .lu)(data, (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__/* .summarize */ .Iz)({
-    max: (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__/* .max */ .Fp)(field)
+  if (isNaN(max)) max = tidy_tidy(data, summarize({
+    max: max_max(field)
   }))[0].max; // round with precision
 
   var step = Math.ceil(Math.abs(value)) / 10;
   var precision = step < 1 ? Math.ceil(-Math.log10(step)) : 0;
-  value = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_7__/* .roundWithPrecision */ .JI)(value, precision); // clamp values
+  value = (0,utils/* roundWithPrecision */.JI)(value, precision); // clamp values
 
   value = Math.min(max, Math.max(min, value));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, {
+  return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
     justifyContent: "center",
     alignContent: "center",
     alignItems: "center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, {
+  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GaugeWidget, {
+  }, /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(GaugeWidget, {
     value: value,
     min: min,
     max: max
@@ -14967,7 +14482,7 @@ function GaugeWidgetView() {
 }
 
 var GaugeWidgetField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)(GaugeWidgetField, _ReactInlineField);
+  (0,inheritsLoose/* default */.Z)(GaugeWidgetField, _ReactInlineField);
 
   GaugeWidgetField.fromJson = function fromJson(options) {
     return new GaugeWidgetField(options);
@@ -14987,11 +14502,11 @@ var GaugeWidgetField = /*#__PURE__*/function (_ReactInlineField) {
   }
 
   _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GaugeWidgetView, null);
+    return /*#__PURE__*/react.createElement(GaugeWidgetView, null);
   };
 
   return GaugeWidgetField;
-}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+}(ReactInlineField/* default */.Z);
 
 GaugeWidgetField.KEY = "jacdac_field_gauge_widget";
 GaugeWidgetField.EDITABLE = false;
@@ -15566,17 +15081,13 @@ LEDMatrixField.KEY = "jacdac_field_led_matrix";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ LinePlotField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockChartProps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53333);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(53851);
-/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(77298);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(69672);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(42862);
-/* harmony import */ var _nivo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8844);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(16582);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
 
 
 
@@ -15585,95 +15096,40 @@ LEDMatrixField.KEY = "jacdac_field_led_matrix";
 
 
 
-
-
-
-var Line = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(9774), __webpack_require__.e(317), __webpack_require__.e(7047)]).then(__webpack_require__.bind(__webpack_require__, 27047));
-});
-
-function LineChartWidget() {
-  var _chartProps$data, _chartProps$data$0$da;
-
+function LinePlotWidget() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock,
-      dragging = _useContext.dragging;
+      sourceBlock = _useContext.sourceBlock;
 
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data; // need to map data to nivo
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
 
-
-  var x = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x");
-  var y = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y");
-
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .t)(data, [x, y], ["x", "y"]),
-      series = _tidyToNivo.series,
-      labels = _tidyToNivo.labels; // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-
-  var _useBlockChartProps = (0,_useBlockChartProps__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock, {
-    colors: {
-      scheme: "category10"
+  var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
+  var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
+  if (!x || !y) return null;
+  var spec = {
+    description: "Line plot of " + x + "x" + y,
+    mark: "line",
+    encoding: {
+      x: {
+        field: x,
+        type: "quantitative"
+      },
+      y: {
+        field: y,
+        type: "quantitative"
+      }
     },
-    data: series,
-    margin: {
-      top: 8,
-      right: 8,
-      bottom: 38,
-      left: 64
-    },
-    xScale: {
-      type: "linear",
-      min: "auto",
-      max: "auto"
-    },
-    yScale: {
-      type: "linear",
-      min: "auto",
-      max: "auto"
-    },
-    axisTop: null,
-    axisRight: null,
-    enablePoints: false,
-    animate: !dragging,
-    isInteractive: !dragging,
-    axisBottom: {
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: x,
-      legendPosition: "middle",
-      legendOffset: 34
-    },
-    axisLeft: {
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: y,
-      legendPosition: "middle",
-      legendOffset: -32
+    data: {
+      name: "values"
     }
-  }),
-      chartProps = _useBlockChartProps.chartProps;
-
-  if (chartProps) chartProps.data = series;
-  var hasData = (labels === null || labels === void 0 ? void 0 : labels.length) === 2 && labels[0] !== labels[1] && !!(chartProps !== null && chartProps !== void 0 && (_chartProps$data = chartProps.data) !== null && _chartProps$data !== void 0 && (_chartProps$data$0$da = _chartProps$data[0].data) !== null && _chartProps$data$0$da !== void 0 && _chartProps$data$0$da.length);
-  if (!hasData) return null;
-  chartProps.axisBottom.legend = labels[0];
-  chartProps.axisLeft.legend = labels[1];
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    style: {
-      background: "#fff",
-      borderRadius: "0.25rem"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_5__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Line, Object.assign({
-    width: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .CHART_WIDTH */ .xx,
-    height: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .CHART_HEIGHT */ .Fh
-  }, chartProps))))));
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec
+  });
 }
 
 var LinePlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z)(LinePlotField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(LinePlotField, _ReactInlineField);
 
   LinePlotField.fromJson = function fromJson(options) {
     return new LinePlotField(options);
@@ -15687,7 +15143,7 @@ var LinePlotField = /*#__PURE__*/function (_ReactInlineField) {
   var _proto = LinePlotField.prototype;
 
   _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LineChartWidget, null);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LinePlotWidget, null);
   };
 
   return LinePlotField;
@@ -15923,144 +15379,6 @@ var NoteField = /*#__PURE__*/function (_ReactField) {
 
 NoteField.KEY = "jacdac_field_note";
 NoteField.SHADOW = (0,_ReactField__WEBPACK_IMPORTED_MODULE_4__/* .toShadowDefinition */ ._t)(NoteField);
-
-
-/***/ }),
-
-/***/ 37505:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ PiePlotField; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(41788);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockChartProps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53333);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(53851);
-/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(77298);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(69672);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(42862);
-/* harmony import */ var _nivo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8844);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(16582);
-
-
-
-
-
-
-
-
-
-
-
-var Pie = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(9774), __webpack_require__.e(317), __webpack_require__.e(8423)]).then(__webpack_require__.bind(__webpack_require__, 28423));
-});
-
-function PieChartWidget() {
-  var _chartProps$data2;
-
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock,
-      dragging = _useContext.dragging;
-
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data; // need to map data to nivo
-
-
-  var id = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("id");
-  var value = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value");
-
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .t)(data, [id, value], ["id", "value"], {
-    sliceMax: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .PIE_MAX_ITEMS */ .DZ,
-    sliceColumn: value
-  }),
-      series = _tidyToNivo.series,
-      labels = _tidyToNivo.labels; // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-
-  var _useBlockChartProps = (0,_useBlockChartProps__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock, {
-    data: series,
-    margin: {
-      top: 40,
-      right: 96,
-      bottom: 40,
-      left: 96
-    },
-    innerRadius: 0.3,
-    padAngle: 0.7,
-    cornerRadius: 3,
-    sortByValue: false,
-    animate: !dragging,
-    isInteractive: !dragging,
-    activeOuterRadiusOffset: 8,
-    borderWidth: 1,
-    borderColor: {
-      from: "color",
-      modifiers: [["darker", 0.2]]
-    },
-    arcLinkLabelsSkipAngle: 10,
-    arcLinkLabelsTextColor: "#333333",
-    arcLinkLabelsThickness: 2,
-    arcLinkLabelsColor: {
-      from: "color"
-    },
-    arcLabelsSkipAngle: 10,
-    arcLabelsTextColor: {
-      from: "color",
-      modifiers: [["darker", 2]]
-    },
-    arcLinkLabelsStraightLength: 12,
-    arcLinkLabelsDiagonalLength: 6
-  }),
-      chartProps = _useBlockChartProps.chartProps;
-
-  if (chartProps) {
-    var _series$, _chartProps$data;
-
-    chartProps.data = series === null || series === void 0 ? void 0 : (_series$ = series[0]) === null || _series$ === void 0 ? void 0 : _series$.data;
-    chartProps.animate = !dragging && ((_chartProps$data = chartProps.data) === null || _chartProps$data === void 0 ? void 0 : _chartProps$data.length) < _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .ANIMATE_MAX_ITEMS */ .qV;
-  }
-
-  var hasData = (labels === null || labels === void 0 ? void 0 : labels.length) === 2 && labels[0] !== labels[1] && !!(chartProps !== null && chartProps !== void 0 && (_chartProps$data2 = chartProps.data) !== null && _chartProps$data2 !== void 0 && _chartProps$data2.length);
-  if (!hasData) return null;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    style: {
-      background: "#fff",
-      borderRadius: "0.25rem"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_5__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Pie, Object.assign({
-    width: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .CHART_WIDTH */ .xx,
-    height: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .CHART_HEIGHT */ .Fh
-  }, chartProps))))));
-}
-
-var PiePlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z)(PiePlotField, _ReactInlineField);
-
-  PiePlotField.fromJson = function fromJson(options) {
-    return new PiePlotField(options);
-  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;
-
-  function PiePlotField(options) {
-    return _ReactInlineField.call(this, options) || this;
-  }
-
-  var _proto = PiePlotField.prototype;
-
-  _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(PieChartWidget, null);
-  };
-
-  return PiePlotField;
-}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
-
-PiePlotField.KEY = "jacdac_field_pie_plot";
-PiePlotField.EDITABLE = false;
 
 
 /***/ }),
@@ -17066,7 +16384,7 @@ VariablesField.EDITABLE = false;
 
 
 var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(9312)]).then(__webpack_require__.bind(__webpack_require__, 69312));
+  return __webpack_require__.e(/* import() */ 85).then(__webpack_require__.bind(__webpack_require__, 80085));
 });
 function VegaLiteWidget(props) {
   var spec = props.spec;
@@ -17261,16 +16579,14 @@ WatchValueField.EDITABLE = false;
 /* harmony import */ var _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(97884);
 /* harmony import */ var _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(44393);
 /* harmony import */ var _LinePlotField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(70659);
-/* harmony import */ var _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(61162);
+/* harmony import */ var _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(95548);
 /* harmony import */ var _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(69223);
 /* harmony import */ var _BarField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(9950);
-/* harmony import */ var _PieField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(37505);
-/* harmony import */ var _HistogramField__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(63511);
-/* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(4383);
-/* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(39311);
-/* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(16229);
-/* harmony import */ var _BoxPlotField__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(77668);
-
+/* harmony import */ var _HistogramField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(63511);
+/* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(4383);
+/* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(39311);
+/* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(16229);
+/* harmony import */ var _BoxPlotField__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(77668);
 
 
 
@@ -17313,72 +16629,12 @@ function registerFields() {
     if (fieldType.SHADOW) reactFieldShadows.push(fieldType.SHADOW);
   };
 
-  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _LinePlotField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _PieField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _HistogramField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _BoxPlotField__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z];
+  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _LinePlotField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _HistogramField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _BoxPlotField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z];
   fieldTypes.forEach(registerType);
 }
 function fieldShadows() {
   registerFields();
   return reactFieldShadows.slice(0);
-}
-
-/***/ }),
-
-/***/ 8844:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "t": function() { return /* binding */ tidyToNivo; }
-/* harmony export */ });
-/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52905);
-/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81794);
-/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(47554);
-/* eslint-disable @typescript-eslint/ban-types */
-
-
-
-function tidyToNivo( // eslint-disable-next-line @typescript-eslint/ban-types
-data, columns, toColumns, options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  // avoid duplicates in column
-  columns = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__/* .unique */ .Tw)(columns); // missing data
-
-  if (columns.some(function (c) {
-    return !c;
-  })) return {
-    series: undefined,
-    labels: undefined
-  };
-
-  var _tidyHeaders = (0,_tidy__WEBPACK_IMPORTED_MODULE_2__/* .tidyHeaders */ .P2)(data),
-      headers = _tidyHeaders.headers;
-
-  var k = 0;
-  var renaming = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__/* .toMap */ .qL)(columns, function (c, i) {
-    return columns[i] || (headers === null || headers === void 0 ? void 0 : headers[k++]);
-  }, function (c, i) {
-    return toColumns[i];
-  });
-  var labels = Object.keys(renaming); // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // todo handle time
-
-  var _index = 0;
-  var tidied = data ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .tidy */ .lu)(data, options.sliceSample ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceSample */ .FZ)(options.sliceSample) : undefined, options.sliceHead ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceHead */ .sy)(options.sliceHead) : undefined, options.sliceTail ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceTail */ .bs)(options.sliceTail) : undefined, options.sliceMin ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceMin */ .so)(options.sliceMin, options.sliceColumn) : undefined, options.sliceMax ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceMax */ .$H)(options.sliceMax, options.sliceColumn) : undefined, (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .mutate */ .JG)({
-    index: function index() {
-      return _index++;
-    }
-  }), (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .select */ .Ys)(labels), (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .rename */ .PQ)(renaming)) : [];
-  var series = [{
-    id: "data",
-    data: tidied
-  }];
-  return {
-    series: series,
-    labels: labels
-  };
 }
 
 /***/ }),
@@ -17389,9 +16645,9 @@ data, columns, toColumns, options) {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "P2": function() { return /* binding */ tidyHeaders; },
+/* harmony export */   "pc": function() { return /* binding */ tidyFindLastValue; },
 /* harmony export */   "gc": function() { return /* binding */ tidyResolveHeader; }
 /* harmony export */ });
-/* unused harmony export tidyFindLastValue */
 /* eslint-disable @typescript-eslint/ban-types */
 function tidyHeaders(data, type) {
   var row = (data === null || data === void 0 ? void 0 : data[0]) || {};
@@ -17442,14 +16698,11 @@ function tidyResolveHeader(data, name, type) {
 /* harmony export */   "Fh": function() { return /* binding */ CHART_HEIGHT; },
 /* harmony export */   "KH": function() { return /* binding */ TABLE_WIDTH; },
 /* harmony export */   "U2": function() { return /* binding */ TABLE_HEIGHT; },
-/* harmony export */   "qV": function() { return /* binding */ ANIMATE_MAX_ITEMS; },
-/* harmony export */   "DZ": function() { return /* binding */ PIE_MAX_ITEMS; },
-/* harmony export */   "kC": function() { return /* binding */ BAR_MAX_ITEMS; },
 /* harmony export */   "nY": function() { return /* binding */ VM_WARNINGS_CATEGORY; },
 /* harmony export */   "FD": function() { return /* binding */ JSON_WARNINGS_CATEGORY; },
 /* harmony export */   "j2": function() { return /* binding */ visitToolbox; }
 /* harmony export */ });
-/* unused harmony export SCATTER_MAX_ITEMS */
+/* unused harmony exports ANIMATE_MAX_ITEMS, PIE_MAX_ITEMS, BAR_MAX_ITEMS, SCATTER_MAX_ITEMS */
 /* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -17502,7 +16755,7 @@ var TABLE_WIDTH = CHART_WIDTH;
 var TABLE_HEIGHT = 480;
 var ANIMATE_MAX_ITEMS = 128;
 var PIE_MAX_ITEMS = 12;
-var BAR_MAX_ITEMS = 1 << 10;
+var BAR_MAX_ITEMS = (/* unused pure expression or super */ null && (1 << 10));
 var SCATTER_MAX_ITEMS = (/* unused pure expression or super */ null && (1 << 13));
 var VM_WARNINGS_CATEGORY = "vm";
 var JSON_WARNINGS_CATEGORY = "json";
@@ -17529,39 +16782,6 @@ function visitToolbox(node, visitor) {
   };
 
   visitContents(node.contents);
-}
-
-/***/ }),
-
-/***/ 53333:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ useBlockChartProps; }
-/* harmony export */ });
-/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(54774);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
-
- // eslint-disable-next-line @typescript-eslint/ban-types
-
-function useBlockChartProps(block, initialChartProps) {
-  var services = block === null || block === void 0 ? void 0 : block.jacdacServices; // data on the current node
-
-  var chartProps = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(services, function (_) {
-    return _ === null || _ === void 0 ? void 0 : _.chartProps;
-  });
-  var setChartProps = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function (value) {
-    if (services) services.chartProps = value;
-  }, [services]); // set initial value
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (services && initialChartProps !== undefined && services.chartProps === undefined) services.chartProps = initialChartProps;
-  }, [services]);
-  return {
-    chartProps: chartProps,
-    setChartProps: setChartProps
-  };
 }
 
 /***/ }),

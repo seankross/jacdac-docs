@@ -1,4 +1,4 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[9312],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[85],{
 
 /***/ 67228:
 /***/ (function(module) {
@@ -79,6 +79,27 @@ function _createClass(Constructor, protoProps, staticProps) {
 
 module.exports = _createClass;
 module.exports.default = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ 99809:
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ _toArray; }
+/* harmony export */ });
+/* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(59968);
+/* harmony import */ var _iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(96410);
+/* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(82961);
+/* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(28970);
+
+
+
+
+function _toArray(arr) {
+  return (0,_arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(arr) || (0,_iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(arr) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(arr) || (0,_nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)();
+}
 
 /***/ }),
 
@@ -489,6 +510,55 @@ var clone = function () {
 if ( true && module.exports) {
   module.exports = clone;
 }
+
+/***/ }),
+
+/***/ 2412:
+/***/ (function(module) {
+
+"use strict";
+ // do not edit .js files directly - edit src/index.jst
+
+module.exports = function equal(a, b) {
+  if (a === b) return true;
+
+  if (a && b && typeof a == 'object' && typeof b == 'object') {
+    if (a.constructor !== b.constructor) return false;
+    var length, i, keys;
+
+    if (Array.isArray(a)) {
+      length = a.length;
+      if (length != b.length) return false;
+
+      for (i = length; i-- !== 0;) {
+        if (!equal(a[i], b[i])) return false;
+      }
+
+      return true;
+    }
+
+    if (a.constructor === RegExp) return a.source === b.source && a.flags === b.flags;
+    if (a.valueOf !== Object.prototype.valueOf) return a.valueOf() === b.valueOf();
+    if (a.toString !== Object.prototype.toString) return a.toString() === b.toString();
+    keys = Object.keys(a);
+    length = keys.length;
+    if (length !== Object.keys(b).length) return false;
+
+    for (i = length; i-- !== 0;) {
+      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
+    }
+
+    for (i = length; i-- !== 0;) {
+      var key = keys[i];
+      if (!equal(a[key], b[key])) return false;
+    }
+
+    return true;
+  } // true if both NaN, false otherwise
+
+
+  return a !== a && b !== b;
+};
 
 /***/ }),
 
@@ -4004,7 +4074,49 @@ module.exports = validRange;
 
 /***/ }),
 
-/***/ 69312:
+/***/ 25438:
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+var $ = __webpack_require__(82109);
+
+// eslint-disable-next-line es/no-math-hypot -- required for testing
+var $hypot = Math.hypot;
+var abs = Math.abs;
+var sqrt = Math.sqrt;
+
+// Chrome 77 bug
+// https://bugs.chromium.org/p/v8/issues/detail?id=9546
+var BUGGY = !!$hypot && $hypot(Infinity, NaN) !== Infinity;
+
+// `Math.hypot` method
+// https://tc39.es/ecma262/#sec-math.hypot
+$({ target: 'Math', stat: true, forced: BUGGY }, {
+  // eslint-disable-next-line no-unused-vars -- required for `.length`
+  hypot: function hypot(value1, value2) {
+    var sum = 0;
+    var i = 0;
+    var aLen = arguments.length;
+    var larg = 0;
+    var arg, div;
+    while (i < aLen) {
+      arg = abs(arguments[i++]);
+      if (larg < arg) {
+        div = larg / arg;
+        sum = sum * div * div + 1;
+        larg = arg;
+      } else if (arg > 0) {
+        div = arg / larg;
+        sum += div * div;
+      } else sum += arg;
+    }
+    return larg === Infinity ? Infinity : larg * sqrt(sum);
+  }
+});
+
+
+/***/ }),
+
+/***/ 80085:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4091,28 +4203,28 @@ __webpack_require__.d(vega_transforms_module_namespaceObject, {
 var src_namespaceObject = {};
 __webpack_require__.r(src_namespaceObject);
 __webpack_require__.d(src_namespaceObject, {
-  "interpolate": function() { return value/* default */.Z; },
-  "interpolateArray": function() { return d3_interpolate_src_array/* default */.Z; },
-  "interpolateBasis": function() { return src_basis/* default */.Z; },
-  "interpolateBasisClosed": function() { return src_basisClosed/* default */.Z; },
-  "interpolateCubehelix": function() { return cubehelix/* default */.Z; },
-  "interpolateCubehelixLong": function() { return cubehelix/* cubehelixLong */.B; },
-  "interpolateDate": function() { return date/* default */.Z; },
+  "interpolate": function() { return value; },
+  "interpolateArray": function() { return d3_interpolate_src_array; },
+  "interpolateBasis": function() { return src_basis; },
+  "interpolateBasisClosed": function() { return src_basisClosed; },
+  "interpolateCubehelix": function() { return src_cubehelix; },
+  "interpolateCubehelixLong": function() { return cubehelixLong; },
+  "interpolateDate": function() { return date; },
   "interpolateDiscrete": function() { return discrete; },
   "interpolateHcl": function() { return src_hcl; },
   "interpolateHclLong": function() { return hclLong; },
   "interpolateHsl": function() { return src_hsl; },
   "interpolateHslLong": function() { return hslLong; },
-  "interpolateHue": function() { return hue; },
+  "interpolateHue": function() { return src_hue; },
   "interpolateLab": function() { return lab_lab; },
-  "interpolateNumber": function() { return d3_interpolate_src_number/* default */.Z; },
-  "interpolateNumberArray": function() { return numberArray/* default */.Z; },
-  "interpolateObject": function() { return src_object/* default */.Z; },
-  "interpolateRgb": function() { return rgb/* default */.ZP; },
-  "interpolateRgbBasis": function() { return rgb/* rgbBasis */.hD; },
-  "interpolateRgbBasisClosed": function() { return rgb/* rgbBasisClosed */.YD; },
-  "interpolateRound": function() { return src_round/* default */.Z; },
-  "interpolateString": function() { return string/* default */.Z; },
+  "interpolateNumber": function() { return d3_interpolate_src_number; },
+  "interpolateNumberArray": function() { return numberArray; },
+  "interpolateObject": function() { return src_object; },
+  "interpolateRgb": function() { return rgb; },
+  "interpolateRgbBasis": function() { return rgbBasis; },
+  "interpolateRgbBasisClosed": function() { return rgbBasisClosed; },
+  "interpolateRound": function() { return src_round; },
+  "interpolateString": function() { return string; },
   "interpolateTransformCss": function() { return interpolateTransformCss; },
   "interpolateTransformSvg": function() { return interpolateTransformSvg; },
   "interpolateZoom": function() { return src_zoom; },
@@ -4202,7 +4314,7 @@ __webpack_require__.d(vega_regression_module_namespaceObject, {
 var vega_voronoi_module_namespaceObject = {};
 __webpack_require__.r(vega_voronoi_module_namespaceObject);
 __webpack_require__.d(vega_voronoi_module_namespaceObject, {
-  "voronoi": function() { return Voronoi; }
+  "voronoi": function() { return vega_voronoi_module_Voronoi; }
 });
 
 // NAMESPACE OBJECT: ./node_modules/vega-wordcloud/build/vega-wordcloud.module.js
@@ -4444,7 +4556,7 @@ __webpack_require__.d(vega_module_namespaceObject, {
   "utcweek": function() { return utcweek; },
   "version": function() { return version; },
   "visitArray": function() { return visitArray; },
-  "week": function() { return vega_time_module_week; },
+  "week": function() { return week; },
   "writeConfig": function() { return writeConfig; },
   "zero": function() { return zero; },
   "zoomLinear": function() { return zoomLinear; },
@@ -4481,7 +4593,7 @@ __webpack_require__.d(build_src_namespaceObject, {
   "keys": function() { return util_keys; },
   "logicalExpr": function() { return logicalExpr; },
   "mergeDeep": function() { return mergeDeep; },
-  "normalize": function() { return normalize; },
+  "normalize": function() { return normalize_normalize; },
   "normalizeAngle": function() { return normalizeAngle; },
   "omit": function() { return omit; },
   "pick": function() { return util_pick; },
@@ -7505,7 +7617,7 @@ function tickStep(start, stop, count) {
   if (error >= e10) step1 *= 10;else if (error >= e5) step1 *= 5;else if (error >= e2) step1 *= 2;
   return stop < start ? -step1 : step1;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/formatSpecifier.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/formatSpecifier.js
 // [[fill]align][sign][symbol][0][width][,][.precision][~][type]
 var re = /^(?:(.)?([<>=^]))?([+\-( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?(~)?([a-z%])?$/i;
 function formatSpecifier(specifier) {
@@ -7542,7 +7654,7 @@ function FormatSpecifier(specifier) {
 FormatSpecifier.prototype.toString = function () {
   return this.fill + this.align + this.sign + this.symbol + (this.zero ? "0" : "") + (this.width === undefined ? "" : Math.max(1, this.width | 0)) + (this.comma ? "," : "") + (this.precision === undefined ? "" : "." + Math.max(0, this.precision | 0)) + (this.trim ? "~" : "") + this.type;
 };
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/formatDecimal.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/formatDecimal.js
 /* harmony default export */ function formatDecimal(x) {
   return Math.abs(x = Math.round(x)) >= 1e21 ? x.toLocaleString("en").replace(/,/g, "") : x.toString(10);
 } // Computes the decimal coefficient and exponent of the specified number x with
@@ -7558,28 +7670,28 @@ function formatDecimalParts(x, p) {
 
   return [coefficient.length > 1 ? coefficient[0] + coefficient.slice(2) : coefficient, +x.slice(i + 1)];
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/exponent.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/exponent.js
 
 /* harmony default export */ function exponent(x) {
   return x = formatDecimalParts(Math.abs(x)), x ? x[1] : NaN;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/precisionPrefix.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/precisionPrefix.js
 
 /* harmony default export */ function precisionPrefix(step, value) {
   return Math.max(0, Math.max(-8, Math.min(8, Math.floor(exponent(value) / 3))) * 3 - exponent(Math.abs(step)));
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/precisionRound.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/precisionRound.js
 
 /* harmony default export */ function precisionRound(step, max) {
   step = Math.abs(step), max = Math.abs(max) - step;
   return Math.max(0, exponent(max) - exponent(step)) + 1;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/precisionFixed.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/precisionFixed.js
 
 /* harmony default export */ function precisionFixed(step) {
   return Math.max(0, -exponent(Math.abs(step)));
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/formatGroup.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/formatGroup.js
 /* harmony default export */ function formatGroup(grouping, thousands) {
   return function (value, width) {
     var i = value.length,
@@ -7598,7 +7710,7 @@ function formatDecimalParts(x, p) {
     return t.reverse().join(thousands);
   };
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/formatNumerals.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/formatNumerals.js
 /* harmony default export */ function formatNumerals(numerals) {
   return function (value) {
     return value.replace(/[0-9]/g, function (i) {
@@ -7606,7 +7718,7 @@ function formatDecimalParts(x, p) {
     });
   };
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/formatTrim.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/formatTrim.js
 // Trims insignificant zeros, e.g., replaces 1.2000k with 1.2k.
 /* harmony default export */ function formatTrim(s) {
   out: for (var n = s.length, i = 1, i0 = -1, i1; i < n; ++i) {
@@ -7629,7 +7741,7 @@ function formatDecimalParts(x, p) {
 
   return i0 > 0 ? s.slice(0, i0) + s.slice(i1 + 1) : s;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/formatPrefixAuto.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/formatPrefixAuto.js
 
 var prefixExponent;
 /* harmony default export */ function formatPrefixAuto(x, p) {
@@ -7641,7 +7753,7 @@ var prefixExponent;
       n = coefficient.length;
   return i === n ? coefficient : i > n ? coefficient + new Array(i - n + 1).join("0") : i > 0 ? coefficient.slice(0, i) + "." + coefficient.slice(i) : "0." + new Array(1 - i).join("0") + formatDecimalParts(x, Math.max(0, p + i - 1))[0]; // less than 1y!
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/formatRounded.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/formatRounded.js
 
 /* harmony default export */ function formatRounded(x, p) {
   var d = formatDecimalParts(x, p);
@@ -7650,7 +7762,7 @@ var prefixExponent;
       exponent = d[1];
   return exponent < 0 ? "0." + new Array(-exponent).join("0") + coefficient : coefficient.length > exponent + 1 ? coefficient.slice(0, exponent + 1) + "." + coefficient.slice(exponent + 1) : coefficient + new Array(exponent - coefficient.length + 2).join("0");
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/formatTypes.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/formatTypes.js
 
 
 
@@ -7689,11 +7801,11 @@ var prefixExponent;
     return Math.round(_x).toString(16);
   }
 });
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/identity.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/identity.js
 /* harmony default export */ function d3_format_src_identity(x) {
   return x;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/locale.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/locale.js
 
 
 
@@ -7835,7 +7947,7 @@ var map = Array.prototype.map,
     formatPrefix: formatPrefix
   };
 }
-;// CONCATENATED MODULE: ./node_modules/vega-format/node_modules/d3-format/src/defaultLocale.js
+;// CONCATENATED MODULE: ./node_modules/d3-format/src/defaultLocale.js
 
 var defaultLocale_locale;
 var defaultLocale_format;
@@ -7853,34 +7965,349 @@ function defaultLocale(definition) {
 }
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
 var defineProperty = __webpack_require__(96156);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/day.js
-var day = __webpack_require__(70018);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/week.js
-var week = __webpack_require__(3001);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/utcDay.js
-var utcDay = __webpack_require__(81898);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/utcWeek.js
-var utcWeek = __webpack_require__(99909);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/year.js
-var year = __webpack_require__(83706);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/month.js
-var month = __webpack_require__(66933);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/hour.js
-var hour = __webpack_require__(4083);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/minute.js
-var minute = __webpack_require__(65134);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/second.js
-var second = __webpack_require__(45253);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/millisecond.js
-var millisecond = __webpack_require__(48677);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/utcYear.js
-var utcYear = __webpack_require__(75805);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/utcMonth.js
-var utcMonth = __webpack_require__(93227);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/utcHour.js
-var utcHour = __webpack_require__(55260);
-// EXTERNAL MODULE: ./node_modules/d3-time/src/utcMinute.js
-var utcMinute = __webpack_require__(52695);
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/interval.js
+var t0 = new Date(),
+    t1 = new Date();
+function newInterval(floori, offseti, count, field) {
+  function interval(date) {
+    return floori(date = arguments.length === 0 ? new Date() : new Date(+date)), date;
+  }
+
+  interval.floor = function (date) {
+    return floori(date = new Date(+date)), date;
+  };
+
+  interval.ceil = function (date) {
+    return floori(date = new Date(date - 1)), offseti(date, 1), floori(date), date;
+  };
+
+  interval.round = function (date) {
+    var d0 = interval(date),
+        d1 = interval.ceil(date);
+    return date - d0 < d1 - date ? d0 : d1;
+  };
+
+  interval.offset = function (date, step) {
+    return offseti(date = new Date(+date), step == null ? 1 : Math.floor(step)), date;
+  };
+
+  interval.range = function (start, stop, step) {
+    var range = [],
+        previous;
+    start = interval.ceil(start);
+    step = step == null ? 1 : Math.floor(step);
+    if (!(start < stop) || !(step > 0)) return range; // also handles Invalid Date
+
+    do {
+      range.push(previous = new Date(+start)), offseti(start, step), floori(start);
+    } while (previous < start && start < stop);
+
+    return range;
+  };
+
+  interval.filter = function (test) {
+    return newInterval(function (date) {
+      if (date >= date) while (floori(date), !test(date)) {
+        date.setTime(date - 1);
+      }
+    }, function (date, step) {
+      if (date >= date) {
+        if (step < 0) while (++step <= 0) {
+          while (offseti(date, -1), !test(date)) {} // eslint-disable-line no-empty
+
+        } else while (--step >= 0) {
+          while (offseti(date, +1), !test(date)) {} // eslint-disable-line no-empty
+
+        }
+      }
+    });
+  };
+
+  if (count) {
+    interval.count = function (start, end) {
+      t0.setTime(+start), t1.setTime(+end);
+      floori(t0), floori(t1);
+      return Math.floor(count(t0, t1));
+    };
+
+    interval.every = function (step) {
+      step = Math.floor(step);
+      return !isFinite(step) || !(step > 0) ? null : !(step > 1) ? interval : interval.filter(field ? function (d) {
+        return field(d) % step === 0;
+      } : function (d) {
+        return interval.count(0, d) % step === 0;
+      });
+    };
+  }
+
+  return interval;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/duration.js
+var durationSecond = 1000;
+var durationMinute = durationSecond * 60;
+var durationHour = durationMinute * 60;
+var durationDay = durationHour * 24;
+var durationWeek = durationDay * 7;
+var durationMonth = durationDay * 30;
+var durationYear = durationDay * 365;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/day.js
+
+
+var day = newInterval(function (date) {
+  return date.setHours(0, 0, 0, 0);
+}, function (date, step) {
+  return date.setDate(date.getDate() + step);
+}, function (start, end) {
+  return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) / durationDay;
+}, function (date) {
+  return date.getDate() - 1;
+});
+/* harmony default export */ var src_day = (day);
+var days = day.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/week.js
+
+
+
+function weekday(i) {
+  return newInterval(function (date) {
+    date.setDate(date.getDate() - (date.getDay() + 7 - i) % 7);
+    date.setHours(0, 0, 0, 0);
+  }, function (date, step) {
+    date.setDate(date.getDate() + step * 7);
+  }, function (start, end) {
+    return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) / durationWeek;
+  });
+}
+
+var sunday = weekday(0);
+var monday = weekday(1);
+var tuesday = weekday(2);
+var wednesday = weekday(3);
+var thursday = weekday(4);
+var friday = weekday(5);
+var saturday = weekday(6);
+var sundays = sunday.range;
+var mondays = monday.range;
+var tuesdays = tuesday.range;
+var wednesdays = wednesday.range;
+var thursdays = thursday.range;
+var fridays = friday.range;
+var saturdays = saturday.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcDay.js
+
+
+var utcDay = newInterval(function (date) {
+  date.setUTCHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setUTCDate(date.getUTCDate() + step);
+}, function (start, end) {
+  return (end - start) / durationDay;
+}, function (date) {
+  return date.getUTCDate() - 1;
+});
+/* harmony default export */ var src_utcDay = (utcDay);
+var utcDays = utcDay.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcWeek.js
+
+
+
+function utcWeekday(i) {
+  return newInterval(function (date) {
+    date.setUTCDate(date.getUTCDate() - (date.getUTCDay() + 7 - i) % 7);
+    date.setUTCHours(0, 0, 0, 0);
+  }, function (date, step) {
+    date.setUTCDate(date.getUTCDate() + step * 7);
+  }, function (start, end) {
+    return (end - start) / durationWeek;
+  });
+}
+
+var utcSunday = utcWeekday(0);
+var utcMonday = utcWeekday(1);
+var utcTuesday = utcWeekday(2);
+var utcWednesday = utcWeekday(3);
+var utcThursday = utcWeekday(4);
+var utcFriday = utcWeekday(5);
+var utcSaturday = utcWeekday(6);
+var utcSundays = utcSunday.range;
+var utcMondays = utcMonday.range;
+var utcTuesdays = utcTuesday.range;
+var utcWednesdays = utcWednesday.range;
+var utcThursdays = utcThursday.range;
+var utcFridays = utcFriday.range;
+var utcSaturdays = utcSaturday.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/year.js
+
+var year = newInterval(function (date) {
+  date.setMonth(0, 1);
+  date.setHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setFullYear(date.getFullYear() + step);
+}, function (start, end) {
+  return end.getFullYear() - start.getFullYear();
+}, function (date) {
+  return date.getFullYear();
+}); // An optimized implementation for this simple case.
+
+year.every = function (k) {
+  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval(function (date) {
+    date.setFullYear(Math.floor(date.getFullYear() / k) * k);
+    date.setMonth(0, 1);
+    date.setHours(0, 0, 0, 0);
+  }, function (date, step) {
+    date.setFullYear(date.getFullYear() + step * k);
+  });
+};
+
+/* harmony default export */ var src_year = (year);
+var years = year.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/month.js
+
+var month = newInterval(function (date) {
+  date.setDate(1);
+  date.setHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setMonth(date.getMonth() + step);
+}, function (start, end) {
+  return end.getMonth() - start.getMonth() + (end.getFullYear() - start.getFullYear()) * 12;
+}, function (date) {
+  return date.getMonth();
+});
+/* harmony default export */ var src_month = (month);
+var months = month.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/hour.js
+
+
+var hour = newInterval(function (date) {
+  date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond - date.getMinutes() * durationMinute);
+}, function (date, step) {
+  date.setTime(+date + step * durationHour);
+}, function (start, end) {
+  return (end - start) / durationHour;
+}, function (date) {
+  return date.getHours();
+});
+/* harmony default export */ var src_hour = (hour);
+var hours = hour.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/minute.js
+
+
+var minute = newInterval(function (date) {
+  date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond);
+}, function (date, step) {
+  date.setTime(+date + step * durationMinute);
+}, function (start, end) {
+  return (end - start) / durationMinute;
+}, function (date) {
+  return date.getMinutes();
+});
+/* harmony default export */ var src_minute = (minute);
+var minutes = minute.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/second.js
+
+
+var second = newInterval(function (date) {
+  date.setTime(date - date.getMilliseconds());
+}, function (date, step) {
+  date.setTime(+date + step * durationSecond);
+}, function (start, end) {
+  return (end - start) / durationSecond;
+}, function (date) {
+  return date.getUTCSeconds();
+});
+/* harmony default export */ var src_second = (second);
+var seconds = second.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/millisecond.js
+
+var millisecond = newInterval(function () {// noop
+}, function (date, step) {
+  date.setTime(+date + step);
+}, function (start, end) {
+  return end - start;
+}); // An optimized implementation for this simple case.
+
+millisecond.every = function (k) {
+  k = Math.floor(k);
+  if (!isFinite(k) || !(k > 0)) return null;
+  if (!(k > 1)) return millisecond;
+  return newInterval(function (date) {
+    date.setTime(Math.floor(date / k) * k);
+  }, function (date, step) {
+    date.setTime(+date + step * k);
+  }, function (start, end) {
+    return (end - start) / k;
+  });
+};
+
+/* harmony default export */ var src_millisecond = (millisecond);
+var milliseconds = millisecond.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcYear.js
+
+var utcYear = newInterval(function (date) {
+  date.setUTCMonth(0, 1);
+  date.setUTCHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setUTCFullYear(date.getUTCFullYear() + step);
+}, function (start, end) {
+  return end.getUTCFullYear() - start.getUTCFullYear();
+}, function (date) {
+  return date.getUTCFullYear();
+}); // An optimized implementation for this simple case.
+
+utcYear.every = function (k) {
+  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval(function (date) {
+    date.setUTCFullYear(Math.floor(date.getUTCFullYear() / k) * k);
+    date.setUTCMonth(0, 1);
+    date.setUTCHours(0, 0, 0, 0);
+  }, function (date, step) {
+    date.setUTCFullYear(date.getUTCFullYear() + step * k);
+  });
+};
+
+/* harmony default export */ var src_utcYear = (utcYear);
+var utcYears = utcYear.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcMonth.js
+
+var utcMonth = newInterval(function (date) {
+  date.setUTCDate(1);
+  date.setUTCHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setUTCMonth(date.getUTCMonth() + step);
+}, function (start, end) {
+  return end.getUTCMonth() - start.getUTCMonth() + (end.getUTCFullYear() - start.getUTCFullYear()) * 12;
+}, function (date) {
+  return date.getUTCMonth();
+});
+/* harmony default export */ var src_utcMonth = (utcMonth);
+var utcMonths = utcMonth.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcHour.js
+
+
+var utcHour = newInterval(function (date) {
+  date.setUTCMinutes(0, 0, 0);
+}, function (date, step) {
+  date.setTime(+date + step * durationHour);
+}, function (start, end) {
+  return (end - start) / durationHour;
+}, function (date) {
+  return date.getUTCHours();
+});
+/* harmony default export */ var src_utcHour = (utcHour);
+var utcHours = utcHour.range;
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcMinute.js
+
+
+var utcMinute = newInterval(function (date) {
+  date.setUTCSeconds(0, 0);
+}, function (date, step) {
+  date.setTime(+date + step * durationMinute);
+}, function (start, end) {
+  return (end - start) / durationMinute;
+}, function (date) {
+  return date.getUTCMinutes();
+});
+/* harmony default export */ var src_utcMinute = (utcMinute);
+var utcMinutes = utcMinute.range;
 ;// CONCATENATED MODULE: ./node_modules/vega-time/node_modules/d3-array/src/ascending.js
 /* harmony default export */ function src_ascending(a, b) {
   return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
@@ -8073,30 +8500,30 @@ function timeUnitSpecifier(units, specifiers) {
   return fmt.trim();
 }
 
-var t0 = new Date();
+var vega_time_module_t0 = new Date();
 
 function localYear(y) {
-  t0.setFullYear(y);
-  t0.setMonth(0);
-  t0.setDate(1);
-  t0.setHours(0, 0, 0, 0);
-  return t0;
+  vega_time_module_t0.setFullYear(y);
+  vega_time_module_t0.setMonth(0);
+  vega_time_module_t0.setDate(1);
+  vega_time_module_t0.setHours(0, 0, 0, 0);
+  return vega_time_module_t0;
 }
 
 function dayofyear(d) {
   return localDayOfYear(new Date(d));
 }
 
-function vega_time_module_week(d) {
+function week(d) {
   return localWeekNum(new Date(d));
 }
 
 function localDayOfYear(d) {
-  return day/* default.count */.Z.count(localYear(d.getFullYear()) - 1, d);
+  return src_day.count(localYear(d.getFullYear()) - 1, d);
 }
 
 function localWeekNum(d) {
-  return week/* sunday.count */.OM.count(localYear(d.getFullYear()) - 1, d);
+  return sunday.count(localYear(d.getFullYear()) - 1, d);
 }
 
 function localFirst(y) {
@@ -8123,17 +8550,17 @@ function utcweek(d) {
 
 function utcDayOfYear(d) {
   var y = Date.UTC(d.getUTCFullYear(), 0, 1);
-  return utcDay/* default.count */.Z.count(y - 1, d);
+  return src_utcDay.count(y - 1, d);
 }
 
 function utcWeekNum(d) {
   var y = Date.UTC(d.getUTCFullYear(), 0, 1);
-  return utcWeek/* utcSunday.count */.Ox.count(y - 1, d);
+  return utcSunday.count(y - 1, d);
 }
 
 function utcFirst(y) {
-  t0.setTime(Date.UTC(y, 0, 1));
-  return t0.getUTCDay();
+  vega_time_module_t0.setTime(Date.UTC(y, 0, 1));
+  return vega_time_module_t0.getUTCDay();
 }
 
 function utcDate(y, m, d, H, M, S, L) {
@@ -8183,7 +8610,7 @@ function getUnit(f, inv, step, phase) {
 // and the day of the week for the first day of the year
 
 
-function weekday(week, day, firstDay) {
+function vega_time_module_weekday(week, day, firstDay) {
   return day + week * 7 - (firstDay + 6) % 7;
 } // -- LOCAL TIME --
 
@@ -8209,14 +8636,14 @@ var localGet = (_localGet = {}, (0,defineProperty/* default */.Z)(_localGet, YEA
 }), (0,defineProperty/* default */.Z)(_localGet, WEEK, function (d) {
   return localWeekNum(d);
 }), (0,defineProperty/* default */.Z)(_localGet, WEEK + DAY, function (d, y) {
-  return weekday(localWeekNum(d), d.getDay(), localFirst(y));
+  return vega_time_module_weekday(localWeekNum(d), d.getDay(), localFirst(y));
 }), (0,defineProperty/* default */.Z)(_localGet, DAY, function (d, y) {
-  return weekday(1, d.getDay(), localFirst(y));
+  return vega_time_module_weekday(1, d.getDay(), localFirst(y));
 }), _localGet);
 var localInv = (_localInv = {}, (0,defineProperty/* default */.Z)(_localInv, QUARTER, function (q) {
   return 3 * q;
 }), (0,defineProperty/* default */.Z)(_localInv, WEEK, function (w, y) {
-  return weekday(w, 0, localFirst(y));
+  return vega_time_module_weekday(w, 0, localFirst(y));
 }), _localInv);
 
 function timeFloor(units, step) {
@@ -8245,22 +8672,22 @@ var utcGet = (_utcGet = {}, (0,defineProperty/* default */.Z)(_utcGet, YEAR, fun
 }), (0,defineProperty/* default */.Z)(_utcGet, WEEK, function (d) {
   return utcWeekNum(d);
 }), (0,defineProperty/* default */.Z)(_utcGet, DAY, function (d, y) {
-  return weekday(1, d.getUTCDay(), utcFirst(y));
+  return vega_time_module_weekday(1, d.getUTCDay(), utcFirst(y));
 }), (0,defineProperty/* default */.Z)(_utcGet, WEEK + DAY, function (d, y) {
-  return weekday(utcWeekNum(d), d.getUTCDay(), utcFirst(y));
+  return vega_time_module_weekday(utcWeekNum(d), d.getUTCDay(), utcFirst(y));
 }), _utcGet);
 var utcInv = (_utcInv = {}, (0,defineProperty/* default */.Z)(_utcInv, QUARTER, function (q) {
   return 3 * q;
 }), (0,defineProperty/* default */.Z)(_utcInv, WEEK, function (w, y) {
-  return weekday(w, 0, utcFirst(y));
+  return vega_time_module_weekday(w, 0, utcFirst(y));
 }), _utcInv);
 
 function utcFloor(units, step) {
   return floor(units, step || 1, utcGet, utcInv, utcDate);
 }
 
-var timeIntervals = (_timeIntervals = {}, (0,defineProperty/* default */.Z)(_timeIntervals, YEAR, year/* default */.Z), (0,defineProperty/* default */.Z)(_timeIntervals, QUARTER, month/* default.every */.Z.every(3)), (0,defineProperty/* default */.Z)(_timeIntervals, MONTH, month/* default */.Z), (0,defineProperty/* default */.Z)(_timeIntervals, WEEK, week/* sunday */.OM), (0,defineProperty/* default */.Z)(_timeIntervals, DATE, day/* default */.Z), (0,defineProperty/* default */.Z)(_timeIntervals, DAY, day/* default */.Z), (0,defineProperty/* default */.Z)(_timeIntervals, DAYOFYEAR, day/* default */.Z), (0,defineProperty/* default */.Z)(_timeIntervals, HOURS, hour/* default */.Z), (0,defineProperty/* default */.Z)(_timeIntervals, MINUTES, minute/* default */.Z), (0,defineProperty/* default */.Z)(_timeIntervals, SECONDS, second/* default */.Z), (0,defineProperty/* default */.Z)(_timeIntervals, MILLISECONDS, millisecond/* default */.Z), _timeIntervals);
-var utcIntervals = (_utcIntervals = {}, (0,defineProperty/* default */.Z)(_utcIntervals, YEAR, utcYear/* default */.Z), (0,defineProperty/* default */.Z)(_utcIntervals, QUARTER, utcMonth/* default.every */.Z.every(3)), (0,defineProperty/* default */.Z)(_utcIntervals, MONTH, utcMonth/* default */.Z), (0,defineProperty/* default */.Z)(_utcIntervals, WEEK, utcWeek/* utcSunday */.Ox), (0,defineProperty/* default */.Z)(_utcIntervals, DATE, utcDay/* default */.Z), (0,defineProperty/* default */.Z)(_utcIntervals, DAY, utcDay/* default */.Z), (0,defineProperty/* default */.Z)(_utcIntervals, DAYOFYEAR, utcDay/* default */.Z), (0,defineProperty/* default */.Z)(_utcIntervals, HOURS, utcHour/* default */.Z), (0,defineProperty/* default */.Z)(_utcIntervals, MINUTES, utcMinute/* default */.Z), (0,defineProperty/* default */.Z)(_utcIntervals, SECONDS, second/* default */.Z), (0,defineProperty/* default */.Z)(_utcIntervals, MILLISECONDS, millisecond/* default */.Z), _utcIntervals);
+var timeIntervals = (_timeIntervals = {}, (0,defineProperty/* default */.Z)(_timeIntervals, YEAR, src_year), (0,defineProperty/* default */.Z)(_timeIntervals, QUARTER, src_month.every(3)), (0,defineProperty/* default */.Z)(_timeIntervals, MONTH, src_month), (0,defineProperty/* default */.Z)(_timeIntervals, WEEK, sunday), (0,defineProperty/* default */.Z)(_timeIntervals, DATE, src_day), (0,defineProperty/* default */.Z)(_timeIntervals, DAY, src_day), (0,defineProperty/* default */.Z)(_timeIntervals, DAYOFYEAR, src_day), (0,defineProperty/* default */.Z)(_timeIntervals, HOURS, src_hour), (0,defineProperty/* default */.Z)(_timeIntervals, MINUTES, src_minute), (0,defineProperty/* default */.Z)(_timeIntervals, SECONDS, src_second), (0,defineProperty/* default */.Z)(_timeIntervals, MILLISECONDS, src_millisecond), _timeIntervals);
+var utcIntervals = (_utcIntervals = {}, (0,defineProperty/* default */.Z)(_utcIntervals, YEAR, src_utcYear), (0,defineProperty/* default */.Z)(_utcIntervals, QUARTER, src_utcMonth.every(3)), (0,defineProperty/* default */.Z)(_utcIntervals, MONTH, src_utcMonth), (0,defineProperty/* default */.Z)(_utcIntervals, WEEK, utcSunday), (0,defineProperty/* default */.Z)(_utcIntervals, DATE, src_utcDay), (0,defineProperty/* default */.Z)(_utcIntervals, DAY, src_utcDay), (0,defineProperty/* default */.Z)(_utcIntervals, DAYOFYEAR, src_utcDay), (0,defineProperty/* default */.Z)(_utcIntervals, HOURS, src_utcHour), (0,defineProperty/* default */.Z)(_utcIntervals, MINUTES, src_utcMinute), (0,defineProperty/* default */.Z)(_utcIntervals, SECONDS, src_second), (0,defineProperty/* default */.Z)(_utcIntervals, MILLISECONDS, src_millisecond), _utcIntervals);
 
 function timeInterval(unit) {
   return timeIntervals[unit];
@@ -8294,13 +8721,13 @@ function utcSequence(unit, start, stop, step) {
   return sequence(utcInterval(unit), start, stop, step);
 }
 
-var durationSecond = 1000,
-    durationMinute = durationSecond * 60,
-    durationHour = durationMinute * 60,
-    durationDay = durationHour * 24,
-    durationWeek = durationDay * 7,
-    durationMonth = durationDay * 30,
-    durationYear = durationDay * 365;
+var vega_time_module_durationSecond = 1000,
+    vega_time_module_durationMinute = vega_time_module_durationSecond * 60,
+    vega_time_module_durationHour = vega_time_module_durationMinute * 60,
+    vega_time_module_durationDay = vega_time_module_durationHour * 24,
+    vega_time_module_durationWeek = vega_time_module_durationDay * 7,
+    vega_time_module_durationMonth = vega_time_module_durationDay * 30,
+    vega_time_module_durationYear = vega_time_module_durationDay * 365;
 var Milli = [YEAR, MONTH, DATE, HOURS, MINUTES, SECONDS, MILLISECONDS],
     Seconds = Milli.slice(0, -1),
     Minutes = Seconds.slice(0, -1),
@@ -8309,7 +8736,7 @@ var Milli = [YEAR, MONTH, DATE, HOURS, MINUTES, SECONDS, MILLISECONDS],
     Week = [YEAR, WEEK],
     Month = [YEAR, MONTH],
     Year = [YEAR];
-var intervals = [[Seconds, 1, durationSecond], [Seconds, 5, 5 * durationSecond], [Seconds, 15, 15 * durationSecond], [Seconds, 30, 30 * durationSecond], [Minutes, 1, durationMinute], [Minutes, 5, 5 * durationMinute], [Minutes, 15, 15 * durationMinute], [Minutes, 30, 30 * durationMinute], [Hours, 1, durationHour], [Hours, 3, 3 * durationHour], [Hours, 6, 6 * durationHour], [Hours, 12, 12 * durationHour], [Day, 1, durationDay], [Week, 1, durationWeek], [Month, 1, durationMonth], [Month, 3, 3 * durationMonth], [Year, 1, durationYear]];
+var intervals = [[Seconds, 1, vega_time_module_durationSecond], [Seconds, 5, 5 * vega_time_module_durationSecond], [Seconds, 15, 15 * vega_time_module_durationSecond], [Seconds, 30, 30 * vega_time_module_durationSecond], [Minutes, 1, vega_time_module_durationMinute], [Minutes, 5, 5 * vega_time_module_durationMinute], [Minutes, 15, 15 * vega_time_module_durationMinute], [Minutes, 30, 30 * vega_time_module_durationMinute], [Hours, 1, vega_time_module_durationHour], [Hours, 3, 3 * vega_time_module_durationHour], [Hours, 6, 6 * vega_time_module_durationHour], [Hours, 12, 12 * vega_time_module_durationHour], [Day, 1, vega_time_module_durationDay], [Week, 1, vega_time_module_durationWeek], [Month, 1, vega_time_module_durationMonth], [Month, 3, 3 * vega_time_module_durationMonth], [Year, 1, vega_time_module_durationYear]];
 
 function bin(opt) {
   var ext = opt.extent,
@@ -8322,7 +8749,7 @@ function bin(opt) {
       step;
 
   if (i === intervals.length) {
-    units = Year, step = ticks_tickStep(ext[0] / durationYear, ext[1] / durationYear, max);
+    units = Year, step = ticks_tickStep(ext[0] / vega_time_module_durationYear, ext[1] / vega_time_module_durationYear, max);
   } else if (i) {
     i = intervals[target / intervals[i - 1][2] < intervals[i][2] / target ? i - 1 : i];
     units = i[0];
@@ -8339,10 +8766,739 @@ function bin(opt) {
 }
 
 
-// EXTERNAL MODULE: ./node_modules/d3-time-format/src/defaultLocale.js
-var src_defaultLocale = __webpack_require__(78460);
-// EXTERNAL MODULE: ./node_modules/d3-time-format/src/locale.js
-var src_locale = __webpack_require__(65410);
+;// CONCATENATED MODULE: ./node_modules/d3-time-format/src/locale.js
+
+
+function locale_localDate(d) {
+  if (0 <= d.y && d.y < 100) {
+    var date = new Date(-1, d.m, d.d, d.H, d.M, d.S, d.L);
+    date.setFullYear(d.y);
+    return date;
+  }
+
+  return new Date(d.y, d.m, d.d, d.H, d.M, d.S, d.L);
+}
+
+function locale_utcDate(d) {
+  if (0 <= d.y && d.y < 100) {
+    var date = new Date(Date.UTC(-1, d.m, d.d, d.H, d.M, d.S, d.L));
+    date.setUTCFullYear(d.y);
+    return date;
+  }
+
+  return new Date(Date.UTC(d.y, d.m, d.d, d.H, d.M, d.S, d.L));
+}
+
+function newDate(y, m, d) {
+  return {
+    y: y,
+    m: m,
+    d: d,
+    H: 0,
+    M: 0,
+    S: 0,
+    L: 0
+  };
+}
+
+function formatLocale(locale) {
+  var locale_dateTime = locale.dateTime,
+      locale_date = locale.date,
+      locale_time = locale.time,
+      locale_periods = locale.periods,
+      locale_weekdays = locale.days,
+      locale_shortWeekdays = locale.shortDays,
+      locale_months = locale.months,
+      locale_shortMonths = locale.shortMonths;
+  var periodRe = formatRe(locale_periods),
+      periodLookup = formatLookup(locale_periods),
+      weekdayRe = formatRe(locale_weekdays),
+      weekdayLookup = formatLookup(locale_weekdays),
+      shortWeekdayRe = formatRe(locale_shortWeekdays),
+      shortWeekdayLookup = formatLookup(locale_shortWeekdays),
+      monthRe = formatRe(locale_months),
+      monthLookup = formatLookup(locale_months),
+      shortMonthRe = formatRe(locale_shortMonths),
+      shortMonthLookup = formatLookup(locale_shortMonths);
+  var formats = {
+    "a": formatShortWeekday,
+    "A": formatWeekday,
+    "b": formatShortMonth,
+    "B": formatMonth,
+    "c": null,
+    "d": formatDayOfMonth,
+    "e": formatDayOfMonth,
+    "f": formatMicroseconds,
+    "g": formatYearISO,
+    "G": formatFullYearISO,
+    "H": formatHour24,
+    "I": formatHour12,
+    "j": formatDayOfYear,
+    "L": formatMilliseconds,
+    "m": formatMonthNumber,
+    "M": formatMinutes,
+    "p": formatPeriod,
+    "q": formatQuarter,
+    "Q": formatUnixTimestamp,
+    "s": formatUnixTimestampSeconds,
+    "S": formatSeconds,
+    "u": formatWeekdayNumberMonday,
+    "U": formatWeekNumberSunday,
+    "V": formatWeekNumberISO,
+    "w": formatWeekdayNumberSunday,
+    "W": formatWeekNumberMonday,
+    "x": null,
+    "X": null,
+    "y": locale_formatYear,
+    "Y": formatFullYear,
+    "Z": formatZone,
+    "%": formatLiteralPercent
+  };
+  var utcFormats = {
+    "a": formatUTCShortWeekday,
+    "A": formatUTCWeekday,
+    "b": formatUTCShortMonth,
+    "B": formatUTCMonth,
+    "c": null,
+    "d": formatUTCDayOfMonth,
+    "e": formatUTCDayOfMonth,
+    "f": formatUTCMicroseconds,
+    "g": formatUTCYearISO,
+    "G": formatUTCFullYearISO,
+    "H": formatUTCHour24,
+    "I": formatUTCHour12,
+    "j": formatUTCDayOfYear,
+    "L": formatUTCMilliseconds,
+    "m": formatUTCMonthNumber,
+    "M": formatUTCMinutes,
+    "p": formatUTCPeriod,
+    "q": formatUTCQuarter,
+    "Q": formatUnixTimestamp,
+    "s": formatUnixTimestampSeconds,
+    "S": formatUTCSeconds,
+    "u": formatUTCWeekdayNumberMonday,
+    "U": formatUTCWeekNumberSunday,
+    "V": formatUTCWeekNumberISO,
+    "w": formatUTCWeekdayNumberSunday,
+    "W": formatUTCWeekNumberMonday,
+    "x": null,
+    "X": null,
+    "y": formatUTCYear,
+    "Y": formatUTCFullYear,
+    "Z": formatUTCZone,
+    "%": formatLiteralPercent
+  };
+  var parses = {
+    "a": parseShortWeekday,
+    "A": parseWeekday,
+    "b": parseShortMonth,
+    "B": parseMonth,
+    "c": parseLocaleDateTime,
+    "d": parseDayOfMonth,
+    "e": parseDayOfMonth,
+    "f": parseMicroseconds,
+    "g": parseYear,
+    "G": parseFullYear,
+    "H": parseHour24,
+    "I": parseHour24,
+    "j": parseDayOfYear,
+    "L": parseMilliseconds,
+    "m": parseMonthNumber,
+    "M": parseMinutes,
+    "p": parsePeriod,
+    "q": parseQuarter,
+    "Q": parseUnixTimestamp,
+    "s": parseUnixTimestampSeconds,
+    "S": parseSeconds,
+    "u": parseWeekdayNumberMonday,
+    "U": parseWeekNumberSunday,
+    "V": parseWeekNumberISO,
+    "w": parseWeekdayNumberSunday,
+    "W": parseWeekNumberMonday,
+    "x": parseLocaleDate,
+    "X": parseLocaleTime,
+    "y": parseYear,
+    "Y": parseFullYear,
+    "Z": parseZone,
+    "%": parseLiteralPercent
+  }; // These recursive directive definitions must be deferred.
+
+  formats.x = newFormat(locale_date, formats);
+  formats.X = newFormat(locale_time, formats);
+  formats.c = newFormat(locale_dateTime, formats);
+  utcFormats.x = newFormat(locale_date, utcFormats);
+  utcFormats.X = newFormat(locale_time, utcFormats);
+  utcFormats.c = newFormat(locale_dateTime, utcFormats);
+
+  function newFormat(specifier, formats) {
+    return function (date) {
+      var string = [],
+          i = -1,
+          j = 0,
+          n = specifier.length,
+          c,
+          pad,
+          format;
+      if (!(date instanceof Date)) date = new Date(+date);
+
+      while (++i < n) {
+        if (specifier.charCodeAt(i) === 37) {
+          string.push(specifier.slice(j, i));
+          if ((pad = pads[c = specifier.charAt(++i)]) != null) c = specifier.charAt(++i);else pad = c === "e" ? " " : "0";
+          if (format = formats[c]) c = format(date, pad);
+          string.push(c);
+          j = i + 1;
+        }
+      }
+
+      string.push(specifier.slice(j, i));
+      return string.join("");
+    };
+  }
+
+  function newParse(specifier, Z) {
+    return function (string) {
+      var d = newDate(1900, undefined, 1),
+          i = parseSpecifier(d, specifier, string += "", 0),
+          week,
+          day;
+      if (i != string.length) return null; // If a UNIX timestamp is specified, return it.
+
+      if ("Q" in d) return new Date(d.Q);
+      if ("s" in d) return new Date(d.s * 1000 + ("L" in d ? d.L : 0)); // If this is utcParse, never use the local timezone.
+
+      if (Z && !("Z" in d)) d.Z = 0; // The am-pm flag is 0 for AM, and 1 for PM.
+
+      if ("p" in d) d.H = d.H % 12 + d.p * 12; // If the month was not specified, inherit from the quarter.
+
+      if (d.m === undefined) d.m = "q" in d ? d.q : 0; // Convert day-of-week and week-of-year to day-of-year.
+
+      if ("V" in d) {
+        if (d.V < 1 || d.V > 53) return null;
+        if (!("w" in d)) d.w = 1;
+
+        if ("Z" in d) {
+          week = locale_utcDate(newDate(d.y, 0, 1)), day = week.getUTCDay();
+          week = day > 4 || day === 0 ? utcMonday.ceil(week) : utcMonday(week);
+          week = src_utcDay.offset(week, (d.V - 1) * 7);
+          d.y = week.getUTCFullYear();
+          d.m = week.getUTCMonth();
+          d.d = week.getUTCDate() + (d.w + 6) % 7;
+        } else {
+          week = locale_localDate(newDate(d.y, 0, 1)), day = week.getDay();
+          week = day > 4 || day === 0 ? monday.ceil(week) : monday(week);
+          week = src_day.offset(week, (d.V - 1) * 7);
+          d.y = week.getFullYear();
+          d.m = week.getMonth();
+          d.d = week.getDate() + (d.w + 6) % 7;
+        }
+      } else if ("W" in d || "U" in d) {
+        if (!("w" in d)) d.w = "u" in d ? d.u % 7 : "W" in d ? 1 : 0;
+        day = "Z" in d ? locale_utcDate(newDate(d.y, 0, 1)).getUTCDay() : locale_localDate(newDate(d.y, 0, 1)).getDay();
+        d.m = 0;
+        d.d = "W" in d ? (d.w + 6) % 7 + d.W * 7 - (day + 5) % 7 : d.w + d.U * 7 - (day + 6) % 7;
+      } // If a time zone is specified, all fields are interpreted as UTC and then
+      // offset according to the specified time zone.
+
+
+      if ("Z" in d) {
+        d.H += d.Z / 100 | 0;
+        d.M += d.Z % 100;
+        return locale_utcDate(d);
+      } // Otherwise, all fields are in local time.
+
+
+      return locale_localDate(d);
+    };
+  }
+
+  function parseSpecifier(d, specifier, string, j) {
+    var i = 0,
+        n = specifier.length,
+        m = string.length,
+        c,
+        parse;
+
+    while (i < n) {
+      if (j >= m) return -1;
+      c = specifier.charCodeAt(i++);
+
+      if (c === 37) {
+        c = specifier.charAt(i++);
+        parse = parses[c in pads ? specifier.charAt(i++) : c];
+        if (!parse || (j = parse(d, string, j)) < 0) return -1;
+      } else if (c != string.charCodeAt(j++)) {
+        return -1;
+      }
+    }
+
+    return j;
+  }
+
+  function parsePeriod(d, string, i) {
+    var n = periodRe.exec(string.slice(i));
+    return n ? (d.p = periodLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
+  }
+
+  function parseShortWeekday(d, string, i) {
+    var n = shortWeekdayRe.exec(string.slice(i));
+    return n ? (d.w = shortWeekdayLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
+  }
+
+  function parseWeekday(d, string, i) {
+    var n = weekdayRe.exec(string.slice(i));
+    return n ? (d.w = weekdayLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
+  }
+
+  function parseShortMonth(d, string, i) {
+    var n = shortMonthRe.exec(string.slice(i));
+    return n ? (d.m = shortMonthLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
+  }
+
+  function parseMonth(d, string, i) {
+    var n = monthRe.exec(string.slice(i));
+    return n ? (d.m = monthLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
+  }
+
+  function parseLocaleDateTime(d, string, i) {
+    return parseSpecifier(d, locale_dateTime, string, i);
+  }
+
+  function parseLocaleDate(d, string, i) {
+    return parseSpecifier(d, locale_date, string, i);
+  }
+
+  function parseLocaleTime(d, string, i) {
+    return parseSpecifier(d, locale_time, string, i);
+  }
+
+  function formatShortWeekday(d) {
+    return locale_shortWeekdays[d.getDay()];
+  }
+
+  function formatWeekday(d) {
+    return locale_weekdays[d.getDay()];
+  }
+
+  function formatShortMonth(d) {
+    return locale_shortMonths[d.getMonth()];
+  }
+
+  function formatMonth(d) {
+    return locale_months[d.getMonth()];
+  }
+
+  function formatPeriod(d) {
+    return locale_periods[+(d.getHours() >= 12)];
+  }
+
+  function formatQuarter(d) {
+    return 1 + ~~(d.getMonth() / 3);
+  }
+
+  function formatUTCShortWeekday(d) {
+    return locale_shortWeekdays[d.getUTCDay()];
+  }
+
+  function formatUTCWeekday(d) {
+    return locale_weekdays[d.getUTCDay()];
+  }
+
+  function formatUTCShortMonth(d) {
+    return locale_shortMonths[d.getUTCMonth()];
+  }
+
+  function formatUTCMonth(d) {
+    return locale_months[d.getUTCMonth()];
+  }
+
+  function formatUTCPeriod(d) {
+    return locale_periods[+(d.getUTCHours() >= 12)];
+  }
+
+  function formatUTCQuarter(d) {
+    return 1 + ~~(d.getUTCMonth() / 3);
+  }
+
+  return {
+    format: function format(specifier) {
+      var f = newFormat(specifier += "", formats);
+
+      f.toString = function () {
+        return specifier;
+      };
+
+      return f;
+    },
+    parse: function parse(specifier) {
+      var p = newParse(specifier += "", false);
+
+      p.toString = function () {
+        return specifier;
+      };
+
+      return p;
+    },
+    utcFormat: function utcFormat(specifier) {
+      var f = newFormat(specifier += "", utcFormats);
+
+      f.toString = function () {
+        return specifier;
+      };
+
+      return f;
+    },
+    utcParse: function utcParse(specifier) {
+      var p = newParse(specifier += "", true);
+
+      p.toString = function () {
+        return specifier;
+      };
+
+      return p;
+    }
+  };
+}
+var pads = {
+  "-": "",
+  "_": " ",
+  "0": "0"
+},
+    numberRe = /^\s*\d+/,
+    // note: ignores next directive
+percentRe = /^%/,
+    requoteRe = /[\\^$*+?|[\]().{}]/g;
+
+function locale_pad(value, fill, width) {
+  var sign = value < 0 ? "-" : "",
+      string = (sign ? -value : value) + "",
+      length = string.length;
+  return sign + (length < width ? new Array(width - length + 1).join(fill) + string : string);
+}
+
+function requote(s) {
+  return s.replace(requoteRe, "\\$&");
+}
+
+function formatRe(names) {
+  return new RegExp("^(?:" + names.map(requote).join("|") + ")", "i");
+}
+
+function formatLookup(names) {
+  return new Map(names.map(function (name, i) {
+    return [name.toLowerCase(), i];
+  }));
+}
+
+function parseWeekdayNumberSunday(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 1));
+  return n ? (d.w = +n[0], i + n[0].length) : -1;
+}
+
+function parseWeekdayNumberMonday(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 1));
+  return n ? (d.u = +n[0], i + n[0].length) : -1;
+}
+
+function parseWeekNumberSunday(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 2));
+  return n ? (d.U = +n[0], i + n[0].length) : -1;
+}
+
+function parseWeekNumberISO(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 2));
+  return n ? (d.V = +n[0], i + n[0].length) : -1;
+}
+
+function parseWeekNumberMonday(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 2));
+  return n ? (d.W = +n[0], i + n[0].length) : -1;
+}
+
+function parseFullYear(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 4));
+  return n ? (d.y = +n[0], i + n[0].length) : -1;
+}
+
+function parseYear(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 2));
+  return n ? (d.y = +n[0] + (+n[0] > 68 ? 1900 : 2000), i + n[0].length) : -1;
+}
+
+function parseZone(d, string, i) {
+  var n = /^(Z)|([+-]\d\d)(?::?(\d\d))?/.exec(string.slice(i, i + 6));
+  return n ? (d.Z = n[1] ? 0 : -(n[2] + (n[3] || "00")), i + n[0].length) : -1;
+}
+
+function parseQuarter(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 1));
+  return n ? (d.q = n[0] * 3 - 3, i + n[0].length) : -1;
+}
+
+function parseMonthNumber(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 2));
+  return n ? (d.m = n[0] - 1, i + n[0].length) : -1;
+}
+
+function parseDayOfMonth(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 2));
+  return n ? (d.d = +n[0], i + n[0].length) : -1;
+}
+
+function parseDayOfYear(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 3));
+  return n ? (d.m = 0, d.d = +n[0], i + n[0].length) : -1;
+}
+
+function parseHour24(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 2));
+  return n ? (d.H = +n[0], i + n[0].length) : -1;
+}
+
+function parseMinutes(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 2));
+  return n ? (d.M = +n[0], i + n[0].length) : -1;
+}
+
+function parseSeconds(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 2));
+  return n ? (d.S = +n[0], i + n[0].length) : -1;
+}
+
+function parseMilliseconds(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 3));
+  return n ? (d.L = +n[0], i + n[0].length) : -1;
+}
+
+function parseMicroseconds(d, string, i) {
+  var n = numberRe.exec(string.slice(i, i + 6));
+  return n ? (d.L = Math.floor(n[0] / 1000), i + n[0].length) : -1;
+}
+
+function parseLiteralPercent(d, string, i) {
+  var n = percentRe.exec(string.slice(i, i + 1));
+  return n ? i + n[0].length : -1;
+}
+
+function parseUnixTimestamp(d, string, i) {
+  var n = numberRe.exec(string.slice(i));
+  return n ? (d.Q = +n[0], i + n[0].length) : -1;
+}
+
+function parseUnixTimestampSeconds(d, string, i) {
+  var n = numberRe.exec(string.slice(i));
+  return n ? (d.s = +n[0], i + n[0].length) : -1;
+}
+
+function formatDayOfMonth(d, p) {
+  return locale_pad(d.getDate(), p, 2);
+}
+
+function formatHour24(d, p) {
+  return locale_pad(d.getHours(), p, 2);
+}
+
+function formatHour12(d, p) {
+  return locale_pad(d.getHours() % 12 || 12, p, 2);
+}
+
+function formatDayOfYear(d, p) {
+  return locale_pad(1 + src_day.count(src_year(d), d), p, 3);
+}
+
+function formatMilliseconds(d, p) {
+  return locale_pad(d.getMilliseconds(), p, 3);
+}
+
+function formatMicroseconds(d, p) {
+  return formatMilliseconds(d, p) + "000";
+}
+
+function formatMonthNumber(d, p) {
+  return locale_pad(d.getMonth() + 1, p, 2);
+}
+
+function formatMinutes(d, p) {
+  return locale_pad(d.getMinutes(), p, 2);
+}
+
+function formatSeconds(d, p) {
+  return locale_pad(d.getSeconds(), p, 2);
+}
+
+function formatWeekdayNumberMonday(d) {
+  var day = d.getDay();
+  return day === 0 ? 7 : day;
+}
+
+function formatWeekNumberSunday(d, p) {
+  return locale_pad(sunday.count(src_year(d) - 1, d), p, 2);
+}
+
+function dISO(d) {
+  var day = d.getDay();
+  return day >= 4 || day === 0 ? thursday(d) : thursday.ceil(d);
+}
+
+function formatWeekNumberISO(d, p) {
+  d = dISO(d);
+  return locale_pad(thursday.count(src_year(d), d) + (src_year(d).getDay() === 4), p, 2);
+}
+
+function formatWeekdayNumberSunday(d) {
+  return d.getDay();
+}
+
+function formatWeekNumberMonday(d, p) {
+  return locale_pad(monday.count(src_year(d) - 1, d), p, 2);
+}
+
+function locale_formatYear(d, p) {
+  return locale_pad(d.getFullYear() % 100, p, 2);
+}
+
+function formatYearISO(d, p) {
+  d = dISO(d);
+  return locale_pad(d.getFullYear() % 100, p, 2);
+}
+
+function formatFullYear(d, p) {
+  return locale_pad(d.getFullYear() % 10000, p, 4);
+}
+
+function formatFullYearISO(d, p) {
+  var day = d.getDay();
+  d = day >= 4 || day === 0 ? thursday(d) : thursday.ceil(d);
+  return locale_pad(d.getFullYear() % 10000, p, 4);
+}
+
+function formatZone(d) {
+  var z = d.getTimezoneOffset();
+  return (z > 0 ? "-" : (z *= -1, "+")) + locale_pad(z / 60 | 0, "0", 2) + locale_pad(z % 60, "0", 2);
+}
+
+function formatUTCDayOfMonth(d, p) {
+  return locale_pad(d.getUTCDate(), p, 2);
+}
+
+function formatUTCHour24(d, p) {
+  return locale_pad(d.getUTCHours(), p, 2);
+}
+
+function formatUTCHour12(d, p) {
+  return locale_pad(d.getUTCHours() % 12 || 12, p, 2);
+}
+
+function formatUTCDayOfYear(d, p) {
+  return locale_pad(1 + src_utcDay.count(src_utcYear(d), d), p, 3);
+}
+
+function formatUTCMilliseconds(d, p) {
+  return locale_pad(d.getUTCMilliseconds(), p, 3);
+}
+
+function formatUTCMicroseconds(d, p) {
+  return formatUTCMilliseconds(d, p) + "000";
+}
+
+function formatUTCMonthNumber(d, p) {
+  return locale_pad(d.getUTCMonth() + 1, p, 2);
+}
+
+function formatUTCMinutes(d, p) {
+  return locale_pad(d.getUTCMinutes(), p, 2);
+}
+
+function formatUTCSeconds(d, p) {
+  return locale_pad(d.getUTCSeconds(), p, 2);
+}
+
+function formatUTCWeekdayNumberMonday(d) {
+  var dow = d.getUTCDay();
+  return dow === 0 ? 7 : dow;
+}
+
+function formatUTCWeekNumberSunday(d, p) {
+  return locale_pad(utcSunday.count(src_utcYear(d) - 1, d), p, 2);
+}
+
+function UTCdISO(d) {
+  var day = d.getUTCDay();
+  return day >= 4 || day === 0 ? utcThursday(d) : utcThursday.ceil(d);
+}
+
+function formatUTCWeekNumberISO(d, p) {
+  d = UTCdISO(d);
+  return locale_pad(utcThursday.count(src_utcYear(d), d) + (src_utcYear(d).getUTCDay() === 4), p, 2);
+}
+
+function formatUTCWeekdayNumberSunday(d) {
+  return d.getUTCDay();
+}
+
+function formatUTCWeekNumberMonday(d, p) {
+  return locale_pad(utcMonday.count(src_utcYear(d) - 1, d), p, 2);
+}
+
+function formatUTCYear(d, p) {
+  return locale_pad(d.getUTCFullYear() % 100, p, 2);
+}
+
+function formatUTCYearISO(d, p) {
+  d = UTCdISO(d);
+  return locale_pad(d.getUTCFullYear() % 100, p, 2);
+}
+
+function formatUTCFullYear(d, p) {
+  return locale_pad(d.getUTCFullYear() % 10000, p, 4);
+}
+
+function formatUTCFullYearISO(d, p) {
+  var day = d.getUTCDay();
+  d = day >= 4 || day === 0 ? utcThursday(d) : utcThursday.ceil(d);
+  return locale_pad(d.getUTCFullYear() % 10000, p, 4);
+}
+
+function formatUTCZone() {
+  return "+0000";
+}
+
+function formatLiteralPercent() {
+  return "%";
+}
+
+function formatUnixTimestamp(d) {
+  return +d;
+}
+
+function formatUnixTimestampSeconds(d) {
+  return Math.floor(+d / 1000);
+}
+;// CONCATENATED MODULE: ./node_modules/d3-time-format/src/defaultLocale.js
+
+var src_defaultLocale_locale;
+var timeFormat;
+var timeParse;
+var utcFormat;
+var utcParse;
+defaultLocale_defaultLocale({
+  dateTime: "%x, %X",
+  date: "%-m/%-d/%Y",
+  time: "%-I:%M:%S %p",
+  periods: ["AM", "PM"],
+  days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+});
+function defaultLocale_defaultLocale(definition) {
+  src_defaultLocale_locale = formatLocale(definition);
+  timeFormat = src_defaultLocale_locale.format;
+  timeParse = src_defaultLocale_locale.parse;
+  utcFormat = src_defaultLocale_locale.utcFormat;
+  utcParse = src_defaultLocale_locale.utcParse;
+  return src_defaultLocale_locale;
+}
 ;// CONCATENATED MODULE: ./node_modules/vega-format/build/vega-format.module.js
 
 
@@ -8531,15 +9687,15 @@ resetTimeFormatDefaultLocale();
 
 function resetTimeFormatDefaultLocale() {
   return defaultTimeLocale = timeLocale({
-    format: src_defaultLocale/* timeFormat */.i$,
-    parse: src_defaultLocale/* timeParse */.Z1,
-    utcFormat: src_defaultLocale/* utcFormat */.g0,
-    utcParse: src_defaultLocale/* utcParse */.wp
+    format: timeFormat,
+    parse: timeParse,
+    utcFormat: utcFormat,
+    utcParse: utcParse
   });
 }
 
 function timeFormatLocale(definition) {
-  return timeLocale((0,src_locale/* default */.Z)(definition));
+  return timeLocale(formatLocale(definition));
 }
 
 function timeFormatDefaultLocale(definition) {
@@ -17838,7 +18994,7 @@ function adjustRange(w, bisect) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/basis.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/basis.js
 function _point(that, x, y) {
   that._context.bezierCurveTo((2 * that._x0 + that._x1) / 3, (2 * that._y0 + that._y1) / 3, (that._x0 + 2 * that._x1) / 3, (that._y0 + 2 * that._y1) / 3, (that._x0 + 4 * that._x1 + x) / 6, (that._y0 + 4 * that._y1 + y) / 6);
 }
@@ -17907,9 +19063,9 @@ Basis.prototype = {
 /* harmony default export */ function basis(context) {
   return new Basis(context);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/noop.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/noop.js
 /* harmony default export */ function src_noop() {}
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/basisClosed.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/basisClosed.js
 
 
 
@@ -17990,7 +19146,7 @@ BasisClosed.prototype = {
 /* harmony default export */ function basisClosed(context) {
   return new BasisClosed(context);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/basisOpen.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/basisOpen.js
 
 
 function BasisOpen(context) {
@@ -18048,7 +19204,7 @@ BasisOpen.prototype = {
 /* harmony default export */ function basisOpen(context) {
   return new BasisOpen(context);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/bundle.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/bundle.js
 
 
 function Bundle(context, beta) {
@@ -18104,7 +19260,7 @@ Bundle.prototype = {
 
   return bundle;
 })(0.85));
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/cardinal.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/cardinal.js
 function cardinal_point(that, x, y) {
   that._context.bezierCurveTo(that._x1 + that._k * (that._x2 - that._x0), that._y1 + that._k * (that._y2 - that._y0), that._x2 + that._k * (that._x1 - x), that._y2 + that._k * (that._y1 - y), that._x2, that._y2);
 }
@@ -18180,7 +19336,7 @@ Cardinal.prototype = {
 
   return cardinal;
 })(0));
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/cardinalOpen.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/cardinalOpen.js
 
 function CardinalOpen(context, tension) {
   this._context = context;
@@ -18243,7 +19399,7 @@ CardinalOpen.prototype = {
 
   return cardinal;
 })(0));
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/cardinalClosed.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/cardinalClosed.js
 
 
 function CardinalClosed(context, tension) {
@@ -18328,7 +19484,7 @@ CardinalClosed.prototype = {
 
   return cardinal;
 })(0));
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/math.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/math.js
 var abs = Math.abs;
 var atan2 = Math.atan2;
 var cos = Math.cos;
@@ -18346,7 +19502,7 @@ function acos(x) {
 function asin(x) {
   return x >= 1 ? halfPi : x <= -1 ? -halfPi : Math.asin(x);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/catmullRom.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/catmullRom.js
 
 
 
@@ -18452,7 +19608,7 @@ CatmullRom.prototype = {
 
   return catmullRom;
 })(0.5));
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/catmullRomClosed.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/catmullRomClosed.js
 
 
 
@@ -18548,7 +19704,7 @@ CatmullRomClosed.prototype = {
 
   return catmullRom;
 })(0.5));
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/catmullRomOpen.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/catmullRomOpen.js
 
 
 
@@ -18622,7 +19778,7 @@ CatmullRomOpen.prototype = {
 
   return catmullRom;
 })(0.5));
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/linear.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/linear.js
 function Linear(context) {
   this._context = context;
 }
@@ -18664,7 +19820,7 @@ Linear.prototype = {
 /* harmony default export */ function curve_linear(context) {
   return new Linear(context);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/linearClosed.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/linearClosed.js
 
 
 function LinearClosed(context) {
@@ -18688,7 +19844,7 @@ LinearClosed.prototype = {
 /* harmony default export */ function linearClosed(context) {
   return new LinearClosed(context);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/monotone.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/monotone.js
 function sign(x) {
   return x < 0 ? -1 : 1;
 } // Calculate the slopes of the tangents (Hermite-type interpolation) based on
@@ -18822,7 +19978,7 @@ function monotoneX(context) {
 function monotoneY(context) {
   return new MonotoneY(context);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/natural.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/natural.js
 function Natural(context) {
   this._context = context;
 }
@@ -18906,7 +20062,7 @@ function controlPoints(x) {
 /* harmony default export */ function natural(context) {
   return new Natural(context);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/curve/step.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/curve/step.js
 function Step(context, t) {
   this._context = context;
   this._t = t;
@@ -19085,13 +20241,13 @@ Path.prototype = path.prototype = {
   }
 };
 /* harmony default export */ var src_path = (path);
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/constant.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/constant.js
 /* harmony default export */ function src_constant(x) {
   return function constant() {
     return x;
   };
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/arc.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/arc.js
 
 
 
@@ -19323,20 +20479,20 @@ function cornerTangents(x0, y0, x1, y1, r1, rc, cw) {
 
   return arc;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/array.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/array.js
 var slice = Array.prototype.slice;
 /* harmony default export */ function src_array(x) {
   return typeof x === "object" && "length" in x ? x // Array, TypedArray, NodeList, array-like
   : Array.from(x); // Map, Set, iterable, string, or anything else
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/point.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/point.js
 function point_x(p) {
   return p[0];
 }
 function point_y(p) {
   return p[1];
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/line.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/line.js
 
 
 
@@ -19391,7 +20547,7 @@ function point_y(p) {
 
   return line;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/area.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/area.js
 
 
 
@@ -19502,7 +20658,7 @@ function point_y(p) {
 
   return area;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/symbol/circle.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/symbol/circle.js
 
 /* harmony default export */ var circle = ({
   draw: function draw(context, size) {
@@ -19511,7 +20667,7 @@ function point_y(p) {
     context.arc(0, 0, r, 0, tau);
   }
 });
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/symbol/cross.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/symbol/cross.js
 /* harmony default export */ var symbol_cross = ({
   draw: function draw(context, size) {
     var r = Math.sqrt(size / 5) / 2;
@@ -19530,7 +20686,7 @@ function point_y(p) {
     context.closePath();
   }
 });
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/symbol/diamond.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/symbol/diamond.js
 var tan30 = Math.sqrt(1 / 3),
     tan30_2 = tan30 * 2;
 /* harmony default export */ var diamond = ({
@@ -19544,7 +20700,7 @@ var tan30 = Math.sqrt(1 / 3),
     context.closePath();
   }
 });
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/symbol/star.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/symbol/star.js
 
 var ka = 0.89081309152928522810,
     kr = Math.sin(pi / 10) / Math.sin(7 * pi / 10),
@@ -19569,7 +20725,7 @@ var ka = 0.89081309152928522810,
     context.closePath();
   }
 });
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/symbol/square.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/symbol/square.js
 /* harmony default export */ var square = ({
   draw: function draw(context, size) {
     var w = Math.sqrt(size),
@@ -19577,7 +20733,7 @@ var ka = 0.89081309152928522810,
     context.rect(x, x, w, w);
   }
 });
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/symbol/triangle.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/symbol/triangle.js
 var sqrt3 = Math.sqrt(3);
 /* harmony default export */ var triangle = ({
   draw: function draw(context, size) {
@@ -19588,7 +20744,7 @@ var sqrt3 = Math.sqrt(3);
     context.closePath();
   }
 });
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/symbol/wye.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/symbol/wye.js
 var c = -0.5,
     s = Math.sqrt(3) / 2,
     k = 1 / Math.sqrt(12),
@@ -19614,7 +20770,7 @@ var c = -0.5,
     context.closePath();
   }
 });
-;// CONCATENATED MODULE: ./node_modules/vega-scenegraph/node_modules/d3-shape/src/symbol.js
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/symbol.js
 
 
 
@@ -19874,14 +21030,1258 @@ var bisectRight = ascendingBisect.right;
 var bisectLeft = ascendingBisect.left;
 var bisectCenter = d3_array_src_bisector(node_modules_d3_array_src_number).center;
 /* harmony default export */ var bisect = (bisectRight);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/ordinal.js
-var ordinal = __webpack_require__(34096);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/tickFormat.js + 3 modules
-var tickFormat = __webpack_require__(59771);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/linear.js
-var src_linear = __webpack_require__(59006);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/number.js
-var d3_scale_src_number = __webpack_require__(19498);
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/init.js
+function initRange(domain, range) {
+  switch (arguments.length) {
+    case 0:
+      break;
+
+    case 1:
+      this.range(domain);
+      break;
+
+    default:
+      this.range(range).domain(domain);
+      break;
+  }
+
+  return this;
+}
+function initInterpolator(domain, interpolator) {
+  switch (arguments.length) {
+    case 0:
+      break;
+
+    case 1:
+      {
+        if (typeof domain === "function") this.interpolator(domain);else this.range(domain);
+        break;
+      }
+
+    default:
+      {
+        this.domain(domain);
+        if (typeof interpolator === "function") this.interpolator(interpolator);else this.range(interpolator);
+        break;
+      }
+  }
+
+  return this;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/ordinal.js
+function ordinal_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = ordinal_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function ordinal_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return ordinal_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return ordinal_arrayLikeToArray(o, minLen); }
+
+function ordinal_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+var implicit = Symbol("implicit");
+function ordinal() {
+  var index = new Map(),
+      domain = [],
+      range = [],
+      unknown = implicit;
+
+  function scale(d) {
+    var key = d + "",
+        i = index.get(key);
+
+    if (!i) {
+      if (unknown !== implicit) return unknown;
+      index.set(key, i = domain.push(d));
+    }
+
+    return range[(i - 1) % range.length];
+  }
+
+  scale.domain = function (_) {
+    if (!arguments.length) return domain.slice();
+    domain = [], index = new Map();
+
+    var _iterator = ordinal_createForOfIteratorHelper(_),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var value = _step.value;
+        var key = value + "";
+        if (index.has(key)) continue;
+        index.set(key, domain.push(value));
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    return scale;
+  };
+
+  scale.range = function (_) {
+    return arguments.length ? (range = Array.from(_), scale) : range.slice();
+  };
+
+  scale.unknown = function (_) {
+    return arguments.length ? (unknown = _, scale) : unknown;
+  };
+
+  scale.copy = function () {
+    return ordinal(domain, range).unknown(unknown);
+  };
+
+  initRange.apply(scale, arguments);
+  return scale;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/ticks.js
+var src_ticks_e10 = Math.sqrt(50),
+    src_ticks_e5 = Math.sqrt(10),
+    src_ticks_e2 = Math.sqrt(2);
+/* harmony default export */ function d3_array_src_ticks(start, stop, count) {
+  var reverse,
+      i = -1,
+      n,
+      ticks,
+      step;
+  stop = +stop, start = +start, count = +count;
+  if (start === stop && count > 0) return [start];
+  if (reverse = stop < start) n = start, start = stop, stop = n;
+  if ((step = src_ticks_tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+
+  if (step > 0) {
+    var r0 = Math.round(start / step),
+        r1 = Math.round(stop / step);
+    if (r0 * step < start) ++r0;
+    if (r1 * step > stop) --r1;
+    ticks = new Array(n = r1 - r0 + 1);
+
+    while (++i < n) {
+      ticks[i] = (r0 + i) * step;
+    }
+  } else {
+    step = -step;
+
+    var _r = Math.round(start * step),
+        _r2 = Math.round(stop * step);
+
+    if (_r / step < start) ++_r;
+    if (_r2 / step > stop) --_r2;
+    ticks = new Array(n = _r2 - _r + 1);
+
+    while (++i < n) {
+      ticks[i] = (_r + i) / step;
+    }
+  }
+
+  if (reverse) ticks.reverse();
+  return ticks;
+}
+function src_ticks_tickIncrement(start, stop, count) {
+  var step = (stop - start) / Math.max(0, count),
+      power = Math.floor(Math.log(step) / Math.LN10),
+      error = step / Math.pow(10, power);
+  return power >= 0 ? (error >= src_ticks_e10 ? 10 : error >= src_ticks_e5 ? 5 : error >= src_ticks_e2 ? 2 : 1) * Math.pow(10, power) : -Math.pow(10, -power) / (error >= src_ticks_e10 ? 10 : error >= src_ticks_e5 ? 5 : error >= src_ticks_e2 ? 2 : 1);
+}
+function src_ticks_tickStep(start, stop, count) {
+  var step0 = Math.abs(stop - start) / Math.max(0, count),
+      step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)),
+      error = step0 / step1;
+  if (error >= src_ticks_e10) step1 *= 10;else if (error >= src_ticks_e5) step1 *= 5;else if (error >= src_ticks_e2) step1 *= 2;
+  return stop < start ? -step1 : step1;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/tickFormat.js
+
+
+function tickFormat(start, stop, count, specifier) {
+  var step = src_ticks_tickStep(start, stop, count),
+      precision;
+  specifier = formatSpecifier(specifier == null ? ",f" : specifier);
+
+  switch (specifier.type) {
+    case "s":
+      {
+        var value = Math.max(Math.abs(start), Math.abs(stop));
+        if (specifier.precision == null && !isNaN(precision = precisionPrefix(step, value))) specifier.precision = precision;
+        return formatPrefix(specifier, value);
+      }
+
+    case "":
+    case "e":
+    case "g":
+    case "p":
+    case "r":
+      {
+        if (specifier.precision == null && !isNaN(precision = precisionRound(step, Math.max(Math.abs(start), Math.abs(stop))))) specifier.precision = precision - (specifier.type === "e");
+        break;
+      }
+
+    case "f":
+    case "%":
+      {
+        if (specifier.precision == null && !isNaN(precision = precisionFixed(step))) specifier.precision = precision - (specifier.type === "%") * 2;
+        break;
+      }
+  }
+
+  return defaultLocale_format(specifier);
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/ascending.js
+/* harmony default export */ function d3_scale_node_modules_d3_array_src_ascending(a, b) {
+  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/bisector.js
+
+/* harmony default export */ function node_modules_d3_array_src_bisector(f) {
+  var delta = f;
+  var compare = f;
+
+  if (f.length === 1) {
+    delta = function delta(d, x) {
+      return f(d) - x;
+    };
+
+    compare = d3_array_src_bisector_ascendingComparator(f);
+  }
+
+  function left(a, x, lo, hi) {
+    if (lo == null) lo = 0;
+    if (hi == null) hi = a.length;
+
+    while (lo < hi) {
+      var mid = lo + hi >>> 1;
+      if (compare(a[mid], x) < 0) lo = mid + 1;else hi = mid;
+    }
+
+    return lo;
+  }
+
+  function right(a, x, lo, hi) {
+    if (lo == null) lo = 0;
+    if (hi == null) hi = a.length;
+
+    while (lo < hi) {
+      var mid = lo + hi >>> 1;
+      if (compare(a[mid], x) > 0) hi = mid;else lo = mid + 1;
+    }
+
+    return lo;
+  }
+
+  function center(a, x, lo, hi) {
+    if (lo == null) lo = 0;
+    if (hi == null) hi = a.length;
+    var i = left(a, x, lo, hi - 1);
+    return i > lo && delta(a[i - 1], x) > -delta(a[i], x) ? i - 1 : i;
+  }
+
+  return {
+    left: left,
+    center: center,
+    right: right
+  };
+}
+
+function d3_array_src_bisector_ascendingComparator(f) {
+  return function (d, x) {
+    return d3_scale_node_modules_d3_array_src_ascending(f(d), x);
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/number.js
+
+
+var d3_array_src_number_marked = /*#__PURE__*/regenerator_default().mark(node_modules_d3_array_src_number_numbers);
+
+function node_modules_d3_array_src_number_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = node_modules_d3_array_src_number_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function node_modules_d3_array_src_number_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return node_modules_d3_array_src_number_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return node_modules_d3_array_src_number_arrayLikeToArray(o, minLen); }
+
+function node_modules_d3_array_src_number_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+/* harmony default export */ function d3_scale_node_modules_d3_array_src_number(x) {
+  return x === null ? NaN : +x;
+}
+function node_modules_d3_array_src_number_numbers(values, valueof) {
+  var _iterator, _step, value, index, _iterator2, _step2, _value;
+
+  return regenerator_default().wrap(function numbers$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          if (!(valueof === undefined)) {
+            _context.next = 21;
+            break;
+          }
+
+          _iterator = node_modules_d3_array_src_number_createForOfIteratorHelper(values);
+          _context.prev = 2;
+
+          _iterator.s();
+
+        case 4:
+          if ((_step = _iterator.n()).done) {
+            _context.next = 11;
+            break;
+          }
+
+          value = _step.value;
+
+          if (!(value != null && (value = +value) >= value)) {
+            _context.next = 9;
+            break;
+          }
+
+          _context.next = 9;
+          return value;
+
+        case 9:
+          _context.next = 4;
+          break;
+
+        case 11:
+          _context.next = 16;
+          break;
+
+        case 13:
+          _context.prev = 13;
+          _context.t0 = _context["catch"](2);
+
+          _iterator.e(_context.t0);
+
+        case 16:
+          _context.prev = 16;
+
+          _iterator.f();
+
+          return _context.finish(16);
+
+        case 19:
+          _context.next = 40;
+          break;
+
+        case 21:
+          index = -1;
+          _iterator2 = node_modules_d3_array_src_number_createForOfIteratorHelper(values);
+          _context.prev = 23;
+
+          _iterator2.s();
+
+        case 25:
+          if ((_step2 = _iterator2.n()).done) {
+            _context.next = 32;
+            break;
+          }
+
+          _value = _step2.value;
+
+          if (!((_value = valueof(_value, ++index, values)) != null && (_value = +_value) >= _value)) {
+            _context.next = 30;
+            break;
+          }
+
+          _context.next = 30;
+          return _value;
+
+        case 30:
+          _context.next = 25;
+          break;
+
+        case 32:
+          _context.next = 37;
+          break;
+
+        case 34:
+          _context.prev = 34;
+          _context.t1 = _context["catch"](23);
+
+          _iterator2.e(_context.t1);
+
+        case 37:
+          _context.prev = 37;
+
+          _iterator2.f();
+
+          return _context.finish(37);
+
+        case 40:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, d3_array_src_number_marked, null, [[2, 13, 16, 19], [23, 34, 37, 40]]);
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/bisect.js
+
+
+
+var bisect_ascendingBisect = node_modules_d3_array_src_bisector(d3_scale_node_modules_d3_array_src_ascending);
+var bisect_bisectRight = bisect_ascendingBisect.right;
+var bisect_bisectLeft = bisect_ascendingBisect.left;
+var bisect_bisectCenter = node_modules_d3_array_src_bisector(d3_scale_node_modules_d3_array_src_number).center;
+/* harmony default export */ var src_bisect = (bisect_bisectRight);
+;// CONCATENATED MODULE: ./node_modules/d3-color/src/define.js
+/* harmony default export */ function src_define(constructor, factory, prototype) {
+  constructor.prototype = factory.prototype = prototype;
+  prototype.constructor = constructor;
+}
+function define_extend(parent, definition) {
+  var prototype = Object.create(parent.prototype);
+
+  for (var key in definition) {
+    prototype[key] = definition[key];
+  }
+
+  return prototype;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-color/src/color.js
+
+function Color() {}
+var _darker = 0.7;
+
+
+var _brighter = 1 / _darker;
+
+
+var reI = "\\s*([+-]?\\d+)\\s*",
+    reN = "\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)\\s*",
+    reP = "\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)%\\s*",
+    reHex = /^#([0-9a-f]{3,8})$/,
+    reRgbInteger = new RegExp("^rgb\\(" + [reI, reI, reI] + "\\)$"),
+    reRgbPercent = new RegExp("^rgb\\(" + [reP, reP, reP] + "\\)$"),
+    reRgbaInteger = new RegExp("^rgba\\(" + [reI, reI, reI, reN] + "\\)$"),
+    reRgbaPercent = new RegExp("^rgba\\(" + [reP, reP, reP, reN] + "\\)$"),
+    reHslPercent = new RegExp("^hsl\\(" + [reN, reP, reP] + "\\)$"),
+    reHslaPercent = new RegExp("^hsla\\(" + [reN, reP, reP, reN] + "\\)$");
+var named = {
+  aliceblue: 0xf0f8ff,
+  antiquewhite: 0xfaebd7,
+  aqua: 0x00ffff,
+  aquamarine: 0x7fffd4,
+  azure: 0xf0ffff,
+  beige: 0xf5f5dc,
+  bisque: 0xffe4c4,
+  black: 0x000000,
+  blanchedalmond: 0xffebcd,
+  blue: 0x0000ff,
+  blueviolet: 0x8a2be2,
+  brown: 0xa52a2a,
+  burlywood: 0xdeb887,
+  cadetblue: 0x5f9ea0,
+  chartreuse: 0x7fff00,
+  chocolate: 0xd2691e,
+  coral: 0xff7f50,
+  cornflowerblue: 0x6495ed,
+  cornsilk: 0xfff8dc,
+  crimson: 0xdc143c,
+  cyan: 0x00ffff,
+  darkblue: 0x00008b,
+  darkcyan: 0x008b8b,
+  darkgoldenrod: 0xb8860b,
+  darkgray: 0xa9a9a9,
+  darkgreen: 0x006400,
+  darkgrey: 0xa9a9a9,
+  darkkhaki: 0xbdb76b,
+  darkmagenta: 0x8b008b,
+  darkolivegreen: 0x556b2f,
+  darkorange: 0xff8c00,
+  darkorchid: 0x9932cc,
+  darkred: 0x8b0000,
+  darksalmon: 0xe9967a,
+  darkseagreen: 0x8fbc8f,
+  darkslateblue: 0x483d8b,
+  darkslategray: 0x2f4f4f,
+  darkslategrey: 0x2f4f4f,
+  darkturquoise: 0x00ced1,
+  darkviolet: 0x9400d3,
+  deeppink: 0xff1493,
+  deepskyblue: 0x00bfff,
+  dimgray: 0x696969,
+  dimgrey: 0x696969,
+  dodgerblue: 0x1e90ff,
+  firebrick: 0xb22222,
+  floralwhite: 0xfffaf0,
+  forestgreen: 0x228b22,
+  fuchsia: 0xff00ff,
+  gainsboro: 0xdcdcdc,
+  ghostwhite: 0xf8f8ff,
+  gold: 0xffd700,
+  goldenrod: 0xdaa520,
+  gray: 0x808080,
+  green: 0x008000,
+  greenyellow: 0xadff2f,
+  grey: 0x808080,
+  honeydew: 0xf0fff0,
+  hotpink: 0xff69b4,
+  indianred: 0xcd5c5c,
+  indigo: 0x4b0082,
+  ivory: 0xfffff0,
+  khaki: 0xf0e68c,
+  lavender: 0xe6e6fa,
+  lavenderblush: 0xfff0f5,
+  lawngreen: 0x7cfc00,
+  lemonchiffon: 0xfffacd,
+  lightblue: 0xadd8e6,
+  lightcoral: 0xf08080,
+  lightcyan: 0xe0ffff,
+  lightgoldenrodyellow: 0xfafad2,
+  lightgray: 0xd3d3d3,
+  lightgreen: 0x90ee90,
+  lightgrey: 0xd3d3d3,
+  lightpink: 0xffb6c1,
+  lightsalmon: 0xffa07a,
+  lightseagreen: 0x20b2aa,
+  lightskyblue: 0x87cefa,
+  lightslategray: 0x778899,
+  lightslategrey: 0x778899,
+  lightsteelblue: 0xb0c4de,
+  lightyellow: 0xffffe0,
+  lime: 0x00ff00,
+  limegreen: 0x32cd32,
+  linen: 0xfaf0e6,
+  magenta: 0xff00ff,
+  maroon: 0x800000,
+  mediumaquamarine: 0x66cdaa,
+  mediumblue: 0x0000cd,
+  mediumorchid: 0xba55d3,
+  mediumpurple: 0x9370db,
+  mediumseagreen: 0x3cb371,
+  mediumslateblue: 0x7b68ee,
+  mediumspringgreen: 0x00fa9a,
+  mediumturquoise: 0x48d1cc,
+  mediumvioletred: 0xc71585,
+  midnightblue: 0x191970,
+  mintcream: 0xf5fffa,
+  mistyrose: 0xffe4e1,
+  moccasin: 0xffe4b5,
+  navajowhite: 0xffdead,
+  navy: 0x000080,
+  oldlace: 0xfdf5e6,
+  olive: 0x808000,
+  olivedrab: 0x6b8e23,
+  orange: 0xffa500,
+  orangered: 0xff4500,
+  orchid: 0xda70d6,
+  palegoldenrod: 0xeee8aa,
+  palegreen: 0x98fb98,
+  paleturquoise: 0xafeeee,
+  palevioletred: 0xdb7093,
+  papayawhip: 0xffefd5,
+  peachpuff: 0xffdab9,
+  peru: 0xcd853f,
+  pink: 0xffc0cb,
+  plum: 0xdda0dd,
+  powderblue: 0xb0e0e6,
+  purple: 0x800080,
+  rebeccapurple: 0x663399,
+  red: 0xff0000,
+  rosybrown: 0xbc8f8f,
+  royalblue: 0x4169e1,
+  saddlebrown: 0x8b4513,
+  salmon: 0xfa8072,
+  sandybrown: 0xf4a460,
+  seagreen: 0x2e8b57,
+  seashell: 0xfff5ee,
+  sienna: 0xa0522d,
+  silver: 0xc0c0c0,
+  skyblue: 0x87ceeb,
+  slateblue: 0x6a5acd,
+  slategray: 0x708090,
+  slategrey: 0x708090,
+  snow: 0xfffafa,
+  springgreen: 0x00ff7f,
+  steelblue: 0x4682b4,
+  tan: 0xd2b48c,
+  teal: 0x008080,
+  thistle: 0xd8bfd8,
+  tomato: 0xff6347,
+  turquoise: 0x40e0d0,
+  violet: 0xee82ee,
+  wheat: 0xf5deb3,
+  white: 0xffffff,
+  whitesmoke: 0xf5f5f5,
+  yellow: 0xffff00,
+  yellowgreen: 0x9acd32
+};
+src_define(Color, color, {
+  copy: function copy(channels) {
+    return Object.assign(new this.constructor(), this, channels);
+  },
+  displayable: function displayable() {
+    return this.rgb().displayable();
+  },
+  hex: color_formatHex,
+  // Deprecated! Use color.formatHex.
+  formatHex: color_formatHex,
+  formatHsl: color_formatHsl,
+  formatRgb: color_formatRgb,
+  toString: color_formatRgb
+});
+
+function color_formatHex() {
+  return this.rgb().formatHex();
+}
+
+function color_formatHsl() {
+  return hslConvert(this).formatHsl();
+}
+
+function color_formatRgb() {
+  return this.rgb().formatRgb();
+}
+
+function color(format) {
+  var m, l;
+  format = (format + "").trim().toLowerCase();
+  return (m = reHex.exec(format)) ? (l = m[1].length, m = parseInt(m[1], 16), l === 6 ? rgbn(m) // #ff0000
+  : l === 3 ? new Rgb(m >> 8 & 0xf | m >> 4 & 0xf0, m >> 4 & 0xf | m & 0xf0, (m & 0xf) << 4 | m & 0xf, 1) // #f00
+  : l === 8 ? rgba(m >> 24 & 0xff, m >> 16 & 0xff, m >> 8 & 0xff, (m & 0xff) / 0xff) // #ff000000
+  : l === 4 ? rgba(m >> 12 & 0xf | m >> 8 & 0xf0, m >> 8 & 0xf | m >> 4 & 0xf0, m >> 4 & 0xf | m & 0xf0, ((m & 0xf) << 4 | m & 0xf) / 0xff) // #f000
+  : null // invalid hex
+  ) : (m = reRgbInteger.exec(format)) ? new Rgb(m[1], m[2], m[3], 1) // rgb(255, 0, 0)
+  : (m = reRgbPercent.exec(format)) ? new Rgb(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, 1) // rgb(100%, 0%, 0%)
+  : (m = reRgbaInteger.exec(format)) ? rgba(m[1], m[2], m[3], m[4]) // rgba(255, 0, 0, 1)
+  : (m = reRgbaPercent.exec(format)) ? rgba(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, m[4]) // rgb(100%, 0%, 0%, 1)
+  : (m = reHslPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, 1) // hsl(120, 50%, 50%)
+  : (m = reHslaPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, m[4]) // hsla(120, 50%, 50%, 1)
+  : named.hasOwnProperty(format) ? rgbn(named[format]) // eslint-disable-line no-prototype-builtins
+  : format === "transparent" ? new Rgb(NaN, NaN, NaN, 0) : null;
+}
+
+function rgbn(n) {
+  return new Rgb(n >> 16 & 0xff, n >> 8 & 0xff, n & 0xff, 1);
+}
+
+function rgba(r, g, b, a) {
+  if (a <= 0) r = g = b = NaN;
+  return new Rgb(r, g, b, a);
+}
+
+function rgbConvert(o) {
+  if (!(o instanceof Color)) o = color(o);
+  if (!o) return new Rgb();
+  o = o.rgb();
+  return new Rgb(o.r, o.g, o.b, o.opacity);
+}
+function color_rgb(r, g, b, opacity) {
+  return arguments.length === 1 ? rgbConvert(r) : new Rgb(r, g, b, opacity == null ? 1 : opacity);
+}
+function Rgb(r, g, b, opacity) {
+  this.r = +r;
+  this.g = +g;
+  this.b = +b;
+  this.opacity = +opacity;
+}
+src_define(Rgb, color_rgb, define_extend(Color, {
+  brighter: function brighter(k) {
+    k = k == null ? _brighter : Math.pow(_brighter, k);
+    return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
+  },
+  darker: function darker(k) {
+    k = k == null ? _darker : Math.pow(_darker, k);
+    return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
+  },
+  rgb: function rgb() {
+    return this;
+  },
+  displayable: function displayable() {
+    return -0.5 <= this.r && this.r < 255.5 && -0.5 <= this.g && this.g < 255.5 && -0.5 <= this.b && this.b < 255.5 && 0 <= this.opacity && this.opacity <= 1;
+  },
+  hex: rgb_formatHex,
+  // Deprecated! Use color.formatHex.
+  formatHex: rgb_formatHex,
+  formatRgb: rgb_formatRgb,
+  toString: rgb_formatRgb
+}));
+
+function rgb_formatHex() {
+  return "#" + hex(this.r) + hex(this.g) + hex(this.b);
+}
+
+function rgb_formatRgb() {
+  var a = this.opacity;
+  a = isNaN(a) ? 1 : Math.max(0, Math.min(1, a));
+  return (a === 1 ? "rgb(" : "rgba(") + Math.max(0, Math.min(255, Math.round(this.r) || 0)) + ", " + Math.max(0, Math.min(255, Math.round(this.g) || 0)) + ", " + Math.max(0, Math.min(255, Math.round(this.b) || 0)) + (a === 1 ? ")" : ", " + a + ")");
+}
+
+function hex(value) {
+  value = Math.max(0, Math.min(255, Math.round(value) || 0));
+  return (value < 16 ? "0" : "") + value.toString(16);
+}
+
+function hsla(h, s, l, a) {
+  if (a <= 0) h = s = l = NaN;else if (l <= 0 || l >= 1) h = s = NaN;else if (s <= 0) h = NaN;
+  return new Hsl(h, s, l, a);
+}
+
+function hslConvert(o) {
+  if (o instanceof Hsl) return new Hsl(o.h, o.s, o.l, o.opacity);
+  if (!(o instanceof Color)) o = color(o);
+  if (!o) return new Hsl();
+  if (o instanceof Hsl) return o;
+  o = o.rgb();
+  var r = o.r / 255,
+      g = o.g / 255,
+      b = o.b / 255,
+      min = Math.min(r, g, b),
+      max = Math.max(r, g, b),
+      h = NaN,
+      s = max - min,
+      l = (max + min) / 2;
+
+  if (s) {
+    if (r === max) h = (g - b) / s + (g < b) * 6;else if (g === max) h = (b - r) / s + 2;else h = (r - g) / s + 4;
+    s /= l < 0.5 ? max + min : 2 - max - min;
+    h *= 60;
+  } else {
+    s = l > 0 && l < 1 ? 0 : h;
+  }
+
+  return new Hsl(h, s, l, o.opacity);
+}
+function hsl(h, s, l, opacity) {
+  return arguments.length === 1 ? hslConvert(h) : new Hsl(h, s, l, opacity == null ? 1 : opacity);
+}
+
+function Hsl(h, s, l, opacity) {
+  this.h = +h;
+  this.s = +s;
+  this.l = +l;
+  this.opacity = +opacity;
+}
+
+src_define(Hsl, hsl, define_extend(Color, {
+  brighter: function brighter(k) {
+    k = k == null ? _brighter : Math.pow(_brighter, k);
+    return new Hsl(this.h, this.s, this.l * k, this.opacity);
+  },
+  darker: function darker(k) {
+    k = k == null ? _darker : Math.pow(_darker, k);
+    return new Hsl(this.h, this.s, this.l * k, this.opacity);
+  },
+  rgb: function rgb() {
+    var h = this.h % 360 + (this.h < 0) * 360,
+        s = isNaN(h) || isNaN(this.s) ? 0 : this.s,
+        l = this.l,
+        m2 = l + (l < 0.5 ? l : 1 - l) * s,
+        m1 = 2 * l - m2;
+    return new Rgb(hsl2rgb(h >= 240 ? h - 240 : h + 120, m1, m2), hsl2rgb(h, m1, m2), hsl2rgb(h < 120 ? h + 240 : h - 120, m1, m2), this.opacity);
+  },
+  displayable: function displayable() {
+    return (0 <= this.s && this.s <= 1 || isNaN(this.s)) && 0 <= this.l && this.l <= 1 && 0 <= this.opacity && this.opacity <= 1;
+  },
+  formatHsl: function formatHsl() {
+    var a = this.opacity;
+    a = isNaN(a) ? 1 : Math.max(0, Math.min(1, a));
+    return (a === 1 ? "hsl(" : "hsla(") + (this.h || 0) + ", " + (this.s || 0) * 100 + "%, " + (this.l || 0) * 100 + "%" + (a === 1 ? ")" : ", " + a + ")");
+  }
+}));
+/* From FvD 13.37, CSS Color Module Level 3 */
+
+function hsl2rgb(h, m1, m2) {
+  return (h < 60 ? m1 + (m2 - m1) * h / 60 : h < 180 ? m2 : h < 240 ? m1 + (m2 - m1) * (240 - h) / 60 : m1) * 255;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/basis.js
+function basis_basis(t1, v0, v1, v2, v3) {
+  var t2 = t1 * t1,
+      t3 = t2 * t1;
+  return ((1 - 3 * t1 + 3 * t2 - t3) * v0 + (4 - 6 * t2 + 3 * t3) * v1 + (1 + 3 * t1 + 3 * t2 - 3 * t3) * v2 + t3 * v3) / 6;
+}
+/* harmony default export */ function src_basis(values) {
+  var n = values.length - 1;
+  return function (t) {
+    var i = t <= 0 ? t = 0 : t >= 1 ? (t = 1, n - 1) : Math.floor(t * n),
+        v1 = values[i],
+        v2 = values[i + 1],
+        v0 = i > 0 ? values[i - 1] : 2 * v1 - v2,
+        v3 = i < n - 1 ? values[i + 2] : 2 * v2 - v1;
+    return basis_basis((t - i / n) * n, v0, v1, v2, v3);
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/basisClosed.js
+
+/* harmony default export */ function src_basisClosed(values) {
+  var n = values.length;
+  return function (t) {
+    var i = Math.floor(((t %= 1) < 0 ? ++t : t) * n),
+        v0 = values[(i + n - 1) % n],
+        v1 = values[i % n],
+        v2 = values[(i + 1) % n],
+        v3 = values[(i + 2) % n];
+    return basis_basis((t - i / n) * n, v0, v1, v2, v3);
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/constant.js
+/* harmony default export */ var d3_interpolate_src_constant = (function (x) {
+  return function () {
+    return x;
+  };
+});
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/color.js
+
+
+function color_linear(a, d) {
+  return function (t) {
+    return a + t * d;
+  };
+}
+
+function exponential(a, b, y) {
+  return a = Math.pow(a, y), b = Math.pow(b, y) - a, y = 1 / y, function (t) {
+    return Math.pow(a + t * b, y);
+  };
+}
+
+function hue(a, b) {
+  var d = b - a;
+  return d ? color_linear(a, d > 180 || d < -180 ? d - 360 * Math.round(d / 360) : d) : d3_interpolate_src_constant(isNaN(a) ? b : a);
+}
+function gamma(y) {
+  return (y = +y) === 1 ? nogamma : function (a, b) {
+    return b - a ? exponential(a, b, y) : d3_interpolate_src_constant(isNaN(a) ? b : a);
+  };
+}
+function nogamma(a, b) {
+  var d = b - a;
+  return d ? color_linear(a, d) : d3_interpolate_src_constant(isNaN(a) ? b : a);
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/rgb.js
+
+
+
+
+/* harmony default export */ var rgb = ((function rgbGamma(y) {
+  var color = gamma(y);
+
+  function rgb(start, end) {
+    var r = color((start = color_rgb(start)).r, (end = color_rgb(end)).r),
+        g = color(start.g, end.g),
+        b = color(start.b, end.b),
+        opacity = nogamma(start.opacity, end.opacity);
+    return function (t) {
+      start.r = r(t);
+      start.g = g(t);
+      start.b = b(t);
+      start.opacity = opacity(t);
+      return start + "";
+    };
+  }
+
+  rgb.gamma = rgbGamma;
+  return rgb;
+})(1));
+
+function rgbSpline(spline) {
+  return function (colors) {
+    var n = colors.length,
+        r = new Array(n),
+        g = new Array(n),
+        b = new Array(n),
+        i,
+        color;
+
+    for (i = 0; i < n; ++i) {
+      color = color_rgb(colors[i]);
+      r[i] = color.r || 0;
+      g[i] = color.g || 0;
+      b[i] = color.b || 0;
+    }
+
+    r = spline(r);
+    g = spline(g);
+    b = spline(b);
+    color.opacity = 1;
+    return function (t) {
+      color.r = r(t);
+      color.g = g(t);
+      color.b = b(t);
+      return color + "";
+    };
+  };
+}
+
+var rgbBasis = rgbSpline(src_basis);
+var rgbBasisClosed = rgbSpline(src_basisClosed);
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/numberArray.js
+/* harmony default export */ function numberArray(a, b) {
+  if (!b) b = [];
+  var n = a ? Math.min(b.length, a.length) : 0,
+      c = b.slice(),
+      i;
+  return function (t) {
+    for (i = 0; i < n; ++i) {
+      c[i] = a[i] * (1 - t) + b[i] * t;
+    }
+
+    return c;
+  };
+}
+function isNumberArray(x) {
+  return ArrayBuffer.isView(x) && !(x instanceof DataView);
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/array.js
+
+
+/* harmony default export */ function d3_interpolate_src_array(a, b) {
+  return (isNumberArray(b) ? numberArray : genericArray)(a, b);
+}
+function genericArray(a, b) {
+  var nb = b ? b.length : 0,
+      na = a ? Math.min(nb, a.length) : 0,
+      x = new Array(na),
+      c = new Array(nb),
+      i;
+
+  for (i = 0; i < na; ++i) {
+    x[i] = value(a[i], b[i]);
+  }
+
+  for (; i < nb; ++i) {
+    c[i] = b[i];
+  }
+
+  return function (t) {
+    for (i = 0; i < na; ++i) {
+      c[i] = x[i](t);
+    }
+
+    return c;
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/date.js
+/* harmony default export */ function date(a, b) {
+  var d = new Date();
+  return a = +a, b = +b, function (t) {
+    return d.setTime(a * (1 - t) + b * t), d;
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/number.js
+/* harmony default export */ function d3_interpolate_src_number(a, b) {
+  return a = +a, b = +b, function (t) {
+    return a * (1 - t) + b * t;
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/object.js
+
+/* harmony default export */ function src_object(a, b) {
+  var i = {},
+      c = {},
+      k;
+  if (a === null || typeof a !== "object") a = {};
+  if (b === null || typeof b !== "object") b = {};
+
+  for (k in b) {
+    if (k in a) {
+      i[k] = value(a[k], b[k]);
+    } else {
+      c[k] = b[k];
+    }
+  }
+
+  return function (t) {
+    for (k in i) {
+      c[k] = i[k](t);
+    }
+
+    return c;
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/string.js
+
+var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g,
+    reB = new RegExp(reA.source, "g");
+
+function string_zero(b) {
+  return function () {
+    return b;
+  };
+}
+
+function string_one(b) {
+  return function (t) {
+    return b(t) + "";
+  };
+}
+
+/* harmony default export */ function string(a, b) {
+  var bi = reA.lastIndex = reB.lastIndex = 0,
+      // scan index for next number in b
+  am,
+      // current match in a
+  bm,
+      // current match in b
+  bs,
+      // string preceding current number in b, if any
+  i = -1,
+      // index in s
+  s = [],
+      // string constants and placeholders
+  q = []; // number interpolators
+  // Coerce inputs to strings.
+
+  a = a + "", b = b + ""; // Interpolate pairs of numbers in a & b.
+
+  while ((am = reA.exec(a)) && (bm = reB.exec(b))) {
+    if ((bs = bm.index) > bi) {
+      // a string precedes the next number in b
+      bs = b.slice(bi, bs);
+      if (s[i]) s[i] += bs; // coalesce with previous string
+      else s[++i] = bs;
+    }
+
+    if ((am = am[0]) === (bm = bm[0])) {
+      // numbers in a & b match
+      if (s[i]) s[i] += bm; // coalesce with previous string
+      else s[++i] = bm;
+    } else {
+      // interpolate non-matching numbers
+      s[++i] = null;
+      q.push({
+        i: i,
+        x: d3_interpolate_src_number(am, bm)
+      });
+    }
+
+    bi = reB.lastIndex;
+  } // Add remains of b.
+
+
+  if (bi < b.length) {
+    bs = b.slice(bi);
+    if (s[i]) s[i] += bs; // coalesce with previous string
+    else s[++i] = bs;
+  } // Special optimization for only a single match.
+  // Otherwise, interpolate each of the numbers and rejoin the string.
+
+
+  return s.length < 2 ? q[0] ? string_one(q[0].x) : string_zero(b) : (b = q.length, function (t) {
+    for (var i = 0, o; i < b; ++i) {
+      s[(o = q[i]).i] = o.x(t);
+    }
+
+    return s.join("");
+  });
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/value.js
+
+
+
+
+
+
+
+
+
+/* harmony default export */ function value(a, b) {
+  var t = typeof b,
+      c;
+  return b == null || t === "boolean" ? d3_interpolate_src_constant(b) : (t === "number" ? d3_interpolate_src_number : t === "string" ? (c = color(b)) ? (b = c, rgb) : string : b instanceof color ? rgb : b instanceof Date ? date : isNumberArray(b) ? numberArray : Array.isArray(b) ? genericArray : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? src_object : d3_interpolate_src_number)(a, b);
+}
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/round.js
+/* harmony default export */ function src_round(a, b) {
+  return a = +a, b = +b, function (t) {
+    return Math.round(a * (1 - t) + b * t);
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/constant.js
+function constants(x) {
+  return function () {
+    return x;
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/number.js
+function number_number(x) {
+  return +x;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/continuous.js
+
+
+
+
+var unit = [0, 1];
+function continuous_identity(x) {
+  return x;
+}
+
+function normalize(a, b) {
+  return (b -= a = +a) ? function (x) {
+    return (x - a) / b;
+  } : constants(isNaN(b) ? NaN : 0.5);
+}
+
+function clamper(a, b) {
+  var t;
+  if (a > b) t = a, a = b, b = t;
+  return function (x) {
+    return Math.max(a, Math.min(b, x));
+  };
+} // normalize(a, b)(x) takes a domain value x in [a,b] and returns the corresponding parameter t in [0,1].
+// interpolate(a, b)(t) takes a parameter t in [0,1] and returns the corresponding range value x in [a,b].
+
+
+function bimap(domain, range, interpolate) {
+  var d0 = domain[0],
+      d1 = domain[1],
+      r0 = range[0],
+      r1 = range[1];
+  if (d1 < d0) d0 = normalize(d1, d0), r0 = interpolate(r1, r0);else d0 = normalize(d0, d1), r0 = interpolate(r0, r1);
+  return function (x) {
+    return r0(d0(x));
+  };
+}
+
+function polymap(domain, range, interpolate) {
+  var j = Math.min(domain.length, range.length) - 1,
+      d = new Array(j),
+      r = new Array(j),
+      i = -1; // Reverse descending domains.
+
+  if (domain[j] < domain[0]) {
+    domain = domain.slice().reverse();
+    range = range.slice().reverse();
+  }
+
+  while (++i < j) {
+    d[i] = normalize(domain[i], domain[i + 1]);
+    r[i] = interpolate(range[i], range[i + 1]);
+  }
+
+  return function (x) {
+    var i = src_bisect(domain, x, 1, j) - 1;
+    return r[i](d[i](x));
+  };
+}
+
+function copy(source, target) {
+  return target.domain(source.domain()).range(source.range()).interpolate(source.interpolate()).clamp(source.clamp()).unknown(source.unknown());
+}
+function transformer() {
+  var domain = unit,
+      range = unit,
+      interpolate = value,
+      transform,
+      untransform,
+      unknown,
+      clamp = continuous_identity,
+      piecewise,
+      output,
+      input;
+
+  function rescale() {
+    var n = Math.min(domain.length, range.length);
+    if (clamp !== continuous_identity) clamp = clamper(domain[0], domain[n - 1]);
+    piecewise = n > 2 ? polymap : bimap;
+    output = input = null;
+    return scale;
+  }
+
+  function scale(x) {
+    return x == null || isNaN(x = +x) ? unknown : (output || (output = piecewise(domain.map(transform), range, interpolate)))(transform(clamp(x)));
+  }
+
+  scale.invert = function (y) {
+    return clamp(untransform((input || (input = piecewise(range, domain.map(transform), d3_interpolate_src_number)))(y)));
+  };
+
+  scale.domain = function (_) {
+    return arguments.length ? (domain = Array.from(_, number_number), rescale()) : domain.slice();
+  };
+
+  scale.range = function (_) {
+    return arguments.length ? (range = Array.from(_), rescale()) : range.slice();
+  };
+
+  scale.rangeRound = function (_) {
+    return range = Array.from(_), interpolate = src_round, rescale();
+  };
+
+  scale.clamp = function (_) {
+    return arguments.length ? (clamp = _ ? true : continuous_identity, rescale()) : clamp !== continuous_identity;
+  };
+
+  scale.interpolate = function (_) {
+    return arguments.length ? (interpolate = _, rescale()) : interpolate;
+  };
+
+  scale.unknown = function (_) {
+    return arguments.length ? (unknown = _, scale) : unknown;
+  };
+
+  return function (t, u) {
+    transform = t, untransform = u;
+    return rescale();
+  };
+}
+function continuous() {
+  return transformer()(continuous_identity, continuous_identity);
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/linear.js
+
+
+
+
+function linearish(scale) {
+  var domain = scale.domain;
+
+  scale.ticks = function (count) {
+    var d = domain();
+    return d3_array_src_ticks(d[0], d[d.length - 1], count == null ? 10 : count);
+  };
+
+  scale.tickFormat = function (count, specifier) {
+    var d = domain();
+    return tickFormat(d[0], d[d.length - 1], count == null ? 10 : count, specifier);
+  };
+
+  scale.nice = function (count) {
+    if (count == null) count = 10;
+    var d = domain();
+    var i0 = 0;
+    var i1 = d.length - 1;
+    var start = d[i0];
+    var stop = d[i1];
+    var prestep;
+    var step;
+    var maxIter = 10;
+
+    if (stop < start) {
+      step = start, start = stop, stop = step;
+      step = i0, i0 = i1, i1 = step;
+    }
+
+    while (maxIter-- > 0) {
+      step = src_ticks_tickIncrement(start, stop, count);
+
+      if (step === prestep) {
+        d[i0] = start;
+        d[i1] = stop;
+        return domain(d);
+      } else if (step > 0) {
+        start = Math.floor(start / step) * step;
+        stop = Math.ceil(stop / step) * step;
+      } else if (step < 0) {
+        start = Math.ceil(start * step) / step;
+        stop = Math.floor(stop * step) / step;
+      } else {
+        break;
+      }
+
+      prestep = step;
+    }
+
+    return scale;
+  };
+
+  return scale;
+}
+function linear_linear() {
+  var scale = continuous();
+
+  scale.copy = function () {
+    return copy(scale, linear_linear());
+  };
+
+  initRange.apply(scale, arguments);
+  return linearish(scale);
+}
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/src/identity.js
 
 
@@ -19895,7 +22295,7 @@ function identity_identity(domain) {
   scale.invert = scale;
 
   scale.domain = scale.range = function (_) {
-    return arguments.length ? (domain = Array.from(_, d3_scale_src_number/* default */.Z), scale) : domain.slice();
+    return arguments.length ? (domain = Array.from(_, number_number), scale) : domain.slice();
   };
 
   scale.unknown = function (_) {
@@ -19906,15 +22306,176 @@ function identity_identity(domain) {
     return identity_identity(domain).unknown(unknown);
   };
 
-  domain = arguments.length ? Array.from(domain, d3_scale_src_number/* default */.Z) : [0, 1];
-  return (0,src_linear/* linearish */.Q)(scale);
+  domain = arguments.length ? Array.from(domain, number_number) : [0, 1];
+  return linearish(scale);
 }
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/log.js
-var src_log = __webpack_require__(4425);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/continuous.js + 1 modules
-var continuous = __webpack_require__(4389);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/init.js
-var src_init = __webpack_require__(39632);
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/nice.js
+function nice(domain, interval) {
+  domain = domain.slice();
+  var i0 = 0,
+      i1 = domain.length - 1,
+      x0 = domain[i0],
+      x1 = domain[i1],
+      t;
+
+  if (x1 < x0) {
+    t = i0, i0 = i1, i1 = t;
+    t = x0, x0 = x1, x1 = t;
+  }
+
+  domain[i0] = interval.floor(x0);
+  domain[i1] = interval.ceil(x1);
+  return domain;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/log.js
+
+
+
+
+
+
+function transformLog(x) {
+  return Math.log(x);
+}
+
+function transformExp(x) {
+  return Math.exp(x);
+}
+
+function transformLogn(x) {
+  return -Math.log(-x);
+}
+
+function transformExpn(x) {
+  return -Math.exp(-x);
+}
+
+function pow10(x) {
+  return isFinite(x) ? +("1e" + x) : x < 0 ? 0 : x;
+}
+
+function powp(base) {
+  return base === 10 ? pow10 : base === Math.E ? Math.exp : function (x) {
+    return Math.pow(base, x);
+  };
+}
+
+function logp(base) {
+  return base === Math.E ? Math.log : base === 10 && Math.log10 || base === 2 && Math.log2 || (base = Math.log(base), function (x) {
+    return Math.log(x) / base;
+  });
+}
+
+function reflect(f) {
+  return function (x) {
+    return -f(-x);
+  };
+}
+
+function loggish(transform) {
+  var scale = transform(transformLog, transformExp),
+      domain = scale.domain,
+      base = 10,
+      logs,
+      pows;
+
+  function rescale() {
+    logs = logp(base), pows = powp(base);
+
+    if (domain()[0] < 0) {
+      logs = reflect(logs), pows = reflect(pows);
+      transform(transformLogn, transformExpn);
+    } else {
+      transform(transformLog, transformExp);
+    }
+
+    return scale;
+  }
+
+  scale.base = function (_) {
+    return arguments.length ? (base = +_, rescale()) : base;
+  };
+
+  scale.domain = function (_) {
+    return arguments.length ? (domain(_), rescale()) : domain();
+  };
+
+  scale.ticks = function (count) {
+    var d = domain(),
+        u = d[0],
+        v = d[d.length - 1],
+        r;
+    if (r = v < u) i = u, u = v, v = i;
+    var i = logs(u),
+        j = logs(v),
+        p,
+        k,
+        t,
+        n = count == null ? 10 : +count,
+        z = [];
+
+    if (!(base % 1) && j - i < n) {
+      i = Math.floor(i), j = Math.ceil(j);
+      if (u > 0) for (; i <= j; ++i) {
+        for (k = 1, p = pows(i); k < base; ++k) {
+          t = p * k;
+          if (t < u) continue;
+          if (t > v) break;
+          z.push(t);
+        }
+      } else for (; i <= j; ++i) {
+        for (k = base - 1, p = pows(i); k >= 1; --k) {
+          t = p * k;
+          if (t < u) continue;
+          if (t > v) break;
+          z.push(t);
+        }
+      }
+      if (z.length * 2 < n) z = d3_array_src_ticks(u, v, n);
+    } else {
+      z = d3_array_src_ticks(i, j, Math.min(j - i, n)).map(pows);
+    }
+
+    return r ? z.reverse() : z;
+  };
+
+  scale.tickFormat = function (count, specifier) {
+    if (specifier == null) specifier = base === 10 ? ".0e" : ",";
+    if (typeof specifier !== "function") specifier = defaultLocale_format(specifier);
+    if (count === Infinity) return specifier;
+    if (count == null) count = 10;
+    var k = Math.max(1, base * count / scale.ticks().length); // TODO fast estimate?
+
+    return function (d) {
+      var i = d / pows(Math.round(logs(d)));
+      if (i * base < base - 0.5) i *= base;
+      return i <= k ? specifier(d) : "";
+    };
+  };
+
+  scale.nice = function () {
+    return domain(nice(domain(), {
+      floor: function floor(x) {
+        return pows(Math.floor(logs(x)));
+      },
+      ceil: function ceil(x) {
+        return pows(Math.ceil(logs(x)));
+      }
+    }));
+  };
+
+  return scale;
+}
+function log_log() {
+  var scale = loggish(transformer()).domain([1, 10]);
+
+  scale.copy = function () {
+    return copy(scale, log_log()).base(scale.base());
+  };
+
+  initRange.apply(scale, arguments);
+  return scale;
+}
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/src/pow.js
 
 
@@ -19935,42 +22496,326 @@ function transformSquare(x) {
 }
 
 function powish(transform) {
-  var scale = transform(continuous/* identity */.yR, continuous/* identity */.yR),
+  var scale = transform(continuous_identity, continuous_identity),
       exponent = 1;
 
   function rescale() {
-    return exponent === 1 ? transform(continuous/* identity */.yR, continuous/* identity */.yR) : exponent === 0.5 ? transform(transformSqrt, transformSquare) : transform(transformPow(exponent), transformPow(1 / exponent));
+    return exponent === 1 ? transform(continuous_identity, continuous_identity) : exponent === 0.5 ? transform(transformSqrt, transformSquare) : transform(transformPow(exponent), transformPow(1 / exponent));
   }
 
   scale.exponent = function (_) {
     return arguments.length ? (exponent = +_, rescale()) : exponent;
   };
 
-  return (0,src_linear/* linearish */.Q)(scale);
+  return linearish(scale);
 }
 function pow_pow() {
-  var scale = powish((0,continuous/* transformer */.l4)());
+  var scale = powish(transformer());
 
   scale.copy = function () {
-    return (0,continuous/* copy */.JG)(scale, pow_pow()).exponent(scale.exponent());
+    return copy(scale, pow_pow()).exponent(scale.exponent());
   };
 
-  src_init/* initRange.apply */.o.apply(scale, arguments);
+  initRange.apply(scale, arguments);
   return scale;
 }
 function pow_sqrt() {
   return pow_pow.apply(null, arguments).exponent(0.5);
 }
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/symlog.js
-var src_symlog = __webpack_require__(9788);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/time.js
-var time = __webpack_require__(26043);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/utcTime.js
-var utcTime = __webpack_require__(94210);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/value.js
-var value = __webpack_require__(23713);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/round.js
-var src_round = __webpack_require__(81459);
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/symlog.js
+
+
+
+
+function transformSymlog(c) {
+  return function (x) {
+    return Math.sign(x) * Math.log1p(Math.abs(x / c));
+  };
+}
+
+function transformSymexp(c) {
+  return function (x) {
+    return Math.sign(x) * Math.expm1(Math.abs(x)) * c;
+  };
+}
+
+function symlogish(transform) {
+  var c = 1,
+      scale = transform(transformSymlog(c), transformSymexp(c));
+
+  scale.constant = function (_) {
+    return arguments.length ? transform(transformSymlog(c = +_), transformSymexp(c)) : c;
+  };
+
+  return linearish(scale);
+}
+function symlog_symlog() {
+  var scale = symlogish(transformer());
+
+  scale.copy = function () {
+    return copy(scale, symlog_symlog()).constant(scale.constant());
+  };
+
+  return initRange.apply(scale, arguments);
+}
+;// CONCATENATED MODULE: ./node_modules/d3-time/node_modules/d3-array/src/ascending.js
+/* harmony default export */ function d3_time_node_modules_d3_array_src_ascending(a, b) {
+  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-time/node_modules/d3-array/src/bisector.js
+
+/* harmony default export */ function d3_time_node_modules_d3_array_src_bisector(f) {
+  var delta = f;
+  var compare = f;
+
+  if (f.length === 1) {
+    delta = function delta(d, x) {
+      return f(d) - x;
+    };
+
+    compare = node_modules_d3_array_src_bisector_ascendingComparator(f);
+  }
+
+  function left(a, x, lo, hi) {
+    if (lo == null) lo = 0;
+    if (hi == null) hi = a.length;
+
+    while (lo < hi) {
+      var mid = lo + hi >>> 1;
+      if (compare(a[mid], x) < 0) lo = mid + 1;else hi = mid;
+    }
+
+    return lo;
+  }
+
+  function right(a, x, lo, hi) {
+    if (lo == null) lo = 0;
+    if (hi == null) hi = a.length;
+
+    while (lo < hi) {
+      var mid = lo + hi >>> 1;
+      if (compare(a[mid], x) > 0) hi = mid;else lo = mid + 1;
+    }
+
+    return lo;
+  }
+
+  function center(a, x, lo, hi) {
+    if (lo == null) lo = 0;
+    if (hi == null) hi = a.length;
+    var i = left(a, x, lo, hi - 1);
+    return i > lo && delta(a[i - 1], x) > -delta(a[i], x) ? i - 1 : i;
+  }
+
+  return {
+    left: left,
+    center: center,
+    right: right
+  };
+}
+
+function node_modules_d3_array_src_bisector_ascendingComparator(f) {
+  return function (d, x) {
+    return d3_time_node_modules_d3_array_src_ascending(f(d), x);
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-time/node_modules/d3-array/src/ticks.js
+var d3_array_src_ticks_e10 = Math.sqrt(50),
+    d3_array_src_ticks_e5 = Math.sqrt(10),
+    d3_array_src_ticks_e2 = Math.sqrt(2);
+/* harmony default export */ function node_modules_d3_array_src_ticks(start, stop, count) {
+  var reverse,
+      i = -1,
+      n,
+      ticks,
+      step;
+  stop = +stop, start = +start, count = +count;
+  if (start === stop && count > 0) return [start];
+  if (reverse = stop < start) n = start, start = stop, stop = n;
+  if ((step = d3_array_src_ticks_tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+
+  if (step > 0) {
+    var r0 = Math.round(start / step),
+        r1 = Math.round(stop / step);
+    if (r0 * step < start) ++r0;
+    if (r1 * step > stop) --r1;
+    ticks = new Array(n = r1 - r0 + 1);
+
+    while (++i < n) {
+      ticks[i] = (r0 + i) * step;
+    }
+  } else {
+    step = -step;
+
+    var _r = Math.round(start * step),
+        _r2 = Math.round(stop * step);
+
+    if (_r / step < start) ++_r;
+    if (_r2 / step > stop) --_r2;
+    ticks = new Array(n = _r2 - _r + 1);
+
+    while (++i < n) {
+      ticks[i] = (_r + i) / step;
+    }
+  }
+
+  if (reverse) ticks.reverse();
+  return ticks;
+}
+function d3_array_src_ticks_tickIncrement(start, stop, count) {
+  var step = (stop - start) / Math.max(0, count),
+      power = Math.floor(Math.log(step) / Math.LN10),
+      error = step / Math.pow(10, power);
+  return power >= 0 ? (error >= d3_array_src_ticks_e10 ? 10 : error >= d3_array_src_ticks_e5 ? 5 : error >= d3_array_src_ticks_e2 ? 2 : 1) * Math.pow(10, power) : -Math.pow(10, -power) / (error >= d3_array_src_ticks_e10 ? 10 : error >= d3_array_src_ticks_e5 ? 5 : error >= d3_array_src_ticks_e2 ? 2 : 1);
+}
+function d3_array_src_ticks_tickStep(start, stop, count) {
+  var step0 = Math.abs(stop - start) / Math.max(0, count),
+      step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)),
+      error = step0 / step1;
+  if (error >= d3_array_src_ticks_e10) step1 *= 10;else if (error >= d3_array_src_ticks_e5) step1 *= 5;else if (error >= d3_array_src_ticks_e2) step1 *= 2;
+  return stop < start ? -step1 : step1;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/ticks.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ticker(year, month, week, day, hour, minute) {
+  var tickIntervals = [[src_second, 1, durationSecond], [src_second, 5, 5 * durationSecond], [src_second, 15, 15 * durationSecond], [src_second, 30, 30 * durationSecond], [minute, 1, durationMinute], [minute, 5, 5 * durationMinute], [minute, 15, 15 * durationMinute], [minute, 30, 30 * durationMinute], [hour, 1, durationHour], [hour, 3, 3 * durationHour], [hour, 6, 6 * durationHour], [hour, 12, 12 * durationHour], [day, 1, durationDay], [day, 2, 2 * durationDay], [week, 1, durationWeek], [month, 1, durationMonth], [month, 3, 3 * durationMonth], [year, 1, durationYear]];
+
+  function ticks(start, stop, count) {
+    var reverse = stop < start;
+
+    if (reverse) {
+      var _ref = [stop, start];
+      start = _ref[0];
+      stop = _ref[1];
+    }
+
+    var interval = count && typeof count.range === "function" ? count : tickInterval(start, stop, count);
+    var ticks = interval ? interval.range(start, +stop + 1) : []; // inclusive stop
+
+    return reverse ? ticks.reverse() : ticks;
+  }
+
+  function tickInterval(start, stop, count) {
+    var target = Math.abs(stop - start) / count;
+    var i = d3_time_node_modules_d3_array_src_bisector(function (_ref2) {
+      var _ref3 = (0,slicedToArray/* default */.Z)(_ref2, 3),
+          step = _ref3[2];
+
+      return step;
+    }).right(tickIntervals, target);
+    if (i === tickIntervals.length) return year.every(d3_array_src_ticks_tickStep(start / durationYear, stop / durationYear, count));
+    if (i === 0) return src_millisecond.every(Math.max(d3_array_src_ticks_tickStep(start, stop, count), 1));
+
+    var _tickIntervals = (0,slicedToArray/* default */.Z)(tickIntervals[target / tickIntervals[i - 1][2] < tickIntervals[i][2] / target ? i - 1 : i], 2),
+        t = _tickIntervals[0],
+        step = _tickIntervals[1];
+
+    return t.every(step);
+  }
+
+  return [ticks, tickInterval];
+}
+
+var _ticker = ticker(src_utcYear, src_utcMonth, utcSunday, src_utcDay, src_utcHour, src_utcMinute),
+    _ticker2 = (0,slicedToArray/* default */.Z)(_ticker, 2),
+    utcTicks = _ticker2[0],
+    utcTickInterval = _ticker2[1];
+
+var _ticker3 = ticker(src_year, src_month, sunday, src_day, src_hour, src_minute),
+    _ticker4 = (0,slicedToArray/* default */.Z)(_ticker3, 2),
+    timeTicks = _ticker4[0],
+    timeTickInterval = _ticker4[1];
+
+
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/time.js
+
+
+
+
+
+
+function time_date(t) {
+  return new Date(t);
+}
+
+function time_number(t) {
+  return t instanceof Date ? +t : +new Date(+t);
+}
+
+function calendar(ticks, tickInterval, year, month, week, day, hour, minute, second, format) {
+  var scale = continuous(),
+      invert = scale.invert,
+      domain = scale.domain;
+  var formatMillisecond = format(".%L"),
+      formatSecond = format(":%S"),
+      formatMinute = format("%I:%M"),
+      formatHour = format("%I %p"),
+      formatDay = format("%a %d"),
+      formatWeek = format("%b %d"),
+      formatMonth = format("%B"),
+      formatYear = format("%Y");
+
+  function tickFormat(date) {
+    return (second(date) < date ? formatMillisecond : minute(date) < date ? formatSecond : hour(date) < date ? formatMinute : day(date) < date ? formatHour : month(date) < date ? week(date) < date ? formatDay : formatWeek : year(date) < date ? formatMonth : formatYear)(date);
+  }
+
+  scale.invert = function (y) {
+    return new Date(invert(y));
+  };
+
+  scale.domain = function (_) {
+    return arguments.length ? domain(Array.from(_, time_number)) : domain().map(time_date);
+  };
+
+  scale.ticks = function (interval) {
+    var d = domain();
+    return ticks(d[0], d[d.length - 1], interval == null ? 10 : interval);
+  };
+
+  scale.tickFormat = function (count, specifier) {
+    return specifier == null ? tickFormat : format(specifier);
+  };
+
+  scale.nice = function (interval) {
+    var d = domain();
+    if (!interval || typeof interval.range !== "function") interval = tickInterval(d[0], d[d.length - 1], interval == null ? 10 : interval);
+    return interval ? domain(nice(d, interval)) : scale;
+  };
+
+  scale.copy = function () {
+    return copy(scale, calendar(ticks, tickInterval, year, month, week, day, hour, minute, second, format));
+  };
+
+  return scale;
+}
+function time() {
+  return initRange.apply(calendar(timeTicks, timeTickInterval, src_year, src_month, sunday, src_day, src_hour, src_minute, src_second, timeFormat).domain([new Date(2000, 0, 1), new Date(2000, 0, 2)]), arguments);
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/utcTime.js
+
+
+
+
+function utcTime() {
+  return initRange.apply(calendar(utcTicks, utcTickInterval, src_utcYear, src_utcMonth, utcSunday, src_utcDay, src_utcHour, src_utcMinute, src_second, utcFormat).domain([Date.UTC(2000, 0, 1), Date.UTC(2000, 0, 2)]), arguments);
+}
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/src/sequential.js
 
 
@@ -19981,14 +22826,14 @@ var src_round = __webpack_require__(81459);
 
 
 
-function transformer() {
+function sequential_transformer() {
   var x0 = 0,
       x1 = 1,
       t0,
       t1,
       k10,
       transform,
-      interpolator = continuous/* identity */.yR,
+      interpolator = continuous_identity,
       clamp = false,
       unknown;
 
@@ -20019,8 +22864,8 @@ function transformer() {
     };
   }
 
-  scale.range = range(value/* default */.Z);
-  scale.rangeRound = range(src_round/* default */.Z);
+  scale.range = range(value);
+  scale.rangeRound = range(src_round);
 
   scale.unknown = function (_) {
     return arguments.length ? (unknown = _, scale) : unknown;
@@ -20032,44 +22877,44 @@ function transformer() {
   };
 }
 
-function copy(source, target) {
+function sequential_copy(source, target) {
   return target.domain(source.domain()).interpolator(source.interpolator()).clamp(source.clamp()).unknown(source.unknown());
 }
 function sequential() {
-  var scale = (0,src_linear/* linearish */.Q)(transformer()(continuous/* identity */.yR));
+  var scale = linearish(sequential_transformer()(continuous_identity));
 
   scale.copy = function () {
-    return copy(scale, sequential());
+    return sequential_copy(scale, sequential());
   };
 
-  return src_init/* initInterpolator.apply */.O.apply(scale, arguments);
+  return initInterpolator.apply(scale, arguments);
 }
 function sequentialLog() {
-  var scale = (0,src_log/* loggish */.Q)(transformer()).domain([1, 10]);
+  var scale = loggish(sequential_transformer()).domain([1, 10]);
 
   scale.copy = function () {
-    return copy(scale, sequentialLog()).base(scale.base());
+    return sequential_copy(scale, sequentialLog()).base(scale.base());
   };
 
-  return src_init/* initInterpolator.apply */.O.apply(scale, arguments);
+  return initInterpolator.apply(scale, arguments);
 }
 function sequentialSymlog() {
-  var scale = (0,src_symlog/* symlogish */.P)(transformer());
+  var scale = symlogish(sequential_transformer());
 
   scale.copy = function () {
-    return copy(scale, sequentialSymlog()).constant(scale.constant());
+    return sequential_copy(scale, sequentialSymlog()).constant(scale.constant());
   };
 
-  return src_init/* initInterpolator.apply */.O.apply(scale, arguments);
+  return initInterpolator.apply(scale, arguments);
 }
 function sequentialPow() {
-  var scale = powish(transformer());
+  var scale = powish(sequential_transformer());
 
   scale.copy = function () {
-    return copy(scale, sequentialPow()).exponent(scale.exponent());
+    return sequential_copy(scale, sequentialPow()).exponent(scale.exponent());
   };
 
-  return src_init/* initInterpolator.apply */.O.apply(scale, arguments);
+  return initInterpolator.apply(scale, arguments);
 }
 function sequentialSqrt() {
   return sequentialPow.apply(null, arguments).exponent(0.5);
@@ -20077,7 +22922,7 @@ function sequentialSqrt() {
 ;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/piecewise.js
 
 function piecewise(interpolate, values) {
-  if (values === undefined) values = interpolate, interpolate = value/* default */.Z;
+  if (values === undefined) values = interpolate, interpolate = value;
   var i = 0,
       n = values.length - 1,
       v = values[0],
@@ -20113,7 +22958,7 @@ function diverging_transformer() {
       t2,
       k10,
       k21,
-      interpolator = continuous/* identity */.yR,
+      interpolator = continuous_identity,
       transform,
       clamp = false,
       unknown;
@@ -20145,8 +22990,8 @@ function diverging_transformer() {
     };
   }
 
-  scale.range = range(value/* default */.Z);
-  scale.rangeRound = range(src_round/* default */.Z);
+  scale.range = range(value);
+  scale.rangeRound = range(src_round);
 
   scale.unknown = function (_) {
     return arguments.length ? (unknown = _, scale) : unknown;
@@ -20159,46 +23004,44 @@ function diverging_transformer() {
 }
 
 function diverging() {
-  var scale = (0,src_linear/* linearish */.Q)(diverging_transformer()(continuous/* identity */.yR));
+  var scale = linearish(diverging_transformer()(continuous_identity));
 
   scale.copy = function () {
-    return copy(scale, diverging());
+    return sequential_copy(scale, diverging());
   };
 
-  return src_init/* initInterpolator.apply */.O.apply(scale, arguments);
+  return initInterpolator.apply(scale, arguments);
 }
 function divergingLog() {
-  var scale = (0,src_log/* loggish */.Q)(diverging_transformer()).domain([0.1, 1, 10]);
+  var scale = loggish(diverging_transformer()).domain([0.1, 1, 10]);
 
   scale.copy = function () {
-    return copy(scale, divergingLog()).base(scale.base());
+    return sequential_copy(scale, divergingLog()).base(scale.base());
   };
 
-  return src_init/* initInterpolator.apply */.O.apply(scale, arguments);
+  return initInterpolator.apply(scale, arguments);
 }
 function divergingSymlog() {
-  var scale = (0,src_symlog/* symlogish */.P)(diverging_transformer());
+  var scale = symlogish(diverging_transformer());
 
   scale.copy = function () {
-    return copy(scale, divergingSymlog()).constant(scale.constant());
+    return sequential_copy(scale, divergingSymlog()).constant(scale.constant());
   };
 
-  return src_init/* initInterpolator.apply */.O.apply(scale, arguments);
+  return initInterpolator.apply(scale, arguments);
 }
 function divergingPow() {
   var scale = powish(diverging_transformer());
 
   scale.copy = function () {
-    return copy(scale, divergingPow()).exponent(scale.exponent());
+    return sequential_copy(scale, divergingPow()).exponent(scale.exponent());
   };
 
-  return src_init/* initInterpolator.apply */.O.apply(scale, arguments);
+  return initInterpolator.apply(scale, arguments);
 }
 function divergingSqrt() {
   return divergingPow.apply(null, arguments).exponent(0.5);
 }
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/number.js
-var d3_scale_node_modules_d3_array_src_number = __webpack_require__(99886);
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/quantile.js
 
 
@@ -20217,7 +23060,7 @@ function src_quantile_quantile(values, p, valueof) {
   return value0 + (value1 - value0) * (i - i0);
 }
 function src_quantile_quantileSorted(values, p) {
-  var valueof = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : d3_scale_node_modules_d3_array_src_number/* default */.Z;
+  var valueof = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : d3_scale_node_modules_d3_array_src_number;
   if (!(n = values.length)) return;
   if ((p = +p) <= 0 || n < 2) return +valueof(values[0], 0, values);
   if (p >= 1) return +valueof(values[n - 1], n - 1, values);
@@ -20228,10 +23071,6 @@ function src_quantile_quantileSorted(values, p) {
       value1 = +valueof(values[i0 + 1], i0 + 1, values);
   return value0 + (value1 - value0) * (i - i0);
 }
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/bisect.js + 1 modules
-var src_bisect = __webpack_require__(2676);
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/ascending.js
-var d3_scale_node_modules_d3_array_src_ascending = __webpack_require__(4625);
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/src/quantile.js
 function quantile_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = quantile_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
@@ -20260,7 +23099,7 @@ function d3_scale_src_quantile_quantile() {
   }
 
   function scale(x) {
-    return x == null || isNaN(x = +x) ? unknown : range[(0,src_bisect/* default */.ZP)(thresholds, x)];
+    return x == null || isNaN(x = +x) ? unknown : range[src_bisect(thresholds, x)];
   }
 
   scale.invertExtent = function (y) {
@@ -20286,7 +23125,7 @@ function d3_scale_src_quantile_quantile() {
       _iterator.f();
     }
 
-    domain.sort(d3_scale_node_modules_d3_array_src_ascending/* default */.Z);
+    domain.sort(d3_scale_node_modules_d3_array_src_ascending);
     return rescale();
   };
 
@@ -20306,7 +23145,7 @@ function d3_scale_src_quantile_quantile() {
     return d3_scale_src_quantile_quantile().domain(domain).range(range).unknown(unknown);
   };
 
-  return src_init/* initRange.apply */.o.apply(scale, arguments);
+  return initRange.apply(scale, arguments);
 }
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/src/quantize.js
 
@@ -20322,7 +23161,7 @@ function quantize() {
       unknown;
 
   function scale(x) {
-    return x != null && x <= x ? range[(0,src_bisect/* default */.ZP)(domain, x, 0, n)] : unknown;
+    return x != null && x <= x ? range[src_bisect(domain, x, 0, n)] : unknown;
   }
 
   function rescale() {
@@ -20363,7 +23202,7 @@ function quantize() {
     return quantize().domain([x0, x1]).range(range).unknown(unknown);
   };
 
-  return src_init/* initRange.apply */.o.apply((0,src_linear/* linearish */.Q)(scale), arguments);
+  return initRange.apply(linearish(scale), arguments);
 }
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/src/threshold.js
 
@@ -20375,7 +23214,7 @@ function threshold() {
       n = 1;
 
   function scale(x) {
-    return x != null && x <= x ? range[(0,src_bisect/* default */.ZP)(domain, x, 0, n)] : unknown;
+    return x != null && x <= x ? range[src_bisect(domain, x, 0, n)] : unknown;
   }
 
   scale.domain = function (_) {
@@ -20399,16 +23238,8 @@ function threshold() {
     return threshold().domain(domain).range(range).unknown(unknown);
   };
 
-  return src_init/* initRange.apply */.o.apply(scale, arguments);
+  return initRange.apply(scale, arguments);
 }
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/array.js
-var d3_interpolate_src_array = __webpack_require__(86919);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/basis.js
-var src_basis = __webpack_require__(49763);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/basisClosed.js
-var src_basisClosed = __webpack_require__(52283);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/date.js
-var date = __webpack_require__(66276);
 ;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/discrete.js
 /* harmony default export */ function discrete(range) {
   var n = range.length;
@@ -20416,25 +23247,15 @@ var date = __webpack_require__(66276);
     return range[Math.max(0, Math.min(n - 1, Math.floor(t * n)))];
   };
 }
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/color.js
-var color = __webpack_require__(4301);
 ;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/hue.js
 
-/* harmony default export */ function hue(a, b) {
-  var i = (0,color/* hue */.wx)(+a, +b);
+/* harmony default export */ function src_hue(a, b) {
+  var i = hue(+a, +b);
   return function (t) {
     var x = i(t);
     return x - 360 * Math.floor(x / 360);
   };
 }
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/number.js
-var d3_interpolate_src_number = __webpack_require__(44922);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/numberArray.js
-var numberArray = __webpack_require__(3256);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/object.js
-var src_object = __webpack_require__(51861);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/string.js
-var string = __webpack_require__(95147);
 ;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/transform/decompose.js
 var decompose_degrees = 180 / Math.PI;
 var decompose_identity = {
@@ -20491,10 +23312,10 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
       var i = s.push("translate(", null, pxComma, null, pxParen);
       q.push({
         i: i - 4,
-        x: (0,d3_interpolate_src_number/* default */.Z)(xa, xb)
+        x: d3_interpolate_src_number(xa, xb)
       }, {
         i: i - 2,
-        x: (0,d3_interpolate_src_number/* default */.Z)(ya, yb)
+        x: d3_interpolate_src_number(ya, yb)
       });
     } else if (xb || yb) {
       s.push("translate(" + xb + pxComma + yb + pxParen);
@@ -20507,7 +23328,7 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
 
       q.push({
         i: s.push(pop(s) + "rotate(", null, degParen) - 2,
-        x: (0,d3_interpolate_src_number/* default */.Z)(a, b)
+        x: d3_interpolate_src_number(a, b)
       });
     } else if (b) {
       s.push(pop(s) + "rotate(" + b + degParen);
@@ -20518,7 +23339,7 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
     if (a !== b) {
       q.push({
         i: s.push(pop(s) + "skewX(", null, degParen) - 2,
-        x: (0,d3_interpolate_src_number/* default */.Z)(a, b)
+        x: d3_interpolate_src_number(a, b)
       });
     } else if (b) {
       s.push(pop(s) + "skewX(" + b + degParen);
@@ -20530,10 +23351,10 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
       var i = s.push(pop(s) + "scale(", null, ",", null, ")");
       q.push({
         i: i - 4,
-        x: (0,d3_interpolate_src_number/* default */.Z)(xa, xb)
+        x: d3_interpolate_src_number(xa, xb)
       }, {
         i: i - 2,
-        x: (0,d3_interpolate_src_number/* default */.Z)(ya, yb)
+        x: d3_interpolate_src_number(ya, yb)
       });
     } else if (xb !== 1 || yb !== 1) {
       s.push(pop(s) + "scale(" + xb + "," + yb + ")");
@@ -20636,20 +23457,16 @@ function tanh(x) {
 
   return zoom;
 })(Math.SQRT2, 2, 4));
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/rgb.js
-var rgb = __webpack_require__(65713);
-// EXTERNAL MODULE: ./node_modules/d3-color/src/color.js
-var src_color = __webpack_require__(34627);
 ;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/hsl.js
 
 
 
-function hsl(hue) {
+function hsl_hsl(hue) {
   return function (start, end) {
-    var h = hue((start = (0,src_color/* hsl */.Ym)(start)).h, (end = (0,src_color/* hsl */.Ym)(end)).h),
-        s = (0,color/* default */.ZP)(start.s, end.s),
-        l = (0,color/* default */.ZP)(start.l, end.l),
-        opacity = (0,color/* default */.ZP)(start.opacity, end.opacity);
+    var h = hue((start = hsl(start)).h, (end = hsl(end)).h),
+        s = nogamma(start.s, end.s),
+        l = nogamma(start.l, end.l),
+        opacity = nogamma(start.opacity, end.opacity);
     return function (t) {
       start.h = h(t);
       start.s = s(t);
@@ -20660,12 +23477,11 @@ function hsl(hue) {
   };
 }
 
-/* harmony default export */ var src_hsl = (hsl(color/* hue */.wx));
-var hslLong = hsl(color/* default */.ZP);
-// EXTERNAL MODULE: ./node_modules/d3-color/src/define.js
-var src_define = __webpack_require__(2077);
-// EXTERNAL MODULE: ./node_modules/d3-color/src/math.js
-var math = __webpack_require__(53309);
+/* harmony default export */ var src_hsl = (hsl_hsl(hue));
+var hslLong = hsl_hsl(nogamma);
+;// CONCATENATED MODULE: ./node_modules/d3-color/src/math.js
+var math_radians = Math.PI / 180;
+var math_degrees = 180 / Math.PI;
 ;// CONCATENATED MODULE: ./node_modules/d3-color/src/lab.js
 
 
@@ -20676,14 +23492,14 @@ var K = 18,
     Yn = 1,
     Zn = 0.82521,
     lab_t0 = 4 / 29,
-    t1 = 6 / 29,
-    t2 = 3 * t1 * t1,
-    t3 = t1 * t1 * t1;
+    lab_t1 = 6 / 29,
+    t2 = 3 * lab_t1 * lab_t1,
+    t3 = lab_t1 * lab_t1 * lab_t1;
 
 function labConvert(o) {
   if (o instanceof Lab) return new Lab(o.l, o.a, o.b, o.opacity);
   if (o instanceof Hcl) return hcl2lab(o);
-  if (!(o instanceof src_color/* Rgb */.Ss)) o = (0,src_color/* rgbConvert */.SU)(o);
+  if (!(o instanceof Rgb)) o = rgbConvert(o);
   var r = rgb2lrgb(o.r),
       g = rgb2lrgb(o.g),
       b = rgb2lrgb(o.b),
@@ -20709,7 +23525,7 @@ function Lab(l, a, b, opacity) {
   this.b = +b;
   this.opacity = +opacity;
 }
-(0,src_define/* default */.Z)(Lab, lab, (0,src_define/* extend */.l)(src_color/* Color */.Il, {
+src_define(Lab, lab, define_extend(Color, {
   brighter: function brighter(k) {
     return new Lab(this.l + K * (k == null ? 1 : k), this.a, this.b, this.opacity);
   },
@@ -20723,7 +23539,7 @@ function Lab(l, a, b, opacity) {
     x = Xn * lab2xyz(x);
     y = Yn * lab2xyz(y);
     z = Zn * lab2xyz(z);
-    return new src_color/* Rgb */.Ss(lrgb2rgb(3.1338561 * x - 1.6168667 * y - 0.4906146 * z), lrgb2rgb(-0.9787684 * x + 1.9161415 * y + 0.0334540 * z), lrgb2rgb(0.0719453 * x - 0.2289914 * y + 1.4052427 * z), this.opacity);
+    return new Rgb(lrgb2rgb(3.1338561 * x - 1.6168667 * y - 0.4906146 * z), lrgb2rgb(-0.9787684 * x + 1.9161415 * y + 0.0334540 * z), lrgb2rgb(0.0719453 * x - 0.2289914 * y + 1.4052427 * z), this.opacity);
   }
 }));
 
@@ -20732,7 +23548,7 @@ function xyz2lab(t) {
 }
 
 function lab2xyz(t) {
-  return t > t1 ? t * t * t : t2 * (t - lab_t0);
+  return t > lab_t1 ? t * t * t : t2 * (t - lab_t0);
 }
 
 function lrgb2rgb(x) {
@@ -20747,7 +23563,7 @@ function hclConvert(o) {
   if (o instanceof Hcl) return new Hcl(o.h, o.c, o.l, o.opacity);
   if (!(o instanceof Lab)) o = labConvert(o);
   if (o.a === 0 && o.b === 0) return new Hcl(NaN, 0 < o.l && o.l < 100 ? 0 : NaN, o.l, o.opacity);
-  var h = Math.atan2(o.b, o.a) * math/* degrees */.R;
+  var h = Math.atan2(o.b, o.a) * math_degrees;
   return new Hcl(h < 0 ? h + 360 : h, Math.sqrt(o.a * o.a + o.b * o.b), o.l, o.opacity);
 }
 
@@ -20766,11 +23582,11 @@ function Hcl(h, c, l, opacity) {
 
 function hcl2lab(o) {
   if (isNaN(o.h)) return new Lab(o.l, 0, 0, o.opacity);
-  var h = o.h * math/* radians */.u;
+  var h = o.h * math_radians;
   return new Lab(o.l, Math.cos(h) * o.c, Math.sin(h) * o.c, o.opacity);
 }
 
-(0,src_define/* default */.Z)(Hcl, hcl, (0,src_define/* extend */.l)(src_color/* Color */.Il, {
+src_define(Hcl, hcl, define_extend(Color, {
   brighter: function brighter(k) {
     return new Hcl(this.h, this.c, this.l + K * (k == null ? 1 : k), this.opacity);
   },
@@ -20785,10 +23601,10 @@ function hcl2lab(o) {
 
 
 function lab_lab(start, end) {
-  var l = (0,color/* default */.ZP)((start = lab(start)).l, (end = lab(end)).l),
-      a = (0,color/* default */.ZP)(start.a, end.a),
-      b = (0,color/* default */.ZP)(start.b, end.b),
-      opacity = (0,color/* default */.ZP)(start.opacity, end.opacity);
+  var l = nogamma((start = lab(start)).l, (end = lab(end)).l),
+      a = nogamma(start.a, end.a),
+      b = nogamma(start.b, end.b),
+      opacity = nogamma(start.opacity, end.opacity);
   return function (t) {
     start.l = l(t);
     start.a = a(t);
@@ -20804,9 +23620,9 @@ function lab_lab(start, end) {
 function hcl_hcl(hue) {
   return function (start, end) {
     var h = hue((start = hcl(start)).h, (end = hcl(end)).h),
-        c = (0,color/* default */.ZP)(start.c, end.c),
-        l = (0,color/* default */.ZP)(start.l, end.l),
-        opacity = (0,color/* default */.ZP)(start.opacity, end.opacity);
+        c = nogamma(start.c, end.c),
+        l = nogamma(start.l, end.l),
+        opacity = nogamma(start.opacity, end.opacity);
     return function (t) {
       start.h = h(t);
       start.c = c(t);
@@ -20817,10 +23633,92 @@ function hcl_hcl(hue) {
   };
 }
 
-/* harmony default export */ var src_hcl = (hcl_hcl(color/* hue */.wx));
-var hclLong = hcl_hcl(color/* default */.ZP);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/cubehelix.js
-var cubehelix = __webpack_require__(28611);
+/* harmony default export */ var src_hcl = (hcl_hcl(hue));
+var hclLong = hcl_hcl(nogamma);
+;// CONCATENATED MODULE: ./node_modules/d3-color/src/cubehelix.js
+
+
+
+var A = -0.14861,
+    B = +1.78277,
+    C = -0.29227,
+    D = -0.90649,
+    E = +1.97294,
+    ED = E * D,
+    EB = E * B,
+    BC_DA = B * C - D * A;
+
+function cubehelixConvert(o) {
+  if (o instanceof Cubehelix) return new Cubehelix(o.h, o.s, o.l, o.opacity);
+  if (!(o instanceof Rgb)) o = rgbConvert(o);
+  var r = o.r / 255,
+      g = o.g / 255,
+      b = o.b / 255,
+      l = (BC_DA * b + ED * r - EB * g) / (BC_DA + ED - EB),
+      bl = b - l,
+      k = (E * (g - l) - C * bl) / D,
+      s = Math.sqrt(k * k + bl * bl) / (E * l * (1 - l)),
+      // NaN if l=0 or l=1
+  h = s ? Math.atan2(k, bl) * math_degrees - 120 : NaN;
+  return new Cubehelix(h < 0 ? h + 360 : h, s, l, o.opacity);
+}
+
+function cubehelix_cubehelix(h, s, l, opacity) {
+  return arguments.length === 1 ? cubehelixConvert(h) : new Cubehelix(h, s, l, opacity == null ? 1 : opacity);
+}
+function Cubehelix(h, s, l, opacity) {
+  this.h = +h;
+  this.s = +s;
+  this.l = +l;
+  this.opacity = +opacity;
+}
+src_define(Cubehelix, cubehelix_cubehelix, define_extend(Color, {
+  brighter: function brighter(k) {
+    k = k == null ? _brighter : Math.pow(_brighter, k);
+    return new Cubehelix(this.h, this.s, this.l * k, this.opacity);
+  },
+  darker: function darker(k) {
+    k = k == null ? _darker : Math.pow(_darker, k);
+    return new Cubehelix(this.h, this.s, this.l * k, this.opacity);
+  },
+  rgb: function rgb() {
+    var h = isNaN(this.h) ? 0 : (this.h + 120) * math_radians,
+        l = +this.l,
+        a = isNaN(this.s) ? 0 : this.s * l * (1 - l),
+        cosh = Math.cos(h),
+        sinh = Math.sin(h);
+    return new Rgb(255 * (l + a * (A * cosh + B * sinh)), 255 * (l + a * (C * cosh + D * sinh)), 255 * (l + a * (E * cosh)), this.opacity);
+  }
+}));
+;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/cubehelix.js
+
+
+
+function cubehelix(hue) {
+  return function cubehelixGamma(y) {
+    y = +y;
+
+    function cubehelix(start, end) {
+      var h = hue((start = cubehelix_cubehelix(start)).h, (end = cubehelix_cubehelix(end)).h),
+          s = nogamma(start.s, end.s),
+          l = nogamma(start.l, end.l),
+          opacity = nogamma(start.opacity, end.opacity);
+      return function (t) {
+        start.h = h(t);
+        start.s = s(t);
+        start.l = l(Math.pow(t, y));
+        start.opacity = opacity(t);
+        return start + "";
+      };
+    }
+
+    cubehelix.gamma = cubehelixGamma;
+    return cubehelix;
+  }(1);
+}
+
+/* harmony default export */ var src_cubehelix = (cubehelix(hue));
+var cubehelixLong = cubehelix(nogamma);
 ;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/quantize.js
 /* harmony default export */ function src_quantize(interpolator, n) {
   var samples = new Array(n);
@@ -20943,7 +23841,7 @@ function invertRangeExtent(scale) {
 }
 
 function band() {
-  var scale = (0,ordinal/* default */.Z)().unknown(undefined),
+  var scale = ordinal().unknown(undefined),
       domain = scale.domain,
       ordinalRange = scale.range;
   var range$1 = [0, 1],
@@ -21159,7 +24057,7 @@ function scaleBinOrdinal() {
   };
 
   scale.tickFormat = function (count, specifier) {
-    return (0,tickFormat/* default */.Z)(domain[0], peek(domain), count == null ? 10 : count, specifier);
+    return tickFormat(domain[0], peek(domain), count == null ? 10 : count, specifier);
   };
 
   scale.copy = function () {
@@ -21202,13 +24100,13 @@ function vega_scale_module_scale(type, scale, metadata) {
 
 vega_scale_module_scale(Identity, identity_identity); // continuous scales
 
-vega_scale_module_scale(vega_scale_module_Linear, src_linear/* default */.Z, Continuous);
-vega_scale_module_scale(Log, src_log/* default */.Z, [Continuous, Log]);
+vega_scale_module_scale(vega_scale_module_Linear, linear_linear, Continuous);
+vega_scale_module_scale(Log, log_log, [Continuous, Log]);
 vega_scale_module_scale(Pow, pow_pow, Continuous);
 vega_scale_module_scale(Sqrt, pow_sqrt, Continuous);
-vega_scale_module_scale(Symlog, src_symlog/* default */.Z, Continuous);
-vega_scale_module_scale(Time, time/* default */.Z, [Continuous, Temporal]);
-vega_scale_module_scale(UTC, utcTime/* default */.Z, [Continuous, Temporal]); // sequential scales
+vega_scale_module_scale(Symlog, symlog_symlog, Continuous);
+vega_scale_module_scale(Time, time, [Continuous, Temporal]);
+vega_scale_module_scale(UTC, utcTime, [Continuous, Temporal]); // sequential scales
 
 vega_scale_module_scale(Sequential, sequential, [Continuous, Interpolating]); // backwards compat
 
@@ -21229,7 +24127,7 @@ vega_scale_module_scale(Quantize, quantize, Discretizing);
 vega_scale_module_scale(Threshold, threshold, Discretizing); // discrete scales
 
 vega_scale_module_scale(BinOrdinal, scaleBinOrdinal, [Discrete, Discretizing]);
-vega_scale_module_scale(Ordinal, ordinal/* default */.Z, Discrete);
+vega_scale_module_scale(Ordinal, ordinal, Discrete);
 vega_scale_module_scale(Band, band, Discrete);
 vega_scale_module_scale(Point, point, Discrete);
 
@@ -22480,7 +25378,7 @@ function customSymbol(path) {
   return custom[path];
 }
 
-var C = 0.448084975506; // C = 1 - c
+var vega_scenegraph_module_C = 0.448084975506; // C = 1 - c
 
 function rectangleX(d) {
   return d.x;
@@ -22539,13 +25437,13 @@ function vg_rect() {
           y2 = y1 + h;
       context.moveTo(x1 + tl, y1);
       context.lineTo(x2 - tr, y1);
-      context.bezierCurveTo(x2 - C * tr, y1, x2, y1 + C * tr, x2, y1 + tr);
+      context.bezierCurveTo(x2 - vega_scenegraph_module_C * tr, y1, x2, y1 + vega_scenegraph_module_C * tr, x2, y1 + tr);
       context.lineTo(x2, y2 - br);
-      context.bezierCurveTo(x2, y2 - C * br, x2 - C * br, y2, x2 - br, y2);
+      context.bezierCurveTo(x2, y2 - vega_scenegraph_module_C * br, x2 - vega_scenegraph_module_C * br, y2, x2 - br, y2);
       context.lineTo(x1 + bl, y2);
-      context.bezierCurveTo(x1 + C * bl, y2, x1, y2 - C * bl, x1, y2 - bl);
+      context.bezierCurveTo(x1 + vega_scenegraph_module_C * bl, y2, x1, y2 - vega_scenegraph_module_C * bl, x1, y2 - bl);
       context.lineTo(x1, y1 + tl);
-      context.bezierCurveTo(x1, y1 + C * tl, x1 + C * tl, y1, x1 + tl, y1);
+      context.bezierCurveTo(x1, y1 + vega_scenegraph_module_C * tl, x1 + vega_scenegraph_module_C * tl, y1, x1 + tl, y1);
       context.closePath();
     }
 
@@ -29309,7 +32207,7 @@ function configureDomain(scale, _, df) {
   // domain construction as side-effect of scale lookup
 
   if (type === Ordinal) {
-    scale.unknown(_.domainImplicit ? ordinal/* implicit */.O : undefined);
+    scale.unknown(_.domainImplicit ? implicit : undefined);
   } // perform 'nice' adjustment as requested
 
 
@@ -29428,7 +32326,7 @@ function configureRange(scale, _, count) {
   } else if (isFunction(scale.round)) {
     scale.round(round);
   } else if (isFunction(scale.rangeRound)) {
-    scale.interpolate(round ? src_round/* default */.Z : value/* default */.Z);
+    scale.interpolate(round ? src_round : value);
   }
 
   if (range) scale.range(flip(range, _.reverse));
@@ -29663,10 +32561,10 @@ function vega_encode_module_partition(data, groupby, sort, field) {
 
 
 ;// CONCATENATED MODULE: ./node_modules/vega-geo/node_modules/d3-array/src/ticks.js
-var src_ticks_e10 = Math.sqrt(50),
-    src_ticks_e5 = Math.sqrt(10),
-    src_ticks_e2 = Math.sqrt(2);
-/* harmony default export */ function d3_array_src_ticks(start, stop, count) {
+var node_modules_d3_array_src_ticks_e10 = Math.sqrt(50),
+    node_modules_d3_array_src_ticks_e5 = Math.sqrt(10),
+    node_modules_d3_array_src_ticks_e2 = Math.sqrt(2);
+/* harmony default export */ function vega_geo_node_modules_d3_array_src_ticks(start, stop, count) {
   var reverse,
       i = -1,
       n,
@@ -29675,7 +32573,7 @@ var src_ticks_e10 = Math.sqrt(50),
   stop = +stop, start = +start, count = +count;
   if (start === stop && count > 0) return [start];
   if (reverse = stop < start) n = start, start = stop, stop = n;
-  if ((step = src_ticks_tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+  if ((step = node_modules_d3_array_src_ticks_tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
 
   if (step > 0) {
     var r0 = Math.round(start / step),
@@ -29705,17 +32603,17 @@ var src_ticks_e10 = Math.sqrt(50),
   if (reverse) ticks.reverse();
   return ticks;
 }
-function src_ticks_tickIncrement(start, stop, count) {
+function node_modules_d3_array_src_ticks_tickIncrement(start, stop, count) {
   var step = (stop - start) / Math.max(0, count),
       power = Math.floor(Math.log(step) / Math.LN10),
       error = step / Math.pow(10, power);
-  return power >= 0 ? (error >= src_ticks_e10 ? 10 : error >= src_ticks_e5 ? 5 : error >= src_ticks_e2 ? 2 : 1) * Math.pow(10, power) : -Math.pow(10, -power) / (error >= src_ticks_e10 ? 10 : error >= src_ticks_e5 ? 5 : error >= src_ticks_e2 ? 2 : 1);
+  return power >= 0 ? (error >= node_modules_d3_array_src_ticks_e10 ? 10 : error >= node_modules_d3_array_src_ticks_e5 ? 5 : error >= node_modules_d3_array_src_ticks_e2 ? 2 : 1) * Math.pow(10, power) : -Math.pow(10, -power) / (error >= node_modules_d3_array_src_ticks_e10 ? 10 : error >= node_modules_d3_array_src_ticks_e5 ? 5 : error >= node_modules_d3_array_src_ticks_e2 ? 2 : 1);
 }
-function src_ticks_tickStep(start, stop, count) {
+function node_modules_d3_array_src_ticks_tickStep(start, stop, count) {
   var step0 = Math.abs(stop - start) / Math.max(0, count),
       step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)),
       error = step0 / step1;
-  if (error >= src_ticks_e10) step1 *= 10;else if (error >= src_ticks_e5) step1 *= 5;else if (error >= src_ticks_e2) step1 *= 2;
+  if (error >= node_modules_d3_array_src_ticks_e10) step1 *= 10;else if (error >= node_modules_d3_array_src_ticks_e5) step1 *= 5;else if (error >= node_modules_d3_array_src_ticks_e2) step1 *= 2;
   return stop < start ? -step1 : step1;
 }
 ;// CONCATENATED MODULE: ./node_modules/vega-geo/node_modules/d3-array/src/range.js
@@ -30073,8 +32971,8 @@ var math_pi = Math.PI;
 var math_halfPi = math_pi / 2;
 var quarterPi = math_pi / 4;
 var math_tau = math_pi * 2;
-var math_degrees = 180 / math_pi;
-var math_radians = math_pi / 180;
+var src_math_degrees = 180 / math_pi;
+var src_math_radians = math_pi / 180;
 var math_abs = Math.abs;
 var atan = Math.atan;
 var math_atan2 = Math.atan2;
@@ -31128,7 +34026,7 @@ function circleRadius(cosRadius, point) {
 
 /* harmony default export */ function clip_circle(radius) {
   var cr = math_cos(radius),
-      delta = 6 * math_radians,
+      delta = 6 * src_math_radians,
       smallRadius = cr > 0,
       notHemisphere = math_abs(cr) > src_math_epsilon; // TODO optimise for this common case
 
@@ -31597,16 +34495,16 @@ function rotationPhiGamma(deltaPhi, deltaGamma) {
 }
 
 /* harmony default export */ function rotation(rotate) {
-  rotate = rotation_rotateRadians(rotate[0] * math_radians, rotate[1] * math_radians, rotate.length > 2 ? rotate[2] * math_radians : 0);
+  rotate = rotation_rotateRadians(rotate[0] * src_math_radians, rotate[1] * src_math_radians, rotate.length > 2 ? rotate[2] * src_math_radians : 0);
 
   function forward(coordinates) {
-    coordinates = rotate(coordinates[0] * math_radians, coordinates[1] * math_radians);
-    return coordinates[0] *= math_degrees, coordinates[1] *= math_degrees, coordinates;
+    coordinates = rotate(coordinates[0] * src_math_radians, coordinates[1] * src_math_radians);
+    return coordinates[0] *= src_math_degrees, coordinates[1] *= src_math_degrees, coordinates;
   }
 
   forward.invert = function (coordinates) {
-    coordinates = rotate.invert(coordinates[0] * math_radians, coordinates[1] * math_radians);
-    return coordinates[0] *= math_degrees, coordinates[1] *= math_degrees, coordinates;
+    coordinates = rotate.invert(coordinates[0] * src_math_radians, coordinates[1] * src_math_radians);
+    return coordinates[0] *= src_math_degrees, coordinates[1] *= src_math_degrees, coordinates;
   };
 
   return forward;
@@ -31704,7 +34602,7 @@ function fitHeight(projection, height, object) {
 
 var maxDepth = 16,
     // maximum depth of subdivision
-cosMinDistance = math_cos(30 * math_radians); // cos(minimum angular distance)
+cosMinDistance = math_cos(30 * src_math_radians); // cos(minimum angular distance)
 
 /* harmony default export */ function resample(project, delta2) {
   return +delta2 ? resample_resample(project, delta2) : resampleNone(project);
@@ -31824,7 +34722,7 @@ function resample_resample(project, delta2) {
 
 var transformRadians = transform_transformer({
   point: function point(x, y) {
-    this.stream.point(x * math_radians, y * math_radians);
+    this.stream.point(x * src_math_radians, y * src_math_radians);
   }
 });
 
@@ -31919,12 +34817,12 @@ function projectionMutator(projectAt) {
       cacheStream;
 
   function projection(point) {
-    return projectRotateTransform(point[0] * math_radians, point[1] * math_radians);
+    return projectRotateTransform(point[0] * src_math_radians, point[1] * src_math_radians);
   }
 
   function invert(point) {
     point = projectRotateTransform.invert(point[0], point[1]);
-    return point && [point[0] * math_degrees, point[1] * math_degrees];
+    return point && [point[0] * src_math_degrees, point[1] * src_math_degrees];
   }
 
   projection.stream = function (stream) {
@@ -31940,7 +34838,7 @@ function projectionMutator(projectAt) {
   };
 
   projection.clipAngle = function (_) {
-    return arguments.length ? (preclip = +_ ? clip_circle(theta = _ * math_radians) : (theta = null, antimeridian), reset()) : theta * math_degrees;
+    return arguments.length ? (preclip = +_ ? clip_circle(theta = _ * src_math_radians) : (theta = null, antimeridian), reset()) : theta * src_math_degrees;
   };
 
   projection.clipExtent = function (_) {
@@ -31956,15 +34854,15 @@ function projectionMutator(projectAt) {
   };
 
   projection.center = function (_) {
-    return arguments.length ? (lambda = _[0] % 360 * math_radians, phi = _[1] % 360 * math_radians, recenter()) : [lambda * math_degrees, phi * math_degrees];
+    return arguments.length ? (lambda = _[0] % 360 * src_math_radians, phi = _[1] % 360 * src_math_radians, recenter()) : [lambda * src_math_degrees, phi * src_math_degrees];
   };
 
   projection.rotate = function (_) {
-    return arguments.length ? (deltaLambda = _[0] % 360 * math_radians, deltaPhi = _[1] % 360 * math_radians, deltaGamma = _.length > 2 ? _[2] % 360 * math_radians : 0, recenter()) : [deltaLambda * math_degrees, deltaPhi * math_degrees, deltaGamma * math_degrees];
+    return arguments.length ? (deltaLambda = _[0] % 360 * src_math_radians, deltaPhi = _[1] % 360 * src_math_radians, deltaGamma = _.length > 2 ? _[2] % 360 * src_math_radians : 0, recenter()) : [deltaLambda * src_math_degrees, deltaPhi * src_math_degrees, deltaGamma * src_math_degrees];
   };
 
   projection.angle = function (_) {
-    return arguments.length ? (alpha = _ % 360 * math_radians, recenter()) : alpha * math_degrees;
+    return arguments.length ? (alpha = _ % 360 * src_math_radians, recenter()) : alpha * src_math_degrees;
   };
 
   projection.reflectX = function (_) {
@@ -32026,7 +34924,7 @@ function conicProjection(projectAt) {
       p = m(phi0, phi1);
 
   p.parallels = function (_) {
-    return arguments.length ? m(phi0 = _[0] * math_radians, phi1 = _[1] * math_radians) : [phi0 * math_degrees, phi1 * math_degrees];
+    return arguments.length ? m(phi0 = _[0] * src_math_radians, phi1 = _[1] * src_math_radians) : [phi0 * src_math_degrees, phi1 * src_math_degrees];
   };
 
   return p;
@@ -32529,7 +35427,7 @@ gnomonicRaw.invert = azimuthalInvert(atan);
   };
 
   projection.angle = function (_) {
-    return arguments.length ? (alpha = _ % 360 * math_radians, sa = math_sin(alpha), ca = math_cos(alpha), reset()) : alpha * math_degrees;
+    return arguments.length ? (alpha = _ % 360 * src_math_radians, sa = math_sin(alpha), ca = math_cos(alpha), reset()) : alpha * src_math_degrees;
   };
 
   projection.reflectX = function (_) {
@@ -32663,8 +35561,8 @@ var sqrt1_2 = Math.SQRT1_2;
 var sqrt2 = src_math_sqrt(2);
 var sqrtPi = src_math_sqrt(src_math_pi);
 var src_math_tau = src_math_pi * 2;
-var src_math_degrees = 180 / src_math_pi;
-var src_math_radians = src_math_pi / 180;
+var d3_geo_projection_src_math_degrees = 180 / src_math_pi;
+var d3_geo_projection_src_math_radians = src_math_pi / 180;
 function sinci(x) {
   return x ? x / Math.sin(x) : 1;
 }
@@ -33201,7 +36099,7 @@ function vega_geo_module_quantize(k, nice, zero) {
         start = zero ? Math.min(ex[0], 0) : ex[0],
         stop = ex[1],
         span = stop - start,
-        step = nice ? src_ticks_tickStep(start, stop, k) : span / (k + 1);
+        step = nice ? node_modules_d3_array_src_ticks_tickStep(start, stop, k) : span / (k + 1);
     return node_modules_d3_array_src_range(start + step, stop, step);
   };
 }
@@ -34277,13 +37175,13 @@ function color_(color, _) {
 
   if (isFunction(color)) {
     f = function f(obj) {
-      return (0,src_color/* rgb */.B8)(color(obj, _));
+      return color_rgb(color(obj, _));
     };
 
     f.dep = dependency(color);
   } else {
     // default to mid-grey
-    f = vega_util_module_constant((0,src_color/* rgb */.B8)(color || '#888'));
+    f = vega_util_module_constant(color_rgb(color || '#888'));
   }
 
   return f;
@@ -36084,7 +38982,7 @@ function setForceParam(f, v, _) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/count.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/count.js
 function count(node) {
   var sum = 0,
       children = node.children,
@@ -36098,7 +38996,7 @@ function count(node) {
 /* harmony default export */ function hierarchy_count() {
   return this.eachAfter(count);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/each.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/each.js
 function each_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = each_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function each_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return each_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return each_arrayLikeToArray(o, minLen); }
@@ -36124,7 +39022,7 @@ function each_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) 
 
   return this;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/eachBefore.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/eachBefore.js
 /* harmony default export */ function eachBefore(callback, that) {
   var node = this,
       nodes = [node],
@@ -36144,7 +39042,7 @@ function each_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) 
 
   return this;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/eachAfter.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/eachAfter.js
 /* harmony default export */ function eachAfter(callback, that) {
   var node = this,
       nodes = [node],
@@ -36170,7 +39068,7 @@ function each_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) 
 
   return this;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/find.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/find.js
 function find_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = find_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function find_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return find_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return find_arrayLikeToArray(o, minLen); }
@@ -36197,7 +39095,7 @@ function find_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) 
     _iterator.f();
   }
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/sum.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/sum.js
 /* harmony default export */ function hierarchy_sum(value) {
   return this.eachAfter(function (node) {
     var sum = +value(node.data) || 0,
@@ -36211,7 +39109,7 @@ function find_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) 
     node.value = sum;
   });
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/sort.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/sort.js
 /* harmony default export */ function sort(compare) {
   return this.eachBefore(function (node) {
     if (node.children) {
@@ -36219,7 +39117,7 @@ function find_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) 
     }
   });
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/path.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/path.js
 /* harmony default export */ function hierarchy_path(end) {
   var start = this,
       ancestor = leastCommonAncestor(start, end),
@@ -36256,7 +39154,7 @@ function leastCommonAncestor(a, b) {
 
   return c;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/ancestors.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/ancestors.js
 /* harmony default export */ function ancestors() {
   var node = this,
       nodes = [node];
@@ -36267,11 +39165,11 @@ function leastCommonAncestor(a, b) {
 
   return nodes;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/descendants.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/descendants.js
 /* harmony default export */ function descendants() {
   return Array.from(this);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/leaves.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/leaves.js
 /* harmony default export */ function leaves() {
   var leaves = [];
   this.eachBefore(function (node) {
@@ -36281,7 +39179,7 @@ function leastCommonAncestor(a, b) {
   });
   return leaves;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/links.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/links.js
 /* harmony default export */ function links() {
   var root = this,
       links = [];
@@ -36296,7 +39194,7 @@ function leastCommonAncestor(a, b) {
   });
   return links;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/iterator.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/iterator.js
 
 
 var iterator_marked = /*#__PURE__*/regenerator_default().mark(_callee);
@@ -36344,7 +39242,7 @@ function _callee() {
     }
   }, iterator_marked, this);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/hierarchy/index.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/hierarchy/index.js
 
 
 
@@ -36435,7 +39333,7 @@ Node.prototype = hierarchy.prototype = (0,defineProperty/* default */.Z)({
   links: links,
   copy: node_copy
 }, Symbol.iterator, _callee);
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/array.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/array.js
 /* harmony default export */ function d3_hierarchy_src_array(x) {
   return typeof x === "object" && "length" in x ? x // Array, TypedArray, NodeList, array-like
   : Array.from(x); // Map, Set, iterable, string, or anything else
@@ -36454,7 +39352,7 @@ function shuffle(array) {
 
   return array;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/pack/enclose.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/pack/enclose.js
 
 /* harmony default export */ function enclose(circles) {
   var i = 0,
@@ -36591,7 +39489,7 @@ function encloseBasis3(a, b, c) {
     r: r
   };
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/pack/siblings.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/pack/siblings.js
 
 
 
@@ -36722,7 +39620,7 @@ function packEnclose(circles) {
   packEnclose(circles);
   return circles;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/accessors.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/accessors.js
 function optional(f) {
   return f == null ? null : required(f);
 }
@@ -36730,7 +39628,7 @@ function required(f) {
   if (typeof f !== "function") throw new Error();
   return f;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/constant.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/constant.js
 function constantZero() {
   return 0;
 }
@@ -36739,7 +39637,7 @@ function constantZero() {
     return x;
   };
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/pack/index.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/pack/index.js
 
 
 
@@ -36820,14 +39718,14 @@ function translateChild(k) {
     }
   };
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/treemap/round.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/treemap/round.js
 /* harmony default export */ function treemap_round(node) {
   node.x0 = Math.round(node.x0);
   node.y0 = Math.round(node.y0);
   node.x1 = Math.round(node.x1);
   node.y1 = Math.round(node.y1);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/treemap/dice.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/treemap/dice.js
 /* harmony default export */ function dice(parent, x0, y0, x1, y1) {
   var nodes = parent.children,
       node,
@@ -36840,7 +39738,7 @@ function translateChild(k) {
     node.x0 = x0, node.x1 = x0 += node.value * k;
   }
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/partition.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/partition.js
 
 
 /* harmony default export */ function src_partition() {
@@ -36892,7 +39790,7 @@ function translateChild(k) {
 
   return partition;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/stratify.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/stratify.js
 
 
 var preroot = {
@@ -36973,7 +39871,7 @@ function defaultParentId(d) {
 
   return stratify;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/tree.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/tree.js
 
 
 function defaultSeparation(a, b) {
@@ -37223,7 +40121,7 @@ function treeRoot(root) {
 
   return tree;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/cluster.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/cluster.js
 function cluster_defaultSeparation(a, b) {
   return a.parent === b.parent ? 1 : 2;
 }
@@ -37314,7 +40212,7 @@ function leafRight(node) {
 
   return cluster;
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/treemap/binary.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/treemap/binary.js
 /* harmony default export */ function binary(parent, x0, y0, x1, y1) {
   var nodes = parent.children,
       i,
@@ -37361,7 +40259,7 @@ function leafRight(node) {
     }
   }
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/treemap/slice.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/treemap/slice.js
 /* harmony default export */ function treemap_slice(parent, x0, y0, x1, y1) {
   var nodes = parent.children,
       node,
@@ -37374,13 +40272,13 @@ function leafRight(node) {
     node.y0 = y0, node.y1 = y0 += node.value * k;
   }
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/treemap/sliceDice.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/treemap/sliceDice.js
 
 
 /* harmony default export */ function sliceDice(parent, x0, y0, x1, y1) {
   (parent.depth & 1 ? treemap_slice : dice)(parent, x0, y0, x1, y1);
 }
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/treemap/squarify.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/treemap/squarify.js
 
 
 var phi = (1 + Math.sqrt(5)) / 2;
@@ -37453,7 +40351,7 @@ function squarifyRatio(ratio, parent, x0, y0, x1, y1) {
 
   return squarify;
 })(phi));
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/treemap/resquarify.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/treemap/resquarify.js
 
 
 
@@ -37491,7 +40389,7 @@ function squarifyRatio(ratio, parent, x0, y0, x1, y1) {
 
   return resquarify;
 })(phi));
-;// CONCATENATED MODULE: ./node_modules/vega-hierarchy/node_modules/d3-hierarchy/src/treemap/index.js
+;// CONCATENATED MODULE: ./node_modules/d3-hierarchy/src/treemap/index.js
 
 
 
@@ -39430,18 +42328,1731 @@ vega_util_module_inherits(Regression, Transform, {
   }
 });
 
-// EXTERNAL MODULE: ./node_modules/d3-delaunay/src/delaunay.js + 4 modules
-var delaunay = __webpack_require__(75810);
+;// CONCATENATED MODULE: ./node_modules/delaunator/index.js
+
+
+var delaunator_EPSILON = Math.pow(2, -52);
+var EDGE_STACK = new Uint32Array(512);
+
+var Delaunator = /*#__PURE__*/function () {
+  function Delaunator(coords) {
+    (0,classCallCheck/* default */.Z)(this, Delaunator);
+
+    var n = coords.length >> 1;
+    if (n > 0 && typeof coords[0] !== 'number') throw new Error('Expected coords to contain numbers.');
+    this.coords = coords; // arrays that will store the triangulation graph
+
+    var maxTriangles = Math.max(2 * n - 5, 0);
+    this._triangles = new Uint32Array(maxTriangles * 3);
+    this._halfedges = new Int32Array(maxTriangles * 3); // temporary arrays for tracking the edges of the advancing convex hull
+
+    this._hashSize = Math.ceil(Math.sqrt(n));
+    this._hullPrev = new Uint32Array(n); // edge to prev edge
+
+    this._hullNext = new Uint32Array(n); // edge to next edge
+
+    this._hullTri = new Uint32Array(n); // edge to adjacent triangle
+
+    this._hullHash = new Int32Array(this._hashSize).fill(-1); // angular edge hash
+    // temporary arrays for sorting points
+
+    this._ids = new Uint32Array(n);
+    this._dists = new Float64Array(n);
+    this.update();
+  }
+
+  (0,createClass/* default */.Z)(Delaunator, [{
+    key: "update",
+    value: function update() {
+      var coords = this.coords,
+          hullPrev = this._hullPrev,
+          hullNext = this._hullNext,
+          hullTri = this._hullTri,
+          hullHash = this._hullHash;
+      var n = coords.length >> 1; // populate an array of point indices; calculate input data bbox
+
+      var minX = Infinity;
+      var minY = Infinity;
+      var maxX = -Infinity;
+      var maxY = -Infinity;
+
+      for (var i = 0; i < n; i++) {
+        var x = coords[2 * i];
+        var y = coords[2 * i + 1];
+        if (x < minX) minX = x;
+        if (y < minY) minY = y;
+        if (x > maxX) maxX = x;
+        if (y > maxY) maxY = y;
+        this._ids[i] = i;
+      }
+
+      var cx = (minX + maxX) / 2;
+      var cy = (minY + maxY) / 2;
+      var minDist = Infinity;
+      var i0, i1, i2; // pick a seed point close to the center
+
+      for (var _i = 0; _i < n; _i++) {
+        var d = dist(cx, cy, coords[2 * _i], coords[2 * _i + 1]);
+
+        if (d < minDist) {
+          i0 = _i;
+          minDist = d;
+        }
+      }
+
+      var i0x = coords[2 * i0];
+      var i0y = coords[2 * i0 + 1];
+      minDist = Infinity; // find the point closest to the seed
+
+      for (var _i2 = 0; _i2 < n; _i2++) {
+        if (_i2 === i0) continue;
+
+        var _d = dist(i0x, i0y, coords[2 * _i2], coords[2 * _i2 + 1]);
+
+        if (_d < minDist && _d > 0) {
+          i1 = _i2;
+          minDist = _d;
+        }
+      }
+
+      var i1x = coords[2 * i1];
+      var i1y = coords[2 * i1 + 1];
+      var minRadius = Infinity; // find the third point which forms the smallest circumcircle with the first two
+
+      for (var _i3 = 0; _i3 < n; _i3++) {
+        if (_i3 === i0 || _i3 === i1) continue;
+        var r = circumradius(i0x, i0y, i1x, i1y, coords[2 * _i3], coords[2 * _i3 + 1]);
+
+        if (r < minRadius) {
+          i2 = _i3;
+          minRadius = r;
+        }
+      }
+
+      var i2x = coords[2 * i2];
+      var i2y = coords[2 * i2 + 1];
+
+      if (minRadius === Infinity) {
+        // order collinear points by dx (or dy if all x are identical)
+        // and return the list as a hull
+        for (var _i4 = 0; _i4 < n; _i4++) {
+          this._dists[_i4] = coords[2 * _i4] - coords[0] || coords[2 * _i4 + 1] - coords[1];
+        }
+
+        quicksort(this._ids, this._dists, 0, n - 1);
+        var hull = new Uint32Array(n);
+        var j = 0;
+
+        for (var _i5 = 0, d0 = -Infinity; _i5 < n; _i5++) {
+          var id = this._ids[_i5];
+
+          if (this._dists[id] > d0) {
+            hull[j++] = id;
+            d0 = this._dists[id];
+          }
+        }
+
+        this.hull = hull.subarray(0, j);
+        this.triangles = new Uint32Array(0);
+        this.halfedges = new Uint32Array(0);
+        return;
+      } // swap the order of the seed points for counter-clockwise orientation
+
+
+      if (orient(i0x, i0y, i1x, i1y, i2x, i2y)) {
+        var _i6 = i1;
+        var _x = i1x;
+        var _y = i1y;
+        i1 = i2;
+        i1x = i2x;
+        i1y = i2y;
+        i2 = _i6;
+        i2x = _x;
+        i2y = _y;
+      }
+
+      var center = circumcenter(i0x, i0y, i1x, i1y, i2x, i2y);
+      this._cx = center.x;
+      this._cy = center.y;
+
+      for (var _i7 = 0; _i7 < n; _i7++) {
+        this._dists[_i7] = dist(coords[2 * _i7], coords[2 * _i7 + 1], center.x, center.y);
+      } // sort the points by distance from the seed triangle circumcenter
+
+
+      quicksort(this._ids, this._dists, 0, n - 1); // set up the seed triangle as the starting hull
+
+      this._hullStart = i0;
+      var hullSize = 3;
+      hullNext[i0] = hullPrev[i2] = i1;
+      hullNext[i1] = hullPrev[i0] = i2;
+      hullNext[i2] = hullPrev[i1] = i0;
+      hullTri[i0] = 0;
+      hullTri[i1] = 1;
+      hullTri[i2] = 2;
+      hullHash.fill(-1);
+      hullHash[this._hashKey(i0x, i0y)] = i0;
+      hullHash[this._hashKey(i1x, i1y)] = i1;
+      hullHash[this._hashKey(i2x, i2y)] = i2;
+      this.trianglesLen = 0;
+
+      this._addTriangle(i0, i1, i2, -1, -1, -1);
+
+      for (var k = 0, xp, yp; k < this._ids.length; k++) {
+        var _i8 = this._ids[k];
+        var _x2 = coords[2 * _i8];
+        var _y2 = coords[2 * _i8 + 1]; // skip near-duplicate points
+
+        if (k > 0 && Math.abs(_x2 - xp) <= delaunator_EPSILON && Math.abs(_y2 - yp) <= delaunator_EPSILON) continue;
+        xp = _x2;
+        yp = _y2; // skip seed triangle points
+
+        if (_i8 === i0 || _i8 === i1 || _i8 === i2) continue; // find a visible edge on the convex hull using edge hash
+
+        var start = 0;
+
+        for (var _j = 0, key = this._hashKey(_x2, _y2); _j < this._hashSize; _j++) {
+          start = hullHash[(key + _j) % this._hashSize];
+          if (start !== -1 && start !== hullNext[start]) break;
+        }
+
+        start = hullPrev[start];
+        var e = start,
+            q = void 0;
+
+        while (q = hullNext[e], !orient(_x2, _y2, coords[2 * e], coords[2 * e + 1], coords[2 * q], coords[2 * q + 1])) {
+          e = q;
+
+          if (e === start) {
+            e = -1;
+            break;
+          }
+        }
+
+        if (e === -1) continue; // likely a near-duplicate point; skip it
+        // add the first triangle from the point
+
+        var t = this._addTriangle(e, _i8, hullNext[e], -1, -1, hullTri[e]); // recursively flip triangles from the point until they satisfy the Delaunay condition
+
+
+        hullTri[_i8] = this._legalize(t + 2);
+        hullTri[e] = t; // keep track of boundary triangles on the hull
+
+        hullSize++; // walk forward through the hull, adding more triangles and flipping recursively
+
+        var _n = hullNext[e];
+
+        while (q = hullNext[_n], orient(_x2, _y2, coords[2 * _n], coords[2 * _n + 1], coords[2 * q], coords[2 * q + 1])) {
+          t = this._addTriangle(_n, _i8, q, hullTri[_i8], -1, hullTri[_n]);
+          hullTri[_i8] = this._legalize(t + 2);
+          hullNext[_n] = _n; // mark as removed
+
+          hullSize--;
+          _n = q;
+        } // walk backward from the other side, adding more triangles and flipping
+
+
+        if (e === start) {
+          while (q = hullPrev[e], orient(_x2, _y2, coords[2 * q], coords[2 * q + 1], coords[2 * e], coords[2 * e + 1])) {
+            t = this._addTriangle(q, _i8, e, -1, hullTri[e], hullTri[q]);
+
+            this._legalize(t + 2);
+
+            hullTri[q] = t;
+            hullNext[e] = e; // mark as removed
+
+            hullSize--;
+            e = q;
+          }
+        } // update the hull indices
+
+
+        this._hullStart = hullPrev[_i8] = e;
+        hullNext[e] = hullPrev[_n] = _i8;
+        hullNext[_i8] = _n; // save the two new edges in the hash table
+
+        hullHash[this._hashKey(_x2, _y2)] = _i8;
+        hullHash[this._hashKey(coords[2 * e], coords[2 * e + 1])] = e;
+      }
+
+      this.hull = new Uint32Array(hullSize);
+
+      for (var _i9 = 0, _e = this._hullStart; _i9 < hullSize; _i9++) {
+        this.hull[_i9] = _e;
+        _e = hullNext[_e];
+      } // trim typed triangle mesh arrays
+
+
+      this.triangles = this._triangles.subarray(0, this.trianglesLen);
+      this.halfedges = this._halfedges.subarray(0, this.trianglesLen);
+    }
+  }, {
+    key: "_hashKey",
+    value: function _hashKey(x, y) {
+      return Math.floor(pseudoAngle(x - this._cx, y - this._cy) * this._hashSize) % this._hashSize;
+    }
+  }, {
+    key: "_legalize",
+    value: function _legalize(a) {
+      var triangles = this._triangles,
+          halfedges = this._halfedges,
+          coords = this.coords;
+      var i = 0;
+      var ar = 0; // recursion eliminated with a fixed-size stack
+
+      while (true) {
+        var b = halfedges[a];
+        /* if the pair of triangles doesn't satisfy the Delaunay condition
+         * (p1 is inside the circumcircle of [p0, pl, pr]), flip them,
+         * then do the same check/flip recursively for the new pair of triangles
+         *
+         *           pl                    pl
+         *          /||\                  /  \
+         *       al/ || \bl            al/    \a
+         *        /  ||  \              /      \
+         *       /  a||b  \    flip    /___ar___\
+         *     p0\   ||   /p1   =>   p0\---bl---/p1
+         *        \  ||  /              \      /
+         *       ar\ || /br             b\    /br
+         *          \||/                  \  /
+         *           pr                    pr
+         */
+
+        var a0 = a - a % 3;
+        ar = a0 + (a + 2) % 3;
+
+        if (b === -1) {
+          // convex hull edge
+          if (i === 0) break;
+          a = EDGE_STACK[--i];
+          continue;
+        }
+
+        var b0 = b - b % 3;
+        var al = a0 + (a + 1) % 3;
+        var bl = b0 + (b + 2) % 3;
+        var p0 = triangles[ar];
+        var pr = triangles[a];
+        var pl = triangles[al];
+        var p1 = triangles[bl];
+        var illegal = inCircle(coords[2 * p0], coords[2 * p0 + 1], coords[2 * pr], coords[2 * pr + 1], coords[2 * pl], coords[2 * pl + 1], coords[2 * p1], coords[2 * p1 + 1]);
+
+        if (illegal) {
+          triangles[a] = p1;
+          triangles[b] = p0;
+          var hbl = halfedges[bl]; // edge swapped on the other side of the hull (rare); fix the halfedge reference
+
+          if (hbl === -1) {
+            var e = this._hullStart;
+
+            do {
+              if (this._hullTri[e] === bl) {
+                this._hullTri[e] = a;
+                break;
+              }
+
+              e = this._hullPrev[e];
+            } while (e !== this._hullStart);
+          }
+
+          this._link(a, hbl);
+
+          this._link(b, halfedges[ar]);
+
+          this._link(ar, bl);
+
+          var br = b0 + (b + 1) % 3; // don't worry about hitting the cap: it can only happen on extremely degenerate input
+
+          if (i < EDGE_STACK.length) {
+            EDGE_STACK[i++] = br;
+          }
+        } else {
+          if (i === 0) break;
+          a = EDGE_STACK[--i];
+        }
+      }
+
+      return ar;
+    }
+  }, {
+    key: "_link",
+    value: function _link(a, b) {
+      this._halfedges[a] = b;
+      if (b !== -1) this._halfedges[b] = a;
+    } // add a new triangle given vertex indices and adjacent half-edge ids
+
+  }, {
+    key: "_addTriangle",
+    value: function _addTriangle(i0, i1, i2, a, b, c) {
+      var t = this.trianglesLen;
+      this._triangles[t] = i0;
+      this._triangles[t + 1] = i1;
+      this._triangles[t + 2] = i2;
+
+      this._link(t, a);
+
+      this._link(t + 1, b);
+
+      this._link(t + 2, c);
+
+      this.trianglesLen += 3;
+      return t;
+    }
+  }], [{
+    key: "from",
+    value: function from(points) {
+      var getX = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultGetX;
+      var getY = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultGetY;
+      var n = points.length;
+      var coords = new Float64Array(n * 2);
+
+      for (var i = 0; i < n; i++) {
+        var p = points[i];
+        coords[2 * i] = getX(p);
+        coords[2 * i + 1] = getY(p);
+      }
+
+      return new Delaunator(coords);
+    }
+  }]);
+
+  return Delaunator;
+}(); // monotonically increases with real angle, but doesn't need expensive trigonometry
+
+
+
+
+function pseudoAngle(dx, dy) {
+  var p = dx / (Math.abs(dx) + Math.abs(dy));
+  return (dy > 0 ? 3 - p : 1 + p) / 4; // [0..1]
+}
+
+function dist(ax, ay, bx, by) {
+  var dx = ax - bx;
+  var dy = ay - by;
+  return dx * dx + dy * dy;
+} // return 2d orientation sign if we're confident in it through J. Shewchuk's error bound check
+
+
+function orientIfSure(px, py, rx, ry, qx, qy) {
+  var l = (ry - py) * (qx - px);
+  var r = (rx - px) * (qy - py);
+  return Math.abs(l - r) >= 3.3306690738754716e-16 * Math.abs(l + r) ? l - r : 0;
+} // a more robust orientation test that's stable in a given triangle (to fix robustness issues)
+
+
+function orient(rx, ry, qx, qy, px, py) {
+  var sign = orientIfSure(px, py, rx, ry, qx, qy) || orientIfSure(rx, ry, qx, qy, px, py) || orientIfSure(qx, qy, px, py, rx, ry);
+  return sign < 0;
+}
+
+function inCircle(ax, ay, bx, by, cx, cy, px, py) {
+  var dx = ax - px;
+  var dy = ay - py;
+  var ex = bx - px;
+  var ey = by - py;
+  var fx = cx - px;
+  var fy = cy - py;
+  var ap = dx * dx + dy * dy;
+  var bp = ex * ex + ey * ey;
+  var cp = fx * fx + fy * fy;
+  return dx * (ey * cp - bp * fy) - dy * (ex * cp - bp * fx) + ap * (ex * fy - ey * fx) < 0;
+}
+
+function circumradius(ax, ay, bx, by, cx, cy) {
+  var dx = bx - ax;
+  var dy = by - ay;
+  var ex = cx - ax;
+  var ey = cy - ay;
+  var bl = dx * dx + dy * dy;
+  var cl = ex * ex + ey * ey;
+  var d = 0.5 / (dx * ey - dy * ex);
+  var x = (ey * bl - dy * cl) * d;
+  var y = (dx * cl - ex * bl) * d;
+  return x * x + y * y;
+}
+
+function circumcenter(ax, ay, bx, by, cx, cy) {
+  var dx = bx - ax;
+  var dy = by - ay;
+  var ex = cx - ax;
+  var ey = cy - ay;
+  var bl = dx * dx + dy * dy;
+  var cl = ex * ex + ey * ey;
+  var d = 0.5 / (dx * ey - dy * ex);
+  var x = ax + (ey * bl - dy * cl) * d;
+  var y = ay + (dx * cl - ex * bl) * d;
+  return {
+    x: x,
+    y: y
+  };
+}
+
+function quicksort(ids, dists, left, right) {
+  if (right - left <= 20) {
+    for (var i = left + 1; i <= right; i++) {
+      var temp = ids[i];
+      var tempDist = dists[temp];
+      var j = i - 1;
+
+      while (j >= left && dists[ids[j]] > tempDist) {
+        ids[j + 1] = ids[j--];
+      }
+
+      ids[j + 1] = temp;
+    }
+  } else {
+    var median = left + right >> 1;
+
+    var _i10 = left + 1;
+
+    var _j2 = right;
+    delaunator_swap(ids, median, _i10);
+    if (dists[ids[left]] > dists[ids[right]]) delaunator_swap(ids, left, right);
+    if (dists[ids[_i10]] > dists[ids[right]]) delaunator_swap(ids, _i10, right);
+    if (dists[ids[left]] > dists[ids[_i10]]) delaunator_swap(ids, left, _i10);
+    var _temp = ids[_i10];
+    var _tempDist = dists[_temp];
+
+    while (true) {
+      do {
+        _i10++;
+      } while (dists[ids[_i10]] < _tempDist);
+
+      do {
+        _j2--;
+      } while (dists[ids[_j2]] > _tempDist);
+
+      if (_j2 < _i10) break;
+      delaunator_swap(ids, _i10, _j2);
+    }
+
+    ids[left + 1] = ids[_j2];
+    ids[_j2] = _temp;
+
+    if (right - _i10 + 1 >= _j2 - left) {
+      quicksort(ids, dists, _i10, right);
+      quicksort(ids, dists, left, _j2 - 1);
+    } else {
+      quicksort(ids, dists, left, _j2 - 1);
+      quicksort(ids, dists, _i10, right);
+    }
+  }
+}
+
+function delaunator_swap(arr, i, j) {
+  var tmp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = tmp;
+}
+
+function defaultGetX(p) {
+  return p[0];
+}
+
+function defaultGetY(p) {
+  return p[1];
+}
+;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/path.js
+
+
+var src_path_epsilon = 1e-6;
+
+var path_Path = /*#__PURE__*/function () {
+  function Path() {
+    (0,classCallCheck/* default */.Z)(this, Path);
+
+    this._x0 = this._y0 = // start of current subpath
+    this._x1 = this._y1 = null; // end of current subpath
+
+    this._ = "";
+  }
+
+  (0,createClass/* default */.Z)(Path, [{
+    key: "moveTo",
+    value: function moveTo(x, y) {
+      this._ += "M".concat(this._x0 = this._x1 = +x, ",").concat(this._y0 = this._y1 = +y);
+    }
+  }, {
+    key: "closePath",
+    value: function closePath() {
+      if (this._x1 !== null) {
+        this._x1 = this._x0, this._y1 = this._y0;
+        this._ += "Z";
+      }
+    }
+  }, {
+    key: "lineTo",
+    value: function lineTo(x, y) {
+      this._ += "L".concat(this._x1 = +x, ",").concat(this._y1 = +y);
+    }
+  }, {
+    key: "arc",
+    value: function arc(x, y, r) {
+      x = +x, y = +y, r = +r;
+      var x0 = x + r;
+      var y0 = y;
+      if (r < 0) throw new Error("negative radius");
+      if (this._x1 === null) this._ += "M".concat(x0, ",").concat(y0);else if (Math.abs(this._x1 - x0) > src_path_epsilon || Math.abs(this._y1 - y0) > src_path_epsilon) this._ += "L" + x0 + "," + y0;
+      if (!r) return;
+      this._ += "A".concat(r, ",").concat(r, ",0,1,1,").concat(x - r, ",").concat(y, "A").concat(r, ",").concat(r, ",0,1,1,").concat(this._x1 = x0, ",").concat(this._y1 = y0);
+    }
+  }, {
+    key: "rect",
+    value: function rect(x, y, w, h) {
+      this._ += "M".concat(this._x0 = this._x1 = +x, ",").concat(this._y0 = this._y1 = +y, "h").concat(+w, "v").concat(+h, "h").concat(-w, "Z");
+    }
+  }, {
+    key: "value",
+    value: function value() {
+      return this._ || null;
+    }
+  }]);
+
+  return Path;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/polygon.js
+
+
+
+var Polygon = /*#__PURE__*/function () {
+  function Polygon() {
+    (0,classCallCheck/* default */.Z)(this, Polygon);
+
+    this._ = [];
+  }
+
+  (0,createClass/* default */.Z)(Polygon, [{
+    key: "moveTo",
+    value: function moveTo(x, y) {
+      this._.push([x, y]);
+    }
+  }, {
+    key: "closePath",
+    value: function closePath() {
+      this._.push(this._[0].slice());
+    }
+  }, {
+    key: "lineTo",
+    value: function lineTo(x, y) {
+      this._.push([x, y]);
+    }
+  }, {
+    key: "value",
+    value: function value() {
+      return this._.length ? this._ : null;
+    }
+  }]);
+
+  return Polygon;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/voronoi.js
+
+
+
+
+function voronoi_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = voronoi_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function voronoi_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return voronoi_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return voronoi_arrayLikeToArray(o, minLen); }
+
+function voronoi_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+
+var Voronoi = /*#__PURE__*/function () {
+  function Voronoi(delaunay) {
+    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [0, 0, 960, 500],
+        _ref2 = (0,slicedToArray/* default */.Z)(_ref, 4),
+        xmin = _ref2[0],
+        ymin = _ref2[1],
+        xmax = _ref2[2],
+        ymax = _ref2[3];
+
+    (0,classCallCheck/* default */.Z)(this, Voronoi);
+
+    if (!((xmax = +xmax) >= (xmin = +xmin)) || !((ymax = +ymax) >= (ymin = +ymin))) throw new Error("invalid bounds");
+    this.delaunay = delaunay;
+    this._circumcenters = new Float64Array(delaunay.points.length * 2);
+    this.vectors = new Float64Array(delaunay.points.length * 2);
+    this.xmax = xmax, this.xmin = xmin;
+    this.ymax = ymax, this.ymin = ymin;
+
+    this._init();
+  }
+
+  (0,createClass/* default */.Z)(Voronoi, [{
+    key: "update",
+    value: function update() {
+      this.delaunay.update();
+
+      this._init();
+
+      return this;
+    }
+  }, {
+    key: "_init",
+    value: function _init() {
+      var _this$delaunay = this.delaunay,
+          points = _this$delaunay.points,
+          hull = _this$delaunay.hull,
+          triangles = _this$delaunay.triangles,
+          vectors = this.vectors; // Compute circumcenters.
+
+      var circumcenters = this.circumcenters = this._circumcenters.subarray(0, triangles.length / 3 * 2);
+
+      for (var i = 0, j = 0, n = triangles.length, x, y; i < n; i += 3, j += 2) {
+        var t1 = triangles[i] * 2;
+        var t2 = triangles[i + 1] * 2;
+        var t3 = triangles[i + 2] * 2;
+        var _x = points[t1];
+        var _y = points[t1 + 1];
+        var x2 = points[t2];
+        var y2 = points[t2 + 1];
+        var x3 = points[t3];
+        var y3 = points[t3 + 1];
+        var dx = x2 - _x;
+        var dy = y2 - _y;
+        var ex = x3 - _x;
+        var ey = y3 - _y;
+        var bl = dx * dx + dy * dy;
+        var cl = ex * ex + ey * ey;
+        var ab = (dx * ey - dy * ex) * 2;
+
+        if (!ab) {
+          // degenerate case (collinear diagram)
+          x = (_x + x3) / 2 - 1e8 * ey;
+          y = (_y + y3) / 2 + 1e8 * ex;
+        } else if (Math.abs(ab) < 1e-8) {
+          // almost equal points (degenerate triangle)
+          x = (_x + x3) / 2;
+          y = (_y + y3) / 2;
+        } else {
+          var d = 1 / ab;
+          x = _x + (ey * bl - dy * cl) * d;
+          y = _y + (dx * cl - ex * bl) * d;
+        }
+
+        circumcenters[j] = x;
+        circumcenters[j + 1] = y;
+      } // Compute exterior cell rays.
+
+
+      var h = hull[hull.length - 1];
+      var p0,
+          p1 = h * 4;
+      var x0,
+          x1 = points[2 * h];
+      var y0,
+          y1 = points[2 * h + 1];
+      vectors.fill(0);
+
+      for (var _i = 0; _i < hull.length; ++_i) {
+        h = hull[_i];
+        p0 = p1, x0 = x1, y0 = y1;
+        p1 = h * 4, x1 = points[2 * h], y1 = points[2 * h + 1];
+        vectors[p0 + 2] = vectors[p1] = y0 - y1;
+        vectors[p0 + 3] = vectors[p1 + 1] = x1 - x0;
+      }
+    }
+  }, {
+    key: "render",
+    value: function render(context) {
+      var buffer = context == null ? context = new path_Path() : undefined;
+      var _this$delaunay2 = this.delaunay,
+          halfedges = _this$delaunay2.halfedges,
+          inedges = _this$delaunay2.inedges,
+          hull = _this$delaunay2.hull,
+          circumcenters = this.circumcenters,
+          vectors = this.vectors;
+      if (hull.length <= 1) return null;
+
+      for (var i = 0, n = halfedges.length; i < n; ++i) {
+        var j = halfedges[i];
+        if (j < i) continue;
+        var ti = Math.floor(i / 3) * 2;
+        var tj = Math.floor(j / 3) * 2;
+        var xi = circumcenters[ti];
+        var yi = circumcenters[ti + 1];
+        var xj = circumcenters[tj];
+        var yj = circumcenters[tj + 1];
+
+        this._renderSegment(xi, yi, xj, yj, context);
+      }
+
+      var h0,
+          h1 = hull[hull.length - 1];
+
+      for (var _i2 = 0; _i2 < hull.length; ++_i2) {
+        h0 = h1, h1 = hull[_i2];
+        var t = Math.floor(inedges[h1] / 3) * 2;
+        var x = circumcenters[t];
+        var y = circumcenters[t + 1];
+        var v = h0 * 4;
+
+        var p = this._project(x, y, vectors[v + 2], vectors[v + 3]);
+
+        if (p) this._renderSegment(x, y, p[0], p[1], context);
+      }
+
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "renderBounds",
+    value: function renderBounds(context) {
+      var buffer = context == null ? context = new path_Path() : undefined;
+      context.rect(this.xmin, this.ymin, this.xmax - this.xmin, this.ymax - this.ymin);
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "renderCell",
+    value: function renderCell(i, context) {
+      var buffer = context == null ? context = new path_Path() : undefined;
+
+      var points = this._clip(i);
+
+      if (points === null || !points.length) return;
+      context.moveTo(points[0], points[1]);
+      var n = points.length;
+
+      while (points[0] === points[n - 2] && points[1] === points[n - 1] && n > 1) {
+        n -= 2;
+      }
+
+      for (var _i3 = 2; _i3 < n; _i3 += 2) {
+        if (points[_i3] !== points[_i3 - 2] || points[_i3 + 1] !== points[_i3 - 1]) context.lineTo(points[_i3], points[_i3 + 1]);
+      }
+
+      context.closePath();
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "cellPolygons",
+    value: /*#__PURE__*/regenerator_default().mark(function cellPolygons() {
+      var points, i, n, cell;
+      return regenerator_default().wrap(function cellPolygons$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              points = this.delaunay.points;
+              i = 0, n = points.length / 2;
+
+            case 2:
+              if (!(i < n)) {
+                _context.next = 11;
+                break;
+              }
+
+              cell = this.cellPolygon(i);
+
+              if (!cell) {
+                _context.next = 8;
+                break;
+              }
+
+              cell.index = i;
+              _context.next = 8;
+              return cell;
+
+            case 8:
+              ++i;
+              _context.next = 2;
+              break;
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, cellPolygons, this);
+    })
+  }, {
+    key: "cellPolygon",
+    value: function cellPolygon(i) {
+      var polygon = new Polygon();
+      this.renderCell(i, polygon);
+      return polygon.value();
+    }
+  }, {
+    key: "_renderSegment",
+    value: function _renderSegment(x0, y0, x1, y1, context) {
+      var S;
+
+      var c0 = this._regioncode(x0, y0);
+
+      var c1 = this._regioncode(x1, y1);
+
+      if (c0 === 0 && c1 === 0) {
+        context.moveTo(x0, y0);
+        context.lineTo(x1, y1);
+      } else if (S = this._clipSegment(x0, y0, x1, y1, c0, c1)) {
+        context.moveTo(S[0], S[1]);
+        context.lineTo(S[2], S[3]);
+      }
+    }
+  }, {
+    key: "contains",
+    value: function contains(i, x, y) {
+      if ((x = +x, x !== x) || (y = +y, y !== y)) return false;
+      return this.delaunay._step(i, x, y) === i;
+    }
+  }, {
+    key: "neighbors",
+    value: /*#__PURE__*/regenerator_default().mark(function neighbors(i) {
+      var ci, _iterator, _step, j, cj, ai, li, aj, lj;
+
+      return regenerator_default().wrap(function neighbors$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              ci = this._clip(i);
+
+              if (!ci) {
+                _context2.next = 33;
+                break;
+              }
+
+              _iterator = voronoi_createForOfIteratorHelper(this.delaunay.neighbors(i));
+              _context2.prev = 3;
+
+              _iterator.s();
+
+            case 5:
+              if ((_step = _iterator.n()).done) {
+                _context2.next = 25;
+                break;
+              }
+
+              j = _step.value;
+              cj = this._clip(j); // find the common edge
+
+              if (!cj) {
+                _context2.next = 23;
+                break;
+              }
+
+              ai = 0, li = ci.length;
+
+            case 10:
+              if (!(ai < li)) {
+                _context2.next = 23;
+                break;
+              }
+
+              aj = 0, lj = cj.length;
+
+            case 12:
+              if (!(aj < lj)) {
+                _context2.next = 20;
+                break;
+              }
+
+              if (!(ci[ai] == cj[aj] && ci[ai + 1] == cj[aj + 1] && ci[(ai + 2) % li] == cj[(aj + lj - 2) % lj] && ci[(ai + 3) % li] == cj[(aj + lj - 1) % lj])) {
+                _context2.next = 17;
+                break;
+              }
+
+              _context2.next = 16;
+              return j;
+
+            case 16:
+              return _context2.abrupt("break", 23);
+
+            case 17:
+              aj += 2;
+              _context2.next = 12;
+              break;
+
+            case 20:
+              ai += 2;
+              _context2.next = 10;
+              break;
+
+            case 23:
+              _context2.next = 5;
+              break;
+
+            case 25:
+              _context2.next = 30;
+              break;
+
+            case 27:
+              _context2.prev = 27;
+              _context2.t0 = _context2["catch"](3);
+
+              _iterator.e(_context2.t0);
+
+            case 30:
+              _context2.prev = 30;
+
+              _iterator.f();
+
+              return _context2.finish(30);
+
+            case 33:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, neighbors, this, [[3, 27, 30, 33]]);
+    })
+  }, {
+    key: "_cell",
+    value: function _cell(i) {
+      var circumcenters = this.circumcenters,
+          _this$delaunay3 = this.delaunay,
+          inedges = _this$delaunay3.inedges,
+          halfedges = _this$delaunay3.halfedges,
+          triangles = _this$delaunay3.triangles;
+      var e0 = inedges[i];
+      if (e0 === -1) return null; // coincident point
+
+      var points = [];
+      var e = e0;
+
+      do {
+        var t = Math.floor(e / 3);
+        points.push(circumcenters[t * 2], circumcenters[t * 2 + 1]);
+        e = e % 3 === 2 ? e - 2 : e + 1;
+        if (triangles[e] !== i) break; // bad triangulation
+
+        e = halfedges[e];
+      } while (e !== e0 && e !== -1);
+
+      return points;
+    }
+  }, {
+    key: "_clip",
+    value: function _clip(i) {
+      // degenerate case (1 valid point: return the box)
+      if (i === 0 && this.delaunay.hull.length === 1) {
+        return [this.xmax, this.ymin, this.xmax, this.ymax, this.xmin, this.ymax, this.xmin, this.ymin];
+      }
+
+      var points = this._cell(i);
+
+      if (points === null) return null;
+      var V = this.vectors;
+      var v = i * 4;
+      return V[v] || V[v + 1] ? this._clipInfinite(i, points, V[v], V[v + 1], V[v + 2], V[v + 3]) : this._clipFinite(i, points);
+    }
+  }, {
+    key: "_clipFinite",
+    value: function _clipFinite(i, points) {
+      var n = points.length;
+      var P = null;
+      var x0,
+          y0,
+          x1 = points[n - 2],
+          y1 = points[n - 1];
+
+      var c0,
+          c1 = this._regioncode(x1, y1);
+
+      var e0, e1;
+
+      for (var j = 0; j < n; j += 2) {
+        x0 = x1, y0 = y1, x1 = points[j], y1 = points[j + 1];
+        c0 = c1, c1 = this._regioncode(x1, y1);
+
+        if (c0 === 0 && c1 === 0) {
+          e0 = e1, e1 = 0;
+          if (P) P.push(x1, y1);else P = [x1, y1];
+        } else {
+          var S = void 0,
+              sx0 = void 0,
+              sy0 = void 0,
+              sx1 = void 0,
+              sy1 = void 0;
+
+          if (c0 === 0) {
+            if ((S = this._clipSegment(x0, y0, x1, y1, c0, c1)) === null) continue;
+            var _S = S;
+
+            var _S2 = (0,slicedToArray/* default */.Z)(_S, 4);
+
+            sx0 = _S2[0];
+            sy0 = _S2[1];
+            sx1 = _S2[2];
+            sy1 = _S2[3];
+          } else {
+            if ((S = this._clipSegment(x1, y1, x0, y0, c1, c0)) === null) continue;
+            var _S3 = S;
+
+            var _S4 = (0,slicedToArray/* default */.Z)(_S3, 4);
+
+            sx1 = _S4[0];
+            sy1 = _S4[1];
+            sx0 = _S4[2];
+            sy0 = _S4[3];
+            e0 = e1, e1 = this._edgecode(sx0, sy0);
+            if (e0 && e1) this._edge(i, e0, e1, P, P.length);
+            if (P) P.push(sx0, sy0);else P = [sx0, sy0];
+          }
+
+          e0 = e1, e1 = this._edgecode(sx1, sy1);
+          if (e0 && e1) this._edge(i, e0, e1, P, P.length);
+          if (P) P.push(sx1, sy1);else P = [sx1, sy1];
+        }
+      }
+
+      if (P) {
+        e0 = e1, e1 = this._edgecode(P[0], P[1]);
+        if (e0 && e1) this._edge(i, e0, e1, P, P.length);
+      } else if (this.contains(i, (this.xmin + this.xmax) / 2, (this.ymin + this.ymax) / 2)) {
+        return [this.xmax, this.ymin, this.xmax, this.ymax, this.xmin, this.ymax, this.xmin, this.ymin];
+      }
+
+      return P;
+    }
+  }, {
+    key: "_clipSegment",
+    value: function _clipSegment(x0, y0, x1, y1, c0, c1) {
+      while (true) {
+        if (c0 === 0 && c1 === 0) return [x0, y0, x1, y1];
+        if (c0 & c1) return null;
+        var x = void 0,
+            y = void 0,
+            c = c0 || c1;
+        if (c & 8) x = x0 + (x1 - x0) * (this.ymax - y0) / (y1 - y0), y = this.ymax;else if (c & 4) x = x0 + (x1 - x0) * (this.ymin - y0) / (y1 - y0), y = this.ymin;else if (c & 2) y = y0 + (y1 - y0) * (this.xmax - x0) / (x1 - x0), x = this.xmax;else y = y0 + (y1 - y0) * (this.xmin - x0) / (x1 - x0), x = this.xmin;
+        if (c0) x0 = x, y0 = y, c0 = this._regioncode(x0, y0);else x1 = x, y1 = y, c1 = this._regioncode(x1, y1);
+      }
+    }
+  }, {
+    key: "_clipInfinite",
+    value: function _clipInfinite(i, points, vx0, vy0, vxn, vyn) {
+      var P = Array.from(points),
+          p;
+      if (p = this._project(P[0], P[1], vx0, vy0)) P.unshift(p[0], p[1]);
+      if (p = this._project(P[P.length - 2], P[P.length - 1], vxn, vyn)) P.push(p[0], p[1]);
+
+      if (P = this._clipFinite(i, P)) {
+        for (var j = 0, n = P.length, c0, c1 = this._edgecode(P[n - 2], P[n - 1]); j < n; j += 2) {
+          c0 = c1, c1 = this._edgecode(P[j], P[j + 1]);
+          if (c0 && c1) j = this._edge(i, c0, c1, P, j), n = P.length;
+        }
+      } else if (this.contains(i, (this.xmin + this.xmax) / 2, (this.ymin + this.ymax) / 2)) {
+        P = [this.xmin, this.ymin, this.xmax, this.ymin, this.xmax, this.ymax, this.xmin, this.ymax];
+      }
+
+      return P;
+    }
+  }, {
+    key: "_edge",
+    value: function _edge(i, e0, e1, P, j) {
+      while (e0 !== e1) {
+        var x = void 0,
+            y = void 0;
+
+        switch (e0) {
+          case 5:
+            e0 = 4;
+            continue;
+          // top-left
+
+          case 4:
+            e0 = 6, x = this.xmax, y = this.ymin;
+            break;
+          // top
+
+          case 6:
+            e0 = 2;
+            continue;
+          // top-right
+
+          case 2:
+            e0 = 10, x = this.xmax, y = this.ymax;
+            break;
+          // right
+
+          case 10:
+            e0 = 8;
+            continue;
+          // bottom-right
+
+          case 8:
+            e0 = 9, x = this.xmin, y = this.ymax;
+            break;
+          // bottom
+
+          case 9:
+            e0 = 1;
+            continue;
+          // bottom-left
+
+          case 1:
+            e0 = 5, x = this.xmin, y = this.ymin;
+            break;
+          // left
+        }
+
+        if ((P[j] !== x || P[j + 1] !== y) && this.contains(i, x, y)) {
+          P.splice(j, 0, x, y), j += 2;
+        }
+      }
+
+      if (P.length > 4) {
+        for (var _i4 = 0; _i4 < P.length; _i4 += 2) {
+          var _j = (_i4 + 2) % P.length,
+              k = (_i4 + 4) % P.length;
+
+          if (P[_i4] === P[_j] && P[_j] === P[k] || P[_i4 + 1] === P[_j + 1] && P[_j + 1] === P[k + 1]) P.splice(_j, 2), _i4 -= 2;
+        }
+      }
+
+      return j;
+    }
+  }, {
+    key: "_project",
+    value: function _project(x0, y0, vx, vy) {
+      var t = Infinity,
+          c,
+          x,
+          y;
+
+      if (vy < 0) {
+        // top
+        if (y0 <= this.ymin) return null;
+        if ((c = (this.ymin - y0) / vy) < t) y = this.ymin, x = x0 + (t = c) * vx;
+      } else if (vy > 0) {
+        // bottom
+        if (y0 >= this.ymax) return null;
+        if ((c = (this.ymax - y0) / vy) < t) y = this.ymax, x = x0 + (t = c) * vx;
+      }
+
+      if (vx > 0) {
+        // right
+        if (x0 >= this.xmax) return null;
+        if ((c = (this.xmax - x0) / vx) < t) x = this.xmax, y = y0 + (t = c) * vy;
+      } else if (vx < 0) {
+        // left
+        if (x0 <= this.xmin) return null;
+        if ((c = (this.xmin - x0) / vx) < t) x = this.xmin, y = y0 + (t = c) * vy;
+      }
+
+      return [x, y];
+    }
+  }, {
+    key: "_edgecode",
+    value: function _edgecode(x, y) {
+      return (x === this.xmin ? 1 : x === this.xmax ? 2 : 0) | (y === this.ymin ? 4 : y === this.ymax ? 8 : 0);
+    }
+  }, {
+    key: "_regioncode",
+    value: function _regioncode(x, y) {
+      return (x < this.xmin ? 1 : x > this.xmax ? 2 : 0) | (y < this.ymin ? 4 : y > this.ymax ? 8 : 0);
+    }
+  }]);
+
+  return Voronoi;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/delaunay.js
+
+
+
+var delaunay_marked = /*#__PURE__*/regenerator_default().mark(flatIterable);
+
+function delaunay_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = delaunay_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function delaunay_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return delaunay_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return delaunay_arrayLikeToArray(o, minLen); }
+
+function delaunay_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+
+
+
+var delaunay_tau = 2 * Math.PI,
+    delaunay_pow = Math.pow;
+
+function pointX(p) {
+  return p[0];
+}
+
+function pointY(p) {
+  return p[1];
+} // A triangulation is collinear if all its triangles have a non-null area
+
+
+function delaunay_collinear(d) {
+  var triangles = d.triangles,
+      coords = d.coords;
+
+  for (var i = 0; i < triangles.length; i += 3) {
+    var a = 2 * triangles[i],
+        b = 2 * triangles[i + 1],
+        c = 2 * triangles[i + 2],
+        cross = (coords[c] - coords[a]) * (coords[b + 1] - coords[a + 1]) - (coords[b] - coords[a]) * (coords[c + 1] - coords[a + 1]);
+    if (cross > 1e-10) return false;
+  }
+
+  return true;
+}
+
+function jitter(x, y, r) {
+  return [x + Math.sin(x + y) * r, y + Math.cos(x - y) * r];
+}
+
+var Delaunay = /*#__PURE__*/function () {
+  function Delaunay(points) {
+    (0,classCallCheck/* default */.Z)(this, Delaunay);
+
+    this._delaunator = new Delaunator(points);
+    this.inedges = new Int32Array(points.length / 2);
+    this._hullIndex = new Int32Array(points.length / 2);
+    this.points = this._delaunator.coords;
+
+    this._init();
+  }
+
+  (0,createClass/* default */.Z)(Delaunay, [{
+    key: "update",
+    value: function update() {
+      this._delaunator.update();
+
+      this._init();
+
+      return this;
+    }
+  }, {
+    key: "_init",
+    value: function _init() {
+      var d = this._delaunator,
+          points = this.points; // check for collinear
+
+      if (d.hull && d.hull.length > 2 && delaunay_collinear(d)) {
+        this.collinear = Int32Array.from({
+          length: points.length / 2
+        }, function (_, i) {
+          return i;
+        }).sort(function (i, j) {
+          return points[2 * i] - points[2 * j] || points[2 * i + 1] - points[2 * j + 1];
+        }); // for exact neighbors
+
+        var e = this.collinear[0],
+            f = this.collinear[this.collinear.length - 1],
+            bounds = [points[2 * e], points[2 * e + 1], points[2 * f], points[2 * f + 1]],
+            r = 1e-8 * Math.hypot(bounds[3] - bounds[1], bounds[2] - bounds[0]);
+
+        for (var i = 0, n = points.length / 2; i < n; ++i) {
+          var p = jitter(points[2 * i], points[2 * i + 1], r);
+          points[2 * i] = p[0];
+          points[2 * i + 1] = p[1];
+        }
+
+        this._delaunator = new Delaunator(points);
+      } else {
+        delete this.collinear;
+      }
+
+      var halfedges = this.halfedges = this._delaunator.halfedges;
+      var hull = this.hull = this._delaunator.hull;
+      var triangles = this.triangles = this._delaunator.triangles;
+      var inedges = this.inedges.fill(-1);
+
+      var hullIndex = this._hullIndex.fill(-1); // Compute an index from each point to an (arbitrary) incoming halfedge
+      // Used to give the first neighbor of each point; for this reason,
+      // on the hull we give priority to exterior halfedges
+
+
+      for (var _e = 0, _n = halfedges.length; _e < _n; ++_e) {
+        var _p = triangles[_e % 3 === 2 ? _e - 2 : _e + 1];
+        if (halfedges[_e] === -1 || inedges[_p] === -1) inedges[_p] = _e;
+      }
+
+      for (var _i = 0, _n2 = hull.length; _i < _n2; ++_i) {
+        hullIndex[hull[_i]] = _i;
+      } // degenerate case: 1 or 2 (distinct) points
+
+
+      if (hull.length <= 2 && hull.length > 0) {
+        this.triangles = new Int32Array(3).fill(-1);
+        this.halfedges = new Int32Array(3).fill(-1);
+        this.triangles[0] = hull[0];
+        this.triangles[1] = hull[1];
+        this.triangles[2] = hull[1];
+        inedges[hull[0]] = 1;
+        if (hull.length === 2) inedges[hull[1]] = 0;
+      }
+    }
+  }, {
+    key: "voronoi",
+    value: function voronoi(bounds) {
+      return new Voronoi(this, bounds);
+    }
+  }, {
+    key: "neighbors",
+    value: /*#__PURE__*/regenerator_default().mark(function neighbors(i) {
+      var inedges, hull, _hullIndex, halfedges, triangles, collinear, l, e0, e, p0, p;
+
+      return regenerator_default().wrap(function neighbors$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              inedges = this.inedges, hull = this.hull, _hullIndex = this._hullIndex, halfedges = this.halfedges, triangles = this.triangles, collinear = this.collinear; // degenerate case with several collinear points
+
+              if (!collinear) {
+                _context.next = 10;
+                break;
+              }
+
+              l = collinear.indexOf(i);
+
+              if (!(l > 0)) {
+                _context.next = 6;
+                break;
+              }
+
+              _context.next = 6;
+              return collinear[l - 1];
+
+            case 6:
+              if (!(l < collinear.length - 1)) {
+                _context.next = 9;
+                break;
+              }
+
+              _context.next = 9;
+              return collinear[l + 1];
+
+            case 9:
+              return _context.abrupt("return");
+
+            case 10:
+              e0 = inedges[i];
+
+              if (!(e0 === -1)) {
+                _context.next = 13;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 13:
+              // coincident point
+              e = e0, p0 = -1;
+
+            case 14:
+              _context.next = 16;
+              return p0 = triangles[e];
+
+            case 16:
+              e = e % 3 === 2 ? e - 2 : e + 1;
+
+              if (!(triangles[e] !== i)) {
+                _context.next = 19;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 19:
+              // bad triangulation
+              e = halfedges[e];
+
+              if (!(e === -1)) {
+                _context.next = 26;
+                break;
+              }
+
+              p = hull[(_hullIndex[i] + 1) % hull.length];
+
+              if (!(p !== p0)) {
+                _context.next = 25;
+                break;
+              }
+
+              _context.next = 25;
+              return p;
+
+            case 25:
+              return _context.abrupt("return");
+
+            case 26:
+              if (e !== e0) {
+                _context.next = 14;
+                break;
+              }
+
+            case 27:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, neighbors, this);
+    })
+  }, {
+    key: "find",
+    value: function find(x, y) {
+      var i = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      if ((x = +x, x !== x) || (y = +y, y !== y)) return -1;
+      var i0 = i;
+      var c;
+
+      while ((c = this._step(i, x, y)) >= 0 && c !== i && c !== i0) {
+        i = c;
+      }
+
+      return c;
+    }
+  }, {
+    key: "_step",
+    value: function _step(i, x, y) {
+      var inedges = this.inedges,
+          hull = this.hull,
+          _hullIndex = this._hullIndex,
+          halfedges = this.halfedges,
+          triangles = this.triangles,
+          points = this.points;
+      if (inedges[i] === -1 || !points.length) return (i + 1) % (points.length >> 1);
+      var c = i;
+      var dc = delaunay_pow(x - points[i * 2], 2) + delaunay_pow(y - points[i * 2 + 1], 2);
+      var e0 = inedges[i];
+      var e = e0;
+
+      do {
+        var t = triangles[e];
+        var dt = delaunay_pow(x - points[t * 2], 2) + delaunay_pow(y - points[t * 2 + 1], 2);
+        if (dt < dc) dc = dt, c = t;
+        e = e % 3 === 2 ? e - 2 : e + 1;
+        if (triangles[e] !== i) break; // bad triangulation
+
+        e = halfedges[e];
+
+        if (e === -1) {
+          e = hull[(_hullIndex[i] + 1) % hull.length];
+
+          if (e !== t) {
+            if (delaunay_pow(x - points[e * 2], 2) + delaunay_pow(y - points[e * 2 + 1], 2) < dc) return e;
+          }
+
+          break;
+        }
+      } while (e !== e0);
+
+      return c;
+    }
+  }, {
+    key: "render",
+    value: function render(context) {
+      var buffer = context == null ? context = new path_Path() : undefined;
+      var points = this.points,
+          halfedges = this.halfedges,
+          triangles = this.triangles;
+
+      for (var i = 0, n = halfedges.length; i < n; ++i) {
+        var j = halfedges[i];
+        if (j < i) continue;
+        var ti = triangles[i] * 2;
+        var tj = triangles[j] * 2;
+        context.moveTo(points[ti], points[ti + 1]);
+        context.lineTo(points[tj], points[tj + 1]);
+      }
+
+      this.renderHull(context);
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "renderPoints",
+    value: function renderPoints(context) {
+      var r = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+      var buffer = context == null ? context = new path_Path() : undefined;
+      var points = this.points;
+
+      for (var i = 0, n = points.length; i < n; i += 2) {
+        var x = points[i],
+            y = points[i + 1];
+        context.moveTo(x + r, y);
+        context.arc(x, y, r, 0, delaunay_tau);
+      }
+
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "renderHull",
+    value: function renderHull(context) {
+      var buffer = context == null ? context = new path_Path() : undefined;
+      var hull = this.hull,
+          points = this.points;
+      var h = hull[0] * 2,
+          n = hull.length;
+      context.moveTo(points[h], points[h + 1]);
+
+      for (var i = 1; i < n; ++i) {
+        var _h = 2 * hull[i];
+
+        context.lineTo(points[_h], points[_h + 1]);
+      }
+
+      context.closePath();
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "hullPolygon",
+    value: function hullPolygon() {
+      var polygon = new Polygon();
+      this.renderHull(polygon);
+      return polygon.value();
+    }
+  }, {
+    key: "renderTriangle",
+    value: function renderTriangle(i, context) {
+      var buffer = context == null ? context = new path_Path() : undefined;
+      var points = this.points,
+          triangles = this.triangles;
+      var t0 = triangles[i *= 3] * 2;
+      var t1 = triangles[i + 1] * 2;
+      var t2 = triangles[i + 2] * 2;
+      context.moveTo(points[t0], points[t0 + 1]);
+      context.lineTo(points[t1], points[t1 + 1]);
+      context.lineTo(points[t2], points[t2 + 1]);
+      context.closePath();
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "trianglePolygons",
+    value: /*#__PURE__*/regenerator_default().mark(function trianglePolygons() {
+      var triangles, i, n;
+      return regenerator_default().wrap(function trianglePolygons$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              triangles = this.triangles;
+              i = 0, n = triangles.length / 3;
+
+            case 2:
+              if (!(i < n)) {
+                _context2.next = 8;
+                break;
+              }
+
+              _context2.next = 5;
+              return this.trianglePolygon(i);
+
+            case 5:
+              ++i;
+              _context2.next = 2;
+              break;
+
+            case 8:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, trianglePolygons, this);
+    })
+  }, {
+    key: "trianglePolygon",
+    value: function trianglePolygon(i) {
+      var polygon = new Polygon();
+      this.renderTriangle(i, polygon);
+      return polygon.value();
+    }
+  }], [{
+    key: "from",
+    value: function from(points) {
+      var fx = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : pointX;
+      var fy = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : pointY;
+      var that = arguments.length > 3 ? arguments[3] : undefined;
+      return new Delaunay("length" in points ? flatArray(points, fx, fy, that) : Float64Array.from(flatIterable(points, fx, fy, that)));
+    }
+  }]);
+
+  return Delaunay;
+}();
+
+
+
+function flatArray(points, fx, fy, that) {
+  var n = points.length;
+  var array = new Float64Array(n * 2);
+
+  for (var i = 0; i < n; ++i) {
+    var p = points[i];
+    array[i * 2] = fx.call(that, p, i, points);
+    array[i * 2 + 1] = fy.call(that, p, i, points);
+  }
+
+  return array;
+}
+
+function flatIterable(points, fx, fy, that) {
+  var i, _iterator, _step2, p;
+
+  return regenerator_default().wrap(function flatIterable$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          i = 0;
+          _iterator = delaunay_createForOfIteratorHelper(points);
+          _context3.prev = 2;
+
+          _iterator.s();
+
+        case 4:
+          if ((_step2 = _iterator.n()).done) {
+            _context3.next = 13;
+            break;
+          }
+
+          p = _step2.value;
+          _context3.next = 8;
+          return fx.call(that, p, i, points);
+
+        case 8:
+          _context3.next = 10;
+          return fy.call(that, p, i, points);
+
+        case 10:
+          ++i;
+
+        case 11:
+          _context3.next = 4;
+          break;
+
+        case 13:
+          _context3.next = 18;
+          break;
+
+        case 15:
+          _context3.prev = 15;
+          _context3.t0 = _context3["catch"](2);
+
+          _iterator.e(_context3.t0);
+
+        case 18:
+          _context3.prev = 18;
+
+          _iterator.f();
+
+          return _context3.finish(18);
+
+        case 21:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  }, delaunay_marked, null, [[2, 15, 18, 21]]);
+}
 ;// CONCATENATED MODULE: ./node_modules/vega-voronoi/build/vega-voronoi.module.js
 
 
 
 
-function Voronoi(params) {
+function vega_voronoi_module_Voronoi(params) {
   Transform.call(this, null, params);
 }
 
-Voronoi.Definition = {
+vega_voronoi_module_Voronoi.Definition = {
   'type': 'Voronoi',
   'metadata': {
     'modifies': true
@@ -39477,7 +44088,7 @@ Voronoi.Definition = {
   }]
 };
 var defaultExtent = [-1e5, -1e5, 1e5, 1e5];
-vega_util_module_inherits(Voronoi, Transform, {
+vega_util_module_inherits(vega_voronoi_module_Voronoi, Transform, {
   transform: function transform(_, pulse) {
     var as = _.as || 'path',
         data = pulse.source; // nothing to do if no data
@@ -39486,7 +44097,7 @@ vega_util_module_inherits(Voronoi, Transform, {
 
     var s = _.size;
     s = s ? [0, 0, s[0], s[1]] : (s = _.extent) ? [s[0][0], s[0][1], s[1][0], s[1][1]] : defaultExtent;
-    var voronoi = this.value = delaunay/* default.from */.Z.from(data, _.x, _.y).voronoi(s); // map polygons to paths
+    var voronoi = this.value = Delaunay.from(data, _.x, _.y).voronoi(s); // map polygons to paths
 
     for (var i = 0, n = data.length; i < n; ++i) {
       var polygon = voronoi.cellPolygon(i);
@@ -40122,7 +44733,7 @@ vega_util_module_inherits(Wordcloud, Transform, {
 }
 ;// CONCATENATED MODULE: ./node_modules/vega-crossfilter/node_modules/d3-array/src/bisector.js
 
-/* harmony default export */ function node_modules_d3_array_src_bisector(f) {
+/* harmony default export */ function vega_crossfilter_node_modules_d3_array_src_bisector(f) {
   var delta = f;
   var compare = f;
 
@@ -40131,7 +44742,7 @@ vega_util_module_inherits(Wordcloud, Transform, {
       return f(d) - x;
     };
 
-    compare = d3_array_src_bisector_ascendingComparator(f);
+    compare = vega_crossfilter_node_modules_d3_array_src_bisector_ascendingComparator(f);
   }
 
   function left(a, x, lo, hi) {
@@ -40172,7 +44783,7 @@ vega_util_module_inherits(Wordcloud, Transform, {
   };
 }
 
-function d3_array_src_bisector_ascendingComparator(f) {
+function vega_crossfilter_node_modules_d3_array_src_bisector_ascendingComparator(f) {
   return function (d, x) {
     return vega_crossfilter_node_modules_d3_array_src_ascending(f(d), x);
   };
@@ -40180,18 +44791,18 @@ function d3_array_src_bisector_ascendingComparator(f) {
 ;// CONCATENATED MODULE: ./node_modules/vega-crossfilter/node_modules/d3-array/src/number.js
 
 
-var d3_array_src_number_marked = /*#__PURE__*/regenerator_default().mark(node_modules_d3_array_src_number_numbers);
+var node_modules_d3_array_src_number_marked = /*#__PURE__*/regenerator_default().mark(vega_crossfilter_node_modules_d3_array_src_number_numbers);
 
-function node_modules_d3_array_src_number_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = node_modules_d3_array_src_number_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function vega_crossfilter_node_modules_d3_array_src_number_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = vega_crossfilter_node_modules_d3_array_src_number_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
-function node_modules_d3_array_src_number_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return node_modules_d3_array_src_number_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return node_modules_d3_array_src_number_arrayLikeToArray(o, minLen); }
+function vega_crossfilter_node_modules_d3_array_src_number_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return vega_crossfilter_node_modules_d3_array_src_number_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return vega_crossfilter_node_modules_d3_array_src_number_arrayLikeToArray(o, minLen); }
 
-function node_modules_d3_array_src_number_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function vega_crossfilter_node_modules_d3_array_src_number_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 /* harmony default export */ function vega_crossfilter_node_modules_d3_array_src_number(x) {
   return x === null ? NaN : +x;
 }
-function node_modules_d3_array_src_number_numbers(values, valueof) {
+function vega_crossfilter_node_modules_d3_array_src_number_numbers(values, valueof) {
   var _iterator, _step, value, index, _iterator2, _step2, _value;
 
   return regenerator_default().wrap(function numbers$(_context) {
@@ -40203,7 +44814,7 @@ function node_modules_d3_array_src_number_numbers(values, valueof) {
             break;
           }
 
-          _iterator = node_modules_d3_array_src_number_createForOfIteratorHelper(values);
+          _iterator = vega_crossfilter_node_modules_d3_array_src_number_createForOfIteratorHelper(values);
           _context.prev = 2;
 
           _iterator.s();
@@ -40251,7 +44862,7 @@ function node_modules_d3_array_src_number_numbers(values, valueof) {
 
         case 21:
           index = -1;
-          _iterator2 = node_modules_d3_array_src_number_createForOfIteratorHelper(values);
+          _iterator2 = vega_crossfilter_node_modules_d3_array_src_number_createForOfIteratorHelper(values);
           _context.prev = 23;
 
           _iterator2.s();
@@ -40298,17 +44909,17 @@ function node_modules_d3_array_src_number_numbers(values, valueof) {
           return _context.stop();
       }
     }
-  }, d3_array_src_number_marked, null, [[2, 13, 16, 19], [23, 34, 37, 40]]);
+  }, node_modules_d3_array_src_number_marked, null, [[2, 13, 16, 19], [23, 34, 37, 40]]);
 }
 ;// CONCATENATED MODULE: ./node_modules/vega-crossfilter/node_modules/d3-array/src/bisect.js
 
 
 
-var bisect_ascendingBisect = node_modules_d3_array_src_bisector(vega_crossfilter_node_modules_d3_array_src_ascending);
-var bisect_bisectRight = bisect_ascendingBisect.right;
-var bisect_bisectLeft = bisect_ascendingBisect.left;
-var bisect_bisectCenter = node_modules_d3_array_src_bisector(vega_crossfilter_node_modules_d3_array_src_number).center;
-/* harmony default export */ var d3_array_src_bisect = ((/* unused pure expression or super */ null && (bisect_bisectRight)));
+var src_bisect_ascendingBisect = vega_crossfilter_node_modules_d3_array_src_bisector(vega_crossfilter_node_modules_d3_array_src_ascending);
+var src_bisect_bisectRight = src_bisect_ascendingBisect.right;
+var src_bisect_bisectLeft = src_bisect_ascendingBisect.left;
+var src_bisect_bisectCenter = vega_crossfilter_node_modules_d3_array_src_bisector(vega_crossfilter_node_modules_d3_array_src_number).center;
+/* harmony default export */ var d3_array_src_bisect = ((/* unused pure expression or super */ null && (src_bisect_bisectRight)));
 ;// CONCATENATED MODULE: ./node_modules/vega-crossfilter/node_modules/d3-array/src/permute.js
 /* harmony default export */ function permute(source, keys) {
   return Array.from(keys, function (key) {
@@ -40552,7 +45163,7 @@ function SortedIndex() {
       n = _size;
     }
 
-    return [bisect_bisectLeft(array, range[0], 0, n), bisect_bisectRight(array, range[1], 0, n)];
+    return [src_bisect_bisectLeft(array, range[0], 0, n), src_bisect_bisectRight(array, range[1], 0, n)];
   }
 
   return {
@@ -41080,10 +45691,10 @@ vega_util_module_inherits(ResolveFilter, Transform, {
 });
 
 ;// CONCATENATED MODULE: ./node_modules/vega-view/node_modules/d3-array/src/ticks.js
-var d3_array_src_ticks_e10 = Math.sqrt(50),
-    d3_array_src_ticks_e5 = Math.sqrt(10),
-    d3_array_src_ticks_e2 = Math.sqrt(2);
-/* harmony default export */ function node_modules_d3_array_src_ticks(start, stop, count) {
+var vega_view_node_modules_d3_array_src_ticks_e10 = Math.sqrt(50),
+    vega_view_node_modules_d3_array_src_ticks_e5 = Math.sqrt(10),
+    vega_view_node_modules_d3_array_src_ticks_e2 = Math.sqrt(2);
+/* harmony default export */ function vega_view_node_modules_d3_array_src_ticks(start, stop, count) {
   var reverse,
       i = -1,
       n,
@@ -41092,7 +45703,7 @@ var d3_array_src_ticks_e10 = Math.sqrt(50),
   stop = +stop, start = +start, count = +count;
   if (start === stop && count > 0) return [start];
   if (reverse = stop < start) n = start, start = stop, stop = n;
-  if ((step = d3_array_src_ticks_tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+  if ((step = vega_view_node_modules_d3_array_src_ticks_tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
 
   if (step > 0) {
     var r0 = Math.round(start / step),
@@ -41122,17 +45733,17 @@ var d3_array_src_ticks_e10 = Math.sqrt(50),
   if (reverse) ticks.reverse();
   return ticks;
 }
-function d3_array_src_ticks_tickIncrement(start, stop, count) {
+function vega_view_node_modules_d3_array_src_ticks_tickIncrement(start, stop, count) {
   var step = (stop - start) / Math.max(0, count),
       power = Math.floor(Math.log(step) / Math.LN10),
       error = step / Math.pow(10, power);
-  return power >= 0 ? (error >= d3_array_src_ticks_e10 ? 10 : error >= d3_array_src_ticks_e5 ? 5 : error >= d3_array_src_ticks_e2 ? 2 : 1) * Math.pow(10, power) : -Math.pow(10, -power) / (error >= d3_array_src_ticks_e10 ? 10 : error >= d3_array_src_ticks_e5 ? 5 : error >= d3_array_src_ticks_e2 ? 2 : 1);
+  return power >= 0 ? (error >= vega_view_node_modules_d3_array_src_ticks_e10 ? 10 : error >= vega_view_node_modules_d3_array_src_ticks_e5 ? 5 : error >= vega_view_node_modules_d3_array_src_ticks_e2 ? 2 : 1) * Math.pow(10, power) : -Math.pow(10, -power) / (error >= vega_view_node_modules_d3_array_src_ticks_e10 ? 10 : error >= vega_view_node_modules_d3_array_src_ticks_e5 ? 5 : error >= vega_view_node_modules_d3_array_src_ticks_e2 ? 2 : 1);
 }
-function d3_array_src_ticks_tickStep(start, stop, count) {
+function vega_view_node_modules_d3_array_src_ticks_tickStep(start, stop, count) {
   var step0 = Math.abs(stop - start) / Math.max(0, count),
       step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)),
       error = step0 / step1;
-  if (error >= d3_array_src_ticks_e10) step1 *= 10;else if (error >= d3_array_src_ticks_e5) step1 *= 5;else if (error >= d3_array_src_ticks_e2) step1 *= 2;
+  if (error >= vega_view_node_modules_d3_array_src_ticks_e10) step1 *= 10;else if (error >= vega_view_node_modules_d3_array_src_ticks_e5) step1 *= 5;else if (error >= vega_view_node_modules_d3_array_src_ticks_e2) step1 *= 2;
   return stop < start ? -step1 : step1;
 }
 ;// CONCATENATED MODULE: ./node_modules/vega-expression/build/vega-expression.module.js
@@ -42967,12 +47578,12 @@ function area_areaRingEnd() {
 function area_areaPointFirst(lambda, phi) {
   area_areaStream.point = area_areaPoint;
   lambda00 = lambda, phi00 = phi;
-  lambda *= math_radians, phi *= math_radians;
+  lambda *= src_math_radians, phi *= src_math_radians;
   lambda0 = lambda, cosPhi0 = math_cos(phi = phi / 2 + quarterPi), sinPhi0 = math_sin(phi);
 }
 
 function area_areaPoint(lambda, phi) {
-  lambda *= math_radians, phi *= math_radians;
+  lambda *= src_math_radians, phi *= src_math_radians;
   phi = phi / 2 + quarterPi; // half the angular distance from south pole
   // Spherical excess E for a spherical triangle with vertices: south pole,
   // previous point, current point.  Uses a formula derived from Cagnoli’s
@@ -43038,7 +47649,7 @@ function bounds_boundsPoint(lambda, phi) {
 }
 
 function linePoint(lambda, phi) {
-  var p = cartesian([lambda * math_radians, phi * math_radians]);
+  var p = cartesian([lambda * src_math_radians, phi * src_math_radians]);
 
   if (p0) {
     var normal = cartesianCross(p0, p),
@@ -43048,15 +47659,15 @@ function linePoint(lambda, phi) {
     inflection = spherical(inflection);
     var delta = lambda - lambda2,
         sign = delta > 0 ? 1 : -1,
-        lambdai = inflection[0] * math_degrees * sign,
+        lambdai = inflection[0] * src_math_degrees * sign,
         phii,
         antimeridian = math_abs(delta) > 180;
 
     if (antimeridian ^ (sign * lambda2 < lambdai && lambdai < sign * lambda)) {
-      phii = inflection[1] * math_degrees;
+      phii = inflection[1] * src_math_degrees;
       if (phii > phi1) phi1 = phii;
     } else if (lambdai = (lambdai + 360) % 360 - 180, antimeridian ^ (sign * lambda2 < lambdai && lambdai < sign * lambda)) {
-      phii = -inflection[1] * math_degrees;
+      phii = -inflection[1] * src_math_degrees;
       if (phii < phi0) phi0 = phii;
     } else {
       if (phi < phi0) phi0 = phi;
@@ -43194,7 +47805,7 @@ var centroid_centroidStream = {
 }; // Arithmetic mean of Cartesian vectors.
 
 function centroid_centroidPoint(lambda, phi) {
-  lambda *= math_radians, phi *= math_radians;
+  lambda *= src_math_radians, phi *= src_math_radians;
   var cosPhi = math_cos(phi);
   centroidPointCartesian(cosPhi * math_cos(lambda), cosPhi * math_sin(lambda), math_sin(phi));
 }
@@ -43211,7 +47822,7 @@ function centroid_centroidLineStart() {
 }
 
 function centroidLinePointFirst(lambda, phi) {
-  lambda *= math_radians, phi *= math_radians;
+  lambda *= src_math_radians, phi *= src_math_radians;
   var cosPhi = math_cos(phi);
   src_centroid_x0 = cosPhi * math_cos(lambda);
   src_centroid_y0 = cosPhi * math_sin(lambda);
@@ -43221,7 +47832,7 @@ function centroidLinePointFirst(lambda, phi) {
 }
 
 function centroidLinePoint(lambda, phi) {
-  lambda *= math_radians, phi *= math_radians;
+  lambda *= src_math_radians, phi *= src_math_radians;
   var cosPhi = math_cos(phi),
       x = cosPhi * math_cos(lambda),
       y = cosPhi * math_sin(lambda),
@@ -43251,7 +47862,7 @@ function centroid_centroidRingEnd() {
 
 function centroidRingPointFirst(lambda, phi) {
   centroid_lambda00 = lambda, centroid_phi00 = phi;
-  lambda *= math_radians, phi *= math_radians;
+  lambda *= src_math_radians, phi *= src_math_radians;
   centroid_centroidStream.point = centroidRingPoint;
   var cosPhi = math_cos(phi);
   src_centroid_x0 = cosPhi * math_cos(lambda);
@@ -43261,7 +47872,7 @@ function centroidRingPointFirst(lambda, phi) {
 }
 
 function centroidRingPoint(lambda, phi) {
-  lambda *= math_radians, phi *= math_radians;
+  lambda *= src_math_radians, phi *= src_math_radians;
   var cosPhi = math_cos(phi),
       x = cosPhi * math_cos(lambda),
       y = cosPhi * math_sin(lambda),
@@ -43304,7 +47915,7 @@ function centroidRingPoint(lambda, phi) {
     if (m < math_epsilon2) return [NaN, NaN];
   }
 
-  return [math_atan2(y, x) * math_degrees, math_asin(z / m) * math_degrees];
+  return [math_atan2(y, x) * src_math_degrees, math_asin(z / m) * src_math_degrees];
 }
 ;// CONCATENATED MODULE: ./node_modules/vega-selections/build/vega-selection.module.js
 
@@ -43749,10 +48360,10 @@ var wrap = function wrap(method) {
 };
 
 var vega_functions_module_format = wrap('format');
-var timeFormat = wrap('timeFormat');
-var utcFormat = wrap('utcFormat');
-var timeParse = wrap('timeParse');
-var utcParse = wrap('utcParse');
+var vega_functions_module_timeFormat = wrap('timeFormat');
+var vega_functions_module_utcFormat = wrap('utcFormat');
+var vega_functions_module_timeParse = wrap('timeParse');
+var vega_functions_module_utcParse = wrap('utcParse');
 var dateObj = new Date(2000, 0, 1);
 
 function vega_functions_module_time(month, day, specifier) {
@@ -43760,7 +48371,7 @@ function vega_functions_module_time(month, day, specifier) {
   dateObj.setYear(2000);
   dateObj.setMonth(month);
   dateObj.setDate(day);
-  return timeFormat.call(this, dateObj, specifier);
+  return vega_functions_module_timeFormat.call(this, dateObj, specifier);
 }
 
 function monthFormat(month) {
@@ -43934,7 +48545,7 @@ function channel_luminance_value(channelValue) {
 }
 
 function luminance(color) {
-  var c = (0,src_color/* rgb */.B8)(color),
+  var c = color_rgb(color),
       r = channel_luminance_value(c.r),
       g = channel_luminance_value(c.g),
       b = channel_luminance_value(c.b);
@@ -44308,20 +48919,20 @@ var functionContext = {
   span: span,
   inrange: inrange,
   truncate: truncate,
-  rgb: src_color/* rgb */.B8,
+  rgb: color_rgb,
   lab: lab,
   hcl: hcl,
-  hsl: src_color/* hsl */.Ym,
+  hsl: hsl,
   luminance: luminance,
   contrast: contrast,
   sequence: vega_functions_node_modules_d3_array_src_range,
   format: vega_functions_module_format,
-  utcFormat: utcFormat,
-  utcParse: utcParse,
+  utcFormat: vega_functions_module_utcFormat,
+  utcParse: vega_functions_module_utcParse,
   utcOffset: utcOffset,
   utcSequence: utcSequence,
-  timeFormat: timeFormat,
-  timeParse: timeParse,
+  timeFormat: vega_functions_module_timeFormat,
+  timeParse: vega_functions_module_timeParse,
   timeOffset: timeOffset,
   timeSequence: timeSequence,
   timeUnitSpecifier: timeUnitSpecifier,
@@ -44331,7 +48942,7 @@ var functionContext = {
   dayAbbrevFormat: dayAbbrevFormat,
   quarter: quarter,
   utcquarter: utcquarter,
-  week: vega_time_module_week,
+  week: week,
   utcweek: utcweek,
   dayofyear: dayofyear,
   utcdayofyear: utcdayofyear,
@@ -45877,7 +50488,7 @@ function vega_view_module_range(bind, el, param, value) {
   value = value !== undefined ? value : (+param.max + +param.min) / 2;
   var max = param.max != null ? param.max : Math.max(100, +value) || 100,
       min = param.min || Math.min(0, max, +value) || 0,
-      step = param.step || d3_array_src_ticks_tickStep(min, max, 100);
+      step = param.step || vega_view_node_modules_d3_array_src_ticks_tickStep(min, max, 100);
   var node = vega_view_module_element('input', {
     type: 'range',
     name: param.signal,
@@ -60848,7 +65459,7 @@ function normalize_objectSpread(target) { for (var i = 1; i < arguments.length; 
 
 
 
-function normalize(spec, config) {
+function normalize_normalize(spec, config) {
   if (config === undefined) {
     config = initConfig(spec.config);
   }
@@ -78515,7 +83126,7 @@ function initMarkdef(originalMarkDef, encoding, config) {
   var markDef = replaceExprRef(originalMarkDef); // set orient, which can be overridden by rules as sometimes the specified orient is invalid.
 
   var specifiedOrient = getMarkPropOrConfig('orient', markDef, config);
-  markDef.orient = orient(markDef.type, encoding, specifiedOrient);
+  markDef.orient = init_orient(markDef.type, encoding, specifiedOrient);
 
   if (specifiedOrient !== undefined && specifiedOrient !== markDef.orient) {
     log_warn(orientOverridden(markDef.orient, specifiedOrient));
@@ -78595,7 +83206,7 @@ function defaultFilled(markDef, config, _ref) {
   return getFirstDefined(filledConfig, mark !== POINT && mark !== LINE && mark !== RULE);
 }
 
-function orient(mark, encoding, specifiedOrient) {
+function init_orient(mark, encoding, specifiedOrient) {
   switch (mark) {
     case POINT:
     case CIRCLE:
@@ -80278,7 +84889,7 @@ function compile(inputSpec) {
     // - Decompose all extended unit specs into composition of unit spec. For example, a box plot get expanded into multiple layers of bars, ticks, and rules. The shorthand row/column channel is also expanded to a facet spec.
     // - Normalize autosize and width or height spec
 
-    var spec = normalize(inputSpec, config); // 3. Build Model: normalized spec -> Model (a tree structure)
+    var spec = normalize_normalize(inputSpec, config); // 3. Build Model: normalized spec -> Model (a tree structure)
     // This phases instantiates the models with default config by doing a top-down traversal. This allows us to pass properties that child models derive from their parents via their constructors.
     // See the abstract `Model` class and its children (UnitModel, LayerModel, FacetModel, ConcatModel) for different types of models.
 
