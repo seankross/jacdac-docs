@@ -575,12 +575,12 @@ var gatsby_theme_material_ui = __webpack_require__(36176);
 var ExpandMore = __webpack_require__(47739);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/CheckCircleOutline.js
 var CheckCircleOutline = __webpack_require__(41212);
-// EXTERNAL MODULE: ./node_modules/notistack/dist/notistack.esm.js
-var notistack_esm = __webpack_require__(70076);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
 var react_use_id_hook_esm = __webpack_require__(19640);
 // EXTERNAL MODULE: ./src/components/hooks/useSecret.ts
 var useSecret = __webpack_require__(31066);
+// EXTERNAL MODULE: ./src/components/AppContext.tsx
+var AppContext = __webpack_require__(84377);
 ;// CONCATENATED MODULE: ./src/components/ApiKeyAccordion.tsx
 
 
@@ -620,8 +620,8 @@ function ApiKeyAccordion(props) {
       validated = _useState3[0],
       setValidated = _useState3[1];
 
-  var _useSnackbar = (0,notistack_esm/* useSnackbar */.Ds)(),
-      enqueueSnackbar = _useSnackbar.enqueueSnackbar;
+  var _useContext = (0,react.useContext)(AppContext/* default */.ZP),
+      enqueueSnackbar = _useContext.enqueueSnackbar;
 
   (0,useEffectAsync/* default */.Z)( /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(mounted) {

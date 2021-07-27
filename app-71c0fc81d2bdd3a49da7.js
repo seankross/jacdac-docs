@@ -48186,6 +48186,7 @@ function getRegister(spec, root, fld) {
 /* harmony export */   "hb": function() { return /* binding */ sizeOfNumberFormat; },
 /* harmony export */   "Dx": function() { return /* binding */ getNumber; },
 /* harmony export */   "Gy": function() { return /* binding */ setNumber; },
+/* harmony export */   "zq": function() { return /* binding */ uintOfBuffer; },
 /* harmony export */   "wr": function() { return /* binding */ intOfBuffer; },
 /* harmony export */   "_W": function() { return /* binding */ bufferToArray; }
 /* harmony export */ });
@@ -48429,6 +48430,27 @@ function setNumber(buf, fmt, offset, r) {
     buf[off] = r & 0xff;
     r >>= 8;
   }
+}
+function uintOfBuffer(data) {
+  var fmt;
+
+  switch (data.length) {
+    case 0:
+    case 1:
+      fmt = NumberFormat.UInt8LE;
+      break;
+
+    case 2:
+    case 3:
+      fmt = NumberFormat.UInt16LE;
+      break;
+
+    default:
+      fmt = NumberFormat.UInt32LE;
+      break;
+  }
+
+  return getNumber(data, fmt, 0);
 }
 function intOfBuffer(data) {
   var fmt;
@@ -60618,6 +60640,7 @@ var AppContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.createContex
   toolsMenu: false,
   setToolsMenu: function setToolsMenu() {},
   setError: function setError() {},
+  enqueueSnackbar: function enqueueSnackbar() {},
   toggleShowDeviceHostsDialog: function toggleShowDeviceHostsDialog() {},
   showSelectRoleDialog: function showSelectRoleDialog() {}
 });
@@ -60651,14 +60674,15 @@ var AppProvider = function AppProvider(_ref) {
       setShowSelectRoleDialogService = _useState5[1];
 
   var _useSnackbar = (0,notistack__WEBPACK_IMPORTED_MODULE_1__/* .useSnackbar */ .Ds)(),
-      enqueueSnackbar = _useSnackbar.enqueueSnackbar; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      _enqueueSnackbar = _useSnackbar.enqueueSnackbar; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
   var setError = function setError(e) {
     if (!e || (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_5__/* .isCancelError */ .G5)(e)) return;
     var msg = (e === null || e === void 0 ? void 0 : e.message) || e + "";
     var code = (0,_jacdac_ts_src_jdom_error__WEBPACK_IMPORTED_MODULE_4__/* .default */ .ZP)(e);
-    enqueueSnackbar(msg, {
+
+    _enqueueSnackbar(msg, {
       variant: "error",
       autoHideDuration: code ? 8000 : 4000,
       preventDuplicate: true,
@@ -60667,6 +60691,12 @@ var AppProvider = function AppProvider(_ref) {
         "aria-label": "Open help page on " + code + " error",
         to: "/errors/" + code
       }, "Help")
+    });
+  };
+
+  var enqueueSnackbar = function enqueueSnackbar(message, variant) {
+    return _enqueueSnackbar(message, {
+      variant: variant
     });
   };
 
@@ -60712,6 +60742,7 @@ var AppProvider = function AppProvider(_ref) {
       toolsMenu: toolsMenu,
       setToolsMenu: setToolsMenu,
       setError: setError,
+      enqueueSnackbar: enqueueSnackbar,
       toggleShowDeviceHostsDialog: toggleShowDeviceHostsDialog,
       showSelectRoleDialog: showSelectRoleDialog
     }
@@ -64984,8 +65015,6 @@ function useIntersectionObserver(elementRef, options) {
 var node = __webpack_require__(60154);
 // EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
 var useMediaQueries = __webpack_require__(20509);
-// EXTERNAL MODULE: ./node_modules/notistack/dist/notistack.esm.js
-var notistack_esm = __webpack_require__(70076);
 // EXTERNAL MODULE: ./src/components/alert/DeviceLostAlert.tsx
 var DeviceLostAlert = __webpack_require__(60145);
 ;// CONCATENATED MODULE: ./src/components/dashboard/DashboardDevice.tsx
@@ -65036,8 +65065,8 @@ function DashboardDevice(props) {
   var intersection = useIntersectionObserver(serviceGridRef);
   var visible = !!(intersection !== null && intersection !== void 0 && intersection.isIntersecting);
 
-  var _useSnackbar = (0,notistack_esm/* useSnackbar */.Ds)(),
-      enqueueSnackbar = _useSnackbar.enqueueSnackbar;
+  var _useContext = (0,react.useContext)(AppContext/* default */.ZP),
+      enqueueSnackbar = _useContext.enqueueSnackbar;
 
   (0,react.useEffect)(function () {
     return device === null || device === void 0 ? void 0 : device.subscribe(constants/* RESTART */.d0K, function () {
@@ -69766,7 +69795,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ed13e9ea4422ca8c39822f38d8fc50bbe5379c3c";
+  var sha = "e5a9f14c27f81280b74120e2e7705d1b6fa86ae3";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70209,8 +70238,6 @@ function ui_Breadcrumbs_Breadcrumbs(props) {
 var Forum = __webpack_require__(22203);
 // EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 22 modules
 var providerbus = __webpack_require__(38744);
-// EXTERNAL MODULE: ./node_modules/notistack/dist/notistack.esm.js
-var notistack_esm = __webpack_require__(70076);
 ;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/useScrollTrigger/useScrollTrigger.js
 
 
@@ -70331,7 +70358,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
  // tslint:disable-next-line: no-submodule-imports
-
 
 
 
@@ -70627,10 +70653,8 @@ function LayoutWithContext(props) {
 
   var _useContext6 = (0,react.useContext)(AppContext/* default */.ZP),
       drawerType = _useContext6.drawerType,
-      toolsMenu = _useContext6.toolsMenu;
-
-  var _useSnackbar = (0,notistack_esm/* useSnackbar */.Ds)(),
-      enqueueSnackbar = _useSnackbar.enqueueSnackbar;
+      toolsMenu = _useContext6.toolsMenu,
+      enqueueSnackbar = _useContext6.enqueueSnackbar;
 
   var drawerOpen = drawerType !== AppContext/* DrawerType.None */.jw.None;
 
@@ -70642,9 +70666,7 @@ function LayoutWithContext(props) {
   var mainClasses = (0,clsx_m/* default */.Z)(classes.content, (_clsx2 = {}, _clsx2[classes.container] = container, _clsx2[classes.contentPadding] = !fullWidthTools, _clsx2[classes.contentShift] = drawerOpen, _clsx2[classes.toolsContentShift] = toolsMenu, _clsx2)); // show under construction warning
 
   (0,react.useEffect)(function () {
-    if (!hideUnderConstruction) enqueueSnackbar("UNDER CONSTRUCTION - We are still working and changing the\n            Jacdac specification. Do not build devices using Jacdac.", {
-      variant: "warning"
-    });
+    if (!hideUnderConstruction) enqueueSnackbar("UNDER CONSTRUCTION - We are still working and changing the\n            Jacdac specification. Do not build devices using Jacdac.", "warning");
   }, []);
 
   var InnerMainSection = function InnerMainSection() {
@@ -72669,6 +72691,12 @@ var JDRegister = /*#__PURE__*/function (_JDServiceMemberNode) {
       return d && (0,buffer/* intOfBuffer */.wr)(d);
     }
   }, {
+    key: "uintValue",
+    get: function get() {
+      var d = this.data;
+      return d && (0,buffer/* uintOfBuffer */.zq)(d);
+    }
+  }, {
     key: "boolValue",
     get: function get() {
       if (this.data === undefined) return undefined;
@@ -73786,7 +73814,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
               return fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.refresh(true);
 
             case 3:
-              return _context2.abrupt("return", fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.intValue);
+              return _context2.abrupt("return", fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.uintValue);
 
             case 4:
             case "end":
@@ -74119,7 +74147,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
       var _this$service3;
 
       var fwIdRegister = (_this$service3 = this.service(0)) === null || _this$service3 === void 0 ? void 0 : _this$service3.register(constants/* ControlReg.FirmwareIdentifier */.toU.FirmwareIdentifier);
-      var v = fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.intValue;
+      var v = fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.uintValue;
       if (fwIdRegister && v === undefined) fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.refresh(true);
       return v;
     }

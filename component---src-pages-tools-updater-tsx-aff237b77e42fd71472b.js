@@ -942,8 +942,6 @@ function UpdateDeviceList() {
 var DbContext = __webpack_require__(94904);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/DeleteForever.js
 var DeleteForever = __webpack_require__(86426);
-// EXTERNAL MODULE: ./node_modules/notistack/dist/notistack.esm.js
-var notistack_esm = __webpack_require__(70076);
 // EXTERNAL MODULE: ./src/components/ui/SwitchWithLabel.tsx
 var SwitchWithLabel = __webpack_require__(64973);
 ;// CONCATENATED MODULE: ./src/components/firmware/SafeBootAlert.tsx
@@ -966,8 +964,8 @@ function SafeBootAlert() {
   var _useContext2 = (0,react.useContext)(DbContext/* default */.ZP),
       db = _useContext2.db;
 
-  var _useSnackbar = (0,notistack_esm/* useSnackbar */.Ds)(),
-      enqueueSnackbar = _useSnackbar.enqueueSnackbar;
+  var _useContext3 = (0,react.useContext)(AppContext/* default */.ZP),
+      enqueueSnackbar = _useContext3.enqueueSnackbar;
 
   var _useState = (0,react.useState)(bus.safeBoot),
       safeBoot = _useState[0],
@@ -1008,9 +1006,7 @@ function SafeBootAlert() {
               return firmwares.clear();
 
             case 2:
-              enqueueSnackbar("firmwares cleared", {
-                variant: "info"
-              });
+              enqueueSnackbar("firmwares cleared", "info");
 
             case 3:
             case "end":

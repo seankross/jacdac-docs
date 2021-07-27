@@ -1055,8 +1055,6 @@ var IconButtonWithTooltip = __webpack_require__(79885);
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Add.js
 var Add = __webpack_require__(88880);
-// EXTERNAL MODULE: ./node_modules/notistack/dist/notistack.esm.js
-var notistack_esm = __webpack_require__(70076);
 ;// CONCATENATED MODULE: ./src/pages/tools/collector.tsx
 
 
@@ -1075,7 +1073,6 @@ var notistack_esm = __webpack_require__(70076);
 
 
  // tslint:disable-next-line: no-submodule-imports
-
 
 
 
@@ -1145,11 +1142,9 @@ function Collector() {
   var _useContext = (0,react.useContext)(Context/* default */.Z),
       bus = _useContext.bus;
 
-  var _useSnackbar = (0,notistack_esm/* useSnackbar */.Ds)(),
-      enqueueSnackbar = _useSnackbar.enqueueSnackbar;
-
   var _useContext2 = (0,react.useContext)(AppContext/* default */.ZP),
-      toggleShowDeviceHostsDialog = _useContext2.toggleShowDeviceHostsDialog;
+      toggleShowDeviceHostsDialog = _useContext2.toggleShowDeviceHostsDialog,
+      enqueueSnackbar = _useContext2.enqueueSnackbar;
 
   var classes = useStyles();
 

@@ -17,7 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(80838);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(65541);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(83332);
-/* harmony import */ var notistack__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(70076);
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(84377);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(67294);
 /* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19640);
 /* harmony import */ var _jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(48363);
@@ -56,15 +56,15 @@ function StartSimulatorDialog(props) {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z),
       bus = _useContext.bus;
 
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      enqueueSnackbar = _useContext2.enqueueSnackbar;
+
   var deviceHostDialogId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_3__/* .useId */ .Me)();
   var deviceHostLabelId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_3__/* .useId */ .Me)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)("button"),
       selected = _useState[0],
       setSelected = _useState[1];
-
-  var _useSnackbar = (0,notistack__WEBPACK_IMPORTED_MODULE_1__/* .useSnackbar */ .Ds)(),
-      enqueueSnackbar = _useSnackbar.enqueueSnackbar;
 
   var providerDefinitions = (0,react__WEBPACK_IMPORTED_MODULE_2__.useMemo)(function () {
     return (0,_jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_4__/* .default */ .ZP)();
@@ -104,10 +104,7 @@ function StartSimulatorDialog(props) {
               }, function (h) {
                 return h;
               });
-              enqueueSnackbar("starting " + allProviderDefinitions.length + " simulators...", {
-                variant: "info",
-                key: "startdevicehosts"
-              });
+              enqueueSnackbar("starting " + allProviderDefinitions.length + " simulators...", "info");
               onClose();
               _iterator = _createForOfIteratorHelperLoose(allProviderDefinitions);
 
