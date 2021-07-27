@@ -67,57 +67,44 @@ function _possibleConstructorReturn(self, call) {
 
 /***/ }),
 
-/***/ 29134:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ 99809:
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": function() { return /* binding */ Accordion_Accordion; }
-});
-
-// UNUSED EXPORTS: styles
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(22122);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
-var arrayWithHoles = __webpack_require__(59968);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
-var iterableToArray = __webpack_require__(96410);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(82961);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
-var nonIterableRest = __webpack_require__(28970);
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toArray.js
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ _toArray; }
+/* harmony export */ });
+/* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(59968);
+/* harmony import */ var _iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(96410);
+/* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(82961);
+/* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(28970);
 
 
 
 
 function _toArray(arr) {
-  return (0,arrayWithHoles/* default */.Z)(arr) || (0,iterableToArray/* default */.Z)(arr) || (0,unsupportedIterableToArray/* default */.Z)(arr) || (0,nonIterableRest/* default */.Z)();
+  return (0,_arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(arr) || (0,_iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(arr) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(arr) || (0,_nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)();
 }
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 1 modules
-var slicedToArray = __webpack_require__(28481);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(81253);
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./node_modules/react-is/index.js
-var react_is = __webpack_require__(8812);
-// EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
-var clsx_m = __webpack_require__(85505);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Collapse/Collapse.js
-var Collapse = __webpack_require__(39055);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Paper/Paper.js
-var Paper = __webpack_require__(58063);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/withStyles.js
-var withStyles = __webpack_require__(34621);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Accordion/AccordionContext.js
-var AccordionContext = __webpack_require__(9866);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/useControlled.js
-var useControlled = __webpack_require__(12933);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Accordion/Accordion.js
+
+/***/ }),
+
+/***/ 31296:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export styles */
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(22122);
+/* harmony import */ var _babel_runtime_helpers_esm_toArray__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(99809);
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(28481);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81253);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8812);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(85505);
+/* harmony import */ var _Collapse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(39055);
+/* harmony import */ var _Paper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(58063);
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(34621);
+/* harmony import */ var _AccordionContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(9866);
+/* harmony import */ var _utils_useControlled__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(12933);
 
 
 
@@ -203,7 +190,7 @@ var styles = function styles(theme) {
     disabled: {}
   };
 };
-var Accordion = /*#__PURE__*/react.forwardRef(function Accordion(props, ref) {
+var Accordion = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function Accordion(props, ref) {
   var childrenProp = props.children,
       classes = props.classes,
       className = props.className,
@@ -216,21 +203,21 @@ var Accordion = /*#__PURE__*/react.forwardRef(function Accordion(props, ref) {
       _props$square = props.square,
       square = _props$square === void 0 ? false : _props$square,
       _props$TransitionComp = props.TransitionComponent,
-      TransitionComponent = _props$TransitionComp === void 0 ? Collapse/* default */.Z : _props$TransitionComp,
+      TransitionComponent = _props$TransitionComp === void 0 ? _Collapse__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z : _props$TransitionComp,
       TransitionProps = props.TransitionProps,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["children", "classes", "className", "defaultExpanded", "disabled", "expanded", "onChange", "square", "TransitionComponent", "TransitionProps"]);
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(props, ["children", "classes", "className", "defaultExpanded", "disabled", "expanded", "onChange", "square", "TransitionComponent", "TransitionProps"]);
 
-  var _useControlled = (0,useControlled/* default */.Z)({
+  var _useControlled = (0,_utils_useControlled__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)({
     controlled: expandedProp,
     default: defaultExpanded,
     name: 'Accordion',
     state: 'expanded'
   }),
-      _useControlled2 = (0,slicedToArray/* default */.Z)(_useControlled, 2),
+      _useControlled2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(_useControlled, 2),
       expanded = _useControlled2[0],
       setExpandedState = _useControlled2[1];
 
-  var handleChange = react.useCallback(function (event) {
+  var handleChange = react__WEBPACK_IMPORTED_MODULE_0__.useCallback(function (event) {
     setExpandedState(!expanded);
 
     if (onChange) {
@@ -238,35 +225,35 @@ var Accordion = /*#__PURE__*/react.forwardRef(function Accordion(props, ref) {
     }
   }, [expanded, onChange, setExpandedState]);
 
-  var _React$Children$toArr = react.Children.toArray(childrenProp),
-      _React$Children$toArr2 = _toArray(_React$Children$toArr),
+  var _React$Children$toArr = react__WEBPACK_IMPORTED_MODULE_0__.Children.toArray(childrenProp),
+      _React$Children$toArr2 = (0,_babel_runtime_helpers_esm_toArray__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(_React$Children$toArr),
       summary = _React$Children$toArr2[0],
       children = _React$Children$toArr2.slice(1);
 
-  var contextValue = react.useMemo(function () {
+  var contextValue = react__WEBPACK_IMPORTED_MODULE_0__.useMemo(function () {
     return {
       expanded: expanded,
       disabled: disabled,
       toggle: handleChange
     };
   }, [expanded, disabled, handleChange]);
-  return /*#__PURE__*/react.createElement(Paper/* default */.Z, (0,esm_extends/* default */.Z)({
-    className: (0,clsx_m/* default */.Z)(classes.root, className, expanded && classes.expanded, disabled && classes.disabled, !square && classes.rounded),
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Paper__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)({
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)(classes.root, className, expanded && classes.expanded, disabled && classes.disabled, !square && classes.rounded),
     ref: ref,
     square: square
-  }, other), /*#__PURE__*/react.createElement(AccordionContext/* default.Provider */.Z.Provider, {
+  }, other), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AccordionContext__WEBPACK_IMPORTED_MODULE_10__/* .default.Provider */ .Z.Provider, {
     value: contextValue
-  }, summary), /*#__PURE__*/react.createElement(TransitionComponent, (0,esm_extends/* default */.Z)({
+  }, summary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)({
     in: expanded,
     timeout: "auto"
-  }, TransitionProps), /*#__PURE__*/react.createElement("div", {
+  }, TransitionProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     "aria-labelledby": summary.props.id,
     id: summary.props['aria-controls'],
     role: "region"
   }, children)));
 });
  false ? 0 : void 0;
-/* harmony default export */ var Accordion_Accordion = ((0,withStyles/* default */.Z)(styles, {
+/* harmony default export */ __webpack_exports__["Z"] = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)(styles, {
   name: 'MuiAccordion'
 })(Accordion));
 
@@ -2473,7 +2460,7 @@ var renderAnnotationsToCanvas = function renderAnnotationsToCanvas(ctx, _ref3) {
 
 /***/ }),
 
-/***/ 21100:
+/***/ 54247:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2495,7 +2482,7 @@ var react = __webpack_require__(67294);
 var react_spring_web_esm = __webpack_require__(85468);
 // EXTERNAL MODULE: ./node_modules/@nivo/core/dist/nivo-core.es.js + 30 modules
 var nivo_core_es = __webpack_require__(67587);
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/interval.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/interval.js
 var t0 = new Date(),
     t1 = new Date();
 function newInterval(floori, offseti, count, field) {
@@ -2572,7 +2559,7 @@ function newInterval(floori, offseti, count, field) {
 
   return interval;
 }
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/millisecond.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/millisecond.js
 
 var millisecond = newInterval(function () {// noop
 }, function (date, step) {
@@ -2596,13 +2583,13 @@ millisecond.every = function (k) {
 
 /* harmony default export */ var src_millisecond = (millisecond);
 var milliseconds = millisecond.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/duration.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/duration.js
 var durationSecond = 1e3;
 var durationMinute = 6e4;
 var durationHour = 36e5;
 var durationDay = 864e5;
 var durationWeek = 6048e5;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/second.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/second.js
 
 
 var second = newInterval(function (date) {
@@ -2616,7 +2603,7 @@ var second = newInterval(function (date) {
 });
 /* harmony default export */ var src_second = (second);
 var seconds = second.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/minute.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/minute.js
 
 
 var minute = newInterval(function (date) {
@@ -2630,7 +2617,7 @@ var minute = newInterval(function (date) {
 });
 /* harmony default export */ var src_minute = (minute);
 var minutes = minute.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcMinute.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/utcMinute.js
 
 
 var utcMinute = newInterval(function (date) {
@@ -2644,7 +2631,7 @@ var utcMinute = newInterval(function (date) {
 });
 /* harmony default export */ var src_utcMinute = (utcMinute);
 var utcMinutes = utcMinute.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/hour.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/hour.js
 
 
 var hour = newInterval(function (date) {
@@ -2658,7 +2645,7 @@ var hour = newInterval(function (date) {
 });
 /* harmony default export */ var src_hour = (hour);
 var hours = hour.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcHour.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/utcHour.js
 
 
 var utcHour = newInterval(function (date) {
@@ -2672,7 +2659,7 @@ var utcHour = newInterval(function (date) {
 });
 /* harmony default export */ var src_utcHour = (utcHour);
 var utcHours = utcHour.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/week.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/week.js
 
 
 
@@ -2701,7 +2688,7 @@ var wednesdays = wednesday.range;
 var thursdays = thursday.range;
 var fridays = friday.range;
 var saturdays = saturday.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcWeek.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/utcWeek.js
 
 
 
@@ -2730,7 +2717,7 @@ var utcWednesdays = utcWednesday.range;
 var utcThursdays = utcThursday.range;
 var utcFridays = utcFriday.range;
 var utcSaturdays = utcSaturday.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/month.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/month.js
 
 var month = newInterval(function (date) {
   date.setDate(1);
@@ -2744,7 +2731,7 @@ var month = newInterval(function (date) {
 });
 /* harmony default export */ var src_month = (month);
 var months = month.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcMonth.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/utcMonth.js
 
 var utcMonth = newInterval(function (date) {
   date.setUTCDate(1);
@@ -2758,7 +2745,7 @@ var utcMonth = newInterval(function (date) {
 });
 /* harmony default export */ var src_utcMonth = (utcMonth);
 var utcMonths = utcMonth.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/year.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/year.js
 
 var year = newInterval(function (date) {
   date.setMonth(0, 1);
@@ -2783,7 +2770,7 @@ year.every = function (k) {
 
 /* harmony default export */ var src_year = (year);
 var years = year.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time/src/utcYear.js
+;// CONCATENATED MODULE: ./node_modules/@nivo/axes/node_modules/d3-time/src/utcYear.js
 
 var utcYear = newInterval(function (date) {
   date.setUTCMonth(0, 1);
@@ -2808,8 +2795,8 @@ utcYear.every = function (k) {
 
 /* harmony default export */ var src_utcYear = (utcYear);
 var utcYears = utcYear.range;
-// EXTERNAL MODULE: ./node_modules/d3-time-format/src/defaultLocale.js + 9 modules
-var defaultLocale = __webpack_require__(12439);
+// EXTERNAL MODULE: ./node_modules/d3-time-format/src/defaultLocale.js
+var defaultLocale = __webpack_require__(78460);
 // EXTERNAL MODULE: ./node_modules/d3-format/src/defaultLocale.js + 11 modules
 var src_defaultLocale = __webpack_require__(61270);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
@@ -5974,8 +5961,8 @@ function squarifyRatio(ratio, parent, x0, y0, x1, y1) {
 })(phi));
 // EXTERNAL MODULE: ./node_modules/d3-format/src/defaultLocale.js + 11 modules
 var defaultLocale = __webpack_require__(61270);
-// EXTERNAL MODULE: ./node_modules/d3-time-format/src/defaultLocale.js + 9 modules
-var src_defaultLocale = __webpack_require__(12439);
+// EXTERNAL MODULE: ./node_modules/d3-time-format/src/defaultLocale.js
+var src_defaultLocale = __webpack_require__(78460);
 // EXTERNAL MODULE: ./.cache/react-lifecycles-compat.js
 var react_lifecycles_compat = __webpack_require__(11507);
 ;// CONCATENATED MODULE: ./node_modules/@nivo/recompose/dist/nivo-recompose.es.js
@@ -10117,7 +10104,7 @@ var LegendPropShape = {
 
 /***/ }),
 
-/***/ 12685:
+/***/ 40351:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10145,8 +10132,8 @@ var last_default = /*#__PURE__*/__webpack_require__.n(last);
 // EXTERNAL MODULE: ./node_modules/lodash/isDate.js
 var isDate = __webpack_require__(47960);
 var isDate_default = /*#__PURE__*/__webpack_require__.n(isDate);
-// EXTERNAL MODULE: ./node_modules/d3-time-format/src/defaultLocale.js + 9 modules
-var defaultLocale = __webpack_require__(12439);
+// EXTERNAL MODULE: ./node_modules/d3-time-format/src/defaultLocale.js
+var defaultLocale = __webpack_require__(78460);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 1 modules
 var slicedToArray = __webpack_require__(28481);
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/range.js
@@ -10268,703 +10255,16 @@ function pointish(scale) {
 function point() {
   return pointish(band.apply(null, arguments).paddingInner(1));
 }
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/bisector.js
-var bisector = __webpack_require__(51432);
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/ticks.js
-var src_ticks = __webpack_require__(59336);
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/duration.js
-var durationSecond = 1000;
-var durationMinute = durationSecond * 60;
-var durationHour = durationMinute * 60;
-var durationDay = durationHour * 24;
-var durationWeek = durationDay * 7;
-var durationMonth = durationDay * 30;
-var durationYear = durationDay * 365;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/interval.js
-var t0 = new Date(),
-    t1 = new Date();
-function newInterval(floori, offseti, count, field) {
-  function interval(date) {
-    return floori(date = arguments.length === 0 ? new Date() : new Date(+date)), date;
-  }
-
-  interval.floor = function (date) {
-    return floori(date = new Date(+date)), date;
-  };
-
-  interval.ceil = function (date) {
-    return floori(date = new Date(date - 1)), offseti(date, 1), floori(date), date;
-  };
-
-  interval.round = function (date) {
-    var d0 = interval(date),
-        d1 = interval.ceil(date);
-    return date - d0 < d1 - date ? d0 : d1;
-  };
-
-  interval.offset = function (date, step) {
-    return offseti(date = new Date(+date), step == null ? 1 : Math.floor(step)), date;
-  };
-
-  interval.range = function (start, stop, step) {
-    var range = [],
-        previous;
-    start = interval.ceil(start);
-    step = step == null ? 1 : Math.floor(step);
-    if (!(start < stop) || !(step > 0)) return range; // also handles Invalid Date
-
-    do {
-      range.push(previous = new Date(+start)), offseti(start, step), floori(start);
-    } while (previous < start && start < stop);
-
-    return range;
-  };
-
-  interval.filter = function (test) {
-    return newInterval(function (date) {
-      if (date >= date) while (floori(date), !test(date)) {
-        date.setTime(date - 1);
-      }
-    }, function (date, step) {
-      if (date >= date) {
-        if (step < 0) while (++step <= 0) {
-          while (offseti(date, -1), !test(date)) {} // eslint-disable-line no-empty
-
-        } else while (--step >= 0) {
-          while (offseti(date, +1), !test(date)) {} // eslint-disable-line no-empty
-
-        }
-      }
-    });
-  };
-
-  if (count) {
-    interval.count = function (start, end) {
-      t0.setTime(+start), t1.setTime(+end);
-      floori(t0), floori(t1);
-      return Math.floor(count(t0, t1));
-    };
-
-    interval.every = function (step) {
-      step = Math.floor(step);
-      return !isFinite(step) || !(step > 0) ? null : !(step > 1) ? interval : interval.filter(field ? function (d) {
-        return field(d) % step === 0;
-      } : function (d) {
-        return interval.count(0, d) % step === 0;
-      });
-    };
-  }
-
-  return interval;
-}
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/millisecond.js
-
-var millisecond = newInterval(function () {// noop
-}, function (date, step) {
-  date.setTime(+date + step);
-}, function (start, end) {
-  return end - start;
-}); // An optimized implementation for this simple case.
-
-millisecond.every = function (k) {
-  k = Math.floor(k);
-  if (!isFinite(k) || !(k > 0)) return null;
-  if (!(k > 1)) return millisecond;
-  return newInterval(function (date) {
-    date.setTime(Math.floor(date / k) * k);
-  }, function (date, step) {
-    date.setTime(+date + step * k);
-  }, function (start, end) {
-    return (end - start) / k;
-  });
-};
-
-/* harmony default export */ var src_millisecond = (millisecond);
-var milliseconds = millisecond.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/second.js
-
-
-var second = newInterval(function (date) {
-  date.setTime(date - date.getMilliseconds());
-}, function (date, step) {
-  date.setTime(+date + step * durationSecond);
-}, function (start, end) {
-  return (end - start) / durationSecond;
-}, function (date) {
-  return date.getUTCSeconds();
-});
-/* harmony default export */ var src_second = (second);
-var seconds = second.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/minute.js
-
-
-var minute = newInterval(function (date) {
-  date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond);
-}, function (date, step) {
-  date.setTime(+date + step * durationMinute);
-}, function (start, end) {
-  return (end - start) / durationMinute;
-}, function (date) {
-  return date.getMinutes();
-});
-/* harmony default export */ var src_minute = (minute);
-var minutes = minute.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/hour.js
-
-
-var hour = newInterval(function (date) {
-  date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond - date.getMinutes() * durationMinute);
-}, function (date, step) {
-  date.setTime(+date + step * durationHour);
-}, function (start, end) {
-  return (end - start) / durationHour;
-}, function (date) {
-  return date.getHours();
-});
-/* harmony default export */ var src_hour = (hour);
-var hours = hour.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/day.js
-
-
-var day = newInterval(function (date) {
-  return date.setHours(0, 0, 0, 0);
-}, function (date, step) {
-  return date.setDate(date.getDate() + step);
-}, function (start, end) {
-  return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) / durationDay;
-}, function (date) {
-  return date.getDate() - 1;
-});
-/* harmony default export */ var src_day = (day);
-var days = day.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/week.js
-
-
-
-function weekday(i) {
-  return newInterval(function (date) {
-    date.setDate(date.getDate() - (date.getDay() + 7 - i) % 7);
-    date.setHours(0, 0, 0, 0);
-  }, function (date, step) {
-    date.setDate(date.getDate() + step * 7);
-  }, function (start, end) {
-    return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) / durationWeek;
-  });
-}
-
-var sunday = weekday(0);
-var monday = weekday(1);
-var tuesday = weekday(2);
-var wednesday = weekday(3);
-var thursday = weekday(4);
-var friday = weekday(5);
-var saturday = weekday(6);
-var sundays = sunday.range;
-var mondays = monday.range;
-var tuesdays = tuesday.range;
-var wednesdays = wednesday.range;
-var thursdays = thursday.range;
-var fridays = friday.range;
-var saturdays = saturday.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/month.js
-
-var month = newInterval(function (date) {
-  date.setDate(1);
-  date.setHours(0, 0, 0, 0);
-}, function (date, step) {
-  date.setMonth(date.getMonth() + step);
-}, function (start, end) {
-  return end.getMonth() - start.getMonth() + (end.getFullYear() - start.getFullYear()) * 12;
-}, function (date) {
-  return date.getMonth();
-});
-/* harmony default export */ var src_month = (month);
-var months = month.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/year.js
-
-var year = newInterval(function (date) {
-  date.setMonth(0, 1);
-  date.setHours(0, 0, 0, 0);
-}, function (date, step) {
-  date.setFullYear(date.getFullYear() + step);
-}, function (start, end) {
-  return end.getFullYear() - start.getFullYear();
-}, function (date) {
-  return date.getFullYear();
-}); // An optimized implementation for this simple case.
-
-year.every = function (k) {
-  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval(function (date) {
-    date.setFullYear(Math.floor(date.getFullYear() / k) * k);
-    date.setMonth(0, 1);
-    date.setHours(0, 0, 0, 0);
-  }, function (date, step) {
-    date.setFullYear(date.getFullYear() + step * k);
-  });
-};
-
-/* harmony default export */ var src_year = (year);
-var years = year.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/utcMinute.js
-
-
-var utcMinute = newInterval(function (date) {
-  date.setUTCSeconds(0, 0);
-}, function (date, step) {
-  date.setTime(+date + step * durationMinute);
-}, function (start, end) {
-  return (end - start) / durationMinute;
-}, function (date) {
-  return date.getUTCMinutes();
-});
-/* harmony default export */ var src_utcMinute = (utcMinute);
-var utcMinutes = utcMinute.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/utcHour.js
-
-
-var utcHour = newInterval(function (date) {
-  date.setUTCMinutes(0, 0, 0);
-}, function (date, step) {
-  date.setTime(+date + step * durationHour);
-}, function (start, end) {
-  return (end - start) / durationHour;
-}, function (date) {
-  return date.getUTCHours();
-});
-/* harmony default export */ var src_utcHour = (utcHour);
-var utcHours = utcHour.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/utcDay.js
-
-
-var utcDay = newInterval(function (date) {
-  date.setUTCHours(0, 0, 0, 0);
-}, function (date, step) {
-  date.setUTCDate(date.getUTCDate() + step);
-}, function (start, end) {
-  return (end - start) / durationDay;
-}, function (date) {
-  return date.getUTCDate() - 1;
-});
-/* harmony default export */ var src_utcDay = (utcDay);
-var utcDays = utcDay.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/utcWeek.js
-
-
-
-function utcWeekday(i) {
-  return newInterval(function (date) {
-    date.setUTCDate(date.getUTCDate() - (date.getUTCDay() + 7 - i) % 7);
-    date.setUTCHours(0, 0, 0, 0);
-  }, function (date, step) {
-    date.setUTCDate(date.getUTCDate() + step * 7);
-  }, function (start, end) {
-    return (end - start) / durationWeek;
-  });
-}
-
-var utcSunday = utcWeekday(0);
-var utcMonday = utcWeekday(1);
-var utcTuesday = utcWeekday(2);
-var utcWednesday = utcWeekday(3);
-var utcThursday = utcWeekday(4);
-var utcFriday = utcWeekday(5);
-var utcSaturday = utcWeekday(6);
-var utcSundays = utcSunday.range;
-var utcMondays = utcMonday.range;
-var utcTuesdays = utcTuesday.range;
-var utcWednesdays = utcWednesday.range;
-var utcThursdays = utcThursday.range;
-var utcFridays = utcFriday.range;
-var utcSaturdays = utcSaturday.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/utcMonth.js
-
-var utcMonth = newInterval(function (date) {
-  date.setUTCDate(1);
-  date.setUTCHours(0, 0, 0, 0);
-}, function (date, step) {
-  date.setUTCMonth(date.getUTCMonth() + step);
-}, function (start, end) {
-  return end.getUTCMonth() - start.getUTCMonth() + (end.getUTCFullYear() - start.getUTCFullYear()) * 12;
-}, function (date) {
-  return date.getUTCMonth();
-});
-/* harmony default export */ var src_utcMonth = (utcMonth);
-var utcMonths = utcMonth.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/utcYear.js
-
-var utcYear = newInterval(function (date) {
-  date.setUTCMonth(0, 1);
-  date.setUTCHours(0, 0, 0, 0);
-}, function (date, step) {
-  date.setUTCFullYear(date.getUTCFullYear() + step);
-}, function (start, end) {
-  return end.getUTCFullYear() - start.getUTCFullYear();
-}, function (date) {
-  return date.getUTCFullYear();
-}); // An optimized implementation for this simple case.
-
-utcYear.every = function (k) {
-  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval(function (date) {
-    date.setUTCFullYear(Math.floor(date.getUTCFullYear() / k) * k);
-    date.setUTCMonth(0, 1);
-    date.setUTCHours(0, 0, 0, 0);
-  }, function (date, step) {
-    date.setUTCFullYear(date.getUTCFullYear() + step * k);
-  });
-};
-
-/* harmony default export */ var src_utcYear = (utcYear);
-var utcYears = utcYear.range;
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-time/src/ticks.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function ticker(year, month, week, day, hour, minute) {
-  var tickIntervals = [[src_second, 1, durationSecond], [src_second, 5, 5 * durationSecond], [src_second, 15, 15 * durationSecond], [src_second, 30, 30 * durationSecond], [minute, 1, durationMinute], [minute, 5, 5 * durationMinute], [minute, 15, 15 * durationMinute], [minute, 30, 30 * durationMinute], [hour, 1, durationHour], [hour, 3, 3 * durationHour], [hour, 6, 6 * durationHour], [hour, 12, 12 * durationHour], [day, 1, durationDay], [day, 2, 2 * durationDay], [week, 1, durationWeek], [month, 1, durationMonth], [month, 3, 3 * durationMonth], [year, 1, durationYear]];
-
-  function ticks(start, stop, count) {
-    var reverse = stop < start;
-
-    if (reverse) {
-      var _ref = [stop, start];
-      start = _ref[0];
-      stop = _ref[1];
-    }
-
-    var interval = count && typeof count.range === "function" ? count : tickInterval(start, stop, count);
-    var ticks = interval ? interval.range(start, +stop + 1) : []; // inclusive stop
-
-    return reverse ? ticks.reverse() : ticks;
-  }
-
-  function tickInterval(start, stop, count) {
-    var target = Math.abs(stop - start) / count;
-    var i = (0,bisector/* default */.Z)(function (_ref2) {
-      var _ref3 = (0,slicedToArray/* default */.Z)(_ref2, 3),
-          step = _ref3[2];
-
-      return step;
-    }).right(tickIntervals, target);
-    if (i === tickIntervals.length) return year.every((0,src_ticks/* tickStep */.ly)(start / durationYear, stop / durationYear, count));
-    if (i === 0) return src_millisecond.every(Math.max((0,src_ticks/* tickStep */.ly)(start, stop, count), 1));
-
-    var _tickIntervals = (0,slicedToArray/* default */.Z)(tickIntervals[target / tickIntervals[i - 1][2] < tickIntervals[i][2] / target ? i - 1 : i], 2),
-        t = _tickIntervals[0],
-        step = _tickIntervals[1];
-
-    return t.every(step);
-  }
-
-  return [ticks, tickInterval];
-}
-
-var _ticker = ticker(src_utcYear, src_utcMonth, utcSunday, src_utcDay, src_utcHour, src_utcMinute),
-    _ticker2 = (0,slicedToArray/* default */.Z)(_ticker, 2),
-    utcTicks = _ticker2[0],
-    utcTickInterval = _ticker2[1];
-
-var _ticker3 = ticker(src_year, src_month, sunday, src_day, src_hour, src_minute),
-    _ticker4 = (0,slicedToArray/* default */.Z)(_ticker3, 2),
-    timeTicks = _ticker4[0],
-    timeTickInterval = _ticker4[1];
-
-
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/continuous.js + 10 modules
-var continuous = __webpack_require__(14800);
-;// CONCATENATED MODULE: ./node_modules/d3-scale/src/nice.js
-function nice(domain, interval) {
-  domain = domain.slice();
-  var i0 = 0,
-      i1 = domain.length - 1,
-      x0 = domain[i0],
-      x1 = domain[i1],
-      t;
-
-  if (x1 < x0) {
-    t = i0, i0 = i1, i1 = t;
-    t = x0, x0 = x1, x1 = t;
-  }
-
-  domain[i0] = interval.floor(x0);
-  domain[i1] = interval.ceil(x1);
-  return domain;
-}
-;// CONCATENATED MODULE: ./node_modules/d3-scale/src/time.js
-
-
-
-
-
-
-function date(t) {
-  return new Date(t);
-}
-
-function number(t) {
-  return t instanceof Date ? +t : +new Date(+t);
-}
-
-function calendar(ticks, tickInterval, year, month, week, day, hour, minute, second, format) {
-  var scale = (0,continuous/* default */.ZP)(),
-      invert = scale.invert,
-      domain = scale.domain;
-  var formatMillisecond = format(".%L"),
-      formatSecond = format(":%S"),
-      formatMinute = format("%I:%M"),
-      formatHour = format("%I %p"),
-      formatDay = format("%a %d"),
-      formatWeek = format("%b %d"),
-      formatMonth = format("%B"),
-      formatYear = format("%Y");
-
-  function tickFormat(date) {
-    return (second(date) < date ? formatMillisecond : minute(date) < date ? formatSecond : hour(date) < date ? formatMinute : day(date) < date ? formatHour : month(date) < date ? week(date) < date ? formatDay : formatWeek : year(date) < date ? formatMonth : formatYear)(date);
-  }
-
-  scale.invert = function (y) {
-    return new Date(invert(y));
-  };
-
-  scale.domain = function (_) {
-    return arguments.length ? domain(Array.from(_, number)) : domain().map(date);
-  };
-
-  scale.ticks = function (interval) {
-    var d = domain();
-    return ticks(d[0], d[d.length - 1], interval == null ? 10 : interval);
-  };
-
-  scale.tickFormat = function (count, specifier) {
-    return specifier == null ? tickFormat : format(specifier);
-  };
-
-  scale.nice = function (interval) {
-    var d = domain();
-    if (!interval || typeof interval.range !== "function") interval = tickInterval(d[0], d[d.length - 1], interval == null ? 10 : interval);
-    return interval ? domain(nice(d, interval)) : scale;
-  };
-
-  scale.copy = function () {
-    return (0,continuous/* copy */.JG)(scale, calendar(ticks, tickInterval, year, month, week, day, hour, minute, second, format));
-  };
-
-  return scale;
-}
-function time() {
-  return init/* initRange.apply */.o.apply(calendar(timeTicks, timeTickInterval, src_year, src_month, sunday, src_day, src_hour, src_minute, src_second, defaultLocale/* timeFormat */.i$).domain([new Date(2000, 0, 1), new Date(2000, 0, 2)]), arguments);
-}
-;// CONCATENATED MODULE: ./node_modules/d3-scale/src/utcTime.js
-
-
-
-
-function utcTime() {
-  return init/* initRange.apply */.o.apply(calendar(utcTicks, utcTickInterval, src_utcYear, src_utcMonth, utcSunday, src_utcDay, src_utcHour, src_utcMinute, src_second, defaultLocale/* utcFormat */.g0).domain([Date.UTC(2000, 0, 1), Date.UTC(2000, 0, 2)]), arguments);
-}
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/defaultLocale.js + 8 modules
-var src_defaultLocale = __webpack_require__(64162);
-;// CONCATENATED MODULE: ./node_modules/d3-scale/src/log.js
-
-
-
-
-
-
-function transformLog(x) {
-  return Math.log(x);
-}
-
-function transformExp(x) {
-  return Math.exp(x);
-}
-
-function transformLogn(x) {
-  return -Math.log(-x);
-}
-
-function transformExpn(x) {
-  return -Math.exp(-x);
-}
-
-function pow10(x) {
-  return isFinite(x) ? +("1e" + x) : x < 0 ? 0 : x;
-}
-
-function powp(base) {
-  return base === 10 ? pow10 : base === Math.E ? Math.exp : function (x) {
-    return Math.pow(base, x);
-  };
-}
-
-function logp(base) {
-  return base === Math.E ? Math.log : base === 10 && Math.log10 || base === 2 && Math.log2 || (base = Math.log(base), function (x) {
-    return Math.log(x) / base;
-  });
-}
-
-function reflect(f) {
-  return function (x) {
-    return -f(-x);
-  };
-}
-
-function loggish(transform) {
-  var scale = transform(transformLog, transformExp),
-      domain = scale.domain,
-      base = 10,
-      logs,
-      pows;
-
-  function rescale() {
-    logs = logp(base), pows = powp(base);
-
-    if (domain()[0] < 0) {
-      logs = reflect(logs), pows = reflect(pows);
-      transform(transformLogn, transformExpn);
-    } else {
-      transform(transformLog, transformExp);
-    }
-
-    return scale;
-  }
-
-  scale.base = function (_) {
-    return arguments.length ? (base = +_, rescale()) : base;
-  };
-
-  scale.domain = function (_) {
-    return arguments.length ? (domain(_), rescale()) : domain();
-  };
-
-  scale.ticks = function (count) {
-    var d = domain(),
-        u = d[0],
-        v = d[d.length - 1],
-        r;
-    if (r = v < u) i = u, u = v, v = i;
-    var i = logs(u),
-        j = logs(v),
-        p,
-        k,
-        t,
-        n = count == null ? 10 : +count,
-        z = [];
-
-    if (!(base % 1) && j - i < n) {
-      i = Math.floor(i), j = Math.ceil(j);
-      if (u > 0) for (; i <= j; ++i) {
-        for (k = 1, p = pows(i); k < base; ++k) {
-          t = p * k;
-          if (t < u) continue;
-          if (t > v) break;
-          z.push(t);
-        }
-      } else for (; i <= j; ++i) {
-        for (k = base - 1, p = pows(i); k >= 1; --k) {
-          t = p * k;
-          if (t < u) continue;
-          if (t > v) break;
-          z.push(t);
-        }
-      }
-      if (z.length * 2 < n) z = (0,src_ticks/* default */.ZP)(u, v, n);
-    } else {
-      z = (0,src_ticks/* default */.ZP)(i, j, Math.min(j - i, n)).map(pows);
-    }
-
-    return r ? z.reverse() : z;
-  };
-
-  scale.tickFormat = function (count, specifier) {
-    if (specifier == null) specifier = base === 10 ? ".0e" : ",";
-    if (typeof specifier !== "function") specifier = (0,src_defaultLocale/* format */.WU)(specifier);
-    if (count === Infinity) return specifier;
-    if (count == null) count = 10;
-    var k = Math.max(1, base * count / scale.ticks().length); // TODO fast estimate?
-
-    return function (d) {
-      var i = d / pows(Math.round(logs(d)));
-      if (i * base < base - 0.5) i *= base;
-      return i <= k ? specifier(d) : "";
-    };
-  };
-
-  scale.nice = function () {
-    return domain(nice(domain(), {
-      floor: function floor(x) {
-        return pows(Math.floor(logs(x)));
-      },
-      ceil: function ceil(x) {
-        return pows(Math.ceil(logs(x)));
-      }
-    }));
-  };
-
-  return scale;
-}
-function log() {
-  var scale = loggish((0,continuous/* transformer */.l4)()).domain([1, 10]);
-
-  scale.copy = function () {
-    return (0,continuous/* copy */.JG)(scale, log()).base(scale.base());
-  };
-
-  init/* initRange.apply */.o.apply(scale, arguments);
-  return scale;
-}
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/linear.js + 4 modules
-var linear = __webpack_require__(44076);
-;// CONCATENATED MODULE: ./node_modules/d3-scale/src/symlog.js
-
-
-
-
-function transformSymlog(c) {
-  return function (x) {
-    return Math.sign(x) * Math.log1p(Math.abs(x / c));
-  };
-}
-
-function transformSymexp(c) {
-  return function (x) {
-    return Math.sign(x) * Math.expm1(Math.abs(x)) * c;
-  };
-}
-
-function symlogish(transform) {
-  var c = 1,
-      scale = transform(transformSymlog(c), transformSymexp(c));
-
-  scale.constant = function (_) {
-    return arguments.length ? transform(transformSymlog(c = +_), transformSymexp(c)) : c;
-  };
-
-  return (0,linear/* linearish */.Q)(scale);
-}
-function symlog() {
-  var scale = symlogish((0,continuous/* transformer */.l4)());
-
-  scale.copy = function () {
-    return (0,continuous/* copy */.JG)(scale, symlog()).constant(scale.constant());
-  };
-
-  return init/* initRange.apply */.o.apply(scale, arguments);
-}
+// EXTERNAL MODULE: ./node_modules/d3-scale/src/linear.js
+var linear = __webpack_require__(59006);
+// EXTERNAL MODULE: ./node_modules/d3-scale/src/utcTime.js
+var utcTime = __webpack_require__(94210);
+// EXTERNAL MODULE: ./node_modules/d3-scale/src/time.js
+var time = __webpack_require__(26043);
+// EXTERNAL MODULE: ./node_modules/d3-scale/src/log.js
+var log = __webpack_require__(4425);
+// EXTERNAL MODULE: ./node_modules/d3-scale/src/symlog.js
+var symlog = __webpack_require__(9788);
 ;// CONCATENATED MODULE: ./node_modules/@nivo/scales/dist/nivo-scales.es.js
 
 
@@ -11204,7 +10504,7 @@ var createTimeScale = function createTimeScale(_ref, data, size) {
     maxValue = max;
   }
 
-  var scale = useUTC ? utcTime() : time();
+  var scale = useUTC ? (0,utcTime/* default */.Z)() : (0,time/* default */.Z)();
   scale.domain([minValue, maxValue]).range([0, size]);
   if (nice === true) scale.nice();else if (typeof nice === 'object' || typeof nice === 'number') scale.nice(nice);
   var typedScale = scale;
@@ -11262,7 +10562,7 @@ var createLogScale = function createLogScale(_ref, data, size, axis) {
     maxValue = max;
   }
 
-  var scale = log().domain([minValue, maxValue]).rangeRound(axis === 'x' ? [0, size] : [size, 0]).base(base).nice();
+  var scale = (0,log/* default */.Z)().domain([minValue, maxValue]).rangeRound(axis === 'x' ? [0, size] : [size, 0]).base(base).nice();
   var typedScale = scale;
   typedScale.type = 'log';
   return scale;
@@ -11293,7 +10593,7 @@ var createSymlogScale = function createSymlogScale(_ref, data, size, axis) {
     maxValue = max;
   }
 
-  var scale = symlog().constant(constant).rangeRound(axis === 'x' ? [0, size] : [size, 0]).nice();
+  var scale = (0,symlog/* default */.Z)().constant(constant).rangeRound(axis === 'x' ? [0, size] : [size, 0]).nice();
   if (reverse === true) scale.domain([maxValue, minValue]);else scale.domain([minValue, maxValue]);
   var typedScale = scale;
   typedScale.type = 'symlog';
@@ -12114,1754 +11414,21 @@ var TooltipProvider = function TooltipProvider(_ref) {
 
 /***/ }),
 
-/***/ 8374:
+/***/ 84601:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Kj": function() { return /* binding */ Mesh; },
-  "r$": function() { return /* binding */ renderVoronoiCellToCanvas; },
-  "qF": function() { return /* binding */ renderVoronoiToCanvas; },
-  "ZR": function() { return /* binding */ useVoronoiMesh; }
-});
-
-// UNUSED EXPORTS: ResponsiveVoronoi, Voronoi, computeMesh, computeMeshPoints, defaultVoronoiProps, useVoronoi, useVoronoiLayerContext
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./node_modules/@nivo/core/dist/nivo-core.es.js + 30 modules
-var nivo_core_es = __webpack_require__(67587);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__(6610);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
-var createClass = __webpack_require__(5991);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(87757);
-var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.math.hypot.js
-var es_math_hypot = __webpack_require__(25438);
-;// CONCATENATED MODULE: ./node_modules/delaunator/index.js
-
-
-var EPSILON = Math.pow(2, -52);
-var EDGE_STACK = new Uint32Array(512);
-
-var Delaunator = /*#__PURE__*/function () {
-  function Delaunator(coords) {
-    (0,classCallCheck/* default */.Z)(this, Delaunator);
-
-    var n = coords.length >> 1;
-    if (n > 0 && typeof coords[0] !== 'number') throw new Error('Expected coords to contain numbers.');
-    this.coords = coords; // arrays that will store the triangulation graph
-
-    var maxTriangles = Math.max(2 * n - 5, 0);
-    this._triangles = new Uint32Array(maxTriangles * 3);
-    this._halfedges = new Int32Array(maxTriangles * 3); // temporary arrays for tracking the edges of the advancing convex hull
-
-    this._hashSize = Math.ceil(Math.sqrt(n));
-    this._hullPrev = new Uint32Array(n); // edge to prev edge
-
-    this._hullNext = new Uint32Array(n); // edge to next edge
-
-    this._hullTri = new Uint32Array(n); // edge to adjacent triangle
-
-    this._hullHash = new Int32Array(this._hashSize).fill(-1); // angular edge hash
-    // temporary arrays for sorting points
-
-    this._ids = new Uint32Array(n);
-    this._dists = new Float64Array(n);
-    this.update();
-  }
-
-  (0,createClass/* default */.Z)(Delaunator, [{
-    key: "update",
-    value: function update() {
-      var coords = this.coords,
-          hullPrev = this._hullPrev,
-          hullNext = this._hullNext,
-          hullTri = this._hullTri,
-          hullHash = this._hullHash;
-      var n = coords.length >> 1; // populate an array of point indices; calculate input data bbox
-
-      var minX = Infinity;
-      var minY = Infinity;
-      var maxX = -Infinity;
-      var maxY = -Infinity;
-
-      for (var i = 0; i < n; i++) {
-        var x = coords[2 * i];
-        var y = coords[2 * i + 1];
-        if (x < minX) minX = x;
-        if (y < minY) minY = y;
-        if (x > maxX) maxX = x;
-        if (y > maxY) maxY = y;
-        this._ids[i] = i;
-      }
-
-      var cx = (minX + maxX) / 2;
-      var cy = (minY + maxY) / 2;
-      var minDist = Infinity;
-      var i0, i1, i2; // pick a seed point close to the center
-
-      for (var _i = 0; _i < n; _i++) {
-        var d = dist(cx, cy, coords[2 * _i], coords[2 * _i + 1]);
-
-        if (d < minDist) {
-          i0 = _i;
-          minDist = d;
-        }
-      }
-
-      var i0x = coords[2 * i0];
-      var i0y = coords[2 * i0 + 1];
-      minDist = Infinity; // find the point closest to the seed
-
-      for (var _i2 = 0; _i2 < n; _i2++) {
-        if (_i2 === i0) continue;
-
-        var _d = dist(i0x, i0y, coords[2 * _i2], coords[2 * _i2 + 1]);
-
-        if (_d < minDist && _d > 0) {
-          i1 = _i2;
-          minDist = _d;
-        }
-      }
-
-      var i1x = coords[2 * i1];
-      var i1y = coords[2 * i1 + 1];
-      var minRadius = Infinity; // find the third point which forms the smallest circumcircle with the first two
-
-      for (var _i3 = 0; _i3 < n; _i3++) {
-        if (_i3 === i0 || _i3 === i1) continue;
-        var r = circumradius(i0x, i0y, i1x, i1y, coords[2 * _i3], coords[2 * _i3 + 1]);
-
-        if (r < minRadius) {
-          i2 = _i3;
-          minRadius = r;
-        }
-      }
-
-      var i2x = coords[2 * i2];
-      var i2y = coords[2 * i2 + 1];
-
-      if (minRadius === Infinity) {
-        // order collinear points by dx (or dy if all x are identical)
-        // and return the list as a hull
-        for (var _i4 = 0; _i4 < n; _i4++) {
-          this._dists[_i4] = coords[2 * _i4] - coords[0] || coords[2 * _i4 + 1] - coords[1];
-        }
-
-        quicksort(this._ids, this._dists, 0, n - 1);
-        var hull = new Uint32Array(n);
-        var j = 0;
-
-        for (var _i5 = 0, d0 = -Infinity; _i5 < n; _i5++) {
-          var id = this._ids[_i5];
-
-          if (this._dists[id] > d0) {
-            hull[j++] = id;
-            d0 = this._dists[id];
-          }
-        }
-
-        this.hull = hull.subarray(0, j);
-        this.triangles = new Uint32Array(0);
-        this.halfedges = new Uint32Array(0);
-        return;
-      } // swap the order of the seed points for counter-clockwise orientation
-
-
-      if (orient(i0x, i0y, i1x, i1y, i2x, i2y)) {
-        var _i6 = i1;
-        var _x = i1x;
-        var _y = i1y;
-        i1 = i2;
-        i1x = i2x;
-        i1y = i2y;
-        i2 = _i6;
-        i2x = _x;
-        i2y = _y;
-      }
-
-      var center = circumcenter(i0x, i0y, i1x, i1y, i2x, i2y);
-      this._cx = center.x;
-      this._cy = center.y;
-
-      for (var _i7 = 0; _i7 < n; _i7++) {
-        this._dists[_i7] = dist(coords[2 * _i7], coords[2 * _i7 + 1], center.x, center.y);
-      } // sort the points by distance from the seed triangle circumcenter
-
-
-      quicksort(this._ids, this._dists, 0, n - 1); // set up the seed triangle as the starting hull
-
-      this._hullStart = i0;
-      var hullSize = 3;
-      hullNext[i0] = hullPrev[i2] = i1;
-      hullNext[i1] = hullPrev[i0] = i2;
-      hullNext[i2] = hullPrev[i1] = i0;
-      hullTri[i0] = 0;
-      hullTri[i1] = 1;
-      hullTri[i2] = 2;
-      hullHash.fill(-1);
-      hullHash[this._hashKey(i0x, i0y)] = i0;
-      hullHash[this._hashKey(i1x, i1y)] = i1;
-      hullHash[this._hashKey(i2x, i2y)] = i2;
-      this.trianglesLen = 0;
-
-      this._addTriangle(i0, i1, i2, -1, -1, -1);
-
-      for (var k = 0, xp, yp; k < this._ids.length; k++) {
-        var _i8 = this._ids[k];
-        var _x2 = coords[2 * _i8];
-        var _y2 = coords[2 * _i8 + 1]; // skip near-duplicate points
-
-        if (k > 0 && Math.abs(_x2 - xp) <= EPSILON && Math.abs(_y2 - yp) <= EPSILON) continue;
-        xp = _x2;
-        yp = _y2; // skip seed triangle points
-
-        if (_i8 === i0 || _i8 === i1 || _i8 === i2) continue; // find a visible edge on the convex hull using edge hash
-
-        var start = 0;
-
-        for (var _j = 0, key = this._hashKey(_x2, _y2); _j < this._hashSize; _j++) {
-          start = hullHash[(key + _j) % this._hashSize];
-          if (start !== -1 && start !== hullNext[start]) break;
-        }
-
-        start = hullPrev[start];
-        var e = start,
-            q = void 0;
-
-        while (q = hullNext[e], !orient(_x2, _y2, coords[2 * e], coords[2 * e + 1], coords[2 * q], coords[2 * q + 1])) {
-          e = q;
-
-          if (e === start) {
-            e = -1;
-            break;
-          }
-        }
-
-        if (e === -1) continue; // likely a near-duplicate point; skip it
-        // add the first triangle from the point
-
-        var t = this._addTriangle(e, _i8, hullNext[e], -1, -1, hullTri[e]); // recursively flip triangles from the point until they satisfy the Delaunay condition
-
-
-        hullTri[_i8] = this._legalize(t + 2);
-        hullTri[e] = t; // keep track of boundary triangles on the hull
-
-        hullSize++; // walk forward through the hull, adding more triangles and flipping recursively
-
-        var _n = hullNext[e];
-
-        while (q = hullNext[_n], orient(_x2, _y2, coords[2 * _n], coords[2 * _n + 1], coords[2 * q], coords[2 * q + 1])) {
-          t = this._addTriangle(_n, _i8, q, hullTri[_i8], -1, hullTri[_n]);
-          hullTri[_i8] = this._legalize(t + 2);
-          hullNext[_n] = _n; // mark as removed
-
-          hullSize--;
-          _n = q;
-        } // walk backward from the other side, adding more triangles and flipping
-
-
-        if (e === start) {
-          while (q = hullPrev[e], orient(_x2, _y2, coords[2 * q], coords[2 * q + 1], coords[2 * e], coords[2 * e + 1])) {
-            t = this._addTriangle(q, _i8, e, -1, hullTri[e], hullTri[q]);
-
-            this._legalize(t + 2);
-
-            hullTri[q] = t;
-            hullNext[e] = e; // mark as removed
-
-            hullSize--;
-            e = q;
-          }
-        } // update the hull indices
-
-
-        this._hullStart = hullPrev[_i8] = e;
-        hullNext[e] = hullPrev[_n] = _i8;
-        hullNext[_i8] = _n; // save the two new edges in the hash table
-
-        hullHash[this._hashKey(_x2, _y2)] = _i8;
-        hullHash[this._hashKey(coords[2 * e], coords[2 * e + 1])] = e;
-      }
-
-      this.hull = new Uint32Array(hullSize);
-
-      for (var _i9 = 0, _e = this._hullStart; _i9 < hullSize; _i9++) {
-        this.hull[_i9] = _e;
-        _e = hullNext[_e];
-      } // trim typed triangle mesh arrays
-
-
-      this.triangles = this._triangles.subarray(0, this.trianglesLen);
-      this.halfedges = this._halfedges.subarray(0, this.trianglesLen);
-    }
-  }, {
-    key: "_hashKey",
-    value: function _hashKey(x, y) {
-      return Math.floor(pseudoAngle(x - this._cx, y - this._cy) * this._hashSize) % this._hashSize;
-    }
-  }, {
-    key: "_legalize",
-    value: function _legalize(a) {
-      var triangles = this._triangles,
-          halfedges = this._halfedges,
-          coords = this.coords;
-      var i = 0;
-      var ar = 0; // recursion eliminated with a fixed-size stack
-
-      while (true) {
-        var b = halfedges[a];
-        /* if the pair of triangles doesn't satisfy the Delaunay condition
-         * (p1 is inside the circumcircle of [p0, pl, pr]), flip them,
-         * then do the same check/flip recursively for the new pair of triangles
-         *
-         *           pl                    pl
-         *          /||\                  /  \
-         *       al/ || \bl            al/    \a
-         *        /  ||  \              /      \
-         *       /  a||b  \    flip    /___ar___\
-         *     p0\   ||   /p1   =>   p0\---bl---/p1
-         *        \  ||  /              \      /
-         *       ar\ || /br             b\    /br
-         *          \||/                  \  /
-         *           pr                    pr
-         */
-
-        var a0 = a - a % 3;
-        ar = a0 + (a + 2) % 3;
-
-        if (b === -1) {
-          // convex hull edge
-          if (i === 0) break;
-          a = EDGE_STACK[--i];
-          continue;
-        }
-
-        var b0 = b - b % 3;
-        var al = a0 + (a + 1) % 3;
-        var bl = b0 + (b + 2) % 3;
-        var p0 = triangles[ar];
-        var pr = triangles[a];
-        var pl = triangles[al];
-        var p1 = triangles[bl];
-        var illegal = inCircle(coords[2 * p0], coords[2 * p0 + 1], coords[2 * pr], coords[2 * pr + 1], coords[2 * pl], coords[2 * pl + 1], coords[2 * p1], coords[2 * p1 + 1]);
-
-        if (illegal) {
-          triangles[a] = p1;
-          triangles[b] = p0;
-          var hbl = halfedges[bl]; // edge swapped on the other side of the hull (rare); fix the halfedge reference
-
-          if (hbl === -1) {
-            var e = this._hullStart;
-
-            do {
-              if (this._hullTri[e] === bl) {
-                this._hullTri[e] = a;
-                break;
-              }
-
-              e = this._hullPrev[e];
-            } while (e !== this._hullStart);
-          }
-
-          this._link(a, hbl);
-
-          this._link(b, halfedges[ar]);
-
-          this._link(ar, bl);
-
-          var br = b0 + (b + 1) % 3; // don't worry about hitting the cap: it can only happen on extremely degenerate input
-
-          if (i < EDGE_STACK.length) {
-            EDGE_STACK[i++] = br;
-          }
-        } else {
-          if (i === 0) break;
-          a = EDGE_STACK[--i];
-        }
-      }
-
-      return ar;
-    }
-  }, {
-    key: "_link",
-    value: function _link(a, b) {
-      this._halfedges[a] = b;
-      if (b !== -1) this._halfedges[b] = a;
-    } // add a new triangle given vertex indices and adjacent half-edge ids
-
-  }, {
-    key: "_addTriangle",
-    value: function _addTriangle(i0, i1, i2, a, b, c) {
-      var t = this.trianglesLen;
-      this._triangles[t] = i0;
-      this._triangles[t + 1] = i1;
-      this._triangles[t + 2] = i2;
-
-      this._link(t, a);
-
-      this._link(t + 1, b);
-
-      this._link(t + 2, c);
-
-      this.trianglesLen += 3;
-      return t;
-    }
-  }], [{
-    key: "from",
-    value: function from(points) {
-      var getX = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultGetX;
-      var getY = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultGetY;
-      var n = points.length;
-      var coords = new Float64Array(n * 2);
-
-      for (var i = 0; i < n; i++) {
-        var p = points[i];
-        coords[2 * i] = getX(p);
-        coords[2 * i + 1] = getY(p);
-      }
-
-      return new Delaunator(coords);
-    }
-  }]);
-
-  return Delaunator;
-}(); // monotonically increases with real angle, but doesn't need expensive trigonometry
-
-
-
-
-function pseudoAngle(dx, dy) {
-  var p = dx / (Math.abs(dx) + Math.abs(dy));
-  return (dy > 0 ? 3 - p : 1 + p) / 4; // [0..1]
-}
-
-function dist(ax, ay, bx, by) {
-  var dx = ax - bx;
-  var dy = ay - by;
-  return dx * dx + dy * dy;
-} // return 2d orientation sign if we're confident in it through J. Shewchuk's error bound check
-
-
-function orientIfSure(px, py, rx, ry, qx, qy) {
-  var l = (ry - py) * (qx - px);
-  var r = (rx - px) * (qy - py);
-  return Math.abs(l - r) >= 3.3306690738754716e-16 * Math.abs(l + r) ? l - r : 0;
-} // a more robust orientation test that's stable in a given triangle (to fix robustness issues)
-
-
-function orient(rx, ry, qx, qy, px, py) {
-  var sign = orientIfSure(px, py, rx, ry, qx, qy) || orientIfSure(rx, ry, qx, qy, px, py) || orientIfSure(qx, qy, px, py, rx, ry);
-  return sign < 0;
-}
-
-function inCircle(ax, ay, bx, by, cx, cy, px, py) {
-  var dx = ax - px;
-  var dy = ay - py;
-  var ex = bx - px;
-  var ey = by - py;
-  var fx = cx - px;
-  var fy = cy - py;
-  var ap = dx * dx + dy * dy;
-  var bp = ex * ex + ey * ey;
-  var cp = fx * fx + fy * fy;
-  return dx * (ey * cp - bp * fy) - dy * (ex * cp - bp * fx) + ap * (ex * fy - ey * fx) < 0;
-}
-
-function circumradius(ax, ay, bx, by, cx, cy) {
-  var dx = bx - ax;
-  var dy = by - ay;
-  var ex = cx - ax;
-  var ey = cy - ay;
-  var bl = dx * dx + dy * dy;
-  var cl = ex * ex + ey * ey;
-  var d = 0.5 / (dx * ey - dy * ex);
-  var x = (ey * bl - dy * cl) * d;
-  var y = (dx * cl - ex * bl) * d;
-  return x * x + y * y;
-}
-
-function circumcenter(ax, ay, bx, by, cx, cy) {
-  var dx = bx - ax;
-  var dy = by - ay;
-  var ex = cx - ax;
-  var ey = cy - ay;
-  var bl = dx * dx + dy * dy;
-  var cl = ex * ex + ey * ey;
-  var d = 0.5 / (dx * ey - dy * ex);
-  var x = ax + (ey * bl - dy * cl) * d;
-  var y = ay + (dx * cl - ex * bl) * d;
-  return {
-    x: x,
-    y: y
-  };
-}
-
-function quicksort(ids, dists, left, right) {
-  if (right - left <= 20) {
-    for (var i = left + 1; i <= right; i++) {
-      var temp = ids[i];
-      var tempDist = dists[temp];
-      var j = i - 1;
-
-      while (j >= left && dists[ids[j]] > tempDist) {
-        ids[j + 1] = ids[j--];
-      }
-
-      ids[j + 1] = temp;
-    }
-  } else {
-    var median = left + right >> 1;
-
-    var _i10 = left + 1;
-
-    var _j2 = right;
-    swap(ids, median, _i10);
-    if (dists[ids[left]] > dists[ids[right]]) swap(ids, left, right);
-    if (dists[ids[_i10]] > dists[ids[right]]) swap(ids, _i10, right);
-    if (dists[ids[left]] > dists[ids[_i10]]) swap(ids, left, _i10);
-    var _temp = ids[_i10];
-    var _tempDist = dists[_temp];
-
-    while (true) {
-      do {
-        _i10++;
-      } while (dists[ids[_i10]] < _tempDist);
-
-      do {
-        _j2--;
-      } while (dists[ids[_j2]] > _tempDist);
-
-      if (_j2 < _i10) break;
-      swap(ids, _i10, _j2);
-    }
-
-    ids[left + 1] = ids[_j2];
-    ids[_j2] = _temp;
-
-    if (right - _i10 + 1 >= _j2 - left) {
-      quicksort(ids, dists, _i10, right);
-      quicksort(ids, dists, left, _j2 - 1);
-    } else {
-      quicksort(ids, dists, left, _j2 - 1);
-      quicksort(ids, dists, _i10, right);
-    }
-  }
-}
-
-function swap(arr, i, j) {
-  var tmp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = tmp;
-}
-
-function defaultGetX(p) {
-  return p[0];
-}
-
-function defaultGetY(p) {
-  return p[1];
-}
-;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/path.js
-
-
-var epsilon = 1e-6;
-
-var Path = /*#__PURE__*/function () {
-  function Path() {
-    (0,classCallCheck/* default */.Z)(this, Path);
-
-    this._x0 = this._y0 = // start of current subpath
-    this._x1 = this._y1 = null; // end of current subpath
-
-    this._ = "";
-  }
-
-  (0,createClass/* default */.Z)(Path, [{
-    key: "moveTo",
-    value: function moveTo(x, y) {
-      this._ += "M".concat(this._x0 = this._x1 = +x, ",").concat(this._y0 = this._y1 = +y);
-    }
-  }, {
-    key: "closePath",
-    value: function closePath() {
-      if (this._x1 !== null) {
-        this._x1 = this._x0, this._y1 = this._y0;
-        this._ += "Z";
-      }
-    }
-  }, {
-    key: "lineTo",
-    value: function lineTo(x, y) {
-      this._ += "L".concat(this._x1 = +x, ",").concat(this._y1 = +y);
-    }
-  }, {
-    key: "arc",
-    value: function arc(x, y, r) {
-      x = +x, y = +y, r = +r;
-      var x0 = x + r;
-      var y0 = y;
-      if (r < 0) throw new Error("negative radius");
-      if (this._x1 === null) this._ += "M".concat(x0, ",").concat(y0);else if (Math.abs(this._x1 - x0) > epsilon || Math.abs(this._y1 - y0) > epsilon) this._ += "L" + x0 + "," + y0;
-      if (!r) return;
-      this._ += "A".concat(r, ",").concat(r, ",0,1,1,").concat(x - r, ",").concat(y, "A").concat(r, ",").concat(r, ",0,1,1,").concat(this._x1 = x0, ",").concat(this._y1 = y0);
-    }
-  }, {
-    key: "rect",
-    value: function rect(x, y, w, h) {
-      this._ += "M".concat(this._x0 = this._x1 = +x, ",").concat(this._y0 = this._y1 = +y, "h").concat(+w, "v").concat(+h, "h").concat(-w, "Z");
-    }
-  }, {
-    key: "value",
-    value: function value() {
-      return this._ || null;
-    }
-  }]);
-
-  return Path;
-}();
-
-
-;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/polygon.js
-
-
-
-var Polygon = /*#__PURE__*/function () {
-  function Polygon() {
-    (0,classCallCheck/* default */.Z)(this, Polygon);
-
-    this._ = [];
-  }
-
-  (0,createClass/* default */.Z)(Polygon, [{
-    key: "moveTo",
-    value: function moveTo(x, y) {
-      this._.push([x, y]);
-    }
-  }, {
-    key: "closePath",
-    value: function closePath() {
-      this._.push(this._[0].slice());
-    }
-  }, {
-    key: "lineTo",
-    value: function lineTo(x, y) {
-      this._.push([x, y]);
-    }
-  }, {
-    key: "value",
-    value: function value() {
-      return this._.length ? this._ : null;
-    }
-  }]);
-
-  return Polygon;
-}();
-
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 1 modules
-var slicedToArray = __webpack_require__(28481);
-;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/voronoi.js
-
-
-
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-
-
-var Voronoi = /*#__PURE__*/function () {
-  function Voronoi(delaunay) {
-    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [0, 0, 960, 500],
-        _ref2 = (0,slicedToArray/* default */.Z)(_ref, 4),
-        xmin = _ref2[0],
-        ymin = _ref2[1],
-        xmax = _ref2[2],
-        ymax = _ref2[3];
-
-    (0,classCallCheck/* default */.Z)(this, Voronoi);
-
-    if (!((xmax = +xmax) >= (xmin = +xmin)) || !((ymax = +ymax) >= (ymin = +ymin))) throw new Error("invalid bounds");
-    this.delaunay = delaunay;
-    this._circumcenters = new Float64Array(delaunay.points.length * 2);
-    this.vectors = new Float64Array(delaunay.points.length * 2);
-    this.xmax = xmax, this.xmin = xmin;
-    this.ymax = ymax, this.ymin = ymin;
-
-    this._init();
-  }
-
-  (0,createClass/* default */.Z)(Voronoi, [{
-    key: "update",
-    value: function update() {
-      this.delaunay.update();
-
-      this._init();
-
-      return this;
-    }
-  }, {
-    key: "_init",
-    value: function _init() {
-      var _this$delaunay = this.delaunay,
-          points = _this$delaunay.points,
-          hull = _this$delaunay.hull,
-          triangles = _this$delaunay.triangles,
-          vectors = this.vectors; // Compute circumcenters.
-
-      var circumcenters = this.circumcenters = this._circumcenters.subarray(0, triangles.length / 3 * 2);
-
-      for (var i = 0, j = 0, n = triangles.length, x, y; i < n; i += 3, j += 2) {
-        var t1 = triangles[i] * 2;
-        var t2 = triangles[i + 1] * 2;
-        var t3 = triangles[i + 2] * 2;
-        var _x = points[t1];
-        var _y = points[t1 + 1];
-        var x2 = points[t2];
-        var y2 = points[t2 + 1];
-        var x3 = points[t3];
-        var y3 = points[t3 + 1];
-        var dx = x2 - _x;
-        var dy = y2 - _y;
-        var ex = x3 - _x;
-        var ey = y3 - _y;
-        var bl = dx * dx + dy * dy;
-        var cl = ex * ex + ey * ey;
-        var ab = (dx * ey - dy * ex) * 2;
-
-        if (!ab) {
-          // degenerate case (collinear diagram)
-          x = (_x + x3) / 2 - 1e8 * ey;
-          y = (_y + y3) / 2 + 1e8 * ex;
-        } else if (Math.abs(ab) < 1e-8) {
-          // almost equal points (degenerate triangle)
-          x = (_x + x3) / 2;
-          y = (_y + y3) / 2;
-        } else {
-          var d = 1 / ab;
-          x = _x + (ey * bl - dy * cl) * d;
-          y = _y + (dx * cl - ex * bl) * d;
-        }
-
-        circumcenters[j] = x;
-        circumcenters[j + 1] = y;
-      } // Compute exterior cell rays.
-
-
-      var h = hull[hull.length - 1];
-      var p0,
-          p1 = h * 4;
-      var x0,
-          x1 = points[2 * h];
-      var y0,
-          y1 = points[2 * h + 1];
-      vectors.fill(0);
-
-      for (var _i = 0; _i < hull.length; ++_i) {
-        h = hull[_i];
-        p0 = p1, x0 = x1, y0 = y1;
-        p1 = h * 4, x1 = points[2 * h], y1 = points[2 * h + 1];
-        vectors[p0 + 2] = vectors[p1] = y0 - y1;
-        vectors[p0 + 3] = vectors[p1 + 1] = x1 - x0;
-      }
-    }
-  }, {
-    key: "render",
-    value: function render(context) {
-      var buffer = context == null ? context = new Path() : undefined;
-      var _this$delaunay2 = this.delaunay,
-          halfedges = _this$delaunay2.halfedges,
-          inedges = _this$delaunay2.inedges,
-          hull = _this$delaunay2.hull,
-          circumcenters = this.circumcenters,
-          vectors = this.vectors;
-      if (hull.length <= 1) return null;
-
-      for (var i = 0, n = halfedges.length; i < n; ++i) {
-        var j = halfedges[i];
-        if (j < i) continue;
-        var ti = Math.floor(i / 3) * 2;
-        var tj = Math.floor(j / 3) * 2;
-        var xi = circumcenters[ti];
-        var yi = circumcenters[ti + 1];
-        var xj = circumcenters[tj];
-        var yj = circumcenters[tj + 1];
-
-        this._renderSegment(xi, yi, xj, yj, context);
-      }
-
-      var h0,
-          h1 = hull[hull.length - 1];
-
-      for (var _i2 = 0; _i2 < hull.length; ++_i2) {
-        h0 = h1, h1 = hull[_i2];
-        var t = Math.floor(inedges[h1] / 3) * 2;
-        var x = circumcenters[t];
-        var y = circumcenters[t + 1];
-        var v = h0 * 4;
-
-        var p = this._project(x, y, vectors[v + 2], vectors[v + 3]);
-
-        if (p) this._renderSegment(x, y, p[0], p[1], context);
-      }
-
-      return buffer && buffer.value();
-    }
-  }, {
-    key: "renderBounds",
-    value: function renderBounds(context) {
-      var buffer = context == null ? context = new Path() : undefined;
-      context.rect(this.xmin, this.ymin, this.xmax - this.xmin, this.ymax - this.ymin);
-      return buffer && buffer.value();
-    }
-  }, {
-    key: "renderCell",
-    value: function renderCell(i, context) {
-      var buffer = context == null ? context = new Path() : undefined;
-
-      var points = this._clip(i);
-
-      if (points === null || !points.length) return;
-      context.moveTo(points[0], points[1]);
-      var n = points.length;
-
-      while (points[0] === points[n - 2] && points[1] === points[n - 1] && n > 1) {
-        n -= 2;
-      }
-
-      for (var _i3 = 2; _i3 < n; _i3 += 2) {
-        if (points[_i3] !== points[_i3 - 2] || points[_i3 + 1] !== points[_i3 - 1]) context.lineTo(points[_i3], points[_i3 + 1]);
-      }
-
-      context.closePath();
-      return buffer && buffer.value();
-    }
-  }, {
-    key: "cellPolygons",
-    value: /*#__PURE__*/regenerator_default().mark(function cellPolygons() {
-      var points, i, n, cell;
-      return regenerator_default().wrap(function cellPolygons$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              points = this.delaunay.points;
-              i = 0, n = points.length / 2;
-
-            case 2:
-              if (!(i < n)) {
-                _context.next = 11;
-                break;
-              }
-
-              cell = this.cellPolygon(i);
-
-              if (!cell) {
-                _context.next = 8;
-                break;
-              }
-
-              cell.index = i;
-              _context.next = 8;
-              return cell;
-
-            case 8:
-              ++i;
-              _context.next = 2;
-              break;
-
-            case 11:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, cellPolygons, this);
-    })
-  }, {
-    key: "cellPolygon",
-    value: function cellPolygon(i) {
-      var polygon = new Polygon();
-      this.renderCell(i, polygon);
-      return polygon.value();
-    }
-  }, {
-    key: "_renderSegment",
-    value: function _renderSegment(x0, y0, x1, y1, context) {
-      var S;
-
-      var c0 = this._regioncode(x0, y0);
-
-      var c1 = this._regioncode(x1, y1);
-
-      if (c0 === 0 && c1 === 0) {
-        context.moveTo(x0, y0);
-        context.lineTo(x1, y1);
-      } else if (S = this._clipSegment(x0, y0, x1, y1, c0, c1)) {
-        context.moveTo(S[0], S[1]);
-        context.lineTo(S[2], S[3]);
-      }
-    }
-  }, {
-    key: "contains",
-    value: function contains(i, x, y) {
-      if ((x = +x, x !== x) || (y = +y, y !== y)) return false;
-      return this.delaunay._step(i, x, y) === i;
-    }
-  }, {
-    key: "neighbors",
-    value: /*#__PURE__*/regenerator_default().mark(function neighbors(i) {
-      var ci, _iterator, _step, j, cj, ai, li, aj, lj;
-
-      return regenerator_default().wrap(function neighbors$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              ci = this._clip(i);
-
-              if (!ci) {
-                _context2.next = 33;
-                break;
-              }
-
-              _iterator = _createForOfIteratorHelper(this.delaunay.neighbors(i));
-              _context2.prev = 3;
-
-              _iterator.s();
-
-            case 5:
-              if ((_step = _iterator.n()).done) {
-                _context2.next = 25;
-                break;
-              }
-
-              j = _step.value;
-              cj = this._clip(j); // find the common edge
-
-              if (!cj) {
-                _context2.next = 23;
-                break;
-              }
-
-              ai = 0, li = ci.length;
-
-            case 10:
-              if (!(ai < li)) {
-                _context2.next = 23;
-                break;
-              }
-
-              aj = 0, lj = cj.length;
-
-            case 12:
-              if (!(aj < lj)) {
-                _context2.next = 20;
-                break;
-              }
-
-              if (!(ci[ai] == cj[aj] && ci[ai + 1] == cj[aj + 1] && ci[(ai + 2) % li] == cj[(aj + lj - 2) % lj] && ci[(ai + 3) % li] == cj[(aj + lj - 1) % lj])) {
-                _context2.next = 17;
-                break;
-              }
-
-              _context2.next = 16;
-              return j;
-
-            case 16:
-              return _context2.abrupt("break", 23);
-
-            case 17:
-              aj += 2;
-              _context2.next = 12;
-              break;
-
-            case 20:
-              ai += 2;
-              _context2.next = 10;
-              break;
-
-            case 23:
-              _context2.next = 5;
-              break;
-
-            case 25:
-              _context2.next = 30;
-              break;
-
-            case 27:
-              _context2.prev = 27;
-              _context2.t0 = _context2["catch"](3);
-
-              _iterator.e(_context2.t0);
-
-            case 30:
-              _context2.prev = 30;
-
-              _iterator.f();
-
-              return _context2.finish(30);
-
-            case 33:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, neighbors, this, [[3, 27, 30, 33]]);
-    })
-  }, {
-    key: "_cell",
-    value: function _cell(i) {
-      var circumcenters = this.circumcenters,
-          _this$delaunay3 = this.delaunay,
-          inedges = _this$delaunay3.inedges,
-          halfedges = _this$delaunay3.halfedges,
-          triangles = _this$delaunay3.triangles;
-      var e0 = inedges[i];
-      if (e0 === -1) return null; // coincident point
-
-      var points = [];
-      var e = e0;
-
-      do {
-        var t = Math.floor(e / 3);
-        points.push(circumcenters[t * 2], circumcenters[t * 2 + 1]);
-        e = e % 3 === 2 ? e - 2 : e + 1;
-        if (triangles[e] !== i) break; // bad triangulation
-
-        e = halfedges[e];
-      } while (e !== e0 && e !== -1);
-
-      return points;
-    }
-  }, {
-    key: "_clip",
-    value: function _clip(i) {
-      // degenerate case (1 valid point: return the box)
-      if (i === 0 && this.delaunay.hull.length === 1) {
-        return [this.xmax, this.ymin, this.xmax, this.ymax, this.xmin, this.ymax, this.xmin, this.ymin];
-      }
-
-      var points = this._cell(i);
-
-      if (points === null) return null;
-      var V = this.vectors;
-      var v = i * 4;
-      return V[v] || V[v + 1] ? this._clipInfinite(i, points, V[v], V[v + 1], V[v + 2], V[v + 3]) : this._clipFinite(i, points);
-    }
-  }, {
-    key: "_clipFinite",
-    value: function _clipFinite(i, points) {
-      var n = points.length;
-      var P = null;
-      var x0,
-          y0,
-          x1 = points[n - 2],
-          y1 = points[n - 1];
-
-      var c0,
-          c1 = this._regioncode(x1, y1);
-
-      var e0, e1;
-
-      for (var j = 0; j < n; j += 2) {
-        x0 = x1, y0 = y1, x1 = points[j], y1 = points[j + 1];
-        c0 = c1, c1 = this._regioncode(x1, y1);
-
-        if (c0 === 0 && c1 === 0) {
-          e0 = e1, e1 = 0;
-          if (P) P.push(x1, y1);else P = [x1, y1];
-        } else {
-          var S = void 0,
-              sx0 = void 0,
-              sy0 = void 0,
-              sx1 = void 0,
-              sy1 = void 0;
-
-          if (c0 === 0) {
-            if ((S = this._clipSegment(x0, y0, x1, y1, c0, c1)) === null) continue;
-            var _S = S;
-
-            var _S2 = (0,slicedToArray/* default */.Z)(_S, 4);
-
-            sx0 = _S2[0];
-            sy0 = _S2[1];
-            sx1 = _S2[2];
-            sy1 = _S2[3];
-          } else {
-            if ((S = this._clipSegment(x1, y1, x0, y0, c1, c0)) === null) continue;
-            var _S3 = S;
-
-            var _S4 = (0,slicedToArray/* default */.Z)(_S3, 4);
-
-            sx1 = _S4[0];
-            sy1 = _S4[1];
-            sx0 = _S4[2];
-            sy0 = _S4[3];
-            e0 = e1, e1 = this._edgecode(sx0, sy0);
-            if (e0 && e1) this._edge(i, e0, e1, P, P.length);
-            if (P) P.push(sx0, sy0);else P = [sx0, sy0];
-          }
-
-          e0 = e1, e1 = this._edgecode(sx1, sy1);
-          if (e0 && e1) this._edge(i, e0, e1, P, P.length);
-          if (P) P.push(sx1, sy1);else P = [sx1, sy1];
-        }
-      }
-
-      if (P) {
-        e0 = e1, e1 = this._edgecode(P[0], P[1]);
-        if (e0 && e1) this._edge(i, e0, e1, P, P.length);
-      } else if (this.contains(i, (this.xmin + this.xmax) / 2, (this.ymin + this.ymax) / 2)) {
-        return [this.xmax, this.ymin, this.xmax, this.ymax, this.xmin, this.ymax, this.xmin, this.ymin];
-      }
-
-      return P;
-    }
-  }, {
-    key: "_clipSegment",
-    value: function _clipSegment(x0, y0, x1, y1, c0, c1) {
-      while (true) {
-        if (c0 === 0 && c1 === 0) return [x0, y0, x1, y1];
-        if (c0 & c1) return null;
-        var x = void 0,
-            y = void 0,
-            c = c0 || c1;
-        if (c & 8) x = x0 + (x1 - x0) * (this.ymax - y0) / (y1 - y0), y = this.ymax;else if (c & 4) x = x0 + (x1 - x0) * (this.ymin - y0) / (y1 - y0), y = this.ymin;else if (c & 2) y = y0 + (y1 - y0) * (this.xmax - x0) / (x1 - x0), x = this.xmax;else y = y0 + (y1 - y0) * (this.xmin - x0) / (x1 - x0), x = this.xmin;
-        if (c0) x0 = x, y0 = y, c0 = this._regioncode(x0, y0);else x1 = x, y1 = y, c1 = this._regioncode(x1, y1);
-      }
-    }
-  }, {
-    key: "_clipInfinite",
-    value: function _clipInfinite(i, points, vx0, vy0, vxn, vyn) {
-      var P = Array.from(points),
-          p;
-      if (p = this._project(P[0], P[1], vx0, vy0)) P.unshift(p[0], p[1]);
-      if (p = this._project(P[P.length - 2], P[P.length - 1], vxn, vyn)) P.push(p[0], p[1]);
-
-      if (P = this._clipFinite(i, P)) {
-        for (var j = 0, n = P.length, c0, c1 = this._edgecode(P[n - 2], P[n - 1]); j < n; j += 2) {
-          c0 = c1, c1 = this._edgecode(P[j], P[j + 1]);
-          if (c0 && c1) j = this._edge(i, c0, c1, P, j), n = P.length;
-        }
-      } else if (this.contains(i, (this.xmin + this.xmax) / 2, (this.ymin + this.ymax) / 2)) {
-        P = [this.xmin, this.ymin, this.xmax, this.ymin, this.xmax, this.ymax, this.xmin, this.ymax];
-      }
-
-      return P;
-    }
-  }, {
-    key: "_edge",
-    value: function _edge(i, e0, e1, P, j) {
-      while (e0 !== e1) {
-        var x = void 0,
-            y = void 0;
-
-        switch (e0) {
-          case 5:
-            e0 = 4;
-            continue;
-          // top-left
-
-          case 4:
-            e0 = 6, x = this.xmax, y = this.ymin;
-            break;
-          // top
-
-          case 6:
-            e0 = 2;
-            continue;
-          // top-right
-
-          case 2:
-            e0 = 10, x = this.xmax, y = this.ymax;
-            break;
-          // right
-
-          case 10:
-            e0 = 8;
-            continue;
-          // bottom-right
-
-          case 8:
-            e0 = 9, x = this.xmin, y = this.ymax;
-            break;
-          // bottom
-
-          case 9:
-            e0 = 1;
-            continue;
-          // bottom-left
-
-          case 1:
-            e0 = 5, x = this.xmin, y = this.ymin;
-            break;
-          // left
-        }
-
-        if ((P[j] !== x || P[j + 1] !== y) && this.contains(i, x, y)) {
-          P.splice(j, 0, x, y), j += 2;
-        }
-      }
-
-      if (P.length > 4) {
-        for (var _i4 = 0; _i4 < P.length; _i4 += 2) {
-          var _j = (_i4 + 2) % P.length,
-              k = (_i4 + 4) % P.length;
-
-          if (P[_i4] === P[_j] && P[_j] === P[k] || P[_i4 + 1] === P[_j + 1] && P[_j + 1] === P[k + 1]) P.splice(_j, 2), _i4 -= 2;
-        }
-      }
-
-      return j;
-    }
-  }, {
-    key: "_project",
-    value: function _project(x0, y0, vx, vy) {
-      var t = Infinity,
-          c,
-          x,
-          y;
-
-      if (vy < 0) {
-        // top
-        if (y0 <= this.ymin) return null;
-        if ((c = (this.ymin - y0) / vy) < t) y = this.ymin, x = x0 + (t = c) * vx;
-      } else if (vy > 0) {
-        // bottom
-        if (y0 >= this.ymax) return null;
-        if ((c = (this.ymax - y0) / vy) < t) y = this.ymax, x = x0 + (t = c) * vx;
-      }
-
-      if (vx > 0) {
-        // right
-        if (x0 >= this.xmax) return null;
-        if ((c = (this.xmax - x0) / vx) < t) x = this.xmax, y = y0 + (t = c) * vy;
-      } else if (vx < 0) {
-        // left
-        if (x0 <= this.xmin) return null;
-        if ((c = (this.xmin - x0) / vx) < t) x = this.xmin, y = y0 + (t = c) * vy;
-      }
-
-      return [x, y];
-    }
-  }, {
-    key: "_edgecode",
-    value: function _edgecode(x, y) {
-      return (x === this.xmin ? 1 : x === this.xmax ? 2 : 0) | (y === this.ymin ? 4 : y === this.ymax ? 8 : 0);
-    }
-  }, {
-    key: "_regioncode",
-    value: function _regioncode(x, y) {
-      return (x < this.xmin ? 1 : x > this.xmax ? 2 : 0) | (y < this.ymin ? 4 : y > this.ymax ? 8 : 0);
-    }
-  }]);
-
-  return Voronoi;
-}();
-
-
-;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/delaunay.js
-
-
-
-var _marked = /*#__PURE__*/regenerator_default().mark(flatIterable);
-
-function delaunay_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = delaunay_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function delaunay_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return delaunay_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return delaunay_arrayLikeToArray(o, minLen); }
-
-function delaunay_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-
-
-
-
-var tau = 2 * Math.PI,
-    pow = Math.pow;
-
-function pointX(p) {
-  return p[0];
-}
-
-function pointY(p) {
-  return p[1];
-} // A triangulation is collinear if all its triangles have a non-null area
-
-
-function collinear(d) {
-  var triangles = d.triangles,
-      coords = d.coords;
-
-  for (var i = 0; i < triangles.length; i += 3) {
-    var a = 2 * triangles[i],
-        b = 2 * triangles[i + 1],
-        c = 2 * triangles[i + 2],
-        cross = (coords[c] - coords[a]) * (coords[b + 1] - coords[a + 1]) - (coords[b] - coords[a]) * (coords[c + 1] - coords[a + 1]);
-    if (cross > 1e-10) return false;
-  }
-
-  return true;
-}
-
-function jitter(x, y, r) {
-  return [x + Math.sin(x + y) * r, y + Math.cos(x - y) * r];
-}
-
-var delaunay_Delaunay = /*#__PURE__*/function () {
-  function Delaunay(points) {
-    (0,classCallCheck/* default */.Z)(this, Delaunay);
-
-    this._delaunator = new Delaunator(points);
-    this.inedges = new Int32Array(points.length / 2);
-    this._hullIndex = new Int32Array(points.length / 2);
-    this.points = this._delaunator.coords;
-
-    this._init();
-  }
-
-  (0,createClass/* default */.Z)(Delaunay, [{
-    key: "update",
-    value: function update() {
-      this._delaunator.update();
-
-      this._init();
-
-      return this;
-    }
-  }, {
-    key: "_init",
-    value: function _init() {
-      var d = this._delaunator,
-          points = this.points; // check for collinear
-
-      if (d.hull && d.hull.length > 2 && collinear(d)) {
-        this.collinear = Int32Array.from({
-          length: points.length / 2
-        }, function (_, i) {
-          return i;
-        }).sort(function (i, j) {
-          return points[2 * i] - points[2 * j] || points[2 * i + 1] - points[2 * j + 1];
-        }); // for exact neighbors
-
-        var e = this.collinear[0],
-            f = this.collinear[this.collinear.length - 1],
-            bounds = [points[2 * e], points[2 * e + 1], points[2 * f], points[2 * f + 1]],
-            r = 1e-8 * Math.hypot(bounds[3] - bounds[1], bounds[2] - bounds[0]);
-
-        for (var i = 0, n = points.length / 2; i < n; ++i) {
-          var p = jitter(points[2 * i], points[2 * i + 1], r);
-          points[2 * i] = p[0];
-          points[2 * i + 1] = p[1];
-        }
-
-        this._delaunator = new Delaunator(points);
-      } else {
-        delete this.collinear;
-      }
-
-      var halfedges = this.halfedges = this._delaunator.halfedges;
-      var hull = this.hull = this._delaunator.hull;
-      var triangles = this.triangles = this._delaunator.triangles;
-      var inedges = this.inedges.fill(-1);
-
-      var hullIndex = this._hullIndex.fill(-1); // Compute an index from each point to an (arbitrary) incoming halfedge
-      // Used to give the first neighbor of each point; for this reason,
-      // on the hull we give priority to exterior halfedges
-
-
-      for (var _e = 0, _n = halfedges.length; _e < _n; ++_e) {
-        var _p = triangles[_e % 3 === 2 ? _e - 2 : _e + 1];
-        if (halfedges[_e] === -1 || inedges[_p] === -1) inedges[_p] = _e;
-      }
-
-      for (var _i = 0, _n2 = hull.length; _i < _n2; ++_i) {
-        hullIndex[hull[_i]] = _i;
-      } // degenerate case: 1 or 2 (distinct) points
-
-
-      if (hull.length <= 2 && hull.length > 0) {
-        this.triangles = new Int32Array(3).fill(-1);
-        this.halfedges = new Int32Array(3).fill(-1);
-        this.triangles[0] = hull[0];
-        this.triangles[1] = hull[1];
-        this.triangles[2] = hull[1];
-        inedges[hull[0]] = 1;
-        if (hull.length === 2) inedges[hull[1]] = 0;
-      }
-    }
-  }, {
-    key: "voronoi",
-    value: function voronoi(bounds) {
-      return new Voronoi(this, bounds);
-    }
-  }, {
-    key: "neighbors",
-    value: /*#__PURE__*/regenerator_default().mark(function neighbors(i) {
-      var inedges, hull, _hullIndex, halfedges, triangles, collinear, l, e0, e, p0, p;
-
-      return regenerator_default().wrap(function neighbors$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              inedges = this.inedges, hull = this.hull, _hullIndex = this._hullIndex, halfedges = this.halfedges, triangles = this.triangles, collinear = this.collinear; // degenerate case with several collinear points
-
-              if (!collinear) {
-                _context.next = 10;
-                break;
-              }
-
-              l = collinear.indexOf(i);
-
-              if (!(l > 0)) {
-                _context.next = 6;
-                break;
-              }
-
-              _context.next = 6;
-              return collinear[l - 1];
-
-            case 6:
-              if (!(l < collinear.length - 1)) {
-                _context.next = 9;
-                break;
-              }
-
-              _context.next = 9;
-              return collinear[l + 1];
-
-            case 9:
-              return _context.abrupt("return");
-
-            case 10:
-              e0 = inedges[i];
-
-              if (!(e0 === -1)) {
-                _context.next = 13;
-                break;
-              }
-
-              return _context.abrupt("return");
-
-            case 13:
-              // coincident point
-              e = e0, p0 = -1;
-
-            case 14:
-              _context.next = 16;
-              return p0 = triangles[e];
-
-            case 16:
-              e = e % 3 === 2 ? e - 2 : e + 1;
-
-              if (!(triangles[e] !== i)) {
-                _context.next = 19;
-                break;
-              }
-
-              return _context.abrupt("return");
-
-            case 19:
-              // bad triangulation
-              e = halfedges[e];
-
-              if (!(e === -1)) {
-                _context.next = 26;
-                break;
-              }
-
-              p = hull[(_hullIndex[i] + 1) % hull.length];
-
-              if (!(p !== p0)) {
-                _context.next = 25;
-                break;
-              }
-
-              _context.next = 25;
-              return p;
-
-            case 25:
-              return _context.abrupt("return");
-
-            case 26:
-              if (e !== e0) {
-                _context.next = 14;
-                break;
-              }
-
-            case 27:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, neighbors, this);
-    })
-  }, {
-    key: "find",
-    value: function find(x, y) {
-      var i = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-      if ((x = +x, x !== x) || (y = +y, y !== y)) return -1;
-      var i0 = i;
-      var c;
-
-      while ((c = this._step(i, x, y)) >= 0 && c !== i && c !== i0) {
-        i = c;
-      }
-
-      return c;
-    }
-  }, {
-    key: "_step",
-    value: function _step(i, x, y) {
-      var inedges = this.inedges,
-          hull = this.hull,
-          _hullIndex = this._hullIndex,
-          halfedges = this.halfedges,
-          triangles = this.triangles,
-          points = this.points;
-      if (inedges[i] === -1 || !points.length) return (i + 1) % (points.length >> 1);
-      var c = i;
-      var dc = pow(x - points[i * 2], 2) + pow(y - points[i * 2 + 1], 2);
-      var e0 = inedges[i];
-      var e = e0;
-
-      do {
-        var t = triangles[e];
-        var dt = pow(x - points[t * 2], 2) + pow(y - points[t * 2 + 1], 2);
-        if (dt < dc) dc = dt, c = t;
-        e = e % 3 === 2 ? e - 2 : e + 1;
-        if (triangles[e] !== i) break; // bad triangulation
-
-        e = halfedges[e];
-
-        if (e === -1) {
-          e = hull[(_hullIndex[i] + 1) % hull.length];
-
-          if (e !== t) {
-            if (pow(x - points[e * 2], 2) + pow(y - points[e * 2 + 1], 2) < dc) return e;
-          }
-
-          break;
-        }
-      } while (e !== e0);
-
-      return c;
-    }
-  }, {
-    key: "render",
-    value: function render(context) {
-      var buffer = context == null ? context = new Path() : undefined;
-      var points = this.points,
-          halfedges = this.halfedges,
-          triangles = this.triangles;
-
-      for (var i = 0, n = halfedges.length; i < n; ++i) {
-        var j = halfedges[i];
-        if (j < i) continue;
-        var ti = triangles[i] * 2;
-        var tj = triangles[j] * 2;
-        context.moveTo(points[ti], points[ti + 1]);
-        context.lineTo(points[tj], points[tj + 1]);
-      }
-
-      this.renderHull(context);
-      return buffer && buffer.value();
-    }
-  }, {
-    key: "renderPoints",
-    value: function renderPoints(context) {
-      var r = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
-      var buffer = context == null ? context = new Path() : undefined;
-      var points = this.points;
-
-      for (var i = 0, n = points.length; i < n; i += 2) {
-        var x = points[i],
-            y = points[i + 1];
-        context.moveTo(x + r, y);
-        context.arc(x, y, r, 0, tau);
-      }
-
-      return buffer && buffer.value();
-    }
-  }, {
-    key: "renderHull",
-    value: function renderHull(context) {
-      var buffer = context == null ? context = new Path() : undefined;
-      var hull = this.hull,
-          points = this.points;
-      var h = hull[0] * 2,
-          n = hull.length;
-      context.moveTo(points[h], points[h + 1]);
-
-      for (var i = 1; i < n; ++i) {
-        var _h = 2 * hull[i];
-
-        context.lineTo(points[_h], points[_h + 1]);
-      }
-
-      context.closePath();
-      return buffer && buffer.value();
-    }
-  }, {
-    key: "hullPolygon",
-    value: function hullPolygon() {
-      var polygon = new Polygon();
-      this.renderHull(polygon);
-      return polygon.value();
-    }
-  }, {
-    key: "renderTriangle",
-    value: function renderTriangle(i, context) {
-      var buffer = context == null ? context = new Path() : undefined;
-      var points = this.points,
-          triangles = this.triangles;
-      var t0 = triangles[i *= 3] * 2;
-      var t1 = triangles[i + 1] * 2;
-      var t2 = triangles[i + 2] * 2;
-      context.moveTo(points[t0], points[t0 + 1]);
-      context.lineTo(points[t1], points[t1 + 1]);
-      context.lineTo(points[t2], points[t2 + 1]);
-      context.closePath();
-      return buffer && buffer.value();
-    }
-  }, {
-    key: "trianglePolygons",
-    value: /*#__PURE__*/regenerator_default().mark(function trianglePolygons() {
-      var triangles, i, n;
-      return regenerator_default().wrap(function trianglePolygons$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              triangles = this.triangles;
-              i = 0, n = triangles.length / 3;
-
-            case 2:
-              if (!(i < n)) {
-                _context2.next = 8;
-                break;
-              }
-
-              _context2.next = 5;
-              return this.trianglePolygon(i);
-
-            case 5:
-              ++i;
-              _context2.next = 2;
-              break;
-
-            case 8:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, trianglePolygons, this);
-    })
-  }, {
-    key: "trianglePolygon",
-    value: function trianglePolygon(i) {
-      var polygon = new Polygon();
-      this.renderTriangle(i, polygon);
-      return polygon.value();
-    }
-  }], [{
-    key: "from",
-    value: function from(points) {
-      var fx = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : pointX;
-      var fy = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : pointY;
-      var that = arguments.length > 3 ? arguments[3] : undefined;
-      return new Delaunay("length" in points ? flatArray(points, fx, fy, that) : Float64Array.from(flatIterable(points, fx, fy, that)));
-    }
-  }]);
-
-  return Delaunay;
-}();
-
-
-
-function flatArray(points, fx, fy, that) {
-  var n = points.length;
-  var array = new Float64Array(n * 2);
-
-  for (var i = 0; i < n; ++i) {
-    var p = points[i];
-    array[i * 2] = fx.call(that, p, i, points);
-    array[i * 2 + 1] = fy.call(that, p, i, points);
-  }
-
-  return array;
-}
-
-function flatIterable(points, fx, fy, that) {
-  var i, _iterator, _step2, p;
-
-  return regenerator_default().wrap(function flatIterable$(_context3) {
-    while (1) {
-      switch (_context3.prev = _context3.next) {
-        case 0:
-          i = 0;
-          _iterator = delaunay_createForOfIteratorHelper(points);
-          _context3.prev = 2;
-
-          _iterator.s();
-
-        case 4:
-          if ((_step2 = _iterator.n()).done) {
-            _context3.next = 13;
-            break;
-          }
-
-          p = _step2.value;
-          _context3.next = 8;
-          return fx.call(that, p, i, points);
-
-        case 8:
-          _context3.next = 10;
-          return fy.call(that, p, i, points);
-
-        case 10:
-          ++i;
-
-        case 11:
-          _context3.next = 4;
-          break;
-
-        case 13:
-          _context3.next = 18;
-          break;
-
-        case 15:
-          _context3.prev = 15;
-          _context3.t0 = _context3["catch"](2);
-
-          _iterator.e(_context3.t0);
-
-        case 18:
-          _context3.prev = 18;
-
-          _iterator.f();
-
-          return _context3.finish(18);
-
-        case 21:
-        case "end":
-          return _context3.stop();
-      }
-    }
-  }, _marked, null, [[2, 15, 18, 21]]);
-}
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(85893);
-;// CONCATENATED MODULE: ./node_modules/@nivo/voronoi/dist/nivo-voronoi.es.js
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Kj": function() { return /* binding */ Mesh; },
+/* harmony export */   "r$": function() { return /* binding */ renderVoronoiCellToCanvas; },
+/* harmony export */   "qF": function() { return /* binding */ renderVoronoiToCanvas; },
+/* harmony export */   "ZR": function() { return /* binding */ useVoronoiMesh; }
+/* harmony export */ });
+/* unused harmony exports ResponsiveVoronoi, Voronoi, computeMesh, computeMeshPoints, defaultVoronoiProps, useVoronoi, useVoronoiLayerContext */
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _nivo_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67587);
+/* harmony import */ var d3_delaunay__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(75810);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(85893);
 
 
 
@@ -13993,7 +11560,7 @@ var computeMesh = function computeMesh(_ref2) {
       width = _ref2.width,
       height = _ref2.height,
       debug = _ref2.debug;
-  var delaunay = delaunay_Delaunay.from(points);
+  var delaunay = d3_delaunay__WEBPACK_IMPORTED_MODULE_3__/* .default.from */ .Z.from(points);
   var voronoi = debug ? delaunay.voronoi([0, 0, width, height]) : undefined;
   return {
     delaunay: delaunay,
@@ -14008,14 +11575,14 @@ var useVoronoiMesh = function useVoronoiMesh(_ref) {
       width = _ref.width,
       height = _ref.height,
       debug = _ref.debug;
-  var points2d = (0,react.useMemo)(function () {
+  var points2d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     return computeMeshPoints({
       points: points,
       x: x,
       y: y
     });
   }, [points, x, y]);
-  return (0,react.useMemo)(function () {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     return computeMesh({
       points: points2d,
       width: width,
@@ -14190,7 +11757,7 @@ var InnerVoronoi = function InnerVoronoi(_ref) {
   });
 };
 
-var nivo_voronoi_es_Voronoi = function Voronoi(_ref2) {
+var Voronoi = function Voronoi(_ref2) {
   var theme = _ref2.theme,
       otherProps = _objectWithoutProperties(_ref2, ["theme"]);
 
@@ -14207,7 +11774,7 @@ var ResponsiveVoronoi = function ResponsiveVoronoi(props) {
     children: function children(_ref) {
       var width = _ref.width,
           height = _ref.height;
-      return jsx(nivo_voronoi_es_Voronoi, _objectSpread2({
+      return jsx(Voronoi, _objectSpread2({
         width: width,
         height: height
       }, props));
@@ -14246,7 +11813,7 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 
-function nivo_voronoi_es_arrayLikeToArray(arr, len) {
+function _arrayLikeToArray(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
 
   for (var i = 0, arr2 = new Array(len); i < len; i++) {
@@ -14256,13 +11823,13 @@ function nivo_voronoi_es_arrayLikeToArray(arr, len) {
   return arr2;
 }
 
-function nivo_voronoi_es_unsupportedIterableToArray(o, minLen) {
+function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
-  if (typeof o === "string") return nivo_voronoi_es_arrayLikeToArray(o, minLen);
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
   var n = Object.prototype.toString.call(o).slice(8, -1);
   if (n === "Object" && o.constructor) n = o.constructor.name;
   if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return nivo_voronoi_es_arrayLikeToArray(o, minLen);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
 }
 
 function _nonIterableRest() {
@@ -14270,7 +11837,7 @@ function _nonIterableRest() {
 }
 
 function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || nivo_voronoi_es_unsupportedIterableToArray(arr, i) || _nonIterableRest();
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
 var Mesh = function Mesh(_ref) {
@@ -14284,9 +11851,9 @@ var Mesh = function Mesh(_ref) {
       onMouseLeave = _ref.onMouseLeave,
       onClick = _ref.onClick,
       debug = _ref.debug;
-  var elementRef = (0,react.useRef)(null);
+  var elementRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
 
-  var _useState = (0,react.useState)(null),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       currentIndex = _useState2[0],
       setCurrentIndex = _useState2[1];
@@ -14302,19 +11869,19 @@ var Mesh = function Mesh(_ref) {
       delaunay = _useVoronoiMesh.delaunay,
       voronoi = _useVoronoiMesh.voronoi;
 
-  var voronoiPath = (0,react.useMemo)(function () {
+  var voronoiPath = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     if (debug && voronoi) {
       return voronoi.render();
     }
 
     return undefined;
   }, [debug, voronoi]);
-  var getIndexAndNodeFromEvent = (0,react.useCallback)(function (event) {
+  var getIndexAndNodeFromEvent = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
     if (!elementRef.current) {
       return [null, null];
     }
 
-    var _getRelativeCursor = (0,nivo_core_es/* getRelativeCursor */.P6)(elementRef.current, event),
+    var _getRelativeCursor = (0,_nivo_core__WEBPACK_IMPORTED_MODULE_1__/* .getRelativeCursor */ .P6)(elementRef.current, event),
         _getRelativeCursor2 = _slicedToArray(_getRelativeCursor, 2),
         x = _getRelativeCursor2[0],
         y = _getRelativeCursor2[1];
@@ -14322,7 +11889,7 @@ var Mesh = function Mesh(_ref) {
     var index = delaunay.find(x, y);
     return [index, index !== undefined ? nodes[index] : null];
   }, [elementRef, delaunay]);
-  var handleMouseEnter = (0,react.useCallback)(function (event) {
+  var handleMouseEnter = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
     var _getIndexAndNodeFromE = getIndexAndNodeFromEvent(event),
         _getIndexAndNodeFromE2 = _slicedToArray(_getIndexAndNodeFromE, 2),
         index = _getIndexAndNodeFromE2[0],
@@ -14334,7 +11901,7 @@ var Mesh = function Mesh(_ref) {
       onMouseEnter === null || onMouseEnter === void 0 ? void 0 : onMouseEnter(node, event);
     }
   }, [getIndexAndNodeFromEvent, setCurrentIndex, onMouseEnter]);
-  var handleMouseMove = (0,react.useCallback)(function (event) {
+  var handleMouseMove = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
     var _getIndexAndNodeFromE3 = getIndexAndNodeFromEvent(event),
         _getIndexAndNodeFromE4 = _slicedToArray(_getIndexAndNodeFromE3, 2),
         index = _getIndexAndNodeFromE4[0],
@@ -14346,7 +11913,7 @@ var Mesh = function Mesh(_ref) {
       onMouseMove === null || onMouseMove === void 0 ? void 0 : onMouseMove(node, event);
     }
   }, [getIndexAndNodeFromEvent, setCurrentIndex, onMouseMove]);
-  var handleMouseLeave = (0,react.useCallback)(function (event) {
+  var handleMouseLeave = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
     setCurrentIndex(null);
 
     if (onMouseLeave) {
@@ -14359,7 +11926,7 @@ var Mesh = function Mesh(_ref) {
       previousNode && onMouseLeave(previousNode, event);
     }
   }, [setCurrentIndex, currentIndex, onMouseLeave, nodes]);
-  var handleClick = (0,react.useCallback)(function (event) {
+  var handleClick = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
     var _getIndexAndNodeFromE5 = getIndexAndNodeFromEvent(event),
         _getIndexAndNodeFromE6 = _slicedToArray(_getIndexAndNodeFromE5, 2),
         index = _getIndexAndNodeFromE6[0],
@@ -14371,20 +11938,20 @@ var Mesh = function Mesh(_ref) {
       onClick === null || onClick === void 0 ? void 0 : onClick(node, event);
     }
   }, [getIndexAndNodeFromEvent, setCurrentIndex, onClick]);
-  return (0,jsx_runtime.jsxs)("g", {
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("g", {
     ref: elementRef,
-    children: [debug && voronoi && (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-      children: [(0,jsx_runtime.jsx)("path", {
+    children: [debug && voronoi && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
         d: voronoiPath,
         stroke: "red",
         strokeWidth: 1,
         opacity: 0.75
-      }), currentIndex !== null && (0,jsx_runtime.jsx)("path", {
+      }), currentIndex !== null && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
         fill: "pink",
         opacity: 0.35,
         d: voronoi.renderCell(currentIndex)
       })]
-    }), (0,jsx_runtime.jsx)("rect", {
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
       width: width,
       height: height,
       fill: "red",
@@ -19654,9 +17221,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /* harmony export */   "ZP": function() { return /* binding */ color; },
 /* harmony export */   "SU": function() { return /* binding */ rgbConvert; },
 /* harmony export */   "B8": function() { return /* binding */ rgb; },
-/* harmony export */   "Ss": function() { return /* binding */ Rgb; }
+/* harmony export */   "Ss": function() { return /* binding */ Rgb; },
+/* harmony export */   "Ym": function() { return /* binding */ hsl; }
 /* harmony export */ });
-/* unused harmony exports hslConvert, hsl */
+/* unused harmony export hslConvert */
 /* harmony import */ var _define_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2077);
 
 function Color() {}
@@ -20007,26 +17575,17 @@ function hsl2rgb(h, m1, m2) {
 
 /***/ }),
 
-/***/ 19983:
+/***/ 69259:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": function() { return /* binding */ cubehelix; }
-});
-
-// UNUSED EXPORTS: Cubehelix
-
-// EXTERNAL MODULE: ./node_modules/d3-color/src/define.js
-var src_define = __webpack_require__(2077);
-// EXTERNAL MODULE: ./node_modules/d3-color/src/color.js
-var color = __webpack_require__(34627);
-;// CONCATENATED MODULE: ./node_modules/d3-color/src/math.js
-var radians = Math.PI / 180;
-var degrees = 180 / Math.PI;
-;// CONCATENATED MODULE: ./node_modules/d3-color/src/cubehelix.js
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ cubehelix; }
+/* harmony export */ });
+/* unused harmony export Cubehelix */
+/* harmony import */ var _define_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2077);
+/* harmony import */ var _color_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(34627);
+/* harmony import */ var _math_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53309);
 
 
 
@@ -20041,7 +17600,7 @@ var A = -0.14861,
 
 function cubehelixConvert(o) {
   if (o instanceof Cubehelix) return new Cubehelix(o.h, o.s, o.l, o.opacity);
-  if (!(o instanceof color/* Rgb */.Ss)) o = (0,color/* rgbConvert */.SU)(o);
+  if (!(o instanceof _color_js__WEBPACK_IMPORTED_MODULE_0__/* .Rgb */ .Ss)) o = (0,_color_js__WEBPACK_IMPORTED_MODULE_0__/* .rgbConvert */ .SU)(o);
   var r = o.r / 255,
       g = o.g / 255,
       b = o.b / 255,
@@ -20050,7 +17609,7 @@ function cubehelixConvert(o) {
       k = (E * (g - l) - C * bl) / D,
       s = Math.sqrt(k * k + bl * bl) / (E * l * (1 - l)),
       // NaN if l=0 or l=1
-  h = s ? Math.atan2(k, bl) * degrees - 120 : NaN;
+  h = s ? Math.atan2(k, bl) * _math_js__WEBPACK_IMPORTED_MODULE_1__/* .degrees */ .R - 120 : NaN;
   return new Cubehelix(h < 0 ? h + 360 : h, s, l, o.opacity);
 }
 
@@ -20063,22 +17622,22 @@ function Cubehelix(h, s, l, opacity) {
   this.l = +l;
   this.opacity = +opacity;
 }
-(0,src_define/* default */.Z)(Cubehelix, cubehelix, (0,src_define/* extend */.l)(color/* Color */.Il, {
+(0,_define_js__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(Cubehelix, cubehelix, (0,_define_js__WEBPACK_IMPORTED_MODULE_2__/* .extend */ .l)(_color_js__WEBPACK_IMPORTED_MODULE_0__/* .Color */ .Il, {
   brighter: function brighter(k) {
-    k = k == null ? color/* brighter */.J5 : Math.pow(color/* brighter */.J5, k);
+    k = k == null ? _color_js__WEBPACK_IMPORTED_MODULE_0__/* .brighter */ .J5 : Math.pow(_color_js__WEBPACK_IMPORTED_MODULE_0__/* .brighter */ .J5, k);
     return new Cubehelix(this.h, this.s, this.l * k, this.opacity);
   },
   darker: function darker(k) {
-    k = k == null ? color/* darker */.xV : Math.pow(color/* darker */.xV, k);
+    k = k == null ? _color_js__WEBPACK_IMPORTED_MODULE_0__/* .darker */ .xV : Math.pow(_color_js__WEBPACK_IMPORTED_MODULE_0__/* .darker */ .xV, k);
     return new Cubehelix(this.h, this.s, this.l * k, this.opacity);
   },
   rgb: function rgb() {
-    var h = isNaN(this.h) ? 0 : (this.h + 120) * radians,
+    var h = isNaN(this.h) ? 0 : (this.h + 120) * _math_js__WEBPACK_IMPORTED_MODULE_1__/* .radians */ .u,
         l = +this.l,
         a = isNaN(this.s) ? 0 : this.s * l * (1 - l),
         cosh = Math.cos(h),
         sinh = Math.sin(h);
-    return new color/* Rgb */.Ss(255 * (l + a * (A * cosh + B * sinh)), 255 * (l + a * (C * cosh + D * sinh)), 255 * (l + a * (E * cosh)), this.opacity);
+    return new _color_js__WEBPACK_IMPORTED_MODULE_0__/* .Rgb */ .Ss(255 * (l + a * (A * cosh + B * sinh)), 255 * (l + a * (C * cosh + D * sinh)), 255 * (l + a * (E * cosh)), this.opacity);
   }
 }));
 
@@ -20104,6 +17663,1758 @@ function extend(parent, definition) {
   }
 
   return prototype;
+}
+
+/***/ }),
+
+/***/ 53309:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "u": function() { return /* binding */ radians; },
+/* harmony export */   "R": function() { return /* binding */ degrees; }
+/* harmony export */ });
+var radians = Math.PI / 180;
+var degrees = 180 / Math.PI;
+
+/***/ }),
+
+/***/ 75810:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ Delaunay; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
+var classCallCheck = __webpack_require__(6610);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
+var createClass = __webpack_require__(5991);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
+var regenerator = __webpack_require__(87757);
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.math.hypot.js
+var es_math_hypot = __webpack_require__(25438);
+;// CONCATENATED MODULE: ./node_modules/delaunator/index.js
+
+
+var EPSILON = Math.pow(2, -52);
+var EDGE_STACK = new Uint32Array(512);
+
+var Delaunator = /*#__PURE__*/function () {
+  function Delaunator(coords) {
+    (0,classCallCheck/* default */.Z)(this, Delaunator);
+
+    var n = coords.length >> 1;
+    if (n > 0 && typeof coords[0] !== 'number') throw new Error('Expected coords to contain numbers.');
+    this.coords = coords; // arrays that will store the triangulation graph
+
+    var maxTriangles = Math.max(2 * n - 5, 0);
+    this._triangles = new Uint32Array(maxTriangles * 3);
+    this._halfedges = new Int32Array(maxTriangles * 3); // temporary arrays for tracking the edges of the advancing convex hull
+
+    this._hashSize = Math.ceil(Math.sqrt(n));
+    this._hullPrev = new Uint32Array(n); // edge to prev edge
+
+    this._hullNext = new Uint32Array(n); // edge to next edge
+
+    this._hullTri = new Uint32Array(n); // edge to adjacent triangle
+
+    this._hullHash = new Int32Array(this._hashSize).fill(-1); // angular edge hash
+    // temporary arrays for sorting points
+
+    this._ids = new Uint32Array(n);
+    this._dists = new Float64Array(n);
+    this.update();
+  }
+
+  (0,createClass/* default */.Z)(Delaunator, [{
+    key: "update",
+    value: function update() {
+      var coords = this.coords,
+          hullPrev = this._hullPrev,
+          hullNext = this._hullNext,
+          hullTri = this._hullTri,
+          hullHash = this._hullHash;
+      var n = coords.length >> 1; // populate an array of point indices; calculate input data bbox
+
+      var minX = Infinity;
+      var minY = Infinity;
+      var maxX = -Infinity;
+      var maxY = -Infinity;
+
+      for (var i = 0; i < n; i++) {
+        var x = coords[2 * i];
+        var y = coords[2 * i + 1];
+        if (x < minX) minX = x;
+        if (y < minY) minY = y;
+        if (x > maxX) maxX = x;
+        if (y > maxY) maxY = y;
+        this._ids[i] = i;
+      }
+
+      var cx = (minX + maxX) / 2;
+      var cy = (minY + maxY) / 2;
+      var minDist = Infinity;
+      var i0, i1, i2; // pick a seed point close to the center
+
+      for (var _i = 0; _i < n; _i++) {
+        var d = dist(cx, cy, coords[2 * _i], coords[2 * _i + 1]);
+
+        if (d < minDist) {
+          i0 = _i;
+          minDist = d;
+        }
+      }
+
+      var i0x = coords[2 * i0];
+      var i0y = coords[2 * i0 + 1];
+      minDist = Infinity; // find the point closest to the seed
+
+      for (var _i2 = 0; _i2 < n; _i2++) {
+        if (_i2 === i0) continue;
+
+        var _d = dist(i0x, i0y, coords[2 * _i2], coords[2 * _i2 + 1]);
+
+        if (_d < minDist && _d > 0) {
+          i1 = _i2;
+          minDist = _d;
+        }
+      }
+
+      var i1x = coords[2 * i1];
+      var i1y = coords[2 * i1 + 1];
+      var minRadius = Infinity; // find the third point which forms the smallest circumcircle with the first two
+
+      for (var _i3 = 0; _i3 < n; _i3++) {
+        if (_i3 === i0 || _i3 === i1) continue;
+        var r = circumradius(i0x, i0y, i1x, i1y, coords[2 * _i3], coords[2 * _i3 + 1]);
+
+        if (r < minRadius) {
+          i2 = _i3;
+          minRadius = r;
+        }
+      }
+
+      var i2x = coords[2 * i2];
+      var i2y = coords[2 * i2 + 1];
+
+      if (minRadius === Infinity) {
+        // order collinear points by dx (or dy if all x are identical)
+        // and return the list as a hull
+        for (var _i4 = 0; _i4 < n; _i4++) {
+          this._dists[_i4] = coords[2 * _i4] - coords[0] || coords[2 * _i4 + 1] - coords[1];
+        }
+
+        quicksort(this._ids, this._dists, 0, n - 1);
+        var hull = new Uint32Array(n);
+        var j = 0;
+
+        for (var _i5 = 0, d0 = -Infinity; _i5 < n; _i5++) {
+          var id = this._ids[_i5];
+
+          if (this._dists[id] > d0) {
+            hull[j++] = id;
+            d0 = this._dists[id];
+          }
+        }
+
+        this.hull = hull.subarray(0, j);
+        this.triangles = new Uint32Array(0);
+        this.halfedges = new Uint32Array(0);
+        return;
+      } // swap the order of the seed points for counter-clockwise orientation
+
+
+      if (orient(i0x, i0y, i1x, i1y, i2x, i2y)) {
+        var _i6 = i1;
+        var _x = i1x;
+        var _y = i1y;
+        i1 = i2;
+        i1x = i2x;
+        i1y = i2y;
+        i2 = _i6;
+        i2x = _x;
+        i2y = _y;
+      }
+
+      var center = circumcenter(i0x, i0y, i1x, i1y, i2x, i2y);
+      this._cx = center.x;
+      this._cy = center.y;
+
+      for (var _i7 = 0; _i7 < n; _i7++) {
+        this._dists[_i7] = dist(coords[2 * _i7], coords[2 * _i7 + 1], center.x, center.y);
+      } // sort the points by distance from the seed triangle circumcenter
+
+
+      quicksort(this._ids, this._dists, 0, n - 1); // set up the seed triangle as the starting hull
+
+      this._hullStart = i0;
+      var hullSize = 3;
+      hullNext[i0] = hullPrev[i2] = i1;
+      hullNext[i1] = hullPrev[i0] = i2;
+      hullNext[i2] = hullPrev[i1] = i0;
+      hullTri[i0] = 0;
+      hullTri[i1] = 1;
+      hullTri[i2] = 2;
+      hullHash.fill(-1);
+      hullHash[this._hashKey(i0x, i0y)] = i0;
+      hullHash[this._hashKey(i1x, i1y)] = i1;
+      hullHash[this._hashKey(i2x, i2y)] = i2;
+      this.trianglesLen = 0;
+
+      this._addTriangle(i0, i1, i2, -1, -1, -1);
+
+      for (var k = 0, xp, yp; k < this._ids.length; k++) {
+        var _i8 = this._ids[k];
+        var _x2 = coords[2 * _i8];
+        var _y2 = coords[2 * _i8 + 1]; // skip near-duplicate points
+
+        if (k > 0 && Math.abs(_x2 - xp) <= EPSILON && Math.abs(_y2 - yp) <= EPSILON) continue;
+        xp = _x2;
+        yp = _y2; // skip seed triangle points
+
+        if (_i8 === i0 || _i8 === i1 || _i8 === i2) continue; // find a visible edge on the convex hull using edge hash
+
+        var start = 0;
+
+        for (var _j = 0, key = this._hashKey(_x2, _y2); _j < this._hashSize; _j++) {
+          start = hullHash[(key + _j) % this._hashSize];
+          if (start !== -1 && start !== hullNext[start]) break;
+        }
+
+        start = hullPrev[start];
+        var e = start,
+            q = void 0;
+
+        while (q = hullNext[e], !orient(_x2, _y2, coords[2 * e], coords[2 * e + 1], coords[2 * q], coords[2 * q + 1])) {
+          e = q;
+
+          if (e === start) {
+            e = -1;
+            break;
+          }
+        }
+
+        if (e === -1) continue; // likely a near-duplicate point; skip it
+        // add the first triangle from the point
+
+        var t = this._addTriangle(e, _i8, hullNext[e], -1, -1, hullTri[e]); // recursively flip triangles from the point until they satisfy the Delaunay condition
+
+
+        hullTri[_i8] = this._legalize(t + 2);
+        hullTri[e] = t; // keep track of boundary triangles on the hull
+
+        hullSize++; // walk forward through the hull, adding more triangles and flipping recursively
+
+        var _n = hullNext[e];
+
+        while (q = hullNext[_n], orient(_x2, _y2, coords[2 * _n], coords[2 * _n + 1], coords[2 * q], coords[2 * q + 1])) {
+          t = this._addTriangle(_n, _i8, q, hullTri[_i8], -1, hullTri[_n]);
+          hullTri[_i8] = this._legalize(t + 2);
+          hullNext[_n] = _n; // mark as removed
+
+          hullSize--;
+          _n = q;
+        } // walk backward from the other side, adding more triangles and flipping
+
+
+        if (e === start) {
+          while (q = hullPrev[e], orient(_x2, _y2, coords[2 * q], coords[2 * q + 1], coords[2 * e], coords[2 * e + 1])) {
+            t = this._addTriangle(q, _i8, e, -1, hullTri[e], hullTri[q]);
+
+            this._legalize(t + 2);
+
+            hullTri[q] = t;
+            hullNext[e] = e; // mark as removed
+
+            hullSize--;
+            e = q;
+          }
+        } // update the hull indices
+
+
+        this._hullStart = hullPrev[_i8] = e;
+        hullNext[e] = hullPrev[_n] = _i8;
+        hullNext[_i8] = _n; // save the two new edges in the hash table
+
+        hullHash[this._hashKey(_x2, _y2)] = _i8;
+        hullHash[this._hashKey(coords[2 * e], coords[2 * e + 1])] = e;
+      }
+
+      this.hull = new Uint32Array(hullSize);
+
+      for (var _i9 = 0, _e = this._hullStart; _i9 < hullSize; _i9++) {
+        this.hull[_i9] = _e;
+        _e = hullNext[_e];
+      } // trim typed triangle mesh arrays
+
+
+      this.triangles = this._triangles.subarray(0, this.trianglesLen);
+      this.halfedges = this._halfedges.subarray(0, this.trianglesLen);
+    }
+  }, {
+    key: "_hashKey",
+    value: function _hashKey(x, y) {
+      return Math.floor(pseudoAngle(x - this._cx, y - this._cy) * this._hashSize) % this._hashSize;
+    }
+  }, {
+    key: "_legalize",
+    value: function _legalize(a) {
+      var triangles = this._triangles,
+          halfedges = this._halfedges,
+          coords = this.coords;
+      var i = 0;
+      var ar = 0; // recursion eliminated with a fixed-size stack
+
+      while (true) {
+        var b = halfedges[a];
+        /* if the pair of triangles doesn't satisfy the Delaunay condition
+         * (p1 is inside the circumcircle of [p0, pl, pr]), flip them,
+         * then do the same check/flip recursively for the new pair of triangles
+         *
+         *           pl                    pl
+         *          /||\                  /  \
+         *       al/ || \bl            al/    \a
+         *        /  ||  \              /      \
+         *       /  a||b  \    flip    /___ar___\
+         *     p0\   ||   /p1   =>   p0\---bl---/p1
+         *        \  ||  /              \      /
+         *       ar\ || /br             b\    /br
+         *          \||/                  \  /
+         *           pr                    pr
+         */
+
+        var a0 = a - a % 3;
+        ar = a0 + (a + 2) % 3;
+
+        if (b === -1) {
+          // convex hull edge
+          if (i === 0) break;
+          a = EDGE_STACK[--i];
+          continue;
+        }
+
+        var b0 = b - b % 3;
+        var al = a0 + (a + 1) % 3;
+        var bl = b0 + (b + 2) % 3;
+        var p0 = triangles[ar];
+        var pr = triangles[a];
+        var pl = triangles[al];
+        var p1 = triangles[bl];
+        var illegal = inCircle(coords[2 * p0], coords[2 * p0 + 1], coords[2 * pr], coords[2 * pr + 1], coords[2 * pl], coords[2 * pl + 1], coords[2 * p1], coords[2 * p1 + 1]);
+
+        if (illegal) {
+          triangles[a] = p1;
+          triangles[b] = p0;
+          var hbl = halfedges[bl]; // edge swapped on the other side of the hull (rare); fix the halfedge reference
+
+          if (hbl === -1) {
+            var e = this._hullStart;
+
+            do {
+              if (this._hullTri[e] === bl) {
+                this._hullTri[e] = a;
+                break;
+              }
+
+              e = this._hullPrev[e];
+            } while (e !== this._hullStart);
+          }
+
+          this._link(a, hbl);
+
+          this._link(b, halfedges[ar]);
+
+          this._link(ar, bl);
+
+          var br = b0 + (b + 1) % 3; // don't worry about hitting the cap: it can only happen on extremely degenerate input
+
+          if (i < EDGE_STACK.length) {
+            EDGE_STACK[i++] = br;
+          }
+        } else {
+          if (i === 0) break;
+          a = EDGE_STACK[--i];
+        }
+      }
+
+      return ar;
+    }
+  }, {
+    key: "_link",
+    value: function _link(a, b) {
+      this._halfedges[a] = b;
+      if (b !== -1) this._halfedges[b] = a;
+    } // add a new triangle given vertex indices and adjacent half-edge ids
+
+  }, {
+    key: "_addTriangle",
+    value: function _addTriangle(i0, i1, i2, a, b, c) {
+      var t = this.trianglesLen;
+      this._triangles[t] = i0;
+      this._triangles[t + 1] = i1;
+      this._triangles[t + 2] = i2;
+
+      this._link(t, a);
+
+      this._link(t + 1, b);
+
+      this._link(t + 2, c);
+
+      this.trianglesLen += 3;
+      return t;
+    }
+  }], [{
+    key: "from",
+    value: function from(points) {
+      var getX = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultGetX;
+      var getY = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultGetY;
+      var n = points.length;
+      var coords = new Float64Array(n * 2);
+
+      for (var i = 0; i < n; i++) {
+        var p = points[i];
+        coords[2 * i] = getX(p);
+        coords[2 * i + 1] = getY(p);
+      }
+
+      return new Delaunator(coords);
+    }
+  }]);
+
+  return Delaunator;
+}(); // monotonically increases with real angle, but doesn't need expensive trigonometry
+
+
+
+
+function pseudoAngle(dx, dy) {
+  var p = dx / (Math.abs(dx) + Math.abs(dy));
+  return (dy > 0 ? 3 - p : 1 + p) / 4; // [0..1]
+}
+
+function dist(ax, ay, bx, by) {
+  var dx = ax - bx;
+  var dy = ay - by;
+  return dx * dx + dy * dy;
+} // return 2d orientation sign if we're confident in it through J. Shewchuk's error bound check
+
+
+function orientIfSure(px, py, rx, ry, qx, qy) {
+  var l = (ry - py) * (qx - px);
+  var r = (rx - px) * (qy - py);
+  return Math.abs(l - r) >= 3.3306690738754716e-16 * Math.abs(l + r) ? l - r : 0;
+} // a more robust orientation test that's stable in a given triangle (to fix robustness issues)
+
+
+function orient(rx, ry, qx, qy, px, py) {
+  var sign = orientIfSure(px, py, rx, ry, qx, qy) || orientIfSure(rx, ry, qx, qy, px, py) || orientIfSure(qx, qy, px, py, rx, ry);
+  return sign < 0;
+}
+
+function inCircle(ax, ay, bx, by, cx, cy, px, py) {
+  var dx = ax - px;
+  var dy = ay - py;
+  var ex = bx - px;
+  var ey = by - py;
+  var fx = cx - px;
+  var fy = cy - py;
+  var ap = dx * dx + dy * dy;
+  var bp = ex * ex + ey * ey;
+  var cp = fx * fx + fy * fy;
+  return dx * (ey * cp - bp * fy) - dy * (ex * cp - bp * fx) + ap * (ex * fy - ey * fx) < 0;
+}
+
+function circumradius(ax, ay, bx, by, cx, cy) {
+  var dx = bx - ax;
+  var dy = by - ay;
+  var ex = cx - ax;
+  var ey = cy - ay;
+  var bl = dx * dx + dy * dy;
+  var cl = ex * ex + ey * ey;
+  var d = 0.5 / (dx * ey - dy * ex);
+  var x = (ey * bl - dy * cl) * d;
+  var y = (dx * cl - ex * bl) * d;
+  return x * x + y * y;
+}
+
+function circumcenter(ax, ay, bx, by, cx, cy) {
+  var dx = bx - ax;
+  var dy = by - ay;
+  var ex = cx - ax;
+  var ey = cy - ay;
+  var bl = dx * dx + dy * dy;
+  var cl = ex * ex + ey * ey;
+  var d = 0.5 / (dx * ey - dy * ex);
+  var x = ax + (ey * bl - dy * cl) * d;
+  var y = ay + (dx * cl - ex * bl) * d;
+  return {
+    x: x,
+    y: y
+  };
+}
+
+function quicksort(ids, dists, left, right) {
+  if (right - left <= 20) {
+    for (var i = left + 1; i <= right; i++) {
+      var temp = ids[i];
+      var tempDist = dists[temp];
+      var j = i - 1;
+
+      while (j >= left && dists[ids[j]] > tempDist) {
+        ids[j + 1] = ids[j--];
+      }
+
+      ids[j + 1] = temp;
+    }
+  } else {
+    var median = left + right >> 1;
+
+    var _i10 = left + 1;
+
+    var _j2 = right;
+    swap(ids, median, _i10);
+    if (dists[ids[left]] > dists[ids[right]]) swap(ids, left, right);
+    if (dists[ids[_i10]] > dists[ids[right]]) swap(ids, _i10, right);
+    if (dists[ids[left]] > dists[ids[_i10]]) swap(ids, left, _i10);
+    var _temp = ids[_i10];
+    var _tempDist = dists[_temp];
+
+    while (true) {
+      do {
+        _i10++;
+      } while (dists[ids[_i10]] < _tempDist);
+
+      do {
+        _j2--;
+      } while (dists[ids[_j2]] > _tempDist);
+
+      if (_j2 < _i10) break;
+      swap(ids, _i10, _j2);
+    }
+
+    ids[left + 1] = ids[_j2];
+    ids[_j2] = _temp;
+
+    if (right - _i10 + 1 >= _j2 - left) {
+      quicksort(ids, dists, _i10, right);
+      quicksort(ids, dists, left, _j2 - 1);
+    } else {
+      quicksort(ids, dists, left, _j2 - 1);
+      quicksort(ids, dists, _i10, right);
+    }
+  }
+}
+
+function swap(arr, i, j) {
+  var tmp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = tmp;
+}
+
+function defaultGetX(p) {
+  return p[0];
+}
+
+function defaultGetY(p) {
+  return p[1];
+}
+;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/path.js
+
+
+var epsilon = 1e-6;
+
+var Path = /*#__PURE__*/function () {
+  function Path() {
+    (0,classCallCheck/* default */.Z)(this, Path);
+
+    this._x0 = this._y0 = // start of current subpath
+    this._x1 = this._y1 = null; // end of current subpath
+
+    this._ = "";
+  }
+
+  (0,createClass/* default */.Z)(Path, [{
+    key: "moveTo",
+    value: function moveTo(x, y) {
+      this._ += "M".concat(this._x0 = this._x1 = +x, ",").concat(this._y0 = this._y1 = +y);
+    }
+  }, {
+    key: "closePath",
+    value: function closePath() {
+      if (this._x1 !== null) {
+        this._x1 = this._x0, this._y1 = this._y0;
+        this._ += "Z";
+      }
+    }
+  }, {
+    key: "lineTo",
+    value: function lineTo(x, y) {
+      this._ += "L".concat(this._x1 = +x, ",").concat(this._y1 = +y);
+    }
+  }, {
+    key: "arc",
+    value: function arc(x, y, r) {
+      x = +x, y = +y, r = +r;
+      var x0 = x + r;
+      var y0 = y;
+      if (r < 0) throw new Error("negative radius");
+      if (this._x1 === null) this._ += "M".concat(x0, ",").concat(y0);else if (Math.abs(this._x1 - x0) > epsilon || Math.abs(this._y1 - y0) > epsilon) this._ += "L" + x0 + "," + y0;
+      if (!r) return;
+      this._ += "A".concat(r, ",").concat(r, ",0,1,1,").concat(x - r, ",").concat(y, "A").concat(r, ",").concat(r, ",0,1,1,").concat(this._x1 = x0, ",").concat(this._y1 = y0);
+    }
+  }, {
+    key: "rect",
+    value: function rect(x, y, w, h) {
+      this._ += "M".concat(this._x0 = this._x1 = +x, ",").concat(this._y0 = this._y1 = +y, "h").concat(+w, "v").concat(+h, "h").concat(-w, "Z");
+    }
+  }, {
+    key: "value",
+    value: function value() {
+      return this._ || null;
+    }
+  }]);
+
+  return Path;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/polygon.js
+
+
+
+var Polygon = /*#__PURE__*/function () {
+  function Polygon() {
+    (0,classCallCheck/* default */.Z)(this, Polygon);
+
+    this._ = [];
+  }
+
+  (0,createClass/* default */.Z)(Polygon, [{
+    key: "moveTo",
+    value: function moveTo(x, y) {
+      this._.push([x, y]);
+    }
+  }, {
+    key: "closePath",
+    value: function closePath() {
+      this._.push(this._[0].slice());
+    }
+  }, {
+    key: "lineTo",
+    value: function lineTo(x, y) {
+      this._.push([x, y]);
+    }
+  }, {
+    key: "value",
+    value: function value() {
+      return this._.length ? this._ : null;
+    }
+  }]);
+
+  return Polygon;
+}();
+
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 1 modules
+var slicedToArray = __webpack_require__(28481);
+;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/voronoi.js
+
+
+
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+
+var Voronoi = /*#__PURE__*/function () {
+  function Voronoi(delaunay) {
+    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [0, 0, 960, 500],
+        _ref2 = (0,slicedToArray/* default */.Z)(_ref, 4),
+        xmin = _ref2[0],
+        ymin = _ref2[1],
+        xmax = _ref2[2],
+        ymax = _ref2[3];
+
+    (0,classCallCheck/* default */.Z)(this, Voronoi);
+
+    if (!((xmax = +xmax) >= (xmin = +xmin)) || !((ymax = +ymax) >= (ymin = +ymin))) throw new Error("invalid bounds");
+    this.delaunay = delaunay;
+    this._circumcenters = new Float64Array(delaunay.points.length * 2);
+    this.vectors = new Float64Array(delaunay.points.length * 2);
+    this.xmax = xmax, this.xmin = xmin;
+    this.ymax = ymax, this.ymin = ymin;
+
+    this._init();
+  }
+
+  (0,createClass/* default */.Z)(Voronoi, [{
+    key: "update",
+    value: function update() {
+      this.delaunay.update();
+
+      this._init();
+
+      return this;
+    }
+  }, {
+    key: "_init",
+    value: function _init() {
+      var _this$delaunay = this.delaunay,
+          points = _this$delaunay.points,
+          hull = _this$delaunay.hull,
+          triangles = _this$delaunay.triangles,
+          vectors = this.vectors; // Compute circumcenters.
+
+      var circumcenters = this.circumcenters = this._circumcenters.subarray(0, triangles.length / 3 * 2);
+
+      for (var i = 0, j = 0, n = triangles.length, x, y; i < n; i += 3, j += 2) {
+        var t1 = triangles[i] * 2;
+        var t2 = triangles[i + 1] * 2;
+        var t3 = triangles[i + 2] * 2;
+        var _x = points[t1];
+        var _y = points[t1 + 1];
+        var x2 = points[t2];
+        var y2 = points[t2 + 1];
+        var x3 = points[t3];
+        var y3 = points[t3 + 1];
+        var dx = x2 - _x;
+        var dy = y2 - _y;
+        var ex = x3 - _x;
+        var ey = y3 - _y;
+        var bl = dx * dx + dy * dy;
+        var cl = ex * ex + ey * ey;
+        var ab = (dx * ey - dy * ex) * 2;
+
+        if (!ab) {
+          // degenerate case (collinear diagram)
+          x = (_x + x3) / 2 - 1e8 * ey;
+          y = (_y + y3) / 2 + 1e8 * ex;
+        } else if (Math.abs(ab) < 1e-8) {
+          // almost equal points (degenerate triangle)
+          x = (_x + x3) / 2;
+          y = (_y + y3) / 2;
+        } else {
+          var d = 1 / ab;
+          x = _x + (ey * bl - dy * cl) * d;
+          y = _y + (dx * cl - ex * bl) * d;
+        }
+
+        circumcenters[j] = x;
+        circumcenters[j + 1] = y;
+      } // Compute exterior cell rays.
+
+
+      var h = hull[hull.length - 1];
+      var p0,
+          p1 = h * 4;
+      var x0,
+          x1 = points[2 * h];
+      var y0,
+          y1 = points[2 * h + 1];
+      vectors.fill(0);
+
+      for (var _i = 0; _i < hull.length; ++_i) {
+        h = hull[_i];
+        p0 = p1, x0 = x1, y0 = y1;
+        p1 = h * 4, x1 = points[2 * h], y1 = points[2 * h + 1];
+        vectors[p0 + 2] = vectors[p1] = y0 - y1;
+        vectors[p0 + 3] = vectors[p1 + 1] = x1 - x0;
+      }
+    }
+  }, {
+    key: "render",
+    value: function render(context) {
+      var buffer = context == null ? context = new Path() : undefined;
+      var _this$delaunay2 = this.delaunay,
+          halfedges = _this$delaunay2.halfedges,
+          inedges = _this$delaunay2.inedges,
+          hull = _this$delaunay2.hull,
+          circumcenters = this.circumcenters,
+          vectors = this.vectors;
+      if (hull.length <= 1) return null;
+
+      for (var i = 0, n = halfedges.length; i < n; ++i) {
+        var j = halfedges[i];
+        if (j < i) continue;
+        var ti = Math.floor(i / 3) * 2;
+        var tj = Math.floor(j / 3) * 2;
+        var xi = circumcenters[ti];
+        var yi = circumcenters[ti + 1];
+        var xj = circumcenters[tj];
+        var yj = circumcenters[tj + 1];
+
+        this._renderSegment(xi, yi, xj, yj, context);
+      }
+
+      var h0,
+          h1 = hull[hull.length - 1];
+
+      for (var _i2 = 0; _i2 < hull.length; ++_i2) {
+        h0 = h1, h1 = hull[_i2];
+        var t = Math.floor(inedges[h1] / 3) * 2;
+        var x = circumcenters[t];
+        var y = circumcenters[t + 1];
+        var v = h0 * 4;
+
+        var p = this._project(x, y, vectors[v + 2], vectors[v + 3]);
+
+        if (p) this._renderSegment(x, y, p[0], p[1], context);
+      }
+
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "renderBounds",
+    value: function renderBounds(context) {
+      var buffer = context == null ? context = new Path() : undefined;
+      context.rect(this.xmin, this.ymin, this.xmax - this.xmin, this.ymax - this.ymin);
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "renderCell",
+    value: function renderCell(i, context) {
+      var buffer = context == null ? context = new Path() : undefined;
+
+      var points = this._clip(i);
+
+      if (points === null || !points.length) return;
+      context.moveTo(points[0], points[1]);
+      var n = points.length;
+
+      while (points[0] === points[n - 2] && points[1] === points[n - 1] && n > 1) {
+        n -= 2;
+      }
+
+      for (var _i3 = 2; _i3 < n; _i3 += 2) {
+        if (points[_i3] !== points[_i3 - 2] || points[_i3 + 1] !== points[_i3 - 1]) context.lineTo(points[_i3], points[_i3 + 1]);
+      }
+
+      context.closePath();
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "cellPolygons",
+    value: /*#__PURE__*/regenerator_default().mark(function cellPolygons() {
+      var points, i, n, cell;
+      return regenerator_default().wrap(function cellPolygons$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              points = this.delaunay.points;
+              i = 0, n = points.length / 2;
+
+            case 2:
+              if (!(i < n)) {
+                _context.next = 11;
+                break;
+              }
+
+              cell = this.cellPolygon(i);
+
+              if (!cell) {
+                _context.next = 8;
+                break;
+              }
+
+              cell.index = i;
+              _context.next = 8;
+              return cell;
+
+            case 8:
+              ++i;
+              _context.next = 2;
+              break;
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, cellPolygons, this);
+    })
+  }, {
+    key: "cellPolygon",
+    value: function cellPolygon(i) {
+      var polygon = new Polygon();
+      this.renderCell(i, polygon);
+      return polygon.value();
+    }
+  }, {
+    key: "_renderSegment",
+    value: function _renderSegment(x0, y0, x1, y1, context) {
+      var S;
+
+      var c0 = this._regioncode(x0, y0);
+
+      var c1 = this._regioncode(x1, y1);
+
+      if (c0 === 0 && c1 === 0) {
+        context.moveTo(x0, y0);
+        context.lineTo(x1, y1);
+      } else if (S = this._clipSegment(x0, y0, x1, y1, c0, c1)) {
+        context.moveTo(S[0], S[1]);
+        context.lineTo(S[2], S[3]);
+      }
+    }
+  }, {
+    key: "contains",
+    value: function contains(i, x, y) {
+      if ((x = +x, x !== x) || (y = +y, y !== y)) return false;
+      return this.delaunay._step(i, x, y) === i;
+    }
+  }, {
+    key: "neighbors",
+    value: /*#__PURE__*/regenerator_default().mark(function neighbors(i) {
+      var ci, _iterator, _step, j, cj, ai, li, aj, lj;
+
+      return regenerator_default().wrap(function neighbors$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              ci = this._clip(i);
+
+              if (!ci) {
+                _context2.next = 33;
+                break;
+              }
+
+              _iterator = _createForOfIteratorHelper(this.delaunay.neighbors(i));
+              _context2.prev = 3;
+
+              _iterator.s();
+
+            case 5:
+              if ((_step = _iterator.n()).done) {
+                _context2.next = 25;
+                break;
+              }
+
+              j = _step.value;
+              cj = this._clip(j); // find the common edge
+
+              if (!cj) {
+                _context2.next = 23;
+                break;
+              }
+
+              ai = 0, li = ci.length;
+
+            case 10:
+              if (!(ai < li)) {
+                _context2.next = 23;
+                break;
+              }
+
+              aj = 0, lj = cj.length;
+
+            case 12:
+              if (!(aj < lj)) {
+                _context2.next = 20;
+                break;
+              }
+
+              if (!(ci[ai] == cj[aj] && ci[ai + 1] == cj[aj + 1] && ci[(ai + 2) % li] == cj[(aj + lj - 2) % lj] && ci[(ai + 3) % li] == cj[(aj + lj - 1) % lj])) {
+                _context2.next = 17;
+                break;
+              }
+
+              _context2.next = 16;
+              return j;
+
+            case 16:
+              return _context2.abrupt("break", 23);
+
+            case 17:
+              aj += 2;
+              _context2.next = 12;
+              break;
+
+            case 20:
+              ai += 2;
+              _context2.next = 10;
+              break;
+
+            case 23:
+              _context2.next = 5;
+              break;
+
+            case 25:
+              _context2.next = 30;
+              break;
+
+            case 27:
+              _context2.prev = 27;
+              _context2.t0 = _context2["catch"](3);
+
+              _iterator.e(_context2.t0);
+
+            case 30:
+              _context2.prev = 30;
+
+              _iterator.f();
+
+              return _context2.finish(30);
+
+            case 33:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, neighbors, this, [[3, 27, 30, 33]]);
+    })
+  }, {
+    key: "_cell",
+    value: function _cell(i) {
+      var circumcenters = this.circumcenters,
+          _this$delaunay3 = this.delaunay,
+          inedges = _this$delaunay3.inedges,
+          halfedges = _this$delaunay3.halfedges,
+          triangles = _this$delaunay3.triangles;
+      var e0 = inedges[i];
+      if (e0 === -1) return null; // coincident point
+
+      var points = [];
+      var e = e0;
+
+      do {
+        var t = Math.floor(e / 3);
+        points.push(circumcenters[t * 2], circumcenters[t * 2 + 1]);
+        e = e % 3 === 2 ? e - 2 : e + 1;
+        if (triangles[e] !== i) break; // bad triangulation
+
+        e = halfedges[e];
+      } while (e !== e0 && e !== -1);
+
+      return points;
+    }
+  }, {
+    key: "_clip",
+    value: function _clip(i) {
+      // degenerate case (1 valid point: return the box)
+      if (i === 0 && this.delaunay.hull.length === 1) {
+        return [this.xmax, this.ymin, this.xmax, this.ymax, this.xmin, this.ymax, this.xmin, this.ymin];
+      }
+
+      var points = this._cell(i);
+
+      if (points === null) return null;
+      var V = this.vectors;
+      var v = i * 4;
+      return V[v] || V[v + 1] ? this._clipInfinite(i, points, V[v], V[v + 1], V[v + 2], V[v + 3]) : this._clipFinite(i, points);
+    }
+  }, {
+    key: "_clipFinite",
+    value: function _clipFinite(i, points) {
+      var n = points.length;
+      var P = null;
+      var x0,
+          y0,
+          x1 = points[n - 2],
+          y1 = points[n - 1];
+
+      var c0,
+          c1 = this._regioncode(x1, y1);
+
+      var e0, e1;
+
+      for (var j = 0; j < n; j += 2) {
+        x0 = x1, y0 = y1, x1 = points[j], y1 = points[j + 1];
+        c0 = c1, c1 = this._regioncode(x1, y1);
+
+        if (c0 === 0 && c1 === 0) {
+          e0 = e1, e1 = 0;
+          if (P) P.push(x1, y1);else P = [x1, y1];
+        } else {
+          var S = void 0,
+              sx0 = void 0,
+              sy0 = void 0,
+              sx1 = void 0,
+              sy1 = void 0;
+
+          if (c0 === 0) {
+            if ((S = this._clipSegment(x0, y0, x1, y1, c0, c1)) === null) continue;
+            var _S = S;
+
+            var _S2 = (0,slicedToArray/* default */.Z)(_S, 4);
+
+            sx0 = _S2[0];
+            sy0 = _S2[1];
+            sx1 = _S2[2];
+            sy1 = _S2[3];
+          } else {
+            if ((S = this._clipSegment(x1, y1, x0, y0, c1, c0)) === null) continue;
+            var _S3 = S;
+
+            var _S4 = (0,slicedToArray/* default */.Z)(_S3, 4);
+
+            sx1 = _S4[0];
+            sy1 = _S4[1];
+            sx0 = _S4[2];
+            sy0 = _S4[3];
+            e0 = e1, e1 = this._edgecode(sx0, sy0);
+            if (e0 && e1) this._edge(i, e0, e1, P, P.length);
+            if (P) P.push(sx0, sy0);else P = [sx0, sy0];
+          }
+
+          e0 = e1, e1 = this._edgecode(sx1, sy1);
+          if (e0 && e1) this._edge(i, e0, e1, P, P.length);
+          if (P) P.push(sx1, sy1);else P = [sx1, sy1];
+        }
+      }
+
+      if (P) {
+        e0 = e1, e1 = this._edgecode(P[0], P[1]);
+        if (e0 && e1) this._edge(i, e0, e1, P, P.length);
+      } else if (this.contains(i, (this.xmin + this.xmax) / 2, (this.ymin + this.ymax) / 2)) {
+        return [this.xmax, this.ymin, this.xmax, this.ymax, this.xmin, this.ymax, this.xmin, this.ymin];
+      }
+
+      return P;
+    }
+  }, {
+    key: "_clipSegment",
+    value: function _clipSegment(x0, y0, x1, y1, c0, c1) {
+      while (true) {
+        if (c0 === 0 && c1 === 0) return [x0, y0, x1, y1];
+        if (c0 & c1) return null;
+        var x = void 0,
+            y = void 0,
+            c = c0 || c1;
+        if (c & 8) x = x0 + (x1 - x0) * (this.ymax - y0) / (y1 - y0), y = this.ymax;else if (c & 4) x = x0 + (x1 - x0) * (this.ymin - y0) / (y1 - y0), y = this.ymin;else if (c & 2) y = y0 + (y1 - y0) * (this.xmax - x0) / (x1 - x0), x = this.xmax;else y = y0 + (y1 - y0) * (this.xmin - x0) / (x1 - x0), x = this.xmin;
+        if (c0) x0 = x, y0 = y, c0 = this._regioncode(x0, y0);else x1 = x, y1 = y, c1 = this._regioncode(x1, y1);
+      }
+    }
+  }, {
+    key: "_clipInfinite",
+    value: function _clipInfinite(i, points, vx0, vy0, vxn, vyn) {
+      var P = Array.from(points),
+          p;
+      if (p = this._project(P[0], P[1], vx0, vy0)) P.unshift(p[0], p[1]);
+      if (p = this._project(P[P.length - 2], P[P.length - 1], vxn, vyn)) P.push(p[0], p[1]);
+
+      if (P = this._clipFinite(i, P)) {
+        for (var j = 0, n = P.length, c0, c1 = this._edgecode(P[n - 2], P[n - 1]); j < n; j += 2) {
+          c0 = c1, c1 = this._edgecode(P[j], P[j + 1]);
+          if (c0 && c1) j = this._edge(i, c0, c1, P, j), n = P.length;
+        }
+      } else if (this.contains(i, (this.xmin + this.xmax) / 2, (this.ymin + this.ymax) / 2)) {
+        P = [this.xmin, this.ymin, this.xmax, this.ymin, this.xmax, this.ymax, this.xmin, this.ymax];
+      }
+
+      return P;
+    }
+  }, {
+    key: "_edge",
+    value: function _edge(i, e0, e1, P, j) {
+      while (e0 !== e1) {
+        var x = void 0,
+            y = void 0;
+
+        switch (e0) {
+          case 5:
+            e0 = 4;
+            continue;
+          // top-left
+
+          case 4:
+            e0 = 6, x = this.xmax, y = this.ymin;
+            break;
+          // top
+
+          case 6:
+            e0 = 2;
+            continue;
+          // top-right
+
+          case 2:
+            e0 = 10, x = this.xmax, y = this.ymax;
+            break;
+          // right
+
+          case 10:
+            e0 = 8;
+            continue;
+          // bottom-right
+
+          case 8:
+            e0 = 9, x = this.xmin, y = this.ymax;
+            break;
+          // bottom
+
+          case 9:
+            e0 = 1;
+            continue;
+          // bottom-left
+
+          case 1:
+            e0 = 5, x = this.xmin, y = this.ymin;
+            break;
+          // left
+        }
+
+        if ((P[j] !== x || P[j + 1] !== y) && this.contains(i, x, y)) {
+          P.splice(j, 0, x, y), j += 2;
+        }
+      }
+
+      if (P.length > 4) {
+        for (var _i4 = 0; _i4 < P.length; _i4 += 2) {
+          var _j = (_i4 + 2) % P.length,
+              k = (_i4 + 4) % P.length;
+
+          if (P[_i4] === P[_j] && P[_j] === P[k] || P[_i4 + 1] === P[_j + 1] && P[_j + 1] === P[k + 1]) P.splice(_j, 2), _i4 -= 2;
+        }
+      }
+
+      return j;
+    }
+  }, {
+    key: "_project",
+    value: function _project(x0, y0, vx, vy) {
+      var t = Infinity,
+          c,
+          x,
+          y;
+
+      if (vy < 0) {
+        // top
+        if (y0 <= this.ymin) return null;
+        if ((c = (this.ymin - y0) / vy) < t) y = this.ymin, x = x0 + (t = c) * vx;
+      } else if (vy > 0) {
+        // bottom
+        if (y0 >= this.ymax) return null;
+        if ((c = (this.ymax - y0) / vy) < t) y = this.ymax, x = x0 + (t = c) * vx;
+      }
+
+      if (vx > 0) {
+        // right
+        if (x0 >= this.xmax) return null;
+        if ((c = (this.xmax - x0) / vx) < t) x = this.xmax, y = y0 + (t = c) * vy;
+      } else if (vx < 0) {
+        // left
+        if (x0 <= this.xmin) return null;
+        if ((c = (this.xmin - x0) / vx) < t) x = this.xmin, y = y0 + (t = c) * vy;
+      }
+
+      return [x, y];
+    }
+  }, {
+    key: "_edgecode",
+    value: function _edgecode(x, y) {
+      return (x === this.xmin ? 1 : x === this.xmax ? 2 : 0) | (y === this.ymin ? 4 : y === this.ymax ? 8 : 0);
+    }
+  }, {
+    key: "_regioncode",
+    value: function _regioncode(x, y) {
+      return (x < this.xmin ? 1 : x > this.xmax ? 2 : 0) | (y < this.ymin ? 4 : y > this.ymax ? 8 : 0);
+    }
+  }]);
+
+  return Voronoi;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/d3-delaunay/src/delaunay.js
+
+
+
+var _marked = /*#__PURE__*/regenerator_default().mark(flatIterable);
+
+function delaunay_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = delaunay_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function delaunay_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return delaunay_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return delaunay_arrayLikeToArray(o, minLen); }
+
+function delaunay_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+
+
+
+var tau = 2 * Math.PI,
+    pow = Math.pow;
+
+function pointX(p) {
+  return p[0];
+}
+
+function pointY(p) {
+  return p[1];
+} // A triangulation is collinear if all its triangles have a non-null area
+
+
+function collinear(d) {
+  var triangles = d.triangles,
+      coords = d.coords;
+
+  for (var i = 0; i < triangles.length; i += 3) {
+    var a = 2 * triangles[i],
+        b = 2 * triangles[i + 1],
+        c = 2 * triangles[i + 2],
+        cross = (coords[c] - coords[a]) * (coords[b + 1] - coords[a + 1]) - (coords[b] - coords[a]) * (coords[c + 1] - coords[a + 1]);
+    if (cross > 1e-10) return false;
+  }
+
+  return true;
+}
+
+function jitter(x, y, r) {
+  return [x + Math.sin(x + y) * r, y + Math.cos(x - y) * r];
+}
+
+var Delaunay = /*#__PURE__*/function () {
+  function Delaunay(points) {
+    (0,classCallCheck/* default */.Z)(this, Delaunay);
+
+    this._delaunator = new Delaunator(points);
+    this.inedges = new Int32Array(points.length / 2);
+    this._hullIndex = new Int32Array(points.length / 2);
+    this.points = this._delaunator.coords;
+
+    this._init();
+  }
+
+  (0,createClass/* default */.Z)(Delaunay, [{
+    key: "update",
+    value: function update() {
+      this._delaunator.update();
+
+      this._init();
+
+      return this;
+    }
+  }, {
+    key: "_init",
+    value: function _init() {
+      var d = this._delaunator,
+          points = this.points; // check for collinear
+
+      if (d.hull && d.hull.length > 2 && collinear(d)) {
+        this.collinear = Int32Array.from({
+          length: points.length / 2
+        }, function (_, i) {
+          return i;
+        }).sort(function (i, j) {
+          return points[2 * i] - points[2 * j] || points[2 * i + 1] - points[2 * j + 1];
+        }); // for exact neighbors
+
+        var e = this.collinear[0],
+            f = this.collinear[this.collinear.length - 1],
+            bounds = [points[2 * e], points[2 * e + 1], points[2 * f], points[2 * f + 1]],
+            r = 1e-8 * Math.hypot(bounds[3] - bounds[1], bounds[2] - bounds[0]);
+
+        for (var i = 0, n = points.length / 2; i < n; ++i) {
+          var p = jitter(points[2 * i], points[2 * i + 1], r);
+          points[2 * i] = p[0];
+          points[2 * i + 1] = p[1];
+        }
+
+        this._delaunator = new Delaunator(points);
+      } else {
+        delete this.collinear;
+      }
+
+      var halfedges = this.halfedges = this._delaunator.halfedges;
+      var hull = this.hull = this._delaunator.hull;
+      var triangles = this.triangles = this._delaunator.triangles;
+      var inedges = this.inedges.fill(-1);
+
+      var hullIndex = this._hullIndex.fill(-1); // Compute an index from each point to an (arbitrary) incoming halfedge
+      // Used to give the first neighbor of each point; for this reason,
+      // on the hull we give priority to exterior halfedges
+
+
+      for (var _e = 0, _n = halfedges.length; _e < _n; ++_e) {
+        var _p = triangles[_e % 3 === 2 ? _e - 2 : _e + 1];
+        if (halfedges[_e] === -1 || inedges[_p] === -1) inedges[_p] = _e;
+      }
+
+      for (var _i = 0, _n2 = hull.length; _i < _n2; ++_i) {
+        hullIndex[hull[_i]] = _i;
+      } // degenerate case: 1 or 2 (distinct) points
+
+
+      if (hull.length <= 2 && hull.length > 0) {
+        this.triangles = new Int32Array(3).fill(-1);
+        this.halfedges = new Int32Array(3).fill(-1);
+        this.triangles[0] = hull[0];
+        this.triangles[1] = hull[1];
+        this.triangles[2] = hull[1];
+        inedges[hull[0]] = 1;
+        if (hull.length === 2) inedges[hull[1]] = 0;
+      }
+    }
+  }, {
+    key: "voronoi",
+    value: function voronoi(bounds) {
+      return new Voronoi(this, bounds);
+    }
+  }, {
+    key: "neighbors",
+    value: /*#__PURE__*/regenerator_default().mark(function neighbors(i) {
+      var inedges, hull, _hullIndex, halfedges, triangles, collinear, l, e0, e, p0, p;
+
+      return regenerator_default().wrap(function neighbors$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              inedges = this.inedges, hull = this.hull, _hullIndex = this._hullIndex, halfedges = this.halfedges, triangles = this.triangles, collinear = this.collinear; // degenerate case with several collinear points
+
+              if (!collinear) {
+                _context.next = 10;
+                break;
+              }
+
+              l = collinear.indexOf(i);
+
+              if (!(l > 0)) {
+                _context.next = 6;
+                break;
+              }
+
+              _context.next = 6;
+              return collinear[l - 1];
+
+            case 6:
+              if (!(l < collinear.length - 1)) {
+                _context.next = 9;
+                break;
+              }
+
+              _context.next = 9;
+              return collinear[l + 1];
+
+            case 9:
+              return _context.abrupt("return");
+
+            case 10:
+              e0 = inedges[i];
+
+              if (!(e0 === -1)) {
+                _context.next = 13;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 13:
+              // coincident point
+              e = e0, p0 = -1;
+
+            case 14:
+              _context.next = 16;
+              return p0 = triangles[e];
+
+            case 16:
+              e = e % 3 === 2 ? e - 2 : e + 1;
+
+              if (!(triangles[e] !== i)) {
+                _context.next = 19;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 19:
+              // bad triangulation
+              e = halfedges[e];
+
+              if (!(e === -1)) {
+                _context.next = 26;
+                break;
+              }
+
+              p = hull[(_hullIndex[i] + 1) % hull.length];
+
+              if (!(p !== p0)) {
+                _context.next = 25;
+                break;
+              }
+
+              _context.next = 25;
+              return p;
+
+            case 25:
+              return _context.abrupt("return");
+
+            case 26:
+              if (e !== e0) {
+                _context.next = 14;
+                break;
+              }
+
+            case 27:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, neighbors, this);
+    })
+  }, {
+    key: "find",
+    value: function find(x, y) {
+      var i = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      if ((x = +x, x !== x) || (y = +y, y !== y)) return -1;
+      var i0 = i;
+      var c;
+
+      while ((c = this._step(i, x, y)) >= 0 && c !== i && c !== i0) {
+        i = c;
+      }
+
+      return c;
+    }
+  }, {
+    key: "_step",
+    value: function _step(i, x, y) {
+      var inedges = this.inedges,
+          hull = this.hull,
+          _hullIndex = this._hullIndex,
+          halfedges = this.halfedges,
+          triangles = this.triangles,
+          points = this.points;
+      if (inedges[i] === -1 || !points.length) return (i + 1) % (points.length >> 1);
+      var c = i;
+      var dc = pow(x - points[i * 2], 2) + pow(y - points[i * 2 + 1], 2);
+      var e0 = inedges[i];
+      var e = e0;
+
+      do {
+        var t = triangles[e];
+        var dt = pow(x - points[t * 2], 2) + pow(y - points[t * 2 + 1], 2);
+        if (dt < dc) dc = dt, c = t;
+        e = e % 3 === 2 ? e - 2 : e + 1;
+        if (triangles[e] !== i) break; // bad triangulation
+
+        e = halfedges[e];
+
+        if (e === -1) {
+          e = hull[(_hullIndex[i] + 1) % hull.length];
+
+          if (e !== t) {
+            if (pow(x - points[e * 2], 2) + pow(y - points[e * 2 + 1], 2) < dc) return e;
+          }
+
+          break;
+        }
+      } while (e !== e0);
+
+      return c;
+    }
+  }, {
+    key: "render",
+    value: function render(context) {
+      var buffer = context == null ? context = new Path() : undefined;
+      var points = this.points,
+          halfedges = this.halfedges,
+          triangles = this.triangles;
+
+      for (var i = 0, n = halfedges.length; i < n; ++i) {
+        var j = halfedges[i];
+        if (j < i) continue;
+        var ti = triangles[i] * 2;
+        var tj = triangles[j] * 2;
+        context.moveTo(points[ti], points[ti + 1]);
+        context.lineTo(points[tj], points[tj + 1]);
+      }
+
+      this.renderHull(context);
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "renderPoints",
+    value: function renderPoints(context) {
+      var r = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+      var buffer = context == null ? context = new Path() : undefined;
+      var points = this.points;
+
+      for (var i = 0, n = points.length; i < n; i += 2) {
+        var x = points[i],
+            y = points[i + 1];
+        context.moveTo(x + r, y);
+        context.arc(x, y, r, 0, tau);
+      }
+
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "renderHull",
+    value: function renderHull(context) {
+      var buffer = context == null ? context = new Path() : undefined;
+      var hull = this.hull,
+          points = this.points;
+      var h = hull[0] * 2,
+          n = hull.length;
+      context.moveTo(points[h], points[h + 1]);
+
+      for (var i = 1; i < n; ++i) {
+        var _h = 2 * hull[i];
+
+        context.lineTo(points[_h], points[_h + 1]);
+      }
+
+      context.closePath();
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "hullPolygon",
+    value: function hullPolygon() {
+      var polygon = new Polygon();
+      this.renderHull(polygon);
+      return polygon.value();
+    }
+  }, {
+    key: "renderTriangle",
+    value: function renderTriangle(i, context) {
+      var buffer = context == null ? context = new Path() : undefined;
+      var points = this.points,
+          triangles = this.triangles;
+      var t0 = triangles[i *= 3] * 2;
+      var t1 = triangles[i + 1] * 2;
+      var t2 = triangles[i + 2] * 2;
+      context.moveTo(points[t0], points[t0 + 1]);
+      context.lineTo(points[t1], points[t1 + 1]);
+      context.lineTo(points[t2], points[t2 + 1]);
+      context.closePath();
+      return buffer && buffer.value();
+    }
+  }, {
+    key: "trianglePolygons",
+    value: /*#__PURE__*/regenerator_default().mark(function trianglePolygons() {
+      var triangles, i, n;
+      return regenerator_default().wrap(function trianglePolygons$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              triangles = this.triangles;
+              i = 0, n = triangles.length / 3;
+
+            case 2:
+              if (!(i < n)) {
+                _context2.next = 8;
+                break;
+              }
+
+              _context2.next = 5;
+              return this.trianglePolygon(i);
+
+            case 5:
+              ++i;
+              _context2.next = 2;
+              break;
+
+            case 8:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, trianglePolygons, this);
+    })
+  }, {
+    key: "trianglePolygon",
+    value: function trianglePolygon(i) {
+      var polygon = new Polygon();
+      this.renderTriangle(i, polygon);
+      return polygon.value();
+    }
+  }], [{
+    key: "from",
+    value: function from(points) {
+      var fx = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : pointX;
+      var fy = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : pointY;
+      var that = arguments.length > 3 ? arguments[3] : undefined;
+      return new Delaunay("length" in points ? flatArray(points, fx, fy, that) : Float64Array.from(flatIterable(points, fx, fy, that)));
+    }
+  }]);
+
+  return Delaunay;
+}();
+
+
+
+function flatArray(points, fx, fy, that) {
+  var n = points.length;
+  var array = new Float64Array(n * 2);
+
+  for (var i = 0; i < n; ++i) {
+    var p = points[i];
+    array[i * 2] = fx.call(that, p, i, points);
+    array[i * 2 + 1] = fy.call(that, p, i, points);
+  }
+
+  return array;
+}
+
+function flatIterable(points, fx, fy, that) {
+  var i, _iterator, _step2, p;
+
+  return regenerator_default().wrap(function flatIterable$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          i = 0;
+          _iterator = delaunay_createForOfIteratorHelper(points);
+          _context3.prev = 2;
+
+          _iterator.s();
+
+        case 4:
+          if ((_step2 = _iterator.n()).done) {
+            _context3.next = 13;
+            break;
+          }
+
+          p = _step2.value;
+          _context3.next = 8;
+          return fx.call(that, p, i, points);
+
+        case 8:
+          _context3.next = 10;
+          return fy.call(that, p, i, points);
+
+        case 10:
+          ++i;
+
+        case 11:
+          _context3.next = 4;
+          break;
+
+        case 13:
+          _context3.next = 18;
+          break;
+
+        case 15:
+          _context3.prev = 15;
+          _context3.t0 = _context3["catch"](2);
+
+          _iterator.e(_context3.t0);
+
+        case 18:
+          _context3.prev = 18;
+
+          _iterator.f();
+
+          return _context3.finish(18);
+
+        case 21:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  }, _marked, null, [[2, 15, 18, 21]]);
 }
 
 /***/ }),
@@ -20455,6 +19766,97 @@ function defaultLocale(definition) {
 
 /***/ }),
 
+/***/ 86919:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; },
+/* harmony export */   "M": function() { return /* binding */ genericArray; }
+/* harmony export */ });
+/* harmony import */ var _value_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23713);
+/* harmony import */ var _numberArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3256);
+
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(a, b) {
+  return ((0,_numberArray_js__WEBPACK_IMPORTED_MODULE_0__/* .isNumberArray */ .v)(b) ? _numberArray_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z : genericArray)(a, b);
+}
+function genericArray(a, b) {
+  var nb = b ? b.length : 0,
+      na = a ? Math.min(nb, a.length) : 0,
+      x = new Array(na),
+      c = new Array(nb),
+      i;
+
+  for (i = 0; i < na; ++i) {
+    x[i] = (0,_value_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(a[i], b[i]);
+  }
+
+  for (; i < nb; ++i) {
+    c[i] = b[i];
+  }
+
+  return function (t) {
+    for (i = 0; i < na; ++i) {
+      c[i] = x[i](t);
+    }
+
+    return c;
+  };
+}
+
+/***/ }),
+
+/***/ 49763:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "t": function() { return /* binding */ basis; },
+/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
+/* harmony export */ });
+function basis(t1, v0, v1, v2, v3) {
+  var t2 = t1 * t1,
+      t3 = t2 * t1;
+  return ((1 - 3 * t1 + 3 * t2 - t3) * v0 + (4 - 6 * t2 + 3 * t3) * v1 + (1 + 3 * t1 + 3 * t2 - 3 * t3) * v2 + t3 * v3) / 6;
+}
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(values) {
+  var n = values.length - 1;
+  return function (t) {
+    var i = t <= 0 ? t = 0 : t >= 1 ? (t = 1, n - 1) : Math.floor(t * n),
+        v1 = values[i],
+        v2 = values[i + 1],
+        v0 = i > 0 ? values[i - 1] : 2 * v1 - v2,
+        v3 = i < n - 1 ? values[i + 2] : 2 * v2 - v1;
+    return basis((t - i / n) * n, v0, v1, v2, v3);
+  };
+}
+
+/***/ }),
+
+/***/ 52283:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
+/* harmony export */ });
+/* harmony import */ var _basis_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(49763);
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(values) {
+  var n = values.length;
+  return function (t) {
+    var i = Math.floor(((t %= 1) < 0 ? ++t : t) * n),
+        v0 = values[(i + n - 1) % n],
+        v1 = values[i % n],
+        v2 = values[(i + 1) % n],
+        v3 = values[(i + 2) % n];
+    return (0,_basis_js__WEBPACK_IMPORTED_MODULE_0__/* .basis */ .t)((t - i / n) * n, v0, v1, v2, v3);
+  };
+}
+
+/***/ }),
+
 /***/ 4301:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -20514,7 +19916,7 @@ function nogamma(a, b) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "B": function() { return /* binding */ cubehelixLong; }
 /* harmony export */ });
-/* harmony import */ var d3_color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(19983);
+/* harmony import */ var d3_color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(69259);
 /* harmony import */ var _color_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4301);
 
 
@@ -20542,8 +19944,24 @@ function cubehelix(hue) {
   }(1);
 }
 
-/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (cubehelix(_color_js__WEBPACK_IMPORTED_MODULE_1__/* .hue */ .wx));
+/* harmony default export */ __webpack_exports__["Z"] = (cubehelix(_color_js__WEBPACK_IMPORTED_MODULE_1__/* .hue */ .wx));
 var cubehelixLong = cubehelix(_color_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP);
+
+/***/ }),
+
+/***/ 66276:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
+/* harmony export */ });
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(a, b) {
+  var d = new Date();
+  return a = +a, b = +b, function (t) {
+    return d.setTime(a * (1 - t) + b * t), d;
+  };
+}
 
 /***/ }),
 
@@ -20562,66 +19980,92 @@ var cubehelixLong = cubehelix(_color_js__WEBPACK_IMPORTED_MODULE_1__/* .default 
 
 /***/ }),
 
-/***/ 85513:
+/***/ 3256:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "ZP": function() { return /* binding */ rgb; },
-  "hD": function() { return /* binding */ rgbBasis; }
-});
-
-// UNUSED EXPORTS: rgbBasisClosed
-
-// EXTERNAL MODULE: ./node_modules/d3-color/src/color.js
-var src_color = __webpack_require__(34627);
-;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/basis.js
-function basis(t1, v0, v1, v2, v3) {
-  var t2 = t1 * t1,
-      t3 = t2 * t1;
-  return ((1 - 3 * t1 + 3 * t2 - t3) * v0 + (4 - 6 * t2 + 3 * t3) * v1 + (1 + 3 * t1 + 3 * t2 - 3 * t3) * v2 + t3 * v3) / 6;
-}
-/* harmony default export */ function src_basis(values) {
-  var n = values.length - 1;
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; },
+/* harmony export */   "v": function() { return /* binding */ isNumberArray; }
+/* harmony export */ });
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(a, b) {
+  if (!b) b = [];
+  var n = a ? Math.min(b.length, a.length) : 0,
+      c = b.slice(),
+      i;
   return function (t) {
-    var i = t <= 0 ? t = 0 : t >= 1 ? (t = 1, n - 1) : Math.floor(t * n),
-        v1 = values[i],
-        v2 = values[i + 1],
-        v0 = i > 0 ? values[i - 1] : 2 * v1 - v2,
-        v3 = i < n - 1 ? values[i + 2] : 2 * v2 - v1;
-    return basis((t - i / n) * n, v0, v1, v2, v3);
+    for (i = 0; i < n; ++i) {
+      c[i] = a[i] * (1 - t) + b[i] * t;
+    }
+
+    return c;
   };
 }
-;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/basisClosed.js
+function isNumberArray(x) {
+  return ArrayBuffer.isView(x) && !(x instanceof DataView);
+}
 
-/* harmony default export */ function basisClosed(values) {
-  var n = values.length;
+/***/ }),
+
+/***/ 51861:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
+/* harmony export */ });
+/* harmony import */ var _value_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23713);
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(a, b) {
+  var i = {},
+      c = {},
+      k;
+  if (a === null || typeof a !== "object") a = {};
+  if (b === null || typeof b !== "object") b = {};
+
+  for (k in b) {
+    if (k in a) {
+      i[k] = (0,_value_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(a[k], b[k]);
+    } else {
+      c[k] = b[k];
+    }
+  }
+
   return function (t) {
-    var i = Math.floor(((t %= 1) < 0 ? ++t : t) * n),
-        v0 = values[(i + n - 1) % n],
-        v1 = values[i % n],
-        v2 = values[(i + 1) % n],
-        v3 = values[(i + 2) % n];
-    return basis((t - i / n) * n, v0, v1, v2, v3);
+    for (k in i) {
+      c[k] = i[k](t);
+    }
+
+    return c;
   };
 }
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/color.js
-var d3_interpolate_src_color = __webpack_require__(4301);
-;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/rgb.js
+
+/***/ }),
+
+/***/ 65713:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "hD": function() { return /* binding */ rgbBasis; },
+/* harmony export */   "YD": function() { return /* binding */ rgbBasisClosed; }
+/* harmony export */ });
+/* harmony import */ var d3_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(34627);
+/* harmony import */ var _basis_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(49763);
+/* harmony import */ var _basisClosed_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(52283);
+/* harmony import */ var _color_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4301);
 
 
 
 
-/* harmony default export */ var rgb = ((function rgbGamma(y) {
-  var color = (0,d3_interpolate_src_color/* gamma */.yi)(y);
+/* harmony default export */ __webpack_exports__["ZP"] = ((function rgbGamma(y) {
+  var color = (0,_color_js__WEBPACK_IMPORTED_MODULE_0__/* .gamma */ .yi)(y);
 
   function rgb(start, end) {
-    var r = color((start = (0,src_color/* rgb */.B8)(start)).r, (end = (0,src_color/* rgb */.B8)(end)).r),
+    var r = color((start = (0,d3_color__WEBPACK_IMPORTED_MODULE_1__/* .rgb */ .B8)(start)).r, (end = (0,d3_color__WEBPACK_IMPORTED_MODULE_1__/* .rgb */ .B8)(end)).r),
         g = color(start.g, end.g),
         b = color(start.b, end.b),
-        opacity = (0,d3_interpolate_src_color/* default */.ZP)(start.opacity, end.opacity);
+        opacity = (0,_color_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .ZP)(start.opacity, end.opacity);
     return function (t) {
       start.r = r(t);
       start.g = g(t);
@@ -20645,7 +20089,7 @@ function rgbSpline(spline) {
         color;
 
     for (i = 0; i < n; ++i) {
-      color = (0,src_color/* rgb */.B8)(colors[i]);
+      color = (0,d3_color__WEBPACK_IMPORTED_MODULE_1__/* .rgb */ .B8)(colors[i]);
       r[i] = color.r || 0;
       g[i] = color.g || 0;
       b[i] = color.b || 0;
@@ -20664,8 +20108,23 @@ function rgbSpline(spline) {
   };
 }
 
-var rgbBasis = rgbSpline(src_basis);
-var rgbBasisClosed = rgbSpline(basisClosed);
+var rgbBasis = rgbSpline(_basis_js__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+var rgbBasisClosed = rgbSpline(_basisClosed_js__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z);
+
+/***/ }),
+
+/***/ 81459:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
+/* harmony export */ });
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(a, b) {
+  return a = +a, b = +b, function (t) {
+    return Math.round(a * (1 - t) + b * t);
+  };
+}
 
 /***/ }),
 
@@ -20755,123 +20214,36 @@ function one(b) {
 
 /***/ }),
 
-/***/ 56940:
-/***/ (function(__unused_webpack_module, __webpack_exports__) {
+/***/ 23713:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var pi = Math.PI,
-    tau = 2 * pi,
-    epsilon = 1e-6,
-    tauEpsilon = tau - epsilon;
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
+/* harmony export */ });
+/* harmony import */ var d3_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(34627);
+/* harmony import */ var _rgb_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(65713);
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(86919);
+/* harmony import */ var _date_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(66276);
+/* harmony import */ var _number_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(44922);
+/* harmony import */ var _object_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(51861);
+/* harmony import */ var _string_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(95147);
+/* harmony import */ var _constant_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(80546);
+/* harmony import */ var _numberArray_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(3256);
 
-function Path() {
-  this._x0 = this._y0 = // start of current subpath
-  this._x1 = this._y1 = null; // end of current subpath
 
-  this._ = "";
+
+
+
+
+
+
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(a, b) {
+  var t = typeof b,
+      c;
+  return b == null || t === "boolean" ? (0,_constant_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(b) : (t === "number" ? _number_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z : t === "string" ? (c = (0,d3_color__WEBPACK_IMPORTED_MODULE_2__/* .default */ .ZP)(b)) ? (b = c, _rgb_js__WEBPACK_IMPORTED_MODULE_3__/* .default */ .ZP) : _string_js__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z : b instanceof d3_color__WEBPACK_IMPORTED_MODULE_2__/* .default */ .ZP ? _rgb_js__WEBPACK_IMPORTED_MODULE_3__/* .default */ .ZP : b instanceof Date ? _date_js__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z : (0,_numberArray_js__WEBPACK_IMPORTED_MODULE_6__/* .isNumberArray */ .v)(b) ? _numberArray_js__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z : Array.isArray(b) ? _array_js__WEBPACK_IMPORTED_MODULE_7__/* .genericArray */ .M : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? _object_js__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z : _number_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(a, b);
 }
-
-function path() {
-  return new Path();
-}
-
-Path.prototype = path.prototype = {
-  constructor: Path,
-  moveTo: function moveTo(x, y) {
-    this._ += "M" + (this._x0 = this._x1 = +x) + "," + (this._y0 = this._y1 = +y);
-  },
-  closePath: function closePath() {
-    if (this._x1 !== null) {
-      this._x1 = this._x0, this._y1 = this._y0;
-      this._ += "Z";
-    }
-  },
-  lineTo: function lineTo(x, y) {
-    this._ += "L" + (this._x1 = +x) + "," + (this._y1 = +y);
-  },
-  quadraticCurveTo: function quadraticCurveTo(x1, y1, x, y) {
-    this._ += "Q" + +x1 + "," + +y1 + "," + (this._x1 = +x) + "," + (this._y1 = +y);
-  },
-  bezierCurveTo: function bezierCurveTo(x1, y1, x2, y2, x, y) {
-    this._ += "C" + +x1 + "," + +y1 + "," + +x2 + "," + +y2 + "," + (this._x1 = +x) + "," + (this._y1 = +y);
-  },
-  arcTo: function arcTo(x1, y1, x2, y2, r) {
-    x1 = +x1, y1 = +y1, x2 = +x2, y2 = +y2, r = +r;
-    var x0 = this._x1,
-        y0 = this._y1,
-        x21 = x2 - x1,
-        y21 = y2 - y1,
-        x01 = x0 - x1,
-        y01 = y0 - y1,
-        l01_2 = x01 * x01 + y01 * y01; // Is the radius negative? Error.
-
-    if (r < 0) throw new Error("negative radius: " + r); // Is this path empty? Move to (x1,y1).
-
-    if (this._x1 === null) {
-      this._ += "M" + (this._x1 = x1) + "," + (this._y1 = y1);
-    } // Or, is (x1,y1) coincident with (x0,y0)? Do nothing.
-    else if (!(l01_2 > epsilon)) ; // Or, are (x0,y0), (x1,y1) and (x2,y2) collinear?
-      // Equivalently, is (x1,y1) coincident with (x2,y2)?
-      // Or, is the radius zero? Line to (x1,y1).
-      else if (!(Math.abs(y01 * x21 - y21 * x01) > epsilon) || !r) {
-          this._ += "L" + (this._x1 = x1) + "," + (this._y1 = y1);
-        } // Otherwise, draw an arc!
-        else {
-            var x20 = x2 - x0,
-                y20 = y2 - y0,
-                l21_2 = x21 * x21 + y21 * y21,
-                l20_2 = x20 * x20 + y20 * y20,
-                l21 = Math.sqrt(l21_2),
-                l01 = Math.sqrt(l01_2),
-                l = r * Math.tan((pi - Math.acos((l21_2 + l01_2 - l20_2) / (2 * l21 * l01))) / 2),
-                t01 = l / l01,
-                t21 = l / l21; // If the start tangent is not coincident with (x0,y0), line to.
-
-            if (Math.abs(t01 - 1) > epsilon) {
-              this._ += "L" + (x1 + t01 * x01) + "," + (y1 + t01 * y01);
-            }
-
-            this._ += "A" + r + "," + r + ",0,0," + +(y01 * x20 > x01 * y20) + "," + (this._x1 = x1 + t21 * x21) + "," + (this._y1 = y1 + t21 * y21);
-          }
-  },
-  arc: function arc(x, y, r, a0, a1, ccw) {
-    x = +x, y = +y, r = +r, ccw = !!ccw;
-    var dx = r * Math.cos(a0),
-        dy = r * Math.sin(a0),
-        x0 = x + dx,
-        y0 = y + dy,
-        cw = 1 ^ ccw,
-        da = ccw ? a0 - a1 : a1 - a0; // Is the radius negative? Error.
-
-    if (r < 0) throw new Error("negative radius: " + r); // Is this path empty? Move to (x0,y0).
-
-    if (this._x1 === null) {
-      this._ += "M" + x0 + "," + y0;
-    } // Or, is (x0,y0) not coincident with the previous point? Line to (x0,y0).
-    else if (Math.abs(this._x1 - x0) > epsilon || Math.abs(this._y1 - y0) > epsilon) {
-        this._ += "L" + x0 + "," + y0;
-      } // Is this arc empty? We’re done.
-
-
-    if (!r) return; // Does the angle go the wrong way? Flip the direction.
-
-    if (da < 0) da = da % tau + tau; // Is this a complete circle? Draw two arcs to complete the circle.
-
-    if (da > tauEpsilon) {
-      this._ += "A" + r + "," + r + ",0,1," + cw + "," + (x - dx) + "," + (y - dy) + "A" + r + "," + r + ",0,1," + cw + "," + (this._x1 = x0) + "," + (this._y1 = y0);
-    } // Is this arc non-empty? Draw an arc!
-    else if (da > epsilon) {
-        this._ += "A" + r + "," + r + ",0," + +(da >= pi) + "," + cw + "," + (this._x1 = x + r * Math.cos(a1)) + "," + (this._y1 = y + r * Math.sin(a1));
-      }
-  },
-  rect: function rect(x, y, w, h) {
-    this._ += "M" + (this._x0 = this._x1 = +x) + "," + (this._y0 = this._y1 = +y) + "h" + +w + "v" + +h + "h" + -w + "Z";
-  },
-  toString: function toString() {
-    return this._;
-  }
-};
-/* harmony default export */ __webpack_exports__["Z"] = (path);
 
 /***/ }),
 
@@ -21134,7 +20506,7 @@ var scheme = new Array(3).concat("fc8d59ffffbf99d594", "d7191cfdae61abdda42b83ba
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var d3_interpolate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85513);
+/* harmony import */ var d3_interpolate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(65713);
 
 /* harmony default export */ __webpack_exports__["Z"] = (function (scheme) {
   return (0,d3_interpolate__WEBPACK_IMPORTED_MODULE_0__/* .rgbBasis */ .hD)(scheme[scheme.length - 1]);
@@ -21338,7 +20710,7 @@ var scheme = new Array(3).concat("ffeda0feb24cf03b20", "ffffb2fecc5cfd8d3ce31a1c
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var d3_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19983);
+/* harmony import */ var d3_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(69259);
 /* harmony import */ var d3_interpolate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(28611);
 
 
@@ -21355,7 +20727,7 @@ var scheme = new Array(3).concat("ffeda0feb24cf03b20", "ffffb2fecc5cfd8d3ce31a1c
 /* harmony export */   "H7": function() { return /* binding */ cool; },
 /* harmony export */   "ZP": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
 /* harmony export */ });
-/* harmony import */ var d3_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19983);
+/* harmony import */ var d3_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(69259);
 /* harmony import */ var d3_interpolate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(28611);
 
 
@@ -21531,16 +20903,23 @@ var scheme = new Array(3).concat("fee0d2fc9272de2d26", "fee5d9fcae91fb6a4acb181d
 
 /***/ }),
 
-/***/ 51432:
+/***/ 2676:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
-/* harmony export */ });
-/* harmony import */ var _ascending_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4625);
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(f) {
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "ZP": function() { return /* binding */ bisect; }
+});
+
+// UNUSED EXPORTS: bisectCenter, bisectLeft, bisectRight
+
+// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/ascending.js
+var ascending = __webpack_require__(4625);
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/bisector.js
+
+/* harmony default export */ function bisector(f) {
   var delta = f;
   var compare = f;
 
@@ -21592,8 +20971,154 @@ var scheme = new Array(3).concat("fee0d2fc9272de2d26", "fee5d9fcae91fb6a4acb181d
 
 function ascendingComparator(f) {
   return function (d, x) {
-    return (0,_ascending_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(f(d), x);
+    return (0,ascending/* default */.Z)(f(d), x);
   };
+}
+// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/number.js
+var number = __webpack_require__(99886);
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/bisect.js
+
+
+
+var ascendingBisect = bisector(ascending/* default */.Z);
+var bisectRight = ascendingBisect.right;
+var bisectLeft = ascendingBisect.left;
+var bisectCenter = bisector(number/* default */.Z).center;
+/* harmony default export */ var bisect = (bisectRight);
+
+/***/ }),
+
+/***/ 99886:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
+/* harmony export */ });
+/* unused harmony export numbers */
+/* harmony import */ var _home_runner_work_jacdac_docs_jacdac_docs_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
+/* harmony import */ var _home_runner_work_jacdac_docs_jacdac_docs_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_runner_work_jacdac_docs_jacdac_docs_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var _marked = /*#__PURE__*/_home_runner_work_jacdac_docs_jacdac_docs_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(numbers);
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(x) {
+  return x === null ? NaN : +x;
+}
+function numbers(values, valueof) {
+  var _iterator, _step, value, index, _iterator2, _step2, _value;
+
+  return _home_runner_work_jacdac_docs_jacdac_docs_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function numbers$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          if (!(valueof === undefined)) {
+            _context.next = 21;
+            break;
+          }
+
+          _iterator = _createForOfIteratorHelper(values);
+          _context.prev = 2;
+
+          _iterator.s();
+
+        case 4:
+          if ((_step = _iterator.n()).done) {
+            _context.next = 11;
+            break;
+          }
+
+          value = _step.value;
+
+          if (!(value != null && (value = +value) >= value)) {
+            _context.next = 9;
+            break;
+          }
+
+          _context.next = 9;
+          return value;
+
+        case 9:
+          _context.next = 4;
+          break;
+
+        case 11:
+          _context.next = 16;
+          break;
+
+        case 13:
+          _context.prev = 13;
+          _context.t0 = _context["catch"](2);
+
+          _iterator.e(_context.t0);
+
+        case 16:
+          _context.prev = 16;
+
+          _iterator.f();
+
+          return _context.finish(16);
+
+        case 19:
+          _context.next = 40;
+          break;
+
+        case 21:
+          index = -1;
+          _iterator2 = _createForOfIteratorHelper(values);
+          _context.prev = 23;
+
+          _iterator2.s();
+
+        case 25:
+          if ((_step2 = _iterator2.n()).done) {
+            _context.next = 32;
+            break;
+          }
+
+          _value = _step2.value;
+
+          if (!((_value = valueof(_value, ++index, values)) != null && (_value = +_value) >= _value)) {
+            _context.next = 30;
+            break;
+          }
+
+          _context.next = 30;
+          return _value;
+
+        case 30:
+          _context.next = 25;
+          break;
+
+        case 32:
+          _context.next = 37;
+          break;
+
+        case 34:
+          _context.prev = 34;
+          _context.t1 = _context["catch"](23);
+
+          _iterator2.e(_context.t1);
+
+        case 37:
+          _context.prev = 37;
+
+          _iterator2.f();
+
+          return _context.finish(37);
+
+        case 40:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, _marked, null, [[2, 13, 16, 19], [23, 34, 37, 40]]);
 }
 
 /***/ }),
@@ -22047,7 +21572,7 @@ FormatSpecifier.prototype.toString = function () {
 
 /***/ }),
 
-/***/ 14800:
+/***/ 4389:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22056,269 +21581,26 @@ FormatSpecifier.prototype.toString = function () {
 __webpack_require__.d(__webpack_exports__, {
   "JG": function() { return /* binding */ copy; },
   "ZP": function() { return /* binding */ continuous; },
+  "yR": function() { return /* binding */ identity; },
   "l4": function() { return /* binding */ transformer; }
 });
 
-// UNUSED EXPORTS: identity
-
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/ascending.js
-var ascending = __webpack_require__(4625);
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/bisector.js
-var bisector = __webpack_require__(51432);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(87757);
-var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/number.js
-
-
-var _marked = /*#__PURE__*/regenerator_default().mark(numbers);
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-/* harmony default export */ function number(x) {
-  return x === null ? NaN : +x;
-}
-function numbers(values, valueof) {
-  var _iterator, _step, value, index, _iterator2, _step2, _value;
-
-  return regenerator_default().wrap(function numbers$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          if (!(valueof === undefined)) {
-            _context.next = 21;
-            break;
-          }
-
-          _iterator = _createForOfIteratorHelper(values);
-          _context.prev = 2;
-
-          _iterator.s();
-
-        case 4:
-          if ((_step = _iterator.n()).done) {
-            _context.next = 11;
-            break;
-          }
-
-          value = _step.value;
-
-          if (!(value != null && (value = +value) >= value)) {
-            _context.next = 9;
-            break;
-          }
-
-          _context.next = 9;
-          return value;
-
-        case 9:
-          _context.next = 4;
-          break;
-
-        case 11:
-          _context.next = 16;
-          break;
-
-        case 13:
-          _context.prev = 13;
-          _context.t0 = _context["catch"](2);
-
-          _iterator.e(_context.t0);
-
-        case 16:
-          _context.prev = 16;
-
-          _iterator.f();
-
-          return _context.finish(16);
-
-        case 19:
-          _context.next = 40;
-          break;
-
-        case 21:
-          index = -1;
-          _iterator2 = _createForOfIteratorHelper(values);
-          _context.prev = 23;
-
-          _iterator2.s();
-
-        case 25:
-          if ((_step2 = _iterator2.n()).done) {
-            _context.next = 32;
-            break;
-          }
-
-          _value = _step2.value;
-
-          if (!((_value = valueof(_value, ++index, values)) != null && (_value = +_value) >= _value)) {
-            _context.next = 30;
-            break;
-          }
-
-          _context.next = 30;
-          return _value;
-
-        case 30:
-          _context.next = 25;
-          break;
-
-        case 32:
-          _context.next = 37;
-          break;
-
-        case 34:
-          _context.prev = 34;
-          _context.t1 = _context["catch"](23);
-
-          _iterator2.e(_context.t1);
-
-        case 37:
-          _context.prev = 37;
-
-          _iterator2.f();
-
-          return _context.finish(37);
-
-        case 40:
-        case "end":
-          return _context.stop();
-      }
-    }
-  }, _marked, null, [[2, 13, 16, 19], [23, 34, 37, 40]]);
-}
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/bisect.js
-
-
-
-var ascendingBisect = (0,bisector/* default */.Z)(ascending/* default */.Z);
-var bisectRight = ascendingBisect.right;
-var bisectLeft = ascendingBisect.left;
-var bisectCenter = (0,bisector/* default */.Z)(number).center;
-/* harmony default export */ var bisect = (bisectRight);
-// EXTERNAL MODULE: ./node_modules/d3-color/src/color.js
-var color = __webpack_require__(34627);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/rgb.js + 2 modules
-var rgb = __webpack_require__(85513);
-;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/array.js
-
-
-/* harmony default export */ function array(a, b) {
-  return (isNumberArray(b) ? numberArray : genericArray)(a, b);
-}
-function genericArray(a, b) {
-  var nb = b ? b.length : 0,
-      na = a ? Math.min(nb, a.length) : 0,
-      x = new Array(na),
-      c = new Array(nb),
-      i;
-
-  for (i = 0; i < na; ++i) {
-    x[i] = value(a[i], b[i]);
-  }
-
-  for (; i < nb; ++i) {
-    c[i] = b[i];
-  }
-
-  return function (t) {
-    for (i = 0; i < na; ++i) {
-      c[i] = x[i](t);
-    }
-
-    return c;
-  };
-}
-;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/date.js
-/* harmony default export */ function date(a, b) {
-  var d = new Date();
-  return a = +a, b = +b, function (t) {
-    return d.setTime(a * (1 - t) + b * t), d;
-  };
-}
+// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/bisect.js + 1 modules
+var bisect = __webpack_require__(2676);
+// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/value.js
+var value = __webpack_require__(23713);
 // EXTERNAL MODULE: ./node_modules/d3-interpolate/src/number.js
-var src_number = __webpack_require__(44922);
-;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/object.js
-
-/* harmony default export */ function object(a, b) {
-  var i = {},
-      c = {},
-      k;
-  if (a === null || typeof a !== "object") a = {};
-  if (b === null || typeof b !== "object") b = {};
-
-  for (k in b) {
-    if (k in a) {
-      i[k] = value(a[k], b[k]);
-    } else {
-      c[k] = b[k];
-    }
-  }
-
-  return function (t) {
-    for (k in i) {
-      c[k] = i[k](t);
-    }
-
-    return c;
-  };
-}
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/string.js
-var string = __webpack_require__(95147);
-// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/constant.js
-var constant = __webpack_require__(80546);
-;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/numberArray.js
-/* harmony default export */ function src_numberArray(a, b) {
-  if (!b) b = [];
-  var n = a ? Math.min(b.length, a.length) : 0,
-      c = b.slice(),
-      i;
-  return function (t) {
-    for (i = 0; i < n; ++i) {
-      c[i] = a[i] * (1 - t) + b[i] * t;
-    }
-
-    return c;
-  };
-}
-function numberArray_isNumberArray(x) {
-  return ArrayBuffer.isView(x) && !(x instanceof DataView);
-}
-;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/value.js
-
-
-
-
-
-
-
-
-
-/* harmony default export */ function value(a, b) {
-  var t = typeof b,
-      c;
-  return b == null || t === "boolean" ? (0,constant/* default */.Z)(b) : (t === "number" ? src_number/* default */.Z : t === "string" ? (c = (0,color/* default */.ZP)(b)) ? (b = c, rgb/* default */.ZP) : string/* default */.Z : b instanceof color/* default */.ZP ? rgb/* default */.ZP : b instanceof Date ? date : numberArray_isNumberArray(b) ? src_numberArray : Array.isArray(b) ? genericArray : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object : src_number/* default */.Z)(a, b);
-}
-;// CONCATENATED MODULE: ./node_modules/d3-interpolate/src/round.js
-/* harmony default export */ function round(a, b) {
-  return a = +a, b = +b, function (t) {
-    return Math.round(a * (1 - t) + b * t);
-  };
-}
+var number = __webpack_require__(44922);
+// EXTERNAL MODULE: ./node_modules/d3-interpolate/src/round.js
+var round = __webpack_require__(81459);
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/src/constant.js
 function constants(x) {
   return function () {
     return x;
   };
 }
-;// CONCATENATED MODULE: ./node_modules/d3-scale/src/number.js
-function number_number(x) {
-  return +x;
-}
+// EXTERNAL MODULE: ./node_modules/d3-scale/src/number.js
+var src_number = __webpack_require__(19498);
 ;// CONCATENATED MODULE: ./node_modules/d3-scale/src/continuous.js
 
 
@@ -22373,7 +21655,7 @@ function polymap(domain, range, interpolate) {
   }
 
   return function (x) {
-    var i = bisect(domain, x, 1, j) - 1;
+    var i = (0,bisect/* default */.ZP)(domain, x, 1, j) - 1;
     return r[i](d[i](x));
   };
 }
@@ -22384,7 +21666,7 @@ function copy(source, target) {
 function transformer() {
   var domain = unit,
       range = unit,
-      interpolate = value,
+      interpolate = value/* default */.Z,
       transform,
       untransform,
       unknown,
@@ -22406,11 +21688,11 @@ function transformer() {
   }
 
   scale.invert = function (y) {
-    return clamp(untransform((input || (input = piecewise(range, domain.map(transform), src_number/* default */.Z)))(y)));
+    return clamp(untransform((input || (input = piecewise(range, domain.map(transform), number/* default */.Z)))(y)));
   };
 
   scale.domain = function (_) {
-    return arguments.length ? (domain = Array.from(_, number_number), rescale()) : domain.slice();
+    return arguments.length ? (domain = Array.from(_, src_number/* default */.Z), rescale()) : domain.slice();
   };
 
   scale.range = function (_) {
@@ -22418,7 +21700,7 @@ function transformer() {
   };
 
   scale.rangeRound = function (_) {
-    return range = Array.from(_), interpolate = round, rescale();
+    return range = Array.from(_), interpolate = round/* default */.Z, rescale();
   };
 
   scale.clamp = function (_) {
@@ -22449,9 +21731,9 @@ function continuous() {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "o": function() { return /* binding */ initRange; }
+/* harmony export */   "o": function() { return /* binding */ initRange; },
+/* harmony export */   "O": function() { return /* binding */ initInterpolator; }
 /* harmony export */ });
-/* unused harmony export initInterpolator */
 function initRange(domain, range) {
   switch (arguments.length) {
     case 0:
@@ -22492,82 +21774,18 @@ function initInterpolator(domain, interpolator) {
 
 /***/ }),
 
-/***/ 44076:
+/***/ 59006:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": function() { return /* binding */ linear; },
-  "Q": function() { return /* binding */ linearish; }
-});
-
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/ticks.js
-var ticks = __webpack_require__(59336);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/continuous.js + 10 modules
-var continuous = __webpack_require__(14800);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/init.js
-var init = __webpack_require__(39632);
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/formatSpecifier.js
-var formatSpecifier = __webpack_require__(62606);
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/exponent.js
-var exponent = __webpack_require__(71202);
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/precisionPrefix.js
-
-/* harmony default export */ function precisionPrefix(step, value) {
-  return Math.max(0, Math.max(-8, Math.min(8, Math.floor((0,exponent/* default */.Z)(value) / 3))) * 3 - (0,exponent/* default */.Z)(Math.abs(step)));
-}
-// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/defaultLocale.js + 8 modules
-var defaultLocale = __webpack_require__(64162);
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/precisionRound.js
-
-/* harmony default export */ function precisionRound(step, max) {
-  step = Math.abs(step), max = Math.abs(max) - step;
-  return Math.max(0, (0,exponent/* default */.Z)(max) - (0,exponent/* default */.Z)(step)) + 1;
-}
-;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/precisionFixed.js
-
-/* harmony default export */ function precisionFixed(step) {
-  return Math.max(0, -(0,exponent/* default */.Z)(Math.abs(step)));
-}
-;// CONCATENATED MODULE: ./node_modules/d3-scale/src/tickFormat.js
-
-
-function tickFormat(start, stop, count, specifier) {
-  var step = (0,ticks/* tickStep */.ly)(start, stop, count),
-      precision;
-  specifier = (0,formatSpecifier/* default */.Z)(specifier == null ? ",f" : specifier);
-
-  switch (specifier.type) {
-    case "s":
-      {
-        var value = Math.max(Math.abs(start), Math.abs(stop));
-        if (specifier.precision == null && !isNaN(precision = precisionPrefix(step, value))) specifier.precision = precision;
-        return (0,defaultLocale/* formatPrefix */.jH)(specifier, value);
-      }
-
-    case "":
-    case "e":
-    case "g":
-    case "p":
-    case "r":
-      {
-        if (specifier.precision == null && !isNaN(precision = precisionRound(step, Math.max(Math.abs(start), Math.abs(stop))))) specifier.precision = precision - (specifier.type === "e");
-        break;
-      }
-
-    case "f":
-    case "%":
-      {
-        if (specifier.precision == null && !isNaN(precision = precisionFixed(step))) specifier.precision = precision - (specifier.type === "%") * 2;
-        break;
-      }
-  }
-
-  return (0,defaultLocale/* format */.WU)(specifier);
-}
-;// CONCATENATED MODULE: ./node_modules/d3-scale/src/linear.js
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Q": function() { return /* binding */ linearish; },
+/* harmony export */   "Z": function() { return /* binding */ linear; }
+/* harmony export */ });
+/* harmony import */ var d3_array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(59336);
+/* harmony import */ var _continuous_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4389);
+/* harmony import */ var _init_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(39632);
+/* harmony import */ var _tickFormat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59771);
 
 
 
@@ -22577,12 +21795,12 @@ function linearish(scale) {
 
   scale.ticks = function (count) {
     var d = domain();
-    return (0,ticks/* default */.ZP)(d[0], d[d.length - 1], count == null ? 10 : count);
+    return (0,d3_array__WEBPACK_IMPORTED_MODULE_0__/* .default */ .ZP)(d[0], d[d.length - 1], count == null ? 10 : count);
   };
 
   scale.tickFormat = function (count, specifier) {
     var d = domain();
-    return tickFormat(d[0], d[d.length - 1], count == null ? 10 : count, specifier);
+    return (0,_tickFormat_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(d[0], d[d.length - 1], count == null ? 10 : count, specifier);
   };
 
   scale.nice = function (count) {
@@ -22602,7 +21820,7 @@ function linearish(scale) {
     }
 
     while (maxIter-- > 0) {
-      step = (0,ticks/* tickIncrement */.G9)(start, stop, count);
+      step = (0,d3_array__WEBPACK_IMPORTED_MODULE_0__/* .tickIncrement */ .G9)(start, stop, count);
 
       if (step === prestep) {
         d[i0] = start;
@@ -22627,14 +21845,218 @@ function linearish(scale) {
   return scale;
 }
 function linear() {
-  var scale = (0,continuous/* default */.ZP)();
+  var scale = (0,_continuous_js__WEBPACK_IMPORTED_MODULE_2__/* .default */ .ZP)();
 
   scale.copy = function () {
-    return (0,continuous/* copy */.JG)(scale, linear());
+    return (0,_continuous_js__WEBPACK_IMPORTED_MODULE_2__/* .copy */ .JG)(scale, linear());
   };
 
-  init/* initRange.apply */.o.apply(scale, arguments);
+  _init_js__WEBPACK_IMPORTED_MODULE_3__/* .initRange.apply */ .o.apply(scale, arguments);
   return linearish(scale);
+}
+
+/***/ }),
+
+/***/ 4425:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Q": function() { return /* binding */ loggish; },
+/* harmony export */   "Z": function() { return /* binding */ log; }
+/* harmony export */ });
+/* harmony import */ var d3_array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(59336);
+/* harmony import */ var d3_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(64162);
+/* harmony import */ var _nice_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5635);
+/* harmony import */ var _continuous_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4389);
+/* harmony import */ var _init_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(39632);
+
+
+
+
+
+
+function transformLog(x) {
+  return Math.log(x);
+}
+
+function transformExp(x) {
+  return Math.exp(x);
+}
+
+function transformLogn(x) {
+  return -Math.log(-x);
+}
+
+function transformExpn(x) {
+  return -Math.exp(-x);
+}
+
+function pow10(x) {
+  return isFinite(x) ? +("1e" + x) : x < 0 ? 0 : x;
+}
+
+function powp(base) {
+  return base === 10 ? pow10 : base === Math.E ? Math.exp : function (x) {
+    return Math.pow(base, x);
+  };
+}
+
+function logp(base) {
+  return base === Math.E ? Math.log : base === 10 && Math.log10 || base === 2 && Math.log2 || (base = Math.log(base), function (x) {
+    return Math.log(x) / base;
+  });
+}
+
+function reflect(f) {
+  return function (x) {
+    return -f(-x);
+  };
+}
+
+function loggish(transform) {
+  var scale = transform(transformLog, transformExp),
+      domain = scale.domain,
+      base = 10,
+      logs,
+      pows;
+
+  function rescale() {
+    logs = logp(base), pows = powp(base);
+
+    if (domain()[0] < 0) {
+      logs = reflect(logs), pows = reflect(pows);
+      transform(transformLogn, transformExpn);
+    } else {
+      transform(transformLog, transformExp);
+    }
+
+    return scale;
+  }
+
+  scale.base = function (_) {
+    return arguments.length ? (base = +_, rescale()) : base;
+  };
+
+  scale.domain = function (_) {
+    return arguments.length ? (domain(_), rescale()) : domain();
+  };
+
+  scale.ticks = function (count) {
+    var d = domain(),
+        u = d[0],
+        v = d[d.length - 1],
+        r;
+    if (r = v < u) i = u, u = v, v = i;
+    var i = logs(u),
+        j = logs(v),
+        p,
+        k,
+        t,
+        n = count == null ? 10 : +count,
+        z = [];
+
+    if (!(base % 1) && j - i < n) {
+      i = Math.floor(i), j = Math.ceil(j);
+      if (u > 0) for (; i <= j; ++i) {
+        for (k = 1, p = pows(i); k < base; ++k) {
+          t = p * k;
+          if (t < u) continue;
+          if (t > v) break;
+          z.push(t);
+        }
+      } else for (; i <= j; ++i) {
+        for (k = base - 1, p = pows(i); k >= 1; --k) {
+          t = p * k;
+          if (t < u) continue;
+          if (t > v) break;
+          z.push(t);
+        }
+      }
+      if (z.length * 2 < n) z = (0,d3_array__WEBPACK_IMPORTED_MODULE_0__/* .default */ .ZP)(u, v, n);
+    } else {
+      z = (0,d3_array__WEBPACK_IMPORTED_MODULE_0__/* .default */ .ZP)(i, j, Math.min(j - i, n)).map(pows);
+    }
+
+    return r ? z.reverse() : z;
+  };
+
+  scale.tickFormat = function (count, specifier) {
+    if (specifier == null) specifier = base === 10 ? ".0e" : ",";
+    if (typeof specifier !== "function") specifier = (0,d3_format__WEBPACK_IMPORTED_MODULE_1__/* .format */ .WU)(specifier);
+    if (count === Infinity) return specifier;
+    if (count == null) count = 10;
+    var k = Math.max(1, base * count / scale.ticks().length); // TODO fast estimate?
+
+    return function (d) {
+      var i = d / pows(Math.round(logs(d)));
+      if (i * base < base - 0.5) i *= base;
+      return i <= k ? specifier(d) : "";
+    };
+  };
+
+  scale.nice = function () {
+    return domain((0,_nice_js__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(domain(), {
+      floor: function floor(x) {
+        return pows(Math.floor(logs(x)));
+      },
+      ceil: function ceil(x) {
+        return pows(Math.ceil(logs(x)));
+      }
+    }));
+  };
+
+  return scale;
+}
+function log() {
+  var scale = loggish((0,_continuous_js__WEBPACK_IMPORTED_MODULE_3__/* .transformer */ .l4)()).domain([1, 10]);
+
+  scale.copy = function () {
+    return (0,_continuous_js__WEBPACK_IMPORTED_MODULE_3__/* .copy */ .JG)(scale, log()).base(scale.base());
+  };
+
+  _init_js__WEBPACK_IMPORTED_MODULE_4__/* .initRange.apply */ .o.apply(scale, arguments);
+  return scale;
+}
+
+/***/ }),
+
+/***/ 5635:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ nice; }
+/* harmony export */ });
+function nice(domain, interval) {
+  domain = domain.slice();
+  var i0 = 0,
+      i1 = domain.length - 1,
+      x0 = domain[i0],
+      x1 = domain[i1],
+      t;
+
+  if (x1 < x0) {
+    t = i0, i0 = i1, i1 = t;
+    t = x0, x0 = x1, x1 = t;
+  }
+
+  domain[i0] = interval.floor(x0);
+  domain[i1] = interval.ceil(x1);
+  return domain;
+}
+
+/***/ }),
+
+/***/ 19498:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ number; }
+/* harmony export */ });
+function number(x) {
+  return +x;
 }
 
 /***/ }),
@@ -22644,9 +22066,9 @@ function linear() {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "O": function() { return /* binding */ implicit; },
 /* harmony export */   "Z": function() { return /* binding */ ordinal; }
 /* harmony export */ });
-/* unused harmony export implicit */
 /* harmony import */ var _init_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(39632);
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
@@ -22712,6 +22134,362 @@ function ordinal() {
   _init_js__WEBPACK_IMPORTED_MODULE_0__/* .initRange.apply */ .o.apply(scale, arguments);
   return scale;
 }
+
+/***/ }),
+
+/***/ 9788:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "P": function() { return /* binding */ symlogish; },
+/* harmony export */   "Z": function() { return /* binding */ symlog; }
+/* harmony export */ });
+/* harmony import */ var _linear_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(59006);
+/* harmony import */ var _continuous_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4389);
+/* harmony import */ var _init_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(39632);
+
+
+
+
+function transformSymlog(c) {
+  return function (x) {
+    return Math.sign(x) * Math.log1p(Math.abs(x / c));
+  };
+}
+
+function transformSymexp(c) {
+  return function (x) {
+    return Math.sign(x) * Math.expm1(Math.abs(x)) * c;
+  };
+}
+
+function symlogish(transform) {
+  var c = 1,
+      scale = transform(transformSymlog(c), transformSymexp(c));
+
+  scale.constant = function (_) {
+    return arguments.length ? transform(transformSymlog(c = +_), transformSymexp(c)) : c;
+  };
+
+  return (0,_linear_js__WEBPACK_IMPORTED_MODULE_0__/* .linearish */ .Q)(scale);
+}
+function symlog() {
+  var scale = symlogish((0,_continuous_js__WEBPACK_IMPORTED_MODULE_1__/* .transformer */ .l4)());
+
+  scale.copy = function () {
+    return (0,_continuous_js__WEBPACK_IMPORTED_MODULE_1__/* .copy */ .JG)(scale, symlog()).constant(scale.constant());
+  };
+
+  return _init_js__WEBPACK_IMPORTED_MODULE_2__/* .initRange.apply */ .o.apply(scale, arguments);
+}
+
+/***/ }),
+
+/***/ 59771:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ tickFormat; }
+});
+
+// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-array/src/ticks.js
+var ticks = __webpack_require__(59336);
+// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/exponent.js
+var exponent = __webpack_require__(71202);
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/precisionPrefix.js
+
+/* harmony default export */ function precisionPrefix(step, value) {
+  return Math.max(0, Math.max(-8, Math.min(8, Math.floor((0,exponent/* default */.Z)(value) / 3))) * 3 - (0,exponent/* default */.Z)(Math.abs(step)));
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/precisionRound.js
+
+/* harmony default export */ function precisionRound(step, max) {
+  step = Math.abs(step), max = Math.abs(max) - step;
+  return Math.max(0, (0,exponent/* default */.Z)(max) - (0,exponent/* default */.Z)(step)) + 1;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/precisionFixed.js
+
+/* harmony default export */ function precisionFixed(step) {
+  return Math.max(0, -(0,exponent/* default */.Z)(Math.abs(step)));
+}
+// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/formatSpecifier.js
+var formatSpecifier = __webpack_require__(62606);
+// EXTERNAL MODULE: ./node_modules/d3-scale/node_modules/d3-format/src/defaultLocale.js + 8 modules
+var defaultLocale = __webpack_require__(64162);
+;// CONCATENATED MODULE: ./node_modules/d3-scale/src/tickFormat.js
+
+
+function tickFormat(start, stop, count, specifier) {
+  var step = (0,ticks/* tickStep */.ly)(start, stop, count),
+      precision;
+  specifier = (0,formatSpecifier/* default */.Z)(specifier == null ? ",f" : specifier);
+
+  switch (specifier.type) {
+    case "s":
+      {
+        var value = Math.max(Math.abs(start), Math.abs(stop));
+        if (specifier.precision == null && !isNaN(precision = precisionPrefix(step, value))) specifier.precision = precision;
+        return (0,defaultLocale/* formatPrefix */.jH)(specifier, value);
+      }
+
+    case "":
+    case "e":
+    case "g":
+    case "p":
+    case "r":
+      {
+        if (specifier.precision == null && !isNaN(precision = precisionRound(step, Math.max(Math.abs(start), Math.abs(stop))))) specifier.precision = precision - (specifier.type === "e");
+        break;
+      }
+
+    case "f":
+    case "%":
+      {
+        if (specifier.precision == null && !isNaN(precision = precisionFixed(step))) specifier.precision = precision - (specifier.type === "%") * 2;
+        break;
+      }
+  }
+
+  return (0,defaultLocale/* format */.WU)(specifier);
+}
+
+/***/ }),
+
+/***/ 26043:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Y": function() { return /* binding */ calendar; },
+/* harmony export */   "Z": function() { return /* binding */ time; }
+/* harmony export */ });
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(58299);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(83706);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(66933);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(3001);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(70018);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4083);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(65134);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(45253);
+/* harmony import */ var d3_time_format__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(78460);
+/* harmony import */ var _continuous_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4389);
+/* harmony import */ var _init_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(39632);
+/* harmony import */ var _nice_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5635);
+
+
+
+
+
+
+function date(t) {
+  return new Date(t);
+}
+
+function number(t) {
+  return t instanceof Date ? +t : +new Date(+t);
+}
+
+function calendar(ticks, tickInterval, year, month, week, day, hour, minute, second, format) {
+  var scale = (0,_continuous_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .ZP)(),
+      invert = scale.invert,
+      domain = scale.domain;
+  var formatMillisecond = format(".%L"),
+      formatSecond = format(":%S"),
+      formatMinute = format("%I:%M"),
+      formatHour = format("%I %p"),
+      formatDay = format("%a %d"),
+      formatWeek = format("%b %d"),
+      formatMonth = format("%B"),
+      formatYear = format("%Y");
+
+  function tickFormat(date) {
+    return (second(date) < date ? formatMillisecond : minute(date) < date ? formatSecond : hour(date) < date ? formatMinute : day(date) < date ? formatHour : month(date) < date ? week(date) < date ? formatDay : formatWeek : year(date) < date ? formatMonth : formatYear)(date);
+  }
+
+  scale.invert = function (y) {
+    return new Date(invert(y));
+  };
+
+  scale.domain = function (_) {
+    return arguments.length ? domain(Array.from(_, number)) : domain().map(date);
+  };
+
+  scale.ticks = function (interval) {
+    var d = domain();
+    return ticks(d[0], d[d.length - 1], interval == null ? 10 : interval);
+  };
+
+  scale.tickFormat = function (count, specifier) {
+    return specifier == null ? tickFormat : format(specifier);
+  };
+
+  scale.nice = function (interval) {
+    var d = domain();
+    if (!interval || typeof interval.range !== "function") interval = tickInterval(d[0], d[d.length - 1], interval == null ? 10 : interval);
+    return interval ? domain((0,_nice_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(d, interval)) : scale;
+  };
+
+  scale.copy = function () {
+    return (0,_continuous_js__WEBPACK_IMPORTED_MODULE_0__/* .copy */ .JG)(scale, calendar(ticks, tickInterval, year, month, week, day, hour, minute, second, format));
+  };
+
+  return scale;
+}
+function time() {
+  return _init_js__WEBPACK_IMPORTED_MODULE_2__/* .initRange.apply */ .o.apply(calendar(d3_time__WEBPACK_IMPORTED_MODULE_3__/* .timeTicks */ .jK, d3_time__WEBPACK_IMPORTED_MODULE_3__/* .timeTickInterval */ ._g, d3_time__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_6__/* .sunday */ .OM, d3_time__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, d3_time_format__WEBPACK_IMPORTED_MODULE_11__/* .timeFormat */ .i$).domain([new Date(2000, 0, 1), new Date(2000, 0, 2)]), arguments);
+}
+
+/***/ }),
+
+/***/ 94210:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ utcTime; }
+/* harmony export */ });
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(58299);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(75805);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(93227);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(99909);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(81898);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(55260);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(52695);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(45253);
+/* harmony import */ var d3_time_format__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(78460);
+/* harmony import */ var _time_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26043);
+/* harmony import */ var _init_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(39632);
+
+
+
+
+function utcTime() {
+  return _init_js__WEBPACK_IMPORTED_MODULE_0__/* .initRange.apply */ .o.apply((0,_time_js__WEBPACK_IMPORTED_MODULE_1__/* .calendar */ .Y)(d3_time__WEBPACK_IMPORTED_MODULE_2__/* .utcTicks */ .WG, d3_time__WEBPACK_IMPORTED_MODULE_2__/* .utcTickInterval */ .jo, d3_time__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_5__/* .utcSunday */ .Ox, d3_time__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, d3_time__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, d3_time_format__WEBPACK_IMPORTED_MODULE_10__/* .utcFormat */ .g0).domain([Date.UTC(2000, 0, 1), Date.UTC(2000, 0, 2)]), arguments);
+}
+
+/***/ }),
+
+/***/ 94078:
+/***/ (function(__unused_webpack_module, __webpack_exports__) {
+
+"use strict";
+var pi = Math.PI,
+    tau = 2 * pi,
+    epsilon = 1e-6,
+    tauEpsilon = tau - epsilon;
+
+function Path() {
+  this._x0 = this._y0 = // start of current subpath
+  this._x1 = this._y1 = null; // end of current subpath
+
+  this._ = "";
+}
+
+function path() {
+  return new Path();
+}
+
+Path.prototype = path.prototype = {
+  constructor: Path,
+  moveTo: function moveTo(x, y) {
+    this._ += "M" + (this._x0 = this._x1 = +x) + "," + (this._y0 = this._y1 = +y);
+  },
+  closePath: function closePath() {
+    if (this._x1 !== null) {
+      this._x1 = this._x0, this._y1 = this._y0;
+      this._ += "Z";
+    }
+  },
+  lineTo: function lineTo(x, y) {
+    this._ += "L" + (this._x1 = +x) + "," + (this._y1 = +y);
+  },
+  quadraticCurveTo: function quadraticCurveTo(x1, y1, x, y) {
+    this._ += "Q" + +x1 + "," + +y1 + "," + (this._x1 = +x) + "," + (this._y1 = +y);
+  },
+  bezierCurveTo: function bezierCurveTo(x1, y1, x2, y2, x, y) {
+    this._ += "C" + +x1 + "," + +y1 + "," + +x2 + "," + +y2 + "," + (this._x1 = +x) + "," + (this._y1 = +y);
+  },
+  arcTo: function arcTo(x1, y1, x2, y2, r) {
+    x1 = +x1, y1 = +y1, x2 = +x2, y2 = +y2, r = +r;
+    var x0 = this._x1,
+        y0 = this._y1,
+        x21 = x2 - x1,
+        y21 = y2 - y1,
+        x01 = x0 - x1,
+        y01 = y0 - y1,
+        l01_2 = x01 * x01 + y01 * y01; // Is the radius negative? Error.
+
+    if (r < 0) throw new Error("negative radius: " + r); // Is this path empty? Move to (x1,y1).
+
+    if (this._x1 === null) {
+      this._ += "M" + (this._x1 = x1) + "," + (this._y1 = y1);
+    } // Or, is (x1,y1) coincident with (x0,y0)? Do nothing.
+    else if (!(l01_2 > epsilon)) ; // Or, are (x0,y0), (x1,y1) and (x2,y2) collinear?
+      // Equivalently, is (x1,y1) coincident with (x2,y2)?
+      // Or, is the radius zero? Line to (x1,y1).
+      else if (!(Math.abs(y01 * x21 - y21 * x01) > epsilon) || !r) {
+          this._ += "L" + (this._x1 = x1) + "," + (this._y1 = y1);
+        } // Otherwise, draw an arc!
+        else {
+            var x20 = x2 - x0,
+                y20 = y2 - y0,
+                l21_2 = x21 * x21 + y21 * y21,
+                l20_2 = x20 * x20 + y20 * y20,
+                l21 = Math.sqrt(l21_2),
+                l01 = Math.sqrt(l01_2),
+                l = r * Math.tan((pi - Math.acos((l21_2 + l01_2 - l20_2) / (2 * l21 * l01))) / 2),
+                t01 = l / l01,
+                t21 = l / l21; // If the start tangent is not coincident with (x0,y0), line to.
+
+            if (Math.abs(t01 - 1) > epsilon) {
+              this._ += "L" + (x1 + t01 * x01) + "," + (y1 + t01 * y01);
+            }
+
+            this._ += "A" + r + "," + r + ",0,0," + +(y01 * x20 > x01 * y20) + "," + (this._x1 = x1 + t21 * x21) + "," + (this._y1 = y1 + t21 * y21);
+          }
+  },
+  arc: function arc(x, y, r, a0, a1, ccw) {
+    x = +x, y = +y, r = +r, ccw = !!ccw;
+    var dx = r * Math.cos(a0),
+        dy = r * Math.sin(a0),
+        x0 = x + dx,
+        y0 = y + dy,
+        cw = 1 ^ ccw,
+        da = ccw ? a0 - a1 : a1 - a0; // Is the radius negative? Error.
+
+    if (r < 0) throw new Error("negative radius: " + r); // Is this path empty? Move to (x0,y0).
+
+    if (this._x1 === null) {
+      this._ += "M" + x0 + "," + y0;
+    } // Or, is (x0,y0) not coincident with the previous point? Line to (x0,y0).
+    else if (Math.abs(this._x1 - x0) > epsilon || Math.abs(this._y1 - y0) > epsilon) {
+        this._ += "L" + x0 + "," + y0;
+      } // Is this arc empty? We’re done.
+
+
+    if (!r) return; // Does the angle go the wrong way? Flip the direction.
+
+    if (da < 0) da = da % tau + tau; // Is this a complete circle? Draw two arcs to complete the circle.
+
+    if (da > tauEpsilon) {
+      this._ += "A" + r + "," + r + ",0,1," + cw + "," + (x - dx) + "," + (y - dy) + "A" + r + "," + r + ",0,1," + cw + "," + (this._x1 = x0) + "," + (this._y1 = y0);
+    } // Is this arc non-empty? Draw an arc!
+    else if (da > epsilon) {
+        this._ += "A" + r + "," + r + ",0," + +(da >= pi) + "," + cw + "," + (this._x1 = x + r * Math.cos(a1)) + "," + (this._y1 = y + r * Math.sin(a1));
+      }
+  },
+  rect: function rect(x, y, w, h) {
+    this._ += "M" + (this._x0 = this._x1 = +x) + "," + (this._y0 = this._y1 = +y) + "h" + +w + "v" + +h + "h" + -w + "Z";
+  },
+  toString: function toString() {
+    return this._;
+  }
+};
+/* harmony default export */ __webpack_exports__["Z"] = (path);
 
 /***/ }),
 
@@ -22788,7 +22566,7 @@ Linear.prototype = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
 /* harmony export */ });
-/* harmony import */ var d3_path__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(56940);
+/* harmony import */ var d3_path__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(94078);
 /* harmony import */ var _constant_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21235);
 /* harmony import */ var _curve_linear_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(42431);
 /* harmony import */ var _point_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94882);
@@ -22970,243 +22748,58 @@ function y(p) {
 
 /***/ }),
 
-/***/ 12439:
+/***/ 78460:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "i$": function() { return /* binding */ timeFormat; },
+/* harmony export */   "Z1": function() { return /* binding */ timeParse; },
+/* harmony export */   "g0": function() { return /* binding */ utcFormat; },
+/* harmony export */   "wp": function() { return /* binding */ utcParse; }
+/* harmony export */ });
+/* unused harmony export default */
+/* harmony import */ var _locale_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(65410);
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "i$": function() { return /* binding */ timeFormat; },
-  "Z1": function() { return /* binding */ timeParse; },
-  "g0": function() { return /* binding */ utcFormat; },
-  "wp": function() { return /* binding */ utcParse; }
+var locale;
+var timeFormat;
+var timeParse;
+var utcFormat;
+var utcParse;
+defaultLocale({
+  dateTime: "%x, %X",
+  date: "%-m/%-d/%Y",
+  time: "%-I:%M:%S %p",
+  periods: ["AM", "PM"],
+  days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 });
-
-// UNUSED EXPORTS: default
-
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/node_modules/d3-time/src/interval.js
-var t0 = new Date(),
-    t1 = new Date();
-function newInterval(floori, offseti, count, field) {
-  function interval(date) {
-    return floori(date = arguments.length === 0 ? new Date() : new Date(+date)), date;
-  }
-
-  interval.floor = function (date) {
-    return floori(date = new Date(+date)), date;
-  };
-
-  interval.ceil = function (date) {
-    return floori(date = new Date(date - 1)), offseti(date, 1), floori(date), date;
-  };
-
-  interval.round = function (date) {
-    var d0 = interval(date),
-        d1 = interval.ceil(date);
-    return date - d0 < d1 - date ? d0 : d1;
-  };
-
-  interval.offset = function (date, step) {
-    return offseti(date = new Date(+date), step == null ? 1 : Math.floor(step)), date;
-  };
-
-  interval.range = function (start, stop, step) {
-    var range = [],
-        previous;
-    start = interval.ceil(start);
-    step = step == null ? 1 : Math.floor(step);
-    if (!(start < stop) || !(step > 0)) return range; // also handles Invalid Date
-
-    do {
-      range.push(previous = new Date(+start)), offseti(start, step), floori(start);
-    } while (previous < start && start < stop);
-
-    return range;
-  };
-
-  interval.filter = function (test) {
-    return newInterval(function (date) {
-      if (date >= date) while (floori(date), !test(date)) {
-        date.setTime(date - 1);
-      }
-    }, function (date, step) {
-      if (date >= date) {
-        if (step < 0) while (++step <= 0) {
-          while (offseti(date, -1), !test(date)) {} // eslint-disable-line no-empty
-
-        } else while (--step >= 0) {
-          while (offseti(date, +1), !test(date)) {} // eslint-disable-line no-empty
-
-        }
-      }
-    });
-  };
-
-  if (count) {
-    interval.count = function (start, end) {
-      t0.setTime(+start), t1.setTime(+end);
-      floori(t0), floori(t1);
-      return Math.floor(count(t0, t1));
-    };
-
-    interval.every = function (step) {
-      step = Math.floor(step);
-      return !isFinite(step) || !(step > 0) ? null : !(step > 1) ? interval : interval.filter(field ? function (d) {
-        return field(d) % step === 0;
-      } : function (d) {
-        return interval.count(0, d) % step === 0;
-      });
-    };
-  }
-
-  return interval;
-}
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/node_modules/d3-time/src/duration.js
-var durationSecond = 1000;
-var durationMinute = durationSecond * 60;
-var durationHour = durationMinute * 60;
-var durationDay = durationHour * 24;
-var durationWeek = durationDay * 7;
-var durationMonth = durationDay * 30;
-var durationYear = durationDay * 365;
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/node_modules/d3-time/src/utcWeek.js
-
-
-
-function utcWeekday(i) {
-  return newInterval(function (date) {
-    date.setUTCDate(date.getUTCDate() - (date.getUTCDay() + 7 - i) % 7);
-    date.setUTCHours(0, 0, 0, 0);
-  }, function (date, step) {
-    date.setUTCDate(date.getUTCDate() + step * 7);
-  }, function (start, end) {
-    return (end - start) / durationWeek;
-  });
+function defaultLocale(definition) {
+  locale = (0,_locale_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(definition);
+  timeFormat = locale.format;
+  timeParse = locale.parse;
+  utcFormat = locale.utcFormat;
+  utcParse = locale.utcParse;
+  return locale;
 }
 
-var utcSunday = utcWeekday(0);
-var utcMonday = utcWeekday(1);
-var utcTuesday = utcWeekday(2);
-var utcWednesday = utcWeekday(3);
-var utcThursday = utcWeekday(4);
-var utcFriday = utcWeekday(5);
-var utcSaturday = utcWeekday(6);
-var utcSundays = utcSunday.range;
-var utcMondays = utcMonday.range;
-var utcTuesdays = utcTuesday.range;
-var utcWednesdays = utcWednesday.range;
-var utcThursdays = utcThursday.range;
-var utcFridays = utcFriday.range;
-var utcSaturdays = utcSaturday.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/node_modules/d3-time/src/utcDay.js
+/***/ }),
 
+/***/ 65410:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-var utcDay = newInterval(function (date) {
-  date.setUTCHours(0, 0, 0, 0);
-}, function (date, step) {
-  date.setUTCDate(date.getUTCDate() + step);
-}, function (start, end) {
-  return (end - start) / durationDay;
-}, function (date) {
-  return date.getUTCDate() - 1;
-});
-/* harmony default export */ var src_utcDay = (utcDay);
-var utcDays = utcDay.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/node_modules/d3-time/src/week.js
-
-
-
-function weekday(i) {
-  return newInterval(function (date) {
-    date.setDate(date.getDate() - (date.getDay() + 7 - i) % 7);
-    date.setHours(0, 0, 0, 0);
-  }, function (date, step) {
-    date.setDate(date.getDate() + step * 7);
-  }, function (start, end) {
-    return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) / durationWeek;
-  });
-}
-
-var sunday = weekday(0);
-var monday = weekday(1);
-var tuesday = weekday(2);
-var wednesday = weekday(3);
-var thursday = weekday(4);
-var friday = weekday(5);
-var saturday = weekday(6);
-var sundays = sunday.range;
-var mondays = monday.range;
-var tuesdays = tuesday.range;
-var wednesdays = wednesday.range;
-var thursdays = thursday.range;
-var fridays = friday.range;
-var saturdays = saturday.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/node_modules/d3-time/src/day.js
-
-
-var day = newInterval(function (date) {
-  return date.setHours(0, 0, 0, 0);
-}, function (date, step) {
-  return date.setDate(date.getDate() + step);
-}, function (start, end) {
-  return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) / durationDay;
-}, function (date) {
-  return date.getDate() - 1;
-});
-/* harmony default export */ var src_day = (day);
-var days = day.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/node_modules/d3-time/src/year.js
-
-var year = newInterval(function (date) {
-  date.setMonth(0, 1);
-  date.setHours(0, 0, 0, 0);
-}, function (date, step) {
-  date.setFullYear(date.getFullYear() + step);
-}, function (start, end) {
-  return end.getFullYear() - start.getFullYear();
-}, function (date) {
-  return date.getFullYear();
-}); // An optimized implementation for this simple case.
-
-year.every = function (k) {
-  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval(function (date) {
-    date.setFullYear(Math.floor(date.getFullYear() / k) * k);
-    date.setMonth(0, 1);
-    date.setHours(0, 0, 0, 0);
-  }, function (date, step) {
-    date.setFullYear(date.getFullYear() + step * k);
-  });
-};
-
-/* harmony default export */ var src_year = (year);
-var years = year.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/node_modules/d3-time/src/utcYear.js
-
-var utcYear = newInterval(function (date) {
-  date.setUTCMonth(0, 1);
-  date.setUTCHours(0, 0, 0, 0);
-}, function (date, step) {
-  date.setUTCFullYear(date.getUTCFullYear() + step);
-}, function (start, end) {
-  return end.getUTCFullYear() - start.getUTCFullYear();
-}, function (date) {
-  return date.getUTCFullYear();
-}); // An optimized implementation for this simple case.
-
-utcYear.every = function (k) {
-  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval(function (date) {
-    date.setUTCFullYear(Math.floor(date.getUTCFullYear() / k) * k);
-    date.setUTCMonth(0, 1);
-    date.setUTCHours(0, 0, 0, 0);
-  }, function (date, step) {
-    date.setUTCFullYear(date.getUTCFullYear() + step * k);
-  });
-};
-
-/* harmony default export */ var src_utcYear = (utcYear);
-var utcYears = utcYear.range;
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/src/locale.js
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ formatLocale; }
+/* harmony export */ });
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(99909);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81898);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3001);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(70018);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(83706);
+/* harmony import */ var d3_time__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(75805);
 
 
 function localDate(d) {
@@ -23419,15 +23012,15 @@ function formatLocale(locale) {
 
         if ("Z" in d) {
           week = utcDate(newDate(d.y, 0, 1)), day = week.getUTCDay();
-          week = day > 4 || day === 0 ? utcMonday.ceil(week) : utcMonday(week);
-          week = src_utcDay.offset(week, (d.V - 1) * 7);
+          week = day > 4 || day === 0 ? d3_time__WEBPACK_IMPORTED_MODULE_0__/* .utcMonday.ceil */ .l6.ceil(week) : (0,d3_time__WEBPACK_IMPORTED_MODULE_0__/* .utcMonday */ .l6)(week);
+          week = d3_time__WEBPACK_IMPORTED_MODULE_1__/* .default.offset */ .Z.offset(week, (d.V - 1) * 7);
           d.y = week.getUTCFullYear();
           d.m = week.getUTCMonth();
           d.d = week.getUTCDate() + (d.w + 6) % 7;
         } else {
           week = localDate(newDate(d.y, 0, 1)), day = week.getDay();
-          week = day > 4 || day === 0 ? monday.ceil(week) : monday(week);
-          week = src_day.offset(week, (d.V - 1) * 7);
+          week = day > 4 || day === 0 ? d3_time__WEBPACK_IMPORTED_MODULE_2__/* .monday.ceil */ .wA.ceil(week) : (0,d3_time__WEBPACK_IMPORTED_MODULE_2__/* .monday */ .wA)(week);
+          week = d3_time__WEBPACK_IMPORTED_MODULE_3__/* .default.offset */ .Z.offset(week, (d.V - 1) * 7);
           d.y = week.getFullYear();
           d.m = week.getMonth();
           d.d = week.getDate() + (d.w + 6) % 7;
@@ -23743,7 +23336,7 @@ function formatHour12(d, p) {
 }
 
 function formatDayOfYear(d, p) {
-  return pad(1 + src_day.count(src_year(d), d), p, 3);
+  return pad(1 + d3_time__WEBPACK_IMPORTED_MODULE_3__/* .default.count */ .Z.count((0,d3_time__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(d), d), p, 3);
 }
 
 function formatMilliseconds(d, p) {
@@ -23772,17 +23365,17 @@ function formatWeekdayNumberMonday(d) {
 }
 
 function formatWeekNumberSunday(d, p) {
-  return pad(sunday.count(src_year(d) - 1, d), p, 2);
+  return pad(d3_time__WEBPACK_IMPORTED_MODULE_2__/* .sunday.count */ .OM.count((0,d3_time__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(d) - 1, d), p, 2);
 }
 
 function dISO(d) {
   var day = d.getDay();
-  return day >= 4 || day === 0 ? thursday(d) : thursday.ceil(d);
+  return day >= 4 || day === 0 ? (0,d3_time__WEBPACK_IMPORTED_MODULE_2__/* .thursday */ .bL)(d) : d3_time__WEBPACK_IMPORTED_MODULE_2__/* .thursday.ceil */ .bL.ceil(d);
 }
 
 function formatWeekNumberISO(d, p) {
   d = dISO(d);
-  return pad(thursday.count(src_year(d), d) + (src_year(d).getDay() === 4), p, 2);
+  return pad(d3_time__WEBPACK_IMPORTED_MODULE_2__/* .thursday.count */ .bL.count((0,d3_time__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(d), d) + ((0,d3_time__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(d).getDay() === 4), p, 2);
 }
 
 function formatWeekdayNumberSunday(d) {
@@ -23790,7 +23383,7 @@ function formatWeekdayNumberSunday(d) {
 }
 
 function formatWeekNumberMonday(d, p) {
-  return pad(monday.count(src_year(d) - 1, d), p, 2);
+  return pad(d3_time__WEBPACK_IMPORTED_MODULE_2__/* .monday.count */ .wA.count((0,d3_time__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(d) - 1, d), p, 2);
 }
 
 function formatYear(d, p) {
@@ -23808,7 +23401,7 @@ function formatFullYear(d, p) {
 
 function formatFullYearISO(d, p) {
   var day = d.getDay();
-  d = day >= 4 || day === 0 ? thursday(d) : thursday.ceil(d);
+  d = day >= 4 || day === 0 ? (0,d3_time__WEBPACK_IMPORTED_MODULE_2__/* .thursday */ .bL)(d) : d3_time__WEBPACK_IMPORTED_MODULE_2__/* .thursday.ceil */ .bL.ceil(d);
   return pad(d.getFullYear() % 10000, p, 4);
 }
 
@@ -23830,7 +23423,7 @@ function formatUTCHour12(d, p) {
 }
 
 function formatUTCDayOfYear(d, p) {
-  return pad(1 + src_utcDay.count(src_utcYear(d), d), p, 3);
+  return pad(1 + d3_time__WEBPACK_IMPORTED_MODULE_1__/* .default.count */ .Z.count((0,d3_time__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(d), d), p, 3);
 }
 
 function formatUTCMilliseconds(d, p) {
@@ -23859,17 +23452,17 @@ function formatUTCWeekdayNumberMonday(d) {
 }
 
 function formatUTCWeekNumberSunday(d, p) {
-  return pad(utcSunday.count(src_utcYear(d) - 1, d), p, 2);
+  return pad(d3_time__WEBPACK_IMPORTED_MODULE_0__/* .utcSunday.count */ .Ox.count((0,d3_time__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(d) - 1, d), p, 2);
 }
 
 function UTCdISO(d) {
   var day = d.getUTCDay();
-  return day >= 4 || day === 0 ? utcThursday(d) : utcThursday.ceil(d);
+  return day >= 4 || day === 0 ? (0,d3_time__WEBPACK_IMPORTED_MODULE_0__/* .utcThursday */ .hB)(d) : d3_time__WEBPACK_IMPORTED_MODULE_0__/* .utcThursday.ceil */ .hB.ceil(d);
 }
 
 function formatUTCWeekNumberISO(d, p) {
   d = UTCdISO(d);
-  return pad(utcThursday.count(src_utcYear(d), d) + (src_utcYear(d).getUTCDay() === 4), p, 2);
+  return pad(d3_time__WEBPACK_IMPORTED_MODULE_0__/* .utcThursday.count */ .hB.count((0,d3_time__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(d), d) + ((0,d3_time__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(d).getUTCDay() === 4), p, 2);
 }
 
 function formatUTCWeekdayNumberSunday(d) {
@@ -23877,7 +23470,7 @@ function formatUTCWeekdayNumberSunday(d) {
 }
 
 function formatUTCWeekNumberMonday(d, p) {
-  return pad(utcMonday.count(src_utcYear(d) - 1, d), p, 2);
+  return pad(d3_time__WEBPACK_IMPORTED_MODULE_0__/* .utcMonday.count */ .l6.count((0,d3_time__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(d) - 1, d), p, 2);
 }
 
 function formatUTCYear(d, p) {
@@ -23895,7 +23488,7 @@ function formatUTCFullYear(d, p) {
 
 function formatUTCFullYearISO(d, p) {
   var day = d.getUTCDay();
-  d = day >= 4 || day === 0 ? utcThursday(d) : utcThursday.ceil(d);
+  d = day >= 4 || day === 0 ? (0,d3_time__WEBPACK_IMPORTED_MODULE_0__/* .utcThursday */ .hB)(d) : d3_time__WEBPACK_IMPORTED_MODULE_0__/* .utcThursday.ceil */ .hB.ceil(d);
   return pad(d.getUTCFullYear() % 10000, p, 4);
 }
 
@@ -23914,31 +23507,738 @@ function formatUnixTimestamp(d) {
 function formatUnixTimestampSeconds(d) {
   return Math.floor(+d / 1000);
 }
-;// CONCATENATED MODULE: ./node_modules/d3-time-format/src/defaultLocale.js
 
-var locale;
-var timeFormat;
-var timeParse;
-var utcFormat;
-var utcParse;
-defaultLocale({
-  dateTime: "%x, %X",
-  date: "%-m/%-d/%Y",
-  time: "%-I:%M:%S %p",
-  periods: ["AM", "PM"],
-  days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-  shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-  months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-  shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+/***/ }),
+
+/***/ 70018:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export days */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+/* harmony import */ var _duration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(29493);
+
+
+var day = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  return date.setHours(0, 0, 0, 0);
+}, function (date, step) {
+  return date.setDate(date.getDate() + step);
+}, function (start, end) {
+  return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationMinute */ .yB) / _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationDay */ .UD;
+}, function (date) {
+  return date.getDate() - 1;
 });
-function defaultLocale(definition) {
-  locale = formatLocale(definition);
-  timeFormat = locale.format;
-  timeParse = locale.parse;
-  utcFormat = locale.utcFormat;
-  utcParse = locale.utcParse;
-  return locale;
+/* harmony default export */ __webpack_exports__["Z"] = (day);
+var days = day.range;
+
+/***/ }),
+
+/***/ 29493:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Ym": function() { return /* binding */ durationSecond; },
+/* harmony export */   "yB": function() { return /* binding */ durationMinute; },
+/* harmony export */   "Y2": function() { return /* binding */ durationHour; },
+/* harmony export */   "UD": function() { return /* binding */ durationDay; },
+/* harmony export */   "iM": function() { return /* binding */ durationWeek; },
+/* harmony export */   "jz": function() { return /* binding */ durationMonth; },
+/* harmony export */   "qz": function() { return /* binding */ durationYear; }
+/* harmony export */ });
+var durationSecond = 1000;
+var durationMinute = durationSecond * 60;
+var durationHour = durationMinute * 60;
+var durationDay = durationHour * 24;
+var durationWeek = durationDay * 7;
+var durationMonth = durationDay * 30;
+var durationYear = durationDay * 365;
+
+/***/ }),
+
+/***/ 4083:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export hours */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+/* harmony import */ var _duration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(29493);
+
+
+var hour = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setTime(date - date.getMilliseconds() - date.getSeconds() * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationSecond */ .Ym - date.getMinutes() * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationMinute */ .yB);
+}, function (date, step) {
+  date.setTime(+date + step * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationHour */ .Y2);
+}, function (start, end) {
+  return (end - start) / _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationHour */ .Y2;
+}, function (date) {
+  return date.getHours();
+});
+/* harmony default export */ __webpack_exports__["Z"] = (hour);
+var hours = hour.range;
+
+/***/ }),
+
+/***/ 94666:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ newInterval; }
+/* harmony export */ });
+var t0 = new Date(),
+    t1 = new Date();
+function newInterval(floori, offseti, count, field) {
+  function interval(date) {
+    return floori(date = arguments.length === 0 ? new Date() : new Date(+date)), date;
+  }
+
+  interval.floor = function (date) {
+    return floori(date = new Date(+date)), date;
+  };
+
+  interval.ceil = function (date) {
+    return floori(date = new Date(date - 1)), offseti(date, 1), floori(date), date;
+  };
+
+  interval.round = function (date) {
+    var d0 = interval(date),
+        d1 = interval.ceil(date);
+    return date - d0 < d1 - date ? d0 : d1;
+  };
+
+  interval.offset = function (date, step) {
+    return offseti(date = new Date(+date), step == null ? 1 : Math.floor(step)), date;
+  };
+
+  interval.range = function (start, stop, step) {
+    var range = [],
+        previous;
+    start = interval.ceil(start);
+    step = step == null ? 1 : Math.floor(step);
+    if (!(start < stop) || !(step > 0)) return range; // also handles Invalid Date
+
+    do {
+      range.push(previous = new Date(+start)), offseti(start, step), floori(start);
+    } while (previous < start && start < stop);
+
+    return range;
+  };
+
+  interval.filter = function (test) {
+    return newInterval(function (date) {
+      if (date >= date) while (floori(date), !test(date)) {
+        date.setTime(date - 1);
+      }
+    }, function (date, step) {
+      if (date >= date) {
+        if (step < 0) while (++step <= 0) {
+          while (offseti(date, -1), !test(date)) {} // eslint-disable-line no-empty
+
+        } else while (--step >= 0) {
+          while (offseti(date, +1), !test(date)) {} // eslint-disable-line no-empty
+
+        }
+      }
+    });
+  };
+
+  if (count) {
+    interval.count = function (start, end) {
+      t0.setTime(+start), t1.setTime(+end);
+      floori(t0), floori(t1);
+      return Math.floor(count(t0, t1));
+    };
+
+    interval.every = function (step) {
+      step = Math.floor(step);
+      return !isFinite(step) || !(step > 0) ? null : !(step > 1) ? interval : interval.filter(field ? function (d) {
+        return field(d) % step === 0;
+      } : function (d) {
+        return interval.count(0, d) % step === 0;
+      });
+    };
+  }
+
+  return interval;
 }
+
+/***/ }),
+
+/***/ 48677:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export milliseconds */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+
+var millisecond = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function () {// noop
+}, function (date, step) {
+  date.setTime(+date + step);
+}, function (start, end) {
+  return end - start;
+}); // An optimized implementation for this simple case.
+
+millisecond.every = function (k) {
+  k = Math.floor(k);
+  if (!isFinite(k) || !(k > 0)) return null;
+  if (!(k > 1)) return millisecond;
+  return (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+    date.setTime(Math.floor(date / k) * k);
+  }, function (date, step) {
+    date.setTime(+date + step * k);
+  }, function (start, end) {
+    return (end - start) / k;
+  });
+};
+
+/* harmony default export */ __webpack_exports__["Z"] = (millisecond);
+var milliseconds = millisecond.range;
+
+/***/ }),
+
+/***/ 65134:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export minutes */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+/* harmony import */ var _duration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(29493);
+
+
+var minute = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setTime(date - date.getMilliseconds() - date.getSeconds() * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationSecond */ .Ym);
+}, function (date, step) {
+  date.setTime(+date + step * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationMinute */ .yB);
+}, function (start, end) {
+  return (end - start) / _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationMinute */ .yB;
+}, function (date) {
+  return date.getMinutes();
+});
+/* harmony default export */ __webpack_exports__["Z"] = (minute);
+var minutes = minute.range;
+
+/***/ }),
+
+/***/ 66933:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export months */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+
+var month = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setDate(1);
+  date.setHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setMonth(date.getMonth() + step);
+}, function (start, end) {
+  return end.getMonth() - start.getMonth() + (end.getFullYear() - start.getFullYear()) * 12;
+}, function (date) {
+  return date.getMonth();
+});
+/* harmony default export */ __webpack_exports__["Z"] = (month);
+var months = month.range;
+
+/***/ }),
+
+/***/ 45253:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export seconds */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+/* harmony import */ var _duration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(29493);
+
+
+var second = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setTime(date - date.getMilliseconds());
+}, function (date, step) {
+  date.setTime(+date + step * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationSecond */ .Ym);
+}, function (start, end) {
+  return (end - start) / _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationSecond */ .Ym;
+}, function (date) {
+  return date.getUTCSeconds();
+});
+/* harmony default export */ __webpack_exports__["Z"] = (second);
+var seconds = second.range;
+
+/***/ }),
+
+/***/ 58299:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "_g": function() { return /* binding */ timeTickInterval; },
+  "jK": function() { return /* binding */ timeTicks; },
+  "jo": function() { return /* binding */ utcTickInterval; },
+  "WG": function() { return /* binding */ utcTicks; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 1 modules
+var slicedToArray = __webpack_require__(28481);
+;// CONCATENATED MODULE: ./node_modules/d3-time/node_modules/d3-array/src/ascending.js
+/* harmony default export */ function ascending(a, b) {
+  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+}
+;// CONCATENATED MODULE: ./node_modules/d3-time/node_modules/d3-array/src/bisector.js
+
+/* harmony default export */ function bisector(f) {
+  var delta = f;
+  var compare = f;
+
+  if (f.length === 1) {
+    delta = function delta(d, x) {
+      return f(d) - x;
+    };
+
+    compare = ascendingComparator(f);
+  }
+
+  function left(a, x, lo, hi) {
+    if (lo == null) lo = 0;
+    if (hi == null) hi = a.length;
+
+    while (lo < hi) {
+      var mid = lo + hi >>> 1;
+      if (compare(a[mid], x) < 0) lo = mid + 1;else hi = mid;
+    }
+
+    return lo;
+  }
+
+  function right(a, x, lo, hi) {
+    if (lo == null) lo = 0;
+    if (hi == null) hi = a.length;
+
+    while (lo < hi) {
+      var mid = lo + hi >>> 1;
+      if (compare(a[mid], x) > 0) hi = mid;else lo = mid + 1;
+    }
+
+    return lo;
+  }
+
+  function center(a, x, lo, hi) {
+    if (lo == null) lo = 0;
+    if (hi == null) hi = a.length;
+    var i = left(a, x, lo, hi - 1);
+    return i > lo && delta(a[i - 1], x) > -delta(a[i], x) ? i - 1 : i;
+  }
+
+  return {
+    left: left,
+    center: center,
+    right: right
+  };
+}
+
+function ascendingComparator(f) {
+  return function (d, x) {
+    return ascending(f(d), x);
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/d3-time/node_modules/d3-array/src/ticks.js
+var e10 = Math.sqrt(50),
+    e5 = Math.sqrt(10),
+    e2 = Math.sqrt(2);
+/* harmony default export */ function ticks(start, stop, count) {
+  var reverse,
+      i = -1,
+      n,
+      ticks,
+      step;
+  stop = +stop, start = +start, count = +count;
+  if (start === stop && count > 0) return [start];
+  if (reverse = stop < start) n = start, start = stop, stop = n;
+  if ((step = tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+
+  if (step > 0) {
+    var r0 = Math.round(start / step),
+        r1 = Math.round(stop / step);
+    if (r0 * step < start) ++r0;
+    if (r1 * step > stop) --r1;
+    ticks = new Array(n = r1 - r0 + 1);
+
+    while (++i < n) {
+      ticks[i] = (r0 + i) * step;
+    }
+  } else {
+    step = -step;
+
+    var _r = Math.round(start * step),
+        _r2 = Math.round(stop * step);
+
+    if (_r / step < start) ++_r;
+    if (_r2 / step > stop) --_r2;
+    ticks = new Array(n = _r2 - _r + 1);
+
+    while (++i < n) {
+      ticks[i] = (_r + i) / step;
+    }
+  }
+
+  if (reverse) ticks.reverse();
+  return ticks;
+}
+function tickIncrement(start, stop, count) {
+  var step = (stop - start) / Math.max(0, count),
+      power = Math.floor(Math.log(step) / Math.LN10),
+      error = step / Math.pow(10, power);
+  return power >= 0 ? (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1) * Math.pow(10, power) : -Math.pow(10, -power) / (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1);
+}
+function tickStep(start, stop, count) {
+  var step0 = Math.abs(stop - start) / Math.max(0, count),
+      step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)),
+      error = step0 / step1;
+  if (error >= e10) step1 *= 10;else if (error >= e5) step1 *= 5;else if (error >= e2) step1 *= 2;
+  return stop < start ? -step1 : step1;
+}
+// EXTERNAL MODULE: ./node_modules/d3-time/src/duration.js
+var duration = __webpack_require__(29493);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/millisecond.js
+var millisecond = __webpack_require__(48677);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/second.js
+var second = __webpack_require__(45253);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/minute.js
+var minute = __webpack_require__(65134);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/hour.js
+var hour = __webpack_require__(4083);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/day.js
+var day = __webpack_require__(70018);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/week.js
+var week = __webpack_require__(3001);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/month.js
+var month = __webpack_require__(66933);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/year.js
+var year = __webpack_require__(83706);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/utcMinute.js
+var utcMinute = __webpack_require__(52695);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/utcHour.js
+var utcHour = __webpack_require__(55260);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/utcDay.js
+var utcDay = __webpack_require__(81898);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/utcWeek.js
+var utcWeek = __webpack_require__(99909);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/utcMonth.js
+var utcMonth = __webpack_require__(93227);
+// EXTERNAL MODULE: ./node_modules/d3-time/src/utcYear.js
+var utcYear = __webpack_require__(75805);
+;// CONCATENATED MODULE: ./node_modules/d3-time/src/ticks.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ticker(year, month, week, day, hour, minute) {
+  var tickIntervals = [[second/* default */.Z, 1, duration/* durationSecond */.Ym], [second/* default */.Z, 5, 5 * duration/* durationSecond */.Ym], [second/* default */.Z, 15, 15 * duration/* durationSecond */.Ym], [second/* default */.Z, 30, 30 * duration/* durationSecond */.Ym], [minute, 1, duration/* durationMinute */.yB], [minute, 5, 5 * duration/* durationMinute */.yB], [minute, 15, 15 * duration/* durationMinute */.yB], [minute, 30, 30 * duration/* durationMinute */.yB], [hour, 1, duration/* durationHour */.Y2], [hour, 3, 3 * duration/* durationHour */.Y2], [hour, 6, 6 * duration/* durationHour */.Y2], [hour, 12, 12 * duration/* durationHour */.Y2], [day, 1, duration/* durationDay */.UD], [day, 2, 2 * duration/* durationDay */.UD], [week, 1, duration/* durationWeek */.iM], [month, 1, duration/* durationMonth */.jz], [month, 3, 3 * duration/* durationMonth */.jz], [year, 1, duration/* durationYear */.qz]];
+
+  function ticks(start, stop, count) {
+    var reverse = stop < start;
+
+    if (reverse) {
+      var _ref = [stop, start];
+      start = _ref[0];
+      stop = _ref[1];
+    }
+
+    var interval = count && typeof count.range === "function" ? count : tickInterval(start, stop, count);
+    var ticks = interval ? interval.range(start, +stop + 1) : []; // inclusive stop
+
+    return reverse ? ticks.reverse() : ticks;
+  }
+
+  function tickInterval(start, stop, count) {
+    var target = Math.abs(stop - start) / count;
+    var i = bisector(function (_ref2) {
+      var _ref3 = (0,slicedToArray/* default */.Z)(_ref2, 3),
+          step = _ref3[2];
+
+      return step;
+    }).right(tickIntervals, target);
+    if (i === tickIntervals.length) return year.every(tickStep(start / duration/* durationYear */.qz, stop / duration/* durationYear */.qz, count));
+    if (i === 0) return millisecond/* default.every */.Z.every(Math.max(tickStep(start, stop, count), 1));
+
+    var _tickIntervals = (0,slicedToArray/* default */.Z)(tickIntervals[target / tickIntervals[i - 1][2] < tickIntervals[i][2] / target ? i - 1 : i], 2),
+        t = _tickIntervals[0],
+        step = _tickIntervals[1];
+
+    return t.every(step);
+  }
+
+  return [ticks, tickInterval];
+}
+
+var _ticker = ticker(utcYear/* default */.Z, utcMonth/* default */.Z, utcWeek/* utcSunday */.Ox, utcDay/* default */.Z, utcHour/* default */.Z, utcMinute/* default */.Z),
+    _ticker2 = (0,slicedToArray/* default */.Z)(_ticker, 2),
+    utcTicks = _ticker2[0],
+    utcTickInterval = _ticker2[1];
+
+var _ticker3 = ticker(year/* default */.Z, month/* default */.Z, week/* sunday */.OM, day/* default */.Z, hour/* default */.Z, minute/* default */.Z),
+    _ticker4 = (0,slicedToArray/* default */.Z)(_ticker3, 2),
+    timeTicks = _ticker4[0],
+    timeTickInterval = _ticker4[1];
+
+
+
+/***/ }),
+
+/***/ 81898:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export utcDays */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+/* harmony import */ var _duration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(29493);
+
+
+var utcDay = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setUTCHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setUTCDate(date.getUTCDate() + step);
+}, function (start, end) {
+  return (end - start) / _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationDay */ .UD;
+}, function (date) {
+  return date.getUTCDate() - 1;
+});
+/* harmony default export */ __webpack_exports__["Z"] = (utcDay);
+var utcDays = utcDay.range;
+
+/***/ }),
+
+/***/ 55260:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export utcHours */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+/* harmony import */ var _duration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(29493);
+
+
+var utcHour = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setUTCMinutes(0, 0, 0);
+}, function (date, step) {
+  date.setTime(+date + step * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationHour */ .Y2);
+}, function (start, end) {
+  return (end - start) / _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationHour */ .Y2;
+}, function (date) {
+  return date.getUTCHours();
+});
+/* harmony default export */ __webpack_exports__["Z"] = (utcHour);
+var utcHours = utcHour.range;
+
+/***/ }),
+
+/***/ 52695:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export utcMinutes */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+/* harmony import */ var _duration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(29493);
+
+
+var utcMinute = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setUTCSeconds(0, 0);
+}, function (date, step) {
+  date.setTime(+date + step * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationMinute */ .yB);
+}, function (start, end) {
+  return (end - start) / _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationMinute */ .yB;
+}, function (date) {
+  return date.getUTCMinutes();
+});
+/* harmony default export */ __webpack_exports__["Z"] = (utcMinute);
+var utcMinutes = utcMinute.range;
+
+/***/ }),
+
+/***/ 93227:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export utcMonths */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+
+var utcMonth = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setUTCDate(1);
+  date.setUTCHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setUTCMonth(date.getUTCMonth() + step);
+}, function (start, end) {
+  return end.getUTCMonth() - start.getUTCMonth() + (end.getUTCFullYear() - start.getUTCFullYear()) * 12;
+}, function (date) {
+  return date.getUTCMonth();
+});
+/* harmony default export */ __webpack_exports__["Z"] = (utcMonth);
+var utcMonths = utcMonth.range;
+
+/***/ }),
+
+/***/ 99909:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Ox": function() { return /* binding */ utcSunday; },
+/* harmony export */   "l6": function() { return /* binding */ utcMonday; },
+/* harmony export */   "hB": function() { return /* binding */ utcThursday; }
+/* harmony export */ });
+/* unused harmony exports utcTuesday, utcWednesday, utcFriday, utcSaturday, utcSundays, utcMondays, utcTuesdays, utcWednesdays, utcThursdays, utcFridays, utcSaturdays */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+/* harmony import */ var _duration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(29493);
+
+
+
+function utcWeekday(i) {
+  return (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+    date.setUTCDate(date.getUTCDate() - (date.getUTCDay() + 7 - i) % 7);
+    date.setUTCHours(0, 0, 0, 0);
+  }, function (date, step) {
+    date.setUTCDate(date.getUTCDate() + step * 7);
+  }, function (start, end) {
+    return (end - start) / _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationWeek */ .iM;
+  });
+}
+
+var utcSunday = utcWeekday(0);
+var utcMonday = utcWeekday(1);
+var utcTuesday = utcWeekday(2);
+var utcWednesday = utcWeekday(3);
+var utcThursday = utcWeekday(4);
+var utcFriday = utcWeekday(5);
+var utcSaturday = utcWeekday(6);
+var utcSundays = utcSunday.range;
+var utcMondays = utcMonday.range;
+var utcTuesdays = utcTuesday.range;
+var utcWednesdays = utcWednesday.range;
+var utcThursdays = utcThursday.range;
+var utcFridays = utcFriday.range;
+var utcSaturdays = utcSaturday.range;
+
+/***/ }),
+
+/***/ 75805:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export utcYears */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+
+var utcYear = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setUTCMonth(0, 1);
+  date.setUTCHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setUTCFullYear(date.getUTCFullYear() + step);
+}, function (start, end) {
+  return end.getUTCFullYear() - start.getUTCFullYear();
+}, function (date) {
+  return date.getUTCFullYear();
+}); // An optimized implementation for this simple case.
+
+utcYear.every = function (k) {
+  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+    date.setUTCFullYear(Math.floor(date.getUTCFullYear() / k) * k);
+    date.setUTCMonth(0, 1);
+    date.setUTCHours(0, 0, 0, 0);
+  }, function (date, step) {
+    date.setUTCFullYear(date.getUTCFullYear() + step * k);
+  });
+};
+
+/* harmony default export */ __webpack_exports__["Z"] = (utcYear);
+var utcYears = utcYear.range;
+
+/***/ }),
+
+/***/ 3001:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "OM": function() { return /* binding */ sunday; },
+/* harmony export */   "wA": function() { return /* binding */ monday; },
+/* harmony export */   "bL": function() { return /* binding */ thursday; }
+/* harmony export */ });
+/* unused harmony exports tuesday, wednesday, friday, saturday, sundays, mondays, tuesdays, wednesdays, thursdays, fridays, saturdays */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+/* harmony import */ var _duration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(29493);
+
+
+
+function weekday(i) {
+  return (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+    date.setDate(date.getDate() - (date.getDay() + 7 - i) % 7);
+    date.setHours(0, 0, 0, 0);
+  }, function (date, step) {
+    date.setDate(date.getDate() + step * 7);
+  }, function (start, end) {
+    return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationMinute */ .yB) / _duration_js__WEBPACK_IMPORTED_MODULE_1__/* .durationWeek */ .iM;
+  });
+}
+
+var sunday = weekday(0);
+var monday = weekday(1);
+var tuesday = weekday(2);
+var wednesday = weekday(3);
+var thursday = weekday(4);
+var friday = weekday(5);
+var saturday = weekday(6);
+var sundays = sunday.range;
+var mondays = monday.range;
+var tuesdays = tuesday.range;
+var wednesdays = wednesday.range;
+var thursdays = thursday.range;
+var fridays = friday.range;
+var saturdays = saturday.range;
+
+/***/ }),
+
+/***/ 83706:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export years */
+/* harmony import */ var _interval_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94666);
+
+var year = (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+  date.setMonth(0, 1);
+  date.setHours(0, 0, 0, 0);
+}, function (date, step) {
+  date.setFullYear(date.getFullYear() + step);
+}, function (start, end) {
+  return end.getFullYear() - start.getFullYear();
+}, function (date) {
+  return date.getFullYear();
+}); // An optimized implementation for this simple case.
+
+year.every = function (k) {
+  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : (0,_interval_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(function (date) {
+    date.setFullYear(Math.floor(date.getFullYear() / k) * k);
+    date.setMonth(0, 1);
+    date.setHours(0, 0, 0, 0);
+  }, function (date, step) {
+    date.setFullYear(date.getFullYear() + step * k);
+  });
+};
+
+/* harmony default export */ __webpack_exports__["Z"] = (year);
+var years = year.range;
 
 /***/ }),
 
@@ -33320,8 +33620,8 @@ var AccordionActions = /*#__PURE__*/react.forwardRef(function AccordionActions(p
 /* harmony default export */ var AccordionActions_AccordionActions = ((0,withStyles/* default */.Z)(styles, {
   name: 'MuiAccordionActions'
 })(AccordionActions));
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Accordion/Accordion.js + 1 modules
-var Accordion = __webpack_require__(29134);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Accordion/Accordion.js
+var Accordion = __webpack_require__(31296);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/AccordionSummary/AccordionSummary.js
 var AccordionSummary = __webpack_require__(95371);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js

@@ -17,13 +17,13 @@ var react = __webpack_require__(67294);
 // EXTERNAL MODULE: ./node_modules/@nivo/core/dist/nivo-core.es.js + 30 modules
 var nivo_core_es = __webpack_require__(67587);
 // EXTERNAL MODULE: ./node_modules/@nivo/axes/dist/nivo-axes.es.js + 14 modules
-var nivo_axes_es = __webpack_require__(21100);
+var nivo_axes_es = __webpack_require__(54247);
 // EXTERNAL MODULE: ./node_modules/@nivo/legends/dist/nivo-legends.es.js
 var nivo_legends_es = __webpack_require__(26729);
 // EXTERNAL MODULE: ./node_modules/@nivo/colors/dist/nivo-colors.es.js + 2 modules
 var nivo_colors_es = __webpack_require__(68204);
-// EXTERNAL MODULE: ./node_modules/@nivo/scales/dist/nivo-scales.es.js + 24 modules
-var nivo_scales_es = __webpack_require__(12685);
+// EXTERNAL MODULE: ./node_modules/@nivo/scales/dist/nivo-scales.es.js + 2 modules
+var nivo_scales_es = __webpack_require__(40351);
 // EXTERNAL MODULE: ./node_modules/@nivo/annotations/dist/nivo-annotations.es.js
 var nivo_annotations_es = __webpack_require__(80480);
 // EXTERNAL MODULE: ./node_modules/lodash/get.js
@@ -38,8 +38,8 @@ var isNumber_default = /*#__PURE__*/__webpack_require__.n(isNumber);
 // EXTERNAL MODULE: ./node_modules/lodash/isPlainObject.js
 var isPlainObject = __webpack_require__(68630);
 var isPlainObject_default = /*#__PURE__*/__webpack_require__.n(isPlainObject);
-// EXTERNAL MODULE: ./node_modules/d3-scale/src/linear.js + 4 modules
-var linear = __webpack_require__(44076);
+// EXTERNAL MODULE: ./node_modules/d3-scale/src/linear.js
+var linear = __webpack_require__(59006);
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
 var prop_types = __webpack_require__(45697);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
@@ -49,8 +49,8 @@ var jsx_runtime = __webpack_require__(85893);
 var nivo_tooltip_es = __webpack_require__(62529);
 // EXTERNAL MODULE: ./node_modules/react-motion/lib/react-motion.js
 var react_motion = __webpack_require__(44235);
-// EXTERNAL MODULE: ./node_modules/@nivo/voronoi/dist/nivo-voronoi.es.js + 5 modules
-var nivo_voronoi_es = __webpack_require__(8374);
+// EXTERNAL MODULE: ./node_modules/@nivo/voronoi/dist/nivo-voronoi.es.js
+var nivo_voronoi_es = __webpack_require__(84601);
 ;// CONCATENATED MODULE: ./node_modules/@nivo/scatterplot/dist/nivo-scatterplot.es.js
 
 

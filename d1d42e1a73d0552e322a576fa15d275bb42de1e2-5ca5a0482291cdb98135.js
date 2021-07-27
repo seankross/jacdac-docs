@@ -12147,9 +12147,11 @@ function WorkspaceProvider(props) {
 /* harmony import */ var _fields_LinePlotField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(70659);
 /* harmony import */ var _fields_BarField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9950);
 /* harmony import */ var _fields_PieField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(37505);
-/* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(54741);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(74602);
-/* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(16229);
+/* harmony import */ var _fields_HistogramField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(63511);
+/* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(54741);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(74602);
+/* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(16229);
+
 
 
 
@@ -12163,8 +12165,9 @@ var SCATTERPLOT_BLOCK = "chart_scatterplot";
 var LINEPLOT_BLOCK = "chart_lineplot";
 var PIEPLOT_BLOCK = "chart_pieplot";
 var BARCHART_BLOCK = "chart_bar";
+var HISTOGRAM_BLOCK = "chart_histogram";
 var CHART_SHOW_TABLE_BLOCK = "chart_show_table";
-var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_8__/* .paletteColorByIndex */ .W)(3);
+var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_9__/* .paletteColorByIndex */ .W)(3);
 var chartDsl = {
   id: "chart",
   createBlocks: function createBlocks() {
@@ -12175,7 +12178,7 @@ var chartDsl = {
       args0: [{
         type: "input_dummy"
       }, {
-        type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_6__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
         name: "table"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -12197,7 +12200,7 @@ var chartDsl = {
         name: "y",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
         name: "preview"
       }, {
         type: "input_dummy"
@@ -12224,7 +12227,7 @@ var chartDsl = {
         name: "value",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
         name: "preview"
       }, {
         type: "input_dummy"
@@ -12251,7 +12254,7 @@ var chartDsl = {
         name: "y",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
         name: "preview"
       }, {
         type: "input_dummy"
@@ -12278,12 +12281,32 @@ var chartDsl = {
         name: "value",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
         name: "preview"
       }, {
         type: "input_dummy"
       }, {
         type: _fields_PieField__WEBPACK_IMPORTED_MODULE_5__/* .default.KEY */ .Z.KEY,
+        name: "plot"
+      }],
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      colour: colour,
+      template: "meta",
+      inputsInline: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+    }, {
+      kind: "block",
+      type: HISTOGRAM_BLOCK,
+      message0: "histogram of %1 %2 %3",
+      args0: [{
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        name: "index",
+        dataType: "number"
+      }, {
+        type: "input_dummy"
+      }, {
+        type: _fields_HistogramField__WEBPACK_IMPORTED_MODULE_6__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -12310,6 +12333,9 @@ var chartDsl = {
       }, {
         kind: "block",
         type: PIEPLOT_BLOCK
+      }, {
+        kind: "block",
+        type: HISTOGRAM_BLOCK
       }, {
         kind: "block",
         type: CHART_SHOW_TABLE_BLOCK
@@ -12609,7 +12635,7 @@ var dataDsl = {
     }, {
       kind: "block",
       type: DATA_MUTATE_COLUMNS_BLOCK,
-      message0: "mutate %1 %2 %3 %4",
+      message0: "compute column %1 as %2 %3 %4",
       colour: operatorsColour,
       args0: [{
         type: "field_input",
@@ -12647,7 +12673,7 @@ var dataDsl = {
     }, {
       kind: "block",
       type: DATA_MUTATE_NUMBER_BLOCK,
-      message0: "mutate %1 %2 %3 %4",
+      message0: "compute column %1 as %2 %3 %4",
       colour: operatorsColour,
       args0: [{
         type: "field_input",
@@ -12693,7 +12719,7 @@ var dataDsl = {
       }, {
         type: "field_dropdown",
         name: "calc",
-        options: [["mean", "mean"], ["median", "med"], ["min", "min"], ["max", "max"]]
+        options: [["average", "average"], ["median", "med"], ["min", "min"], ["max", "max"]]
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
@@ -12727,7 +12753,7 @@ var dataDsl = {
       }, {
         type: "field_dropdown",
         name: "calc",
-        options: [["mean", "mean"], ["median", "med"], ["min", "min"], ["max", "max"]]
+        options: [["average", "average"], ["median", "med"], ["min", "min"], ["max", "max"]]
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
@@ -14852,6 +14878,113 @@ var GaugeWidgetField = /*#__PURE__*/function (_ReactInlineField) {
 
 GaugeWidgetField.KEY = "jacdac_field_gauge_widget";
 GaugeWidgetField.EDITABLE = false;
+
+
+/***/ }),
+
+/***/ 63511:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ HistogramField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(77298);
+/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(69672);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(42862);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
+
+
+
+
+
+
+
+
+var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/* import() */ 9312).then(__webpack_require__.bind(__webpack_require__, 69312));
+});
+
+function HistogramWidget() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var hasData = !!(data !== null && data !== void 0 && data.length); // need to map data to vega-lite
+
+  var index = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index");
+  if (!hasData || !index) return null;
+  console.log("histogram", {
+    index: index,
+    data: data
+  });
+  var histogram_spec = {
+    description: "Histogram of " + index,
+    mark: {
+      type: "bar",
+      tooltip: true
+    },
+    encoding: {
+      x: {
+        bin: true,
+        field: index
+      },
+      y: {
+        aggregate: "count"
+      }
+    },
+    data: {
+      name: "values"
+    }
+  };
+  var histogram_data = {
+    values: data
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    style: {
+      background: "#fff",
+      borderRadius: "0.25rem"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_4__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(VegaLite, {
+    actions: false,
+    width: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_WIDTH */ .xx,
+    height: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_HEIGHT */ .Fh,
+    spec: histogram_spec,
+    data: histogram_data
+  })))));
+}
+
+var HistogramField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)(HistogramField, _ReactInlineField);
+
+  HistogramField.fromJson = function fromJson(options) {
+    return new HistogramField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function HistogramField(options) {
+    return _ReactInlineField.call(this, options) || this;
+  }
+
+  var _proto = HistogramField.prototype;
+
+  _proto.renderInlineField = function renderInlineField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HistogramWidget, null);
+  };
+
+  return HistogramField;
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+
+HistogramField.KEY = "jacdac_field_histogram";
+HistogramField.EDITABLE = false;
 
 
 /***/ }),
@@ -17057,9 +17190,11 @@ WatchValueField.EDITABLE = false;
 /* harmony import */ var _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(69223);
 /* harmony import */ var _BarField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(9950);
 /* harmony import */ var _PieField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(37505);
-/* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(4383);
-/* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(39311);
-/* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(16229);
+/* harmony import */ var _HistogramField__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(63511);
+/* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(4383);
+/* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(39311);
+/* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(16229);
+
 
 
 
@@ -17101,7 +17236,7 @@ function registerFields() {
     if (fieldType.SHADOW) reactFieldShadows.push(fieldType.SHADOW);
   };
 
-  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _LinePlotField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _PieField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z];
+  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _LinePlotField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _PieField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _HistogramField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z];
   fieldTypes.forEach(registerType);
 }
 function fieldShadows() {

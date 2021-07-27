@@ -24,8 +24,8 @@ var react_spring_web_esm = __webpack_require__(85468);
 var jsx_runtime = __webpack_require__(85893);
 // EXTERNAL MODULE: ./node_modules/d3-shape/src/line.js
 var line = __webpack_require__(84887);
-// EXTERNAL MODULE: ./node_modules/d3-path/src/path.js
-var path = __webpack_require__(56940);
+// EXTERNAL MODULE: ./node_modules/d3-shape/node_modules/d3-path/src/path.js
+var path = __webpack_require__(94078);
 // EXTERNAL MODULE: ./node_modules/d3-shape/src/constant.js
 var constant = __webpack_require__(21235);
 // EXTERNAL MODULE: ./node_modules/d3-shape/src/math.js

@@ -13,7 +13,7 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 // EXTERNAL MODULE: ./node_modules/@nivo/axes/dist/nivo-axes.es.js + 14 modules
-var nivo_axes_es = __webpack_require__(21100);
+var nivo_axes_es = __webpack_require__(54247);
 // EXTERNAL MODULE: ./node_modules/@nivo/annotations/dist/nivo-annotations.es.js
 var nivo_annotations_es = __webpack_require__(80480);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
@@ -24,8 +24,8 @@ var nivo_legends_es = __webpack_require__(26729);
 var nivo_core_es = __webpack_require__(67587);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./node_modules/@nivo/scales/dist/nivo-scales.es.js + 24 modules
-var nivo_scales_es = __webpack_require__(12685);
+// EXTERNAL MODULE: ./node_modules/@nivo/scales/dist/nivo-scales.es.js + 2 modules
+var nivo_scales_es = __webpack_require__(40351);
 ;// CONCATENATED MODULE: ./node_modules/d3-shape/src/array.js
 var slice = Array.prototype.slice;
 // EXTERNAL MODULE: ./node_modules/d3-shape/src/constant.js
