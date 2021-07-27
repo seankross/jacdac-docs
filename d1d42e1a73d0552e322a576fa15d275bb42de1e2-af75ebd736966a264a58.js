@@ -12184,11 +12184,14 @@ var csv_proxy = __webpack_require__(53480);
 var FileOpenField = __webpack_require__(39311);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/palette.ts
 var palette = __webpack_require__(74602);
+// EXTERNAL MODULE: ./src/components/blockly/fields/nivo.ts
+var nivo = __webpack_require__(8844);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/datadsl.ts
 
 
 
 /* eslint-disable @typescript-eslint/ban-types */
+
 
 
 
@@ -12484,11 +12487,14 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
+        var _tidyHeaders;
+
         var column = b.getFieldValue("column");
+        var columns = column ? [column] : (_tidyHeaders = (0,nivo/* tidyHeaders */.P2)(data, "number")) === null || _tidyHeaders === void 0 ? void 0 : _tidyHeaders.headers;
         var calc = b.getFieldValue("calc");
         return postTransformData({
           type: "summarize",
-          column: column,
+          columns: columns,
           calc: calc,
           data: data
         });
@@ -16869,9 +16875,12 @@ function fieldShadows() {
 /* eslint-disable @typescript-eslint/ban-types */
 
 
-function tidyHeaders(data) {
+function tidyHeaders(data, type) {
   var row = (data === null || data === void 0 ? void 0 : data[0]) || {};
   var headers = Object.keys(row);
+  if (type) headers = headers.filter(function (header) {
+    return type === typeof row[header];
+  });
   var types = headers.map(function (header) {
     return typeof row[header];
   });

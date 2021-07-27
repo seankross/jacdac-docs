@@ -2632,6 +2632,13 @@ function sampleCorrelation(x, y) {
 }
 
 var _excluded = ["id", "worker", "data", "previousData"];
+var summarizers = {
+  mean: mean$1,
+  med: median,
+  min: min,
+  max: max
+}; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 var handlers = {
   arrange: function arrange(props) {
     var column = props.column,
@@ -2747,7 +2754,7 @@ var handlers = {
         rhs = props.rhs,
         logic = props.logic,
         data = props.data;
-    if (newcolumn === undefined || !lhs || !rhs || !logic) return data;
+    if (!newcolumn || !lhs || !rhs || !logic) return data;
     var calc = {};
 
     switch (logic) {
@@ -2910,39 +2917,18 @@ var handlers = {
     }
   },
   summarize: function summarize(props) {
-    var column = props.column,
+    var columns = props.columns,
         calc = props.calc,
         data = props.data;
-    if (!column || !calc) return data;
+    if (!(columns != null && columns.length) || !calc) return data;
+    var summarizer = summarizers[calc];
+    if (!summarizer) return data; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-    switch (calc) {
-      case "mean":
-        return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        _summarize3({
-          mean: mean$1(column)
-        }));
-
-      case "med":
-        return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        _summarize3({
-          median: median(column)
-        }));
-
-      case "min":
-        return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        _summarize3({
-          min: min(column)
-        }));
-
-      case "max":
-        return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        _summarize3({
-          max: max(column)
-        }));
-
-      default:
-        return data;
-    }
+    var items = {};
+    columns.forEach(function (column) {
+      return items[column] = summarizer(column);
+    });
+    return tidy(data, _summarize3(items));
   },
   summarize_by_group: function summarize_by_group(props) {
     var column = props.column,
@@ -2950,37 +2936,13 @@ var handlers = {
         calc = props.calc,
         data = props.data;
     if (!column || !by || !calc) return data;
+    var summarizer = summarizers[calc];
+    if (!summarizer) return data; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-    switch (calc) {
-      case "mean":
-        return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        groupBy(by, [// eslint-disable-next-line @typescript-eslint/no-explicit-any
-        _summarize3({
-          mean: mean$1(column)
-        })]));
-
-      case "med":
-        return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        groupBy(by, [// eslint-disable-next-line @typescript-eslint/no-explicit-any
-        _summarize3({
-          median: median(column)
-        })]));
-
-      case "min":
-        return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        groupBy(by, [_summarize3({
-          min: min(column)
-        })]));
-
-      case "max":
-        return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        groupBy(by, [_summarize3({
-          max: max(column)
-        })]));
-
-      default:
-        return data;
-    }
+    var items = {};
+    items[column] = summarizer(column);
+    return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    groupBy(by, [_summarize3(summarizer)]));
   },
   count: function count(props) {
     var column = props.column,
