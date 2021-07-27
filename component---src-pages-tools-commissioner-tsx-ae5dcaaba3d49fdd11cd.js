@@ -1609,15 +1609,19 @@ function Commissioner() {
   };
 
   var handleFilterBrains = function handleFilterBrains() {
-    filterBrains ? setFilterBrains(false) : setFilterBrains(true);
+    return setFilterBrains(!filterBrains);
   };
 
+  var deviceFilter = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function (d) {
+    return !filterBrains || !isBrain(d);
+  }, [filterBrains]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "Commissioner"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, {
     hideSimulators: true,
     showAvatar: true,
     showHeader: true,
     showConnect: true,
-    showStartSimulators: false
+    showStartSimulators: false,
+    deviceFilter: deviceFilter
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
     container: true,
     spacing: 1
@@ -1625,15 +1629,19 @@ function Commissioner() {
     title: "Commissioning data"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
     item: true,
-    xs: 1
+    xs: 12
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
+    container: true,
+    spacing: 1
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
+    item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     color: "primary",
     onClick: handleOnClearClick
   }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
-    item: true,
-    xs: 2
+    item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
@@ -1641,13 +1649,12 @@ function Commissioner() {
     onClick: handleDownloadCSV,
     startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, null)
   }, "Download CSV")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
-    item: true,
-    xs: 2
+    item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     onClick: handleFilterBrains
-  }, filterBrains ? "Show brains" : "Hide brains")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
+  }, filterBrains ? "Show brains" : "Hide brains")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(DataSetTable, {
