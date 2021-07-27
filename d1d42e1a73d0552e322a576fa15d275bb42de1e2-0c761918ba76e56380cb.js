@@ -13953,6 +13953,7 @@ var csv_proxy = __webpack_require__(53480);
 
 
 
+
 var useStyles = (0,makeStyles/* default */.Z)(function () {
   return {
     empty: {
@@ -14021,7 +14022,7 @@ function DataTableWidget(props) {
   var columns = Object.keys(table[0] || {}); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
   var renderCell = function renderCell(v) {
-    return typeof v === "boolean" ? v ? "true" : "false" : v + "";
+    return typeof v === "boolean" ? v ? "true" : "false" : typeof v === "number" ? (0,utils/* roundWithPrecision */.JI)(v, 3) : v + "";
   };
 
   var handleCopy = /*#__PURE__*/function () {
