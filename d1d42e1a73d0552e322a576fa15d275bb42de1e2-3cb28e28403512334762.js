@@ -13690,8 +13690,8 @@ DataColumnChooserField.KEY = "jacdac_field_data_column_chooser";
 
 
 
+var MAX_ITEMS = 64; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 var DataPreviewField = /*#__PURE__*/function (_ReactField) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(DataPreviewField, _ReactField);
 
@@ -13719,7 +13719,8 @@ var DataPreviewField = /*#__PURE__*/function (_ReactField) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .DataTableWidget */ .g, {
       tableHeight: 295,
       empty: "no data",
-      transformed: true
+      transformed: true,
+      maxItems: MAX_ITEMS
     });
   };
 
@@ -13765,6 +13766,7 @@ function addDataPreviewField(block) {
 
 
 
+var MAX_ITEMS = 256;
 
 var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(DataTableField, _ReactInlineField);
@@ -13790,7 +13792,9 @@ var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
   };
 
   _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .DataTableWidget */ .g, null);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .DataTableWidget */ .g, {
+      maxItems: MAX_ITEMS
+    });
   };
 
   return DataTableField;
@@ -13814,6 +13818,8 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
 var asyncToGenerator = __webpack_require__(92137);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
+var toConsumableArray = __webpack_require__(85061);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__(87757);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
@@ -13942,7 +13948,11 @@ function CopyButton(props) {
 }
 // EXTERNAL MODULE: ./src/components/blockly/dsl/workers/csv.proxy.ts
 var csv_proxy = __webpack_require__(53480);
+// EXTERNAL MODULE: ./src/components/blockly/fields/nivo.ts
+var nivo = __webpack_require__(8844);
 ;// CONCATENATED MODULE: ./src/components/blockly/fields/DataTableWidget.tsx
+
+
 
 
 
@@ -14003,7 +14013,8 @@ function DataTableWidget(props) {
   var transformed = props.transformed,
       _props$tableHeight = props.tableHeight,
       tableHeight = _props$tableHeight === void 0 ? toolbox/* TABLE_HEIGHT */.U2 : _props$tableHeight,
-      empty = props.empty;
+      empty = props.empty,
+      maxItems = props.maxItems;
 
   var _useContext = (0,react.useContext)(WorkspaceContext/* default */.ZP),
       sourceBlock = _useContext.sourceBlock;
@@ -14012,14 +14023,19 @@ function DataTableWidget(props) {
       data = _useBlockData.data,
       transformedData = _useBlockData.transformedData;
 
-  var table = transformed ? transformedData : data;
+  var raw = transformed ? transformedData : data;
   var classes = useStyles({
     tableHeight: tableHeight
   });
-  if (!(table !== null && table !== void 0 && table.length)) return empty ? /*#__PURE__*/react.createElement("span", {
+  if (!(raw !== null && raw !== void 0 && raw.length)) return empty ? /*#__PURE__*/react.createElement("span", {
     className: classes.empty
   }, empty) : null;
-  var columns = Object.keys(table[0] || {}); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  var columns = (0,nivo/* tidyHeaders */.P2)(raw).headers;
+  var table = raw.length > maxItems ? [].concat((0,toConsumableArray/* default */.Z)(raw.slice(0, maxItems)), [(0,utils/* toMap */.qL)(columns, function (c) {
+    return c;
+  }, function () {
+    return "...";
+  })]) : raw; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
   var renderCell = function renderCell(v) {
     return typeof v === "boolean" ? v ? "true" : "false" : typeof v === "number" ? (0,utils/* roundWithPrecision */.JI)(v, 3) : v + "";
@@ -14073,7 +14089,7 @@ function DataTableWidget(props) {
     item: true
   }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "caption"
-  }, table.length, " rows x ", columns.length, " columns")))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, raw.length, " rows x ", columns.length, " columns")))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react.createElement("table", {
