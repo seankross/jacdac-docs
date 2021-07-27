@@ -9242,6 +9242,7 @@ var toolbox = __webpack_require__(16582);
 
 
 
+
 function registerDataSolver(block) {
   var services = block.jacdacServices; // register data transforms
 
@@ -9254,7 +9255,7 @@ function registerDataSolver(block) {
     var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
       var _block$nextConnection, _block$childBlocks_;
 
-      var next, nextServices, newData;
+      var next, nextServices, start, newData, end;
       return regenerator_default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -9267,32 +9268,36 @@ function registerDataSolver(block) {
               return _context.abrupt("return");
 
             case 2:
-              console.debug("data transform [" + block.id + "]#" + services.changeId); // transfer data
-
+              // transfer data
               next = ((_block$nextConnection = block.nextConnection) === null || _block$nextConnection === void 0 ? void 0 : _block$nextConnection.targetBlock()) || ((_block$childBlocks_ = block.childBlocks_) === null || _block$childBlocks_ === void 0 ? void 0 : _block$childBlocks_[0]);
               nextServices = next === null || next === void 0 ? void 0 : next.jacdacServices;
-              _context.prev = 5;
+              _context.prev = 4;
+              start = performance.now(); // operation
+
               _context.next = 8;
               return transformData(block, services.data, nextServices === null || nextServices === void 0 ? void 0 : nextServices.data);
 
             case 8:
               newData = _context.sent;
+              end = performance.now();
+              console.debug("data " + block.type + ": " + (0,utils/* roundWithPrecision */.JI)((end - start) / 1000, 3) + "s"); // propagte
+
               services.transformedData = newData;
               if (nextServices) nextServices.data = newData;
-              _context.next = 16;
+              _context.next = 18;
               break;
 
-            case 13:
-              _context.prev = 13;
-              _context.t0 = _context["catch"](5);
+            case 15:
+              _context.prev = 15;
+              _context.t0 = _context["catch"](4);
               console.debug(_context.t0);
 
-            case 16:
+            case 18:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[5, 13]]);
+      }, _callee, null, [[4, 15]]);
     }));
 
     return function applyTransform() {
@@ -14576,17 +14581,19 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
               return _context5.abrupt("return");
 
             case 5:
-              _context5.next = 7;
+              console.debug("file: loading " + file.name);
+              _context5.next = 8;
               return file.text();
 
-            case 7:
+            case 8:
               source = _context5.sent;
+              console.debug("file: loaded " + ((source === null || source === void 0 ? void 0 : source.length) || 0) / 1024 + "kb");
               this.setValue({
                 name: file.name,
                 source: source
               });
 
-            case 9:
+            case 11:
             case "end":
               return _context5.stop();
           }

@@ -660,7 +660,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
-function tidy(items) {
+function _tidy(items) {
   if (typeof items === "function") {
     throw new Error("You must supply the data as the first argument to tidy()");
   }
@@ -1836,11 +1836,66 @@ function count$1(groupKeys, options) {
         _options$name = _options.name,
         name = _options$name === void 0 ? "n" : _options$name,
         sort = _options.sort;
-    var results = tidy(items, groupBy(groupKeys, [tally(options)]), sort ? _arrange2(desc(name)) : identity$1);
+
+    var results = _tidy(items, groupBy(groupKeys, [tally(options)]), sort ? _arrange2(desc(name)) : identity$1);
+
     return results;
   };
 
   return _count;
+}
+
+function rename(renameSpec) {
+  var _rename = function _rename(items) {
+    return items.map(function (d) {
+      var _a;
+
+      var mapped = {};
+      var keys = Object.keys(d);
+
+      for (var _i4 = 0, _keys2 = keys; _i4 < _keys2.length; _i4++) {
+        var key = _keys2[_i4];
+        var newKey = (_a = renameSpec[key]) != null ? _a : key;
+        mapped[newKey] = d[key];
+      }
+
+      return mapped;
+    });
+  };
+
+  return _rename;
+}
+
+function slice$1(start, end) {
+  var _slice = function _slice(items) {
+    return items.slice(start, end);
+  };
+
+  return _slice;
+}
+
+var sliceHead = function sliceHead(n) {
+  return slice$1(0, n);
+};
+
+var sliceTail = function sliceTail(n) {
+  return slice$1(-n);
+};
+
+function sliceMin(n, orderBy) {
+  var _sliceMin = function _sliceMin(items) {
+    return _arrange2(orderBy)(items).slice(0, n);
+  };
+
+  return _sliceMin;
+}
+
+function sliceMax(n, orderBy) {
+  var _sliceMax = function _sliceMax(items) {
+    return typeof orderBy === "function" ? _arrange2(orderBy)(items).slice(-n).reverse() : _arrange2(desc(orderBy))(items).slice(0, n);
+  };
+
+  return _sliceMax;
 }
 
 function keysFromItems(items) {
@@ -2644,19 +2699,19 @@ var handlers = {
     var column = props.column,
         descending = props.descending,
         data = props.data;
-    return tidy(data, _arrange2(descending ? desc(column) : column));
+    return _tidy(data, _arrange2(descending ? desc(column) : column));
   },
   select: function select(props) {
     var columns = props.columns,
         data = props.data;
-    if (!(columns != null && columns.length)) return data;else return tidy(data, _select2(columns.map(function (column) {
+    if (!(columns != null && columns.length)) return data;else return _tidy(data, _select2(columns.map(function (column) {
       return "".concat(column);
     })));
   },
   drop: function drop(props) {
     var columns = props.columns,
         data = props.data;
-    if (!(columns != null && columns.length)) return data;else return tidy(data, _select2(columns.map(function (column) {
+    if (!(columns != null && columns.length)) return data;else return _tidy(data, _select2(columns.map(function (column) {
       return "-".concat(column);
     })));
   },
@@ -2669,32 +2724,32 @@ var handlers = {
 
     switch (logic) {
       case "gt":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[column] > rhs;
         }));
 
       case "lt":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[column] < rhs;
         }));
 
       case "ge":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[column] >= rhs;
         }));
 
       case "le":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[column] <= rhs;
         }));
 
       case "eq":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[column] == rhs;
         }));
 
       case "ne":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[column] != rhs;
         }));
 
@@ -2715,32 +2770,32 @@ var handlers = {
 
     switch (logic) {
       case "gt":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[columns[0]] > d[columns[1]];
         }));
 
       case "lt":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[columns[0]] < d[columns[1]];
         }));
 
       case "ge":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[columns[0]] >= d[columns[1]];
         }));
 
       case "le":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[columns[0]] <= d[columns[1]];
         }));
 
       case "eq":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[columns[0]] === d[columns[1]];
         }));
 
       case "ne":
-        return tidy(data, filter(function (d) {
+        return _tidy(data, filter(function (d) {
           return d[columns[0]] !== d[columns[1]];
         }));
 
@@ -2763,70 +2818,70 @@ var handlers = {
           return d[lhs] + d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "minus":
         calc[newcolumn] = function (d) {
           return d[lhs] - d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "mult":
         calc[newcolumn] = function (d) {
           return d[lhs] * d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "div":
         calc[newcolumn] = function (d) {
           return d[lhs] / d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "gt":
         calc[newcolumn] = function (d) {
           return d[lhs] > d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "lt":
         calc[newcolumn] = function (d) {
           return d[lhs] < d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "ge":
         calc[newcolumn] = function (d) {
           return d[lhs] >= d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "le":
         calc[newcolumn] = function (d) {
           return d[lhs] <= d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "eq":
         calc[newcolumn] = function (d) {
           return d[lhs] == d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "ne":
         calc[newcolumn] = function (d) {
           return d[lhs] != d[rhs];
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       default:
         return data;
@@ -2847,70 +2902,70 @@ var handlers = {
           return d[lhs] + rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "minus":
         calc[newcolumn] = function (d) {
           return d[lhs] - rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "mult":
         calc[newcolumn] = function (d) {
           return d[lhs] * rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "div":
         calc[newcolumn] = function (d) {
           return d[lhs] / rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "gt":
         calc[newcolumn] = function (d) {
           return d[lhs] > rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "lt":
         calc[newcolumn] = function (d) {
           return d[lhs] < rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "ge":
         calc[newcolumn] = function (d) {
           return d[lhs] >= rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "le":
         calc[newcolumn] = function (d) {
           return d[lhs] <= rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "eq":
         calc[newcolumn] = function (d) {
           return d[lhs] == rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       case "ne":
         calc[newcolumn] = function (d) {
           return d[lhs] != rhs;
         };
 
-        return tidy(data, mutate(calc));
+        return _tidy(data, mutate(calc));
 
       default:
         return data;
@@ -2928,7 +2983,7 @@ var handlers = {
     columns.forEach(function (column) {
       return items[column] = summarizer(column);
     });
-    return tidy(data, _summarize3(items));
+    return _tidy(data, _summarize3(items));
   },
   summarize_by_group: function summarize_by_group(props) {
     var column = props.column,
@@ -2941,7 +2996,7 @@ var handlers = {
 
     var items = {};
     items[column] = summarizer(column);
-    return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return _tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
     groupBy(by, [_summarize3(summarizer)]));
   },
   count: function count(props) {
@@ -2949,7 +3004,7 @@ var handlers = {
         data = props.data;
     if (!column) return data; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-    return tidy(data, count$1(column));
+    return _tidy(data, count$1(column));
   },
   record_window: function record_window(props) {
     var _previousData;
@@ -3018,6 +3073,20 @@ var handlers = {
       slope: linregmb.m.toFixed(3),
       intercept: linregmb.b.toFixed(3)
     }];
+  },
+  tidy: function tidy(props) {
+    var data = props.data,
+        renaming = props.renaming;
+    var labels = Object.keys(renaming); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // todo handle time
+
+    var _index = 0;
+    var tidied = data ? _tidy(data, props.sliceHead ? sliceHead(props.sliceHead) : undefined, props.sliceTail ? sliceTail(props.sliceTail) : undefined, props.sliceMin ? sliceMin(props.sliceMin, props.sliceColumn) : undefined, props.sliceMax ? sliceMax(props.sliceMax, props.sliceColumn) : undefined, mutate({
+      index: function index() {
+        return _index++;
+      }
+    }), _select2(labels), rename(renaming)) : [];
+    return tidied;
   }
 };
 
