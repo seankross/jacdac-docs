@@ -1455,7 +1455,7 @@ function DataSetTable(props) {
 
   var handleCommentChange = function handleCommentChange(event) {
     var descriptor = descriptors.find(function (d) {
-      return d.deviceIdentifier = event.target.id;
+      return d.deviceIdentifier == event.target.id;
     });
     descriptor.comment = event.target.value;
     updateDescriptor(descriptor);
@@ -1543,7 +1543,7 @@ function _LEDTest() {
 
           case 1:
             if (!(i < 8)) {
-              _context4.next = 11;
+              _context4.next = 9;
               break;
             }
 
@@ -1558,15 +1558,11 @@ function _LEDTest() {
             return service === null || service === void 0 ? void 0 : service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .LedPixelCmd.Run */ .yB$.Run, encoded);
 
           case 6:
-            _context4.next = 8;
-            return delay(50);
-
-          case 8:
             i++;
             _context4.next = 1;
             break;
 
-          case 11:
+          case 9:
           case "end":
             return _context4.stop();
         }
@@ -1595,7 +1591,7 @@ function _SingleRGBLEDTest() {
               break;
             }
 
-            encoded = lightEncode("setone % #\n                show 20", [i, 0xff0000]);
+            encoded = lightEncode("setall #\n            show 20", [0xff0000]);
 
             if (!service.device.connected) {
               _context5.next = 6;
