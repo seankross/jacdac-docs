@@ -14207,6 +14207,8 @@ var fileOpen = /*#__PURE__*/function () {
   };
 }();
 
+var MAX_SIZE = 100000; // 100kb
+
 var FileOpenField = /*#__PURE__*/function (_Field) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(FileOpenField, _Field);
 
@@ -14225,7 +14227,8 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
   var _proto = FileOpenField.prototype;
 
   _proto.toXml = function toXml(fieldElement) {
-    fieldElement.textContent = JSON.stringify(this.value_);
+    var text = JSON.stringify(this.value_);
+    if (text.length < MAX_SIZE) fieldElement.textContent = text;else fieldElement.textContent = "";
     return fieldElement;
   };
 
