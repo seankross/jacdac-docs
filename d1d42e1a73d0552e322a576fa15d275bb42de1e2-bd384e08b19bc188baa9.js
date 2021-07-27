@@ -760,7 +760,7 @@ exports.Z = _default;
 
 /***/ }),
 
-/***/ 24469:
+/***/ 25494:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -772,11 +772,15 @@ __webpack_require__.d(__webpack_exports__, {
   "JG": function() { return /* reexport */ mutate; },
   "PQ": function() { return /* reexport */ rename; },
   "Ys": function() { return /* reexport */ select_select; },
+  "sy": function() { return /* reexport */ sliceHead; },
+  "$H": function() { return /* reexport */ sliceMax; },
+  "so": function() { return /* reexport */ sliceMin; },
+  "bs": function() { return /* reexport */ sliceTail; },
   "Iz": function() { return /* reexport */ summarize; },
   "lu": function() { return /* reexport */ tidy_tidy; }
 });
 
-// UNUSED EXPORTS: TMath, addItems, addRows, arrange, asc, complete, contains, count, cumsum, debug, desc, deviation, distinct, endsWith, everything, expand, fill, filter, first, fixedOrder, fullJoin, fullSeq, fullSeqDate, fullSeqDateISOString, groupBy, innerJoin, lag, last, lead, leftJoin, map, matches, mean, meanRate, median, mutateWithSummary, n, nDistinct, negate, numRange, pick, pivotLonger, pivotWider, rate, replaceNully, roll, slice, sliceHead, sliceMax, sliceMin, sliceSample, sliceTail, sort, startsWith, sum, summarizeAll, summarizeAt, summarizeIf, tally, total, totalAll, totalAt, totalIf, transmute, variance, vectorSeq, vectorSeqDate, when
+// UNUSED EXPORTS: TMath, addItems, addRows, arrange, asc, complete, contains, count, cumsum, debug, desc, deviation, distinct, endsWith, everything, expand, fill, filter, first, fixedOrder, fullJoin, fullSeq, fullSeqDate, fullSeqDateISOString, groupBy, innerJoin, lag, last, lead, leftJoin, map, matches, mean, meanRate, median, mutateWithSummary, n, nDistinct, negate, numRange, pick, pivotLonger, pivotWider, rate, replaceNully, roll, slice, sliceSample, sort, startsWith, sum, summarizeAll, summarizeAt, summarizeIf, tally, total, totalAll, totalAt, totalIf, transmute, variance, vectorSeq, vectorSeqDate, when
 
 ;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/tidy.js
 function tidy_tidy(items) {
@@ -1774,6 +1778,191 @@ function rename(renameSpec) {
   };
 
   return _rename;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/node_modules/d3-array/src/ascending.js
+/* harmony default export */ function ascending(a, b) {
+  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+}
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/arrange.js
+function arrange_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = arrange_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function arrange_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return arrange_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrange_arrayLikeToArray(o, minLen); }
+
+function arrange_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+function arrange_arrange(comparators) {
+  var _arrange = function _arrange(items) {
+    var comparatorFns = singleOrArray_singleOrArray(comparators).map(function (comp) {
+      return typeof comp === "function" ? comp : asc(comp);
+    });
+    return items.slice().sort(function (a, b) {
+      var _iterator = arrange_createForOfIteratorHelper(comparatorFns),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var comparator = _step.value;
+          var result = comparator(a, b);
+          if (result) return result;
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      return 0;
+    });
+  };
+
+  return _arrange;
+}
+
+function asc(key) {
+  var keyFn = typeof key === "function" ? key : function (d) {
+    return d[key];
+  };
+  return function _asc(a, b) {
+    return emptyAwareComparator(keyFn(a), keyFn(b), false);
+  };
+}
+
+function arrange_desc(key) {
+  var keyFn = typeof key === "function" ? key : function (d) {
+    return d[key];
+  };
+  return function _desc(a, b) {
+    return emptyAwareComparator(keyFn(a), keyFn(b), true);
+  };
+}
+
+function fixedOrder(key, order, options) {
+  var _ref = options != null ? options : {},
+      _ref$position = _ref.position,
+      position = _ref$position === void 0 ? "start" : _ref$position;
+
+  var positionFactor = position === "end" ? -1 : 1;
+  var indexMap = new Map();
+
+  for (var i = 0; i < order.length; ++i) {
+    indexMap.set(order[i], i);
+  }
+
+  var keyFn = typeof key === "function" ? key : function (d) {
+    return d[key];
+  };
+  return function _fixedOrder(a, b) {
+    var _a, _b;
+
+    var aIndex = (_a = indexMap.get(keyFn(a))) != null ? _a : -1;
+    var bIndex = (_b = indexMap.get(keyFn(b))) != null ? _b : -1;
+
+    if (aIndex >= 0 && bIndex >= 0) {
+      return aIndex - bIndex;
+    }
+
+    if (aIndex >= 0) {
+      return positionFactor * -1;
+    }
+
+    if (bIndex >= 0) {
+      return positionFactor * 1;
+    }
+
+    return 0;
+  };
+}
+
+function emptyAwareComparator(aInput, bInput, desc2) {
+  var a = desc2 ? bInput : aInput;
+  var b = desc2 ? aInput : bInput;
+
+  if (isEmpty(a) && isEmpty(b)) {
+    var rankA = a !== a ? 0 : a === null ? 1 : 2;
+    var rankB = b !== b ? 0 : b === null ? 1 : 2;
+    var order = rankA - rankB;
+    return desc2 ? -order : order;
+  }
+
+  if (isEmpty(a)) {
+    return desc2 ? -1 : 1;
+  }
+
+  if (isEmpty(b)) {
+    return desc2 ? 1 : -1;
+  }
+
+  return ascending(a, b);
+}
+
+function isEmpty(value) {
+  return value == null || value !== value;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@tidyjs/tidy/dist/es/slice.js
+
+
+
+function slice(start, end) {
+  var _slice = function _slice(items) {
+    return items.slice(start, end);
+  };
+
+  return _slice;
+}
+
+var sliceHead = function sliceHead(n) {
+  return slice(0, n);
+};
+
+var sliceTail = function sliceTail(n) {
+  return slice(-n);
+};
+
+function sliceMin(n, orderBy) {
+  var _sliceMin = function _sliceMin(items) {
+    return arrange_arrange(orderBy)(items).slice(0, n);
+  };
+
+  return _sliceMin;
+}
+
+function sliceMax(n, orderBy) {
+  var _sliceMax = function _sliceMax(items) {
+    return typeof orderBy === "function" ? arrange_arrange(orderBy)(items).slice(-n).reverse() : arrange_arrange(arrange_desc(orderBy))(items).slice(0, n);
+  };
+
+  return _sliceMax;
+}
+
+function sliceSample(n, options) {
+  options = options != null ? options : {};
+  var _options = options,
+      replace = _options.replace;
+
+  var _sliceSample = function _sliceSample(items) {
+    if (!items.length) return items.slice();
+
+    if (replace) {
+      var sliced = [];
+
+      for (var i = 0; i < n; ++i) {
+        sliced.push(items[Math.floor(Math.random() * items.length)]);
+      }
+
+      return sliced;
+    }
+
+    return shuffle(items.slice()).slice(0, n);
+  };
+
+  return _sliceSample;
 }
 
 
@@ -14543,7 +14732,7 @@ FileSaveField.KEY = "jacdac_field_file_save";
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
 /* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(69672);
 /* harmony import */ var _nivo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8844);
-/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(24469);
+/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(25494);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(80838);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(81794);
 
@@ -15532,7 +15721,10 @@ function PieChartWidget() {
   var id = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("id");
   var value = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value");
 
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [id, value], ["id", "value"]),
+  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [id, value], ["id", "value"], {
+    sliceMax: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .PIE_MAX_ITEMS */ .DZ,
+    sliceColumn: value
+  }),
       series = _tidyToNivo.series,
       labels = _tidyToNivo.labels; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
@@ -16890,7 +17082,7 @@ function fieldShadows() {
 /* harmony export */   "pc": function() { return /* binding */ tidyFindLastValue; },
 /* harmony export */   "tL": function() { return /* binding */ tidyToNivo; }
 /* harmony export */ });
-/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24469);
+/* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(25494);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81794);
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -16914,7 +17106,11 @@ function tidyFindLastValue(data, column) {
   return data[data.length - 1][column];
 }
 function tidyToNivo( // eslint-disable-next-line @typescript-eslint/ban-types
-data, columns, toColumns) {
+data, columns, toColumns, options) {
+  if (options === void 0) {
+    options = {};
+  }
+
   // avoid duplicates in column
   columns = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__/* .unique */ .Tw)(columns); // missing data
 
@@ -16938,7 +17134,7 @@ data, columns, toColumns) {
   // todo handle time
 
   var _index = 0;
-  var tidied = data ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .tidy */ .lu)(data, (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .mutate */ .JG)({
+  var tidied = data ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .tidy */ .lu)(data, options.sliceHead ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceHead */ .sy)(options.sliceHead) : undefined, options.sliceTail ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceTail */ .bs)(options.sliceTail) : undefined, options.sliceMin ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceMin */ .so)(options.sliceMin, options.sliceColumn) : undefined, options.sliceMax ? (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .sliceMax */ .$H)(options.sliceMax, options.sliceColumn) : undefined, (0,_tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__/* .mutate */ .JG)({
     index: function index() {
       return _index++;
     }
@@ -16977,6 +17173,7 @@ data, columns, toColumns) {
 /* harmony export */   "Fh": function() { return /* binding */ CHART_HEIGHT; },
 /* harmony export */   "KH": function() { return /* binding */ TABLE_WIDTH; },
 /* harmony export */   "U2": function() { return /* binding */ TABLE_HEIGHT; },
+/* harmony export */   "DZ": function() { return /* binding */ PIE_MAX_ITEMS; },
 /* harmony export */   "nY": function() { return /* binding */ VM_WARNINGS_CATEGORY; },
 /* harmony export */   "FD": function() { return /* binding */ JSON_WARNINGS_CATEGORY; },
 /* harmony export */   "j2": function() { return /* binding */ visitToolbox; }
@@ -17031,6 +17228,7 @@ var CHART_WIDTH = 388;
 var CHART_HEIGHT = 240;
 var TABLE_WIDTH = CHART_WIDTH;
 var TABLE_HEIGHT = 480;
+var PIE_MAX_ITEMS = 12;
 var VM_WARNINGS_CATEGORY = "vm";
 var JSON_WARNINGS_CATEGORY = "json";
 function visitToolbox(node, visitor) {
