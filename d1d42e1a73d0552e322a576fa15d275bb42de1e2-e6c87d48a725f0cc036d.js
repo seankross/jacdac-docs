@@ -13821,6 +13821,8 @@ var useBlockData = __webpack_require__(53851);
 var makeStyles = __webpack_require__(10920);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
 var Grid = __webpack_require__(80838);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
+var Typography = __webpack_require__(80453);
 // EXTERNAL MODULE: ./src/components/blockly/toolbox.ts
 var toolbox = __webpack_require__(16582);
 // EXTERNAL MODULE: ./src/components/blockly/fields/PointerBoundary.tsx
@@ -14043,15 +14045,28 @@ function DataTableWidget(props) {
     className: classes.root
   }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
+    direction: "column",
     spacing: 1
   }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
+  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    container: true,
+    direction: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    spacing: 1
+  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
   }, /*#__PURE__*/react.createElement(CopyButton, {
     size: "small",
     className: classes.button,
     onCopy: handleCopy
   })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    variant: "caption"
+  }, table.length, " rows x ", columns.length, " columns")))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react.createElement("table", {
