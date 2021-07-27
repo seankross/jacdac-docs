@@ -11681,8 +11681,8 @@ function BoxPlotWidget() {
       data = _useBlockData.data;
 
   var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
-  var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"));
-  if (!index) return null;
+  var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"), "number");
+  if (!index || !value) return null;
   var spec = {
     description: "Box plot of " + index,
     mark: "boxplot",
