@@ -1460,12 +1460,53 @@ function Commissioner() {
   var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_components_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_7__/* .default */ .ZP),
       fileStorage = _useContext2.fileStorage;
 
-  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var newDataSet, _loop, _iterator, _step, _ret;
+  var testDevice = /*#__PURE__*/function () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(d) {
+      var _iterator, _step, srv;
 
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context2) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _iterator = _createForOfIteratorHelperLoose(d.services());
+
+            case 1:
+              if ((_step = _iterator()).done) {
+                _context.next = 9;
+                break;
+              }
+
+              srv = _step.value;
+              _context.t0 = srv.serviceClass;
+              _context.next = _context.t0 === _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_LED_PIXEL */ .zEX ? 6 : 7;
+              break;
+
+            case 6:
+              return _context.abrupt("break", 7);
+
+            case 7:
+              _context.next = 1;
+              break;
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function testDevice(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    var newDataSet, _loop, _iterator2, _step2, _ret;
+
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context3) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
             newDataSet = ((dataSet === null || dataSet === void 0 ? void 0 : dataSet.slice(0)) || []).filter(function (d) {
               return !filterBrains || !d.brain;
@@ -1474,20 +1515,20 @@ function Commissioner() {
               var _newDataSet$filter;
 
               var d, services;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _loop$(_context) {
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _loop$(_context2) {
                 while (1) {
-                  switch (_context.prev = _context.next) {
+                  switch (_context2.prev = _context2.next) {
                     case 0:
-                      d = _step.value;
+                      d = _step2.value;
 
                       if (!((_newDataSet$filter = newDataSet.filter(function (entry) {
                         return entry.deviceIdentifier == d.deviceId;
                       })) !== null && _newDataSet$filter !== void 0 && _newDataSet$filter.length)) {
-                        _context.next = 3;
+                        _context2.next = 3;
                         break;
                       }
 
-                      return _context.abrupt("return", "continue");
+                      return _context2.abrupt("return", "continue");
 
                     case 3:
                       services = [];
@@ -1500,55 +1541,58 @@ function Commissioner() {
                           serviceIndex: s.serviceIndex
                         });
                       });
-                      _context.t0 = newDataSet;
-                      _context.t1 = isBrain(d);
-                      _context.t2 = d.deviceId;
-                      _context.next = 10;
+                      _context2.t0 = newDataSet;
+                      _context2.t1 = isBrain(d);
+                      _context2.t2 = d.deviceId;
+                      _context2.next = 10;
                       return d.resolveFirmwareIdentifier(3);
 
                     case 10:
-                      _context.t3 = _context.sent;
-                      _context.t4 = services;
-                      _context.t5 = [];
-                      _context.t6 = {
-                        brain: _context.t1,
-                        deviceIdentifier: _context.t2,
-                        firmwareIdentifier: _context.t3,
-                        services: _context.t4,
-                        servicesSeen: _context.t5
+                      _context2.t3 = _context2.sent;
+                      _context2.t4 = services;
+                      _context2.t5 = [];
+                      _context2.t6 = {
+                        brain: _context2.t1,
+                        deviceIdentifier: _context2.t2,
+                        firmwareIdentifier: _context2.t3,
+                        services: _context2.t4,
+                        servicesSeen: _context2.t5
                       };
 
-                      _context.t0.push.call(_context.t0, _context.t6);
+                      _context2.t0.push.call(_context2.t0, _context2.t6);
 
-                    case 15:
+                      // launch tests
+                      testDevice(d);
+
+                    case 16:
                     case "end":
-                      return _context.stop();
+                      return _context2.stop();
                   }
                 }
               }, _loop);
             });
-            _iterator = _createForOfIteratorHelperLoose(devices);
+            _iterator2 = _createForOfIteratorHelperLoose(devices);
 
           case 3:
-            if ((_step = _iterator()).done) {
-              _context2.next = 10;
+            if ((_step2 = _iterator2()).done) {
+              _context3.next = 10;
               break;
             }
 
-            return _context2.delegateYield(_loop(), "t0", 5);
+            return _context3.delegateYield(_loop(), "t0", 5);
 
           case 5:
-            _ret = _context2.t0;
+            _ret = _context3.t0;
 
             if (!(_ret === "continue")) {
-              _context2.next = 8;
+              _context3.next = 8;
               break;
             }
 
-            return _context2.abrupt("continue", 8);
+            return _context3.abrupt("continue", 8);
 
           case 8:
-            _context2.next = 3;
+            _context3.next = 3;
             break;
 
           case 10:
@@ -1556,10 +1600,10 @@ function Commissioner() {
 
           case 11:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
-    }, _callee);
+    }, _callee2);
   })), [(0,_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__/* .dependencyId */ .BX)(devices), filterBrains]);
   var table = {
     headers: tableHeaders,
