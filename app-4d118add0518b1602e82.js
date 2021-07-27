@@ -69795,7 +69795,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "665018a2c56ab343abbc8abaf27463fb3584f3b7";
+  var sha = "6d0c849bb33eeef112b5ec1365011fbbe3a78cfc";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81578,6 +81578,9 @@ exports.components = {
   },
   "component---src-pages-errors-microbit-v-1-not-supported-mdx": function componentSrcPagesErrorsMicrobitV1NotSupportedMdx() {
     return __webpack_require__.e(/* import() | component---src-pages-errors-microbit-v-1-not-supported-mdx */ 3462).then(__webpack_require__.bind(__webpack_require__, 86386));
+  },
+  "component---src-pages-experiments-razor-chroma-tsx": function componentSrcPagesExperimentsRazorChromaTsx() {
+    return __webpack_require__.e(/* import() | component---src-pages-experiments-razor-chroma-tsx */ 1674).then(__webpack_require__.bind(__webpack_require__, 74692));
   },
   "component---src-pages-github-tsx": function componentSrcPagesGithubTsx() {
     return __webpack_require__.e(/* import() | component---src-pages-github-tsx */ 2566).then(__webpack_require__.bind(__webpack_require__, 82017));
