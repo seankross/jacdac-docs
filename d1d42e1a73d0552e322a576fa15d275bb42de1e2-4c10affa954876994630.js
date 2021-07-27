@@ -13602,7 +13602,9 @@ function BarChartWidget() {
   var index = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index");
   var value = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value");
 
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [index, value], ["index", "value"]),
+  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [index, value], ["index", "value"], {
+    sliceHead: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .BAR_MAX_ITEMS */ .kC
+  }),
       series = _tidyToNivo.series,
       labels = _tidyToNivo.labels; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
@@ -17211,6 +17213,7 @@ data, columns, toColumns, options) {
 /* harmony export */   "U2": function() { return /* binding */ TABLE_HEIGHT; },
 /* harmony export */   "qV": function() { return /* binding */ ANIMATE_MAX_ITEMS; },
 /* harmony export */   "DZ": function() { return /* binding */ PIE_MAX_ITEMS; },
+/* harmony export */   "kC": function() { return /* binding */ BAR_MAX_ITEMS; },
 /* harmony export */   "VN": function() { return /* binding */ SCATTER_MAX_ITEMS; },
 /* harmony export */   "nY": function() { return /* binding */ VM_WARNINGS_CATEGORY; },
 /* harmony export */   "FD": function() { return /* binding */ JSON_WARNINGS_CATEGORY; },
@@ -17268,6 +17271,7 @@ var TABLE_WIDTH = CHART_WIDTH;
 var TABLE_HEIGHT = 480;
 var ANIMATE_MAX_ITEMS = 128;
 var PIE_MAX_ITEMS = 12;
+var BAR_MAX_ITEMS = 1 << 10;
 var SCATTER_MAX_ITEMS = 1 << 13;
 var VM_WARNINGS_CATEGORY = "vm";
 var JSON_WARNINGS_CATEGORY = "json";
