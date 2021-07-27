@@ -49077,11 +49077,10 @@ function errorPath(e) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "YH": function() { return /* binding */ dependencyChangeId; },
 /* harmony export */   "BX": function() { return /* binding */ dependencyId; },
 /* harmony export */   "aE": function() { return /* binding */ JDEventSource; }
 /* harmony export */ });
-/* unused harmony export fromEvent */
+/* unused harmony exports dependencyChangeId, fromEvent */
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5991);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
 /* harmony import */ var _flags__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21258);
@@ -69796,7 +69795,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3d0ce8686c64709d3b8deeb55a9a1c3b9c6d104e";
+  var sha = "f339dbd115c8dfcf9717dccd5fa24cd42e385440";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -73802,7 +73801,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   };
 
   _proto.resolveFirmwareIdentifier = /*#__PURE__*/function () {
-    var _resolveFirmwareIdentifier = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2() {
+    var _resolveFirmwareIdentifier = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(retry) {
       var _this$service2;
 
       var fwIdRegister;
@@ -73810,14 +73809,36 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              fwIdRegister = (_this$service2 = this.service(0)) === null || _this$service2 === void 0 ? void 0 : _this$service2.register(constants/* ControlReg.FirmwareIdentifier */.toU.FirmwareIdentifier);
-              _context2.next = 3;
-              return fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.refresh(true);
+              if (retry === void 0) {
+                retry = 0;
+              }
 
-            case 3:
-              return _context2.abrupt("return", fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.uintValue);
+              fwIdRegister = (_this$service2 = this.service(0)) === null || _this$service2 === void 0 ? void 0 : _this$service2.register(constants/* ControlReg.FirmwareIdentifier */.toU.FirmwareIdentifier);
+
+              if (fwIdRegister) {
+                _context2.next = 4;
+                break;
+              }
+
+              return _context2.abrupt("return", undefined);
 
             case 4:
+              if (!(retry-- > 0 && fwIdRegister.data === undefined)) {
+                _context2.next = 9;
+                break;
+              }
+
+              _context2.next = 7;
+              return fwIdRegister.refresh(true);
+
+            case 7:
+              _context2.next = 4;
+              break;
+
+            case 9:
+              return _context2.abrupt("return", fwIdRegister.uintValue);
+
+            case 10:
             case "end":
               return _context2.stop();
           }
@@ -73825,7 +73846,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
       }, _callee2, this);
     }));
 
-    function resolveFirmwareIdentifier() {
+    function resolveFirmwareIdentifier(_x) {
       return _resolveFirmwareIdentifier.apply(this, arguments);
     }
 
@@ -73936,7 +73957,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
       }, _callee3, this);
     }));
 
-    function floodPing(_x, _x2) {
+    function floodPing(_x2, _x3) {
       return _floodPing.apply(this, arguments);
     }
 
@@ -81589,7 +81610,7 @@ exports.components = {
     return Promise.all(/* import() | component---src-pages-tools-collector-tsx */[__webpack_require__.e(6559), __webpack_require__.e(8814)]).then(__webpack_require__.bind(__webpack_require__, 21586));
   },
   "component---src-pages-tools-commissioner-tsx": function componentSrcPagesToolsCommissionerTsx() {
-    return __webpack_require__.e(/* import() | component---src-pages-tools-commissioner-tsx */ 1322).then(__webpack_require__.bind(__webpack_require__, 67120));
+    return __webpack_require__.e(/* import() | component---src-pages-tools-commissioner-tsx */ 1322).then(__webpack_require__.bind(__webpack_require__, 7877));
   },
   "component---src-pages-tools-data-science-editor-tsx": function componentSrcPagesToolsDataScienceEditorTsx() {
     return Promise.all(/* import() | component---src-pages-tools-data-science-editor-tsx */[__webpack_require__.e(9978), __webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(5917), __webpack_require__.e(1323)]).then(__webpack_require__.bind(__webpack_require__, 30321));

@@ -1298,90 +1298,47 @@ function GridHeader(props) {
 
 /***/ }),
 
-/***/ 67120:
+/***/ 7877:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "DataSetTable": function() { return /* binding */ DataSetTable; },
-  "default": function() { return /* binding */ Commissioner; }
-});
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
-var makeStyles = __webpack_require__(10920);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
-var createStyles = __webpack_require__(70274);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
-var Grid = __webpack_require__(80838);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
-var Button = __webpack_require__(83332);
-// EXTERNAL MODULE: ./src/jacdac/Context.tsx
-var Context = __webpack_require__(20392);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Save.js
-var Save = __webpack_require__(8567);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/CheckCircle.js
-var CheckCircle = __webpack_require__(39545);
-// EXTERNAL MODULE: ./src/components/hooks/useDevices.ts
-var useDevices = __webpack_require__(53074);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
-var constants = __webpack_require__(71815);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Table/Table.js
-var Table = __webpack_require__(49683);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableBody/TableBody.js
-var TableBody = __webpack_require__(86300);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableCell/TableCell.js
-var TableCell = __webpack_require__(49400);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableContainer/TableContainer.js
-var TableContainer = __webpack_require__(78475);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableHead/TableHead.js
-var TableHead = __webpack_require__(4093);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableRow/TableRow.js
-var TableRow = __webpack_require__(99395);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Paper/Paper.js
-var Paper = __webpack_require__(58063);
-// EXTERNAL MODULE: ./src/components/ui/GridHeader.tsx
-var GridHeader = __webpack_require__(95393);
-// EXTERNAL MODULE: ./src/components/dashboard/Dashboard.tsx + 3 modules
-var Dashboard = __webpack_require__(65063);
-// EXTERNAL MODULE: ./src/components/ServiceManagerContext.tsx + 3 modules
-var ServiceManagerContext = __webpack_require__(99808);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(85061);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/eventsource.ts
-var eventsource = __webpack_require__(45484);
-;// CONCATENATED MODULE: ./src/jacdac/useChanges.ts
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Commissioner; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(80838);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(83332);
+/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
+/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(8567);
+/* harmony import */ var _material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(39545);
+/* harmony import */ var _components_hooks_useDevices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53074);
+/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(71815);
+/* harmony import */ var _material_ui_core_Table__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(49683);
+/* harmony import */ var _material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(86300);
+/* harmony import */ var _material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(49400);
+/* harmony import */ var _material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(78475);
+/* harmony import */ var _material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(4093);
+/* harmony import */ var _material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(99395);
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(58063);
+/* harmony import */ var _components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(95393);
+/* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(65063);
+/* harmony import */ var _components_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(99808);
+/* harmony import */ var _components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(7751);
+/* harmony import */ var _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(45484);
 
 
 
+function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function useChanges(nodes, query, deps) {
-  var _useState = (0,react.useState)((0,eventsource/* dependencyChangeId */.YH)(nodes)),
-      setVersion = _useState[1];
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-  var value = query ? query(nodes) : undefined;
-  (0,react.useEffect)(function () {
-    var unsubs = nodes === null || nodes === void 0 ? void 0 : nodes.map(function (node) {
-      return node.subscribe(constants/* CHANGE */.Ver, function () {
-        return setVersion((0,eventsource/* dependencyChangeId */.YH)(nodes));
-      });
-    });
-    return function () {
-      return unsubs === null || unsubs === void 0 ? void 0 : unsubs.forEach(function (unsub) {
-        return unsub();
-      });
-    };
-  }, [nodes].concat((0,toConsumableArray/* default */.Z)(deps || [])));
-  return value;
-}
-;// CONCATENATED MODULE: ./src/pages/tools/commissioner.tsx
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
  // tslint:disable-next-line: no-submodule-imports
-
 
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
@@ -1411,43 +1368,7 @@ function useChanges(nodes, query, deps) {
 
 
 
-var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
-  return (0,createStyles/* default */.Z)({
-    table: {
-      minWidth: "10rem"
-    },
-    root: {
-      marginBottom: theme.spacing(1)
-    },
-    grow: {
-      flexGrow: 1
-    },
-    field: {
-      marginRight: theme.spacing(1),
-      marginBottom: theme.spacing(1.5)
-    },
-    segment: {
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2)
-    },
-    row: {
-      marginBottom: theme.spacing(0.5)
-    },
-    buttons: {
-      marginRight: theme.spacing(1),
-      marginBottom: theme.spacing(2)
-    },
-    trend: {
-      width: theme.spacing(10)
-    },
-    vmiddle: {
-      verticalAlign: "middle"
-    },
-    check: {
-      color: "green"
-    }
-  });
-});
+
 
 function serviceArrayMatched(descriptor) {
   var matched = true;
@@ -1465,150 +1386,190 @@ function dateString() {
   return date.toDateString().replace(/ /g, "-");
 }
 
+function isBrain(d) {
+  return !!(d !== null && d !== void 0 && d.hasService(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_ROLE_MANAGER */ .igi));
+}
+
 function DataSetTable(props) {
-  var _dataSet$descriptors;
-
-  var dataSet = props.dataSet,
-      maxRows = props.maxRows,
-      minRows = props.minRows,
-      className = props.className;
-  var headers = dataSet.headers;
-  var classes = useStyles();
-  var data = (_dataSet$descriptors = dataSet.descriptors) === null || _dataSet$descriptors === void 0 ? void 0 : _dataSet$descriptors.slice(maxRows !== undefined ? -maxRows : 0);
-
-  while (minRows !== undefined && data.length < minRows) {
-    data.push(undefined);
-  }
-
-  return /*#__PURE__*/react.createElement(TableContainer/* default */.Z, {
-    className: className,
-    component: Paper/* default */.Z
-  }, /*#__PURE__*/react.createElement(Table/* default */.Z, {
-    className: classes.table,
-    "aria-label": "simple table",
+  var dataSet = props.dataSet;
+  var descriptors = dataSet.descriptors,
+      headers = dataSet.headers;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, {
+    component: _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, {
+    "aria-label": "device table",
     size: "small"
-  }, /*#__PURE__*/react.createElement(TableHead/* default */.Z, null, /*#__PURE__*/react.createElement(TableRow/* default */.Z, null, headers.map(function (header) {
-    return /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, null, headers.map(function (header) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
       align: "right",
-      key: "header" + header
+      key: header
     }, header);
-  }))), /*#__PURE__*/react.createElement(TableBody/* default */.Z, null, data === null || data === void 0 ? void 0 : data.map(function (descriptor, index) {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, null, descriptors === null || descriptors === void 0 ? void 0 : descriptors.map(function (descriptor) {
     var _descriptor$services$;
 
-    return /*#__PURE__*/react.createElement(TableRow/* default */.Z, {
-      key: "row" + index
-    }, /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-      key: "cell0",
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, {
+      key: descriptor.deviceIdentifier
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
       align: "center"
-    }, descriptor.deviceIdentifier), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-      key: "cell1",
+    }, descriptor.deviceIdentifier), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
       align: "center"
     }, descriptor.firmwareIdentifier && descriptor.firmwareIdentifier.toString(16), ((_descriptor$services$ = descriptor.services.filter(function (service) {
-      return service.serviceClass == constants/* SRV_ROLE_MANAGER */.igi;
-    })) === null || _descriptor$services$ === void 0 ? void 0 : _descriptor$services$.length) && "BRAIN"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-      key: "cell2",
+      return service.serviceClass == _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_ROLE_MANAGER */ .igi;
+    })) === null || _descriptor$services$ === void 0 ? void 0 : _descriptor$services$.length) && "BRAIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
       align: "center"
     }, descriptor.services.map(function (service) {
       return service.name + " ";
-    })), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-      key: "cell3",
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
       align: "center"
     }, descriptor.servicesSeen.map(function (service) {
       return service.name + " ";
-    })), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-      key: "cell4",
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
       align: "center"
-    }, serviceArrayMatched(descriptor) && /*#__PURE__*/react.createElement("div", {
-      className: classes.check
-    }, /*#__PURE__*/react.createElement(CheckCircle/* default */.Z, null), "PASS")));
+    }, serviceArrayMatched(descriptor) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+      style: {
+        color: "green"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+      fontSize: "small"
+    }), "PASS")));
   }))));
 }
+
 function Commissioner() {
-  var _useContext = (0,react.useContext)(Context/* default */.Z),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z),
       bus = _useContext.bus;
 
-  var _useState = (0,react.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       filterBrains = _useState[0],
-      setFilterBrains = _useState[1]; // todo allow remove brains
+      setFilterBrains = _useState[1];
 
-
-  var devices = (0,useDevices/* default */.Z)({
+  var devices = (0,_components_hooks_useDevices__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)({
+    announced: true,
     ignoreSelf: true,
     ignoreSimulators: true
   }).filter(function (d) {
-    var _d$services;
+    return !filterBrains || !isBrain(d);
+  });
 
-    if (filterBrains && (_d$services = d.services({
-      serviceClass: constants/* SRV_ROLE_MANAGER */.igi
-    })) !== null && _d$services !== void 0 && _d$services.length) return false;
-    return true;
-  }); // trigger render whenever a device has a change event
-
-  useChanges(devices);
-
-  var _useState2 = (0,react.useState)(),
+  var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
       dataSet = _useState2[0],
       setDataSet = _useState2[1];
 
   var tableHeaders = ["Device identifier", "Firmware identifier", "Services advertised", "Services seen", "Functional test pass"];
 
-  var _useState3 = (0,react.useState)({
-    descriptors: [],
-    headers: tableHeaders
-  }),
-      table = _useState3[0],
-      setTable = _useState3[1];
-
-  var _useContext2 = (0,react.useContext)(ServiceManagerContext/* default */.ZP),
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_components_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_7__/* .default */ .ZP),
       fileStorage = _useContext2.fileStorage;
 
-  var classes = useStyles();
-  (0,react.useEffect)(function () {
-    var usubArray = [];
-    var newDataSet = dataSet || [];
-    devices.forEach(function (d) {
-      var _newDataSet$filter;
+  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    var newDataSet, _loop, _iterator, _step, _ret;
 
-      if ((_newDataSet$filter = newDataSet.filter(function (entry) {
-        return entry.deviceIdentifier == d.deviceId;
-      })) !== null && _newDataSet$filter !== void 0 && _newDataSet$filter.length) return;
-      var services = [];
-      d.services().filter(function (service) {
-        return service.serviceClass != constants/* SRV_CONTROL */.gm9;
-      }).forEach(function (s) {
-        services.push({
-          name: s.name,
-          serviceClass: s.serviceClass,
-          serviceIndex: s.serviceIndex
-        });
-      });
-      newDataSet.push({
-        deviceIdentifier: d.deviceId,
-        firmwareIdentifier: d.firmwareIdentifier,
-        services: services,
-        servicesSeen: []
-      });
-    });
-    setDataSet(newDataSet);
-    return function () {
-      usubArray.forEach(function (usub) {
-        return usub();
-      });
-    };
-  }, [devices]);
-  (0,react.useEffect)(function () {
-    console.log("UPDATE");
-    var newObj = {
-      headers: tableHeaders,
-      descriptors: dataSet
-    };
-    setTable(newObj);
-  }, [dataSet]);
-  (0,react.useEffect)(function () {
-    return bus.subscribe(constants/* PACKET_RECEIVE */.u_S, function (packet) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            newDataSet = ((dataSet === null || dataSet === void 0 ? void 0 : dataSet.slice(0)) || []).filter(function (d) {
+              return !filterBrains || !d.brain;
+            });
+            _loop = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _loop() {
+              var _newDataSet$filter;
+
+              var d, services;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _loop$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      d = _step.value;
+
+                      if (!((_newDataSet$filter = newDataSet.filter(function (entry) {
+                        return entry.deviceIdentifier == d.deviceId;
+                      })) !== null && _newDataSet$filter !== void 0 && _newDataSet$filter.length)) {
+                        _context.next = 3;
+                        break;
+                      }
+
+                      return _context.abrupt("return", "continue");
+
+                    case 3:
+                      services = [];
+                      d.services().filter(function (service) {
+                        return service.serviceClass != _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_CONTROL */ .gm9;
+                      }).forEach(function (s) {
+                        services.push({
+                          name: s.name,
+                          serviceClass: s.serviceClass,
+                          serviceIndex: s.serviceIndex
+                        });
+                      });
+                      _context.t0 = newDataSet;
+                      _context.t1 = isBrain(d);
+                      _context.t2 = d.deviceId;
+                      _context.next = 10;
+                      return d.resolveFirmwareIdentifier(3);
+
+                    case 10:
+                      _context.t3 = _context.sent;
+                      _context.t4 = services;
+                      _context.t5 = [];
+                      _context.t6 = {
+                        brain: _context.t1,
+                        deviceIdentifier: _context.t2,
+                        firmwareIdentifier: _context.t3,
+                        services: _context.t4,
+                        servicesSeen: _context.t5
+                      };
+
+                      _context.t0.push.call(_context.t0, _context.t6);
+
+                    case 15:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _loop);
+            });
+            _iterator = _createForOfIteratorHelperLoose(devices);
+
+          case 3:
+            if ((_step = _iterator()).done) {
+              _context2.next = 10;
+              break;
+            }
+
+            return _context2.delegateYield(_loop(), "t0", 5);
+
+          case 5:
+            _ret = _context2.t0;
+
+            if (!(_ret === "continue")) {
+              _context2.next = 8;
+              break;
+            }
+
+            return _context2.abrupt("continue", 8);
+
+          case 8:
+            _context2.next = 3;
+            break;
+
+          case 10:
+            setDataSet(newDataSet);
+
+          case 11:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee);
+  })), [(0,_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__/* .dependencyId */ .BX)(devices), filterBrains]);
+  var table = {
+    headers: tableHeaders,
+    descriptors: dataSet
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return bus.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .PACKET_RECEIVE */ .u_S, function (packet) {
       var _newDataSet$find;
 
-      var newDataSet = dataSet.slice(0);
+      var newDataSet = (dataSet === null || dataSet === void 0 ? void 0 : dataSet.slice(0)) || [];
       var contains = newDataSet.find(function (descriptor) {
         return descriptor.deviceIdentifier == packet.deviceIdentifier;
       }).servicesSeen.filter(function (service) {
@@ -1637,7 +1598,7 @@ function Commissioner() {
     dataSet.forEach(function (descriptor) {
       str += "" + descriptor.deviceIdentifier + sep;
       if (descriptor.firmwareIdentifier) str += "" + descriptor.firmwareIdentifier + sep;else if (descriptor.services.find(function (service) {
-        return service.serviceClass == constants/* SRV_ROLE_MANAGER */.igi;
+        return service.serviceClass == _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_ROLE_MANAGER */ .igi;
       })) str += "BRAIN" + sep;else str += "UNKNOWN" + sep;
       str += "" + descriptor.services.map(function (service) {
         return service.name;
@@ -1651,47 +1612,45 @@ function Commissioner() {
     filterBrains ? setFilterBrains(false) : setFilterBrains(true);
   };
 
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Commissioner"), /*#__PURE__*/react.createElement(Dashboard/* default */.Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "Commissioner"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, {
     hideSimulators: true,
     showAvatar: true,
     showHeader: true,
     showConnect: true,
     showStartSimulators: false
-  }), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
     container: true,
     spacing: 1
-  }, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
     title: "Commissioning data"
-  }), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
     item: true,
     xs: 1
-  }, /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     color: "primary",
     onClick: handleOnClearClick
-  }, "Clear")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
     item: true,
     xs: 2
-  }, /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     color: "secondary",
     onClick: handleDownloadCSV,
-    startIcon: /*#__PURE__*/react.createElement(Save/* default */.Z, null)
-  }, "Download CSV")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, null)
+  }, "Download CSV")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
     item: true,
     xs: 2
-  }, /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     onClick: handleFilterBrains
-  }, filterBrains ? "Stop filtering brains" : "Start filtering brains")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, filterBrains ? "Show brains" : "Hide brains")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react.createElement(DataSetTable, {
-    key: "datasettable",
-    className: classes.segment,
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(DataSetTable, {
     dataSet: table
   }))));
 }
