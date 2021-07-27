@@ -12508,7 +12508,7 @@ var dataDsl = {
       }, {
         type: "field_dropdown",
         name: "calc",
-        options: [["Mean", "mean"], ["Median", "med"], ["Min", "min"], ["Max", "max"]]
+        options: [["mean", "mean"], ["median", "med"], ["min", "min"], ["max", "max"]]
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
