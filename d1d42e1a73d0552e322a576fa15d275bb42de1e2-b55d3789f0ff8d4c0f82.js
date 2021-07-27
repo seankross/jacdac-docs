@@ -592,6 +592,62 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 73097:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+}), 'Done');
+
+exports.Z = _default;
+
+/***/ }),
+
+/***/ 97332:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z"
+}), 'FileCopy');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 52377:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -671,6 +727,34 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"
 }), 'OpenInBrowser');
+
+exports.Z = _default;
+
+/***/ }),
+
+/***/ 78359:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+}), 'ReportProblem');
 
 exports.Z = _default;
 
@@ -11851,7 +11935,9 @@ function WorkspaceProvider(props) {
 /* harmony import */ var _fields_BarField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9950);
 /* harmony import */ var _fields_PieField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(37505);
 /* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(54741);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(74602);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(74602);
+/* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(16229);
+
 
 
 
@@ -11865,7 +11951,7 @@ var LINEPLOT_BLOCK = "chart_lineplot";
 var PIEPLOT_BLOCK = "chart_pieplot";
 var BARCHART_BLOCK = "chart_bar";
 var CHART_SHOW_TABLE_BLOCK = "chart_show_table";
-var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_7__/* .paletteColorByIndex */ .W)(3);
+var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_8__/* .paletteColorByIndex */ .W)(3);
 var chartDsl = {
   id: "chart",
   createBlocks: function createBlocks() {
@@ -11888,7 +11974,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: SCATTERPLOT_BLOCK,
-      message0: "scatterplot x %1 y %2 %3 %4",
+      message0: "scatterplot x %1 y %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "x",
@@ -11897,6 +11983,9 @@ var chartDsl = {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "y",
         dataType: "number"
+      }, {
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        name: "preview"
       }, {
         type: "input_dummy"
       }, {
@@ -11912,7 +12001,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: BARCHART_BLOCK,
-      message0: "bar index %1 value %2 %3 %4",
+      message0: "bar index %1 value %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "index",
@@ -11921,6 +12010,9 @@ var chartDsl = {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "value",
         dataType: "number"
+      }, {
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        name: "preview"
       }, {
         type: "input_dummy"
       }, {
@@ -11936,7 +12028,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: LINEPLOT_BLOCK,
-      message0: "line x %1 y %2 %3 %4",
+      message0: "line x %1 y %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "x",
@@ -11945,6 +12037,9 @@ var chartDsl = {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "y",
         dataType: "number"
+      }, {
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        name: "preview"
       }, {
         type: "input_dummy"
       }, {
@@ -11960,7 +12055,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: PIEPLOT_BLOCK,
-      message0: "pie name %1 value %2 %3 %4",
+      message0: "pie name %1 value %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "id",
@@ -11969,6 +12064,9 @@ var chartDsl = {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "value",
         dataType: "number"
+      }, {
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        name: "preview"
       }, {
         type: "input_dummy"
       }, {
@@ -13004,6 +13102,7 @@ function paletteColorByIndex(i) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "EZ": function() { return /* binding */ downloadCSV; },
 /* harmony export */   "Eg": function() { return /* binding */ saveCSV; },
+/* harmony export */   "sh": function() { return /* binding */ unparseCSV; },
 /* harmony export */   "bW": function() { return /* binding */ parseCSV; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(92137);
@@ -13078,12 +13177,12 @@ function _saveCSV() {
   return _saveCSV.apply(this, arguments);
 }
 
-function parseCSV(_x4) {
-  return _parseCSV.apply(this, arguments);
+function unparseCSV(_x4) {
+  return _unparseCSV.apply(this, arguments);
 }
 
-function _parseCSV() {
-  _parseCSV = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(source) {
+function _unparseCSV() {
+  _unparseCSV = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
     var worker, resp;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
       while (1) {
@@ -13093,13 +13192,13 @@ function _parseCSV() {
             _context3.next = 3;
             return worker.postMessage({
               worker: "csv",
-              type: "parse",
-              source: source
+              type: "unparse",
+              data: data
             });
 
           case 3:
             resp = _context3.sent;
-            return _context3.abrupt("return", resp === null || resp === void 0 ? void 0 : resp.file);
+            return _context3.abrupt("return", resp === null || resp === void 0 ? void 0 : resp.text);
 
           case 5:
           case "end":
@@ -13107,6 +13206,39 @@ function _parseCSV() {
         }
       }
     }, _callee3);
+  }));
+  return _unparseCSV.apply(this, arguments);
+}
+
+function parseCSV(_x5) {
+  return _parseCSV.apply(this, arguments);
+}
+
+function _parseCSV() {
+  _parseCSV = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(source) {
+    var worker, resp;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            worker = (0,_proxy__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)("csv");
+            _context4.next = 3;
+            return worker.postMessage({
+              worker: "csv",
+              type: "parse",
+              source: source
+            });
+
+          case 3:
+            resp = _context4.sent;
+            return _context4.abrupt("return", resp === null || resp === void 0 ? void 0 : resp.file);
+
+          case 5:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
   }));
   return _parseCSV.apply(this, arguments);
 }
@@ -13545,7 +13677,7 @@ DataColumnChooserField.KEY = "jacdac_field_data_column_chooser";
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _ReactField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(77576);
-/* harmony import */ var _DataTableWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11472);
+/* harmony import */ var _DataTableWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(23785);
 
 
 
@@ -13620,7 +13752,7 @@ function addDataPreviewField(block) {
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12702);
-/* harmony import */ var _DataTableWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11472);
+/* harmony import */ var _DataTableWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(23785);
 
 
 
@@ -13662,26 +13794,156 @@ DataTableField.EDITABLE = false;
 
 /***/ }),
 
-/***/ 11472:
+/***/ 23785:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "g": function() { return /* binding */ DataTableWidget; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(53851);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(10920);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16582);
-/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(77298);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "g": function() { return /* binding */ DataTableWidget; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(92137);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
+var regenerator = __webpack_require__(87757);
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./src/components/blockly/WorkspaceContext.tsx
+var WorkspaceContext = __webpack_require__(89801);
+// EXTERNAL MODULE: ./src/components/blockly/useBlockData.ts + 3 modules
+var useBlockData = __webpack_require__(53851);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
+var makeStyles = __webpack_require__(10920);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
+var Grid = __webpack_require__(80838);
+// EXTERNAL MODULE: ./src/components/blockly/toolbox.ts
+var toolbox = __webpack_require__(16582);
+// EXTERNAL MODULE: ./src/components/blockly/fields/PointerBoundary.tsx
+var PointerBoundary = __webpack_require__(77298);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+var objectWithoutPropertiesLoose = __webpack_require__(19756);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/FileCopy.js
+var FileCopy = __webpack_require__(97332);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Done.js
+var Done = __webpack_require__(73097);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/ReportProblem.js
+var ReportProblem = __webpack_require__(78359);
+// EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
+var IconButtonWithTooltip = __webpack_require__(79885);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
+var Button = __webpack_require__(83332);
+// EXTERNAL MODULE: ./src/components/hooks/useMounted.ts
+var useMounted = __webpack_require__(72179);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
+var utils = __webpack_require__(81794);
+;// CONCATENATED MODULE: ./src/components/ui/CopyButton.tsx
+
+
+var _excluded = ["label", "title", "onCopy"];
 
 
 
 
 
 
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(function () {
+
+
+
+function CopyButton(props) {
+  var label = props.label,
+      _props$title = props.title,
+      title = _props$title === void 0 ? "copy data to clipboard" : _props$title,
+      onCopy = props.onCopy,
+      rest = (0,objectWithoutPropertiesLoose/* default */.Z)(props, _excluded);
+
+  var _useState = (0,react.useState)(undefined),
+      copied = _useState[0],
+      setCopied = _useState[1];
+
+  var mounted = (0,useMounted/* default */.Z)();
+
+  var handleClick = /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(ev) {
+      var _text;
+
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              ev.stopPropagation();
+              ev.preventDefault();
+              _context.prev = 2;
+              setCopied(null);
+              _context.next = 6;
+              return onCopy();
+
+            case 6:
+              _text = _context.sent;
+              _context.next = 9;
+              return navigator.clipboard.writeText(_text);
+
+            case 9:
+              if (mounted()) setCopied(true);
+              _context.next = 16;
+              break;
+
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](2);
+              console.debug(_context.t0);
+              if (mounted()) setCopied(false);
+
+            case 16:
+              _context.prev = 16;
+              _context.next = 19;
+              return (0,utils/* delay */.gw)(1000);
+
+            case 19:
+              if (mounted()) setCopied(undefined);
+              return _context.finish(16);
+
+            case 21:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 12, 16, 21]]);
+    }));
+
+    return function handleClick(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var disabled = copied !== undefined;
+  var text = copied === true ? "Copied!" : copied === false ? "Copy failed" : label || "copy to clipboard";
+  return label ? /*#__PURE__*/react.createElement(Button/* default */.Z, Object.assign({
+    title: title
+  }, rest, {
+    onClick: disabled ? undefined : handleClick
+  }), text) : /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, Object.assign({
+    title: text
+  }, rest, {
+    onClick: disabled ? undefined : handleClick
+  }), copied === true ? /*#__PURE__*/react.createElement(Done/* default */.Z, null) : copied === false ? /*#__PURE__*/react.createElement(ReportProblem/* default */.Z, null) : /*#__PURE__*/react.createElement(FileCopy/* default */.Z, null));
+}
+// EXTERNAL MODULE: ./src/components/blockly/dsl/workers/csv.proxy.ts
+var csv_proxy = __webpack_require__(53480);
+;// CONCATENATED MODULE: ./src/components/blockly/fields/DataTableWidget.tsx
+
+
+
+
+
+
+
+
+
+
+var useStyles = (0,makeStyles/* default */.Z)(function () {
   return {
     empty: {
       paddingLeft: "0.5rem",
@@ -13690,14 +13952,18 @@ var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ 
       color: "#000",
       borderRadius: "0.25rem"
     },
+    button: {
+      color: "grey"
+    },
     root: function root(props) {
       return {
+        marginTop: "0.25rem",
         paddingLeft: "0.5rem",
         paddingRight: "0.5rem",
         background: "#fff",
         color: "#000",
         borderRadius: "0.25rem",
-        width: "calc(" + _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .TABLE_WIDTH */ .KH + "px - 0.25rem)",
+        width: "calc(" + toolbox/* TABLE_WIDTH */.KH + "px - 0.25rem)",
         height: "calc(" + props.tableHeight + "px - 0.25rem)",
         overflow: "auto"
       };
@@ -13725,13 +13991,13 @@ var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ 
 function DataTableWidget(props) {
   var transformed = props.transformed,
       _props$tableHeight = props.tableHeight,
-      tableHeight = _props$tableHeight === void 0 ? _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .TABLE_HEIGHT */ .U2 : _props$tableHeight,
+      tableHeight = _props$tableHeight === void 0 ? toolbox/* TABLE_HEIGHT */.U2 : _props$tableHeight,
       empty = props.empty;
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+  var _useContext = (0,react.useContext)(WorkspaceContext/* default */.ZP),
       sourceBlock = _useContext.sourceBlock;
 
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(sourceBlock),
+  var _useBlockData = (0,useBlockData/* default */.Z)(sourceBlock),
       data = _useBlockData.data,
       transformedData = _useBlockData.transformedData;
 
@@ -13739,7 +14005,7 @@ function DataTableWidget(props) {
   var classes = useStyles({
     tableHeight: tableHeight
   });
-  if (!(table !== null && table !== void 0 && table.length)) return empty ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+  if (!(table !== null && table !== void 0 && table.length)) return empty ? /*#__PURE__*/react.createElement("span", {
     className: classes.empty
   }, empty) : null;
   var columns = Object.keys(table[0] || {}); // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -13748,23 +14014,59 @@ function DataTableWidget(props) {
     return typeof v === "boolean" ? v ? "true" : "false" : v + "";
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_4__/* .PointerBoundary */ .A, {
+  var handleCopy = /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
+      var text;
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              text = (0,csv_proxy/* unparseCSV */.sh)(table);
+              return _context.abrupt("return", text);
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function handleCopy() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/react.createElement(PointerBoundary/* PointerBoundary */.A, {
     className: classes.root
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", {
+  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    container: true,
+    spacing: 1
+  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react.createElement(CopyButton, {
+    size: "small",
+    className: classes.button,
+    onCopy: handleCopy
+  })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react.createElement("table", {
     className: classes.table
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, columns.map(function (c) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+  }, /*#__PURE__*/react.createElement("thead", null, /*#__PURE__*/react.createElement("tr", null, columns.map(function (c) {
+    return /*#__PURE__*/react.createElement("th", {
       key: c
     }, c);
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, table.map(function (r, i) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
+  }))), /*#__PURE__*/react.createElement("tbody", null, table.map(function (r, i) {
+    return /*#__PURE__*/react.createElement("tr", {
       key: r.id || i
     }, columns.map(function (c) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+      return /*#__PURE__*/react.createElement("td", {
         key: c
       }, renderCell(r[c]));
     }));
-  }))));
+  }))))));
 }
 
 /***/ }),

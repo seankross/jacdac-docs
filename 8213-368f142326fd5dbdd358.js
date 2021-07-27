@@ -981,60 +981,87 @@ var handlers = {
     }
 
     return parse;
+  }(),
+  unparse: function () {
+    var _unparse = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(msg) {
+      var data, text;
+      return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              data = msg.data;
+              text = papaparse_min.unparse(data);
+              return _context4.abrupt("return", {
+                text: text
+              });
+
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    function unparse(_x4) {
+      return _unparse.apply(this, arguments);
+    }
+
+    return unparse;
   }()
 };
 
-function handleMessage(_x4) {
+function handleMessage(_x5) {
   return _handleMessage.apply(this, arguments);
 }
 
 function _handleMessage() {
-  _handleMessage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(event) {
+  _handleMessage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(event) {
     var message, id, worker, type, handler, resp;
-    return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+    return _regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context5.prev = _context5.next) {
           case 0:
             message = event.data;
             id = message.id, worker = message.worker, type = message.type;
 
             if (!(worker !== "csv")) {
-              _context4.next = 4;
+              _context5.next = 4;
               break;
             }
 
-            return _context4.abrupt("return");
+            return _context5.abrupt("return");
 
           case 4:
-            _context4.prev = 4;
+            _context5.prev = 4;
             handler = handlers[type];
-            _context4.next = 8;
+            _context5.next = 8;
             return handler(message);
 
           case 8:
-            resp = _context4.sent;
+            resp = _context5.sent;
             self.postMessage(_extends({
               id: id,
               worker: worker
             }, resp));
-            _context4.next = 15;
+            _context5.next = 15;
             break;
 
           case 12:
-            _context4.prev = 12;
-            _context4.t0 = _context4["catch"](4);
+            _context5.prev = 12;
+            _context5.t0 = _context5["catch"](4);
             self.postMessage({
               id: id,
               worker: worker,
-              error: _context4.t0 + ""
+              error: _context5.t0 + ""
             });
 
           case 15:
           case "end":
-            return _context4.stop();
+            return _context5.stop();
         }
       }
-    }, _callee4, null, [[4, 12]]);
+    }, _callee5, null, [[4, 12]]);
   }));
   return _handleMessage.apply(this, arguments);
 }
