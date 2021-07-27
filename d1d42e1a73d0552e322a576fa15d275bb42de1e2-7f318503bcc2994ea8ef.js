@@ -13641,7 +13641,7 @@ function workerProxy(workerid) {
 
 
 var Bar = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(9774), __webpack_require__.e(317), __webpack_require__.e(8029)]).then(__webpack_require__.bind(__webpack_require__, 78029));
+  return Promise.all(/* import() */[__webpack_require__.e(9774), __webpack_require__.e(317), __webpack_require__.e(7032)]).then(__webpack_require__.bind(__webpack_require__, 37032));
 });
 
 function BarChartWidget() {
@@ -15589,7 +15589,7 @@ LEDMatrixField.KEY = "jacdac_field_led_matrix";
 
 
 var Line = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(9774), __webpack_require__.e(317), __webpack_require__.e(4973)]).then(__webpack_require__.bind(__webpack_require__, 73684));
+  return Promise.all(/* import() */[__webpack_require__.e(9774), __webpack_require__.e(317), __webpack_require__.e(7047)]).then(__webpack_require__.bind(__webpack_require__, 27047));
 });
 
 function LineChartWidget() {
@@ -16532,17 +16532,13 @@ var ReactInlineField = /*#__PURE__*/function (_ReactField) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ ScatterPlotField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockChartProps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53333);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(53851);
-/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(77298);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(69672);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(42862);
-/* harmony import */ var _nivo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8844);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(16582);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
 
 
 
@@ -16551,107 +16547,40 @@ var ReactInlineField = /*#__PURE__*/function (_ReactField) {
 
 
 
-
-
-
-var ScatterPlot = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(9774), __webpack_require__.e(317), __webpack_require__.e(6471)]).then(__webpack_require__.bind(__webpack_require__, 66471));
-});
-
-function ScatterChartWidget() {
-  var _chartProps$data, _chartProps$data$0$da;
-
+function ScatterPlotWidget() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock,
-      dragging = _useContext.dragging;
+      sourceBlock = _useContext.sourceBlock;
 
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data; // need to map data to nivo
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
 
-
-  var x = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x");
-  var y = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y");
-
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .t)(data, [x, y], ["x", "y"], {
-    sliceSample: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .SCATTER_MAX_ITEMS */ .VN
-  }),
-      series = _tidyToNivo.series,
-      labels = _tidyToNivo.labels; // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-
-  var _useBlockChartProps = (0,_useBlockChartProps__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock, {
-    colors: {
-      scheme: "category10"
+  var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
+  var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
+  if (!x || !y) return null;
+  var spec = {
+    description: "Scatter plot of " + x + "x" + y,
+    mark: "point",
+    encoding: {
+      x: {
+        field: x,
+        type: "quantitative"
+      },
+      y: {
+        field: y,
+        type: "quantitative"
+      }
     },
-    data: series,
-    margin: {
-      top: 8,
-      right: 8,
-      bottom: 38,
-      left: 64
-    },
-    xScale: {
-      type: "linear",
-      min: "auto",
-      max: "auto"
-    },
-    yScale: {
-      type: "linear",
-      min: "auto",
-      max: "auto"
-    },
-    axisTop: null,
-    axisRight: null,
-    isInteractive: false,
-    axisBottom: {
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: x,
-      legendPosition: "middle",
-      legendOffset: 34
-    },
-    axisLeft: {
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: y,
-      legendPosition: "middle",
-      legendOffset: -32
+    data: {
+      name: "values"
     }
-  }),
-      chartProps = _useBlockChartProps.chartProps;
-
-  if (chartProps) {
-    var _series$, _series$$data;
-
-    chartProps.animate = !dragging && (series === null || series === void 0 ? void 0 : (_series$ = series[0]) === null || _series$ === void 0 ? void 0 : (_series$$data = _series$.data) === null || _series$$data === void 0 ? void 0 : _series$$data.length) < _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .ANIMATE_MAX_ITEMS */ .qV;
-    chartProps.data = series;
-  }
-
-  var hasData = (labels === null || labels === void 0 ? void 0 : labels.length) === 2 && labels[0] !== labels[1] && !!(chartProps !== null && chartProps !== void 0 && (_chartProps$data = chartProps.data) !== null && _chartProps$data !== void 0 && (_chartProps$data$0$da = _chartProps$data[0].data) !== null && _chartProps$data$0$da !== void 0 && _chartProps$data$0$da.length);
-  if (!hasData) return null;
-  chartProps.axisBottom.legend = labels[0];
-  chartProps.axisLeft.legend = labels[1];
-  console.log("scatter", {
-    x: x,
-    y: y,
-    series: series,
-    chartProps: chartProps
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    style: {
-      background: "#fff",
-      borderRadius: "0.25rem"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_5__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ScatterPlot, Object.assign({
-    width: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .CHART_WIDTH */ .xx,
-    height: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .CHART_HEIGHT */ .Fh
-  }, chartProps))))));
 }
 
 var ScatterPlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z)(ScatterPlotField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(ScatterPlotField, _ReactInlineField);
 
   ScatterPlotField.fromJson = function fromJson(options) {
     return new ScatterPlotField(options);
@@ -16665,7 +16594,7 @@ var ScatterPlotField = /*#__PURE__*/function (_ReactInlineField) {
   var _proto = ScatterPlotField.prototype;
 
   _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ScatterChartWidget, null);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ScatterPlotWidget, null);
   };
 
   return ScatterPlotField;
@@ -17137,7 +17066,7 @@ VariablesField.EDITABLE = false;
 
 
 var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/* import() */ 9312).then(__webpack_require__.bind(__webpack_require__, 69312));
+  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(9312)]).then(__webpack_require__.bind(__webpack_require__, 69312));
 });
 function VegaLiteWidget(props) {
   var spec = props.spec;
@@ -17516,11 +17445,11 @@ function tidyResolveHeader(data, name, type) {
 /* harmony export */   "qV": function() { return /* binding */ ANIMATE_MAX_ITEMS; },
 /* harmony export */   "DZ": function() { return /* binding */ PIE_MAX_ITEMS; },
 /* harmony export */   "kC": function() { return /* binding */ BAR_MAX_ITEMS; },
-/* harmony export */   "VN": function() { return /* binding */ SCATTER_MAX_ITEMS; },
 /* harmony export */   "nY": function() { return /* binding */ VM_WARNINGS_CATEGORY; },
 /* harmony export */   "FD": function() { return /* binding */ JSON_WARNINGS_CATEGORY; },
 /* harmony export */   "j2": function() { return /* binding */ visitToolbox; }
 /* harmony export */ });
+/* unused harmony export SCATTER_MAX_ITEMS */
 /* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -17574,7 +17503,7 @@ var TABLE_HEIGHT = 480;
 var ANIMATE_MAX_ITEMS = 128;
 var PIE_MAX_ITEMS = 12;
 var BAR_MAX_ITEMS = 1 << 10;
-var SCATTER_MAX_ITEMS = 1 << 13;
+var SCATTER_MAX_ITEMS = (/* unused pure expression or super */ null && (1 << 13));
 var VM_WARNINGS_CATEGORY = "vm";
 var JSON_WARNINGS_CATEGORY = "json";
 function visitToolbox(node, visitor) {

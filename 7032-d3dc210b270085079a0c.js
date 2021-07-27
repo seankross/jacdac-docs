@@ -1,6 +1,6 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[8029],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7032],{
 
-/***/ 78029:
+/***/ 37032:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14,97 +14,24 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./node_modules/@nivo/axes/dist/nivo-axes.es.js + 14 modules
 var nivo_axes_es = __webpack_require__(54247);
-// EXTERNAL MODULE: ./node_modules/@nivo/annotations/dist/nivo-annotations.es.js
-var nivo_annotations_es = __webpack_require__(80480);
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(85893);
-// EXTERNAL MODULE: ./node_modules/@nivo/legends/dist/nivo-legends.es.js
-var nivo_legends_es = __webpack_require__(26729);
-// EXTERNAL MODULE: ./node_modules/@nivo/core/dist/nivo-core.es.js + 30 modules
-var nivo_core_es = __webpack_require__(67587);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./node_modules/@nivo/scales/dist/nivo-scales.es.js + 2 modules
-var nivo_scales_es = __webpack_require__(40351);
-;// CONCATENATED MODULE: ./node_modules/d3-shape/src/array.js
-var slice = Array.prototype.slice;
-// EXTERNAL MODULE: ./node_modules/d3-shape/src/constant.js
-var constant = __webpack_require__(21235);
-// EXTERNAL MODULE: ./node_modules/d3-shape/src/offset/none.js
-var none = __webpack_require__(91662);
-// EXTERNAL MODULE: ./node_modules/d3-shape/src/order/none.js
-var order_none = __webpack_require__(4775);
-;// CONCATENATED MODULE: ./node_modules/d3-shape/src/stack.js
-
-
-
-
-
-function stackValue(d, key) {
-  return d[key];
-}
-
-/* harmony default export */ function stack() {
-  var keys = (0,constant/* default */.Z)([]),
-      order = order_none/* default */.Z,
-      offset = none/* default */.Z,
-      value = stackValue;
-
-  function stack(data) {
-    var kz = keys.apply(this, arguments),
-        i,
-        m = data.length,
-        n = kz.length,
-        sz = new Array(n),
-        oz;
-
-    for (i = 0; i < n; ++i) {
-      for (var ki = kz[i], si = sz[i] = new Array(m), j = 0, sij; j < m; ++j) {
-        si[j] = sij = [0, +value(data[j], ki, j, data)];
-        sij.data = data[j];
-      }
-
-      si.key = ki;
-    }
-
-    for (i = 0, oz = order(sz); i < n; ++i) {
-      sz[oz[i]].index = i;
-    }
-
-    offset(sz, oz);
-    return sz;
-  }
-
-  stack.keys = function (_) {
-    return arguments.length ? (keys = typeof _ === "function" ? _ : (0,constant/* default */.Z)(slice.call(_)), stack) : keys;
-  };
-
-  stack.value = function (_) {
-    return arguments.length ? (value = typeof _ === "function" ? _ : (0,constant/* default */.Z)(+_), stack) : value;
-  };
-
-  stack.order = function (_) {
-    return arguments.length ? (order = _ == null ? order_none/* default */.Z : typeof _ === "function" ? _ : (0,constant/* default */.Z)(slice.call(_)), stack) : order;
-  };
-
-  stack.offset = function (_) {
-    return arguments.length ? (offset = _ == null ? none/* default */.Z : _, stack) : offset;
-  };
-
-  return stack;
-}
-// EXTERNAL MODULE: ./node_modules/d3-shape/src/offset/diverging.js
-var diverging = __webpack_require__(69279);
-// EXTERNAL MODULE: ./node_modules/lodash/uniqBy.js
-var uniqBy = __webpack_require__(45578);
-var uniqBy_default = /*#__PURE__*/__webpack_require__.n(uniqBy);
+// EXTERNAL MODULE: ./node_modules/lodash/omit.js
+var omit = __webpack_require__(57557);
+var omit_default = /*#__PURE__*/__webpack_require__.n(omit);
+// EXTERNAL MODULE: ./node_modules/lodash/isNumber.js
+var isNumber = __webpack_require__(81763);
+var isNumber_default = /*#__PURE__*/__webpack_require__.n(isNumber);
+// EXTERNAL MODULE: ./node_modules/lodash/filter.js
+var filter = __webpack_require__(63105);
+var filter_default = /*#__PURE__*/__webpack_require__.n(filter);
+// EXTERNAL MODULE: ./node_modules/@nivo/core/dist/nivo-core.es.js + 30 modules
+var nivo_core_es = __webpack_require__(67587);
 // EXTERNAL MODULE: ./node_modules/@react-spring/web/dist/react-spring-web.esm.js
 var react_spring_web_esm = __webpack_require__(85468);
-// EXTERNAL MODULE: ./node_modules/@nivo/tooltip/dist/nivo-tooltip.es.js
-var nivo_tooltip_es = __webpack_require__(62529);
-// EXTERNAL MODULE: ./node_modules/@nivo/colors/dist/nivo-colors.es.js + 2 modules
-var nivo_colors_es = __webpack_require__(68204);
-;// CONCATENATED MODULE: ./node_modules/@nivo/bar/dist/nivo-bar.es.js
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(85893);
+;// CONCATENATED MODULE: ./node_modules/@nivo/annotations/dist/nivo-annotations.es.js
 
 
 
@@ -112,47 +39,6 @@ var nivo_colors_es = __webpack_require__(68204);
 
 
 
-
-
-
-
-
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -238,6 +124,241 @@ function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
 
+var defaultProps = {
+  dotSize: 4,
+  noteWidth: 120,
+  noteTextOffset: 8,
+  animate: true,
+  motionStiffness: 90,
+  motionDamping: 13
+};
+
+var isSvgNote = function isSvgNote(note) {
+  var noteType = typeof note;
+  return (0,react.isValidElement)(note) || noteType === 'string' || noteType === 'function' || noteType === 'object';
+};
+
+var isCanvasNote = function isCanvasNote(note) {
+  var noteType = typeof note;
+  return noteType === 'string' || noteType === 'function';
+};
+
+var isCircleAnnotation = function isCircleAnnotation(annotationSpec) {
+  return annotationSpec.type === 'circle';
+};
+
+var isDotAnnotation = function isDotAnnotation(annotationSpec) {
+  return annotationSpec.type === 'dot';
+};
+
+var isRectAnnotation = function isRectAnnotation(annotationSpec) {
+  return annotationSpec.type === 'rect';
+};
+
+var bindAnnotations = function bindAnnotations(_ref) {
+  var data = _ref.data,
+      annotations = _ref.annotations,
+      getPosition = _ref.getPosition,
+      getDimensions = _ref.getDimensions;
+  return annotations.reduce(function (acc, annotation) {
+    var offset = annotation.offset || 0;
+    return [].concat(_toConsumableArray(acc), _toConsumableArray(filter_default()(data, annotation.match).map(function (datum) {
+      var position = getPosition(datum);
+      var dimensions = getDimensions(datum);
+
+      if (isCircleAnnotation(annotation) || isRectAnnotation(annotation)) {
+        dimensions.size = dimensions.size + offset * 2;
+        dimensions.width = dimensions.width + offset * 2;
+        dimensions.height = dimensions.height + offset * 2;
+      }
+
+      return _objectSpread2(_objectSpread2(_objectSpread2(_objectSpread2({}, omit_default()(annotation, ['match', 'offset'])), position), dimensions), {}, {
+        size: annotation.size || dimensions.size,
+        datum: datum
+      });
+    })));
+  }, []);
+};
+
+var getLinkAngle = function getLinkAngle(sourceX, sourceY, targetX, targetY) {
+  var angle = Math.atan2(targetY - sourceY, targetX - sourceX);
+  return (0,nivo_core_es/* absoluteAngleDegrees */.bt)((0,nivo_core_es/* radiansToDegrees */.vi)(angle));
+};
+
+var computeAnnotation = function computeAnnotation(annotation) {
+  var x = annotation.x,
+      y = annotation.y,
+      noteX = annotation.noteX,
+      noteY = annotation.noteY,
+      _annotation$noteWidth = annotation.noteWidth,
+      noteWidth = _annotation$noteWidth === void 0 ? defaultProps.noteWidth : _annotation$noteWidth,
+      _annotation$noteTextO = annotation.noteTextOffset,
+      noteTextOffset = _annotation$noteTextO === void 0 ? defaultProps.noteTextOffset : _annotation$noteTextO;
+  var computedNoteX;
+  var computedNoteY;
+
+  if (isNumber_default()(noteX)) {
+    computedNoteX = x + noteX;
+  } else if (noteX.abs !== undefined) {
+    computedNoteX = noteX.abs;
+  } else {
+    throw new Error("noteX should be either a number or an object containing an 'abs' property");
+  }
+
+  if (isNumber_default()(noteY)) {
+    computedNoteY = y + noteY;
+  } else if (noteY.abs !== undefined) {
+    computedNoteY = noteY.abs;
+  } else {
+    throw new Error("noteY should be either a number or an object containing an 'abs' property");
+  }
+
+  var computedX = x;
+  var computedY = y;
+  var angle = getLinkAngle(x, y, computedNoteX, computedNoteY);
+
+  if (isCircleAnnotation(annotation)) {
+    var position = (0,nivo_core_es/* positionFromAngle */.re)((0,nivo_core_es/* degreesToRadians */.Ht)(angle), annotation.size / 2);
+    computedX += position.x;
+    computedY += position.y;
+  }
+
+  if (isRectAnnotation(annotation)) {
+    var eighth = Math.round((angle + 90) / 45) % 8;
+
+    if (eighth === 0) {
+      computedY -= annotation.height / 2;
+    }
+
+    if (eighth === 1) {
+      computedX += annotation.width / 2;
+      computedY -= annotation.height / 2;
+    }
+
+    if (eighth === 2) {
+      computedX += annotation.width / 2;
+    }
+
+    if (eighth === 3) {
+      computedX += annotation.width / 2;
+      computedY += annotation.height / 2;
+    }
+
+    if (eighth === 4) {
+      computedY += annotation.height / 2;
+    }
+
+    if (eighth === 5) {
+      computedX -= annotation.width / 2;
+      computedY += annotation.height / 2;
+    }
+
+    if (eighth === 6) {
+      computedX -= annotation.width / 2;
+    }
+
+    if (eighth === 7) {
+      computedX -= annotation.width / 2;
+      computedY -= annotation.height / 2;
+    }
+  }
+
+  var textX = computedNoteX;
+  var textY = computedNoteY - noteTextOffset;
+  var noteLineX = computedNoteX;
+  var noteLineY = computedNoteY;
+
+  if ((angle + 90) % 360 > 180) {
+    textX -= noteWidth;
+    noteLineX -= noteWidth;
+  } else {
+    noteLineX += noteWidth;
+  }
+
+  return {
+    points: [[computedX, computedY], [computedNoteX, computedNoteY], [noteLineX, noteLineY]],
+    text: [textX, textY],
+    angle: angle + 90
+  };
+};
+
+var useAnnotations = function useAnnotations(_ref) {
+  var data = _ref.data,
+      annotations = _ref.annotations,
+      getPosition = _ref.getPosition,
+      getDimensions = _ref.getDimensions;
+  return (0,react.useMemo)(function () {
+    return bindAnnotations({
+      data: data,
+      annotations: annotations,
+      getPosition: getPosition,
+      getDimensions: getDimensions
+    });
+  }, [data, annotations, getPosition, getDimensions]);
+};
+
+var useComputedAnnotations = function useComputedAnnotations(_ref2) {
+  var annotations = _ref2.annotations;
+  return (0,react.useMemo)(function () {
+    return annotations.map(function (annotation) {
+      return _objectSpread2(_objectSpread2({}, annotation), {}, {
+        computed: computeAnnotation(_objectSpread2({}, annotation))
+      });
+    });
+  }, [annotations]);
+};
+
+var useComputedAnnotation = function useComputedAnnotation(annotation) {
+  return (0,react.useMemo)(function () {
+    return computeAnnotation(annotation);
+  }, [annotation]);
+};
+
+var AnnotationNote = function AnnotationNote(_ref) {
+  var datum = _ref.datum,
+      x = _ref.x,
+      y = _ref.y,
+      note = _ref.note;
+  var theme = (0,nivo_core_es/* useTheme */.Fg)();
+
+  var _useMotionConfig = (0,nivo_core_es/* useMotionConfig */.tf)(),
+      animate = _useMotionConfig.animate,
+      springConfig = _useMotionConfig.config;
+
+  var animatedProps = (0,react_spring_web_esm.useSpring)({
+    x: x,
+    y: y,
+    config: springConfig,
+    immediate: !animate
+  });
+
+  if (typeof note === 'function') {
+    return (0,react.createElement)(note, {
+      x: x,
+      y: y,
+      datum: datum
+    });
+  }
+
+  return (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [theme.annotations.text.outlineWidth > 0 && (0,jsx_runtime.jsx)(react_spring_web_esm/* animated.text */.q.text, {
+      x: animatedProps.x,
+      y: animatedProps.y,
+      style: _objectSpread2(_objectSpread2({}, theme.annotations.text), {}, {
+        strokeLinejoin: 'round',
+        strokeWidth: theme.annotations.text.outlineWidth * 2,
+        stroke: theme.annotations.text.outlineColor
+      }),
+      children: note
+    }), (0,jsx_runtime.jsx)(react_spring_web_esm/* animated.text */.q.text, {
+      x: animatedProps.x,
+      y: animatedProps.y,
+      style: omit_default()(theme.annotations.text, ['outlineWidth', 'outlineColor']),
+      children: note
+    })]
+  });
+};
+
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
@@ -277,10 +398,571 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
+function _toArray(arr) {
+  return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest();
+}
+
+var AnnotationLink = function AnnotationLink(_ref) {
+  var points = _ref.points,
+      _ref$isOutline = _ref.isOutline,
+      isOutline = _ref$isOutline === void 0 ? false : _ref$isOutline;
+  var theme = (0,nivo_core_es/* useTheme */.Fg)();
+  var path = (0,react.useMemo)(function () {
+    var _points = _toArray(points),
+        firstPoint = _points[0],
+        otherPoints = _points.slice(1);
+
+    return otherPoints.reduce(function (acc, _ref2) {
+      var _ref3 = _slicedToArray(_ref2, 2),
+          x = _ref3[0],
+          y = _ref3[1];
+
+      return "".concat(acc, " L").concat(x, ",").concat(y);
+    }, "M".concat(firstPoint[0], ",").concat(firstPoint[1]));
+  }, [points]);
+  var animatedPath = (0,nivo_core_es/* useAnimatedPath */.NS)(path);
+
+  if (isOutline && theme.annotations.link.outlineWidth <= 0) {
+    return null;
+  }
+
+  var style = _objectSpread2({}, theme.annotations.link);
+
+  if (isOutline) {
+    style.strokeLinecap = 'square';
+    style.strokeWidth = theme.annotations.link.strokeWidth + theme.annotations.link.outlineWidth * 2;
+    style.stroke = theme.annotations.link.outlineColor;
+  }
+
+  return (0,jsx_runtime.jsx)(react_spring_web_esm/* animated.path */.q.path, {
+    fill: "none",
+    d: animatedPath,
+    style: style
+  });
+};
+
+var CircleAnnotationOutline = function CircleAnnotationOutline(_ref) {
+  var x = _ref.x,
+      y = _ref.y,
+      size = _ref.size;
+  var theme = (0,nivo_core_es/* useTheme */.Fg)();
+
+  var _useMotionConfig = (0,nivo_core_es/* useMotionConfig */.tf)(),
+      animate = _useMotionConfig.animate,
+      springConfig = _useMotionConfig.config;
+
+  var animatedProps = (0,react_spring_web_esm.useSpring)({
+    x: x,
+    y: y,
+    radius: size / 2,
+    config: springConfig,
+    immediate: !animate
+  });
+  return (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [theme.annotations.outline.outlineWidth > 0 && (0,jsx_runtime.jsx)(react_spring_web_esm/* animated.circle */.q.circle, {
+      cx: animatedProps.x,
+      cy: animatedProps.y,
+      r: animatedProps.radius,
+      style: _objectSpread2(_objectSpread2({}, theme.annotations.outline), {}, {
+        fill: 'none',
+        strokeWidth: theme.annotations.outline.strokeWidth + theme.annotations.outline.outlineWidth * 2,
+        stroke: theme.annotations.outline.outlineColor
+      })
+    }), (0,jsx_runtime.jsx)(react_spring_web_esm/* animated.circle */.q.circle, {
+      cx: animatedProps.x,
+      cy: animatedProps.y,
+      r: animatedProps.radius,
+      style: theme.annotations.outline
+    })]
+  });
+};
+
+var DotAnnotationOutline = function DotAnnotationOutline(_ref) {
+  var x = _ref.x,
+      y = _ref.y,
+      _ref$size = _ref.size,
+      size = _ref$size === void 0 ? defaultProps.dotSize : _ref$size;
+  var theme = (0,nivo_core_es/* useTheme */.Fg)();
+
+  var _useMotionConfig = (0,nivo_core_es/* useMotionConfig */.tf)(),
+      animate = _useMotionConfig.animate,
+      springConfig = _useMotionConfig.config;
+
+  var animatedProps = (0,react_spring_web_esm.useSpring)({
+    x: x,
+    y: y,
+    radius: size / 2,
+    config: springConfig,
+    immediate: !animate
+  });
+  return (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [theme.annotations.outline.outlineWidth > 0 && (0,jsx_runtime.jsx)(react_spring_web_esm/* animated.circle */.q.circle, {
+      cx: animatedProps.x,
+      cy: animatedProps.y,
+      r: animatedProps.radius,
+      style: _objectSpread2(_objectSpread2({}, theme.annotations.outline), {}, {
+        fill: 'none',
+        strokeWidth: theme.annotations.outline.outlineWidth * 2,
+        stroke: theme.annotations.outline.outlineColor
+      })
+    }), (0,jsx_runtime.jsx)(react_spring_web_esm/* animated.circle */.q.circle, {
+      cx: animatedProps.x,
+      cy: animatedProps.y,
+      r: animatedProps.radius,
+      style: theme.annotations.symbol
+    })]
+  });
+};
+
+var RectAnnotationOutline = function RectAnnotationOutline(_ref) {
+  var x = _ref.x,
+      y = _ref.y,
+      width = _ref.width,
+      height = _ref.height;
+  var theme = (0,nivo_core_es/* useTheme */.Fg)();
+
+  var _useMotionConfig = (0,nivo_core_es/* useMotionConfig */.tf)(),
+      animate = _useMotionConfig.animate,
+      springConfig = _useMotionConfig.config;
+
+  var animatedProps = (0,react_spring_web_esm.useSpring)({
+    x: x - width / 2,
+    y: y - height / 2,
+    width: width,
+    height: height,
+    config: springConfig,
+    immediate: !animate
+  });
+  return (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [theme.annotations.outline.outlineWidth > 0 && (0,jsx_runtime.jsx)(react_spring_web_esm/* animated.rect */.q.rect, {
+      x: animatedProps.x,
+      y: animatedProps.y,
+      width: animatedProps.width,
+      height: animatedProps.height,
+      style: _objectSpread2(_objectSpread2({}, theme.annotations.outline), {}, {
+        fill: 'none',
+        strokeWidth: theme.annotations.outline.strokeWidth + theme.annotations.outline.outlineWidth * 2,
+        stroke: theme.annotations.outline.outlineColor
+      })
+    }), (0,jsx_runtime.jsx)(react_spring_web_esm/* animated.rect */.q.rect, {
+      x: animatedProps.x,
+      y: animatedProps.y,
+      width: animatedProps.width,
+      height: animatedProps.height,
+      style: theme.annotations.outline
+    })]
+  });
+};
+
+var Annotation = function Annotation(annotation) {
+  var datum = annotation.datum,
+      x = annotation.x,
+      y = annotation.y,
+      note = annotation.note;
+  var computed = useComputedAnnotation(annotation);
+
+  if (!isSvgNote(note)) {
+    throw new Error('note should be a valid react element');
+  }
+
+  return (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [(0,jsx_runtime.jsx)(AnnotationLink, {
+      points: computed.points,
+      isOutline: true
+    }), isCircleAnnotation(annotation) && (0,jsx_runtime.jsx)(CircleAnnotationOutline, {
+      x: x,
+      y: y,
+      size: annotation.size
+    }), isDotAnnotation(annotation) && (0,jsx_runtime.jsx)(DotAnnotationOutline, {
+      x: x,
+      y: y,
+      size: annotation.size
+    }), isRectAnnotation(annotation) && (0,jsx_runtime.jsx)(RectAnnotationOutline, {
+      x: x,
+      y: y,
+      width: annotation.width,
+      height: annotation.height
+    }), (0,jsx_runtime.jsx)(AnnotationLink, {
+      points: computed.points
+    }), (0,jsx_runtime.jsx)(AnnotationNote, {
+      datum: datum,
+      x: computed.text[0],
+      y: computed.text[1],
+      note: note
+    })]
+  });
+};
+
+var drawPoints = function drawPoints(ctx, points) {
+  points.forEach(function (_ref, index) {
+    var _ref2 = _slicedToArray(_ref, 2),
+        x = _ref2[0],
+        y = _ref2[1];
+
+    if (index === 0) {
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+    }
+  });
+};
+
+var renderAnnotationsToCanvas = function renderAnnotationsToCanvas(ctx, _ref3) {
+  var annotations = _ref3.annotations,
+      theme = _ref3.theme;
+  if (annotations.length === 0) return;
+  ctx.save();
+  annotations.forEach(function (annotation) {
+    if (!isCanvasNote(annotation.note)) {
+      throw new Error('note is invalid for canvas implementation');
+    }
+
+    if (theme.annotations.link.outlineWidth > 0) {
+      ctx.lineCap = 'square';
+      ctx.strokeStyle = theme.annotations.link.outlineColor;
+      ctx.lineWidth = theme.annotations.link.strokeWidth + theme.annotations.link.outlineWidth * 2;
+      ctx.beginPath();
+      drawPoints(ctx, annotation.computed.points);
+      ctx.stroke();
+      ctx.lineCap = 'butt';
+    }
+
+    if (isCircleAnnotation(annotation) && theme.annotations.outline.outlineWidth > 0) {
+      ctx.strokeStyle = theme.annotations.outline.outlineColor;
+      ctx.lineWidth = theme.annotations.outline.strokeWidth + theme.annotations.outline.outlineWidth * 2;
+      ctx.beginPath();
+      ctx.arc(annotation.x, annotation.y, annotation.size / 2, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
+
+    if (isDotAnnotation(annotation) && theme.annotations.symbol.outlineWidth > 0) {
+      ctx.strokeStyle = theme.annotations.symbol.outlineColor;
+      ctx.lineWidth = theme.annotations.symbol.outlineWidth * 2;
+      ctx.beginPath();
+      ctx.arc(annotation.x, annotation.y, annotation.size / 2, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
+
+    if (isRectAnnotation(annotation) && theme.annotations.outline.outlineWidth > 0) {
+      ctx.strokeStyle = theme.annotations.outline.outlineColor;
+      ctx.lineWidth = theme.annotations.outline.strokeWidth + theme.annotations.outline.outlineWidth * 2;
+      ctx.beginPath();
+      ctx.rect(annotation.x - annotation.width / 2, annotation.y - annotation.height / 2, annotation.width, annotation.height);
+      ctx.stroke();
+    }
+
+    ctx.strokeStyle = theme.annotations.link.stroke;
+    ctx.lineWidth = theme.annotations.link.strokeWidth;
+    ctx.beginPath();
+    drawPoints(ctx, annotation.computed.points);
+    ctx.stroke();
+
+    if (isCircleAnnotation(annotation)) {
+      ctx.strokeStyle = theme.annotations.outline.stroke;
+      ctx.lineWidth = theme.annotations.outline.strokeWidth;
+      ctx.beginPath();
+      ctx.arc(annotation.x, annotation.y, annotation.size / 2, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
+
+    if (isDotAnnotation(annotation)) {
+      ctx.fillStyle = theme.annotations.symbol.fill;
+      ctx.beginPath();
+      ctx.arc(annotation.x, annotation.y, annotation.size / 2, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+
+    if (isRectAnnotation(annotation)) {
+      ctx.strokeStyle = theme.annotations.outline.stroke;
+      ctx.lineWidth = theme.annotations.outline.strokeWidth;
+      ctx.beginPath();
+      ctx.rect(annotation.x - annotation.width / 2, annotation.y - annotation.height / 2, annotation.width, annotation.height);
+      ctx.stroke();
+    }
+
+    if (typeof annotation.note === 'function') {
+      annotation.note(ctx, {
+        datum: annotation.datum,
+        x: annotation.computed.text[0],
+        y: annotation.computed.text[1],
+        theme: theme
+      });
+    } else {
+      ctx.font = "".concat(theme.annotations.text.fontSize, "px ").concat(theme.annotations.text.fontFamily);
+      ctx.fillStyle = theme.annotations.text.fill;
+      ctx.strokeStyle = theme.annotations.text.outlineColor;
+      ctx.lineWidth = theme.annotations.text.outlineWidth * 2;
+
+      if (theme.annotations.text.outlineWidth > 0) {
+        ctx.lineJoin = 'round';
+        ctx.strokeText(annotation.note, annotation.computed.text[0], annotation.computed.text[1]);
+        ctx.lineJoin = 'miter';
+      }
+
+      ctx.fillText(annotation.note, annotation.computed.text[0], annotation.computed.text[1]);
+    }
+  });
+  ctx.restore();
+};
+
+
+// EXTERNAL MODULE: ./node_modules/@nivo/legends/dist/nivo-legends.es.js
+var nivo_legends_es = __webpack_require__(26729);
+// EXTERNAL MODULE: ./node_modules/@nivo/scales/dist/nivo-scales.es.js + 2 modules
+var nivo_scales_es = __webpack_require__(40351);
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/array.js
+var slice = Array.prototype.slice;
+// EXTERNAL MODULE: ./node_modules/d3-shape/src/constant.js
+var constant = __webpack_require__(21235);
+// EXTERNAL MODULE: ./node_modules/d3-shape/src/offset/none.js
+var none = __webpack_require__(91662);
+// EXTERNAL MODULE: ./node_modules/d3-shape/src/order/none.js
+var order_none = __webpack_require__(4775);
+;// CONCATENATED MODULE: ./node_modules/d3-shape/src/stack.js
+
+
+
+
+
+function stackValue(d, key) {
+  return d[key];
+}
+
+/* harmony default export */ function stack() {
+  var keys = (0,constant/* default */.Z)([]),
+      order = order_none/* default */.Z,
+      offset = none/* default */.Z,
+      value = stackValue;
+
+  function stack(data) {
+    var kz = keys.apply(this, arguments),
+        i,
+        m = data.length,
+        n = kz.length,
+        sz = new Array(n),
+        oz;
+
+    for (i = 0; i < n; ++i) {
+      for (var ki = kz[i], si = sz[i] = new Array(m), j = 0, sij; j < m; ++j) {
+        si[j] = sij = [0, +value(data[j], ki, j, data)];
+        sij.data = data[j];
+      }
+
+      si.key = ki;
+    }
+
+    for (i = 0, oz = order(sz); i < n; ++i) {
+      sz[oz[i]].index = i;
+    }
+
+    offset(sz, oz);
+    return sz;
+  }
+
+  stack.keys = function (_) {
+    return arguments.length ? (keys = typeof _ === "function" ? _ : (0,constant/* default */.Z)(slice.call(_)), stack) : keys;
+  };
+
+  stack.value = function (_) {
+    return arguments.length ? (value = typeof _ === "function" ? _ : (0,constant/* default */.Z)(+_), stack) : value;
+  };
+
+  stack.order = function (_) {
+    return arguments.length ? (order = _ == null ? order_none/* default */.Z : typeof _ === "function" ? _ : (0,constant/* default */.Z)(slice.call(_)), stack) : order;
+  };
+
+  stack.offset = function (_) {
+    return arguments.length ? (offset = _ == null ? none/* default */.Z : _, stack) : offset;
+  };
+
+  return stack;
+}
+// EXTERNAL MODULE: ./node_modules/d3-shape/src/offset/diverging.js
+var diverging = __webpack_require__(69279);
+// EXTERNAL MODULE: ./node_modules/lodash/uniqBy.js
+var uniqBy = __webpack_require__(45578);
+var uniqBy_default = /*#__PURE__*/__webpack_require__.n(uniqBy);
+// EXTERNAL MODULE: ./node_modules/@nivo/tooltip/dist/nivo-tooltip.es.js
+var nivo_tooltip_es = __webpack_require__(62529);
+// EXTERNAL MODULE: ./node_modules/@nivo/colors/dist/nivo-colors.es.js + 2 modules
+var nivo_colors_es = __webpack_require__(68204);
+;// CONCATENATED MODULE: ./node_modules/@nivo/bar/dist/nivo-bar.es.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function nivo_bar_es_defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function nivo_bar_es_ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function nivo_bar_es_objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      nivo_bar_es_ownKeys(Object(source), true).forEach(function (key) {
+        nivo_bar_es_defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      nivo_bar_es_ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function nivo_bar_es_arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function nivo_bar_es_arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return nivo_bar_es_arrayLikeToArray(arr);
+}
+
+function nivo_bar_es_iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+function nivo_bar_es_unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return nivo_bar_es_arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return nivo_bar_es_arrayLikeToArray(o, minLen);
+}
+
+function nivo_bar_es_nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function nivo_bar_es_toConsumableArray(arr) {
+  return nivo_bar_es_arrayWithoutHoles(arr) || nivo_bar_es_iterableToArray(arr) || nivo_bar_es_unsupportedIterableToArray(arr) || nivo_bar_es_nonIterableSpread();
+}
+
+function nivo_bar_es_arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function nivo_bar_es_iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function nivo_bar_es_nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function nivo_bar_es_slicedToArray(arr, i) {
+  return nivo_bar_es_arrayWithHoles(arr) || nivo_bar_es_iterableToArrayLimit(arr, i) || nivo_bar_es_unsupportedIterableToArray(arr, i) || nivo_bar_es_nonIterableRest();
+}
+
 var BarAnnotations = function BarAnnotations(_ref) {
   var bars = _ref.bars,
       annotations = _ref.annotations;
-  var boundAnnotations = (0,nivo_annotations_es/* useAnnotations */.O2)({
+  var boundAnnotations = useAnnotations({
     data: bars,
     annotations: annotations,
     getPosition: function getPosition(bar) {
@@ -301,7 +983,7 @@ var BarAnnotations = function BarAnnotations(_ref) {
   });
   return (0,jsx_runtime.jsx)(jsx_runtime.Fragment, {
     children: boundAnnotations.map(function (annotation, i) {
-      return (0,jsx_runtime.jsx)(nivo_annotations_es/* Annotation */.q6, _objectSpread2({}, annotation), i);
+      return (0,jsx_runtime.jsx)(Annotation, nivo_bar_es_objectSpread2({}, annotation), i);
     })
   });
 };
@@ -316,7 +998,7 @@ var BarLegends = function BarLegends(_ref) {
     children: legends.map(function (legend, i) {
       var _legend$data;
 
-      return (0,jsx_runtime.jsx)(nivo_legends_es/* BoxLegendSvg */.$6, _objectSpread2(_objectSpread2({}, legend), {}, {
+      return (0,jsx_runtime.jsx)(nivo_legends_es/* BoxLegendSvg */.$6, nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, legend), {}, {
         containerWidth: width,
         containerHeight: height,
         data: (_legend$data = legend.data) !== null && _legend$data !== void 0 ? _legend$data : data,
@@ -336,7 +1018,7 @@ var getIndexScale = function getIndexScale(data, getIndex, padding, indexScale, 
 
 var normalizeData = function normalizeData(data, keys) {
   return data.map(function (item) {
-    return _objectSpread2(_objectSpread2({}, keys.reduce(function (acc, key) {
+    return nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, keys.reduce(function (acc, key) {
       acc[key] = null;
       return acc;
     }, {})), item);
@@ -368,7 +1050,7 @@ var lt = function lt(value, other) {
 var flatten = function flatten(array) {
   var _ref;
 
-  return (_ref = []).concat.apply(_ref, _toConsumableArray(array));
+  return (_ref = []).concat.apply(_ref, nivo_bar_es_toConsumableArray(array));
 };
 
 var range = function range(start, end) {
@@ -416,7 +1098,7 @@ var generateVerticalGroupedBars = function generateVerticalGroupedBars(_ref2, ba
       var _xScale;
 
       var _coerceValue = coerceValue(data[index][key]),
-          _coerceValue2 = _slicedToArray(_coerceValue, 2),
+          _coerceValue2 = nivo_bar_es_slicedToArray(_coerceValue, 2),
           rawValue = _coerceValue2[0],
           value = _coerceValue2[1];
 
@@ -479,7 +1161,7 @@ var generateHorizontalGroupedBars = function generateHorizontalGroupedBars(_ref3
       var _yScale3;
 
       var _coerceValue3 = coerceValue(data[index][key]),
-          _coerceValue4 = _slicedToArray(_coerceValue3, 2),
+          _coerceValue4 = nivo_bar_es_slicedToArray(_coerceValue3, 2),
           rawValue = _coerceValue4[0],
           value = _coerceValue4[1];
 
@@ -536,14 +1218,14 @@ var generateGroupedBars = function generateGroupedBars(_ref4) {
   var data = normalizeData(props.data, keys);
 
   var _ref5 = layout === 'vertical' ? ['y', 'x', width] : ['x', 'y', height],
-      _ref6 = _slicedToArray(_ref5, 3),
+      _ref6 = nivo_bar_es_slicedToArray(_ref5, 3),
       axis = _ref6[0],
       otherAxis = _ref6[1],
       size = _ref6[2];
 
   var indexScale = getIndexScale(data, props.getIndex, padding, indexScaleConfig, size, otherAxis);
 
-  var scaleSpec = _objectSpread2({
+  var scaleSpec = nivo_bar_es_objectSpread2({
     max: maxValue,
     min: minValue,
     reverse: reverse
@@ -553,12 +1235,12 @@ var generateGroupedBars = function generateGroupedBars(_ref4) {
     return value;
   };
   var values = data.reduce(function (acc, entry) {
-    return [].concat(_toConsumableArray(acc), _toConsumableArray(keys.map(function (k) {
+    return [].concat(nivo_bar_es_toConsumableArray(acc), nivo_bar_es_toConsumableArray(keys.map(function (k) {
       return entry[k];
     })));
   }, []).filter(Boolean);
-  var min = clampMin(Math.min.apply(Math, _toConsumableArray(values)));
-  var max = zeroIfNotFinite(Math.max.apply(Math, _toConsumableArray(values)));
+  var min = clampMin(Math.min.apply(Math, nivo_bar_es_toConsumableArray(values)));
+  var max = zeroIfNotFinite(Math.max.apply(Math, nivo_bar_es_toConsumableArray(values)));
   var scale = (0,nivo_scales_es/* computeScale */.ZN)(scaleSpec, {
     all: values,
     min: min,
@@ -566,12 +1248,12 @@ var generateGroupedBars = function generateGroupedBars(_ref4) {
   }, axis === 'x' ? width : height, axis);
 
   var _ref7 = layout === 'vertical' ? [indexScale, scale] : [scale, indexScale],
-      _ref8 = _slicedToArray(_ref7, 2),
+      _ref8 = nivo_bar_es_slicedToArray(_ref7, 2),
       xScale = _ref8[0],
       yScale = _ref8[1];
 
   var bandwidth = (indexScale.bandwidth() - innerPadding * (keys.length - 1)) / keys.length;
-  var params = [_objectSpread2(_objectSpread2({}, props), {}, {
+  var params = [nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, props), {}, {
     data: data,
     keys: keys,
     innerPadding: innerPadding,
@@ -589,7 +1271,7 @@ var generateGroupedBars = function generateGroupedBars(_ref4) {
 var flattenDeep = function flattenDeep(arr) {
   var _ref;
 
-  return arr.some(Array.isArray) ? flattenDeep((_ref = []).concat.apply(_ref, _toConsumableArray(arr))) : arr;
+  return arr.some(Array.isArray) ? flattenDeep((_ref = []).concat.apply(_ref, nivo_bar_es_toConsumableArray(arr))) : arr;
 };
 
 var filterZerosIfLog = function filterZerosIfLog(array, type) {
@@ -628,7 +1310,7 @@ var generateVerticalStackedBars = function generateVerticalStackedBars(_ref2, ba
       var barHeight = getHeight(d, y) - innerPadding;
 
       var _coerceValue = coerceValue(d.data[stackedDataItem.key]),
-          _coerceValue2 = _slicedToArray(_coerceValue, 2),
+          _coerceValue2 = nivo_bar_es_slicedToArray(_coerceValue, 2),
           rawValue = _coerceValue2[0],
           value = _coerceValue2[1];
 
@@ -686,7 +1368,7 @@ var generateHorizontalStackedBars = function generateHorizontalStackedBars(_ref3
       var barWidth = getWidth(d, x) - innerPadding;
 
       var _coerceValue3 = coerceValue(d.data[stackedDataItem.key]),
-          _coerceValue4 = _slicedToArray(_coerceValue3, 2),
+          _coerceValue4 = nivo_bar_es_slicedToArray(_coerceValue3, 2),
           rawValue = _coerceValue4[0],
           value = _coerceValue4[1];
 
@@ -736,22 +1418,22 @@ var generateStackedBars = function generateStackedBars(_ref4) {
   var stackedData = stack().keys(keys).offset(diverging/* default */.Z)(normalizeData(data, keys));
 
   var _ref5 = layout === 'vertical' ? ['y', 'x', width] : ['x', 'y', height],
-      _ref6 = _slicedToArray(_ref5, 3),
+      _ref6 = nivo_bar_es_slicedToArray(_ref5, 3),
       axis = _ref6[0],
       otherAxis = _ref6[1],
       size = _ref6[2];
 
   var indexScale = getIndexScale(data, props.getIndex, padding, indexScaleConfig, size, otherAxis);
 
-  var scaleSpec = _objectSpread2({
+  var scaleSpec = nivo_bar_es_objectSpread2({
     max: maxValue,
     min: minValue,
     reverse: reverse
   }, valueScale);
 
   var values = filterZerosIfLog(flattenDeep(stackedData), valueScale.type);
-  var min = Math.min.apply(Math, _toConsumableArray(values));
-  var max = Math.max.apply(Math, _toConsumableArray(values));
+  var min = Math.min.apply(Math, nivo_bar_es_toConsumableArray(values));
+  var max = Math.max.apply(Math, nivo_bar_es_toConsumableArray(values));
   var scale = (0,nivo_scales_es/* computeScale */.ZN)(scaleSpec, {
     all: values,
     min: min,
@@ -759,13 +1441,13 @@ var generateStackedBars = function generateStackedBars(_ref4) {
   }, axis === 'x' ? width : height, axis);
 
   var _ref7 = layout === 'vertical' ? [indexScale, scale] : [scale, indexScale],
-      _ref8 = _slicedToArray(_ref7, 2),
+      _ref8 = nivo_bar_es_slicedToArray(_ref7, 2),
       xScale = _ref8[0],
       yScale = _ref8[1];
 
   var innerPadding = props.innerPadding > 0 ? props.innerPadding : 0;
   var bandwidth = indexScale.bandwidth();
-  var params = [_objectSpread2(_objectSpread2({}, props), {}, {
+  var params = [nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, props), {}, {
     innerPadding: innerPadding,
     stackedData: stackedData,
     xScale: xScale,
@@ -872,16 +1554,16 @@ var BarItem = function BarItem(_ref) {
       hideTooltip = _useTooltip.hideTooltip;
 
   var handleClick = (0,react.useCallback)(function (event) {
-    onClick === null || onClick === void 0 ? void 0 : onClick(_objectSpread2({
+    onClick === null || onClick === void 0 ? void 0 : onClick(nivo_bar_es_objectSpread2({
       color: bar.color
     }, data), event);
   }, [bar, data, onClick]);
   var handleTooltip = (0,react.useCallback)(function (event) {
-    return showTooltipFromEvent((0,react.createElement)(tooltip, _objectSpread2(_objectSpread2({}, bar), data)), event);
+    return showTooltipFromEvent((0,react.createElement)(tooltip, nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, bar), data)), event);
   }, [bar, data, showTooltipFromEvent, tooltip]);
   var handleMouseEnter = (0,react.useCallback)(function (event) {
     onMouseEnter === null || onMouseEnter === void 0 ? void 0 : onMouseEnter(data, event);
-    showTooltipFromEvent((0,react.createElement)(tooltip, _objectSpread2(_objectSpread2({}, bar), data)), event);
+    showTooltipFromEvent((0,react.createElement)(tooltip, nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, bar), data)), event);
   }, [bar, data, onMouseEnter, showTooltipFromEvent, tooltip]);
   var handleMouseLeave = (0,react.useCallback)(function (event) {
     onMouseLeave === null || onMouseLeave === void 0 ? void 0 : onMouseLeave(data, event);
@@ -906,7 +1588,7 @@ var BarItem = function BarItem(_ref) {
       y: y,
       textAnchor: "middle",
       dominantBaseline: "central",
-      style: _objectSpread2(_objectSpread2({}, theme.labels.text), {}, {
+      style: nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, theme.labels.text), {}, {
         pointerEvents: 'none',
         fill: labelColor
       }),
@@ -930,7 +1612,7 @@ var BarTooltip = function BarTooltip(_ref) {
 
 var _window$devicePixelRa;
 
-var defaultProps = {
+var nivo_bar_es_defaultProps = {
   indexBy: 'id',
   keys: ['value'],
   groupMode: 'stacked',
@@ -977,7 +1659,7 @@ var defaultProps = {
   annotations: []
 };
 
-var svgDefaultProps = _objectSpread2(_objectSpread2({}, defaultProps), {}, {
+var svgDefaultProps = nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, nivo_bar_es_defaultProps), {}, {
   layers: ['grid', 'axes', 'bars', 'markers', 'legends', 'annotations'],
   barComponent: BarItem,
   defs: [],
@@ -987,7 +1669,7 @@ var svgDefaultProps = _objectSpread2(_objectSpread2({}, defaultProps), {}, {
   role: 'img'
 });
 
-var canvasDefaultProps = _objectSpread2(_objectSpread2({}, defaultProps), {}, {
+var canvasDefaultProps = nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, nivo_bar_es_defaultProps), {}, {
   layers: ['grid', 'axes', 'bars', 'legends', 'annotations'],
   pixelRatio: typeof window !== 'undefined' ? (_window$devicePixelRa = window.devicePixelRatio) !== null && _window$devicePixelRa !== void 0 ? _window$devicePixelRa : 1 : 1
 });
@@ -1080,7 +1762,7 @@ var InnerBar = function InnerBar(_ref) {
       initialHiddenIds = _ref.initialHiddenIds;
 
   var _useState = (0,react.useState)(initialHiddenIds !== null && initialHiddenIds !== void 0 ? initialHiddenIds : []),
-      _useState2 = _slicedToArray(_useState, 2),
+      _useState2 = nivo_bar_es_slicedToArray(_useState, 2),
       hiddenIds = _useState2[0],
       setHiddenIds = _useState2[1];
 
@@ -1088,7 +1770,7 @@ var InnerBar = function InnerBar(_ref) {
     setHiddenIds(function (state) {
       return state.indexOf(id) > -1 ? state.filter(function (item) {
         return item !== id;
-      }) : [].concat(_toConsumableArray(state), [id]);
+      }) : [].concat(nivo_bar_es_toConsumableArray(state), [id]);
     });
   }, []);
   var theme = (0,nivo_core_es/* useTheme */.Fg)();
@@ -1136,8 +1818,8 @@ var InnerBar = function InnerBar(_ref) {
       var bar = result.bars.find(function (bar) {
         return bar.data.id === key;
       });
-      return _objectSpread2(_objectSpread2({}, bar), {}, {
-        data: _objectSpread2(_objectSpread2({
+      return nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, bar), {}, {
+        data: nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({
           id: key
         }, bar === null || bar === void 0 ? void 0 : bar.data), {}, {
           hidden: hiddenIds.includes(key)
@@ -1236,7 +1918,7 @@ var InnerBar = function InnerBar(_ref) {
   if (layers.includes('bars')) {
     layerById.bars = (0,jsx_runtime.jsx)(react.Fragment, {
       children: transition(function (style, bar) {
-        return (0,react.createElement)(barComponent, _objectSpread2(_objectSpread2({}, commonProps), {}, {
+        return (0,react.createElement)(barComponent, nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, commonProps), {}, {
           bar: bar,
           style: style,
           shouldRenderLabel: shouldRenderLabel(bar),
@@ -1262,7 +1944,7 @@ var InnerBar = function InnerBar(_ref) {
   if (layers.includes('legends')) {
     var _ref3;
 
-    var _data = (_ref3 = []).concat.apply(_ref3, _toConsumableArray(legends.map(function (legend) {
+    var _data = (_ref3 = []).concat.apply(_ref3, nivo_bar_es_toConsumableArray(legends.map(function (legend) {
       return getLegendData({
         bars: legend.dataFrom === 'keys' ? legendData : result.bars,
         direction: legend.direction,
@@ -1295,7 +1977,7 @@ var InnerBar = function InnerBar(_ref) {
   }
 
   var layerContext = (0,react.useMemo)(function () {
-    return _objectSpread2(_objectSpread2({}, commonProps), {}, {
+    return nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, commonProps), {}, {
       margin: margin,
       innerWidth: innerWidth,
       innerHeight: innerHeight,
@@ -1340,7 +2022,7 @@ var Bar = function Bar(_ref4) {
     motionConfig: motionConfig,
     renderWrapper: renderWrapper,
     theme: theme,
-    children: (0,jsx_runtime.jsx)(InnerBar, _objectSpread2({
+    children: (0,jsx_runtime.jsx)(InnerBar, nivo_bar_es_objectSpread2({
       isInteractive: isInteractive
     }, otherProps))
   });
@@ -1352,7 +2034,7 @@ var findBarUnderCursor = function findBarUnderCursor(nodes, margin, x, y) {
   });
 };
 
-var isNumber = function isNumber(value) {
+var nivo_bar_es_isNumber = function isNumber(value) {
   return typeof value === 'number';
 };
 
@@ -1532,8 +2214,8 @@ var InnerBarCanvas = function InnerBarCanvas(_ref) {
       var bar = result.bars.find(function (bar) {
         return bar.data.id === key;
       });
-      return _objectSpread2(_objectSpread2({}, bar), {}, {
-        data: _objectSpread2(_objectSpread2({
+      return nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, bar), {}, {
+        data: nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({
           id: key
         }, bar === null || bar === void 0 ? void 0 : bar.data), {}, {
           hidden: false
@@ -1554,8 +2236,8 @@ var InnerBarCanvas = function InnerBarCanvas(_ref) {
     if (labelSkipHeight > 0 && height < labelSkipHeight) return false;
     return true;
   }, [enableLabel, labelSkipHeight, labelSkipWidth]);
-  var boundAnnotations = (0,nivo_annotations_es/* useComputedAnnotations */.zs)({
-    annotations: (0,nivo_annotations_es/* useAnnotations */.O2)({
+  var boundAnnotations = useComputedAnnotations({
+    annotations: useAnnotations({
       data: result.bars,
       annotations: annotations,
       getPosition: function getPosition(node) {
@@ -1576,7 +2258,7 @@ var InnerBarCanvas = function InnerBarCanvas(_ref) {
     })
   });
   var layerContext = (0,react.useMemo)(function () {
-    return _objectSpread2({
+    return nivo_bar_es_objectSpread2({
       borderRadius: borderRadius,
       borderWidth: borderWidth,
       enableLabel: enableLabel,
@@ -1609,7 +2291,7 @@ var InnerBarCanvas = function InnerBarCanvas(_ref) {
     ctx.translate(margin.left, margin.top);
     layers.forEach(function (layer) {
       if (layer === 'grid') {
-        if (isNumber(theme.grid.line.strokeWidth) && theme.grid.line.strokeWidth > 0) {
+        if (nivo_bar_es_isNumber(theme.grid.line.strokeWidth) && theme.grid.line.strokeWidth > 0) {
           ctx.lineWidth = theme.grid.line.strokeWidth;
           ctx.strokeStyle = theme.grid.line.stroke;
 
@@ -1668,7 +2350,7 @@ var InnerBarCanvas = function InnerBarCanvas(_ref) {
             legendLabel: legendLabel,
             reverse: reverse
           });
-          (0,nivo_legends_es/* renderLegendToCanvas */.as)(ctx, _objectSpread2(_objectSpread2({}, legend), {}, {
+          (0,nivo_legends_es/* renderLegendToCanvas */.as)(ctx, nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, legend), {}, {
             data: data,
             containerWidth: innerWidth,
             containerHeight: innerHeight,
@@ -1676,7 +2358,7 @@ var InnerBarCanvas = function InnerBarCanvas(_ref) {
           }));
         });
       } else if (layer === 'annotations') {
-        (0,nivo_annotations_es/* renderAnnotationsToCanvas */.dS)(ctx, {
+        renderAnnotationsToCanvas(ctx, {
           annotations: boundAnnotations,
           theme: theme
         });
@@ -1691,14 +2373,14 @@ var InnerBarCanvas = function InnerBarCanvas(_ref) {
     if (!canvasEl.current) return;
 
     var _getRelativeCursor = (0,nivo_core_es/* getRelativeCursor */.P6)(canvasEl.current, event),
-        _getRelativeCursor2 = _slicedToArray(_getRelativeCursor, 2),
+        _getRelativeCursor2 = nivo_bar_es_slicedToArray(_getRelativeCursor, 2),
         x = _getRelativeCursor2[0],
         y = _getRelativeCursor2[1];
 
     var bar = findBarUnderCursor(result.bars, margin, x, y);
 
     if (bar !== undefined) {
-      showTooltipFromEvent((0,react.createElement)(tooltip, _objectSpread2(_objectSpread2({}, bar.data), {}, {
+      showTooltipFromEvent((0,react.createElement)(tooltip, nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, bar.data), {}, {
         color: bar.color,
         label: bar.label,
         value: Number(bar.data.value)
@@ -1717,7 +2399,7 @@ var InnerBarCanvas = function InnerBarCanvas(_ref) {
     hideTooltip();
 
     var _getRelativeCursor3 = (0,nivo_core_es/* getRelativeCursor */.P6)(canvasEl.current, event),
-        _getRelativeCursor4 = _slicedToArray(_getRelativeCursor3, 2),
+        _getRelativeCursor4 = nivo_bar_es_slicedToArray(_getRelativeCursor3, 2),
         x = _getRelativeCursor4[0],
         y = _getRelativeCursor4[1];
 
@@ -1732,14 +2414,14 @@ var InnerBarCanvas = function InnerBarCanvas(_ref) {
     if (!canvasEl.current) return;
 
     var _getRelativeCursor5 = (0,nivo_core_es/* getRelativeCursor */.P6)(canvasEl.current, event),
-        _getRelativeCursor6 = _slicedToArray(_getRelativeCursor5, 2),
+        _getRelativeCursor6 = nivo_bar_es_slicedToArray(_getRelativeCursor5, 2),
         x = _getRelativeCursor6[0],
         y = _getRelativeCursor6[1];
 
     var bar = findBarUnderCursor(result.bars, margin, x, y);
 
     if (bar !== undefined) {
-      onClick === null || onClick === void 0 ? void 0 : onClick(_objectSpread2(_objectSpread2({}, bar.data), {}, {
+      onClick === null || onClick === void 0 ? void 0 : onClick(nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, bar.data), {}, {
         color: bar.color
       }), event);
     }
@@ -1774,7 +2456,7 @@ var BarCanvas = (0,react.forwardRef)(function (_ref5, ref) {
     renderWrapper: renderWrapper,
     theme: theme,
     animate: false,
-    children: (0,jsx_runtime.jsx)(InnerBarCanvas, _objectSpread2(_objectSpread2({}, props), {}, {
+    children: (0,jsx_runtime.jsx)(InnerBarCanvas, nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({}, props), {}, {
       canvasRef: ref
     }))
   });
@@ -1785,7 +2467,7 @@ var ResponsiveBar = function ResponsiveBar(props) {
     children: function children(_ref) {
       var width = _ref.width,
           height = _ref.height;
-      return jsx(Bar, _objectSpread2({
+      return jsx(Bar, nivo_bar_es_objectSpread2({
         width: width,
         height: height
       }, props));
@@ -1798,7 +2480,7 @@ var ResponsiveBarCanvas = (0,react.forwardRef)(function ResponsiveBarCanvas(prop
     children: function children(_ref) {
       var width = _ref.width,
           height = _ref.height;
-      return (0,jsx_runtime.jsx)(BarCanvas, _objectSpread2(_objectSpread2({
+      return (0,jsx_runtime.jsx)(BarCanvas, nivo_bar_es_objectSpread2(nivo_bar_es_objectSpread2({
         width: width,
         height: height
       }, props), {}, {
@@ -1811,6 +2493,313 @@ var ResponsiveBarCanvas = (0,react.forwardRef)(function ResponsiveBarCanvas(prop
 ;// CONCATENATED MODULE: ./src/components/blockly/fields/Bar.tsx
 
 /* harmony default export */ var fields_Bar = (Bar);
+
+/***/ }),
+
+/***/ 80760:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var baseEach = __webpack_require__(89881);
+
+/**
+ * The base implementation of `_.filter` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} predicate The function invoked per iteration.
+ * @returns {Array} Returns the new filtered array.
+ */
+function baseFilter(collection, predicate) {
+  var result = [];
+  baseEach(collection, function(value, index, collection) {
+    if (predicate(value, index, collection)) {
+      result.push(value);
+    }
+  });
+  return result;
+}
+
+module.exports = baseFilter;
+
+
+/***/ }),
+
+/***/ 14259:
+/***/ (function(module) {
+
+/**
+ * The base implementation of `_.slice` without an iteratee call guard.
+ *
+ * @private
+ * @param {Array} array The array to slice.
+ * @param {number} [start=0] The start position.
+ * @param {number} [end=array.length] The end position.
+ * @returns {Array} Returns the slice of `array`.
+ */
+function baseSlice(array, start, end) {
+  var index = -1,
+      length = array.length;
+
+  if (start < 0) {
+    start = -start > length ? 0 : (length + start);
+  }
+  end = end > length ? length : end;
+  if (end < 0) {
+    end += length;
+  }
+  length = start > end ? 0 : ((end - start) >>> 0);
+  start >>>= 0;
+
+  var result = Array(length);
+  while (++index < length) {
+    result[index] = array[index + start];
+  }
+  return result;
+}
+
+module.exports = baseSlice;
+
+
+/***/ }),
+
+/***/ 57406:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var castPath = __webpack_require__(71811),
+    last = __webpack_require__(10928),
+    parent = __webpack_require__(40292),
+    toKey = __webpack_require__(40327);
+
+/**
+ * The base implementation of `_.unset`.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {Array|string} path The property path to unset.
+ * @returns {boolean} Returns `true` if the property is deleted, else `false`.
+ */
+function baseUnset(object, path) {
+  path = castPath(path, object);
+  object = parent(object, path);
+  return object == null || delete object[toKey(last(path))];
+}
+
+module.exports = baseUnset;
+
+
+/***/ }),
+
+/***/ 60696:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var isPlainObject = __webpack_require__(68630);
+
+/**
+ * Used by `_.omit` to customize its `_.cloneDeep` use to only clone plain
+ * objects.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @param {string} key The key of the property to inspect.
+ * @returns {*} Returns the uncloned value or `undefined` to defer cloning to `_.cloneDeep`.
+ */
+function customOmitClone(value) {
+  return isPlainObject(value) ? undefined : value;
+}
+
+module.exports = customOmitClone;
+
+
+/***/ }),
+
+/***/ 40292:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var baseGet = __webpack_require__(97786),
+    baseSlice = __webpack_require__(14259);
+
+/**
+ * Gets the parent value at `path` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array} path The path to get the parent value of.
+ * @returns {*} Returns the parent value.
+ */
+function parent(object, path) {
+  return path.length < 2 ? object : baseGet(object, baseSlice(path, 0, -1));
+}
+
+module.exports = parent;
+
+
+/***/ }),
+
+/***/ 63105:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var arrayFilter = __webpack_require__(34963),
+    baseFilter = __webpack_require__(80760),
+    baseIteratee = __webpack_require__(67206),
+    isArray = __webpack_require__(1469);
+
+/**
+ * Iterates over elements of `collection`, returning an array of all elements
+ * `predicate` returns truthy for. The predicate is invoked with three
+ * arguments: (value, index|key, collection).
+ *
+ * **Note:** Unlike `_.remove`, this method returns a new array.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [predicate=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the new filtered array.
+ * @see _.reject
+ * @example
+ *
+ * var users = [
+ *   { 'user': 'barney', 'age': 36, 'active': true },
+ *   { 'user': 'fred',   'age': 40, 'active': false }
+ * ];
+ *
+ * _.filter(users, function(o) { return !o.active; });
+ * // => objects for ['fred']
+ *
+ * // The `_.matches` iteratee shorthand.
+ * _.filter(users, { 'age': 36, 'active': true });
+ * // => objects for ['barney']
+ *
+ * // The `_.matchesProperty` iteratee shorthand.
+ * _.filter(users, ['active', false]);
+ * // => objects for ['fred']
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.filter(users, 'active');
+ * // => objects for ['barney']
+ *
+ * // Combining several predicates using `_.overEvery` or `_.overSome`.
+ * _.filter(users, _.overSome([{ 'age': 36 }, ['age', 40]]));
+ * // => objects for ['fred', 'barney']
+ */
+function filter(collection, predicate) {
+  var func = isArray(collection) ? arrayFilter : baseFilter;
+  return func(collection, baseIteratee(predicate, 3));
+}
+
+module.exports = filter;
+
+
+/***/ }),
+
+/***/ 81763:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var baseGetTag = __webpack_require__(44239),
+    isObjectLike = __webpack_require__(37005);
+
+/** `Object#toString` result references. */
+var numberTag = '[object Number]';
+
+/**
+ * Checks if `value` is classified as a `Number` primitive or object.
+ *
+ * **Note:** To exclude `Infinity`, `-Infinity`, and `NaN`, which are
+ * classified as numbers, use the `_.isFinite` method.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a number, else `false`.
+ * @example
+ *
+ * _.isNumber(3);
+ * // => true
+ *
+ * _.isNumber(Number.MIN_VALUE);
+ * // => true
+ *
+ * _.isNumber(Infinity);
+ * // => true
+ *
+ * _.isNumber('3');
+ * // => false
+ */
+function isNumber(value) {
+  return typeof value == 'number' ||
+    (isObjectLike(value) && baseGetTag(value) == numberTag);
+}
+
+module.exports = isNumber;
+
+
+/***/ }),
+
+/***/ 57557:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var arrayMap = __webpack_require__(29932),
+    baseClone = __webpack_require__(85990),
+    baseUnset = __webpack_require__(57406),
+    castPath = __webpack_require__(71811),
+    copyObject = __webpack_require__(98363),
+    customOmitClone = __webpack_require__(60696),
+    flatRest = __webpack_require__(99021),
+    getAllKeysIn = __webpack_require__(46904);
+
+/** Used to compose bitmasks for cloning. */
+var CLONE_DEEP_FLAG = 1,
+    CLONE_FLAT_FLAG = 2,
+    CLONE_SYMBOLS_FLAG = 4;
+
+/**
+ * The opposite of `_.pick`; this method creates an object composed of the
+ * own and inherited enumerable property paths of `object` that are not omitted.
+ *
+ * **Note:** This method is considerably slower than `_.pick`.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The source object.
+ * @param {...(string|string[])} [paths] The property paths to omit.
+ * @returns {Object} Returns the new object.
+ * @example
+ *
+ * var object = { 'a': 1, 'b': '2', 'c': 3 };
+ *
+ * _.omit(object, ['a', 'c']);
+ * // => { 'b': '2' }
+ */
+var omit = flatRest(function(object, paths) {
+  var result = {};
+  if (object == null) {
+    return result;
+  }
+  var isDeep = false;
+  paths = arrayMap(paths, function(path) {
+    path = castPath(path, object);
+    isDeep || (isDeep = path.length > 1);
+    return path;
+  });
+  copyObject(object, getAllKeysIn(object), result);
+  if (isDeep) {
+    result = baseClone(result, CLONE_DEEP_FLAG | CLONE_FLAT_FLAG | CLONE_SYMBOLS_FLAG, customOmitClone);
+  }
+  var length = paths.length;
+  while (length--) {
+    baseUnset(result, paths[length]);
+  }
+  return result;
+});
+
+module.exports = omit;
+
 
 /***/ })
 

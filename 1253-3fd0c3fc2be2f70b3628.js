@@ -27,7 +27,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ColorInput = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/* import() */ 2851).then(__webpack_require__.bind(__webpack_require__, 52851));
+  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(2851)]).then(__webpack_require__.bind(__webpack_require__, 52851));
 });
 function DashboardColor(props) {
   var service = props.service;

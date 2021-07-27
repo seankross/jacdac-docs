@@ -1,6 +1,6 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[4973],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7047],{
 
-/***/ 73684:
+/***/ 27047:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -153,16 +153,9 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 var jsx_runtime = __webpack_require__(85893);
 // EXTERNAL MODULE: ./node_modules/@react-spring/web/dist/react-spring-web.esm.js
 var react_spring_web_esm = __webpack_require__(85468);
-// EXTERNAL MODULE: ./node_modules/@nivo/voronoi/dist/nivo-voronoi.es.js
-var nivo_voronoi_es = __webpack_require__(84601);
-;// CONCATENATED MODULE: ./node_modules/@nivo/line/dist/nivo-line.es.js
-
-
-
-
-
-
-
+// EXTERNAL MODULE: ./node_modules/d3-delaunay/src/delaunay.js + 4 modules
+var src_delaunay = __webpack_require__(75810);
+;// CONCATENATED MODULE: ./node_modules/@nivo/voronoi/dist/nivo-voronoi.es.js
 
 
 
@@ -217,6 +210,304 @@ function _objectSpread2(target) {
 
   return target;
 }
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+var defaultVoronoiProps = {
+  xDomain: [0, 1],
+  yDomain: [0, 1],
+  layers: ['links', 'cells', 'points', 'bounds'],
+  enableLinks: false,
+  linkLineWidth: 1,
+  linkLineColor: '#bbbbbb',
+  enableCells: true,
+  cellLineWidth: 2,
+  cellLineColor: '#000000',
+  enablePoints: true,
+  pointSize: 4,
+  pointColor: '#666666',
+  role: 'img'
+};
+
+var getAccessor = function getAccessor(directive) {
+  return typeof directive === 'function' ? directive : function (datum) {
+    return datum[directive];
+  };
+};
+
+var computeMeshPoints = function computeMeshPoints(_ref) {
+  var points = _ref.points,
+      _ref$x = _ref.x,
+      x = _ref$x === void 0 ? 'x' : _ref$x,
+      _ref$y = _ref.y,
+      y = _ref$y === void 0 ? 'y' : _ref$y;
+  var getX = getAccessor(x);
+  var getY = getAccessor(y);
+  return points.map(function (point) {
+    return [getX(point), getY(point)];
+  });
+};
+
+var computeMesh = function computeMesh(_ref2) {
+  var points = _ref2.points,
+      width = _ref2.width,
+      height = _ref2.height,
+      debug = _ref2.debug;
+  var delaunay = src_delaunay/* default.from */.Z.from(points);
+  var voronoi = debug ? delaunay.voronoi([0, 0, width, height]) : undefined;
+  return {
+    delaunay: delaunay,
+    voronoi: voronoi
+  };
+};
+
+var useVoronoiMesh = function useVoronoiMesh(_ref) {
+  var points = _ref.points,
+      x = _ref.x,
+      y = _ref.y,
+      width = _ref.width,
+      height = _ref.height,
+      debug = _ref.debug;
+  var points2d = (0,react.useMemo)(function () {
+    return computeMeshPoints({
+      points: points,
+      x: x,
+      y: y
+    });
+  }, [points, x, y]);
+  return (0,react.useMemo)(function () {
+    return computeMesh({
+      points: points2d,
+      width: width,
+      height: height,
+      debug: debug
+    });
+  }, [points2d, width, height, debug]);
+};
+
+var useVoronoi = function useVoronoi(_ref2) {
+  var data = _ref2.data,
+      width = _ref2.width,
+      height = _ref2.height,
+      xDomain = _ref2.xDomain,
+      yDomain = _ref2.yDomain;
+  var xScale = useMemo(function () {
+    return scaleLinear().domain(xDomain).range([0, width]);
+  }, [xDomain, width]);
+  var yScale = useMemo(function () {
+    return scaleLinear().domain(yDomain).range([0, height]);
+  }, [yDomain, height]);
+  var points = useMemo(function () {
+    return data.map(function (d) {
+      return {
+        x: xScale(d.x),
+        y: yScale(d.y),
+        data: d
+      };
+    });
+  }, [data, xScale, yScale]);
+  return useMemo(function () {
+    var delaunay = Delaunay.from(points.map(function (p) {
+      return [p.x, p.y];
+    }));
+    var voronoi = delaunay.voronoi([0, 0, width, height]);
+    return {
+      points: points,
+      delaunay: delaunay,
+      voronoi: voronoi
+    };
+  }, [points, width, height]);
+};
+
+var useVoronoiLayerContext = function useVoronoiLayerContext(_ref3) {
+  var points = _ref3.points,
+      delaunay = _ref3.delaunay,
+      voronoi = _ref3.voronoi;
+  return useMemo(function () {
+    return {
+      points: points,
+      delaunay: delaunay,
+      voronoi: voronoi
+    };
+  }, [points, delaunay, voronoi]);
+};
+
+var InnerVoronoi = function InnerVoronoi(_ref) {
+  var data = _ref.data,
+      width = _ref.width,
+      height = _ref.height,
+      partialMargin = _ref.margin,
+      _ref$layers = _ref.layers,
+      layers = _ref$layers === void 0 ? defaultVoronoiProps.layers : _ref$layers,
+      _ref$xDomain = _ref.xDomain,
+      xDomain = _ref$xDomain === void 0 ? defaultVoronoiProps.xDomain : _ref$xDomain,
+      _ref$yDomain = _ref.yDomain,
+      yDomain = _ref$yDomain === void 0 ? defaultVoronoiProps.yDomain : _ref$yDomain,
+      _ref$enableLinks = _ref.enableLinks,
+      enableLinks = _ref$enableLinks === void 0 ? defaultVoronoiProps.enableLinks : _ref$enableLinks,
+      _ref$linkLineWidth = _ref.linkLineWidth,
+      linkLineWidth = _ref$linkLineWidth === void 0 ? defaultVoronoiProps.linkLineWidth : _ref$linkLineWidth,
+      _ref$linkLineColor = _ref.linkLineColor,
+      linkLineColor = _ref$linkLineColor === void 0 ? defaultVoronoiProps.linkLineColor : _ref$linkLineColor,
+      _ref$enableCells = _ref.enableCells,
+      enableCells = _ref$enableCells === void 0 ? defaultVoronoiProps.enableCells : _ref$enableCells,
+      _ref$cellLineWidth = _ref.cellLineWidth,
+      cellLineWidth = _ref$cellLineWidth === void 0 ? defaultVoronoiProps.cellLineWidth : _ref$cellLineWidth,
+      _ref$cellLineColor = _ref.cellLineColor,
+      cellLineColor = _ref$cellLineColor === void 0 ? defaultVoronoiProps.cellLineColor : _ref$cellLineColor,
+      _ref$enablePoints = _ref.enablePoints,
+      enablePoints = _ref$enablePoints === void 0 ? defaultVoronoiProps.enableCells : _ref$enablePoints,
+      _ref$pointSize = _ref.pointSize,
+      pointSize = _ref$pointSize === void 0 ? defaultVoronoiProps.pointSize : _ref$pointSize,
+      _ref$pointColor = _ref.pointColor,
+      pointColor = _ref$pointColor === void 0 ? defaultVoronoiProps.pointColor : _ref$pointColor,
+      _ref$role = _ref.role,
+      role = _ref$role === void 0 ? defaultVoronoiProps.role : _ref$role;
+
+  var _useDimensions = useDimensions(width, height, partialMargin),
+      outerWidth = _useDimensions.outerWidth,
+      outerHeight = _useDimensions.outerHeight,
+      margin = _useDimensions.margin,
+      innerWidth = _useDimensions.innerWidth,
+      innerHeight = _useDimensions.innerHeight;
+
+  var _useVoronoi = useVoronoi({
+    data: data,
+    width: innerWidth,
+    height: innerHeight,
+    xDomain: xDomain,
+    yDomain: yDomain
+  }),
+      points = _useVoronoi.points,
+      delaunay = _useVoronoi.delaunay,
+      voronoi = _useVoronoi.voronoi;
+
+  var layerById = {
+    links: null,
+    cells: null,
+    points: null,
+    bounds: null
+  };
+
+  if (enableLinks && layers.includes('links')) {
+    layerById.links = jsx("path", {
+      stroke: linkLineColor,
+      strokeWidth: linkLineWidth,
+      fill: "none",
+      d: delaunay.render()
+    }, "links");
+  }
+
+  if (enableCells && layers.includes('cells')) {
+    layerById.cells = jsx("path", {
+      d: voronoi.render(),
+      fill: "none",
+      stroke: cellLineColor,
+      strokeWidth: cellLineWidth
+    }, "cells");
+  }
+
+  if (enablePoints && layers.includes('points')) {
+    layerById.points = jsx("path", {
+      stroke: "none",
+      fill: pointColor,
+      d: delaunay.renderPoints(undefined, pointSize / 2)
+    }, "points");
+  }
+
+  if (layers.includes('bounds')) {
+    layerById.bounds = jsx("path", {
+      fill: "none",
+      stroke: cellLineColor,
+      strokeWidth: cellLineWidth,
+      d: voronoi.renderBounds()
+    }, "bounds");
+  }
+
+  var layerContext = useVoronoiLayerContext({
+    points: points,
+    delaunay: delaunay,
+    voronoi: voronoi
+  });
+  return jsx(SvgWrapper, {
+    width: outerWidth,
+    height: outerHeight,
+    margin: margin,
+    role: role,
+    children: layers.map(function (layer, i) {
+      if (layerById[layer] !== undefined) {
+        return layerById[layer];
+      }
+
+      if (typeof layer === 'function') {
+        return jsx(Fragment, {
+          children: createElement(layer, layerContext)
+        }, i);
+      }
+
+      return null;
+    })
+  });
+};
+
+var Voronoi = function Voronoi(_ref2) {
+  var theme = _ref2.theme,
+      otherProps = _objectWithoutProperties(_ref2, ["theme"]);
+
+  return jsx(Container, {
+    isInteractive: false,
+    animate: false,
+    theme: theme,
+    children: jsx(InnerVoronoi, _objectSpread2({}, otherProps))
+  });
+};
+
+var ResponsiveVoronoi = function ResponsiveVoronoi(props) {
+  return jsx(ResponsiveWrapper, {
+    children: function children(_ref) {
+      var width = _ref.width,
+          height = _ref.height;
+      return jsx(Voronoi, _objectSpread2({
+        width: width,
+        height: height
+      }, props));
+    }
+  });
+};
 
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
@@ -276,8 +567,278 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
+var nivo_voronoi_es_Mesh = function Mesh(_ref) {
+  var nodes = _ref.nodes,
+      width = _ref.width,
+      height = _ref.height,
+      x = _ref.x,
+      y = _ref.y,
+      onMouseEnter = _ref.onMouseEnter,
+      onMouseMove = _ref.onMouseMove,
+      onMouseLeave = _ref.onMouseLeave,
+      onClick = _ref.onClick,
+      debug = _ref.debug;
+  var elementRef = (0,react.useRef)(null);
+
+  var _useState = (0,react.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      currentIndex = _useState2[0],
+      setCurrentIndex = _useState2[1];
+
+  var _useVoronoiMesh = useVoronoiMesh({
+    points: nodes,
+    x: x,
+    y: y,
+    width: width,
+    height: height,
+    debug: debug
+  }),
+      delaunay = _useVoronoiMesh.delaunay,
+      voronoi = _useVoronoiMesh.voronoi;
+
+  var voronoiPath = (0,react.useMemo)(function () {
+    if (debug && voronoi) {
+      return voronoi.render();
+    }
+
+    return undefined;
+  }, [debug, voronoi]);
+  var getIndexAndNodeFromEvent = (0,react.useCallback)(function (event) {
+    if (!elementRef.current) {
+      return [null, null];
+    }
+
+    var _getRelativeCursor = (0,nivo_core_es/* getRelativeCursor */.P6)(elementRef.current, event),
+        _getRelativeCursor2 = _slicedToArray(_getRelativeCursor, 2),
+        x = _getRelativeCursor2[0],
+        y = _getRelativeCursor2[1];
+
+    var index = delaunay.find(x, y);
+    return [index, index !== undefined ? nodes[index] : null];
+  }, [elementRef, delaunay]);
+  var handleMouseEnter = (0,react.useCallback)(function (event) {
+    var _getIndexAndNodeFromE = getIndexAndNodeFromEvent(event),
+        _getIndexAndNodeFromE2 = _slicedToArray(_getIndexAndNodeFromE, 2),
+        index = _getIndexAndNodeFromE2[0],
+        node = _getIndexAndNodeFromE2[1];
+
+    setCurrentIndex(index);
+
+    if (node) {
+      onMouseEnter === null || onMouseEnter === void 0 ? void 0 : onMouseEnter(node, event);
+    }
+  }, [getIndexAndNodeFromEvent, setCurrentIndex, onMouseEnter]);
+  var handleMouseMove = (0,react.useCallback)(function (event) {
+    var _getIndexAndNodeFromE3 = getIndexAndNodeFromEvent(event),
+        _getIndexAndNodeFromE4 = _slicedToArray(_getIndexAndNodeFromE3, 2),
+        index = _getIndexAndNodeFromE4[0],
+        node = _getIndexAndNodeFromE4[1];
+
+    setCurrentIndex(index);
+
+    if (node) {
+      onMouseMove === null || onMouseMove === void 0 ? void 0 : onMouseMove(node, event);
+    }
+  }, [getIndexAndNodeFromEvent, setCurrentIndex, onMouseMove]);
+  var handleMouseLeave = (0,react.useCallback)(function (event) {
+    setCurrentIndex(null);
+
+    if (onMouseLeave) {
+      var previousNode = undefined;
+
+      if (currentIndex !== null) {
+        previousNode = nodes[currentIndex];
+      }
+
+      previousNode && onMouseLeave(previousNode, event);
+    }
+  }, [setCurrentIndex, currentIndex, onMouseLeave, nodes]);
+  var handleClick = (0,react.useCallback)(function (event) {
+    var _getIndexAndNodeFromE5 = getIndexAndNodeFromEvent(event),
+        _getIndexAndNodeFromE6 = _slicedToArray(_getIndexAndNodeFromE5, 2),
+        index = _getIndexAndNodeFromE6[0],
+        node = _getIndexAndNodeFromE6[1];
+
+    setCurrentIndex(index);
+
+    if (node) {
+      onClick === null || onClick === void 0 ? void 0 : onClick(node, event);
+    }
+  }, [getIndexAndNodeFromEvent, setCurrentIndex, onClick]);
+  return (0,jsx_runtime.jsxs)("g", {
+    ref: elementRef,
+    children: [debug && voronoi && (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+      children: [(0,jsx_runtime.jsx)("path", {
+        d: voronoiPath,
+        stroke: "red",
+        strokeWidth: 1,
+        opacity: 0.75
+      }), currentIndex !== null && (0,jsx_runtime.jsx)("path", {
+        fill: "pink",
+        opacity: 0.35,
+        d: voronoi.renderCell(currentIndex)
+      })]
+    }), (0,jsx_runtime.jsx)("rect", {
+      width: width,
+      height: height,
+      fill: "red",
+      opacity: 0,
+      style: {
+        cursor: 'auto'
+      },
+      onMouseEnter: handleMouseEnter,
+      onMouseMove: handleMouseMove,
+      onMouseLeave: handleMouseLeave,
+      onClick: handleClick
+    })]
+  });
+};
+
+var renderVoronoiToCanvas = function renderVoronoiToCanvas(ctx, voronoi) {
+  ctx.save();
+  ctx.globalAlpha = 0.75;
+  ctx.beginPath();
+  voronoi.render(ctx);
+  ctx.strokeStyle = 'red';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  ctx.restore();
+};
+
+var renderVoronoiCellToCanvas = function renderVoronoiCellToCanvas(ctx, voronoi, index) {
+  ctx.save();
+  ctx.globalAlpha = 0.35;
+  ctx.beginPath();
+  voronoi.renderCell(index, ctx);
+  ctx.fillStyle = 'red';
+  ctx.fill();
+  ctx.restore();
+};
+
+
+;// CONCATENATED MODULE: ./node_modules/@nivo/line/dist/nivo-line.es.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+function nivo_line_es_defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function nivo_line_es_ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function nivo_line_es_objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      nivo_line_es_ownKeys(Object(source), true).forEach(function (key) {
+        nivo_line_es_defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      nivo_line_es_ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function nivo_line_es_arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function nivo_line_es_iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function nivo_line_es_arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function nivo_line_es_unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return nivo_line_es_arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return nivo_line_es_arrayLikeToArray(o, minLen);
+}
+
+function nivo_line_es_nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function nivo_line_es_slicedToArray(arr, i) {
+  return nivo_line_es_arrayWithHoles(arr) || nivo_line_es_iterableToArrayLimit(arr, i) || nivo_line_es_unsupportedIterableToArray(arr, i) || nivo_line_es_nonIterableRest();
+}
+
 function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+  if (Array.isArray(arr)) return nivo_line_es_arrayLikeToArray(arr);
 }
 
 function _iterableToArray(iter) {
@@ -289,7 +850,7 @@ function _nonIterableSpread() {
 }
 
 function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || nivo_line_es_unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
 
 var LinePointTooltip = function LinePointTooltip(_ref) {
@@ -380,13 +941,13 @@ var commonPropTypes = {
   crosshairType: (prop_types_default()).string.isRequired
 };
 
-var LinePropTypes = _objectSpread2(_objectSpread2(_objectSpread2({}, commonPropTypes), {}, {
+var LinePropTypes = nivo_line_es_objectSpread2(nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, commonPropTypes), {}, {
   enablePointLabel: (prop_types_default()).bool.isRequired,
   role: (prop_types_default()).string.isRequired,
   useMesh: (prop_types_default()).bool.isRequired
 }, nivo_core_es/* motionPropTypes */.w$), nivo_core_es/* defsPropTypes */._U);
 
-var LineCanvasPropTypes = _objectSpread2({
+var LineCanvasPropTypes = nivo_line_es_objectSpread2({
   pixelRatio: (prop_types_default()).number.isRequired
 }, commonPropTypes);
 
@@ -435,7 +996,7 @@ var commonDefaultProps = {
   crosshairType: 'bottom-left'
 };
 
-var LineDefaultProps = _objectSpread2(_objectSpread2({}, commonDefaultProps), {}, {
+var LineDefaultProps = nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, commonDefaultProps), {}, {
   enablePointLabel: false,
   useMesh: false,
   animate: true,
@@ -445,7 +1006,7 @@ var LineDefaultProps = _objectSpread2(_objectSpread2({}, commonDefaultProps), {}
   role: 'img'
 });
 
-var LineCanvasDefaultProps = _objectSpread2(_objectSpread2({}, commonDefaultProps), {}, {
+var LineCanvasDefaultProps = nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, commonDefaultProps), {}, {
   pixelRatio: typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1
 });
 
@@ -498,7 +1059,7 @@ var usePoints = function usePoints(_ref3) {
         };
         point.color = getPointColor(serie);
         point.borderColor = getPointBorderColor(point);
-        point.data = _objectSpread2(_objectSpread2({}, datum.data), {}, {
+        point.data = nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, datum.data), {}, {
           xFormatted: formatX(datum.data.x),
           yFormatted: formatY(datum.data.y)
         });
@@ -525,7 +1086,7 @@ var useSlices = function useSlices(_ref4) {
       return Array.from(map.entries()).sort(function (a, b) {
         return a[0] - b[0];
       }).map(function (_ref5, i, slices) {
-        var _ref6 = _slicedToArray(_ref5, 2),
+        var _ref6 = nivo_line_es_slicedToArray(_ref5, 2),
             x = _ref6[0],
             slicePoints = _ref6[1];
 
@@ -556,7 +1117,7 @@ var useSlices = function useSlices(_ref4) {
       return Array.from(_map.entries()).sort(function (a, b) {
         return a[0] - b[0];
       }).map(function (_ref7, i, slices) {
-        var _ref8 = _slicedToArray(_ref7, 2),
+        var _ref8 = nivo_line_es_slicedToArray(_ref7, 2),
             y = _ref8[0],
             slicePoints = _ref8[1];
 
@@ -611,7 +1172,7 @@ var useLine = function useLine(_ref9) {
   var getPointBorderColor = (0,nivo_colors_es/* useInheritedColor */.Bf)(pointBorderColor, theme);
 
   var _useState = (0,react.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
+      _useState2 = nivo_line_es_slicedToArray(_useState, 2),
       hiddenIds = _useState2[0],
       setHiddenIds = _useState2[1];
 
@@ -633,7 +1194,7 @@ var useLine = function useLine(_ref9) {
       };
     });
     var series = dataWithColor.map(function (datum) {
-      return _objectSpread2(_objectSpread2({}, rawSeries.find(function (serie) {
+      return nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, rawSeries.find(function (serie) {
         return serie.id === datum.id;
       })), {}, {
         color: datum.color
@@ -642,7 +1203,7 @@ var useLine = function useLine(_ref9) {
       return Boolean(item.id);
     });
     var legendData = dataWithColor.map(function (item) {
-      return _objectSpread2(_objectSpread2({}, item), {}, {
+      return nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, item), {}, {
         hidden: !series.find(function (serie) {
           return serie.id === item.id;
         })
@@ -734,11 +1295,11 @@ var Areas = function Areas(_ref2) {
   var computedLines = lines.slice(0).reverse();
   return (0,jsx_runtime.jsx)("g", {
     children: computedLines.map(function (line) {
-      return (0,jsx_runtime.jsx)(AreaPath, _objectSpread2({
+      return (0,jsx_runtime.jsx)(AreaPath, nivo_line_es_objectSpread2({
         path: areaGenerator(line.data.map(function (d) {
           return d.position;
         }))
-      }, _objectSpread2({
+      }, nivo_line_es_objectSpread2({
         areaOpacity: areaOpacity,
         areaBlendMode: areaBlendMode
       }, line)), line.id);
@@ -941,7 +1502,7 @@ var Mesh = function Mesh(_ref) {
   var handleClick = (0,react.useCallback)(function (point, event) {
     onClick && onClick(point, event);
   }, [onClick]);
-  return (0,jsx_runtime.jsx)(nivo_voronoi_es/* Mesh */.Kj, {
+  return (0,jsx_runtime.jsx)(nivo_voronoi_es_Mesh, {
     nodes: points,
     width: width,
     height: height,
@@ -1045,12 +1606,12 @@ var Line = function Line(props) {
   var getPointBorderColor = (0,nivo_colors_es/* useInheritedColor */.Bf)(pointBorderColor, theme);
 
   var _useState = (0,react.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
+      _useState2 = nivo_line_es_slicedToArray(_useState, 2),
       currentPoint = _useState2[0],
       setCurrentPoint = _useState2[1];
 
   var _useState3 = (0,react.useState)(null),
-      _useState4 = _slicedToArray(_useState3, 2),
+      _useState4 = nivo_line_es_slicedToArray(_useState3, 2),
       currentSlice = _useState4[0],
       setCurrentSlice = _useState4[1];
 
@@ -1094,7 +1655,7 @@ var Line = function Line(props) {
     crosshair: null,
     mesh: null,
     legends: legends.map(function (legend, i) {
-      return (0,jsx_runtime.jsx)(nivo_legends_es/* BoxLegendSvg */.$6, _objectSpread2(_objectSpread2({}, legend), {}, {
+      return (0,jsx_runtime.jsx)(nivo_legends_es/* BoxLegendSvg */.$6, nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, legend), {}, {
         containerWidth: innerWidth,
         containerHeight: innerHeight,
         data: legend.data || legendData,
@@ -1188,7 +1749,7 @@ var Line = function Line(props) {
     children: layers.map(function (layer, i) {
       if (typeof layer === 'function') {
         return (0,jsx_runtime.jsx)(react.Fragment, {
-          children: layer(_objectSpread2(_objectSpread2({}, props), {}, {
+          children: layer(nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, props), {}, {
             innerWidth: innerWidth,
             innerHeight: innerHeight,
             series: series,
@@ -1219,7 +1780,7 @@ var ResponsiveLine = function ResponsiveLine(props) {
     children: function children(_ref) {
       var width = _ref.width,
           height = _ref.height;
-      return jsx(Line$1, _objectSpread2({
+      return jsx(Line$1, nivo_line_es_objectSpread2({
         width: width,
         height: height
       }, props));
@@ -1276,7 +1837,7 @@ var LineCanvas = function LineCanvas(_ref) {
   var theme = (0,nivo_core_es/* useTheme */.Fg)();
 
   var _useState = (0,react.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
+      _useState2 = nivo_line_es_slicedToArray(_useState, 2),
       currentPoint = _useState2[0],
       setCurrentPoint = _useState2[1];
 
@@ -1301,7 +1862,7 @@ var LineCanvas = function LineCanvas(_ref) {
       yScale = _useLine.yScale,
       points = _useLine.points;
 
-  var _useVoronoiMesh = (0,nivo_voronoi_es/* useVoronoiMesh */.ZR)({
+  var _useVoronoiMesh = useVoronoiMesh({
     points: points,
     width: innerWidth,
     height: innerHeight,
@@ -1417,10 +1978,10 @@ var LineCanvas = function LineCanvas(_ref) {
       }
 
       if (layer === 'mesh' && debugMesh === true) {
-        (0,nivo_voronoi_es/* renderVoronoiToCanvas */.qF)(ctx, voronoi);
+        renderVoronoiToCanvas(ctx, voronoi);
 
         if (currentPoint) {
-          (0,nivo_voronoi_es/* renderVoronoiCellToCanvas */.r$)(ctx, voronoi, currentPoint.index);
+          renderVoronoiCellToCanvas(ctx, voronoi, currentPoint.index);
         }
       }
 
@@ -1433,7 +1994,7 @@ var LineCanvas = function LineCanvas(_ref) {
           };
         }).reverse();
         legends.forEach(function (legend) {
-          (0,nivo_legends_es/* renderLegendToCanvas */.as)(ctx, _objectSpread2(_objectSpread2({}, legend), {}, {
+          (0,nivo_legends_es/* renderLegendToCanvas */.as)(ctx, nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, legend), {}, {
             data: legend.data || legendData,
             containerWidth: innerWidth,
             containerHeight: innerHeight,
@@ -1445,7 +2006,7 @@ var LineCanvas = function LineCanvas(_ref) {
   }, [canvasEl, outerWidth, outerHeight, layers, theme, lineGenerator, series, xScale, yScale, enableGridX, gridXValues, enableGridY, gridYValues, axisTop, axisRight, axisBottom, axisLeft, legends, points, enablePoints, pointSize, currentPoint]);
   var getPointFromMouseEvent = (0,react.useCallback)(function (event) {
     var _getRelativeCursor = (0,nivo_core_es/* getRelativeCursor */.P6)(canvasEl.current, event),
-        _getRelativeCursor2 = _slicedToArray(_getRelativeCursor, 2),
+        _getRelativeCursor2 = nivo_line_es_slicedToArray(_getRelativeCursor, 2),
         x = _getRelativeCursor2[0],
         y = _getRelativeCursor2[1];
 
@@ -1500,7 +2061,7 @@ var LineCanvas = function LineCanvas(_ref) {
 LineCanvas.defaultProps = LineCanvasDefaultProps;
 var LineCanvasWithContainer = (0,nivo_core_es/* withContainer */.li)(LineCanvas);
 var LineCanvas$1 = (0,react.forwardRef)(function (props, ref) {
-  return (0,jsx_runtime.jsx)(LineCanvasWithContainer, _objectSpread2(_objectSpread2({}, props), {}, {
+  return (0,jsx_runtime.jsx)(LineCanvasWithContainer, nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({}, props), {}, {
     canvasRef: ref
   }));
 });
@@ -1510,7 +2071,7 @@ var ResponsiveLineCanvas = function ResponsiveLineCanvas(props, ref) {
     children: function children(_ref) {
       var width = _ref.width,
           height = _ref.height;
-      return (0,jsx_runtime.jsx)(LineCanvas$1, _objectSpread2(_objectSpread2({
+      return (0,jsx_runtime.jsx)(LineCanvas$1, nivo_line_es_objectSpread2(nivo_line_es_objectSpread2({
         width: width,
         height: height
       }, props), {}, {
