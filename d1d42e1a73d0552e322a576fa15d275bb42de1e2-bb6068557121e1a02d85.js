@@ -12149,8 +12149,10 @@ function WorkspaceProvider(props) {
 /* harmony import */ var _fields_PieField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(37505);
 /* harmony import */ var _fields_HistogramField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(63511);
 /* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(54741);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(74602);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(74602);
 /* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(16229);
+/* harmony import */ var _fields_BoxPlotField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(77668);
+
 
 
 
@@ -12166,8 +12168,9 @@ var LINEPLOT_BLOCK = "chart_lineplot";
 var PIEPLOT_BLOCK = "chart_pieplot";
 var BARCHART_BLOCK = "chart_bar";
 var HISTOGRAM_BLOCK = "chart_histogram";
+var BOX_PLOT_BLOCK = "chart_box_plot";
 var CHART_SHOW_TABLE_BLOCK = "chart_show_table";
-var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_9__/* .paletteColorByIndex */ .W)(3);
+var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_10__/* .paletteColorByIndex */ .W)(3);
 var chartDsl = {
   id: "chart",
   createBlocks: function createBlocks() {
@@ -12315,6 +12318,29 @@ var chartDsl = {
       template: "meta",
       inputsInline: false,
       transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+    }, {
+      kind: "block",
+      type: BOX_PLOT_BLOCK,
+      message0: "box plot of %1 by %2 %3 %4",
+      args0: [{
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        name: "index"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        name: "value",
+        dataType: "number"
+      }, {
+        type: "input_dummy"
+      }, {
+        type: _fields_BoxPlotField__WEBPACK_IMPORTED_MODULE_9__/* .default.KEY */ .Z.KEY,
+        name: "plot"
+      }],
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      colour: colour,
+      template: "meta",
+      inputsInline: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
     }];
   },
   createCategory: function createCategory() {
@@ -12326,6 +12352,12 @@ var chartDsl = {
         type: SCATTERPLOT_BLOCK
       }, {
         kind: "block",
+        type: HISTOGRAM_BLOCK
+      }, {
+        kind: "block",
+        type: BOX_PLOT_BLOCK
+      }, {
+        kind: "block",
         type: BARCHART_BLOCK
       }, {
         kind: "block",
@@ -12333,9 +12365,6 @@ var chartDsl = {
       }, {
         kind: "block",
         type: PIEPLOT_BLOCK
-      }, {
-        kind: "block",
-        type: HISTOGRAM_BLOCK
       }, {
         kind: "block",
         type: CHART_SHOW_TABLE_BLOCK
@@ -12423,8 +12452,8 @@ var csv_proxy = __webpack_require__(53480);
 var FileOpenField = __webpack_require__(39311);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/palette.ts
 var palette = __webpack_require__(74602);
-// EXTERNAL MODULE: ./src/components/blockly/fields/nivo.ts
-var nivo = __webpack_require__(8844);
+// EXTERNAL MODULE: ./src/components/blockly/fields/tidy.ts
+var tidy = __webpack_require__(47554);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/datadsl.ts
 
 
@@ -12729,7 +12758,7 @@ var dataDsl = {
         var _tidyHeaders;
 
         var column = b.getFieldValue("column");
-        var columns = column ? [column] : (_tidyHeaders = (0,nivo/* tidyHeaders */.P2)(data, "number")) === null || _tidyHeaders === void 0 ? void 0 : _tidyHeaders.headers;
+        var columns = column ? [column] : (_tidyHeaders = (0,tidy/* tidyHeaders */.P2)(data, "number")) === null || _tidyHeaders === void 0 ? void 0 : _tidyHeaders.headers;
         var calc = b.getFieldValue("calc");
         return postTransformData({
           type: "summarize",
@@ -13628,7 +13657,7 @@ function BarChartWidget() {
   var index = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index");
   var value = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value");
 
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [index, value], ["index", "value"], {
+  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .t)(data, [index, value], ["index", "value"], {
     sliceHead: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .BAR_MAX_ITEMS */ .kC
   }),
       series = _tidyToNivo.series,
@@ -13707,6 +13736,95 @@ var BarChartField = /*#__PURE__*/function (_ReactInlineField) {
 
 BarChartField.KEY = "jacdac_field_bar_chart";
 BarChartField.EDITABLE = false;
+
+
+/***/ }),
+
+/***/ 77668:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ BoxPlotField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+
+
+
+
+
+
+
+
+function BoxPlotWidget() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
+  var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"));
+  if (!index) return null;
+  var spec = {
+    description: "Box plot of " + index,
+    mark: "boxplot",
+    encoding: {
+      x: {
+        field: index,
+        type: "nominal"
+      },
+      color: {
+        field: index,
+        type: "nominal",
+        legend: null
+      },
+      y: {
+        field: value,
+        type: "quantitative",
+        scale: {
+          zero: false
+        }
+      }
+    },
+    data: {
+      name: "values"
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec
+  });
+}
+
+var BoxPlotField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(BoxPlotField, _ReactInlineField);
+
+  BoxPlotField.fromJson = function fromJson(options) {
+    return new BoxPlotField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function BoxPlotField(options) {
+    return _ReactInlineField.call(this, options) || this;
+  }
+
+  var _proto = BoxPlotField.prototype;
+
+  _proto.renderInlineField = function renderInlineField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BoxPlotWidget, null);
+  };
+
+  return BoxPlotField;
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+
+BoxPlotField.KEY = "jacdac_field_box_plot";
+BoxPlotField.EDITABLE = false;
 
 
 /***/ }),
@@ -13847,17 +13965,17 @@ BuiltinDataSetField.KEY = "jacdac_field_data_builtin_dataset";
 /* harmony export */   "Z": function() { return /* binding */ DataColumnChooserField; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85061);
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(41788);
-/* harmony import */ var _nivo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8844);
-/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
-/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41788);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(47554);
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74640);
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_0__);
 
 
 
 
 
 var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(DataColumnChooserField, _FieldDropdown);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(DataColumnChooserField, _FieldDropdown);
 
   DataColumnChooserField.fromJson = function fromJson(options) {
     return new DataColumnChooserField(options);
@@ -13888,7 +14006,7 @@ var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
     var services = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.jacdacServices;
     var data = services === null || services === void 0 ? void 0 : services.data;
 
-    var _tidyHeaders = (0,_nivo__WEBPACK_IMPORTED_MODULE_0__/* .tidyHeaders */ .P2)(data),
+    var _tidyHeaders = (0,_tidy__WEBPACK_IMPORTED_MODULE_2__/* .tidyHeaders */ .P2)(data),
         headers = _tidyHeaders.headers,
         types = _tidyHeaders.types;
 
@@ -13907,7 +14025,7 @@ var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
   };
 
   return DataColumnChooserField;
-}(blockly__WEBPACK_IMPORTED_MODULE_1__.FieldDropdown);
+}(blockly__WEBPACK_IMPORTED_MODULE_0__.FieldDropdown);
 
 DataColumnChooserField.KEY = "jacdac_field_data_column_chooser";
 
@@ -14188,8 +14306,8 @@ function CopyButton(props) {
 }
 // EXTERNAL MODULE: ./src/components/blockly/dsl/workers/csv.proxy.ts
 var csv_proxy = __webpack_require__(53480);
-// EXTERNAL MODULE: ./src/components/blockly/fields/nivo.ts
-var nivo = __webpack_require__(8844);
+// EXTERNAL MODULE: ./src/components/blockly/fields/tidy.ts
+var tidy = __webpack_require__(47554);
 ;// CONCATENATED MODULE: ./src/components/blockly/fields/DataTableWidget.tsx
 
 
@@ -14270,7 +14388,7 @@ function DataTableWidget(props) {
   if (!(raw !== null && raw !== void 0 && raw.length)) return empty ? /*#__PURE__*/react.createElement("span", {
     className: classes.empty
   }, empty) : null;
-  var columns = (0,nivo/* tidyHeaders */.P2)(raw).headers;
+  var columns = (0,tidy/* tidyHeaders */.P2)(raw).headers;
   var table = raw.length > maxItems ? [].concat((0,toConsumableArray/* default */.Z)(raw.slice(0, maxItems)), [(0,utils/* toMap */.qL)(columns, function (c) {
     return c;
   }, function () {
@@ -14812,7 +14930,7 @@ function GaugeWidgetView() {
 
   if (!(data !== null && data !== void 0 && data.length)) return null;
   var field = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("field");
-  var value = (0,_nivo__WEBPACK_IMPORTED_MODULE_5__/* .tidyFindLastValue */ .pc)(data, field);
+  var value = (0,_nivo__WEBPACK_IMPORTED_MODULE_5__.tidyFindLastValue)(data, field);
   if (value === undefined) return null;
   var min = Number(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("min"));
   var max = Number(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("max"));
@@ -14888,15 +15006,13 @@ GaugeWidgetField.EDITABLE = false;
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ HistogramField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
-/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(77298);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(69672);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(42862);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
 
 
 
@@ -14904,11 +15020,6 @@ GaugeWidgetField.EDITABLE = false;
 
 
 
-
-
-var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/* import() */ 9312).then(__webpack_require__.bind(__webpack_require__, 69312));
-});
 
 function HistogramWidget() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
@@ -14917,19 +15028,13 @@ function HistogramWidget() {
   var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
       data = _useBlockData.data;
 
-  var hasData = !!(data !== null && data !== void 0 && data.length); // need to map data to vega-lite
-
-  var index = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index");
-  if (!hasData || !index) return null;
-  console.log("histogram", {
-    index: index,
-    data: data
-  });
-  var histogram_spec = {
+  var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
+  if (!index) return null;
+  var spec = {
     description: "Histogram of " + index,
     mark: {
       type: "bar",
-      tooltip: true
+      tooltip: false
     },
     encoding: {
       x: {
@@ -14944,25 +15049,13 @@ function HistogramWidget() {
       name: "values"
     }
   };
-  var histogram_data = {
-    values: data
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    style: {
-      background: "#fff",
-      borderRadius: "0.25rem"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_4__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(VegaLite, {
-    actions: false,
-    width: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_WIDTH */ .xx,
-    height: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_HEIGHT */ .Fh,
-    spec: histogram_spec,
-    data: histogram_data
-  })))));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec
+  });
 }
 
 var HistogramField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)(HistogramField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(HistogramField, _ReactInlineField);
 
   HistogramField.fromJson = function fromJson(options) {
     return new HistogramField(options);
@@ -15513,7 +15606,7 @@ function LineChartWidget() {
   var x = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x");
   var y = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y");
 
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [x, y], ["x", "y"]),
+  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .t)(data, [x, y], ["x", "y"]),
       series = _tidyToNivo.series,
       labels = _tidyToNivo.labels; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
@@ -15881,7 +15974,7 @@ function PieChartWidget() {
   var id = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("id");
   var value = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value");
 
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [id, value], ["id", "value"], {
+  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .t)(data, [id, value], ["id", "value"], {
     sliceMax: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .PIE_MAX_ITEMS */ .DZ,
     sliceColumn: value
   }),
@@ -16479,7 +16572,7 @@ function ScatterChartWidget() {
   var x = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x");
   var y = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y");
 
-  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .tL)(data, [x, y], ["x", "y"], {
+  var _tidyToNivo = (0,_nivo__WEBPACK_IMPORTED_MODULE_7__/* .tidyToNivo */ .t)(data, [x, y], ["x", "y"], {
     sliceSample: _toolbox__WEBPACK_IMPORTED_MODULE_8__/* .SCATTER_MAX_ITEMS */ .VN
   }),
       series = _tidyToNivo.series,
@@ -17022,6 +17115,60 @@ VariablesField.EDITABLE = false;
 
 /***/ }),
 
+/***/ 21609:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ VegaLiteWidget; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(53851);
+/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(77298);
+/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(69672);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(42862);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16582);
+
+
+
+
+
+
+
+var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/* import() */ 9312).then(__webpack_require__.bind(__webpack_require__, 69312));
+});
+function VegaLiteWidget(props) {
+  var spec = props.spec;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var hasData = !!(data !== null && data !== void 0 && data.length);
+  if (!hasData || !spec) return null;
+  var vegaData = {
+    values: data
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    style: {
+      background: "#fff",
+      borderRadius: "0.25rem"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_3__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(VegaLite, {
+    actions: false,
+    width: _toolbox__WEBPACK_IMPORTED_MODULE_5__/* .CHART_WIDTH */ .xx,
+    height: _toolbox__WEBPACK_IMPORTED_MODULE_5__/* .CHART_HEIGHT */ .Fh,
+    spec: spec,
+    data: vegaData
+  })))));
+}
+
+/***/ }),
+
 /***/ 2006:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -17193,6 +17340,8 @@ WatchValueField.EDITABLE = false;
 /* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(4383);
 /* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(39311);
 /* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(16229);
+/* harmony import */ var _BoxPlotField__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(77668);
+
 
 
 
@@ -17235,7 +17384,7 @@ function registerFields() {
     if (fieldType.SHADOW) reactFieldShadows.push(fieldType.SHADOW);
   };
 
-  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _LinePlotField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _PieField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _HistogramField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z];
+  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _LinePlotField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _PieField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _HistogramField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _BoxPlotField__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z];
   fieldTypes.forEach(registerType);
 }
 function fieldShadows() {
@@ -17250,33 +17399,15 @@ function fieldShadows() {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "P2": function() { return /* binding */ tidyHeaders; },
-/* harmony export */   "pc": function() { return /* binding */ tidyFindLastValue; },
-/* harmony export */   "tL": function() { return /* binding */ tidyToNivo; }
+/* harmony export */   "t": function() { return /* binding */ tidyToNivo; }
 /* harmony export */ });
 /* harmony import */ var _tidyjs_tidy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52905);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81794);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(47554);
 /* eslint-disable @typescript-eslint/ban-types */
 
 
-function tidyHeaders(data, type) {
-  var row = (data === null || data === void 0 ? void 0 : data[0]) || {};
-  var headers = Object.keys(row);
-  if (type) headers = headers.filter(function (header) {
-    return type === typeof row[header];
-  });
-  var types = headers.map(function (header) {
-    return typeof row[header];
-  });
-  return {
-    headers: headers,
-    types: types
-  };
-}
-function tidyFindLastValue(data, column) {
-  if (!(data !== null && data !== void 0 && data.length)) return undefined;
-  return data[data.length - 1][column];
-}
+
 function tidyToNivo( // eslint-disable-next-line @typescript-eslint/ban-types
 data, columns, toColumns, options) {
   if (options === void 0) {
@@ -17293,7 +17424,7 @@ data, columns, toColumns, options) {
     labels: undefined
   };
 
-  var _tidyHeaders = tidyHeaders(data),
+  var _tidyHeaders = (0,_tidy__WEBPACK_IMPORTED_MODULE_2__/* .tidyHeaders */ .P2)(data),
       headers = _tidyHeaders.headers;
 
   var k = 0;
@@ -17319,6 +17450,43 @@ data, columns, toColumns, options) {
     series: series,
     labels: labels
   };
+}
+
+/***/ }),
+
+/***/ 47554:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "P2": function() { return /* binding */ tidyHeaders; },
+/* harmony export */   "gc": function() { return /* binding */ tidyResolveHeader; }
+/* harmony export */ });
+/* unused harmony export tidyFindLastValue */
+/* eslint-disable @typescript-eslint/ban-types */
+function tidyHeaders(data, type) {
+  var row = (data === null || data === void 0 ? void 0 : data[0]) || {};
+  var headers = Object.keys(row);
+  if (type) headers = headers.filter(function (header) {
+    return type === typeof row[header];
+  });
+  var types = headers.map(function (header) {
+    return typeof row[header];
+  });
+  return {
+    headers: headers,
+    types: types
+  };
+}
+function tidyFindLastValue(data, column) {
+  if (!(data !== null && data !== void 0 && data.length)) return undefined;
+  return data[data.length - 1][column];
+}
+function tidyResolveHeader(data, name, type) {
+  var _tidyHeaders = tidyHeaders(data, type),
+      headers = _tidyHeaders.headers;
+
+  return headers.indexOf(name) > -1 ? name : undefined;
 }
 
 /***/ }),
