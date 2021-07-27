@@ -13734,8 +13734,7 @@ BarChartField.EDITABLE = false;
 
 var builtins = {
   cereal: (0,gatsby__WEBPACK_IMPORTED_MODULE_2__.withPrefix)("/datasets/cereal.csv"),
-  penguins: (0,gatsby__WEBPACK_IMPORTED_MODULE_2__.withPrefix)("/datasets/penguins.csv"),
-  mt: (0,gatsby__WEBPACK_IMPORTED_MODULE_2__.withPrefix)("/datasets/mt.csv")
+  penguins: (0,gatsby__WEBPACK_IMPORTED_MODULE_2__.withPrefix)("/datasets/penguins.csv")
 };
 
 var BuiltinDataSetField = /*#__PURE__*/function (_FieldDropdown) {
