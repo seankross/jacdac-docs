@@ -1453,7 +1453,7 @@ var VMEnvironment = /*#__PURE__*/function (_JDEventSource) {
   };
 
   return VMEnvironment;
-}(eventsource/* JDEventSource */.a);
+}(eventsource/* JDEventSource */.aE);
 // EXTERNAL MODULE: ./jacdac-ts/src/vm/expr.ts
 var vm_expr = __webpack_require__(18108);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/vm/ir.ts
@@ -2854,7 +2854,7 @@ var VMHandlerRunner = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return VMHandlerRunner;
-}(eventsource/* JDEventSource */.a);
+}(eventsource/* JDEventSource */.aE);
 
 function isEveryHandler(h) {
   (0,utils/* assert */.hu)(!!h);

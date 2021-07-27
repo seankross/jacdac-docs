@@ -11643,7 +11643,7 @@ var WorkspaceServices = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return WorkspaceServices;
-}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .a);
+}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
 var BlockServices = /*#__PURE__*/function (_JDEventSource2) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(BlockServices, _JDEventSource2);
 
@@ -11705,7 +11705,7 @@ var BlockServices = /*#__PURE__*/function (_JDEventSource2) {
   }]);
 
   return BlockServices;
-}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .a);
+}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
 var WorkspaceContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({
   workspace: undefined,
   workspaceJSON: undefined,
@@ -15363,7 +15363,7 @@ var ReactField = /*#__PURE__*/function (_ReactFieldBase) {
 
     _this = _ReactFieldBase.call.apply(_ReactFieldBase, [this].concat(args)) || this;
     _this.SERIALIZABLE = true;
-    _this.events = new _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__/* .JDEventSource */ .a();
+    _this.events = new _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__/* .JDEventSource */ .aE();
     return _this;
   }
 

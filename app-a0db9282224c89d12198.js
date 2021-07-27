@@ -48551,7 +48551,7 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
   };
 
   return JDClient;
-}(_eventsource__WEBPACK_IMPORTED_MODULE_0__/* .JDEventSource */ .a);
+}(_eventsource__WEBPACK_IMPORTED_MODULE_0__/* .JDEventSource */ .aE);
 
 /***/ }),
 
@@ -49077,7 +49077,9 @@ function errorPath(e) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "a": function() { return /* binding */ JDEventSource; }
+/* harmony export */   "YH": function() { return /* binding */ dependencyChangeId; },
+/* harmony export */   "BX": function() { return /* binding */ dependencyId; },
+/* harmony export */   "aE": function() { return /* binding */ JDEventSource; }
 /* harmony export */ });
 /* unused harmony export fromEvent */
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5991);
@@ -49093,8 +49095,21 @@ function normalizeEventNames(eventNames) {
   return eventNames;
 }
 
+function dependencyChangeId(nodes) {
+  return (nodes === null || nodes === void 0 ? void 0 : nodes.map(function (node) {
+    return node ? node.nodeId + ":" + node.changeId : "?";
+  }).join(",")) || "";
+}
+function dependencyId(nodes) {
+  return (nodes === null || nodes === void 0 ? void 0 : nodes.map(function (node) {
+    return (node === null || node === void 0 ? void 0 : node.nodeId) || "?";
+  }).join(",")) || "";
+}
+var nextNodeId = 0;
 var JDEventSource = /*#__PURE__*/function () {
+  // debugging
   function JDEventSource() {
+    this.nodeId = nextNodeId++;
     this.listeners = {};
     this.eventStats = {};
     this.newListenerStats = undefined;
@@ -50666,25 +50681,18 @@ function resolveMakecodeServiceFromClassIdentifier(serviceClass) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "zb": function() { return /* binding */ JDNode; },
-/* harmony export */   "BX": function() { return /* binding */ dependencyId; },
-/* harmony export */   "LR": function() { return /* binding */ visitNodes; }
+/* harmony export */   "z": function() { return /* binding */ JDNode; },
+/* harmony export */   "L": function() { return /* binding */ visitNodes; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41788);
 /* harmony import */ var _eventsource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(45484);
 
 
-var nextNodeId = 0;
 var JDNode = /*#__PURE__*/function (_JDEventSource) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(JDNode, _JDEventSource);
 
-  // debugging
   function JDNode() {
-    var _this;
-
-    _this = _JDEventSource.call(this) || this;
-    _this.nodeId = nextNodeId++;
-    return _this;
+    return _JDEventSource.call(this) || this;
   }
   /**
    * Globally unique identifier in the tree
@@ -50708,12 +50716,7 @@ var JDNode = /*#__PURE__*/function (_JDEventSource) {
   };
 
   return JDNode;
-}(_eventsource__WEBPACK_IMPORTED_MODULE_0__/* .JDEventSource */ .a);
-function dependencyId(nodes) {
-  return (nodes === null || nodes === void 0 ? void 0 : nodes.map(function (node) {
-    return (node === null || node === void 0 ? void 0 : node.nodeId) || "?";
-  }).join(",")) || "";
-}
+}(_eventsource__WEBPACK_IMPORTED_MODULE_0__/* .JDEventSource */ .aE);
 function visitNodes(node, vis) {
   var todo = [node];
 
@@ -53023,7 +53026,7 @@ var JDRegisterServer = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return JDRegisterServer;
-}(_eventsource__WEBPACK_IMPORTED_MODULE_4__/* .JDEventSource */ .a);
+}(_eventsource__WEBPACK_IMPORTED_MODULE_4__/* .JDEventSource */ .aE);
 
 
 
@@ -53584,7 +53587,7 @@ var JDServiceProvider = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return JDServiceProvider;
-}(eventsource/* JDEventSource */.a);
+}(eventsource/* JDEventSource */.aE);
 
 
 
@@ -53984,7 +53987,7 @@ var JDServiceServer = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return JDServiceServer;
-}(_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .a);
+}(_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
 
 
 
@@ -55090,7 +55093,7 @@ var JDTransport = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return JDTransport;
-}(_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .a);
+}(_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
 
 /***/ }),
 
@@ -61206,7 +61209,7 @@ var DbStore = /*#__PURE__*/function (_JDEventSource) {
   }();
 
   return DbStore;
-}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .a);
+}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
 
 var IDBDb = /*#__PURE__*/function (_JDEventSource2) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(IDBDb, _JDEventSource2);
@@ -61405,7 +61408,7 @@ var IDBDb = /*#__PURE__*/function (_JDEventSource2) {
   }]);
 
   return IDBDb;
-}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .a);
+}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
 
 IDBDb.DB_VERSION = 18;
 IDBDb.DB_NAME = "JACDAC";
@@ -61540,7 +61543,7 @@ var MemoryDb = /*#__PURE__*/function (_JDEventSource3) {
   }();
 
   return MemoryDb;
-}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .a);
+}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
 
 var DbContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({
   db: undefined,
@@ -62562,7 +62565,7 @@ var FieldDataSet = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return FieldDataSet;
-}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_1__/* .JDEventSource */ .a);
+}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_1__/* .JDEventSource */ .aE);
 
 
 
@@ -64225,7 +64228,7 @@ var HostedModelStore = /*#__PURE__*/function (_JDEventSource2) {
   }();
 
   return HostedModelStore;
-}(eventsource/* JDEventSource */.a);
+}(eventsource/* JDEventSource */.aE);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
 var iframeclient = __webpack_require__(9809);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/embed/transport.ts
@@ -65011,8 +65014,8 @@ function useIntersectionObserver(elementRef, options) {
   }, [elementRef, threshold, root, rootMargin, frozen]);
   return entry;
 }
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/node.ts
-var node = __webpack_require__(60154);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/eventsource.ts
+var eventsource = __webpack_require__(45484);
 // EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
 var useMediaQueries = __webpack_require__(20509);
 // EXTERNAL MODULE: ./src/components/alert/DeviceLostAlert.tsx
@@ -65099,7 +65102,7 @@ function DashboardDevice(props) {
         visible: visible
       });
     }));
-  }, [(0,node/* dependencyId */.BX)(services), expanded, variant, visible]);
+  }, [(0,eventsource/* dependencyId */.BX)(services), expanded, variant, visible]);
   if (!showHeader) return /*#__PURE__*/react.createElement(Paper/* default */.Z, {
     style: {
       padding: "0.25em"
@@ -69793,7 +69796,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "4e8e5e58e942e254241dd358a6e80e93b633641a";
+  var sha = "3d0ce8686c64709d3b8deeb55a9a1c3b9c6d104e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72408,7 +72411,7 @@ var JDField = /*#__PURE__*/function (_JDNode) {
   }]);
 
   return JDField;
-}(node/* JDNode */.zb);
+}(node/* JDNode */.z);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/servicemembernode.ts
 
 
@@ -72470,7 +72473,7 @@ var JDServiceMemberNode = /*#__PURE__*/function (_JDNode) {
   }]);
 
   return JDServiceMemberNode;
-}(node/* JDNode */.zb);
+}(node/* JDNode */.z);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/pack.ts
 var pack = __webpack_require__(91635);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/packobject.ts
@@ -73364,7 +73367,7 @@ var JDService = /*#__PURE__*/function (_JDNode) {
   }]);
 
   return JDService;
-}(node/* JDNode */.zb);
+}(node/* JDNode */.z);
 function stableSortServices(services) {
   return services === null || services === void 0 ? void 0 : services.sort(function (a, b) {
     return a.compareTo(b);
@@ -73434,7 +73437,7 @@ var QualityOfService = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return QualityOfService;
-}(eventsource/* JDEventSource */.a);
+}(eventsource/* JDEventSource */.aE);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/ledcontroller.ts
 
 
@@ -73514,7 +73517,7 @@ var LEDController = /*#__PURE__*/function (_JDEventSource) {
   }();
 
   return LEDController;
-}(eventsource/* JDEventSource */.a);
+}(eventsource/* JDEventSource */.aE);
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/device.ts
@@ -74152,7 +74155,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   }]);
 
   return JDDevice;
-}(node/* JDNode */.zb);
+}(node/* JDNode */.z);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/flashing.ts
 var flashing = __webpack_require__(91758);
 // EXTERNAL MODULE: ./jacdac-ts/src/servers/realtimeclockserver.ts
@@ -74257,7 +74260,7 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return BusStatsMonitor;
-}(eventsource/* JDEventSource */.a);
+}(eventsource/* JDEventSource */.aE);
 // EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 24 modules
 var servers = __webpack_require__(48363);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/serviceclient.ts
@@ -75925,7 +75928,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   }]);
 
   return JDBus;
-}(node/* JDNode */.zb);
+}(node/* JDNode */.z);
 // EXTERNAL MODULE: ./.cache/gatsby-browser-entry.js
 var gatsby_browser_entry = __webpack_require__(35313);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
@@ -79185,7 +79188,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.13.99"};
+var package_namespaceObject = {"i8":"1.13.100"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
@@ -81586,7 +81589,7 @@ exports.components = {
     return Promise.all(/* import() | component---src-pages-tools-collector-tsx */[__webpack_require__.e(6559), __webpack_require__.e(8814)]).then(__webpack_require__.bind(__webpack_require__, 21586));
   },
   "component---src-pages-tools-commissioner-tsx": function componentSrcPagesToolsCommissionerTsx() {
-    return __webpack_require__.e(/* import() | component---src-pages-tools-commissioner-tsx */ 1322).then(__webpack_require__.bind(__webpack_require__, 7877));
+    return __webpack_require__.e(/* import() | component---src-pages-tools-commissioner-tsx */ 1322).then(__webpack_require__.bind(__webpack_require__, 67120));
   },
   "component---src-pages-tools-data-science-editor-tsx": function componentSrcPagesToolsDataScienceEditorTsx() {
     return Promise.all(/* import() | component---src-pages-tools-data-science-editor-tsx */[__webpack_require__.e(9978), __webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(5917), __webpack_require__.e(1323)]).then(__webpack_require__.bind(__webpack_require__, 30321));
