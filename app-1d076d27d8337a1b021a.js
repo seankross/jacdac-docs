@@ -69795,7 +69795,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2f84c739a7f68e3989e97e3380e012b26d2f515e";
+  var sha = "e6c253f4955584470c7356758a2c8375bf5e9b8e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -79209,7 +79209,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.13.100"};
+var package_namespaceObject = {"i8":"1.13.101"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 

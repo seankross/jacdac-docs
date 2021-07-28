@@ -9899,8 +9899,7 @@ var WorkspaceServices = /*#__PURE__*/function (_JDEventSource) {
       return this._workspaceJSON;
     },
     set: function set(value) {
-      this._workspaceJSON = value;
-      this.emit(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .CHANGE */ .Ver);
+      this._workspaceJSON = value; //this.emit(CHANGE)
     }
   }, {
     key: "runner",
@@ -11767,60 +11766,95 @@ var BuiltinDataSetField = /*#__PURE__*/function (_FieldDropdown) {
   ;
 
   function BuiltinDataSetField(options) {
-    return _FieldDropdown.call(this, function () {
+    var _this;
+
+    _this = _FieldDropdown.call(this, function () {
       return Object.keys(builtins).map(function (k) {
         return [k, k];
       });
     }, undefined, options) || this;
+    _this.initialized = false;
+    return _this;
   }
 
   var _proto = BuiltinDataSetField.prototype;
 
+  _proto.init = function init() {
+    _FieldDropdown.prototype.init.call(this);
+
+    this.initialized = true;
+    this.updateData();
+  };
+
   _proto.updateData = /*#__PURE__*/function () {
     var _updateData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var url, sourceBlock, services, _yield$downloadCSV, data, errors;
+      var url, sourceBlock, marker, services, _yield$downloadCSV, data, errors;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              if (this.initialized) {
+                _context.next = 2;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 2:
               url = builtins[this.getValue()];
 
               if (url) {
-                _context.next = 3;
+                _context.next = 5;
                 break;
               }
 
               return _context.abrupt("return");
 
-            case 3:
+            case 5:
               // load dataset as needed
               sourceBlock = this.getSourceBlock();
-              services = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.jacdacServices;
+              marker = !!(sourceBlock !== null && sourceBlock !== void 0 && sourceBlock.isInsertionMarker());
 
-              if (!(!services || services.cache[BuiltinDataSetField.KEY] === url)) {
-                _context.next = 7;
+              if (!(!sourceBlock || marker)) {
+                _context.next = 9;
                 break;
               }
 
               return _context.abrupt("return");
 
-            case 7:
-              _context.next = 9;
+            case 9:
+              services = sourceBlock.jacdacServices;
+
+              if (!(!services || services.cache[BuiltinDataSetField.KEY] === url)) {
+                _context.next = 12;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 12:
+              // already downloaded
+              // avoid races
+              services.cache[BuiltinDataSetField.KEY] = url;
+              _context.next = 15;
               return (0,_dsl_workers_csv_proxy__WEBPACK_IMPORTED_MODULE_3__/* .downloadCSV */ .EZ)(url);
 
-            case 9:
+            case 15:
               _yield$downloadCSV = _context.sent;
               data = _yield$downloadCSV.data;
               errors = _yield$downloadCSV.errors;
               console.debug("csv parse", {
+                id: sourceBlock.id,
+                marker: marker,
                 data: data,
-                errors: errors
+                errors: errors,
+                services: services,
+                url: url
               });
-              services.cache[BuiltinDataSetField.KEY] = url;
               services.data = data;
 
-            case 15:
+            case 20:
             case "end":
               return _context.stop();
           }
@@ -12538,6 +12572,7 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
 
     _this = _Field.call(this, "...", null, options) || this;
     _this.SERIALIZABLE = true;
+    _this.initialized = false;
     return _this;
   }
 
@@ -12572,6 +12607,13 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
     return ((_this$value_ = this.value_) === null || _this$value_ === void 0 ? void 0 : _this$value_.name) || "...";
   };
 
+  _proto.init = function init() {
+    _Field.prototype.init.call(this);
+
+    this.initialized = true;
+    this.updateData();
+  };
+
   _proto.setSourceBlock = function setSourceBlock(block) {
     _Field.prototype.setSourceBlock.call(this, block);
 
@@ -12582,6 +12624,10 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
     _Field.prototype.doValueUpdate_.call(this, newValue);
 
     this.parseSource();
+  };
+
+  _proto.notifyServicesChanged = function notifyServicesChanged() {
+    this.updateData();
   };
 
   _proto.parseSource = /*#__PURE__*/function () {
@@ -12622,10 +12668,6 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
 
     return parseSource;
   }();
-
-  _proto.notifyServicesChanged = function notifyServicesChanged() {
-    this.updateData();
-  };
 
   _proto.updateData = /*#__PURE__*/function () {
     var _updateData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
@@ -15572,7 +15614,7 @@ var ReactField = /*#__PURE__*/function (_ReactFieldBase) {
 
     _ReactFieldBase.prototype.setSourceBlock.call(this, block);
 
-    if (changed) {
+    if (changed && !(block !== null && block !== void 0 && block.isInsertionMarker())) {
       var bs = block;
 
       if (!bs.jacdacServices) {
