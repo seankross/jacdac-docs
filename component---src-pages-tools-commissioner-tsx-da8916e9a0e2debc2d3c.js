@@ -1334,34 +1334,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ Commissioner; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(83332);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(1059);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(80838);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(83332);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(1059);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(80838);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
-/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(8567);
-/* harmony import */ var _material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(39545);
-/* harmony import */ var _material_ui_icons_Cancel__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(30263);
+/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(8567);
+/* harmony import */ var _material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(39545);
+/* harmony import */ var _material_ui_icons_Cancel__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(30263);
 /* harmony import */ var _components_hooks_useDevices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53074);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(71815);
-/* harmony import */ var _material_ui_core_Table__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(49683);
-/* harmony import */ var _material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(86300);
-/* harmony import */ var _material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(49400);
-/* harmony import */ var _material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(78475);
-/* harmony import */ var _material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(4093);
-/* harmony import */ var _material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(99395);
-/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(58063);
+/* harmony import */ var _material_ui_core_Table__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(49683);
+/* harmony import */ var _material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(86300);
+/* harmony import */ var _material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(49400);
+/* harmony import */ var _material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(78475);
+/* harmony import */ var _material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(4093);
+/* harmony import */ var _material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(99395);
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(58063);
 /* harmony import */ var _components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(95393);
 /* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(65063);
 /* harmony import */ var _components_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(99808);
 /* harmony import */ var _components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(7751);
-/* harmony import */ var _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(45484);
-/* harmony import */ var _jacdac_ts_src_jdom_light__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(69130);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(10920);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(70274);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(81794);
+/* harmony import */ var _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(45484);
+/* harmony import */ var _jacdac_ts_src_jdom_light__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(69130);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(70274);
+/* harmony import */ var _jacdac_ts_src_jdom_pack__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(91635);
 
 
 
@@ -1406,8 +1408,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)(function () {
-  return (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z)({
+
+
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z)(function () {
+  return (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)({
     buttonFail: {
       color: "white",
       backgroundColor: "red"
@@ -1461,64 +1465,64 @@ function DataSetTable(props) {
     updateDescriptor(descriptor);
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, {
-    component: _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
+    component: _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
     "aria-label": "device table",
     size: "small"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, null, headers.map(function (header) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, null, headers.map(function (header) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
       align: "right",
       key: header
     }, header);
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, null, descriptors === null || descriptors === void 0 ? void 0 : descriptors.map(function (descriptor) {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, null, descriptors === null || descriptors === void 0 ? void 0 : descriptors.map(function (descriptor) {
     var _descriptor$services$;
 
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
       key: descriptor.deviceIdentifier
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
       align: "center"
-    }, descriptor.deviceIdentifier), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+    }, descriptor.deviceIdentifier), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
       align: "center"
     }, descriptor.firmwareIdentifier && descriptor.firmwareIdentifier.toString(16), ((_descriptor$services$ = descriptor.services.filter(function (service) {
       return service.serviceClass == _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_ROLE_MANAGER */ .igi;
-    })) === null || _descriptor$services$ === void 0 ? void 0 : _descriptor$services$.length) && "BRAIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+    })) === null || _descriptor$services$ === void 0 ? void 0 : _descriptor$services$.length) && "BRAIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
       align: "center"
     }, descriptor.services.map(function (service) {
       return service.name + " ";
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
       align: "center"
     }, descriptor.servicesSeen.map(function (service) {
       return service.name + " ";
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
       align: "center"
     }, serviceArrayMatched(descriptor) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
       style: {
         color: "green"
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
       fontSize: "small"
-    }), "PASS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+    }), "PASS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
       align: "center"
-    }, descriptor.pass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, {
+    }, descriptor.pass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
       "aria-label": "Toggle pass state",
       variant: "contained",
       className: classes.buttonSuccess,
       onClick: setPass(descriptor, false),
-      startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
+      startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
         fontSize: "small"
       })
-    }, "Pass"), !descriptor.pass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, {
+    }, "Pass"), !descriptor.pass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
       "aria-label": "Toggle pass state",
       variant: "contained",
       className: classes.buttonFail,
       onClick: setPass(descriptor, true),
-      startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Cancel__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
+      startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Cancel__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
         fontSize: "small"
       })
-    }, "FAIL")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+    }, "FAIL")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
       align: "center"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
       onChange: handleCommentChange,
       id: descriptor.deviceIdentifier,
       label: "Comment",
@@ -1533,36 +1537,49 @@ function LEDTest(_x) {
 }
 
 function _LEDTest() {
-  _LEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(service) {
+  _LEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(service) {
     var i, encoded;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
+            if (!service.device.connected) {
+              _context4.next = 14;
+              break;
+            }
+
             i = 0;
 
-          case 1:
+          case 2:
             if (!(i < 8)) {
-              _context4.next = 9;
+              _context4.next = 12;
               break;
             }
 
-            encoded = (0,_jacdac_ts_src_jdom_light__WEBPACK_IMPORTED_MODULE_10__/* .lightEncode */ ._S)("setone % #\n                show 20", [i, 0xff0000]);
+            encoded = (0,_jacdac_ts_src_jdom_light__WEBPACK_IMPORTED_MODULE_11__/* .lightEncode */ ._S)("setone % #\n                    show 20", [i, 0xff0000]);
 
             if (!service.device.connected) {
-              _context4.next = 6;
+              _context4.next = 7;
               break;
             }
 
-            _context4.next = 6;
+            _context4.next = 7;
             return service === null || service === void 0 ? void 0 : service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .LedPixelCmd.Run */ .yB$.Run, encoded);
 
-          case 6:
-            i++;
-            _context4.next = 1;
-            break;
+          case 7:
+            _context4.next = 9;
+            return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(200);
 
           case 9:
+            i++;
+            _context4.next = 2;
+            break;
+
+          case 12:
+            _context4.next = 0;
+            break;
+
+          case 14:
           case "end":
             return _context4.stop();
         }
@@ -1577,36 +1594,51 @@ function SingleRGBLEDTest(_x2) {
 }
 
 function _SingleRGBLEDTest() {
-  _SingleRGBLEDTest = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(service) {
-    var i, encoded;
-    return _regeneratorRuntime.wrap(function _callee4$(_context5) {
+  _SingleRGBLEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(service) {
+    var pack;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            i = 0;
+            pack = function pack(r, g, b, animDelay) {
+              var unpacked = [r, g, b, animDelay];
+              return (0,_jacdac_ts_src_jdom_pack__WEBPACK_IMPORTED_MODULE_12__/* .jdpack */ .AV)("u8 u8 u8 u8", unpacked);
+            };
 
           case 1:
-            if (!(i < 8)) {
-              _context5.next = 9;
-              break;
-            }
-
-            encoded = lightEncode("setall #\n            show 20", [0xff0000]);
-
             if (!service.device.connected) {
-              _context5.next = 6;
+              _context5.next = 16;
               break;
             }
 
+            _context5.next = 4;
+            return service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .LedCmd.Animate */ .tVE.Animate, pack(255, 0, 0, 200));
+
+          case 4:
             _context5.next = 6;
-            return service === null || service === void 0 ? void 0 : service.sendCmdAsync(LedPixelCmd.Run, encoded);
+            return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(500);
 
           case 6:
-            i++;
+            _context5.next = 8;
+            return service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .LedCmd.Animate */ .tVE.Animate, pack(0, 255, 0, 200));
+
+          case 8:
+            _context5.next = 10;
+            return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(500);
+
+          case 10:
+            _context5.next = 12;
+            return service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .LedCmd.Animate */ .tVE.Animate, pack(0, 0, 255, 200));
+
+          case 12:
+            _context5.next = 14;
+            return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(500);
+
+          case 14:
             _context5.next = 1;
             break;
 
-          case 9:
+          case 16:
           case "end":
             return _context5.stop();
         }
@@ -1632,9 +1664,13 @@ function Commissioner() {
     return !filterBrains || !isBrain(d);
   });
 
-  var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
-      dataSet = _useState2[0],
-      setDataSet = _useState2[1];
+  var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      title = _useState2[0],
+      setTitle = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+      dataSet = _useState3[0],
+      setDataSet = _useState3[1];
 
   var tableHeaders = ["Device identifier", "Firmware identifier", "Services advertised", "Services seen", "Packets seen", "Functional test pass", "Comment"];
 
@@ -1642,35 +1678,40 @@ function Commissioner() {
       fileStorage = _useContext2.fileStorage;
 
   var testDevice = /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(d) {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(d) {
       var _iterator, _step, srv;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              d.identify();
               _iterator = _createForOfIteratorHelperLoose(d.services());
 
-            case 1:
+            case 2:
               if ((_step = _iterator()).done) {
-                _context.next = 10;
+                _context.next = 13;
                 break;
               }
 
               srv = _step.value;
               _context.t0 = srv.serviceClass;
-              _context.next = _context.t0 === _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_LED_PIXEL */ .zEX ? 6 : 8;
+              _context.next = _context.t0 === _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_LED_PIXEL */ .zEX ? 7 : _context.t0 === _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_LED */ .i04 ? 9 : 11;
               break;
 
-            case 6:
+            case 7:
               LEDTest(srv);
-              return _context.abrupt("break", 8);
+              return _context.abrupt("break", 11);
 
-            case 8:
-              _context.next = 1;
+            case 9:
+              SingleRGBLEDTest(srv);
+              return _context.abrupt("break", 11);
+
+            case 11:
+              _context.next = 2;
               break;
 
-            case 10:
+            case 13:
             case "end":
               return _context.stop();
           }
@@ -1683,7 +1724,7 @@ function Commissioner() {
     };
   }();
 
-  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
     var newDataSet, _loop, _iterator2, _step2, _ret;
 
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context3) {
@@ -1788,11 +1829,16 @@ function Commissioner() {
         }
       }
     }, _callee2);
-  })), [(0,_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__/* .dependencyId */ .BX)(devices), filterBrains]);
+  })), [(0,_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_10__/* .dependencyId */ .BX)(devices), filterBrains]);
   var table = {
     headers: tableHeaders,
     descriptors: dataSet
   };
+
+  var handleTitleChange = function handleTitleChange(event) {
+    setTitle(event.target.value);
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     return bus.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .PACKET_RECEIVE */ .u_S, function (packet) {
       var _newDataSet$find;
@@ -1835,7 +1881,8 @@ function Commissioner() {
       if (descriptor.pass) str += "PASS" + sep;else str += "FAIL" + sep;
       str += descriptor.comment + lineEnding;
     });
-    fileStorage.saveText("commissioning-" + dateString() + ".csv", str);
+    var fileTitle = title.length ? title + "-" : "";
+    fileStorage.saveText(fileTitle + "commissioning-" + dateString() + ".csv", str);
   };
 
   var handleFilterBrains = function handleFilterBrains() {
@@ -1866,39 +1913,46 @@ function Commissioner() {
     showConnect: true,
     showStartSimulators: false,
     deviceFilter: deviceFilter
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
     container: true,
     spacing: 1
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
     title: "Commissioning data"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
     container: true,
     spacing: 1
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
     item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     color: "primary",
     onClick: handleOnClearClick
-  }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+  }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
     item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     color: "secondary",
     onClick: handleDownloadCSV,
-    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, null)
-  }, "Download CSV")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_28__/* .default */ .Z, null)
+  }, "Download CSV")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
     item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     onClick: handleFilterBrains
-  }, filterBrains ? "Show brains" : "Hide brains")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+  }, filterBrains ? "Show brains" : "Hide brains")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
+    item: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+    onChange: handleTitleChange,
+    label: "Title",
+    fullWidth: true,
+    value: title
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(DataSetTable, {
