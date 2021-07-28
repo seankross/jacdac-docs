@@ -10352,8 +10352,8 @@ var chartDsl = {
 /* harmony import */ var _fields_FileSaveField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(4383);
 /* harmony import */ var _workers_csv_proxy__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(53480);
 /* harmony import */ var _fields_FileOpenField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(39311);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(74602);
-/* harmony import */ var _fields_tidy__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(47554);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(74602);
+/* harmony import */ var _fields_tidy__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(47554);
 
 
 
@@ -10389,7 +10389,7 @@ var DATA_LINEAR_REGRESSION_BLOCK = "data_linear_regression";
 var DATA_LOAD_FILE_BLOCK = "data_load_file";
 var DATA_SAVE_FILE_BLOCK = "data_save_file";
 
-var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)(),
+var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z)(),
     datasetColour = _palette[0],
     operatorsColour = _palette[1],
     computeColour = _palette[2],
@@ -10420,7 +10420,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
+        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
         var order = b.getFieldValue("order");
         var descending = order === "descending";
         if (!column) return Promise.resolve(data);
@@ -10452,7 +10452,7 @@ var dataDsl = {
       dataPreviewField: true,
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3].map(function (column) {
-          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
+          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
@@ -10487,7 +10487,7 @@ var dataDsl = {
       dataPreviewField: true,
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3, 4].map(function (column) {
-          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
+          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
@@ -10520,7 +10520,7 @@ var dataDsl = {
       dataPreviewField: true,
       transformData: function transformData(b, data) {
         var columns = [1, 2].map(function (column) {
-          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
+          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
@@ -10554,7 +10554,7 @@ var dataDsl = {
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       dataPreviewField: true,
       transformData: function transformData(b, data) {
-        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
+        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
         var logic = b.getFieldValue("logic");
         var rhs = b.getFieldValue("rhs");
         if (!column) return Promise.resolve(data);
@@ -10593,8 +10593,8 @@ var dataDsl = {
       dataPreviewField: true,
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
-        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
-        var rhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "rhs", "number");
+        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
+        var rhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "rhs", "number");
         var logic = b.getFieldValue("logic");
         if (newcolumn || !lhs || !rhs) return Promise.resolve(data);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
@@ -10633,7 +10633,7 @@ var dataDsl = {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
-        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
+        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
         var rhs = b.getFieldValue("rhs");
         var logic = b.getFieldValue("logic");
         if (newcolumn || !lhs) return Promise.resolve(data);
@@ -10666,7 +10666,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var columns = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumns */ .QZ)(data, b, "column", "number");
+        var columns = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumns */ .QZ)(data, b, "column", "number");
         var calc = b.getFieldValue("calc");
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "summarize",
@@ -10697,8 +10697,8 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
-        var by = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "by");
+        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
+        var by = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "by");
         var calc = b.getFieldValue("calc");
         if (!by) return Promise.resolve([]);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
@@ -10724,7 +10724,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
+        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
         if (!column) return Promise.resolve([]);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "count",
@@ -10826,7 +10826,7 @@ var dataDsl = {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column", "number");
+                  column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column", "number");
 
                   if (column) {
                     _context.next = 3;
@@ -10882,8 +10882,8 @@ var dataDsl = {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
-                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column1", "number");
-                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column2", "number");
+                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column1", "number");
+                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column2", "number");
 
                   if (!(!column1 || !column2)) {
                     _context2.next = 4;
@@ -10940,8 +10940,8 @@ var dataDsl = {
             while (1) {
               switch (_context3.prev = _context3.next) {
                 case 0:
-                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column1", "number");
-                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column2", "number");
+                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column1", "number");
+                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column2", "number");
 
                   if (!(!column1 || !column2)) {
                     _context3.next = 4;
@@ -11571,13 +11571,15 @@ function workerProxy(workerid) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ BarField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
 /* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
 /* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
 
 
 
@@ -11596,6 +11598,9 @@ function BarWidget() {
   var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
   var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"), "number");
   if (!index || !value) return null;
+  var sliceOptions = {
+    sliceMax: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_MAX_ITEMS */ .kC
+  };
   var spec = {
     description: "Bar plot of " + index + " x " + value,
     mark: "bar",
@@ -11614,12 +11619,13 @@ function BarWidget() {
     }
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
-    spec: spec
+    spec: spec,
+    slice: sliceOptions
   });
 }
 
 var BarField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(BarField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(BarField, _ReactInlineField);
 
   BarField.fromJson = function fromJson(options) {
     return new BarField(options);
@@ -11900,17 +11906,17 @@ BuiltinDataSetField.KEY = "jacdac_field_data_builtin_dataset";
 /* harmony export */   "Z": function() { return /* binding */ DataColumnChooserField; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85061);
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41788);
-/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(47554);
-/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74640);
-/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(41788);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(47554);
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_1__);
 
 
 
 
 
 var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(DataColumnChooserField, _FieldDropdown);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(DataColumnChooserField, _FieldDropdown);
 
   DataColumnChooserField.fromJson = function fromJson(options) {
     return new DataColumnChooserField(options);
@@ -11941,7 +11947,7 @@ var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
     var services = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.jacdacServices;
     var data = services === null || services === void 0 ? void 0 : services.data;
 
-    var _tidyHeaders = (0,_tidy__WEBPACK_IMPORTED_MODULE_2__/* .tidyHeaders */ .P2)(data),
+    var _tidyHeaders = (0,_tidy__WEBPACK_IMPORTED_MODULE_0__/* .tidyHeaders */ .P2)(data),
         headers = _tidyHeaders.headers,
         types = _tidyHeaders.types;
 
@@ -11960,7 +11966,7 @@ var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
   };
 
   return DataColumnChooserField;
-}(blockly__WEBPACK_IMPORTED_MODULE_0__.FieldDropdown);
+}(blockly__WEBPACK_IMPORTED_MODULE_1__.FieldDropdown);
 
 DataColumnChooserField.KEY = "jacdac_field_data_column_chooser";
 
@@ -15169,13 +15175,15 @@ LEDMatrixField.KEY = "jacdac_field_led_matrix";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ LinePlotField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
 /* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
 /* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
 
 
 
@@ -15194,6 +15202,9 @@ function LinePlotWidget() {
   var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
   var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
   if (!x || !y) return null;
+  var sliceOptions = {
+    sliceHead: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .LINE_MAX_ITEMS */ .bH
+  };
   var spec = {
     description: "Line plot of " + x + "x" + y,
     mark: "line",
@@ -15212,12 +15223,13 @@ function LinePlotWidget() {
     }
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
-    spec: spec
+    spec: spec,
+    slice: sliceOptions
   });
 }
 
 var LinePlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(LinePlotField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(LinePlotField, _ReactInlineField);
 
   LinePlotField.fromJson = function fromJson(options) {
     return new LinePlotField(options);
@@ -15938,13 +15950,15 @@ var ReactInlineField = /*#__PURE__*/function (_ReactField) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ ScatterPlotField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
 /* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
 /* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
 
 
 
@@ -15963,6 +15977,9 @@ function ScatterPlotWidget() {
   var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
   var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
   if (!x || !y) return null;
+  var sliceOptions = {
+    sliceSample: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .SCATTER_MAX_ITEMS */ .VN
+  };
   var spec = {
     description: "Scatter plot of " + x + "x" + y,
     mark: "point",
@@ -15981,12 +15998,13 @@ function ScatterPlotWidget() {
     }
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
-    spec: spec
+    spec: spec,
+    slice: sliceOptions
   });
 }
 
 var ScatterPlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(ScatterPlotField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(ScatterPlotField, _ReactInlineField);
 
   ScatterPlotField.fromJson = function fromJson(options) {
     return new ScatterPlotField(options);
@@ -16457,13 +16475,18 @@ VariablesField.EDITABLE = false;
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ VegaLiteWidget; }
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(53851);
-/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(77298);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(69672);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(42862);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16582);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(89801);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(77298);
+/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(69672);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(42862);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+/* harmony import */ var _useEffectAsync__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7751);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(47554);
 
 
 
@@ -16471,35 +16494,84 @@ VariablesField.EDITABLE = false;
 
 
 
-var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+
+
+
+
+var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(function () {
   return __webpack_require__.e(/* import() */ 85).then(__webpack_require__.bind(__webpack_require__, 80085));
 });
 function VegaLiteWidget(props) {
-  var spec = props.spec;
+  var _vegaData$values;
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+  var spec = props.spec,
+      slice = props.slice;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__/* .default */ .ZP),
       sourceBlock = _useContext.sourceBlock;
 
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data;
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data; // eslint-disable-next-line @typescript-eslint/ban-types
 
-  var hasData = !!(data !== null && data !== void 0 && data.length);
-  if (!hasData || !spec) return null;
-  var vegaData = {
-    values: data
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(undefined),
+      vegaData = _useState[0],
+      setVegaData = _useState[1];
+
+  (0,_useEffectAsync__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)( /*#__PURE__*/function () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(mounted) {
+      var sliced;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (slice) {
+                _context.next = 4;
+                break;
+              }
+
+              setVegaData({
+                values: data
+              });
+              _context.next = 8;
+              break;
+
+            case 4:
+              _context.next = 6;
+              return (0,_tidy__WEBPACK_IMPORTED_MODULE_8__/* .tidySlice */ .HA)(data, slice);
+
+            case 6:
+              sliced = _context.sent;
+              if (mounted()) setVegaData({
+                values: sliced
+              });
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }(), [data]);
+  if (!(vegaData !== null && vegaData !== void 0 && (_vegaData$values = vegaData.values) !== null && _vegaData$values !== void 0 && _vegaData$values.length) || !spec) return null;
+  var renderer = vegaData.values.length < _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_SVG_MAX_ITEMS */ .TP ? "svg" : "canvas";
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     style: {
       background: "#fff",
       borderRadius: "0.25rem"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_3__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(VegaLite, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_4__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(VegaLite, {
     actions: false,
-    width: _toolbox__WEBPACK_IMPORTED_MODULE_5__/* .CHART_WIDTH */ .xx,
-    height: _toolbox__WEBPACK_IMPORTED_MODULE_5__/* .CHART_HEIGHT */ .Fh,
+    width: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_WIDTH */ .xx,
+    height: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_HEIGHT */ .Fh,
     spec: spec,
     data: vegaData,
-    renderer: "svg"
+    renderer: renderer
   })))));
 }
 
@@ -16737,9 +16809,20 @@ function fieldShadows() {
 /* harmony export */   "pc": function() { return /* binding */ tidyFindLastValue; },
 /* harmony export */   "gc": function() { return /* binding */ tidyResolveHeader; },
 /* harmony export */   "Fy": function() { return /* binding */ tidyResolveFieldColumn; },
-/* harmony export */   "QZ": function() { return /* binding */ tidyResolveFieldColumns; }
+/* harmony export */   "QZ": function() { return /* binding */ tidyResolveFieldColumns; },
+/* harmony export */   "HA": function() { return /* binding */ tidySlice; }
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(96156);
+/* harmony import */ var _dsl_workers_data_proxy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21190);
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
 /* eslint-disable @typescript-eslint/ban-types */
+
 function tidyHeaders(data, type) {
   var row = (data === null || data === void 0 ? void 0 : data[0]) || {};
   var headers = Object.keys(row);
@@ -16779,6 +16862,31 @@ function tidyResolveFieldColumns(data, b, fieldName, type) {
     if (header) return [header];else return [];
   }
 }
+function tidySlice(data, options) {
+  if (!options || !(data !== null && data !== void 0 && data.length)) return Promise.resolve(data);
+  var length = data.length;
+  var _options$sliceMin = options.sliceMin,
+      sliceMin = _options$sliceMin === void 0 ? Infinity : _options$sliceMin,
+      _options$sliceMax = options.sliceMax,
+      sliceMax = _options$sliceMax === void 0 ? Infinity : _options$sliceMax,
+      _options$sliceHead = options.sliceHead,
+      sliceHead = _options$sliceHead === void 0 ? Infinity : _options$sliceHead,
+      _options$sliceTail = options.sliceTail,
+      sliceTail = _options$sliceTail === void 0 ? Infinity : _options$sliceTail,
+      _options$sliceSample = options.sliceSample,
+      sliceSample = _options$sliceSample === void 0 ? Infinity : _options$sliceSample; // shortcut
+
+  if (length < sliceMin && length < sliceMax && length < sliceHead && length < sliceTail && length < sliceSample) return Promise.resolve(data); // crunch in webworker
+
+  console.debug("slice data", {
+    data: data,
+    options: options
+  });
+  return (0,_dsl_workers_data_proxy__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(_objectSpread({
+    type: "slice",
+    data: data
+  }, options));
+}
 
 /***/ }),
 
@@ -16802,6 +16910,10 @@ function tidyResolveFieldColumns(data, b, fieldName, type) {
 /* harmony export */   "FR": function() { return /* binding */ toolsColour; },
 /* harmony export */   "xx": function() { return /* binding */ CHART_WIDTH; },
 /* harmony export */   "Fh": function() { return /* binding */ CHART_HEIGHT; },
+/* harmony export */   "TP": function() { return /* binding */ CHART_SVG_MAX_ITEMS; },
+/* harmony export */   "kC": function() { return /* binding */ BAR_MAX_ITEMS; },
+/* harmony export */   "VN": function() { return /* binding */ SCATTER_MAX_ITEMS; },
+/* harmony export */   "bH": function() { return /* binding */ LINE_MAX_ITEMS; },
 /* harmony export */   "KH": function() { return /* binding */ TABLE_WIDTH; },
 /* harmony export */   "U2": function() { return /* binding */ TABLE_HEIGHT; },
 /* harmony export */   "Sw": function() { return /* binding */ TABLE_PREVIEW_MAX_ITEMS; },
@@ -16809,7 +16921,6 @@ function tidyResolveFieldColumns(data, b, fieldName, type) {
 /* harmony export */   "FD": function() { return /* binding */ JSON_WARNINGS_CATEGORY; },
 /* harmony export */   "j2": function() { return /* binding */ visitToolbox; }
 /* harmony export */ });
-/* unused harmony exports ANIMATE_MAX_ITEMS, PIE_MAX_ITEMS, BAR_MAX_ITEMS, SCATTER_MAX_ITEMS */
 /* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -16858,13 +16969,13 @@ var TWIN_BLOCK = "jacdac_tools_twin";
 var toolsColour = (0,_dsl_palette__WEBPACK_IMPORTED_MODULE_3__/* .paletteColorByIndex */ .W)(-1);
 var CHART_WIDTH = 388;
 var CHART_HEIGHT = 240;
+var CHART_SVG_MAX_ITEMS = 256;
+var BAR_MAX_ITEMS = 1 << 10;
+var SCATTER_MAX_ITEMS = 1 << 13;
+var LINE_MAX_ITEMS = 1 << 10;
 var TABLE_WIDTH = CHART_WIDTH;
 var TABLE_HEIGHT = 480;
 var TABLE_PREVIEW_MAX_ITEMS = 48;
-var ANIMATE_MAX_ITEMS = 128;
-var PIE_MAX_ITEMS = 12;
-var BAR_MAX_ITEMS = (/* unused pure expression or super */ null && (1 << 10));
-var SCATTER_MAX_ITEMS = (/* unused pure expression or super */ null && (1 << 13));
 var VM_WARNINGS_CATEGORY = "vm";
 var JSON_WARNINGS_CATEGORY = "json";
 function visitToolbox(node, visitor) {

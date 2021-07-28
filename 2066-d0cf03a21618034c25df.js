@@ -660,7 +660,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
-function _tidy(items) {
+function tidy(items) {
   if (typeof items === "function") {
     throw new Error("You must supply the data as the first argument to tidy()");
   }
@@ -1298,6 +1298,25 @@ function median$1(values, valueof) {
   return quantile(values, 0.5, valueof);
 }
 
+var shuffle = shuffler(Math.random);
+
+function shuffler(random) {
+  return function shuffle(array) {
+    var i0 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var i1 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : array.length;
+    var m = i1 - (i0 = +i0);
+
+    while (m) {
+      var i = random() * m-- | 0,
+          t = array[m + i0];
+      array[m + i0] = array[i + i0];
+      array[i + i0] = t;
+    }
+
+    return array;
+  };
+}
+
 function _arrange2(comparators) {
   var _arrange = function _arrange(items) {
     var comparatorFns = singleOrArray(comparators).map(function (comp) {
@@ -1892,34 +1911,11 @@ function count$1(groupKeys, options) {
         _options$name = _options.name,
         name = _options$name === void 0 ? "n" : _options$name,
         sort = _options.sort;
-
-    var results = _tidy(items, groupBy(groupKeys, [tally(options)]), sort ? _arrange2(desc(name)) : identity$1);
-
+    var results = tidy(items, groupBy(groupKeys, [tally(options)]), sort ? _arrange2(desc(name)) : identity$1);
     return results;
   };
 
   return _count;
-}
-
-function rename(renameSpec) {
-  var _rename = function _rename(items) {
-    return items.map(function (d) {
-      var _a;
-
-      var mapped = {};
-      var keys = Object.keys(d);
-
-      for (var _i4 = 0, _keys2 = keys; _i4 < _keys2.length; _i4++) {
-        var key = _keys2[_i4];
-        var newKey = (_a = renameSpec[key]) != null ? _a : key;
-        mapped[newKey] = d[key];
-      }
-
-      return mapped;
-    });
-  };
-
-  return _rename;
 }
 
 function slice$1(start, end) {
@@ -1952,6 +1948,30 @@ function sliceMax(n, orderBy) {
   };
 
   return _sliceMax;
+}
+
+function sliceSample(n, options) {
+  options = options != null ? options : {};
+  var _options2 = options,
+      replace = _options2.replace;
+
+  var _sliceSample = function _sliceSample(items) {
+    if (!items.length) return items.slice();
+
+    if (replace) {
+      var sliced = [];
+
+      for (var i = 0; i < n; ++i) {
+        sliced.push(items[Math.floor(Math.random() * items.length)]);
+      }
+
+      return sliced;
+    }
+
+    return shuffle(items.slice()).slice(0, n);
+  };
+
+  return _sliceSample;
 }
 
 function keysFromItems(items) {
@@ -2777,19 +2797,19 @@ var handlers = {
     var column = props.column,
         descending = props.descending,
         data = props.data;
-    return _tidy(data, _arrange2(descending ? desc(column) : column));
+    return tidy(data, _arrange2(descending ? desc(column) : column));
   },
   select: function select(props) {
     var columns = props.columns,
         data = props.data;
-    if (!(columns != null && columns.length)) return data;else return _tidy(data, _select2(columns.map(function (column) {
+    if (!(columns != null && columns.length)) return data;else return tidy(data, _select2(columns.map(function (column) {
       return "".concat(column);
     })));
   },
   drop: function drop(props) {
     var columns = props.columns,
         data = props.data;
-    if (!(columns != null && columns.length)) return data;else return _tidy(data, _select2(columns.map(function (column) {
+    if (!(columns != null && columns.length)) return data;else return tidy(data, _select2(columns.map(function (column) {
       return "-".concat(column);
     })));
   },
@@ -2802,32 +2822,32 @@ var handlers = {
 
     switch (logic) {
       case "gt":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[column] > rhs;
         }));
 
       case "lt":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[column] < rhs;
         }));
 
       case "ge":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[column] >= rhs;
         }));
 
       case "le":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[column] <= rhs;
         }));
 
       case "eq":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[column] == rhs;
         }));
 
       case "ne":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[column] != rhs;
         }));
 
@@ -2848,32 +2868,32 @@ var handlers = {
 
     switch (logic) {
       case "gt":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[columns[0]] > d[columns[1]];
         }));
 
       case "lt":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[columns[0]] < d[columns[1]];
         }));
 
       case "ge":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[columns[0]] >= d[columns[1]];
         }));
 
       case "le":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[columns[0]] <= d[columns[1]];
         }));
 
       case "eq":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[columns[0]] === d[columns[1]];
         }));
 
       case "ne":
-        return _tidy(data, filter(function (d) {
+        return tidy(data, filter(function (d) {
           return d[columns[0]] !== d[columns[1]];
         }));
 
@@ -2896,70 +2916,70 @@ var handlers = {
           return d[lhs] + d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "minus":
         calc[newcolumn] = function (d) {
           return d[lhs] - d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "mult":
         calc[newcolumn] = function (d) {
           return d[lhs] * d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "div":
         calc[newcolumn] = function (d) {
           return d[lhs] / d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "gt":
         calc[newcolumn] = function (d) {
           return d[lhs] > d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "lt":
         calc[newcolumn] = function (d) {
           return d[lhs] < d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "ge":
         calc[newcolumn] = function (d) {
           return d[lhs] >= d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "le":
         calc[newcolumn] = function (d) {
           return d[lhs] <= d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "eq":
         calc[newcolumn] = function (d) {
           return d[lhs] == d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "ne":
         calc[newcolumn] = function (d) {
           return d[lhs] != d[rhs];
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       default:
         return data;
@@ -2980,70 +3000,70 @@ var handlers = {
           return d[lhs] + rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "minus":
         calc[newcolumn] = function (d) {
           return d[lhs] - rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "mult":
         calc[newcolumn] = function (d) {
           return d[lhs] * rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "div":
         calc[newcolumn] = function (d) {
           return d[lhs] / rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "gt":
         calc[newcolumn] = function (d) {
           return d[lhs] > rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "lt":
         calc[newcolumn] = function (d) {
           return d[lhs] < rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "ge":
         calc[newcolumn] = function (d) {
           return d[lhs] >= rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "le":
         calc[newcolumn] = function (d) {
           return d[lhs] <= rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "eq":
         calc[newcolumn] = function (d) {
           return d[lhs] == rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       case "ne":
         calc[newcolumn] = function (d) {
           return d[lhs] != rhs;
         };
 
-        return _tidy(data, mutate(calc));
+        return tidy(data, mutate(calc));
 
       default:
         return data;
@@ -3061,7 +3081,7 @@ var handlers = {
     columns.forEach(function (column) {
       return items[column] = summarizer(column);
     });
-    return _tidy(data, _summarize3(items));
+    return tidy(data, _summarize3(items));
   },
   summarize_by_group: function summarize_by_group(props) {
     var column = props.column,
@@ -3074,7 +3094,7 @@ var handlers = {
 
     var items = {};
     items[column] = summarizer(column);
-    return _tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
     groupBy(by, [_summarize3(summarizer)]));
   },
   count: function count(props) {
@@ -3082,7 +3102,7 @@ var handlers = {
         data = props.data;
     if (!column) return data; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-    return _tidy(data, count$1(column, {
+    return tidy(data, count$1(column, {
       name: "count"
     }));
   },
@@ -3154,18 +3174,14 @@ var handlers = {
       intercept: linregmb.b.toFixed(3)
     }];
   },
-  tidy: function tidy(props) {
-    var data = props.data,
-        renaming = props.renaming;
-    var labels = Object.keys(renaming); // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // todo handle time
-
+  slice: function slice(props) {
+    var data = props.data;
     var _index = 0;
-    var tidied = data ? _tidy(data, props.sliceHead ? sliceHead(props.sliceHead) : undefined, props.sliceTail ? sliceTail(props.sliceTail) : undefined, props.sliceMin ? sliceMin(props.sliceMin, props.sliceColumn) : undefined, props.sliceMax ? sliceMax(props.sliceMax, props.sliceColumn) : undefined, mutate({
+    var tidied = data ? tidy(data, props.sliceHead ? sliceHead(props.sliceHead) : undefined, props.sliceTail ? sliceTail(props.sliceTail) : undefined, props.sliceSample ? sliceSample(props.sliceSample) : undefined, props.sliceMin ? sliceMin(props.sliceMin, props.sliceColumn) : undefined, props.sliceMax ? sliceMax(props.sliceMax, props.sliceColumn) : undefined, mutate({
       index: function index() {
         return _index++;
       }
-    }), _select2(labels), rename(renaming)) : [];
+    })) : [];
     return tidied;
   }
 };
