@@ -69795,7 +69795,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "31f7a031e9bc8239b81bd9e4ebee5dd3e6293240";
+  var sha = "2f84c739a7f68e3989e97e3380e012b26d2f515e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -79303,10 +79303,14 @@ var bus = cachedBus() || createBus();
 
 function useChange(node, query, deps) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((node === null || node === void 0 ? void 0 : node.changeId) || 0),
+      version = _useState[0],
       setVersion = _useState[1];
 
-  var value = query ? query(node) : undefined;
+  var value = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    return query ? query(node) : undefined;
+  }, [node, version]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setVersion((node === null || node === void 0 ? void 0 : node.changeId) || 0);
     return node === null || node === void 0 ? void 0 : node.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .CHANGE */ .Ver, function () {
       //console.log(`change ${node} ${version}->${node.changeId}`)
       setVersion(node.changeId);
@@ -79324,7 +79328,8 @@ function useChangeAsync(node, query, deps) {
       setValue = _useState3[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    return node === null || node === void 0 ? void 0 : node.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .CHANGE */ .Ver, function () {
+    setVersion((node === null || node === void 0 ? void 0 : node.changeId) || 0);
+    node === null || node === void 0 ? void 0 : node.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .CHANGE */ .Ver, function () {
       setVersion(node.changeId);
     });
   }, [node]);
