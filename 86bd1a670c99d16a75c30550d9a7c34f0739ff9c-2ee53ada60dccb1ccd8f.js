@@ -10547,7 +10547,7 @@ var dataDsl = {
         name: "logic",
         options: [[">", "gt"], ["<", "lt"], [">=", "ge"], ["<=", "le"], ["==", "eq"], ["!=", "ne"]]
       }, {
-        type: "field_number",
+        type: "field_input",
         name: "rhs"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
