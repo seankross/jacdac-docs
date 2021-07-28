@@ -162,7 +162,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "/jacdac-docs/tools/data-science/"
+    "href": "/jacdac-docs/tools/data/"
   }, "data science"), ", block coding for data science")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "integration-points",
     "style": {
