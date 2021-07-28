@@ -10397,6 +10397,9 @@ var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)(),
     statisticsColour = _palette[3];
 
 var dataVariablesColour = "%{BKY_VARIABLES_HUE}";
+var calcOptions = ["average", "median", "min", "max", "sum", "deviation", "variance"].map(function (n) {
+  return [n, n];
+});
 var dataDsl = {
   id: "dataScience",
   createBlocks: function createBlocks() {
@@ -10421,6 +10424,7 @@ var dataDsl = {
         var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
         var order = b.getFieldValue("order");
         var descending = order === "descending";
+        if (!column) return Promise.resolve(data);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "arrange",
           column: column,
@@ -10447,13 +10451,13 @@ var dataDsl = {
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       dataPreviewField: true,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3].map(function (column) {
           return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
+        if (!(columns !== null && columns !== void 0 && columns.length)) return Promise.resolve(data);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "drop",
           columns: columns,
@@ -10482,13 +10486,13 @@ var dataDsl = {
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       dataPreviewField: true,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3, 4].map(function (column) {
           return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
+        if (!(columns !== null && columns !== void 0 && columns.length)) return Promise.resolve(data);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "select",
           columns: columns,
@@ -10515,7 +10519,6 @@ var dataDsl = {
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       dataPreviewField: true,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var columns = [1, 2].map(function (column) {
           return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
@@ -10523,6 +10526,7 @@ var dataDsl = {
           return !!c;
         });
         var logic = b.getFieldValue("logic");
+        if (columns.length !== 2) return Promise.resolve(data);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "filter_columns",
           columns: columns,
@@ -10550,11 +10554,11 @@ var dataDsl = {
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       dataPreviewField: true,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
         var logic = b.getFieldValue("logic");
         var rhs = b.getFieldValue("rhs");
+        if (!column) return Promise.resolve(data);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "filter_string",
           column: column,
@@ -10574,24 +10578,26 @@ var dataDsl = {
         name: "newcolumn"
       }, {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
-        name: "lhs"
+        name: "lhs",
+        dataType: "number"
       }, {
         type: "field_dropdown",
         name: "logic",
         options: [["+", "plus"], ["-", "minus"], ["*", "mult"], ["/", "div"], [">", "gt"], ["<", "lt"], [">=", "ge"], ["<=", "le"], ["==", "eq"], ["!=", "ne"]]
       }, {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
-        name: "rhs"
+        name: "rhs",
+        dataType: "number"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       dataPreviewField: true,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
-        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs");
-        var rhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "rhs");
+        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
+        var rhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "rhs", "number");
         var logic = b.getFieldValue("logic");
+        if (newcolumn || !lhs || !rhs) return Promise.resolve(data);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "mutate_columns",
           newcolumn: newcolumn,
@@ -10629,9 +10635,10 @@ var dataDsl = {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
-        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs");
+        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
         var rhs = b.getFieldValue("rhs");
         var logic = b.getFieldValue("logic");
+        if (newcolumn || !lhs) return Promise.resolve(data);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "mutate_number",
           newcolumn: newcolumn,
@@ -10654,7 +10661,7 @@ var dataDsl = {
       }, {
         type: "field_dropdown",
         name: "calc",
-        options: [["average", "average"], ["median", "med"], ["min", "min"], ["max", "max"]]
+        options: calcOptions
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -10685,7 +10692,7 @@ var dataDsl = {
       }, {
         type: "field_dropdown",
         name: "calc",
-        options: [["average", "average"], ["median", "med"], ["min", "min"], ["max", "max"]]
+        options: calcOptions
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -10695,6 +10702,7 @@ var dataDsl = {
         var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
         var by = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "by");
         var calc = b.getFieldValue("calc");
+        if (!by) return Promise.resolve([]);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "summarize_by_group",
           column: column,
@@ -10719,6 +10727,7 @@ var dataDsl = {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
+        if (!column) return Promise.resolve([]);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "count",
           column: column,
@@ -10755,7 +10764,7 @@ var dataDsl = {
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       colour: dataVariablesColour,
       template: "meta",
-      dataPreviewField: true,
+      dataPreviewField: "after",
       transformData: function transformData(block) {
         var services = block.jacdacServices;
         var data = services === null || services === void 0 ? void 0 : services.data;
@@ -10777,12 +10786,12 @@ var dataDsl = {
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       colour: dataVariablesColour,
       template: "meta",
-      dataPreviewField: true,
-      transformData: function transformData(block, data) {
+      dataPreviewField: "after",
+      transformData: function transformData(b, data) {
         // grab the variable from the block
-        var variable = block.getFieldValue("data");
+        var variable = b.getFieldValue("data");
         if (!variable) return Promise.resolve(undefined);
-        var readBlocks = block.workspace.getBlocksByType(DATA_DATAVARIABLE_READ_BLOCK, false);
+        var readBlocks = b.workspace.getBlocksByType(DATA_DATAVARIABLE_READ_BLOCK, false);
         var readServices = readBlocks.filter(function (b) {
           return b.isEnabled();
         }).filter(function (b) {
@@ -10813,20 +10822,29 @@ var dataDsl = {
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
-        var _transformData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(block, data) {
+        var _transformData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(b, data) {
           var column;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  column = block.getFieldValue("column");
+                  column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column", "number");
+
+                  if (column) {
+                    _context.next = 3;
+                    break;
+                  }
+
+                  return _context.abrupt("return", Promise.resolve([]));
+
+                case 3:
                   return _context.abrupt("return", (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
                     type: "bin",
                     column: column,
                     data: data
                   }));
 
-                case 2:
+                case 4:
                 case "end":
                   return _context.stop();
               }
@@ -10860,14 +10878,23 @@ var dataDsl = {
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
-        var _transformData2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(block, data) {
+        var _transformData2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(b, data) {
           var column1, column2;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
-                  column1 = block.getFieldValue("column1");
-                  column2 = block.getFieldValue("column2");
+                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column1", "number");
+                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column2", "number");
+
+                  if (!(!column1 || !column2)) {
+                    _context2.next = 4;
+                    break;
+                  }
+
+                  return _context2.abrupt("return", Promise.resolve([]));
+
+                case 4:
                   return _context2.abrupt("return", (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
                     type: "correlation",
                     column1: column1,
@@ -10875,7 +10902,7 @@ var dataDsl = {
                     data: data
                   }));
 
-                case 3:
+                case 5:
                 case "end":
                   return _context2.stop();
               }
@@ -10909,14 +10936,23 @@ var dataDsl = {
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
-        var _transformData3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(block, data) {
+        var _transformData3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(b, data) {
           var column1, column2;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
             while (1) {
               switch (_context3.prev = _context3.next) {
                 case 0:
-                  column1 = block.getFieldValue("column1");
-                  column2 = block.getFieldValue("column2");
+                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column1", "number");
+                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column2", "number");
+
+                  if (!(!column1 || !column2)) {
+                    _context3.next = 4;
+                    break;
+                  }
+
+                  return _context3.abrupt("return", Promise.resolve([]));
+
+                case 4:
                   return _context3.abrupt("return", (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
                     type: "linear_regression",
                     column1: column1,
@@ -10924,7 +10960,7 @@ var dataDsl = {
                     data: data
                   }));
 
-                case 3:
+                case 5:
                 case "end":
                   return _context3.stop();
               }
@@ -10965,7 +11001,7 @@ var dataDsl = {
       colour: datasetColour,
       template: "meta",
       inputsInline: false,
-      dataPreviewField: true,
+      dataPreviewField: "after",
       transformData: function () {
         var _transformData4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(block, data) {
           var file;
@@ -11918,7 +11954,6 @@ DataColumnChooserField.KEY = "jacdac_field_data_column_chooser";
 
 
 
-var MAX_ITEMS = 64;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 var DataPreviewField = /*#__PURE__*/function (_ReactField) {
@@ -11955,7 +11990,7 @@ var DataPreviewField = /*#__PURE__*/function (_ReactField) {
       tableHeight: 295,
       empty: "no data",
       transformed: false,
-      maxItems: MAX_ITEMS
+      maxItems: _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .TABLE_PREVIEW_MAX_ITEMS */ .Sw
     });
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
       container: true,
@@ -11971,7 +12006,7 @@ var DataPreviewField = /*#__PURE__*/function (_ReactField) {
       tableHeight: 295,
       empty: "no data",
       transformed: false,
-      maxItems: MAX_ITEMS
+      maxItems: _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .TABLE_PREVIEW_MAX_ITEMS */ .Sw
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
       item: true,
       xs: 6
@@ -11980,7 +12015,7 @@ var DataPreviewField = /*#__PURE__*/function (_ReactField) {
       tableHeight: 295,
       empty: "no data",
       transformed: true,
-      maxItems: MAX_ITEMS
+      maxItems: _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .TABLE_PREVIEW_MAX_ITEMS */ .Sw
     })));
   };
 
@@ -11991,7 +12026,9 @@ DataPreviewField.KEY = "jacdac_field_data_preview";
 DataPreviewField.EDITABLE = false;
 
 function addDataPreviewField(block) {
-  if (block !== null && block !== void 0 && block.dataPreviewField) {
+  var preview = block === null || block === void 0 ? void 0 : block.dataPreviewField;
+
+  if (preview) {
     // don't add twice
     block.dataPreviewField = false; // parse args and add one more arg
 
@@ -12000,7 +12037,7 @@ function addDataPreviewField(block) {
     var index = parseInt(message0.substr(i + 1));
     block.message0 += " %" + (index + 1); // does this mutate the data?
 
-    var identity = block.transformData === _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .identityTransformData */ .FW; // add field
+    var identity = preview === "after" || block.transformData === _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .identityTransformData */ .FW; // add field
 
     block.args0.push({
       type: DataPreviewField.KEY,
@@ -16726,6 +16763,7 @@ function tidyResolveFieldColumns(data, b, fieldName, type) {
 /* harmony export */   "Fh": function() { return /* binding */ CHART_HEIGHT; },
 /* harmony export */   "KH": function() { return /* binding */ TABLE_WIDTH; },
 /* harmony export */   "U2": function() { return /* binding */ TABLE_HEIGHT; },
+/* harmony export */   "Sw": function() { return /* binding */ TABLE_PREVIEW_MAX_ITEMS; },
 /* harmony export */   "nY": function() { return /* binding */ VM_WARNINGS_CATEGORY; },
 /* harmony export */   "FD": function() { return /* binding */ JSON_WARNINGS_CATEGORY; },
 /* harmony export */   "j2": function() { return /* binding */ visitToolbox; }
@@ -16781,6 +16819,7 @@ var CHART_WIDTH = 388;
 var CHART_HEIGHT = 240;
 var TABLE_WIDTH = CHART_WIDTH;
 var TABLE_HEIGHT = 480;
+var TABLE_PREVIEW_MAX_ITEMS = 48;
 var ANIMATE_MAX_ITEMS = 128;
 var PIE_MAX_ITEMS = 12;
 var BAR_MAX_ITEMS = (/* unused pure expression or super */ null && (1 << 10));

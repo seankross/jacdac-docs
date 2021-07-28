@@ -806,6 +806,62 @@ function numbers(values, valueof) {
       }
     }
   }, _marked, null, [[2, 13, 16, 19], [23, 34, 37, 40]]);
+}
+
+function variance$1(values, valueof) {
+  var count = 0;
+  var delta;
+  var mean = 0;
+  var sum = 0;
+
+  if (valueof === undefined) {
+    var _iterator3 = _createForOfIteratorHelper(values),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var value = _step3.value;
+
+        if (value != null && (value = +value) >= value) {
+          delta = value - mean;
+          mean += delta / ++count;
+          sum += delta * (value - mean);
+        }
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+  } else {
+    var index = -1;
+
+    var _iterator4 = _createForOfIteratorHelper(values),
+        _step4;
+
+    try {
+      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+        var _value2 = _step4.value;
+
+        if ((_value2 = valueof(_value2, ++index, values)) != null && (_value2 = +_value2) >= _value2) {
+          delta = _value2 - mean;
+          mean += delta / ++count;
+          sum += delta * (_value2 - mean);
+        }
+      }
+    } catch (err) {
+      _iterator4.e(err);
+    } finally {
+      _iterator4.f();
+    }
+  }
+
+  if (count > 1) return sum / (count - 1);
+}
+
+function deviation$1(values, valueof) {
+  var v = variance$1(values, valueof);
+  return v ? Math.sqrt(v) : v;
 } // https://github.com/python/cpython/blob/a74eea238f5baba15797e2e8b570d153bc8690a7/Modules/mathmodule.c#L1423
 
 
@@ -876,40 +932,40 @@ function fsum(values, valueof) {
   var adder = new Adder();
 
   if (valueof === undefined) {
-    var _iterator3 = _createForOfIteratorHelper(values),
-        _step3;
+    var _iterator5 = _createForOfIteratorHelper(values),
+        _step5;
 
     try {
-      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-        var value = _step3.value;
+      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+        var value = _step5.value;
 
         if (value = +value) {
           adder.add(value);
         }
       }
     } catch (err) {
-      _iterator3.e(err);
+      _iterator5.e(err);
     } finally {
-      _iterator3.f();
+      _iterator5.f();
     }
   } else {
     var index = -1;
 
-    var _iterator4 = _createForOfIteratorHelper(values),
-        _step4;
+    var _iterator6 = _createForOfIteratorHelper(values),
+        _step6;
 
     try {
-      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-        var _value2 = _step4.value;
+      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+        var _value3 = _step6.value;
 
-        if (_value2 = +valueof(_value2, ++index, values)) {
-          adder.add(_value2);
+        if (_value3 = +valueof(_value3, ++index, values)) {
+          adder.add(_value3);
         }
       }
     } catch (err) {
-      _iterator4.e(err);
+      _iterator6.e(err);
     } finally {
-      _iterator4.f();
+      _iterator6.f();
     }
   }
 
@@ -941,21 +997,21 @@ var InternMap = /*#__PURE__*/function (_Map) {
     });
 
     if (entries != null) {
-      var _iterator5 = _createForOfIteratorHelper(entries),
-          _step5;
+      var _iterator7 = _createForOfIteratorHelper(entries),
+          _step7;
 
       try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var _step5$value = _slicedToArray(_step5.value, 2),
-              _key2 = _step5$value[0],
-              value = _step5$value[1];
+        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+          var _step7$value = _slicedToArray(_step7.value, 2),
+              _key2 = _step7$value[0],
+              value = _step7$value[1];
 
           _this.set(_key2, value);
         }
       } catch (err) {
-        _iterator5.e(err);
+        _iterator7.e(err);
       } finally {
-        _iterator5.f();
+        _iterator7.f();
       }
     }
 
@@ -1047,12 +1103,12 @@ function nest(values, map, reduce, keys) {
     var keyof = keys[i++];
     var index = -1;
 
-    var _iterator6 = _createForOfIteratorHelper(values),
-        _step6;
+    var _iterator8 = _createForOfIteratorHelper(values),
+        _step8;
 
     try {
-      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-        var value = _step6.value;
+      for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+        var value = _step8.value;
         var key = keyof(value, ++index, values);
 
         var _group = groups.get(key);
@@ -1060,26 +1116,26 @@ function nest(values, map, reduce, keys) {
         if (_group) _group.push(value);else groups.set(key, [value]);
       }
     } catch (err) {
-      _iterator6.e(err);
+      _iterator8.e(err);
     } finally {
-      _iterator6.f();
+      _iterator8.f();
     }
 
-    var _iterator7 = _createForOfIteratorHelper(groups),
-        _step7;
+    var _iterator9 = _createForOfIteratorHelper(groups),
+        _step9;
 
     try {
-      for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-        var _step7$value = _slicedToArray(_step7.value, 2),
-            _key5 = _step7$value[0],
-            _values = _step7$value[1];
+      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+        var _step9$value = _slicedToArray(_step9.value, 2),
+            _key5 = _step9$value[0],
+            _values = _step9$value[1];
 
         groups.set(_key5, regroup(_values, i));
       }
     } catch (err) {
-      _iterator7.e(err);
+      _iterator9.e(err);
     } finally {
-      _iterator7.f();
+      _iterator9.f();
     }
 
     return map(groups);
@@ -1090,50 +1146,6 @@ function max$1(values, valueof) {
   var max;
 
   if (valueof === undefined) {
-    var _iterator8 = _createForOfIteratorHelper(values),
-        _step8;
-
-    try {
-      for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-        var value = _step8.value;
-
-        if (value != null && (max < value || max === undefined && value >= value)) {
-          max = value;
-        }
-      }
-    } catch (err) {
-      _iterator8.e(err);
-    } finally {
-      _iterator8.f();
-    }
-  } else {
-    var index = -1;
-
-    var _iterator9 = _createForOfIteratorHelper(values),
-        _step9;
-
-    try {
-      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
-        var _value3 = _step9.value;
-
-        if ((_value3 = valueof(_value3, ++index, values)) != null && (max < _value3 || max === undefined && _value3 >= _value3)) {
-          max = _value3;
-        }
-      }
-    } catch (err) {
-      _iterator9.e(err);
-    } finally {
-      _iterator9.f();
-    }
-  }
-
-  return max;
-}
-
-function min$1(values, valueof) {
-  var min;
-
-  if (valueof === undefined) {
     var _iterator10 = _createForOfIteratorHelper(values),
         _step10;
 
@@ -1141,8 +1153,8 @@ function min$1(values, valueof) {
       for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
         var value = _step10.value;
 
-        if (value != null && (min > value || min === undefined && value >= value)) {
-          min = value;
+        if (value != null && (max < value || max === undefined && value >= value)) {
+          max = value;
         }
       }
     } catch (err) {
@@ -1160,14 +1172,58 @@ function min$1(values, valueof) {
       for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
         var _value4 = _step11.value;
 
-        if ((_value4 = valueof(_value4, ++index, values)) != null && (min > _value4 || min === undefined && _value4 >= _value4)) {
-          min = _value4;
+        if ((_value4 = valueof(_value4, ++index, values)) != null && (max < _value4 || max === undefined && _value4 >= _value4)) {
+          max = _value4;
         }
       }
     } catch (err) {
       _iterator11.e(err);
     } finally {
       _iterator11.f();
+    }
+  }
+
+  return max;
+}
+
+function min$1(values, valueof) {
+  var min;
+
+  if (valueof === undefined) {
+    var _iterator12 = _createForOfIteratorHelper(values),
+        _step12;
+
+    try {
+      for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
+        var value = _step12.value;
+
+        if (value != null && (min > value || min === undefined && value >= value)) {
+          min = value;
+        }
+      }
+    } catch (err) {
+      _iterator12.e(err);
+    } finally {
+      _iterator12.f();
+    }
+  } else {
+    var index = -1;
+
+    var _iterator13 = _createForOfIteratorHelper(values),
+        _step13;
+
+    try {
+      for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
+        var _value5 = _step13.value;
+
+        if ((_value5 = valueof(_value5, ++index, values)) != null && (min > _value5 || min === undefined && _value5 >= _value5)) {
+          min = _value5;
+        }
+      }
+    } catch (err) {
+      _iterator13.e(err);
+    } finally {
+      _iterator13.f();
     }
   }
 
@@ -1248,19 +1304,19 @@ function _arrange2(comparators) {
       return typeof comp === "function" ? comp : asc(comp);
     });
     return items.slice().sort(function (a, b) {
-      var _iterator12 = _createForOfIteratorHelper(comparatorFns),
-          _step12;
+      var _iterator14 = _createForOfIteratorHelper(comparatorFns),
+          _step14;
 
       try {
-        for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
-          var comparator = _step12.value;
+        for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
+          var comparator = _step14.value;
           var result = comparator(a, b);
           if (result) return result;
         }
       } catch (err) {
-        _iterator12.e(err);
+        _iterator14.e(err);
       } finally {
-        _iterator12.f();
+        _iterator14.f();
       }
 
       return 0;
@@ -1349,12 +1405,12 @@ function mutate(mutateSpec) {
   var _mutate = function _mutate(items) {
     var mutatedItems = [];
 
-    var _iterator13 = _createForOfIteratorHelper(items),
-        _step13;
+    var _iterator15 = _createForOfIteratorHelper(items),
+        _step15;
 
     try {
-      for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
-        var item = _step13.value;
+      for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+        var item = _step15.value;
 
         var mutatedItem = _extends({}, item);
 
@@ -1367,9 +1423,9 @@ function mutate(mutateSpec) {
         mutatedItems.push(mutatedItem);
       }
     } catch (err) {
-      _iterator13.e(err);
+      _iterator15.e(err);
     } finally {
-      _iterator13.f();
+      _iterator15.f();
     }
 
     return mutatedItems;
@@ -1389,14 +1445,14 @@ function assignGroupKeys(d, keys) {
 function groupTraversal(grouped, outputGrouped, keys, addSubgroup, addLeaves) {
   var level = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
 
-  var _iterator14 = _createForOfIteratorHelper(grouped.entries()),
-      _step14;
+  var _iterator16 = _createForOfIteratorHelper(grouped.entries()),
+      _step16;
 
   try {
-    for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
-      var _step14$value = _slicedToArray(_step14.value, 2),
-          key = _step14$value[0],
-          value = _step14$value[1];
+    for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+      var _step16$value = _slicedToArray(_step16.value, 2),
+          key = _step16$value[0],
+          value = _step16$value[1];
 
       var keysHere = [].concat(_toConsumableArray(keys), [key]);
 
@@ -1408,9 +1464,9 @@ function groupTraversal(grouped, outputGrouped, keys, addSubgroup, addLeaves) {
       }
     }
   } catch (err) {
-    _iterator14.e(err);
+    _iterator16.e(err);
   } finally {
-    _iterator14.f();
+    _iterator16.f();
   }
 
   return outputGrouped;
@@ -1533,12 +1589,12 @@ function runFlow(items, fns, addGroupKeys) {
   var result = items;
   if (!(fns == null ? void 0 : fns.length)) return result;
 
-  var _iterator15 = _createForOfIteratorHelper(fns),
-      _step15;
+  var _iterator17 = _createForOfIteratorHelper(fns),
+      _step17;
 
   try {
     var _loop = function _loop() {
-      var fn = _step15.value;
+      var fn = _step17.value;
       if (!fn) return "continue";
       result = groupMap(result, function (items2, keys) {
         var context = {
@@ -1556,15 +1612,15 @@ function runFlow(items, fns, addGroupKeys) {
       });
     };
 
-    for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+    for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
       var _ret = _loop();
 
       if (_ret === "continue") continue;
     }
   } catch (err) {
-    _iterator15.e(err);
+    _iterator17.e(err);
   } finally {
-    _iterator15.f();
+    _iterator17.f();
   }
 
   return result;
@@ -1658,12 +1714,12 @@ function exportLevels(grouped, options) {
       levels = _options$levels === void 0 ? ["entries"] : _options$levels;
   var levelSpecs = [];
 
-  var _iterator16 = _createForOfIteratorHelper(levels),
-      _step16;
+  var _iterator18 = _createForOfIteratorHelper(levels),
+      _step18;
 
   try {
-    for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
-      var levelOption = _step16.value;
+    for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
+      var levelOption = _step18.value;
 
       switch (levelOption) {
         case "entries":
@@ -1769,9 +1825,9 @@ function exportLevels(grouped, options) {
       }
     }
   } catch (err) {
-    _iterator16.e(err);
+    _iterator18.e(err);
   } finally {
-    _iterator16.f();
+    _iterator18.f();
   }
 
   var addSubgroup = function addSubgroup(parentGrouped, keys, level) {
@@ -1914,12 +1970,12 @@ function everything() {
 function processSelectors(items, selectKeys) {
   var processedSelectKeys = [];
 
-  var _iterator17 = _createForOfIteratorHelper(singleOrArray(selectKeys)),
-      _step17;
+  var _iterator19 = _createForOfIteratorHelper(singleOrArray(selectKeys)),
+      _step19;
 
   try {
-    for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
-      var keyInput = _step17.value;
+    for (_iterator19.s(); !(_step19 = _iterator19.n()).done;) {
+      var keyInput = _step19.value;
 
       if (typeof keyInput === "function") {
         var _processedSelectKeys;
@@ -1930,9 +1986,9 @@ function processSelectors(items, selectKeys) {
       }
     }
   } catch (err) {
-    _iterator17.e(err);
+    _iterator19.e(err);
   } finally {
-    _iterator17.f();
+    _iterator19.f();
   }
 
   if (processedSelectKeys.length && processedSelectKeys[0][0] === "-") {
@@ -1969,18 +2025,18 @@ function _select2(selectKeys) {
     return items.map(function (d) {
       var mapped = {};
 
-      var _iterator18 = _createForOfIteratorHelper(processedSelectKeys),
-          _step18;
+      var _iterator20 = _createForOfIteratorHelper(processedSelectKeys),
+          _step20;
 
       try {
-        for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
-          var key = _step18.value;
+        for (_iterator20.s(); !(_step20 = _iterator20.n()).done;) {
+          var key = _step20.value;
           mapped[key] = d[key];
         }
       } catch (err) {
-        _iterator18.e(err);
+        _iterator20.e(err);
       } finally {
-        _iterator18.f();
+        _iterator20.f();
       }
 
       return mapped;
@@ -2037,6 +2093,24 @@ function median(key) {
   };
   return function (items) {
     return median$1(items, keyFn);
+  };
+}
+
+function deviation(key) {
+  var keyFn = typeof key === "function" ? key : function (d) {
+    return d[key];
+  };
+  return function (items) {
+    return deviation$1(items, keyFn);
+  };
+}
+
+function variance(key) {
+  var keyFn = typeof key === "function" ? key : function (d) {
+    return d[key];
+  };
+  return function (items) {
+    return variance$1(items, keyFn);
   };
 }
 
@@ -2112,51 +2186,6 @@ function count(values, valueof) {
   var count = 0;
 
   if (valueof === undefined) {
-    var _iterator19 = _createForOfIteratorHelper(values),
-        _step19;
-
-    try {
-      for (_iterator19.s(); !(_step19 = _iterator19.n()).done;) {
-        var value = _step19.value;
-
-        if (value != null && (value = +value) >= value) {
-          ++count;
-        }
-      }
-    } catch (err) {
-      _iterator19.e(err);
-    } finally {
-      _iterator19.f();
-    }
-  } else {
-    var index = -1;
-
-    var _iterator20 = _createForOfIteratorHelper(values),
-        _step20;
-
-    try {
-      for (_iterator20.s(); !(_step20 = _iterator20.n()).done;) {
-        var _value5 = _step20.value;
-
-        if ((_value5 = valueof(_value5, ++index, values)) != null && (_value5 = +_value5) >= _value5) {
-          ++count;
-        }
-      }
-    } catch (err) {
-      _iterator20.e(err);
-    } finally {
-      _iterator20.f();
-    }
-  }
-
-  return count;
-}
-
-function extent(values, valueof) {
-  var min;
-  var max;
-
-  if (valueof === undefined) {
     var _iterator21 = _createForOfIteratorHelper(values),
         _step21;
 
@@ -2164,13 +2193,8 @@ function extent(values, valueof) {
       for (_iterator21.s(); !(_step21 = _iterator21.n()).done;) {
         var value = _step21.value;
 
-        if (value != null) {
-          if (min === undefined) {
-            if (value >= value) min = max = value;
-          } else {
-            if (min > value) min = value;
-            if (max < value) max = value;
-          }
+        if (value != null && (value = +value) >= value) {
+          ++count;
         }
       }
     } catch (err) {
@@ -2188,19 +2212,69 @@ function extent(values, valueof) {
       for (_iterator22.s(); !(_step22 = _iterator22.n()).done;) {
         var _value6 = _step22.value;
 
-        if ((_value6 = valueof(_value6, ++index, values)) != null) {
-          if (min === undefined) {
-            if (_value6 >= _value6) min = max = _value6;
-          } else {
-            if (min > _value6) min = _value6;
-            if (max < _value6) max = _value6;
-          }
+        if ((_value6 = valueof(_value6, ++index, values)) != null && (_value6 = +_value6) >= _value6) {
+          ++count;
         }
       }
     } catch (err) {
       _iterator22.e(err);
     } finally {
       _iterator22.f();
+    }
+  }
+
+  return count;
+}
+
+function extent(values, valueof) {
+  var min;
+  var max;
+
+  if (valueof === undefined) {
+    var _iterator23 = _createForOfIteratorHelper(values),
+        _step23;
+
+    try {
+      for (_iterator23.s(); !(_step23 = _iterator23.n()).done;) {
+        var value = _step23.value;
+
+        if (value != null) {
+          if (min === undefined) {
+            if (value >= value) min = max = value;
+          } else {
+            if (min > value) min = value;
+            if (max < value) max = value;
+          }
+        }
+      }
+    } catch (err) {
+      _iterator23.e(err);
+    } finally {
+      _iterator23.f();
+    }
+  } else {
+    var index = -1;
+
+    var _iterator24 = _createForOfIteratorHelper(values),
+        _step24;
+
+    try {
+      for (_iterator24.s(); !(_step24 = _iterator24.n()).done;) {
+        var _value7 = _step24.value;
+
+        if ((_value7 = valueof(_value7, ++index, values)) != null) {
+          if (min === undefined) {
+            if (_value7 >= _value7) min = max = _value7;
+          } else {
+            if (min > _value7) min = _value7;
+            if (max < _value7) max = _value7;
+          }
+        }
+      }
+    } catch (err) {
+      _iterator24.e(err);
+    } finally {
+      _iterator24.f();
     }
   }
 
@@ -2689,9 +2763,13 @@ function sampleCorrelation(x, y) {
 var _excluded = ["id", "worker", "data", "previousData"];
 var summarizers = {
   average: mean$1,
-  med: median,
+  mean: mean$1,
+  median: median,
   min: min,
-  max: max
+  max: max,
+  sum: sum$1,
+  deviation: deviation,
+  variance: variance
 }; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 var handlers = {
@@ -3004,7 +3082,9 @@ var handlers = {
         data = props.data;
     if (!column) return data; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-    return _tidy(data, count$1(column));
+    return _tidy(data, count$1(column, {
+      name: "count"
+    }));
   },
   record_window: function record_window(props) {
     var _previousData;
