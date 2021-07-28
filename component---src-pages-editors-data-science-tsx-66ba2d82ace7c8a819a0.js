@@ -1,6 +1,6 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[1323],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[1263],{
 
-/***/ 30321:
+/***/ 47181:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87,7 +87,7 @@ function DSBlockEditor() {
     dsls: dsls
   }, /*#__PURE__*/react.createElement(DSEditorWithContext, null)));
 }
-;// CONCATENATED MODULE: ./src/pages/tools/data-science-editor.tsx
+;// CONCATENATED MODULE: ./src/pages/editors/data-science.tsx
 
 
 function Page() {

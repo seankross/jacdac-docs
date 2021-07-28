@@ -1,4 +1,4 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[5917,274],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6942,274],{
 
 /***/ 66213:
 /***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
@@ -11906,26 +11906,37 @@ DataColumnChooserField.KEY = "jacdac_field_data_column_chooser";
 /* harmony export */   "Z": function() { return /* binding */ DataPreviewField; },
 /* harmony export */   "q": function() { return /* binding */ addDataPreviewField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _ReactField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(77576);
 /* harmony import */ var _DataTableWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(23785);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16582);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(80838);
 
 
 
 
-var MAX_ITEMS = 64; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
+
+var MAX_ITEMS = 64;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 var DataPreviewField = /*#__PURE__*/function (_ReactField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(DataPreviewField, _ReactField);
-
-  function DataPreviewField() {
-    return _ReactField.apply(this, arguments) || this;
-  }
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(DataPreviewField, _ReactField);
 
   DataPreviewField.fromJson = function fromJson(options) {
     return new DataPreviewField(options === null || options === void 0 ? void 0 : options.value, undefined, options);
-  };
+  } // the first argument is a dummy and never used
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function DataPreviewField(value, validator, options) {
+    var _this;
+
+    _this = _ReactField.call(this, value, validator, options) || this;
+    _this.compare = !!(options !== null && options !== void 0 && options.compare);
+    return _this;
+  }
 
   var _proto = DataPreviewField.prototype;
 
@@ -11940,12 +11951,37 @@ var DataPreviewField = /*#__PURE__*/function (_ReactField) {
   };
 
   _proto.renderField = function renderField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .DataTableWidget */ .g, {
+    if (!this.compare) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
+      tableHeight: 295,
+      empty: "no data",
+      transformed: false,
+      maxItems: MAX_ITEMS
+    });
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
+      container: true,
+      spacing: 1,
+      style: {
+        background: "#fff"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
+      item: true,
+      xs: 6
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
+      label: "before",
+      tableHeight: 295,
+      empty: "no data",
+      transformed: false,
+      maxItems: MAX_ITEMS
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
+      item: true,
+      xs: 6
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
+      label: "after",
       tableHeight: 295,
       empty: "no data",
       transformed: true,
       maxItems: MAX_ITEMS
-    });
+    })));
   };
 
   return DataPreviewField;
@@ -11962,11 +11998,14 @@ function addDataPreviewField(block) {
     var message0 = block.message0;
     var i = message0.lastIndexOf("%");
     var index = parseInt(message0.substr(i + 1));
-    block.message0 += " %" + (index + 1); // add field
+    block.message0 += " %" + (index + 1); // does this mutate the data?
+
+    var identity = block.transformData === _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .identityTransformData */ .FW; // add field
 
     block.args0.push({
       type: DataPreviewField.KEY,
-      name: "preview"
+      name: "preview",
+      compare: !identity
     });
   }
 
@@ -12016,7 +12055,7 @@ var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
   };
 
   _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .DataTableWidget */ .g, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
       maxItems: MAX_ITEMS
     });
   };
@@ -12037,7 +12076,7 @@ DataTableField.EDITABLE = false;
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "g": function() { return /* binding */ DataTableWidget; }
+  "Z": function() { return /* binding */ DataTableWidget; }
 });
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
@@ -12234,7 +12273,8 @@ var useStyles = (0,makeStyles/* default */.Z)(function () {
   };
 });
 function DataTableWidget(props) {
-  var transformed = props.transformed,
+  var label = props.label,
+      transformed = props.transformed,
       _props$tableHeight = props.tableHeight,
       tableHeight = _props$tableHeight === void 0 ? toolbox/* TABLE_HEIGHT */.U2 : _props$tableHeight,
       empty = props.empty,
@@ -12303,7 +12343,11 @@ function DataTableWidget(props) {
     justifyContent: "flex-start",
     alignItems: "center",
     spacing: 1
-  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, label && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    variant: "h6"
+  }, label)), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
   }, /*#__PURE__*/react.createElement(CopyButton, {
     size: "small",

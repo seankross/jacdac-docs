@@ -1,4 +1,4 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[1762],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[2186],{
 
 /***/ 62481:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
@@ -726,7 +726,7 @@ var VMExprEvaluator = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 24539:
+/***/ 37612:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7876,7 +7876,7 @@ function VMEditor() {
     dsls: dsls
   }, /*#__PURE__*/react.createElement(VMEditorWithContext, null)));
 }
-;// CONCATENATED MODULE: ./src/pages/tools/vm-editor.tsx
+;// CONCATENATED MODULE: ./src/pages/editors/vm.tsx
 
 
 function Page() {

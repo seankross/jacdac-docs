@@ -69795,7 +69795,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a3df7f6c72dcd524861535b5362930e3bbd98189";
+  var sha = "2950a16f17786f4a23c3b34add5187fca1bc766a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -69918,7 +69918,7 @@ var TableRow = __webpack_require__(99395);
 
 
 var CodeBlock = /*#__PURE__*/(0,react.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(274)]).then(__webpack_require__.bind(__webpack_require__, 50274));
+  return Promise.all(/* import() */[__webpack_require__.e(8100), __webpack_require__.e(6196), __webpack_require__.e(274)]).then(__webpack_require__.bind(__webpack_require__, 50274));
 });
 
 var _RandomGenerator = /*#__PURE__*/(0,react.lazy)(function () {
@@ -70333,7 +70333,7 @@ function OpenVMEditorButton(props) {
     title: "Block Editor",
     edge: "start",
     color: "inherit",
-    to: "/tools/vm-editor/"
+    to: "/editors/vm/"
   }, /*#__PURE__*/react.createElement(Extension/* default */.Z, null));
 }
 ;// CONCATENATED MODULE: ./src/components/layout.tsx
@@ -70632,7 +70632,7 @@ function LayoutWithContext(props) {
       frontmatter = _ref3.frontmatter;
 
   var makeCodeTool = /tools\/makecode-/.test(path);
-  var fullWidthTools = /^\/(tools\/(makecode-|vm-editor|data-science-editor)|dashboard)/.test(path);
+  var fullWidthTools = /^\/(editors\/|tools\/makecode-|dashboard)/.test(path);
 
   var _ref4 = frontmatter || {
     hideMainMenu: makeCodeTool,
@@ -81564,6 +81564,12 @@ exports.components = {
   "component---src-pages-dtmi-mdx": function componentSrcPagesDtmiMdx() {
     return __webpack_require__.e(/* import() | component---src-pages-dtmi-mdx */ 9901).then(__webpack_require__.bind(__webpack_require__, 7248));
   },
+  "component---src-pages-editors-data-science-tsx": function componentSrcPagesEditorsDataScienceTsx() {
+    return Promise.all(/* import() | component---src-pages-editors-data-science-tsx */[__webpack_require__.e(9978), __webpack_require__.e(8100), __webpack_require__.e(6196), __webpack_require__.e(6942), __webpack_require__.e(1263)]).then(__webpack_require__.bind(__webpack_require__, 47181));
+  },
+  "component---src-pages-editors-vm-tsx": function componentSrcPagesEditorsVmTsx() {
+    return Promise.all(/* import() | component---src-pages-editors-vm-tsx */[__webpack_require__.e(9978), __webpack_require__.e(8100), __webpack_require__.e(6196), __webpack_require__.e(6942), __webpack_require__.e(2186)]).then(__webpack_require__.bind(__webpack_require__, 37612));
+  },
   "component---src-pages-errors-mdx": function componentSrcPagesErrorsMdx() {
     return __webpack_require__.e(/* import() | component---src-pages-errors-mdx */ 4198).then(__webpack_require__.bind(__webpack_require__, 31502));
   },
@@ -81607,16 +81613,13 @@ exports.components = {
     return Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(6559), __webpack_require__.e(1326), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 67396));
   },
   "component---src-pages-tools-azure-device-twin-designer-tsx": function componentSrcPagesToolsAzureDeviceTwinDesignerTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-azure-device-twin-designer-tsx */[__webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(2460), __webpack_require__.e(3420)]).then(__webpack_require__.bind(__webpack_require__, 95522));
+    return Promise.all(/* import() | component---src-pages-tools-azure-device-twin-designer-tsx */[__webpack_require__.e(8100), __webpack_require__.e(6196), __webpack_require__.e(2460), __webpack_require__.e(3420)]).then(__webpack_require__.bind(__webpack_require__, 95522));
   },
   "component---src-pages-tools-collector-tsx": function componentSrcPagesToolsCollectorTsx() {
     return Promise.all(/* import() | component---src-pages-tools-collector-tsx */[__webpack_require__.e(6559), __webpack_require__.e(8814)]).then(__webpack_require__.bind(__webpack_require__, 21586));
   },
   "component---src-pages-tools-commissioner-tsx": function componentSrcPagesToolsCommissionerTsx() {
     return __webpack_require__.e(/* import() | component---src-pages-tools-commissioner-tsx */ 1322).then(__webpack_require__.bind(__webpack_require__, 7877));
-  },
-  "component---src-pages-tools-data-science-editor-tsx": function componentSrcPagesToolsDataScienceEditorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-data-science-editor-tsx */[__webpack_require__.e(9978), __webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(5917), __webpack_require__.e(1323)]).then(__webpack_require__.bind(__webpack_require__, 30321));
   },
   "component---src-pages-tools-device-registration-tsx": function componentSrcPagesToolsDeviceRegistrationTsx() {
     return Promise.all(/* import() | component---src-pages-tools-device-registration-tsx */[__webpack_require__.e(6559), __webpack_require__.e(7788), __webpack_require__.e(9231)]).then(__webpack_require__.bind(__webpack_require__, 61725));
@@ -81649,7 +81652,7 @@ exports.components = {
     return Promise.all(/* import() | component---src-pages-tools-model-uploader-tsx */[__webpack_require__.e(6559), __webpack_require__.e(5637)]).then(__webpack_require__.bind(__webpack_require__, 46905));
   },
   "component---src-pages-tools-packet-inspector-tsx": function componentSrcPagesToolsPacketInspectorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-packet-inspector-tsx */[__webpack_require__.e(6559), __webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(7617), __webpack_require__.e(2937)]).then(__webpack_require__.bind(__webpack_require__, 55662));
+    return Promise.all(/* import() | component---src-pages-tools-packet-inspector-tsx */[__webpack_require__.e(6559), __webpack_require__.e(8100), __webpack_require__.e(6196), __webpack_require__.e(7617), __webpack_require__.e(2937)]).then(__webpack_require__.bind(__webpack_require__, 55662));
   },
   "component---src-pages-tools-peers-tsx": function componentSrcPagesToolsPeersTsx() {
     return __webpack_require__.e(/* import() | component---src-pages-tools-peers-tsx */ 6992).then(__webpack_require__.bind(__webpack_require__, 27238));
@@ -81658,7 +81661,7 @@ exports.components = {
     return __webpack_require__.e(/* import() | component---src-pages-tools-player-mdx */ 5347).then(__webpack_require__.bind(__webpack_require__, 28455));
   },
   "component---src-pages-tools-prototest-tsx": function componentSrcPagesToolsPrototestTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-prototest-tsx */[__webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(5437)]).then(__webpack_require__.bind(__webpack_require__, 50381));
+    return Promise.all(/* import() | component---src-pages-tools-prototest-tsx */[__webpack_require__.e(8100), __webpack_require__.e(6196), __webpack_require__.e(5437)]).then(__webpack_require__.bind(__webpack_require__, 50381));
   },
   "component---src-pages-tools-qr-silk-tsx": function componentSrcPagesToolsQrSilkTsx() {
     return __webpack_require__.e(/* import() | component---src-pages-tools-qr-silk-tsx */ 4602).then(__webpack_require__.bind(__webpack_require__, 93081));
@@ -81667,10 +81670,10 @@ exports.components = {
     return __webpack_require__.e(/* import() | component---src-pages-tools-release-assets-tsx */ 9225).then(__webpack_require__.bind(__webpack_require__, 71044));
   },
   "component---src-pages-tools-service-editor-tsx": function componentSrcPagesToolsServiceEditorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-service-editor-tsx */[__webpack_require__.e(6559), __webpack_require__.e(701), __webpack_require__.e(7617), __webpack_require__.e(2219)]).then(__webpack_require__.bind(__webpack_require__, 37207));
+    return Promise.all(/* import() | component---src-pages-tools-service-editor-tsx */[__webpack_require__.e(6559), __webpack_require__.e(8100), __webpack_require__.e(7617), __webpack_require__.e(2219)]).then(__webpack_require__.bind(__webpack_require__, 37207));
   },
   "component---src-pages-tools-service-test-editor-tsx": function componentSrcPagesToolsServiceTestEditorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-service-test-editor-tsx */[__webpack_require__.e(6559), __webpack_require__.e(701), __webpack_require__.e(9871), __webpack_require__.e(5910), __webpack_require__.e(6091)]).then(__webpack_require__.bind(__webpack_require__, 21838));
+    return Promise.all(/* import() | component---src-pages-tools-service-test-editor-tsx */[__webpack_require__.e(6559), __webpack_require__.e(8100), __webpack_require__.e(9871), __webpack_require__.e(5910), __webpack_require__.e(6091)]).then(__webpack_require__.bind(__webpack_require__, 21838));
   },
   "component---src-pages-tools-service-test-tsx": function componentSrcPagesToolsServiceTestTsx() {
     return Promise.all(/* import() | component---src-pages-tools-service-test-tsx */[__webpack_require__.e(6559), __webpack_require__.e(9871), __webpack_require__.e(5910), __webpack_require__.e(3919)]).then(__webpack_require__.bind(__webpack_require__, 26651));
@@ -81679,10 +81682,7 @@ exports.components = {
     return Promise.all(/* import() | component---src-pages-tools-settings-tsx */[__webpack_require__.e(6559), __webpack_require__.e(5560)]).then(__webpack_require__.bind(__webpack_require__, 360));
   },
   "component---src-pages-tools-updater-tsx": function componentSrcPagesToolsUpdaterTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-updater-tsx */[__webpack_require__.e(6559), __webpack_require__.e(5224), __webpack_require__.e(7788), __webpack_require__.e(5092), __webpack_require__.e(6366)]).then(__webpack_require__.bind(__webpack_require__, 5179));
-  },
-  "component---src-pages-tools-vm-editor-tsx": function componentSrcPagesToolsVmEditorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-vm-editor-tsx */[__webpack_require__.e(9978), __webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(5917), __webpack_require__.e(1762)]).then(__webpack_require__.bind(__webpack_require__, 24539));
+    return Promise.all(/* import() | component---src-pages-tools-updater-tsx */[__webpack_require__.e(6559), __webpack_require__.e(6196), __webpack_require__.e(7788), __webpack_require__.e(5092), __webpack_require__.e(6366)]).then(__webpack_require__.bind(__webpack_require__, 5179));
   },
   "component---src-pages-traces-mdx": function componentSrcPagesTracesMdx() {
     return __webpack_require__.e(/* import() | component---src-pages-traces-mdx */ 1356).then(__webpack_require__.bind(__webpack_require__, 23478));
@@ -81691,7 +81691,7 @@ exports.components = {
     return __webpack_require__.e(/* import() | component---src-templates-device-company-tsx */ 20).then(__webpack_require__.bind(__webpack_require__, 96557));
   },
   "component---src-templates-device-tsx": function componentSrcTemplatesDeviceTsx() {
-    return Promise.all(/* import() | component---src-templates-device-tsx */[__webpack_require__.e(701), __webpack_require__.e(5224), __webpack_require__.e(7788), __webpack_require__.e(2460), __webpack_require__.e(5092), __webpack_require__.e(8323)]).then(__webpack_require__.bind(__webpack_require__, 10454));
+    return Promise.all(/* import() | component---src-templates-device-tsx */[__webpack_require__.e(8100), __webpack_require__.e(6196), __webpack_require__.e(7788), __webpack_require__.e(2460), __webpack_require__.e(5092), __webpack_require__.e(8323)]).then(__webpack_require__.bind(__webpack_require__, 10454));
   },
   "component---src-templates-service-playground-tsx": function componentSrcTemplatesServicePlaygroundTsx() {
     return Promise.all(/* import() | component---src-templates-service-playground-tsx */[__webpack_require__.e(6559), __webpack_require__.e(7617), __webpack_require__.e(6540)]).then(__webpack_require__.bind(__webpack_require__, 97230));
