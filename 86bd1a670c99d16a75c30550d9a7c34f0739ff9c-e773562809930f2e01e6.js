@@ -10547,7 +10547,7 @@ var dataDsl = {
         name: "logic",
         options: [[">", "gt"], ["<", "lt"], [">=", "ge"], ["<=", "le"], ["==", "eq"], ["!=", "ne"]]
       }, {
-        type: "field_input",
+        type: "field_number",
         name: "rhs"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -10625,8 +10625,7 @@ var dataDsl = {
         options: [["+", "plus"], ["-", "minus"], ["*", "mult"], ["/", "div"], [">", "gt"], ["<", "lt"], [">=", "ge"], ["<=", "le"], ["==", "eq"], ["!=", "ne"]]
       }, {
         type: "field_number",
-        name: "rhs",
-        dataType: "number"
+        name: "rhs"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
