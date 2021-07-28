@@ -6646,6 +6646,8 @@ var LogViewField = __webpack_require__(86899);
 var VariablesFields = __webpack_require__(15757);
 // EXTERNAL MODULE: ./src/components/blockly/fields/WatchValueField.tsx
 var WatchValueField = __webpack_require__(2006);
+// EXTERNAL MODULE: ./src/components/blockly/dsl/workers/data.proxy.ts
+var data_proxy = __webpack_require__(21190);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/toolsdsl.ts
 
 
@@ -6653,10 +6655,14 @@ var WatchValueField = __webpack_require__(2006);
 
 
 
-var WATCH_BLOCK = "jacdac_tools_watch";
-var LOG_BLOCK = "jacdac_tools_log";
-var VIEW_LOG_BLOCK = "jacdac_tools_log_view";
-var VARIABLES_BLOCK = "jacdac_variables_view";
+
+
+
+var WATCH_BLOCK = "tools_watch";
+var LOG_BLOCK = "tools_log";
+var VIEW_LOG_BLOCK = "tools_log_view";
+var VARIABLES_BLOCK = "tools_variables_view";
+var RECORD_WINDOW_BLOCK = "tools_record_window";
 var colour = toolbox/* toolsColour */.FR;
 var toolsDSL = {
   id: "tools",
@@ -6721,6 +6727,50 @@ var toolsDSL = {
       inputsInline: false,
       tooltip: "View console content",
       template: "meta"
+    }, {
+      kind: "block",
+      type: RECORD_WINDOW_BLOCK,
+      message0: "record last %1 s",
+      args0: [{
+        type: "field_number",
+        name: "horizon",
+        value: 10
+      }],
+      inputsInline: false,
+      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      colour: colour,
+      template: "meta",
+      dataPreviewField: true,
+      transformData: function () {
+        var _transformData = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(block, data, previousData) {
+          var horizon;
+          return regenerator_default().wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  horizon = block.getFieldValue("horizon") || 10;
+                  return _context.abrupt("return", (0,data_proxy/* default */.Z)({
+                    type: "record_window",
+                    data: data,
+                    previousData: previousData,
+                    horizon: horizon
+                  }));
+
+                case 2:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+
+        function transformData(_x, _x2, _x3) {
+          return _transformData.apply(this, arguments);
+        }
+
+        return transformData;
+      }()
     }];
   },
   createCategory: function createCategory() {
@@ -6752,6 +6802,9 @@ var toolsDSL = {
       }, {
         kind: "block",
         type: VIEW_LOG_BLOCK
+      }, {
+        kind: "block",
+        type: RECORD_WINDOW_BLOCK
       }]
     }, {
       kind: "sep"
@@ -7627,8 +7680,8 @@ var jsonDSL = {
 /* harmony default export */ var jsondsl = (jsonDSL);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/chartdsl.ts
 var chartdsl = __webpack_require__(57611);
-// EXTERNAL MODULE: ./src/components/blockly/dsl/datadsl.ts + 1 modules
-var datadsl = __webpack_require__(79018);
+// EXTERNAL MODULE: ./src/components/blockly/dsl/datadsl.ts
+var datadsl = __webpack_require__(73595);
 // EXTERNAL MODULE: ./src/components/blockly/fields/DataColumnChooserField.ts
 var DataColumnChooserField = __webpack_require__(44393);
 // EXTERNAL MODULE: ./src/components/blockly/fields/GaugeWidgetField.tsx + 22 modules

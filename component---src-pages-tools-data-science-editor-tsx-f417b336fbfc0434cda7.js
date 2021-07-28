@@ -28,8 +28,8 @@ var BlockDiagnostics = __webpack_require__(9370);
 var BlockEditor = __webpack_require__(81753);
 // EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx + 2 modules
 var FileTabs = __webpack_require__(69469);
-// EXTERNAL MODULE: ./src/components/blockly/dsl/datadsl.ts + 1 modules
-var datadsl = __webpack_require__(79018);
+// EXTERNAL MODULE: ./src/components/blockly/dsl/datadsl.ts
+var datadsl = __webpack_require__(73595);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/chartdsl.ts
 var chartdsl = __webpack_require__(57611);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/fieldsdsl.ts
