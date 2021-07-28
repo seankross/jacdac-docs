@@ -7248,7 +7248,6 @@ var toolbox = __webpack_require__(16582);
 
 
 
-
 function registerDataSolver(block) {
   var services = block.jacdacServices; // register data transforms
 
@@ -7261,7 +7260,7 @@ function registerDataSolver(block) {
     var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
       var _block$nextConnection, _block$childBlocks_;
 
-      var next, nextServices, start, newData, end;
+      var next, nextServices, newData;
       return regenerator_default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -7278,32 +7277,41 @@ function registerDataSolver(block) {
               next = ((_block$nextConnection = block.nextConnection) === null || _block$nextConnection === void 0 ? void 0 : _block$nextConnection.targetBlock()) || ((_block$childBlocks_ = block.childBlocks_) === null || _block$childBlocks_ === void 0 ? void 0 : _block$childBlocks_[0]);
               nextServices = next === null || next === void 0 ? void 0 : next.jacdacServices;
               _context.prev = 4;
-              start = performance.now(); // operation
 
-              _context.next = 8;
-              return transformData(block, services.data, nextServices === null || nextServices === void 0 ? void 0 : nextServices.data);
+              if (!(transformData === toolbox/* identityTransformData */.FW)) {
+                _context.next = 9;
+                break;
+              }
 
-            case 8:
-              newData = _context.sent;
-              end = performance.now();
-              console.debug("data " + block.type + ": " + (0,utils/* roundWithPrecision */.JI)((end - start) / 1000, 3) + "s"); // propagte
-
-              services.transformedData = newData;
-              if (nextServices) nextServices.data = newData;
-              _context.next = 18;
+              newData = services.data;
+              _context.next = 12;
               break;
 
-            case 15:
-              _context.prev = 15;
+            case 9:
+              _context.next = 11;
+              return transformData(block, services.data, nextServices === null || nextServices === void 0 ? void 0 : nextServices.data);
+
+            case 11:
+              newData = _context.sent;
+
+            case 12:
+              // propagte
+              services.transformedData = newData;
+              if (nextServices) nextServices.data = newData;
+              _context.next = 19;
+              break;
+
+            case 16:
+              _context.prev = 16;
               _context.t0 = _context["catch"](4);
               console.debug(_context.t0);
 
-            case 18:
+            case 19:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[4, 15]]);
+      }, _callee, null, [[4, 16]]);
     }));
 
     return function applyTransform() {
@@ -15211,7 +15219,10 @@ function LinePlotWidget() {
     encoding: {
       x: {
         field: x,
-        type: "quantitative"
+        type: "quantitative",
+        scale: {
+          zero: false
+        }
       },
       y: {
         field: y,
@@ -15986,7 +15997,10 @@ function ScatterPlotWidget() {
     encoding: {
       x: {
         field: x,
-        type: "quantitative"
+        type: "quantitative",
+        scale: {
+          zero: false
+        }
       },
       y: {
         field: y,
