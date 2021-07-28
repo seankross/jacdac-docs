@@ -10477,7 +10477,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = b.getFieldValue("column");
+        var column = (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "column");
         var order = b.getFieldValue("order");
         var descending = order === "descending";
         return postTransformData({
@@ -10509,7 +10509,7 @@ var dataDsl = {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3].map(function (column) {
-          return b.getFieldValue("column" + column);
+          return (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
@@ -10523,7 +10523,7 @@ var dataDsl = {
     }, {
       kind: "block",
       type: DATA_SELECT_BLOCK,
-      message0: "select %1 %2 %3",
+      message0: "select %1 %2 %3 %4",
       colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
@@ -10534,14 +10534,17 @@ var dataDsl = {
       }, {
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
         name: "column3"
+      }, {
+        type: DataColumnChooserField/* default.KEY */.Z.KEY,
+        name: "column4"
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var columns = [1, 2, 3].map(function (column) {
-          return b.getFieldValue("column" + column);
+        var columns = [1, 2, 3, 4].map(function (column) {
+          return (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
@@ -10574,7 +10577,7 @@ var dataDsl = {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var columns = [1, 2].map(function (column) {
-          return b.getFieldValue("column" + column);
+          return (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
@@ -10608,7 +10611,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = b.getFieldValue("column");
+        var column = (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "column");
         var logic = b.getFieldValue("logic");
         var rhs = b.getFieldValue("rhs");
         return postTransformData({
@@ -10645,8 +10648,8 @@ var dataDsl = {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
-        var lhs = b.getFieldValue("lhs");
-        var rhs = b.getFieldValue("rhs");
+        var lhs = (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "lhs");
+        var rhs = (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "rhs");
         var logic = b.getFieldValue("logic");
         return postTransformData({
           type: "mutate_columns",
@@ -10668,14 +10671,16 @@ var dataDsl = {
         name: "newcolumn"
       }, {
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "lhs"
+        name: "lhs",
+        dataType: "number"
       }, {
         type: "field_dropdown",
         name: "logic",
         options: [["+", "plus"], ["-", "minus"], ["*", "mult"], ["/", "div"], [">", "gt"], ["<", "lt"], [">=", "ge"], ["<=", "le"], ["==", "eq"], ["!=", "ne"]]
       }, {
         type: "field_number",
-        name: "rhs"
+        name: "rhs",
+        dataType: "number"
       }],
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
       nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
@@ -10683,7 +10688,7 @@ var dataDsl = {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
-        var lhs = b.getFieldValue("lhs");
+        var lhs = (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "lhs");
         var rhs = b.getFieldValue("rhs");
         var logic = b.getFieldValue("logic");
         return postTransformData({
@@ -10703,7 +10708,8 @@ var dataDsl = {
       colour: operatorsColour,
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "column"
+        name: "column",
+        dataType: "number"
       }, {
         type: "field_dropdown",
         name: "calc",
@@ -10714,10 +10720,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var _tidyHeaders;
-
-        var column = b.getFieldValue("column");
-        var columns = column ? [column] : (_tidyHeaders = (0,tidy/* tidyHeaders */.P2)(data, "number")) === null || _tidyHeaders === void 0 ? void 0 : _tidyHeaders.headers;
+        var columns = (0,tidy/* tidyResolveFieldColumns */.QZ)(data, b, "column", "number");
         var calc = b.getFieldValue("calc");
         return postTransformData({
           type: "summarize",
@@ -10748,8 +10751,8 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = b.getFieldValue("column");
-        var by = b.getFieldValue("by");
+        var column = (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "column");
+        var by = (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "by");
         var calc = b.getFieldValue("calc");
         return postTransformData({
           type: "summarize_by_group",
@@ -10774,7 +10777,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = b.getFieldValue("column");
+        var column = (0,tidy/* tidyResolveFieldColumn */.Fy)(data, b, "column");
         return postTransformData({
           type: "count",
           column: column,
@@ -10945,10 +10948,12 @@ var dataDsl = {
       message0: "correlation %1 %2",
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "column1"
+        name: "column1",
+        dataType: "number"
       }, {
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "column2"
+        name: "column2",
+        dataType: "number"
       }],
       inputsInline: false,
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
@@ -10992,10 +10997,12 @@ var dataDsl = {
       message0: "linear regression %1 %2",
       args0: [{
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "column1"
+        name: "column1",
+        dataType: "number"
       }, {
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "column2"
+        name: "column2",
+        dataType: "number"
       }],
       inputsInline: false,
       previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
@@ -16653,7 +16660,9 @@ function fieldShadows() {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "P2": function() { return /* binding */ tidyHeaders; },
 /* harmony export */   "pc": function() { return /* binding */ tidyFindLastValue; },
-/* harmony export */   "gc": function() { return /* binding */ tidyResolveHeader; }
+/* harmony export */   "gc": function() { return /* binding */ tidyResolveHeader; },
+/* harmony export */   "Fy": function() { return /* binding */ tidyResolveFieldColumn; },
+/* harmony export */   "QZ": function() { return /* binding */ tidyResolveFieldColumns; }
 /* harmony export */ });
 /* eslint-disable @typescript-eslint/ban-types */
 function tidyHeaders(data, type) {
@@ -16675,10 +16684,25 @@ function tidyFindLastValue(data, column) {
   return data[data.length - 1][column];
 }
 function tidyResolveHeader(data, name, type) {
+  if (!data || !name) return undefined;
+
   var _tidyHeaders = tidyHeaders(data, type),
       headers = _tidyHeaders.headers;
 
   return headers.indexOf(name) > -1 ? name : undefined;
+}
+function tidyResolveFieldColumn(data, b, fieldName, type) {
+  var name = b.getFieldValue(fieldName);
+  return tidyResolveHeader(data, name, type);
+}
+function tidyResolveFieldColumns(data, b, fieldName, type) {
+  var _tidyHeaders2;
+
+  var name = b.getFieldValue(fieldName);
+  if (!name) return (_tidyHeaders2 = tidyHeaders(data, type)) === null || _tidyHeaders2 === void 0 ? void 0 : _tidyHeaders2.headers;else {
+    var header = tidyResolveHeader(data, name, type);
+    if (header) return [header];else return [];
+  }
 }
 
 /***/ }),

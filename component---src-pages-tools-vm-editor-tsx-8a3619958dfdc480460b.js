@@ -7655,7 +7655,8 @@ var widgetDSL = {
         value: 100
       }, {
         type: DataColumnChooserField/* default.KEY */.Z.KEY,
-        name: "field"
+        name: "field",
+        dataType: "number"
       }, {
         type: "input_dummy"
       }, {
