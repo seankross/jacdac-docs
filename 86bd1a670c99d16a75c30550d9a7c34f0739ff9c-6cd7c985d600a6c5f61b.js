@@ -10383,6 +10383,7 @@ var DATA_FILTER_COLUMNS_BLOCK = "data_filter_columns";
 var DATA_FILTER_STRING_BLOCK = "data_filter_string";
 var DATA_MUTATE_COLUMNS_BLOCK = "data_mutate_columns";
 var DATA_MUTATE_NUMBER_BLOCK = "data_mutate_number";
+var DATA_SLICE_BLOCK = "data_slice";
 var DATA_SUMMARIZE_BLOCK = "data_summarize";
 var DATA_SUMMARIZE_BY_GROUP_BLOCK = "data_summarize_by_group";
 var DATA_COUNT_BLOCK = "data_count";
@@ -10715,6 +10716,34 @@ var dataDsl = {
           by: by,
           calc: calc,
           data: data
+        });
+      },
+      template: "meta"
+    }, {
+      kind: "block",
+      type: DATA_SLICE_BLOCK,
+      message0: "slice %1 rows from %2",
+      colour: operatorsColour,
+      args0: [{
+        type: "field_number",
+        name: "count",
+        min: 1
+      }, {
+        type: "field_dropdown",
+        name: "operator",
+        options: [["head", "head"], ["tail", "tail"], ["sample", "sample"]]
+      }],
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      dataPreviewField: true,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      transformData: function transformData(b, data) {
+        var count = b.getFieldValue("count");
+        var operator = b.getFieldValue("operator");
+        return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidySlice */ .HA)(data, {
+          sliceHead: operator === "head" ? count : undefined,
+          sliceTail: operator === "tail" ? count : undefined,
+          sliceSample: operator === "sample" ? count : undefined
         });
       },
       template: "meta"
@@ -11080,6 +11109,9 @@ var dataDsl = {
       }, {
         kind: "block",
         type: DATA_FILTER_STRING_BLOCK
+      }, {
+        kind: "block",
+        type: DATA_SLICE_BLOCK
       }]
     }, {
       kind: "category",
