@@ -1,4 +1,4 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[85],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7337],{
 
 /***/ 67228:
 /***/ (function(module) {
@@ -4116,7 +4116,7 @@ $({ target: 'Math', stat: true, forced: BUGGY }, {
 
 /***/ }),
 
-/***/ 80085:
+/***/ 57337:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4125,7 +4125,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": function() { return /* binding */ fields_VegaLite; }
+  "default": function() { return /* binding */ chart_VegaLite; }
 });
 
 // NAMESPACE OBJECT: ./node_modules/fast-json-patch/module/core.mjs
@@ -88177,9 +88177,9 @@ function VegaLite(props) {
     mode: "vega-lite"
   }));
 }
-;// CONCATENATED MODULE: ./src/components/blockly/fields/VegaLite.tsx
+;// CONCATENATED MODULE: ./src/components/blockly/fields/chart/VegaLite.tsx
 
-/* harmony default export */ var fields_VegaLite = (VegaLite);
+/* harmony default export */ var chart_VegaLite = (VegaLite);
 
 /***/ })
 

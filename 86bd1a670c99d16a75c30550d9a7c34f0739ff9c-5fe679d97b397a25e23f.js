@@ -8787,7 +8787,8 @@ var DEFAULT_XML = '<xml xmlns="http://www.w3.org/1999/xhtml"></xml>';
 function BlockProvider(props) {
   var storageKey = props.storageKey,
       dsls = props.dsls,
-      children = props.children;
+      children = props.children,
+      onBeforeSaveWorkspaceFile = props.onBeforeSaveWorkspaceFile;
 
   var _useContext = (0,react.useContext)(AppContext/* default */.ZP),
       setError = _useContext.setError;
@@ -9019,12 +9020,19 @@ function BlockProvider(props) {
               editor: editorId,
               xml: workspaceXml,
               json: workspaceJSON
-            };
+            }; // allow dsls to add data
+
+            dsls.forEach(function (dsl) {
+              var _dsl$onBeforeSaveWork;
+
+              return (_dsl$onBeforeSaveWork = dsl.onBeforeSaveWorkspaceFile) === null || _dsl$onBeforeSaveWork === void 0 ? void 0 : _dsl$onBeforeSaveWork.call(dsl, file);
+            });
+            onBeforeSaveWorkspaceFile === null || onBeforeSaveWorkspaceFile === void 0 ? void 0 : onBeforeSaveWorkspaceFile(file);
             fileContent = JSON.stringify(file);
-            _context2.next = 6;
+            _context2.next = 8;
             return setWorkspaceFileContent(fileContent);
 
-          case 6:
+          case 8:
           case "end":
             return _context2.stop();
         }
@@ -9910,7 +9918,10 @@ var WorkspaceServices = /*#__PURE__*/function (_JDEventSource) {
       return this._workspaceJSON;
     },
     set: function set(value) {
-      this._workspaceJSON = value; //this.emit(CHANGE)
+      if (value !== this._workspaceJSON) {
+        this._workspaceJSON = value;
+        this.emit(WorkspaceServices.WORKSPACE_CHANGE);
+      }
     }
   }, {
     key: "runner",
@@ -9938,6 +9949,7 @@ var WorkspaceServices = /*#__PURE__*/function (_JDEventSource) {
 
   return WorkspaceServices;
 }(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
+WorkspaceServices.WORKSPACE_CHANGE = "workspaceChange";
 var BlockServices = /*#__PURE__*/function (_JDEventSource2) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(BlockServices, _JDEventSource2);
 
@@ -10002,7 +10014,6 @@ var BlockServices = /*#__PURE__*/function (_JDEventSource2) {
 }(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
 var WorkspaceContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({
   workspace: undefined,
-  workspaceJSON: undefined,
   dragging: false,
   sourceBlock: undefined,
   flyout: false,
@@ -10031,9 +10042,6 @@ function WorkspaceProvider(props) {
   });
   var runner = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(services, function (_) {
     return _ === null || _ === void 0 ? void 0 : _.runner;
-  });
-  var workspaceJSON = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(services, function (_) {
-    return _ === null || _ === void 0 ? void 0 : _.workspaceJSON;
   });
 
   var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!!(workspace !== null && workspace !== void 0 && workspace.isDragging())),
@@ -10118,7 +10126,6 @@ function WorkspaceProvider(props) {
       value: {
         sourceBlock: sourceBlock,
         workspace: workspace,
-        workspaceJSON: workspaceJSON,
         dragging: dragging,
         sourceId: sourceId,
         services: services,
@@ -10138,16 +10145,23 @@ function WorkspaceProvider(props) {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _fields_ScatterPlotField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(97884);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "w": function() { return /* binding */ blockToVisualizationSpec; }
+/* harmony export */ });
+/* harmony import */ var _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(88533);
 /* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16582);
 /* harmony import */ var _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(44393);
-/* harmony import */ var _fields_LinePlotField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(70659);
-/* harmony import */ var _fields_BarField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9950);
-/* harmony import */ var _fields_HistogramField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(63511);
+/* harmony import */ var _fields_chart_LinePlotField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23030);
+/* harmony import */ var _fields_chart_BarField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(95702);
+/* harmony import */ var _fields_chart_HistogramField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(76295);
 /* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(54741);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(74602);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(74602);
 /* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(16229);
-/* harmony import */ var _fields_BoxPlotField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(77668);
+/* harmony import */ var _fields_chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(62953);
+/* harmony import */ var _fields_chart_VegaChartField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(61562);
+/* harmony import */ var _fields_tidy__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(47554);
+
+
 
 
 
@@ -10164,7 +10178,10 @@ var BARCHART_BLOCK = "chart_bar";
 var HISTOGRAM_BLOCK = "chart_histogram";
 var BOX_PLOT_BLOCK = "chart_box_plot";
 var CHART_SHOW_TABLE_BLOCK = "chart_show_table";
-var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_9__/* .paletteColorByIndex */ .W)(4);
+var VEGA_LAYER_BLOCK = "vega_layer";
+var VEGA_ENCODING_BLOCK = "vega_encoding";
+var VEGA_STATEMENT_TYPE = "vegaStatementType";
+var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_11__/* .paletteColorByIndex */ .W)(4);
 var chartDsl = {
   id: "chart",
   createBlocks: function createBlocks() {
@@ -10202,7 +10219,7 @@ var chartDsl = {
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_ScatterPlotField__WEBPACK_IMPORTED_MODULE_0__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_0__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -10228,7 +10245,7 @@ var chartDsl = {
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_BarField__WEBPACK_IMPORTED_MODULE_4__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_BarField__WEBPACK_IMPORTED_MODULE_4__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -10255,7 +10272,7 @@ var chartDsl = {
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_LinePlotField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_LinePlotField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -10278,7 +10295,7 @@ var chartDsl = {
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_HistogramField__WEBPACK_IMPORTED_MODULE_5__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_HistogramField__WEBPACK_IMPORTED_MODULE_5__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -10304,7 +10321,7 @@ var chartDsl = {
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_BoxPlotField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -10312,6 +10329,62 @@ var chartDsl = {
       colour: colour,
       template: "meta",
       inputsInline: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+    }, {
+      kind: "block",
+      type: VEGA_LAYER_BLOCK,
+      message0: "chart %1 title %2 %3 %4 %5 %6 %7",
+      args0: [{
+        type: "field_dropdown",
+        options: ["arc", "area", "bar", "boxplot", "circle", "errorband", "errorbar", "line", "point", "rect", "rule", "square", "text", "tick", "trail"].map(function (s) {
+          return [s, s];
+        }),
+        name: "mark"
+      }, {
+        type: "field_input",
+        name: "title"
+      }, {
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
+        name: "preview"
+      }, {
+        type: "input_dummy"
+      }, {
+        type: "input_statement",
+        name: "fields",
+        check: VEGA_STATEMENT_TYPE
+      }, {
+        type: "input_dummy"
+      }, {
+        type: _fields_chart_VegaChartField__WEBPACK_IMPORTED_MODULE_9__/* .default.KEY */ .Z.KEY,
+        name: "chart"
+      }],
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      colour: colour,
+      template: "meta",
+      inputsInline: false,
+      dataPreviewField: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+    }, {
+      kind: "block",
+      type: VEGA_ENCODING_BLOCK,
+      message0: "encoding %1 as %2",
+      args0: [{
+        type: "field_dropdown",
+        options: ["x", "y", "x2", "y2", "xError", "yError", "xError2", "yError2", "theta", "theta2", "radius", "radius2"].map(function (s) {
+          return [s, s];
+        }),
+        name: "channel"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        name: "field"
+      }],
+      previousStatement: VEGA_STATEMENT_TYPE,
+      nextStatement: VEGA_STATEMENT_TYPE,
+      colour: colour,
+      template: "meta",
+      inputsInline: false,
+      dataPreviewField: false,
       transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
     }];
   },
@@ -10337,12 +10410,70 @@ var chartDsl = {
       }, {
         kind: "block",
         type: CHART_SHOW_TABLE_BLOCK
+      }, {
+        kind: "sep"
+      }, {
+        kind: "label",
+        text: "Custom"
+      }, {
+        kind: "block",
+        type: VEGA_LAYER_BLOCK
+      }, {
+        kind: "block",
+        type: VEGA_ENCODING_BLOCK
       }],
       colour: colour
     }];
   }
 };
 /* harmony default export */ __webpack_exports__["Z"] = (chartDsl);
+function blockToVisualizationSpec(sourceBlock, // eslint-disable-next-line @typescript-eslint/ban-types
+data) {
+  var _tidyHeaders = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyHeaders */ .P2)(data),
+      headers = _tidyHeaders.headers,
+      types = _tidyHeaders.types;
+
+  var mark = sourceBlock.getFieldValue("mark");
+  var title = sourceBlock.getFieldValue("title");
+  var spec = {
+    title: title,
+    mark: mark,
+    encoding: {},
+    data: {
+      name: "values"
+    }
+  };
+  var child = sourceBlock.getInputTargetBlock("fields");
+
+  while (child) {
+    switch (child.type) {
+      case VEGA_ENCODING_BLOCK:
+        {
+          var channel = child.getFieldValue("channel");
+          var field = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, child, "field");
+          console.log({
+            child: child,
+            channel: channel,
+            field: field
+          });
+
+          if (channel && field) {
+            var type = types[headers.indexOf(field)];
+            spec.encoding[channel] = {
+              field: field,
+              type: type === "number" ? "quantitative" : "nominal"
+            };
+          }
+
+          break;
+        }
+    }
+
+    child = child.getNextBlock();
+  }
+
+  return spec;
+}
 
 /***/ }),
 
@@ -11604,177 +11735,6 @@ function workerProxy(workerid) {
   var worker = _workers[workerid] || (_workers[workerid] = new WorkerProxy(loaders[workerid](), workerid));
   return worker;
 }
-
-/***/ }),
-
-/***/ 9950:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ BarField; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
-/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
-/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
-
-
-
-
-
-
-
-
-
-function BarWidget() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock;
-
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data;
-
-  var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
-  var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"), "number");
-  if (!index || !value) return null;
-  var sliceOptions = {
-    sliceMax: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_MAX_ITEMS */ .kC
-  };
-  var spec = {
-    description: "Bar plot of " + index + " x " + value,
-    mark: "bar",
-    encoding: {
-      x: {
-        field: index,
-        type: "nominal"
-      },
-      y: {
-        field: value,
-        type: "quantitative"
-      }
-    },
-    data: {
-      name: "values"
-    }
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
-    spec: spec,
-    slice: sliceOptions
-  });
-}
-
-var BarField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(BarField, _ReactInlineField);
-
-  BarField.fromJson = function fromJson(options) {
-    return new BarField(options);
-  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;
-
-  function BarField(options) {
-    return _ReactInlineField.call(this, options) || this;
-  }
-
-  var _proto = BarField.prototype;
-
-  _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BarWidget, null);
-  };
-
-  return BarField;
-}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
-
-BarField.KEY = "jacdac_field_bar_plot";
-BarField.EDITABLE = false;
-
-
-/***/ }),
-
-/***/ 77668:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ BoxPlotField; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
-/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
-/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
-
-
-
-
-
-
-
-
-function BoxPlotWidget() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock;
-
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data;
-
-  var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
-  var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"), "number");
-  if (!index || !value) return null;
-  var spec = {
-    description: "Box plot of " + index,
-    mark: "boxplot",
-    encoding: {
-      x: {
-        field: index,
-        type: "nominal"
-      },
-      y: {
-        field: value,
-        type: "quantitative",
-        scale: {
-          zero: false
-        }
-      }
-    },
-    data: {
-      name: "values"
-    }
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
-    spec: spec
-  });
-}
-
-var BoxPlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(BoxPlotField, _ReactInlineField);
-
-  BoxPlotField.fromJson = function fromJson(options) {
-    return new BoxPlotField(options);
-  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;
-
-  function BoxPlotField(options) {
-    return _ReactInlineField.call(this, options) || this;
-  }
-
-  var _proto = BoxPlotField.prototype;
-
-  _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BoxPlotWidget, null);
-  };
-
-  return BoxPlotField;
-}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
-
-BoxPlotField.KEY = "jacdac_field_box_plot";
-BoxPlotField.EDITABLE = false;
-
 
 /***/ }),
 
@@ -14651,88 +14611,6 @@ GaugeWidgetField.EDITABLE = false;
 
 /***/ }),
 
-/***/ 63511:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ HistogramField; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
-/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
-/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
-
-
-
-
-
-
-
-
-function HistogramWidget() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock;
-
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data;
-
-  var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
-  if (!index) return null;
-  var spec = {
-    description: "Histogram of " + index,
-    mark: {
-      type: "bar",
-      tooltip: false
-    },
-    encoding: {
-      x: {
-        bin: true,
-        field: index
-      },
-      y: {
-        aggregate: "count"
-      }
-    },
-    data: {
-      name: "values"
-    }
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
-    spec: spec
-  });
-}
-
-var HistogramField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(HistogramField, _ReactInlineField);
-
-  HistogramField.fromJson = function fromJson(options) {
-    return new HistogramField(options);
-  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;
-
-  function HistogramField(options) {
-    return _ReactInlineField.call(this, options) || this;
-  }
-
-  var _proto = HistogramField.prototype;
-
-  _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HistogramWidget, null);
-  };
-
-  return HistogramField;
-}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
-
-HistogramField.KEY = "jacdac_field_histogram";
-HistogramField.EDITABLE = false;
-
-
-/***/ }),
-
 /***/ 90263:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -15207,96 +15085,6 @@ var LEDMatrixField = /*#__PURE__*/function (_ReactImageField) {
 }(ReactImageField);
 
 LEDMatrixField.KEY = "jacdac_field_led_matrix";
-
-
-/***/ }),
-
-/***/ 70659:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ LinePlotField; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
-/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
-/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
-
-
-
-
-
-
-
-
-
-function LinePlotWidget() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock;
-
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data;
-
-  var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
-  var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
-  if (!x || !y) return null;
-  var sliceOptions = {
-    sliceHead: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .LINE_MAX_ITEMS */ .bH
-  };
-  var spec = {
-    description: "Line plot of " + x + "x" + y,
-    mark: "line",
-    encoding: {
-      x: {
-        field: x,
-        type: "quantitative",
-        scale: {
-          zero: false
-        }
-      },
-      y: {
-        field: y,
-        type: "quantitative"
-      }
-    },
-    data: {
-      name: "values"
-    }
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
-    spec: spec,
-    slice: sliceOptions
-  });
-}
-
-var LinePlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(LinePlotField, _ReactInlineField);
-
-  LinePlotField.fromJson = function fromJson(options) {
-    return new LinePlotField(options);
-  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;
-
-  function LinePlotField(options) {
-    return _ReactInlineField.call(this, options) || this;
-  }
-
-  var _proto = LinePlotField.prototype;
-
-  _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LinePlotWidget, null);
-  };
-
-  return LinePlotField;
-}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
-
-LinePlotField.KEY = "jacdac_field_line_plot";
-LinePlotField.EDITABLE = false;
 
 
 /***/ }),
@@ -15989,96 +15777,6 @@ var ReactInlineField = /*#__PURE__*/function (_ReactField) {
 
 /***/ }),
 
-/***/ 97884:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ ScatterPlotField; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
-/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
-/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21609);
-/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
-
-
-
-
-
-
-
-
-
-function ScatterPlotWidget() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock;
-
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data;
-
-  var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
-  var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
-  if (!x || !y) return null;
-  var sliceOptions = {
-    sliceSample: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .SCATTER_MAX_ITEMS */ .VN
-  };
-  var spec = {
-    description: "Scatter plot of " + x + "x" + y,
-    mark: "point",
-    encoding: {
-      x: {
-        field: x,
-        type: "quantitative",
-        scale: {
-          zero: false
-        }
-      },
-      y: {
-        field: y,
-        type: "quantitative"
-      }
-    },
-    data: {
-      name: "values"
-    }
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
-    spec: spec,
-    slice: sliceOptions
-  });
-}
-
-var ScatterPlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(ScatterPlotField, _ReactInlineField);
-
-  ScatterPlotField.fromJson = function fromJson(options) {
-    return new ScatterPlotField(options);
-  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;
-
-  function ScatterPlotField(options) {
-    return _ReactInlineField.call(this, options) || this;
-  }
-
-  var _proto = ScatterPlotField.prototype;
-
-  _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ScatterPlotWidget, null);
-  };
-
-  return ScatterPlotField;
-}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
-
-ScatterPlotField.KEY = "jacdac_field_scatter_plot";
-ScatterPlotField.EDITABLE = false;
-
-
-/***/ }),
-
 /***/ 891:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -16517,115 +16215,6 @@ VariablesField.EDITABLE = false;
 
 /***/ }),
 
-/***/ 21609:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ VegaLiteWidget; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(92137);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(89801);
-/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
-/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(77298);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(69672);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(42862);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
-/* harmony import */ var _useEffectAsync__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7751);
-/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(47554);
-
-
-
-
-
-
-
-
-
-
-
-var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(function () {
-  return __webpack_require__.e(/* import() */ 85).then(__webpack_require__.bind(__webpack_require__, 80085));
-});
-function VegaLiteWidget(props) {
-  var _vegaData$values;
-
-  var spec = props.spec,
-      slice = props.slice;
-
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__/* .default */ .ZP),
-      sourceBlock = _useContext.sourceBlock;
-
-  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data; // eslint-disable-next-line @typescript-eslint/ban-types
-
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(undefined),
-      vegaData = _useState[0],
-      setVegaData = _useState[1];
-
-  (0,_useEffectAsync__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)( /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(mounted) {
-      var sliced;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              if (slice) {
-                _context.next = 4;
-                break;
-              }
-
-              setVegaData({
-                values: data
-              });
-              _context.next = 8;
-              break;
-
-            case 4:
-              _context.next = 6;
-              return (0,_tidy__WEBPACK_IMPORTED_MODULE_8__/* .tidySlice */ .HA)(data, slice);
-
-            case 6:
-              sliced = _context.sent;
-              if (mounted()) setVegaData({
-                values: sliced
-              });
-
-            case 8:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function (_x) {
-      return _ref.apply(this, arguments);
-    };
-  }(), [data]);
-  if (!(vegaData !== null && vegaData !== void 0 && (_vegaData$values = vegaData.values) !== null && _vegaData$values !== void 0 && _vegaData$values.length) || !spec) return null;
-  var renderer = vegaData.values.length < _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_SVG_MAX_ITEMS */ .TP ? "svg" : "canvas";
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    style: {
-      background: "#fff",
-      borderRadius: "0.25rem"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_4__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(VegaLite, {
-    actions: false,
-    width: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_WIDTH */ .xx,
-    height: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_HEIGHT */ .Fh,
-    spec: spec,
-    data: vegaData,
-    renderer: renderer
-  })))));
-}
-
-/***/ }),
-
 /***/ 2006:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -16764,6 +16353,627 @@ WatchValueField.EDITABLE = false;
 
 /***/ }),
 
+/***/ 95702:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ BarField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
+
+
+
+
+
+
+
+
+function BarWidget() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
+  var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"), "number");
+  if (!index || !value) return null;
+  var sliceOptions = {
+    sliceMax: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_MAX_ITEMS */ .kC
+  };
+  var spec = {
+    description: "Bar plot of " + index + " x " + value,
+    mark: "bar",
+    encoding: {
+      x: {
+        field: index,
+        type: "nominal"
+      },
+      y: {
+        field: value,
+        type: "quantitative"
+      }
+    },
+    data: {
+      name: "values"
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec,
+    slice: sliceOptions
+  });
+}
+
+var BarField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(BarField, _ReactInlineField);
+
+  BarField.fromJson = function fromJson(options) {
+    return new BarField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function BarField(options) {
+    return _ReactInlineField.call(this, options) || this;
+  }
+
+  var _proto = BarField.prototype;
+
+  _proto.renderInlineField = function renderInlineField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BarWidget, null);
+  };
+
+  return BarField;
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+
+BarField.KEY = "jacdac_field_bar_plot";
+BarField.EDITABLE = false;
+
+
+/***/ }),
+
+/***/ 62953:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ BoxPlotField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+
+
+
+
+
+
+
+
+function BoxPlotWidget() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
+  var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"), "number");
+  if (!index || !value) return null;
+  var spec = {
+    description: "Box plot of " + index,
+    mark: "boxplot",
+    encoding: {
+      x: {
+        field: index,
+        type: "nominal"
+      },
+      y: {
+        field: value,
+        type: "quantitative",
+        scale: {
+          zero: false
+        }
+      }
+    },
+    data: {
+      name: "values"
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec
+  });
+}
+
+var BoxPlotField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(BoxPlotField, _ReactInlineField);
+
+  BoxPlotField.fromJson = function fromJson(options) {
+    return new BoxPlotField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function BoxPlotField(options) {
+    return _ReactInlineField.call(this, options) || this;
+  }
+
+  var _proto = BoxPlotField.prototype;
+
+  _proto.renderInlineField = function renderInlineField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BoxPlotWidget, null);
+  };
+
+  return BoxPlotField;
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+
+BoxPlotField.KEY = "jacdac_field_box_plot";
+BoxPlotField.EDITABLE = false;
+
+
+/***/ }),
+
+/***/ 76295:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ HistogramField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+
+
+
+
+
+
+
+
+function HistogramWidget() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
+  if (!index) return null;
+  var spec = {
+    description: "Histogram of " + index,
+    mark: {
+      type: "bar",
+      tooltip: false
+    },
+    encoding: {
+      x: {
+        bin: true,
+        field: index
+      },
+      y: {
+        aggregate: "count"
+      }
+    },
+    data: {
+      name: "values"
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec
+  });
+}
+
+var HistogramField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(HistogramField, _ReactInlineField);
+
+  HistogramField.fromJson = function fromJson(options) {
+    return new HistogramField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function HistogramField(options) {
+    return _ReactInlineField.call(this, options) || this;
+  }
+
+  var _proto = HistogramField.prototype;
+
+  _proto.renderInlineField = function renderInlineField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HistogramWidget, null);
+  };
+
+  return HistogramField;
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+
+HistogramField.KEY = "jacdac_field_histogram";
+HistogramField.EDITABLE = false;
+
+
+/***/ }),
+
+/***/ 23030:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ LinePlotField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
+
+
+
+
+
+
+
+
+function LinePlotWidget() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
+  var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
+  if (!x || !y) return null;
+  var sliceOptions = {
+    sliceHead: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .LINE_MAX_ITEMS */ .bH
+  };
+  var spec = {
+    description: "Line plot of " + x + "x" + y,
+    mark: "line",
+    encoding: {
+      x: {
+        field: x,
+        type: "quantitative",
+        scale: {
+          zero: false
+        }
+      },
+      y: {
+        field: y,
+        type: "quantitative"
+      }
+    },
+    data: {
+      name: "values"
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec,
+    slice: sliceOptions
+  });
+}
+
+var LinePlotField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(LinePlotField, _ReactInlineField);
+
+  LinePlotField.fromJson = function fromJson(options) {
+    return new LinePlotField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function LinePlotField(options) {
+    return _ReactInlineField.call(this, options) || this;
+  }
+
+  var _proto = LinePlotField.prototype;
+
+  _proto.renderInlineField = function renderInlineField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LinePlotWidget, null);
+  };
+
+  return LinePlotField;
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+
+LinePlotField.KEY = "jacdac_field_line_plot";
+LinePlotField.EDITABLE = false;
+
+
+/***/ }),
+
+/***/ 88533:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ ScatterPlotField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
+
+
+
+
+
+
+
+
+function ScatterPlotWidget() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
+  var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
+  if (!x || !y) return null;
+  var sliceOptions = {
+    sliceSample: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .SCATTER_MAX_ITEMS */ .VN
+  };
+  var spec = {
+    description: "Scatter plot of " + x + "x" + y,
+    mark: "point",
+    encoding: {
+      x: {
+        field: x,
+        type: "quantitative",
+        scale: {
+          zero: false
+        }
+      },
+      y: {
+        field: y,
+        type: "quantitative"
+      }
+    },
+    data: {
+      name: "values"
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec,
+    slice: sliceOptions
+  });
+}
+
+var ScatterPlotField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(ScatterPlotField, _ReactInlineField);
+
+  ScatterPlotField.fromJson = function fromJson(options) {
+    return new ScatterPlotField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function ScatterPlotField(options) {
+    return _ReactInlineField.call(this, options) || this;
+  }
+
+  var _proto = ScatterPlotField.prototype;
+
+  _proto.renderInlineField = function renderInlineField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ScatterPlotWidget, null);
+  };
+
+  return ScatterPlotField;
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+
+ScatterPlotField.KEY = "jacdac_field_scatter_plot";
+ScatterPlotField.EDITABLE = false;
+
+
+/***/ }),
+
+/***/ 61562:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ VegaChartField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
+/* harmony import */ var _dsl_chartdsl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(57611);
+
+
+
+
+
+
+
+
+
+function VegaChartWidget() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock,
+      workspace = _useContext.workspace;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var services = workspace === null || workspace === void 0 ? void 0 : workspace.jacdacServices; // track workspace changes and re-render
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(services === null || services === void 0 ? void 0 : services.workspaceJSON),
+      setWorkspaceJSON = _useState[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return services === null || services === void 0 ? void 0 : services.subscribe(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .WorkspaceServices.WORKSPACE_CHANGE */ .yq.WORKSPACE_CHANGE, function () {
+      return setWorkspaceJSON(services.workspaceJSON);
+    });
+  }, [services]);
+  var spec = (0,_dsl_chartdsl__WEBPACK_IMPORTED_MODULE_5__/* .blockToVisualizationSpec */ .w)(sourceBlock, data);
+  console.log({
+    sourceBlock: sourceBlock,
+    data: data,
+    spec: spec
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec
+  });
+}
+
+var VegaChartField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(VegaChartField, _ReactInlineField);
+
+  VegaChartField.fromJson = function fromJson(options) {
+    return new VegaChartField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function VegaChartField(options) {
+    return _ReactInlineField.call(this, options) || this;
+  }
+
+  var _proto = VegaChartField.prototype;
+
+  _proto.renderInlineField = function renderInlineField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(VegaChartWidget, null);
+  };
+
+  return VegaChartField;
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+
+VegaChartField.KEY = "jacdac_field_vega_chart";
+VegaChartField.EDITABLE = false;
+
+
+/***/ }),
+
+/***/ 11961:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ VegaLiteWidget; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(89801);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(77298);
+/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(69672);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(42862);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+/* harmony import */ var _useEffectAsync__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7751);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(47554);
+
+
+
+
+
+
+
+
+
+
+
+var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(function () {
+  return __webpack_require__.e(/* import() */ 7337).then(__webpack_require__.bind(__webpack_require__, 57337));
+});
+function VegaLiteWidget(props) {
+  var _vegaData$values;
+
+  var spec = props.spec,
+      slice = props.slice;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data; // eslint-disable-next-line @typescript-eslint/ban-types
+
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(undefined),
+      vegaData = _useState[0],
+      setVegaData = _useState[1];
+
+  (0,_useEffectAsync__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)( /*#__PURE__*/function () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(mounted) {
+      var sliced;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (slice) {
+                _context.next = 4;
+                break;
+              }
+
+              setVegaData({
+                values: data
+              });
+              _context.next = 8;
+              break;
+
+            case 4:
+              _context.next = 6;
+              return (0,_tidy__WEBPACK_IMPORTED_MODULE_8__/* .tidySlice */ .HA)(data, slice);
+
+            case 6:
+              sliced = _context.sent;
+              if (mounted()) setVegaData({
+                values: sliced
+              });
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }(), [data]);
+  if (!(vegaData !== null && vegaData !== void 0 && (_vegaData$values = vegaData.values) !== null && _vegaData$values !== void 0 && _vegaData$values.length) || !spec) return null;
+  var renderer = vegaData.values.length < _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_SVG_MAX_ITEMS */ .TP ? "svg" : "canvas";
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    style: {
+      background: "#fff",
+      borderRadius: "0.25rem"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_4__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(VegaLite, {
+    actions: false,
+    width: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_WIDTH */ .xx,
+    height: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_HEIGHT */ .Fh,
+    spec: spec,
+    data: vegaData,
+    renderer: renderer
+  })))));
+}
+
+/***/ }),
+
 /***/ 29434:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -16786,17 +16996,19 @@ WatchValueField.EDITABLE = false;
 /* harmony import */ var _LogViewField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(86899);
 /* harmony import */ var _VariablesFields__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(15757);
 /* harmony import */ var _DataTableField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(54741);
-/* harmony import */ var _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(97884);
-/* harmony import */ var _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(44393);
-/* harmony import */ var _LinePlotField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(70659);
-/* harmony import */ var _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(95548);
-/* harmony import */ var _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(69223);
-/* harmony import */ var _BarField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(9950);
-/* harmony import */ var _HistogramField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(63511);
-/* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(4383);
-/* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(39311);
-/* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(16229);
-/* harmony import */ var _BoxPlotField__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(77668);
+/* harmony import */ var _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(44393);
+/* harmony import */ var _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(23030);
+/* harmony import */ var _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(95548);
+/* harmony import */ var _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(69223);
+/* harmony import */ var _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(88533);
+/* harmony import */ var _chart_BarField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(95702);
+/* harmony import */ var _chart_HistogramField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(76295);
+/* harmony import */ var _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(62953);
+/* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(4383);
+/* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(39311);
+/* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(16229);
+/* harmony import */ var _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(61562);
+
 
 
 
@@ -16839,7 +17051,7 @@ function registerFields() {
     if (fieldType.SHADOW) reactFieldShadows.push(fieldType.SHADOW);
   };
 
-  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _LinePlotField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _HistogramField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _BoxPlotField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z];
+  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _chart_BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _chart_HistogramField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z];
   fieldTypes.forEach(registerType);
 }
 function fieldShadows() {

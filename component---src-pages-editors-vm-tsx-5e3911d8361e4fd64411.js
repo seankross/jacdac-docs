@@ -7903,9 +7903,15 @@ function VMEditor() {
   var dsls = (0,react.useMemo)(function () {
     return vmdsls;
   }, []);
+  var handleOnBeforeSaveWorkspaceFile = (0,react.useCallback)(function (file) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    var f = file;
+    f.vm = workspaceJSONToVMProgram(file.json, dsls);
+  }, []);
   return /*#__PURE__*/react.createElement(NoSsr/* default */.Z, null, /*#__PURE__*/react.createElement(BlockContext/* BlockProvider */.Z, {
     storageKey: VM_SOURCE_STORAGE_KEY,
-    dsls: dsls
+    dsls: dsls,
+    onBeforeSaveWorkspaceFile: flags/* default.diagnostics */.Z.diagnostics ? handleOnBeforeSaveWorkspaceFile : undefined
   }, /*#__PURE__*/react.createElement(VMEditorWithContext, null)));
 }
 ;// CONCATENATED MODULE: ./src/pages/editors/vm.tsx

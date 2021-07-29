@@ -38590,6 +38590,417 @@ module.exports = merge([xml, xlink, xmlns, aria, svg]);
 
 /***/ }),
 
+/***/ 49647:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Kd": function() { return /* reexport */ modules_LiveAnnouncer; },
+  "xb": function() { return /* reexport */ modules_LiveMessage; }
+});
+
+// UNUSED EXPORTS: LiveMessenger
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+;// CONCATENATED MODULE: ./node_modules/react-aria-live/es/modules/MessageBlock.js
+
+var offScreenStyle = {
+  border: 0,
+  clip: 'rect(0 0 0 0)',
+  height: '1px',
+  margin: '-1px',
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
+  padding: 0,
+  width: '1px',
+  position: 'absolute'
+};
+
+var MessageBlock = function MessageBlock(_ref) {
+  var message = _ref.message,
+      ariaLive = _ref['aria-live'];
+  return react.createElement('div', {
+    style: offScreenStyle,
+    role: 'log',
+    'aria-live': ariaLive
+  }, message ? message : '');
+};
+
+/* harmony default export */ var modules_MessageBlock = (MessageBlock);
+;// CONCATENATED MODULE: ./node_modules/react-aria-live/es/modules/Announcer.js
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+
+
+
+var Announcer = function (_Component) {
+  _inherits(Announcer, _Component);
+
+  function Announcer() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Announcer);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
+      assertiveMessage1: '',
+      assertiveMessage2: '',
+      politeMessage1: '',
+      politeMessage2: '',
+      oldPolitemessage: '',
+      oldPoliteMessageId: '',
+      oldAssertiveMessage: '',
+      oldAssertiveMessageId: '',
+      setAlternatePolite: false,
+      setAlternateAssertive: false
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  Announcer.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, state) {
+    var oldPolitemessage = state.oldPolitemessage,
+        oldPoliteMessageId = state.oldPoliteMessageId,
+        oldAssertiveMessage = state.oldAssertiveMessage,
+        oldAssertiveMessageId = state.oldAssertiveMessageId;
+    var politeMessage = nextProps.politeMessage,
+        politeMessageId = nextProps.politeMessageId,
+        assertiveMessage = nextProps.assertiveMessage,
+        assertiveMessageId = nextProps.assertiveMessageId;
+
+    if (oldPolitemessage !== politeMessage || oldPoliteMessageId !== politeMessageId) {
+      return {
+        politeMessage1: state.setAlternatePolite ? '' : politeMessage,
+        politeMessage2: state.setAlternatePolite ? politeMessage : '',
+        oldPolitemessage: politeMessage,
+        oldPoliteMessageId: politeMessageId,
+        setAlternatePolite: !state.setAlternatePolite
+      };
+    }
+
+    if (oldAssertiveMessage !== assertiveMessage || oldAssertiveMessageId !== assertiveMessageId) {
+      return {
+        assertiveMessage1: state.setAlternateAssertive ? '' : assertiveMessage,
+        assertiveMessage2: state.setAlternateAssertive ? assertiveMessage : '',
+        oldAssertiveMessage: assertiveMessage,
+        oldAssertiveMessageId: assertiveMessageId,
+        setAlternateAssertive: !state.setAlternateAssertive
+      };
+    }
+
+    return null;
+  };
+
+  Announcer.prototype.render = function render() {
+    var _state = this.state,
+        assertiveMessage1 = _state.assertiveMessage1,
+        assertiveMessage2 = _state.assertiveMessage2,
+        politeMessage1 = _state.politeMessage1,
+        politeMessage2 = _state.politeMessage2;
+    return react.createElement('div', null, react.createElement(modules_MessageBlock, {
+      'aria-live': 'assertive',
+      message: assertiveMessage1
+    }), react.createElement(modules_MessageBlock, {
+      'aria-live': 'assertive',
+      message: assertiveMessage2
+    }), react.createElement(modules_MessageBlock, {
+      'aria-live': 'polite',
+      message: politeMessage1
+    }), react.createElement(modules_MessageBlock, {
+      'aria-live': 'polite',
+      message: politeMessage2
+    }));
+  };
+
+  return Announcer;
+}(react.Component);
+
+/* harmony default export */ var modules_Announcer = (Announcer);
+;// CONCATENATED MODULE: ./node_modules/react-aria-live/es/modules/AnnouncerContext.js
+
+var AnnouncerContext_AnnouncerContext = react.createContext({
+  announceAssertive: logContextWarning,
+  announcePolite: logContextWarning
+});
+
+function logContextWarning() {
+  console.warn('Announcement failed, LiveAnnouncer context is missing');
+}
+
+/* harmony default export */ var modules_AnnouncerContext = (AnnouncerContext_AnnouncerContext);
+;// CONCATENATED MODULE: ./node_modules/react-aria-live/es/modules/LiveAnnouncer.js
+function LiveAnnouncer_classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function LiveAnnouncer_possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function LiveAnnouncer_inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+
+
+
+
+var LiveAnnouncer = function (_Component) {
+  LiveAnnouncer_inherits(LiveAnnouncer, _Component);
+
+  function LiveAnnouncer(props) {
+    LiveAnnouncer_classCallCheck(this, LiveAnnouncer);
+
+    var _this = LiveAnnouncer_possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.announcePolite = function (message, id) {
+      _this.setState({
+        announcePoliteMessage: message,
+        politeMessageId: id ? id : ''
+      });
+    };
+
+    _this.announceAssertive = function (message, id) {
+      _this.setState({
+        announceAssertiveMessage: message,
+        assertiveMessageId: id ? id : ''
+      });
+    };
+
+    _this.state = {
+      announcePoliteMessage: '',
+      politeMessageId: '',
+      announceAssertiveMessage: '',
+      assertiveMessageId: '',
+      updateFunctions: {
+        announcePolite: _this.announcePolite,
+        announceAssertive: _this.announceAssertive
+      }
+    };
+    return _this;
+  }
+
+  LiveAnnouncer.prototype.render = function render() {
+    var _state = this.state,
+        announcePoliteMessage = _state.announcePoliteMessage,
+        politeMessageId = _state.politeMessageId,
+        announceAssertiveMessage = _state.announceAssertiveMessage,
+        assertiveMessageId = _state.assertiveMessageId,
+        updateFunctions = _state.updateFunctions;
+    return react.createElement(modules_AnnouncerContext.Provider, {
+      value: updateFunctions
+    }, this.props.children, react.createElement(modules_Announcer, {
+      assertiveMessage: announceAssertiveMessage,
+      assertiveMessageId: assertiveMessageId,
+      politeMessage: announcePoliteMessage,
+      politeMessageId: politeMessageId
+    }));
+  };
+
+  return LiveAnnouncer;
+}(react.Component);
+
+/* harmony default export */ var modules_LiveAnnouncer = (LiveAnnouncer);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(45697);
+// EXTERNAL MODULE: ./node_modules/uuid/v4.js
+var v4 = __webpack_require__(19056);
+var v4_default = /*#__PURE__*/__webpack_require__.n(v4);
+;// CONCATENATED MODULE: ./node_modules/react-aria-live/es/modules/AnnouncerMessage.js
+function AnnouncerMessage_classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function AnnouncerMessage_possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function AnnouncerMessage_inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+
+
+
+
+var AnnouncerMessage = function (_Component) {
+  AnnouncerMessage_inherits(AnnouncerMessage, _Component);
+
+  function AnnouncerMessage() {
+    var _temp, _this, _ret;
+
+    AnnouncerMessage_classCallCheck(this, AnnouncerMessage);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = AnnouncerMessage_possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.announce = function () {
+      var _this$props = _this.props,
+          message = _this$props.message,
+          ariaLive = _this$props['aria-live'],
+          announceAssertive = _this$props.announceAssertive,
+          announcePolite = _this$props.announcePolite;
+
+      if (ariaLive === 'assertive') {
+        announceAssertive(message || '', v4_default()());
+      }
+
+      if (ariaLive === 'polite') {
+        announcePolite(message || '', v4_default()());
+      }
+    }, _temp), AnnouncerMessage_possibleConstructorReturn(_this, _ret);
+  }
+
+  AnnouncerMessage.prototype.componentDidMount = function componentDidMount() {
+    this.announce();
+  };
+
+  AnnouncerMessage.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var message = this.props.message;
+
+    if (message !== prevProps.message) {
+      this.announce();
+    }
+  };
+
+  AnnouncerMessage.prototype.componentWillUnmount = function componentWillUnmount() {
+    var _props = this.props,
+        clearOnUnmount = _props.clearOnUnmount,
+        announceAssertive = _props.announceAssertive,
+        announcePolite = _props.announcePolite;
+
+    if (clearOnUnmount === true || clearOnUnmount === 'true') {
+      announceAssertive('');
+      announcePolite('');
+    }
+  };
+
+  AnnouncerMessage.prototype.render = function render() {
+    return null;
+  };
+
+  return AnnouncerMessage;
+}(react.Component);
+
+AnnouncerMessage.propTypes =  false ? 0 : {};
+/* harmony default export */ var modules_AnnouncerMessage = (AnnouncerMessage);
+;// CONCATENATED MODULE: ./node_modules/react-aria-live/es/modules/LiveMessage.js
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+
+
+
+
+var LiveMessage = function LiveMessage(props) {
+  return react.createElement(modules_AnnouncerContext.Consumer, null, function (contextProps) {
+    return react.createElement(modules_AnnouncerMessage, _extends({}, contextProps, props));
+  });
+};
+
+/* harmony default export */ var modules_LiveMessage = (LiveMessage);
+;// CONCATENATED MODULE: ./node_modules/react-aria-live/es/modules/LiveMessenger.js
+
+
+
+var LiveMessenger = function LiveMessenger(_ref) {
+  var children = _ref.children;
+  return React.createElement(AnnouncerContext.Consumer, null, function (contextProps) {
+    return children(contextProps);
+  });
+};
+
+/* harmony default export */ var modules_LiveMessenger = ((/* unused pure expression or super */ null && (LiveMessenger)));
+;// CONCATENATED MODULE: ./node_modules/react-aria-live/es/index.js
+
+
+
+
+
+
+
+/***/ }),
+
 /***/ 32993:
 /***/ (function(module) {
 
@@ -42364,6 +42775,102 @@ function visit(tree, test, visitor, reverse) {
     return visitor(node, index, parent);
   }
 }
+
+/***/ }),
+
+/***/ 52353:
+/***/ (function(module) {
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+var byteToHex = [];
+
+for (var i = 0; i < 256; ++i) {
+  byteToHex[i] = (i + 0x100).toString(16).substr(1);
+}
+
+function bytesToUuid(buf, offset) {
+  var i = offset || 0;
+  var bth = byteToHex; // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
+
+  return [bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], '-', bth[buf[i++]], bth[buf[i++]], '-', bth[buf[i++]], bth[buf[i++]], '-', bth[buf[i++]], bth[buf[i++]], '-', bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], bth[buf[i++]]].join('');
+}
+
+module.exports = bytesToUuid;
+
+/***/ }),
+
+/***/ 30237:
+/***/ (function(module) {
+
+// Unique ID creation requires a high quality random # generator.  In the
+// browser this is a little complicated due to unknown quality of Math.random()
+// and inconsistent support for the `crypto` API.  We do the best we can via
+// feature-detection
+// getRandomValues needs to be invoked in a context where "this" is a Crypto
+// implementation. Also, find the complete implementation of crypto on IE11.
+var getRandomValues = typeof crypto != 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || typeof msCrypto != 'undefined' && typeof window.msCrypto.getRandomValues == 'function' && msCrypto.getRandomValues.bind(msCrypto);
+
+if (getRandomValues) {
+  // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
+  var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
+
+  module.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
+    return rnds8;
+  };
+} else {
+  // Math.random()-based (RNG)
+  //
+  // If all else fails, use Math.random().  It's fast, but is of unspecified
+  // quality.
+  var rnds = new Array(16);
+
+  module.exports = function mathRNG() {
+    for (var i = 0, r; i < 16; i++) {
+      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+      rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+    }
+
+    return rnds;
+  };
+}
+
+/***/ }),
+
+/***/ 19056:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var rng = __webpack_require__(30237);
+
+var bytesToUuid = __webpack_require__(52353);
+
+function v4(options, buf, offset) {
+  var i = buf && offset || 0;
+
+  if (typeof options == 'string') {
+    buf = options === 'binary' ? new Array(16) : null;
+    options = null;
+  }
+
+  options = options || {};
+  var rnds = options.random || (options.rng || rng)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+  rnds[6] = rnds[6] & 0x0f | 0x40;
+  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+
+  if (buf) {
+    for (var ii = 0; ii < 16; ++ii) {
+      buf[i + ii] = rnds[ii];
+    }
+  }
+
+  return buf || bytesToUuid(rnds);
+}
+
+module.exports = v4;
 
 /***/ }),
 
@@ -51029,6 +51536,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var _console = console,
     warn = _console.warn;
+/**
+ * A Jacdac packet
+ * @category JDOM
+ */
+
 var Packet = /*#__PURE__*/function () {
   function Packet() {
     this._meta = undefined;
@@ -69691,7 +70203,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "43a114deb61d4f090a97381abd46cfe2c6a54d9b";
+  var sha = "9637bd8954b66ccf1516f3bcc202d13d6b81fe3c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71308,19 +71820,21 @@ function Suspense(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ ThemedLayout; }
 /* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(87761);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(28526);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(87761);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(28526);
 /* harmony import */ var notistack__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(70076);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19640);
-/* harmony import */ var _jacdac_Provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(727);
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84377);
-/* harmony import */ var _DbContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(94904);
-/* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(69882);
-/* harmony import */ var _ServiceManagerContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(99808);
-/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(35414);
-/* harmony import */ var _makecode_MakeCodeSnippetContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(54888);
-/* harmony import */ var _WebAudioContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(94564);
+/* harmony import */ var react_aria_live__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(49647);
+/* harmony import */ var _jacdac_Provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(727);
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(84377);
+/* harmony import */ var _DbContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(94904);
+/* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(69882);
+/* harmony import */ var _ServiceManagerContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(99808);
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(35414);
+/* harmony import */ var _makecode_MakeCodeSnippetContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(54888);
+/* harmony import */ var _WebAudioContext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(94564);
+
 
 
 
@@ -71337,14 +71851,14 @@ function ThemedLayout(props) {
   var theme = props.theme,
       maxSnack = props.maxSnack,
       children = props.children;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, {
     theme: theme
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(notistack__WEBPACK_IMPORTED_MODULE_0__/* .SnackbarProvider */ .wT, {
     maxSnack: maxSnack || 1,
     dense: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_use_id_hook__WEBPACK_IMPORTED_MODULE_2__/* .IdProvider */ .vc, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_DbContext__WEBPACK_IMPORTED_MODULE_5__/* .DbProvider */ .WQ, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_WebAudioContext__WEBPACK_IMPORTED_MODULE_10__/* .WebAudioProvider */ .IH, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_jacdac_Provider__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_use_id_hook__WEBPACK_IMPORTED_MODULE_2__/* .IdProvider */ .vc, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_aria_live__WEBPACK_IMPORTED_MODULE_3__/* .LiveAnnouncer */ .Kd, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_DbContext__WEBPACK_IMPORTED_MODULE_6__/* .DbProvider */ .WQ, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_WebAudioContext__WEBPACK_IMPORTED_MODULE_11__/* .WebAudioProvider */ .IH, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_jacdac_Provider__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
     connectOnStart: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_7__/* .ServiceManagerProvider */ .Aq, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_PacketsContext__WEBPACK_IMPORTED_MODULE_6__/* .PacketsProvider */ .l, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_AppContext__WEBPACK_IMPORTED_MODULE_4__/* .AppProvider */ .wI, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_makecode_MakeCodeSnippetContext__WEBPACK_IMPORTED_MODULE_9__/* .MakeCodeSnippetProvider */ .u, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .ZP, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("link", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_8__/* .ServiceManagerProvider */ .Aq, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_PacketsContext__WEBPACK_IMPORTED_MODULE_7__/* .PacketsProvider */ .l, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_AppContext__WEBPACK_IMPORTED_MODULE_5__/* .AppProvider */ .wI, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_makecode_MakeCodeSnippetContext__WEBPACK_IMPORTED_MODULE_10__/* .MakeCodeSnippetProvider */ .u, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* .default */ .ZP, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("link", {
     rel: "preconnect",
     href: "https://fonts.googleapis.com",
     crossOrigin: "anonymous"
@@ -71355,7 +71869,7 @@ function ThemedLayout(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("meta", {
     name: "viewport",
     content: "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-  })), children))))))))));
+  })), children)))))))))));
 }
 
 /***/ }),
@@ -74232,6 +74746,11 @@ function rolemanagerclient_arrayLikeToArray(arr, len) { if (len == null || len >
 
 
 
+
+/**
+ * A client for the role manager service
+ * @category Clients
+ */
 var RoleManagerClient = /*#__PURE__*/function (_JDServiceClient) {
   (0,inheritsLoose/* default */.Z)(RoleManagerClient, _JDServiceClient);
 
@@ -79140,7 +79659,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.13.104"};
+var package_namespaceObject = {"i8":"1.13.105"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
@@ -81546,7 +82065,7 @@ exports.components = {
     return __webpack_require__.e(/* import() | component---src-pages-software-mdx */ 8307).then(__webpack_require__.bind(__webpack_require__, 46690));
   },
   "component---src-pages-tools-accelerometer-theremin-tsx": function componentSrcPagesToolsAccelerometerThereminTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(6559), __webpack_require__.e(1326), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 49383));
+    return Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(6559), __webpack_require__.e(1326), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 67396));
   },
   "component---src-pages-tools-azure-device-twin-designer-tsx": function componentSrcPagesToolsAzureDeviceTwinDesignerTsx() {
     return Promise.all(/* import() | component---src-pages-tools-azure-device-twin-designer-tsx */[__webpack_require__.e(9502), __webpack_require__.e(5557), __webpack_require__.e(2460), __webpack_require__.e(3420)]).then(__webpack_require__.bind(__webpack_require__, 95522));
