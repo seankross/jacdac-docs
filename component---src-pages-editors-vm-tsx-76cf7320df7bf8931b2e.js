@@ -1888,7 +1888,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
- // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 var VMInternalStatus;
 
@@ -2293,7 +2292,7 @@ var VMCommandEvaluator = /*#__PURE__*/function () {
             case 56:
               regValue = _context5.sent;
 
-              if (!(this.inst === "awaitRegister" && regValue !== this._regSaved || this.inst === "awaitChange" && (this._changeSaved === 0 && regValue !== this._regSaved || this._changeSaved < 0 && regValue <= this._regSaved + this._changeSaved || this._changeSaved > 0 && regValue >= this._regSaved + this._changeSaved))) {
+              if (!(this.inst === "awaitRegister" && regValue !== this._regSaved || this.inst === "awaitChange" && Math.abs(regValue - this._regSaved) >= Math.abs(this._changeSaved))) {
                 _context5.next = 59;
                 break;
               }
@@ -2867,6 +2866,17 @@ function isEveryHandler(h) {
   return false;
 }
 
+function isRegisterChangeHandler(h) {
+  (0,utils/* assert */.hu)(!!h);
+
+  if (h.commands.length) {
+    var _cmd2 = h.commands[0].command.callee;
+    return _cmd2.name === "awaitChange" || _cmd2.name === "awaitRegister";
+  }
+
+  return false;
+}
+
 var VMStatus;
 
 (function (VMStatus) {
@@ -2881,7 +2891,6 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
   // program, environment
   // debugging
-  // providing new services
   function VMProgramRunner(roleManager, program) {
     var _this7;
 
@@ -2896,7 +2905,6 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
     _this7._watch = {};
     _this7._log = [];
     _this7._breaks = {};
-    _this7._provider = undefined;
     _this7._onCompletionOfExternalRequest = [];
     _this7._in_run = false;
     _this7.roleManager = roleManager;
@@ -3271,18 +3279,10 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
                   while (1) {
                     switch (_context19.prev = _context19.next) {
                       case 0:
-                        if (_this12._provider) {
-                          _context19.next = 4;
-                          break;
-                        }
+                        _context19.next = 2;
+                        return _this12.device();
 
-                        _context19.next = 3;
-                        return _this12.startProvider();
-
-                      case 3:
-                        _this12._provider = _context19.sent;
-
-                      case 4:
+                      case 2:
                         _this12._waitQueue = _this12._handlerRunners.slice(0);
 
                         _this12._waitQueue.forEach(function (h) {
@@ -3314,7 +3314,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
                         }*/
 
 
-                      case 12:
+                      case 10:
                       case "end":
                         return _context19.stop();
                     }
@@ -3323,24 +3323,30 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
               })));
 
             case 6:
-              this.clearBreakpointsAsync();
+              _context20.next = 8;
+              return this.clearBreakpointsAsync();
+
+            case 8:
               this.setStatus(VMStatus.Running);
-              this.waitingToRunning();
-              _context20.next = 15;
-              break;
+              _context20.next = 11;
+              return this.waitingToRunning();
 
             case 11:
-              _context20.prev = 11;
+              _context20.next = 17;
+              break;
+
+            case 13:
+              _context20.prev = 13;
               _context20.t0 = _context20["catch"](3);
               console.debug(_context20.t0);
               this.emit(vm_events/* VM_INTERNAL_ERROR */.c2, _context20.t0);
 
-            case 15:
+            case 17:
             case "end":
               return _context20.stop();
           }
         }
-      }, _callee20, this, [[3, 11]]);
+      }, _callee20, this, [[3, 13]]);
     }));
 
     function startAsync() {
@@ -3348,6 +3354,38 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
     }
 
     return startAsync;
+  }();
+
+  _proto4.device = /*#__PURE__*/function () {
+    var _device = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee21() {
+      return regenerator_default().wrap(function _callee21$(_context21) {
+        while (1) {
+          switch (_context21.prev = _context21.next) {
+            case 0:
+              if (this._provider) {
+                _context21.next = 3;
+                break;
+              }
+
+              _context21.next = 3;
+              return this.startProvider();
+
+            case 3:
+              return _context21.abrupt("return", this._device);
+
+            case 4:
+            case "end":
+              return _context21.stop();
+          }
+        }
+      }, _callee21, this);
+    }));
+
+    function device() {
+      return _device.apply(this, arguments);
+    }
+
+    return device;
   }();
 
   _proto4.cancel = function cancel() {
@@ -3358,30 +3396,30 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   };
 
   _proto4.resumeAsync = /*#__PURE__*/function () {
-    var _resumeAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee21() {
-      return regenerator_default().wrap(function _callee21$(_context21) {
+    var _resumeAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee22() {
+      return regenerator_default().wrap(function _callee22$(_context22) {
         while (1) {
-          switch (_context21.prev = _context21.next) {
+          switch (_context22.prev = _context22.next) {
             case 0:
               if (!(this.status !== VMStatus.Paused)) {
-                _context21.next = 2;
+                _context22.next = 2;
                 break;
               }
 
-              return _context21.abrupt("return");
+              return _context22.abrupt("return");
 
             case 2:
               this.trace("resume");
               this.setStatus(VMStatus.Running);
-              _context21.next = 6;
+              _context22.next = 6;
               return this.runAsync();
 
             case 6:
             case "end":
-              return _context21.stop();
+              return _context22.stop();
           }
         }
-      }, _callee21, this);
+      }, _callee22, this);
     }));
 
     function resumeAsync() {
@@ -3392,46 +3430,46 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   }();
 
   _proto4.getCurrentRunner = /*#__PURE__*/function () {
-    var _getCurrentRunner = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee23() {
+    var _getCurrentRunner = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee24() {
       var _this13 = this;
 
-      return regenerator_default().wrap(function _callee23$(_context23) {
+      return regenerator_default().wrap(function _callee24$(_context24) {
         while (1) {
-          switch (_context23.prev = _context23.next) {
+          switch (_context24.prev = _context24.next) {
             case 0:
-              _context23.next = 2;
-              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee22() {
-                return regenerator_default().wrap(function _callee22$(_context22) {
+              _context24.next = 2;
+              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee23() {
+                return regenerator_default().wrap(function _callee23$(_context23) {
                   while (1) {
-                    switch (_context22.prev = _context22.next) {
+                    switch (_context23.prev = _context23.next) {
                       case 0:
                         if (!_this13._runQueue.length) {
-                          _context22.next = 2;
+                          _context23.next = 2;
                           break;
                         }
 
-                        return _context22.abrupt("return", _this13._runQueue[0]);
+                        return _context23.abrupt("return", _this13._runQueue[0]);
 
                       case 2:
-                        return _context22.abrupt("return", undefined);
+                        return _context23.abrupt("return", undefined);
 
                       case 3:
                       case "end":
-                        return _context22.stop();
+                        return _context23.stop();
                     }
                   }
-                }, _callee22);
+                }, _callee23);
               })));
 
             case 2:
-              return _context23.abrupt("return", _context23.sent);
+              return _context24.abrupt("return", _context24.sent);
 
             case 3:
             case "end":
-              return _context23.stop();
+              return _context24.stop();
           }
         }
-      }, _callee23, this);
+      }, _callee24, this);
     }));
 
     function getCurrentRunner() {
@@ -3442,45 +3480,45 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   }();
 
   _proto4.stepAsync = /*#__PURE__*/function () {
-    var _stepAsync2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee24() {
+    var _stepAsync2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee25() {
       var h, newHead;
-      return regenerator_default().wrap(function _callee24$(_context24) {
+      return regenerator_default().wrap(function _callee25$(_context25) {
         while (1) {
-          switch (_context24.prev = _context24.next) {
+          switch (_context25.prev = _context25.next) {
             case 0:
               if (!(this.status !== VMStatus.Paused)) {
-                _context24.next = 2;
+                _context25.next = 2;
                 break;
               }
 
-              return _context24.abrupt("return");
+              return _context25.abrupt("return");
 
             case 2:
               this.trace("step");
-              _context24.next = 5;
+              _context25.next = 5;
               return this.getCurrentRunner();
 
             case 5:
-              h = _context24.sent;
+              h = _context25.sent;
 
               if (!h) {
-                _context24.next = 15;
+                _context25.next = 15;
                 break;
               }
 
-              _context24.next = 9;
+              _context25.next = 9;
               return this.runHandlerAsync(h, true);
 
             case 9:
-              _context24.next = 11;
+              _context25.next = 11;
               return this.postProcessHandler(h);
 
             case 11:
-              _context24.next = 13;
+              _context25.next = 13;
               return this.getCurrentRunner();
 
             case 13:
-              newHead = _context24.sent;
+              newHead = _context25.sent;
 
               if (newHead && newHead !== h) {
                 this.emitBreakpoint(newHead);
@@ -3488,10 +3526,10 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
             case 15:
             case "end":
-              return _context24.stop();
+              return _context25.stop();
           }
         }
-      }, _callee24, this);
+      }, _callee25, this);
     }));
 
     function stepAsync() {
@@ -3502,74 +3540,74 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   }();
 
   _proto4.runAsync = /*#__PURE__*/function () {
-    var _runAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee25() {
+    var _runAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee26() {
       var h;
-      return regenerator_default().wrap(function _callee25$(_context25) {
+      return regenerator_default().wrap(function _callee26$(_context26) {
         while (1) {
-          switch (_context25.prev = _context25.next) {
+          switch (_context26.prev = _context26.next) {
             case 0:
               if (!(this.status === VMStatus.Stopped)) {
-                _context25.next = 2;
+                _context26.next = 2;
                 break;
               }
 
-              return _context25.abrupt("return");
+              return _context26.abrupt("return");
 
             case 2:
               if (!this._in_run) {
-                _context25.next = 4;
+                _context26.next = 4;
                 break;
               }
 
-              return _context25.abrupt("return");
+              return _context26.abrupt("return");
 
             case 4:
               this.trace("run");
               this._in_run = true;
-              _context25.prev = 6;
+              _context26.prev = 6;
               h = undefined;
 
             case 8:
-              _context25.t0 = this.status === VMStatus.Running;
+              _context26.t0 = this.status === VMStatus.Running;
 
-              if (!_context25.t0) {
-                _context25.next = 13;
+              if (!_context26.t0) {
+                _context26.next = 13;
                 break;
               }
 
-              _context25.next = 12;
+              _context26.next = 12;
               return this.getCurrentRunner();
 
             case 12:
-              _context25.t0 = h = _context25.sent;
+              _context26.t0 = h = _context26.sent;
 
             case 13:
-              if (!_context25.t0) {
-                _context25.next = 21;
+              if (!_context26.t0) {
+                _context26.next = 21;
                 break;
               }
 
               (0,utils/* assert */.hu)(!h.atTop);
-              _context25.next = 17;
+              _context26.next = 17;
               return this.runHandlerAsync(h);
 
             case 17:
-              _context25.next = 19;
+              _context26.next = 19;
               return this.postProcessHandler(h);
 
             case 19:
-              _context25.next = 8;
+              _context26.next = 8;
               break;
 
             case 21:
-              _context25.next = 27;
+              _context26.next = 27;
               break;
 
             case 23:
-              _context25.prev = 23;
-              _context25.t1 = _context25["catch"](6);
-              console.debug(_context25.t1);
-              this.emit(vm_events/* VM_INTERNAL_ERROR */.c2, _context25.t1);
+              _context26.prev = 23;
+              _context26.t1 = _context26["catch"](6);
+              console.debug(_context26.t1);
+              this.emit(vm_events/* VM_INTERNAL_ERROR */.c2, _context26.t1);
 
             case 27:
               this._in_run = false;
@@ -3577,10 +3615,10 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
             case 29:
             case "end":
-              return _context25.stop();
+              return _context26.stop();
           }
         }
-      }, _callee25, this, [[6, 23]]);
+      }, _callee26, this, [[6, 23]]);
     }));
 
     function runAsync() {
@@ -3597,22 +3635,22 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   };
 
   _proto4.runHandlerAsync = /*#__PURE__*/function () {
-    var _runHandlerAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee26(h, oneStep) {
+    var _runHandlerAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee27(h, oneStep) {
       var brkCommand, ex;
-      return regenerator_default().wrap(function _callee26$(_context26) {
+      return regenerator_default().wrap(function _callee27$(_context27) {
         while (1) {
-          switch (_context26.prev = _context26.next) {
+          switch (_context27.prev = _context27.next) {
             case 0:
               if (oneStep === void 0) {
                 oneStep = false;
               }
 
-              _context26.prev = 1;
-              _context26.next = 4;
+              _context27.prev = 1;
+              _context27.next = 4;
               return h.runToCompletionAsync(oneStep);
 
             case 4:
-              brkCommand = _context26.sent;
+              brkCommand = _context27.sent;
 
               if (brkCommand && !oneStep || this.status === VMStatus.Paused) {
                 this.setStatus(VMStatus.Paused);
@@ -3623,19 +3661,19 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
                 h.reset();
               }
 
-              _context26.next = 13;
+              _context27.next = 13;
               break;
 
             case 9:
-              _context26.prev = 9;
-              _context26.t0 = _context26["catch"](1);
+              _context27.prev = 9;
+              _context27.t0 = _context27["catch"](1);
 
-              if (_context26.t0 instanceof VMException) {
-                ex = _context26.t0;
-                if (ex.code === VMExceptionCode.RoleNoService) this.emit(vm_events/* VM_ROLE_MISSING */.XD, _context26.t0.data);
+              if (_context27.t0 instanceof VMException) {
+                ex = _context27.t0;
+                if (ex.code === VMExceptionCode.RoleNoService) this.emit(vm_events/* VM_ROLE_MISSING */.XD, _context27.t0.data);
               } else {
-                console.debug(_context26.t0);
-                this.emit(vm_events/* VM_INTERNAL_ERROR */.c2, _context26.t0);
+                console.debug(_context27.t0);
+                this.emit(vm_events/* VM_INTERNAL_ERROR */.c2, _context27.t0);
               } // on handler error, reset the handler
 
 
@@ -3643,10 +3681,10 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
             case 13:
             case "end":
-              return _context26.stop();
+              return _context27.stop();
           }
         }
-      }, _callee26, this, [[1, 9]]);
+      }, _callee27, this, [[1, 9]]);
     }));
 
     function runHandlerAsync(_x12, _x13) {
@@ -3657,27 +3695,27 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   }();
 
   _proto4.postProcessHandler = /*#__PURE__*/function () {
-    var _postProcessHandler = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee29(h) {
+    var _postProcessHandler = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee30(h) {
       var _this14 = this;
 
       var done, q, index, _q$splice, del;
 
-      return regenerator_default().wrap(function _callee29$(_context29) {
+      return regenerator_default().wrap(function _callee30$(_context30) {
         while (1) {
-          switch (_context29.prev = _context29.next) {
+          switch (_context30.prev = _context30.next) {
             case 0:
               if (!(h.status === VMInternalStatus.Ready || h.status === VMInternalStatus.Sleeping || h.status === VMInternalStatus.Stopped)) {
-                _context29.next = 15;
+                _context30.next = 15;
                 break;
               }
 
               done = undefined;
-              _context29.next = 4;
-              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee27() {
+              _context30.next = 4;
+              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee28() {
                 var moveToWait;
-                return regenerator_default().wrap(function _callee27$(_context27) {
+                return regenerator_default().wrap(function _callee28$(_context28) {
                   while (1) {
-                    switch (_context27.prev = _context27.next) {
+                    switch (_context28.prev = _context28.next) {
                       case 0:
                         (0,utils/* assert */.hu)(!!_this14._runQueue.length);
                         (0,utils/* assert */.hu)(h === _this14._runQueue[0]);
@@ -3692,60 +3730,60 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
                       case 5:
                       case "end":
-                        return _context27.stop();
-                    }
-                  }
-                }, _callee27);
-              })));
-
-            case 4:
-              if (!(done && h.status === VMInternalStatus.Ready && isEveryHandler(h.handler))) {
-                _context29.next = 13;
-                break;
-              }
-
-              if (!(this.status === VMStatus.Running)) {
-                _context29.next = 10;
-                break;
-              }
-
-              _context29.next = 8;
-              return this.runHandlerAsync(h);
-
-            case 8:
-              _context29.next = 13;
-              break;
-
-            case 10:
-              if (!(this.status === VMStatus.Paused)) {
-                _context29.next = 13;
-                break;
-              }
-
-              _context29.next = 13;
-              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee28() {
-                return regenerator_default().wrap(function _callee28$(_context28) {
-                  while (1) {
-                    switch (_context28.prev = _context28.next) {
-                      case 0:
-                        _this14._runQueue.unshift(h); // this.emitBreakpoint(h)
-
-
-                      case 1:
-                      case "end":
                         return _context28.stop();
                     }
                   }
                 }, _callee28);
               })));
 
+            case 4:
+              if (!(done && h.status === VMInternalStatus.Ready && isEveryHandler(h.handler) || isRegisterChangeHandler(h.handler))) {
+                _context30.next = 13;
+                break;
+              }
+
+              if (!(this.status === VMStatus.Running)) {
+                _context30.next = 10;
+                break;
+              }
+
+              _context30.next = 8;
+              return this.runHandlerAsync(h);
+
+            case 8:
+              _context30.next = 13;
+              break;
+
+            case 10:
+              if (!(this.status === VMStatus.Paused)) {
+                _context30.next = 13;
+                break;
+              }
+
+              _context30.next = 13;
+              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee29() {
+                return regenerator_default().wrap(function _callee29$(_context29) {
+                  while (1) {
+                    switch (_context29.prev = _context29.next) {
+                      case 0:
+                        _this14._runQueue.unshift(h); // this.emitBreakpoint(h)
+
+
+                      case 1:
+                      case "end":
+                        return _context29.stop();
+                    }
+                  }
+                }, _callee29);
+              })));
+
             case 13:
-              _context29.next = 22;
+              _context30.next = 22;
               break;
 
             case 15:
               if (!(h.status === VMInternalStatus.Completed)) {
-                _context29.next = 22;
+                _context30.next = 22;
                 break;
               }
 
@@ -3755,20 +3793,20 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
               });
 
               if (!(index > -1)) {
-                _context29.next = 22;
+                _context30.next = 22;
                 break;
               }
 
               _q$splice = q.splice(index, 1), del = _q$splice[0];
-              _context29.next = 22;
+              _context30.next = 22;
               return this._env.completeRequest(del.request);
 
             case 22:
             case "end":
-              return _context29.stop();
+              return _context30.stop();
           }
         }
-      }, _callee29, this);
+      }, _callee30, this);
     }));
 
     function postProcessHandler(_x14) {
@@ -3782,33 +3820,33 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   _proto4.waitingToRunning =
   /*#__PURE__*/
   function () {
-    var _waitingToRunning = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee31() {
+    var _waitingToRunning = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee32() {
       var _this15 = this;
 
-      return regenerator_default().wrap(function _callee31$(_context32) {
+      return regenerator_default().wrap(function _callee32$(_context33) {
         while (1) {
-          switch (_context32.prev = _context32.next) {
+          switch (_context33.prev = _context33.next) {
             case 0:
               if (!(this.status !== VMStatus.Stopped)) {
-                _context32.next = 7;
+                _context33.next = 7;
                 break;
               }
 
               this.trace("waiting to running - try");
-              _context32.next = 4;
-              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee30() {
+              _context33.next = 4;
+              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee31() {
                 var handlersStarted, newRunners, sleepingRunners, _loop, _iterator3, _step3;
 
-                return regenerator_default().wrap(function _callee30$(_context31) {
+                return regenerator_default().wrap(function _callee31$(_context32) {
                   while (1) {
-                    switch (_context31.prev = _context31.next) {
+                    switch (_context32.prev = _context32.next) {
                       case 0:
                         if (!(_this15.status === VMStatus.Paused && _this15._runQueue.length)) {
-                          _context31.next = 2;
+                          _context32.next = 2;
                           break;
                         }
 
-                        return _context31.abrupt("return");
+                        return _context32.abrupt("return");
 
                       case 2:
                         _this15.trace("waiting to running - start");
@@ -3818,12 +3856,12 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
                         sleepingRunners = [];
                         _loop = /*#__PURE__*/regenerator_default().mark(function _loop() {
                           var h;
-                          return regenerator_default().wrap(function _loop$(_context30) {
+                          return regenerator_default().wrap(function _loop$(_context31) {
                             while (1) {
-                              switch (_context30.prev = _context30.next) {
+                              switch (_context31.prev = _context31.next) {
                                 case 0:
                                   h = _step3.value;
-                                  _context30.next = 3;
+                                  _context31.next = 3;
                                   return _this15.runHandlerAsync(h, true);
 
                                 case 3:
@@ -3838,7 +3876,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
                                 case 4:
                                 case "end":
-                                  return _context30.stop();
+                                  return _context31.stop();
                               }
                             }
                           }, _loop);
@@ -3847,14 +3885,14 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
                       case 8:
                         if ((_step3 = _iterator3()).done) {
-                          _context31.next = 12;
+                          _context32.next = 12;
                           break;
                         }
 
-                        return _context31.delegateYield(_loop(), "t0", 10);
+                        return _context32.delegateYield(_loop(), "t0", 10);
 
                       case 10:
-                        _context31.next = 8;
+                        _context32.next = 8;
                         break;
 
                       case 12:
@@ -3873,14 +3911,14 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
                       case 14:
                       case "end":
-                        return _context31.stop();
+                        return _context32.stop();
                     }
                   }
-                }, _callee30);
+                }, _callee31);
               })));
 
             case 4:
-              _context32.next = 6;
+              _context33.next = 6;
               return this.runAsync();
 
             case 6:
@@ -3888,10 +3926,10 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
             case 7:
             case "end":
-              return _context32.stop();
+              return _context33.stop();
           }
         }
-      }, _callee31, this);
+      }, _callee32, this);
     }));
 
     function waitingToRunning() {
@@ -3902,20 +3940,20 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   }();
 
   _proto4.stopSleepers = /*#__PURE__*/function () {
-    var _stopSleepers = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee33() {
+    var _stopSleepers = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee34() {
       var _this16 = this;
 
-      return regenerator_default().wrap(function _callee33$(_context34) {
+      return regenerator_default().wrap(function _callee34$(_context35) {
         while (1) {
-          switch (_context34.prev = _context34.next) {
+          switch (_context35.prev = _context35.next) {
             case 0:
-              _context34.next = 2;
-              return this._sleepMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee32() {
+              _context35.next = 2;
+              return this._sleepMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee33() {
                 var _iterator4, _step4, s;
 
-                return regenerator_default().wrap(function _callee32$(_context33) {
+                return regenerator_default().wrap(function _callee33$(_context34) {
                   while (1) {
-                    switch (_context33.prev = _context33.next) {
+                    switch (_context34.prev = _context34.next) {
                       case 0:
                         for (_iterator4 = _createForOfIteratorHelperLoose(_this16._sleepQueue); !(_step4 = _iterator4()).done;) {
                           s = _step4.value;
@@ -3926,18 +3964,18 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
                       case 2:
                       case "end":
-                        return _context33.stop();
+                        return _context34.stop();
                     }
                   }
-                }, _callee32);
+                }, _callee33);
               })));
 
             case 2:
             case "end":
-              return _context34.stop();
+              return _context35.stop();
           }
         }
-      }, _callee33, this);
+      }, _callee34, this);
     }));
 
     function stopSleepers() {
@@ -3948,24 +3986,24 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   }();
 
   _proto4.wakeSleeper = /*#__PURE__*/function () {
-    var _wakeSleeper = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee36(h) {
+    var _wakeSleeper = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee37(h) {
       var _this17 = this;
 
       var handlerRunner;
-      return regenerator_default().wrap(function _callee36$(_context37) {
+      return regenerator_default().wrap(function _callee37$(_context38) {
         while (1) {
-          switch (_context37.prev = _context37.next) {
+          switch (_context38.prev = _context38.next) {
             case 0:
-              _context37.prev = 0;
+              _context38.prev = 0;
               // let handlerMs: number = undefined
               handlerRunner = undefined; // let handler: VMHandler = undefined
 
-              _context37.next = 4;
-              return this._sleepMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee34() {
+              _context38.next = 4;
+              return this._sleepMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee35() {
                 var index, p;
-                return regenerator_default().wrap(function _callee34$(_context35) {
+                return regenerator_default().wrap(function _callee35$(_context36) {
                   while (1) {
-                    switch (_context35.prev = _context35.next) {
+                    switch (_context36.prev = _context36.next) {
                       case 0:
                         index = _this17._sleepQueue.findIndex(function (p) {
                           return (p === null || p === void 0 ? void 0 : p.handlerRunner) === h;
@@ -3986,26 +4024,26 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
                       case 3:
                       case "end":
-                        return _context35.stop();
+                        return _context36.stop();
                     }
                   }
-                }, _callee34);
+                }, _callee35);
               })));
 
             case 4:
               if (!(this.status === VMStatus.Stopped)) {
-                _context37.next = 6;
+                _context38.next = 6;
                 break;
               }
 
-              return _context37.abrupt("return");
+              return _context38.abrupt("return");
 
             case 6:
-              _context37.next = 8;
-              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee35() {
-                return regenerator_default().wrap(function _callee35$(_context36) {
+              _context38.next = 8;
+              return this._waitRunMutex.acquire( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee36() {
+                return regenerator_default().wrap(function _callee36$(_context37) {
                   while (1) {
-                    switch (_context36.prev = _context36.next) {
+                    switch (_context37.prev = _context37.next) {
                       case 0:
                         /*
                         if (!handlerRunner && isEveryHandler(handler)) {
@@ -4027,59 +4065,59 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
                       case 1:
                       case "end":
-                        return _context36.stop();
+                        return _context37.stop();
                     }
                   }
-                }, _callee35);
+                }, _callee36);
               })));
 
             case 8:
               if (!handlerRunner) {
-                _context37.next = 20;
+                _context38.next = 20;
                 break;
               }
 
               if (!(this.status === VMStatus.Running)) {
-                _context37.next = 14;
+                _context38.next = 14;
                 break;
               }
 
               this.trace("wake sleeper run");
               this.runAsync();
-              _context37.next = 20;
+              _context38.next = 20;
               break;
 
             case 14:
               if (!(this.status === VMStatus.Paused)) {
-                _context37.next = 20;
+                _context38.next = 20;
                 break;
               }
 
-              _context37.t0 = this;
-              _context37.next = 18;
+              _context38.t0 = this;
+              _context38.next = 18;
               return this.getCurrentRunner();
 
             case 18:
-              _context37.t1 = _context37.sent;
+              _context38.t1 = _context38.sent;
 
-              _context37.t0.emitBreakpoint.call(_context37.t0, _context37.t1);
+              _context38.t0.emitBreakpoint.call(_context38.t0, _context38.t1);
 
             case 20:
-              _context37.next = 26;
+              _context38.next = 26;
               break;
 
             case 22:
-              _context37.prev = 22;
-              _context37.t2 = _context37["catch"](0);
-              console.debug(_context37.t2);
-              this.emit(vm_events/* VM_INTERNAL_ERROR */.c2, _context37.t2);
+              _context38.prev = 22;
+              _context38.t2 = _context38["catch"](0);
+              console.debug(_context38.t2);
+              this.emit(vm_events/* VM_INTERNAL_ERROR */.c2, _context38.t2);
 
             case 26:
             case "end":
-              return _context37.stop();
+              return _context38.stop();
           }
         }
-      }, _callee36, this, [[0, 22]]);
+      }, _callee37, this, [[0, 22]]);
     }));
 
     function wakeSleeper(_x15) {
@@ -4107,19 +4145,19 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
     });
 
     this.mount(this.roleManager.subscribe(constants/* ROLE_BOUND */.l9m, /*#__PURE__*/function () {
-      var _ref18 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee37(role) {
-        return regenerator_default().wrap(function _callee37$(_context38) {
+      var _ref18 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee38(role) {
+        return regenerator_default().wrap(function _callee38$(_context39) {
           while (1) {
-            switch (_context38.prev = _context38.next) {
+            switch (_context39.prev = _context39.next) {
               case 0:
                 if (!_this18._serverRoles.find(function (r) {
                   return r.role === role;
                 })) {
-                  _context38.next = 2;
+                  _context39.next = 2;
                   break;
                 }
 
-                return _context38.abrupt("return");
+                return _context39.abrupt("return");
 
               case 2:
                 addRoleService(role);
@@ -4128,10 +4166,10 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
 
               case 4:
               case "end":
-                return _context38.stop();
+                return _context39.stop();
             }
           }
-        }, _callee37);
+        }, _callee38);
       }));
 
       return function (_x16) {
@@ -4153,23 +4191,23 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   _proto4.startProvider =
   /*#__PURE__*/
   function () {
-    var _startProvider = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee38() {
+    var _startProvider = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee39() {
       var _this19 = this;
 
-      var servers, provider, device, _iterator5, _step5, s;
+      var servers, _iterator5, _step5, s;
 
-      return regenerator_default().wrap(function _callee38$(_context39) {
+      return regenerator_default().wrap(function _callee39$(_context40) {
         while (1) {
-          switch (_context39.prev = _context39.next) {
+          switch (_context40.prev = _context40.next) {
             case 0:
               servers = this._env.servers();
 
               if (!servers.length) {
-                _context39.next = 13;
+                _context40.next = 12;
                 break;
               }
 
-              provider = new serviceprovider/* default */.Z(servers.map(function (s) {
+              this._provider = new serviceprovider/* default */.Z(servers.map(function (s) {
                 return s.server;
               }) // if we create a deviceId, then trouble ensues
               // as a second device gets spun up later
@@ -4177,39 +4215,33 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
               //    deviceId: "VMServiceProvider",
               //}
               );
-              device = this.roleManager.bus.addServiceProvider(provider);
+              this._device = this.roleManager.bus.addServiceProvider(this._provider);
               servers.forEach(function (s, index) {
-                _this19.roleManager.addRoleService(_this19._serverRoles[index].role, s.serviceClass, device.deviceId);
+                _this19.roleManager.addRoleService(_this19._serverRoles[index].role, s.serviceClass, _this19._device.deviceId);
               }); // make sure it gets known (HACK)
 
               _iterator5 = _createForOfIteratorHelperLoose(servers);
 
             case 6:
               if ((_step5 = _iterator5()).done) {
-                _context39.next = 12;
+                _context40.next = 12;
                 break;
               }
 
               s = _step5.value;
-              _context39.next = 10;
+              _context40.next = 10;
               return s.server.statusCode.sendGetAsync();
 
             case 10:
-              _context39.next = 6;
+              _context40.next = 6;
               break;
 
             case 12:
-              return _context39.abrupt("return", provider);
-
-            case 13:
-              return _context39.abrupt("return", undefined);
-
-            case 14:
             case "end":
-              return _context39.stop();
+              return _context40.stop();
           }
         }
-      }, _callee38, this);
+      }, _callee39, this);
     }));
 
     function startProvider() {

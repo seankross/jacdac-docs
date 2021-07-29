@@ -12428,7 +12428,7 @@ function DataTableWidget(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              text = (0,csv_proxy/* unparseCSV */.sh)(table);
+              text = (0,csv_proxy/* unparseCSV */.sh)(raw);
               return _context.abrupt("return", text);
 
             case 2:
