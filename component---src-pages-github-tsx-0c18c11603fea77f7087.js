@@ -685,14 +685,14 @@ function Page() {
   }), /*#__PURE__*/react.createElement("h2", null, "Module Development"), /*#__PURE__*/react.createElement("h3", null, "Schematics and C SDK"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
     repos: ["microsoft/jacdac-ddk", "microsoft/jacdac-c"],
     showDescription: true
-  }), /*#__PURE__*/react.createElement("h3", null, " Platforms"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
+  }), /*#__PURE__*/react.createElement("h3", null, " Embedded Platforms"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
     repos: ["microsoft/jacdac-stm32x0", "microsoft/jacdac-esp32", "microsoft/jacdac-padauk"],
     showDescription: true
-  }), /*#__PURE__*/react.createElement("h2", null, "Embedded clients"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
+  }), /*#__PURE__*/react.createElement("h2", null, "Embedded Firmware"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
     repos: ["microsoft/pxt-jacdac", "microsoft/jacdac-circuitpython"],
     showDescription: true
-  }), /*#__PURE__*/react.createElement("h2", null, "Web libraries"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
-    repos: ["microsoft/jacdac-ts"],
+  }), /*#__PURE__*/react.createElement("h2", null, "Libraries"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
+    repos: ["microsoft/jacdac-ts", "microsoft/jacdac-dotnet"],
     showDescription: true
   }), /*#__PURE__*/react.createElement("h2", null, "Integrations"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
     repos: ["microsoft/node-red-contrib-jacdac", "microsoft/jupyter-jacdac"],

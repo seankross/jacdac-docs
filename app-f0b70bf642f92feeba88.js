@@ -45768,6 +45768,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="jdspec.d.ts" />
 
@@ -47151,6 +47152,32 @@ function cStorage(tp) {
   if (tp < 0) return "int" + -tp * 8 + "_t";else return "uint" + tp * 8 + "_t";
 }
 
+function cSharpStorage(tp) {
+  if (tp == 0 || [1, 2, 4, 8].indexOf(Math.abs(tp)) < 0) return "bytes";
+
+  switch (tp) {
+    case -1:
+      return "sbyte";
+
+    case 1:
+      return "byte";
+
+    case -2:
+      return "short";
+
+    case 2:
+      return "ushort";
+
+    case -4:
+      return "int";
+
+    case 4:
+      return "uint";
+  }
+
+  return "unknown({" + tp + ")";
+}
+
 function canonicalType(tp) {
   if (tp == 0) return "bytes";
   if (tp < 0) return "i" + -tp * 8;else return "u" + tp * 8;
@@ -47545,15 +47572,27 @@ function memberSize(fld) {
   return Math.abs(fld.storage);
 }
 
-function toTypescript(info, staticTypeScript) {
-  var indent = staticTypeScript ? "    " : "";
+function toTypescript(info, language) {
+  var staticTypeScript = language === "sts";
+  var csharp = language === "c#";
+  var useNamespace = staticTypeScript || csharp;
+  var indent = useNamespace ? "    " : "";
   var indent2 = indent + "    ";
-  var enumkw = staticTypeScript ? indent + "export const enum" : "export enum";
-  var r = staticTypeScript ? "namespace " + TYPESCRIPT_STATIC_NAMESPACE + " {\n" : "";
+  var numberkw = csharp ? "uint " : "";
+  var hexkw = csharp ? "byte[]" : "";
+  var enumkw = csharp ? indent + "public enum" : staticTypeScript ? indent + "export const enum" : "export enum";
+  var exportkw = csharp ? "public" : "export";
+  var cskw = csharp ? ";" : "";
+  var r = useNamespace ? "namespace " + (csharp ? capitalize(TYPESCRIPT_STATIC_NAMESPACE) : TYPESCRIPT_STATIC_NAMESPACE) + " {\n" : "";
   r += indent + "// Service: " + info.name + "\n";
 
+  if (csharp) {
+    r += indent + "public static class " + capitalize(info.camelName) + "Constants\n" + indent + "{\n";
+  }
+
   if (info.shortId[0] != "_") {
-    r += indent + ("export const SRV_" + snakify(info.camelName).toLocaleUpperCase() + " = " + toHex(info.classIdentifier) + "\n");
+    var name = csharp ? "ServiceClass" : "SRV_" + snakify(info.camelName).toLocaleUpperCase();
+    r += indent + (csharp ? indent : "") + (exportkw + " const " + numberkw + name + " = " + toHex(info.classIdentifier) + cskw + "\n");
   }
 
   var pref = upperCamel(info.camelName);
@@ -47562,13 +47601,17 @@ function toTypescript(info, staticTypeScript) {
     var _info$constants$cst3 = info.constants[cst],
         value = _info$constants$cst3.value,
         hex = _info$constants$cst3.hex;
-    r += indent + ("export const " + toUpper(cst) + " = " + (hex ? value.toString() : toHex(value)) + "\n");
+    r += indent + (csharp ? indent : "") + (exportkw + " const " + (hex ? hexkw : numberkw) + (csharp ? capitalize(camelize(cst)) : toUpper(cst)) + " = " + (hex ? value.toString() : toHex(value)) + cskw + "\n");
+  }
+
+  if (csharp) {
+    r += indent + "}\n";
   }
 
   for (var _iterator12 = _createForOfIteratorHelperLoose(values(info.enums)), _step12; !(_step12 = _iterator12()).done;) {
     var en = _step12.value;
     var enPref = pref + upperCamel(en.name);
-    r += "\n" + enumkw + " " + enPref + " { // " + cStorage(en.storage) + "\n";
+    r += "\n" + enumkw + " " + enPref + (csharp ? ": " + cSharpStorage(en.storage) : "") + " { // " + cStorage(en.storage) + "\n";
 
     for (var _i6 = 0, _Object$keys6 = Object.keys(en.members); _i6 < _Object$keys6.length; _i6++) {
       var _k = _Object$keys6[_i6];
@@ -47614,7 +47657,7 @@ function toTypescript(info, staticTypeScript) {
     }
   }
 
-  if (staticTypeScript) r += "}\n";
+  if (useNamespace) r += "}\n";
   return r.replace(/ *$/gm, "");
 }
 
@@ -47648,10 +47691,13 @@ function converters() {
     },
     c: toH,
     ts: function ts(j) {
-      return toTypescript(j, false);
+      return toTypescript(j, "ts");
     },
     sts: function sts(j) {
-      return toTypescript(j, true);
+      return toTypescript(j, "sts");
+    },
+    cs: function cs(j) {
+      return toTypescript(j, "c#");
     },
     py: function py(j) {
       return toPython(j);
@@ -69795,7 +69841,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "91a77f5c9ddd5d885d345918609c6535a55dd021";
+  var sha = "274d19087838f4f603205a2b9734c5fbc8d9188f";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
