@@ -134,6 +134,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
+/**
+ * A client for the sensor aggregator service
+ * @category Clients
+ */
 var SensorAggregatorClient = /*#__PURE__*/function (_JDServiceClient) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)(SensorAggregatorClient, _JDServiceClient);
 
@@ -1010,6 +1015,11 @@ function getMLModelFormatName(model) {
 
   return "0x" + U.toHex(model.slice(0, 8));
 }
+/**
+ * A client for the model runner service
+ * @category Clients
+ */
+
 var ModelRunnerClient = /*#__PURE__*/function (_JDServiceClient) {
   (0,inheritsLoose/* default */.Z)(ModelRunnerClient, _JDServiceClient);
 

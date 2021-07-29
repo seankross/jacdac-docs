@@ -112,6 +112,192 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 69130:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "_": function() { return /* binding */ lightEncode; }
+/* harmony export */ });
+/* harmony import */ var _lightconstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23795);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(81794);
+function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+function cmdCode(cmd) {
+  switch (cmd) {
+    case "setall":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_SET_ALL */ .Ve;
+
+    case "fade":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_FADE */ .r$;
+
+    case "fadehsv":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_FADE_HSV */ .zy;
+
+    case "rotfwd":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_ROTATE_FWD */ .ln;
+
+    case "rotback":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_ROTATE_BACK */ .fq;
+
+    case "show":
+    case "wait":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_SHOW */ .Xo;
+
+    case "range":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_RANGE */ .ht;
+
+    case "mode":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_MODE */ .T;
+
+    case "tmpmode":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_MODE1 */ .Aw;
+
+    case "setone":
+      return _lightconstants__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_COL1_SET */ .gd;
+
+    case "mult":
+      return 0x100;
+
+    default:
+      return undefined;
+  }
+}
+
+function isWhiteSpace(code) {
+  return code == 32 || code == 13 || code == 10 || code == 9;
+}
+
+function lightEncode(format, args) {
+  // tokens are white-space separated
+  // % - number from args[]
+  // # - color from args[]
+  // #0123ff - color
+  // 123 - number
+  // commands: set, fade, fadehsv, rotfwd, rotback, pause
+  // fadehsv 0 12 #00ffff #ffffff
+  var outarr = [];
+  var colors = [];
+  var pos = 0;
+  var currcmd = 0;
+
+  function pushNumber(n) {
+    if (n == null || (n | 0) != n || n < 0 || n >= 16383) throw new Error("number out of range: " + n);
+    if (n < 128) outarr.push(n);else {
+      outarr.push(0x80 | n >> 8);
+      outarr.push(n & 0xff);
+    }
+  }
+
+  function flush() {
+    if (currcmd == 0xcf) {
+      if (colors.length != 1) throw new Error("setone requires 1 color");
+    } else {
+      if (colors.length == 0) return;
+      if (colors.length <= 3) outarr.push(0xc0 | colors.length);else {
+        outarr.push(0xc0);
+        outarr.push(colors.length);
+      }
+    }
+
+    for (var _iterator = _createForOfIteratorHelperLoose(colors), _step; !(_step = _iterator()).done;) {
+      var c = _step.value;
+      outarr.push(c >> 16 & 0xff);
+      outarr.push(c >> 8 & 0xff);
+      outarr.push(c >> 0 & 0xff);
+    }
+
+    colors = [];
+  }
+
+  function nextToken() {
+    while (isWhiteSpace(format.charCodeAt(pos))) {
+      pos++;
+    }
+
+    var beg = pos;
+
+    while (pos < format.length && !isWhiteSpace(format.charCodeAt(pos))) {
+      pos++;
+    }
+
+    return format.slice(beg, pos);
+  }
+
+  while (pos < format.length) {
+    var token = nextToken();
+    var t0 = token.charCodeAt(0);
+
+    if (97 <= t0 && t0 <= 122) {
+      // a-z
+      flush();
+      currcmd = cmdCode(token);
+      if (currcmd == undefined) throw new Error("unknown light command: " + token);
+
+      if (currcmd == 0x100) {
+        var f = parseFloat(nextToken());
+        if (isNaN(f) || f < 0 || f > 2) throw new Error("expecting scale");
+        outarr.push(0xd8); // tmpmode
+
+        outarr.push(3); // mult
+
+        outarr.push(0xd0); // setall
+
+        var mm = Math.round(128 * f) & 0xff;
+        outarr.push(0xc1);
+        outarr.push(mm);
+        outarr.push(mm);
+        outarr.push(mm);
+      } else {
+        outarr.push(currcmd);
+      }
+    } else if (48 <= t0 && t0 <= 57) {
+      // 0-9
+      pushNumber(parseInt(token));
+    } else if (t0 == 37) {
+      // %
+      if (args.length == 0) throw new Error("out of args, %");
+      var v = args.shift();
+      if (typeof v != "number") throw new Error("expecting number");
+      pushNumber(v);
+    } else if (t0 == 35) {
+      // #
+      if (token.length == 1) {
+        if (args.length == 0) throw new Error("out of args, #");
+
+        var _v = args.shift();
+
+        if (typeof _v === "number") colors.push(_v);else if (Array.isArray(_v)) {
+          for (var _iterator2 = _createForOfIteratorHelperLoose(_v), _step2; !(_step2 = _iterator2()).done;) {
+            var vv = _step2.value;
+            colors.push(vv);
+          }
+        } else throw Error("invalid number " + _v);
+      } else {
+        if (token.length == 7) {
+          var b = (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .fromHex */ .H_)(token.slice(1));
+          var c = b[0] << 16 | b[1] << 8 | b[2];
+          colors.push(c);
+        } else {
+          throw new Error("invalid color: " + token);
+        }
+      }
+    }
+  }
+
+  flush();
+  return new Uint8Array(outarr);
+}
+
+/***/ }),
+
 /***/ 15403:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -637,7 +823,7 @@ function LightCommand(props) {
       return !!l;
     }).join("\n");
     var largs = [].concat((0,toConsumableArray/* default */.Z)(vargs), [ms]);
-    var r = (0,light/* lightEncode */._S)(src, largs);
+    var r = (0,light/* lightEncode */._)(src, largs);
     return r;
   }, [command, colors, duration, offset, mode]);
 
@@ -866,7 +1052,7 @@ function DashboardLEDPixel(props) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              encoded = (0,light/* lightEncode */._S)("setone % #\nshow 20", [index, penColor]);
+              encoded = (0,light/* lightEncode */._)("setone % #\nshow 20", [index, penColor]);
               _context3.next = 3;
               return service === null || service === void 0 ? void 0 : service.sendCmdAsync(constants/* LedPixelCmd.Run */.yB$.Run, encoded);
 

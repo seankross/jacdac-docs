@@ -48245,6 +48245,8 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
+/** @internal */
+
 var NumberFormat;
 
 (function (NumberFormat) {
@@ -48562,6 +48564,11 @@ function concatBufferArray(chunks) {
 /* harmony import */ var _eventsource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(45484);
 
 
+/**
+ * Base class for clients
+ * @category Clients
+ */
+
 var JDClient = /*#__PURE__*/function (_JDEventSource) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(JDClient, _JDEventSource);
 
@@ -48749,6 +48756,7 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
 /* harmony export */   "CCp": function() { return /* binding */ ROLE_UNBOUND; },
 /* harmony export */   "E5I": function() { return /* binding */ BOUND; },
 /* harmony export */   "BKI": function() { return /* binding */ UNBOUND; },
+/* harmony export */   "T9W": function() { return /* binding */ JACDAC_ERROR; },
 /* harmony export */   "bdf": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.bdf; },
 /* harmony export */   "r8S": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.r8S; },
 /* harmony export */   "ogr": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.ogr; },
@@ -48911,7 +48919,7 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
 /* harmony export */   "wrj": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.wrj; },
 /* harmony export */   "EPs": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.EPs; }
 /* harmony export */ });
-/* unused harmony exports JD_ADVERTISEMENT_0_ACK_SUPPORTED, PACKET_INVALID_CRC, COMMAND_RECEIVE, PACKET_KIND_EVENT, BLUETOOTH_JACDAC_DIAG_CHARACTERISTIC, ROLE_HAS_NO_SERVICE */
+/* unused harmony exports JD_ADVERTISEMENT_0_ACK_SUPPORTED, MESSAGE, PACKET_INVALID_CRC, COMMAND_RECEIVE, PACKET_KIND_EVENT, BLUETOOTH_JACDAC_DIAG_CHARACTERISTIC, ROLE_HAS_NO_SERVICE */
 /* harmony import */ var _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(73512);
 // Registers 0x001-0x07f - r/w common to all services
 // Registers 0x080-0x0ff - r/w defined per-service
@@ -48978,6 +48986,7 @@ var CHANGE = "change";
 var EVENT = "event";
 var RENDER = "render";
 var REFRESH = "refresh";
+var MESSAGE = "message";
 var FIRMWARE_INFO = "firmwareInfo";
 var FIRMWARE_BLOBS_CHANGE = "firmwareBlobsChange";
 var LATE = "late";
@@ -49080,6 +49089,7 @@ var ROLE_UNBOUND = "roleUnbound";
 var ROLE_HAS_NO_SERVICE = "roleHasNoService";
 var BOUND = "bound";
 var UNBOUND = "unbound";
+var JACDAC_ERROR = "JacdacError";
 
 
 /***/ }),
@@ -49089,29 +49099,29 @@ var UNBOUND = "unbound";
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "py": function() { return /* binding */ JDError; },
-/* harmony export */   "ZP": function() { return /* binding */ errorPath; }
+/* harmony export */   "p": function() { return /* binding */ JDError; },
+/* harmony export */   "Z": function() { return /* binding */ errorPath; }
 /* harmony export */ });
-/* unused harmony export JACDAC_ERROR */
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(41788);
-/* harmony import */ var _babel_runtime_helpers_esm_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(57869);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(57869);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
 
 
-var JACDAC_ERROR = "JacdacError";
+
 var JDError = /*#__PURE__*/function (_Error) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(JDError, _Error);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(JDError, _Error);
 
   function JDError(message, jacdacName) {
     var _this;
 
     _this = _Error.call(this, message) || this;
     _this.jacdacName = jacdacName;
-    _this.name = JACDAC_ERROR;
+    _this.name = _constants__WEBPACK_IMPORTED_MODULE_0__/* .JACDAC_ERROR */ .T9W;
     return _this;
   }
 
   return JDError;
-}( /*#__PURE__*/(0,_babel_runtime_helpers_esm_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(Error));
+}( /*#__PURE__*/(0,_babel_runtime_helpers_esm_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(Error));
 function errorPath(e) {
   return e === null || e === void 0 ? void 0 : e.jacdacName;
 }
@@ -50453,7 +50463,7 @@ function inIFrame() {
 
 /***/ }),
 
-/***/ 69130:
+/***/ 23795:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50476,17 +50486,8 @@ function inIFrame() {
 /* harmony export */   "oO": function() { return /* binding */ LIGHT_PROG_COL1; },
 /* harmony export */   "W9": function() { return /* binding */ LIGHT_PROG_COL2; },
 /* harmony export */   "Z3": function() { return /* binding */ LIGHT_PROG_COL3; },
-/* harmony export */   "gd": function() { return /* binding */ LIGHT_PROG_COL1_SET; },
-/* harmony export */   "_S": function() { return /* binding */ lightEncode; }
+/* harmony export */   "gd": function() { return /* binding */ LIGHT_PROG_COL1_SET; }
 /* harmony export */ });
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(81794);
-function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
 /*
  * `0xD0: set_all(C+)` - set all pixels in current range to given color pattern
  * `0xD1: fade(C+)` - set `N` pixels to color between colors in sequence
@@ -50498,7 +50499,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  * `0xD7: mode(K=0)` - set update mode
  * `0xD8: mode1(K=0)` - set update mode for next command only
  */
-
 var LIGHT_PROG_SET_ALL = 0xd0;
 var LIGHT_PROG_FADE = 0xd1;
 var LIGHT_PROG_FADE_HSV = 0xd2;
@@ -50518,172 +50518,6 @@ var LIGHT_PROG_COL1 = 0xc1;
 var LIGHT_PROG_COL2 = 0xc2;
 var LIGHT_PROG_COL3 = 0xc3;
 var LIGHT_PROG_COL1_SET = 0xcf;
-
-function cmdCode(cmd) {
-  switch (cmd) {
-    case "setall":
-      return LIGHT_PROG_SET_ALL;
-
-    case "fade":
-      return LIGHT_PROG_FADE;
-
-    case "fadehsv":
-      return LIGHT_PROG_FADE_HSV;
-
-    case "rotfwd":
-      return LIGHT_PROG_ROTATE_FWD;
-
-    case "rotback":
-      return LIGHT_PROG_ROTATE_BACK;
-
-    case "show":
-    case "wait":
-      return LIGHT_PROG_SHOW;
-
-    case "range":
-      return LIGHT_PROG_RANGE;
-
-    case "mode":
-      return LIGHT_PROG_MODE;
-
-    case "tmpmode":
-      return LIGHT_PROG_MODE1;
-
-    case "setone":
-      return LIGHT_PROG_COL1_SET;
-
-    case "mult":
-      return 0x100;
-
-    default:
-      return undefined;
-  }
-}
-
-function isWhiteSpace(code) {
-  return code == 32 || code == 13 || code == 10 || code == 9;
-}
-
-function lightEncode(format, args) {
-  // tokens are white-space separated
-  // % - number from args[]
-  // # - color from args[]
-  // #0123ff - color
-  // 123 - number
-  // commands: set, fade, fadehsv, rotfwd, rotback, pause
-  // fadehsv 0 12 #00ffff #ffffff
-  var outarr = [];
-  var colors = [];
-  var pos = 0;
-  var currcmd = 0;
-
-  function pushNumber(n) {
-    if (n == null || (n | 0) != n || n < 0 || n >= 16383) throw new Error("number out of range: " + n);
-    if (n < 128) outarr.push(n);else {
-      outarr.push(0x80 | n >> 8);
-      outarr.push(n & 0xff);
-    }
-  }
-
-  function flush() {
-    if (currcmd == 0xcf) {
-      if (colors.length != 1) throw new Error("setone requires 1 color");
-    } else {
-      if (colors.length == 0) return;
-      if (colors.length <= 3) outarr.push(0xc0 | colors.length);else {
-        outarr.push(0xc0);
-        outarr.push(colors.length);
-      }
-    }
-
-    for (var _iterator = _createForOfIteratorHelperLoose(colors), _step; !(_step = _iterator()).done;) {
-      var c = _step.value;
-      outarr.push(c >> 16 & 0xff);
-      outarr.push(c >> 8 & 0xff);
-      outarr.push(c >> 0 & 0xff);
-    }
-
-    colors = [];
-  }
-
-  function nextToken() {
-    while (isWhiteSpace(format.charCodeAt(pos))) {
-      pos++;
-    }
-
-    var beg = pos;
-
-    while (pos < format.length && !isWhiteSpace(format.charCodeAt(pos))) {
-      pos++;
-    }
-
-    return format.slice(beg, pos);
-  }
-
-  while (pos < format.length) {
-    var token = nextToken();
-    var t0 = token.charCodeAt(0);
-
-    if (97 <= t0 && t0 <= 122) {
-      // a-z
-      flush();
-      currcmd = cmdCode(token);
-      if (currcmd == undefined) throw new Error("unknown light command: " + token);
-
-      if (currcmd == 0x100) {
-        var f = parseFloat(nextToken());
-        if (isNaN(f) || f < 0 || f > 2) throw new Error("expecting scale");
-        outarr.push(0xd8); // tmpmode
-
-        outarr.push(3); // mult
-
-        outarr.push(0xd0); // setall
-
-        var mm = Math.round(128 * f) & 0xff;
-        outarr.push(0xc1);
-        outarr.push(mm);
-        outarr.push(mm);
-        outarr.push(mm);
-      } else {
-        outarr.push(currcmd);
-      }
-    } else if (48 <= t0 && t0 <= 57) {
-      // 0-9
-      pushNumber(parseInt(token));
-    } else if (t0 == 37) {
-      // %
-      if (args.length == 0) throw new Error("out of args, %");
-      var v = args.shift();
-      if (typeof v != "number") throw new Error("expecting number");
-      pushNumber(v);
-    } else if (t0 == 35) {
-      // #
-      if (token.length == 1) {
-        if (args.length == 0) throw new Error("out of args, #");
-
-        var _v = args.shift();
-
-        if (typeof _v === "number") colors.push(_v);else if (Array.isArray(_v)) {
-          for (var _iterator2 = _createForOfIteratorHelperLoose(_v), _step2; !(_step2 = _iterator2()).done;) {
-            var vv = _step2.value;
-            colors.push(vv);
-          }
-        } else throw Error("invalid number " + _v);
-      } else {
-        if (token.length == 7) {
-          var b = (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .fromHex */ .H_)(token.slice(1));
-          var c = b[0] << 16 | b[1] << 8 | b[2];
-          colors.push(c);
-        } else {
-          throw new Error("invalid color: " + token);
-        }
-      }
-    }
-  }
-
-  flush();
-  return new Uint8Array(outarr);
-}
 
 /***/ }),
 
@@ -50732,6 +50566,11 @@ function resolveMakecodeServiceFromClassIdentifier(serviceClass) {
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41788);
 /* harmony import */ var _eventsource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(45484);
 
+
+/**
+ * Base class for JDOM Node classes.
+ * @category JDOM
+ */
 
 var JDNode = /*#__PURE__*/function (_JDEventSource) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(JDNode, _JDEventSource);
@@ -52142,6 +51981,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+/** @internal */
+
 var RegisterType;
 
 (function (RegisterType) {
@@ -53089,6 +52930,11 @@ var JDRegisterServer = /*#__PURE__*/function (_JDEventSource) {
 /* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(47235);
 
 
+
+/**
+ * Base class for service clients
+ * @category Clients
+ */
 
 var JDServiceClient = /*#__PURE__*/function (_JDClient) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(JDServiceClient, _JDClient);
@@ -55362,6 +55208,8 @@ function toUTF8(str, cesu8) {
 
   return res;
 }
+
+/** @internal */
 var PromiseBuffer = /*#__PURE__*/function () {
   function PromiseBuffer() {
     this.waiting = [];
@@ -55424,6 +55272,8 @@ var PromiseBuffer = /*#__PURE__*/function () {
 
   return PromiseBuffer;
 }();
+/** @internal */
+
 var PromiseQueue = /*#__PURE__*/function () {
   function PromiseQueue() {
     this.promises = {};
@@ -56586,12 +56436,12 @@ var LEDMatrixServer = /*#__PURE__*/function (_JDServiceServer) {
 /* harmony export */   "Z": function() { return /* binding */ LedPixelServer; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5991);
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(63349);
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(63349);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
 /* harmony import */ var _jdom_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
-/* harmony import */ var _jdom_light__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(69130);
-/* harmony import */ var _jdom_serviceserver__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(50457);
-/* harmony import */ var _jdom_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81794);
+/* harmony import */ var _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(23795);
+/* harmony import */ var _jdom_serviceserver__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(50457);
+/* harmony import */ var _jdom_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81794);
 
 
 
@@ -56673,7 +56523,7 @@ function SCALE0(c, i) {
 }
 
 var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(LedPixelServer, _JDServiceServer);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(LedPixelServer, _JDServiceServer);
 
   function LedPixelServer(options) {
     var _this;
@@ -56716,11 +56566,11 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
       return _this.intensity = _this.requested_intensity;
     });
 
-    _this.numPixels.on(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .CHANGE */ .Ver, _this.allocRxBuffer.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(_this)));
+    _this.numPixels.on(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .CHANGE */ .Ver, _this.allocRxBuffer.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(_this)));
 
-    _this.maxPixels.on(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .CHANGE */ .Ver, _this.allocRxBuffer.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(_this)));
+    _this.maxPixels.on(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .CHANGE */ .Ver, _this.allocRxBuffer.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(_this)));
 
-    _this.addCommand(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .LedPixelCmd.Run */ .yB$.Run, _this.handleRun.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(_this)));
+    _this.addCommand(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .LedPixelCmd.Run */ .yB$.Run, _this.handleRun.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(_this)));
 
     _this.allocRxBuffer();
 
@@ -56761,7 +56611,7 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
     var p = this.pxbuffer;
     var pi = this.range_ptr++ * 3; // fast path
 
-    if (this.prog_tmpmode == _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_MODE_REPLACE */ ._I) {
+    if (this.prog_tmpmode == _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_MODE_REPLACE */ ._I) {
       p[pi + 0] = c.r;
       p[pi + 1] = c.g;
       p[pi + 2] = c.b;
@@ -56773,19 +56623,19 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
         b = p[pi + 2];
 
     switch (this.prog_tmpmode) {
-      case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_MODE_ADD_RGB */ .xI:
+      case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_MODE_ADD_RGB */ .xI:
         r += c.r;
         g += c.g;
         b += c.b;
         break;
 
-      case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_MODE_SUBTRACT_RGB */ .uZ:
+      case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_MODE_SUBTRACT_RGB */ .uZ:
         r -= c.r;
         g -= c.g;
         b -= c.b;
         break;
 
-      case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_MODE_MULTIPLY_RGB */ .Qj:
+      case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_MODE_MULTIPLY_RGB */ .Qj:
         r = mulcol(r, c.r);
         g = mulcol(g, c.g);
         b = mulcol(b, c.b);
@@ -56869,25 +56719,25 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
         prog: PROG_NUMBER
       };
     } else switch (c) {
-      case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_COL1 */ .oO:
+      case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_COL1 */ .oO:
         return {
           dst: 1,
           prog: PROG_COLOR_BLOCK
         };
 
-      case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_COL2 */ .W9:
+      case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_COL2 */ .W9:
         return {
           dst: 2,
           prog: PROG_COLOR_BLOCK
         };
 
-      case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_COL3 */ .Z3:
+      case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_COL3 */ .Z3:
         return {
           dst: 3,
           prog: PROG_COLOR_BLOCK
         };
 
-      case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_COLN */ .Lp:
+      case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_COLN */ .Lp:
         return {
           dst: d[this.prog_ptr++],
           prog: PROG_COLOR_BLOCK
@@ -57012,7 +56862,7 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
 
   _proto.fetch_mode = function fetch_mode() {
     var m = this.prog_fetch_num(0);
-    if (m > _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_MODE_LAST */ .wW) return 0;
+    if (m > _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_MODE_LAST */ .wW) return 0;
     return m;
   };
 
@@ -57025,7 +56875,7 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
       var cmd = this.prog_fetch_cmd();
       if (!cmd) break;
 
-      if (cmd == _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_SHOW */ .Xo) {
+      if (cmd == _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_SHOW */ .Xo) {
         var k = this.prog_fetch_num(50);
         this.dirty = true;
         setTimeout(this.animationFrame.bind(this), k); // check data is still current;
@@ -57034,14 +56884,14 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
       }
 
       switch (cmd) {
-        case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_COL1_SET */ .gd:
+        case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_COL1_SET */ .gd:
           this.range_ptr = this.range_start + this.prog_fetch_num(0);
           this.set_next(this.prog_fetch_color());
           break;
 
-        case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_FADE */ .r$:
-        case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_FADE_HSV */ .zy:
-        case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_SET_ALL */ .Ve:
+        case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_FADE */ .r$:
+        case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_FADE_HSV */ .zy:
+        case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_SET_ALL */ .Ve:
           {
             var _this$prog_fetch = this.prog_fetch(),
                 len = _this$prog_fetch.dst,
@@ -57049,12 +56899,12 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
 
             if (pcmd != PROG_COLOR_BLOCK || len == 0) continue; // bailout
 
-            if (cmd == _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_SET_ALL */ .Ve) this.prog_set(len);else this.prog_fade(len, cmd == _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_FADE_HSV */ .zy);
+            if (cmd == _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_SET_ALL */ .Ve) this.prog_set(len);else this.prog_fade(len, cmd == _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_FADE_HSV */ .zy);
             break;
           }
 
-        case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_ROTATE_BACK */ .fq:
-        case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_ROTATE_FWD */ .ln:
+        case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_ROTATE_BACK */ .fq:
+        case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_ROTATE_FWD */ .ln:
           {
             var _k = this.prog_fetch_num(1);
 
@@ -57065,20 +56915,20 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
               _k -= _len;
             }
 
-            if (cmd == _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_ROTATE_FWD */ .ln && _k != 0) _k = _len - _k;
+            if (cmd == _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_ROTATE_FWD */ .ln && _k != 0) _k = _len - _k;
             this.prog_rot(_k);
             break;
           }
 
-        case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_MODE1 */ .Aw:
+        case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_MODE1 */ .Aw:
           this.prog_tmpmode = this.fetch_mode();
           break;
 
-        case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_MODE */ .T:
+        case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_MODE */ .T:
           this.prog_mode = this.fetch_mode();
           break;
 
-        case _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_RANGE */ .ht:
+        case _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_RANGE */ .ht:
           {
             var start = this.prog_fetch_num(0);
 
@@ -57095,7 +56945,7 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
           }
       }
 
-      if (cmd != _jdom_light__WEBPACK_IMPORTED_MODULE_1__/* .LIGHT_PROG_MODE1 */ .Aw) this.prog_tmpmode = this.prog_mode;
+      if (cmd != _jdom_lightconstants__WEBPACK_IMPORTED_MODULE_5__/* .LIGHT_PROG_MODE1 */ .Aw) this.prog_tmpmode = this.prog_mode;
     }
 
     return false;
@@ -57113,7 +56963,7 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
     if (this.dirty) {
       this.dirty = false;
 
-      if ((0,_jdom_utils__WEBPACK_IMPORTED_MODULE_3__/* .isBufferEmpty */ .pL)(this.pxbuffer)) {
+      if ((0,_jdom_utils__WEBPACK_IMPORTED_MODULE_2__/* .isBufferEmpty */ .pL)(this.pxbuffer)) {
         this.jd_power_enable(false);
         return;
       } else {
@@ -57202,7 +57052,7 @@ var LedPixelServer = /*#__PURE__*/function (_JDServiceServer) {
   }]);
 
   return LedPixelServer;
-}(_jdom_serviceserver__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+}(_jdom_serviceserver__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z);
 
 
 
@@ -60728,7 +60578,7 @@ var AppProvider = function AppProvider(_ref) {
   var setError = function setError(e) {
     if (!e || (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_5__/* .isCancelError */ .G5)(e)) return;
     var msg = (e === null || e === void 0 ? void 0 : e.message) || e + "";
-    var code = (0,_jacdac_ts_src_jdom_error__WEBPACK_IMPORTED_MODULE_4__/* .default */ .ZP)(e);
+    var code = (0,_jacdac_ts_src_jdom_error__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(e);
 
     _enqueueSnackbar(msg, {
       variant: "error",
@@ -69841,7 +69691,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3104203350c449efd20da6bda965ddc979de1eee";
+  var sha = "2aa710c5629512e02f3a09792bf74857dc2064d9";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72385,6 +72235,11 @@ var node = __webpack_require__(60154);
 
 
 
+
+/**
+ * A Jacdac field.
+ * @category JDOM
+ */
 var JDField = /*#__PURE__*/function (_JDNode) {
   (0,inheritsLoose/* default */.Z)(JDField, _JDNode);
 
@@ -72461,6 +72316,11 @@ var JDField = /*#__PURE__*/function (_JDNode) {
 
 
 
+
+/**
+ * Base class for JDOM service member classes.
+ * @category JDOM
+ */
 var JDServiceMemberNode = /*#__PURE__*/function (_JDNode) {
   (0,inheritsLoose/* default */.Z)(JDServiceMemberNode, _JDNode);
 
@@ -72534,6 +72394,11 @@ var packobject = __webpack_require__(53616);
 
 
 
+
+/**
+ * A Jacdac register client.
+ * @category JDOM
+ */
 
 var JDRegister = /*#__PURE__*/function (_JDServiceMemberNode) {
   (0,inheritsLoose/* default */.Z)(JDRegister, _JDServiceMemberNode);
@@ -72797,6 +72662,11 @@ function stableSortRegisters(registers) {
 
 
 
+/**
+ * A Jacdac event client.
+ * @category JDOM
+ */
+
 var JDEvent = /*#__PURE__*/function (_JDServiceMemberNode) {
   (0,inheritsLoose/* default */.Z)(JDEvent, _JDServiceMemberNode);
 
@@ -72924,6 +72794,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
+/**
+ * A Jacdac service client hosting registers, events.
+ * @category JDOM
+ */
 var JDService = /*#__PURE__*/function (_JDNode) {
   (0,inheritsLoose/* default */.Z)(JDService, _JDNode);
 
@@ -73587,6 +73462,11 @@ function device_arrayLikeToArray(arr, len) { if (len == null || len > arr.length
 
 
 
+
+/**
+ * A Jacdac device hosting services.
+ * @category JDOM
+ */
 var JDDevice = /*#__PURE__*/function (_JDNode) {
   (0,inheritsLoose/* default */.Z)(JDDevice, _JDNode);
 
@@ -74708,6 +74588,10 @@ var random = __webpack_require__(80303);
 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+/** @internal */
+
+/** @internal */
 var WallClockScheduler = /*#__PURE__*/function () {
   function WallClockScheduler() {
     this._now = typeof performance !== "undefined" ? function () {
@@ -74839,6 +74723,7 @@ var SCAN_FIRMWARE_INTERVAL = 30000;
 
 /**
  * A Jacdac bus manager. This instance maintains the list of devices on the bus.
+ * @category JDOM
  */
 var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   (0,inheritsLoose/* default */.Z)(JDBus, _JDNode);
@@ -77726,7 +77611,7 @@ var USBIO = /*#__PURE__*/function () {
     this.onData = function (v) {};
 
     this.onError = function (e) {
-      console.warn("usb error: " + ((0,jdom_error/* default */.ZP)(e) || "") + " " + (e ? e.stack : e));
+      console.warn("usb error: " + ((0,jdom_error/* default */.Z)(e) || "") + " " + (e ? e.stack : e));
     };
 
     this.options = options;
@@ -77805,7 +77690,7 @@ var USBIO = /*#__PURE__*/function () {
   };
 
   _proto.error = function error(msg, code) {
-    var e = new jdom_error/* JDError */.py("device " + (this.dev ? this.dev.productName : "n/a") + " (" + msg + ")", code);
+    var e = new jdom_error/* JDError */.p("device " + (this.dev ? this.dev.productName : "n/a") + " (" + msg + ")", code);
     this.onError(e);
   };
 
@@ -79255,7 +79140,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.13.103"};
+var package_namespaceObject = {"i8":"1.13.104"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 

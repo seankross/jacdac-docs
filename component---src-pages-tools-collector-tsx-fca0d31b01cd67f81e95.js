@@ -276,6 +276,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
+/**
+ * A client for the sensor aggregator service
+ * @category Clients
+ */
 var SensorAggregatorClient = /*#__PURE__*/function (_JDServiceClient) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)(SensorAggregatorClient, _JDServiceClient);
 

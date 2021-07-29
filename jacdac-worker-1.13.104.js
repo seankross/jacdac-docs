@@ -1,432 +1,3 @@
-const JACDAC_ERROR = "JacdacError";
-class JDError extends Error {
-    constructor(message, jacdacName) {
-        super(message);
-        this.jacdacName = jacdacName;
-        this.name = JACDAC_ERROR;
-    }
-}
-function errorPath(e) {
-    return e?.jacdacName;
-}
-
-class Flags {
-}
-/**
- * Enables additional logging and diagnostics
- */
-Flags.diagnostics = false;
-/**
- * Enables/disabled WebUSB
- */
-Flags.webUSB = true;
-/**
- * Enables/disables WebBLE
- */
-Flags.webBluetooth = false;
-/**
- * Use local storage and indexeddb to store data
- */
-Flags.storage = false;
-
-function throwError(msg, cancel) {
-    const e = new Error(msg);
-    if (cancel)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        e.__cancel = true;
-    throw e;
-}
-function delay(millis, value) {
-    return new Promise(resolve => setTimeout(() => resolve(value), millis));
-}
-function memcpy(trg, trgOff, src, srcOff, len) {
-    if (srcOff === void 0)
-        srcOff = 0;
-    if (len === void 0)
-        len = src.length - srcOff;
-    for (let i = 0; i < len; ++i)
-        trg[trgOff + i] = src[srcOff + i];
-}
-function uint8ArrayToString(input) {
-    const len = input.length;
-    let res = "";
-    for (let i = 0; i < len; ++i)
-        res += String.fromCharCode(input[i]);
-    return res;
-}
-function fromUTF8(binstr) {
-    if (!binstr)
-        return "";
-    // escape function is deprecated
-    let escaped = "";
-    for (let i = 0; i < binstr.length; ++i) {
-        const k = binstr.charCodeAt(i) & 0xff;
-        if (k == 37 || k > 0x7f) {
-            escaped += "%" + k.toString(16);
-        }
-        else {
-            escaped += binstr.charAt(i);
-        }
-    }
-    // decodeURIComponent does the actual UTF8 decoding
-    return decodeURIComponent(escaped);
-}
-class PromiseBuffer {
-    constructor() {
-        this.waiting = [];
-        this.available = [];
-    }
-    drain() {
-        for (const f of this.waiting) {
-            f(new Error("Promise Buffer Reset"));
-        }
-        this.waiting = [];
-        this.available = [];
-    }
-    pushError(v) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        this.push(v);
-    }
-    push(v) {
-        const f = this.waiting.shift();
-        if (f)
-            f(v);
-        else
-            this.available.push(v);
-    }
-    shiftAsync(timeout = 0) {
-        if (this.available.length > 0) {
-            const v = this.available.shift();
-            if (v instanceof Error)
-                return Promise.reject(v);
-            else
-                return Promise.resolve(v);
-        }
-        else
-            return new Promise((resolve, reject) => {
-                const f = (v) => {
-                    if (v instanceof Error)
-                        reject(v);
-                    else
-                        resolve(v);
-                };
-                this.waiting.push(f);
-                if (timeout > 0) {
-                    delay(timeout).then(() => {
-                        const idx = this.waiting.indexOf(f);
-                        if (idx >= 0) {
-                            this.waiting.splice(idx, 1);
-                            reject(new Error("Timeout"));
-                        }
-                    });
-                }
-            });
-    }
-}
-class PromiseQueue {
-    constructor() {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        this.promises = {};
-    }
-    enqueue(id, f) {
-        return new Promise((resolve, reject) => {
-            let arr = this.promises[id];
-            if (!arr) {
-                arr = this.promises[id] = [];
-            }
-            const cleanup = () => {
-                arr.shift();
-                if (arr.length == 0)
-                    delete this.promises[id];
-                else
-                    arr[0]();
-            };
-            arr.push(() => f().then(v => {
-                cleanup();
-                resolve(v);
-            }, err => {
-                cleanup();
-                reject(err);
-            }));
-            if (arr.length == 1)
-                arr[0]();
-        });
-    }
-}
-function fromHex(hex) {
-    const r = new Uint8Array(hex.length >> 1);
-    for (let i = 0; i < hex.length; i += 2)
-        r[i >> 1] = parseInt(hex.slice(i, i + 2), 16);
-    return r;
-}
-function write32(buf, pos, v) {
-    buf[pos + 0] = (v >> 0) & 0xff;
-    buf[pos + 1] = (v >> 8) & 0xff;
-    buf[pos + 2] = (v >> 16) & 0xff;
-    buf[pos + 3] = (v >> 24) & 0xff;
-}
-function write16(buf, pos, v) {
-    buf[pos + 0] = (v >> 0) & 0xff;
-    buf[pos + 1] = (v >> 8) & 0xff;
-}
-function read32(buf, pos) {
-    return ((buf[pos] |
-        (buf[pos + 1] << 8) |
-        (buf[pos + 2] << 16) |
-        (buf[pos + 3] << 24)) >>>
-        0);
-}
-function read16(buf, pos) {
-    return buf[pos] | (buf[pos + 1] << 8);
-}
-function encodeU32LE(words) {
-    const r = new Uint8Array(words.length * 4);
-    for (let i = 0; i < words.length; ++i)
-        write32(r, i * 4, words[i]);
-    return r;
-}
-function bufferToString(buf) {
-    return fromUTF8(uint8ArrayToString(buf));
-}
-function bufferConcat(a, b) {
-    const r = new Uint8Array(a.length + b.length);
-    r.set(a, 0);
-    r.set(b, a.length);
-    return r;
-}
-function assert(cond, msg = "Assertion failed", 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-debugData) {
-    if (!cond) {
-        if (debugData)
-            console.debug(`assertion filed ${msg}`, debugData);
-        if (Flags.diagnostics)
-            // eslint-disable-next-line no-debugger
-            debugger;
-        throw new Error(msg);
-    }
-}
-
-// see https://github.com/microsoft/uf2/blob/main/hf2.md for full spec
-const HF2_DEVICE_MAJOR = 42;
-const HF2_CMD_BININFO = 0x0001; // no arguments
-const HF2_MODE_BOOTLOADER = 0x01;
-const HF2_MODE_USERSPACE = 0x02;
-/*
-struct HF2_BININFO_Result {
-    uint32_t mode;
-    uint32_t flash_page_size;
-    uint32_t flash_num_pages;
-    uint32_t max_message_size;
-};
-*/
-const HF2_CMD_INFO = 0x0002;
-// no arguments
-// results is utf8 character array
-const HF2_CMD_RESET_INTO_APP = 0x0003; // no arguments, no result
-// no arguments
-// results is utf8 character array
-const HF2_FLAG_SERIAL_OUT = 0x80;
-const HF2_FLAG_SERIAL_ERR = 0xc0;
-const HF2_FLAG_CMDPKT_LAST = 0x40;
-const HF2_FLAG_CMDPKT_BODY = 0x00;
-const HF2_FLAG_MASK = 0xc0;
-const HF2_STATUS_OK = 0x00;
-const HF2_STATUS_INVALID_CMD = 0x01;
-const HF2_STATUS_EXEC_ERR = 0x02;
-const HF2_STATUS_EVENT = 0x80;
-// the eventId is overlayed on the tag+status; the mask corresponds
-// to the HF2_STATUS_EVENT above
-const HF2_EV_MASK = 0x800000;
-const HF2_CMD_JDS_CONFIG = 0x0020;
-const HF2_CMD_JDS_SEND = 0x0021;
-const HF2_EV_JDS_PACKET = 0x800020;
-class HF2Proto {
-    constructor(io) {
-        this.io = io;
-        this.eventHandlers = {};
-        this.msgs = new PromiseBuffer();
-        this.cmdSeq = (Math.random() * 0xffff) | 0;
-        this.lock = new PromiseQueue();
-        let frames = [];
-        io.onData = buf => {
-            const tp = buf[0] & HF2_FLAG_MASK;
-            const len = buf[0] & 63;
-            //console.log(`msg tp=${tp} len=${len}`)
-            const frame = new Uint8Array(len);
-            memcpy(frame, 0, buf, 1, len);
-            if (tp & HF2_FLAG_SERIAL_OUT) {
-                this.onSerial(frame, tp == HF2_FLAG_SERIAL_ERR);
-                return;
-            }
-            frames.push(frame);
-            if (tp == HF2_FLAG_CMDPKT_BODY) {
-                return;
-            }
-            else {
-                assert(tp == HF2_FLAG_CMDPKT_LAST);
-                let total = 0;
-                for (const f of frames)
-                    total += f.length;
-                const r = new Uint8Array(total);
-                let ptr = 0;
-                for (const f of frames) {
-                    memcpy(r, ptr, f);
-                    ptr += f.length;
-                }
-                frames = [];
-                if (r[2] & HF2_STATUS_EVENT) {
-                    // asynchronous event
-                    this.handleEvent(r);
-                }
-                else {
-                    this.msgs.push(r);
-                }
-            }
-        };
-    }
-    error(m) {
-        return this.io.error(m);
-    }
-    talkAsync(cmd, data) {
-        if (!this.io)
-            console.log("rogue hf2 instance");
-        let len = 8;
-        if (data)
-            len += data.length;
-        const pkt = new Uint8Array(len);
-        const seq = ++this.cmdSeq & 0xffff;
-        write32(pkt, 0, cmd);
-        write16(pkt, 4, seq);
-        write16(pkt, 6, 0);
-        if (data)
-            memcpy(pkt, 8, data, 0, data.length);
-        let numSkipped = 0;
-        const handleReturnAsync = () => this.msgs
-            .shiftAsync(1000) // we wait up to a second
-            .then(res => {
-            if (read16(res, 0) != seq) {
-                if (numSkipped < 3) {
-                    numSkipped++;
-                    this.io.log(`message out of sync, (${seq} vs ${read16(res, 0)}); will re-try`);
-                    return handleReturnAsync();
-                }
-                this.error("out of sync");
-            }
-            let info = "";
-            if (res[3])
-                info = "; info=" + res[3];
-            switch (res[2]) {
-                case HF2_STATUS_OK:
-                    return res.slice(4);
-                case HF2_STATUS_INVALID_CMD:
-                    this.error("invalid command" + info);
-                    break;
-                case HF2_STATUS_EXEC_ERR:
-                    this.error("execution error" + info);
-                    break;
-                default:
-                    this.error("error " + res[2] + info);
-                    break;
-            }
-            return null;
-        })
-            .catch(e => {
-            this.error(e);
-            return null;
-        });
-        return this.lock.enqueue("talk", () => this.sendMsgAsync(pkt).then(handleReturnAsync));
-    }
-    sendMsgAsync(buf, serial = 0) {
-        // Util.assert(buf.length <= this.maxMsgSize)
-        const frame = new Uint8Array(64);
-        const loop = (pos) => {
-            let len = buf.length - pos;
-            if (len <= 0)
-                return Promise.resolve();
-            if (len > 63) {
-                len = 63;
-                frame[0] = HF2_FLAG_CMDPKT_BODY;
-            }
-            else {
-                frame[0] = HF2_FLAG_CMDPKT_LAST;
-            }
-            if (serial)
-                frame[0] =
-                    serial == 1 ? HF2_FLAG_SERIAL_OUT : HF2_FLAG_SERIAL_ERR;
-            frame[0] |= len;
-            for (let i = 0; i < len; ++i)
-                frame[i + 1] = buf[pos + i];
-            return this.io.sendPacketAsync(frame).then(() => loop(pos + len));
-        };
-        return loop(0);
-    }
-    onEvent(id, f) {
-        assert(!!(id & HF2_EV_MASK));
-        this.eventHandlers[id + ""] = f;
-    }
-    onJDMessage(f) {
-        this.talkAsync(HF2_CMD_JDS_CONFIG, encodeU32LE([1]));
-        this.onEvent(HF2_EV_JDS_PACKET, f);
-    }
-    sendJDMessageAsync(buf) {
-        return this.talkAsync(HF2_CMD_JDS_SEND, buf).then(() => { });
-    }
-    handleEvent(buf) {
-        const evid = read32(buf, 0);
-        const f = this.eventHandlers[evid + ""];
-        if (f) {
-            f(buf.slice(4));
-        }
-        else {
-            this.io.log("unhandled event: " + evid.toString(16));
-            // We can get these before we're ready to recv; this is fine.
-            //if (evid === 0x800020) {
-            //    this.io.onError(new Error("hf2 corrupted"))
-            //}
-        }
-    }
-    onSerial(data, iserr) {
-        const msg = `hf2 serial: ${bufferToString(data)}`;
-        if (iserr)
-            console.warn(msg);
-        else
-            console.log(msg);
-    }
-    async postConnectAsync() {
-        await this.checkMode();
-        const buf = await this.talkAsync(HF2_CMD_INFO);
-        this.io.log("Connected to: " + bufferToString(buf));
-    }
-    async checkMode() {
-        // first check that we are not talking to a bootloader
-        const info = await this.talkAsync(HF2_CMD_BININFO);
-        const mode = read32(info, 0);
-        this.io.log(`hf2 mode ${mode}`);
-        if (mode == HF2_MODE_USERSPACE) {
-            // all good
-            this.io.log(`device in user-space mode`);
-        }
-        else if (mode == HF2_MODE_BOOTLOADER) {
-            this.io.log(`device in bootloader mode, reseting into user-space mode`);
-            await this.talkAsync(HF2_CMD_RESET_INTO_APP);
-            // and fail
-            throwError("Device in bootloader mode");
-        }
-        else {
-            // unknown mdoe
-            throwError("Unknown device operation mode");
-        }
-    }
-    async disconnectAsync() {
-        if (this.io) {
-            const io = this.io;
-            this.io = undefined;
-            await io.disconnectAsync();
-        }
-    }
-}
-
 // Service: Common registers and commands
 var SystemReadingThreshold;
 (function (SystemReadingThreshold) {
@@ -4708,6 +4279,426 @@ const ERROR_MICROBIT_V1 = "microbit/v1-not-supported";
 const ERROR_MICROBIT_UNKNOWN = "microbit/unknown-hardware-revision";
 const ERROR_MICROBIT_JACDAC_MISSING = "microbit/jacdac-missing";
 const ERROR_MICROBIT_INVALID_MEMORY = "microbit/invalid-memory";
+const JACDAC_ERROR = "JacdacError";
+
+class Flags {
+}
+/**
+ * Enables additional logging and diagnostics
+ */
+Flags.diagnostics = false;
+/**
+ * Enables/disabled WebUSB
+ */
+Flags.webUSB = true;
+/**
+ * Enables/disables WebBLE
+ */
+Flags.webBluetooth = false;
+/**
+ * Use local storage and indexeddb to store data
+ */
+Flags.storage = false;
+
+function throwError(msg, cancel) {
+    const e = new Error(msg);
+    if (cancel)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        e.__cancel = true;
+    throw e;
+}
+function delay(millis, value) {
+    return new Promise(resolve => setTimeout(() => resolve(value), millis));
+}
+function memcpy(trg, trgOff, src, srcOff, len) {
+    if (srcOff === void 0)
+        srcOff = 0;
+    if (len === void 0)
+        len = src.length - srcOff;
+    for (let i = 0; i < len; ++i)
+        trg[trgOff + i] = src[srcOff + i];
+}
+function uint8ArrayToString(input) {
+    const len = input.length;
+    let res = "";
+    for (let i = 0; i < len; ++i)
+        res += String.fromCharCode(input[i]);
+    return res;
+}
+function fromUTF8(binstr) {
+    if (!binstr)
+        return "";
+    // escape function is deprecated
+    let escaped = "";
+    for (let i = 0; i < binstr.length; ++i) {
+        const k = binstr.charCodeAt(i) & 0xff;
+        if (k == 37 || k > 0x7f) {
+            escaped += "%" + k.toString(16);
+        }
+        else {
+            escaped += binstr.charAt(i);
+        }
+    }
+    // decodeURIComponent does the actual UTF8 decoding
+    return decodeURIComponent(escaped);
+}
+/** @internal */
+class PromiseBuffer {
+    constructor() {
+        this.waiting = [];
+        this.available = [];
+    }
+    drain() {
+        for (const f of this.waiting) {
+            f(new Error("Promise Buffer Reset"));
+        }
+        this.waiting = [];
+        this.available = [];
+    }
+    pushError(v) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        this.push(v);
+    }
+    push(v) {
+        const f = this.waiting.shift();
+        if (f)
+            f(v);
+        else
+            this.available.push(v);
+    }
+    shiftAsync(timeout = 0) {
+        if (this.available.length > 0) {
+            const v = this.available.shift();
+            if (v instanceof Error)
+                return Promise.reject(v);
+            else
+                return Promise.resolve(v);
+        }
+        else
+            return new Promise((resolve, reject) => {
+                const f = (v) => {
+                    if (v instanceof Error)
+                        reject(v);
+                    else
+                        resolve(v);
+                };
+                this.waiting.push(f);
+                if (timeout > 0) {
+                    delay(timeout).then(() => {
+                        const idx = this.waiting.indexOf(f);
+                        if (idx >= 0) {
+                            this.waiting.splice(idx, 1);
+                            reject(new Error("Timeout"));
+                        }
+                    });
+                }
+            });
+    }
+}
+/** @internal */
+class PromiseQueue {
+    constructor() {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        this.promises = {};
+    }
+    enqueue(id, f) {
+        return new Promise((resolve, reject) => {
+            let arr = this.promises[id];
+            if (!arr) {
+                arr = this.promises[id] = [];
+            }
+            const cleanup = () => {
+                arr.shift();
+                if (arr.length == 0)
+                    delete this.promises[id];
+                else
+                    arr[0]();
+            };
+            arr.push(() => f().then(v => {
+                cleanup();
+                resolve(v);
+            }, err => {
+                cleanup();
+                reject(err);
+            }));
+            if (arr.length == 1)
+                arr[0]();
+        });
+    }
+}
+function fromHex(hex) {
+    const r = new Uint8Array(hex.length >> 1);
+    for (let i = 0; i < hex.length; i += 2)
+        r[i >> 1] = parseInt(hex.slice(i, i + 2), 16);
+    return r;
+}
+function write32(buf, pos, v) {
+    buf[pos + 0] = (v >> 0) & 0xff;
+    buf[pos + 1] = (v >> 8) & 0xff;
+    buf[pos + 2] = (v >> 16) & 0xff;
+    buf[pos + 3] = (v >> 24) & 0xff;
+}
+function write16(buf, pos, v) {
+    buf[pos + 0] = (v >> 0) & 0xff;
+    buf[pos + 1] = (v >> 8) & 0xff;
+}
+function read32(buf, pos) {
+    return ((buf[pos] |
+        (buf[pos + 1] << 8) |
+        (buf[pos + 2] << 16) |
+        (buf[pos + 3] << 24)) >>>
+        0);
+}
+function read16(buf, pos) {
+    return buf[pos] | (buf[pos + 1] << 8);
+}
+function encodeU32LE(words) {
+    const r = new Uint8Array(words.length * 4);
+    for (let i = 0; i < words.length; ++i)
+        write32(r, i * 4, words[i]);
+    return r;
+}
+function bufferToString(buf) {
+    return fromUTF8(uint8ArrayToString(buf));
+}
+function bufferConcat(a, b) {
+    const r = new Uint8Array(a.length + b.length);
+    r.set(a, 0);
+    r.set(b, a.length);
+    return r;
+}
+function assert(cond, msg = "Assertion failed", 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+debugData) {
+    if (!cond) {
+        if (debugData)
+            console.debug(`assertion filed ${msg}`, debugData);
+        if (Flags.diagnostics)
+            // eslint-disable-next-line no-debugger
+            debugger;
+        throw new Error(msg);
+    }
+}
+
+// see https://github.com/microsoft/uf2/blob/main/hf2.md for full spec
+const HF2_DEVICE_MAJOR = 42;
+const HF2_CMD_BININFO = 0x0001; // no arguments
+const HF2_MODE_BOOTLOADER = 0x01;
+const HF2_MODE_USERSPACE = 0x02;
+/*
+struct HF2_BININFO_Result {
+    uint32_t mode;
+    uint32_t flash_page_size;
+    uint32_t flash_num_pages;
+    uint32_t max_message_size;
+};
+*/
+const HF2_CMD_INFO = 0x0002;
+// no arguments
+// results is utf8 character array
+const HF2_CMD_RESET_INTO_APP = 0x0003; // no arguments, no result
+// no arguments
+// results is utf8 character array
+const HF2_FLAG_SERIAL_OUT = 0x80;
+const HF2_FLAG_SERIAL_ERR = 0xc0;
+const HF2_FLAG_CMDPKT_LAST = 0x40;
+const HF2_FLAG_CMDPKT_BODY = 0x00;
+const HF2_FLAG_MASK = 0xc0;
+const HF2_STATUS_OK = 0x00;
+const HF2_STATUS_INVALID_CMD = 0x01;
+const HF2_STATUS_EXEC_ERR = 0x02;
+const HF2_STATUS_EVENT = 0x80;
+// the eventId is overlayed on the tag+status; the mask corresponds
+// to the HF2_STATUS_EVENT above
+const HF2_EV_MASK = 0x800000;
+const HF2_CMD_JDS_CONFIG = 0x0020;
+const HF2_CMD_JDS_SEND = 0x0021;
+const HF2_EV_JDS_PACKET = 0x800020;
+class HF2Proto {
+    constructor(io) {
+        this.io = io;
+        this.eventHandlers = {};
+        this.msgs = new PromiseBuffer();
+        this.cmdSeq = (Math.random() * 0xffff) | 0;
+        this.lock = new PromiseQueue();
+        let frames = [];
+        io.onData = buf => {
+            const tp = buf[0] & HF2_FLAG_MASK;
+            const len = buf[0] & 63;
+            //console.log(`msg tp=${tp} len=${len}`)
+            const frame = new Uint8Array(len);
+            memcpy(frame, 0, buf, 1, len);
+            if (tp & HF2_FLAG_SERIAL_OUT) {
+                this.onSerial(frame, tp == HF2_FLAG_SERIAL_ERR);
+                return;
+            }
+            frames.push(frame);
+            if (tp == HF2_FLAG_CMDPKT_BODY) {
+                return;
+            }
+            else {
+                assert(tp == HF2_FLAG_CMDPKT_LAST);
+                let total = 0;
+                for (const f of frames)
+                    total += f.length;
+                const r = new Uint8Array(total);
+                let ptr = 0;
+                for (const f of frames) {
+                    memcpy(r, ptr, f);
+                    ptr += f.length;
+                }
+                frames = [];
+                if (r[2] & HF2_STATUS_EVENT) {
+                    // asynchronous event
+                    this.handleEvent(r);
+                }
+                else {
+                    this.msgs.push(r);
+                }
+            }
+        };
+    }
+    error(m) {
+        return this.io.error(m);
+    }
+    talkAsync(cmd, data) {
+        if (!this.io)
+            console.log("rogue hf2 instance");
+        let len = 8;
+        if (data)
+            len += data.length;
+        const pkt = new Uint8Array(len);
+        const seq = ++this.cmdSeq & 0xffff;
+        write32(pkt, 0, cmd);
+        write16(pkt, 4, seq);
+        write16(pkt, 6, 0);
+        if (data)
+            memcpy(pkt, 8, data, 0, data.length);
+        let numSkipped = 0;
+        const handleReturnAsync = () => this.msgs
+            .shiftAsync(1000) // we wait up to a second
+            .then(res => {
+            if (read16(res, 0) != seq) {
+                if (numSkipped < 3) {
+                    numSkipped++;
+                    this.io.log(`message out of sync, (${seq} vs ${read16(res, 0)}); will re-try`);
+                    return handleReturnAsync();
+                }
+                this.error("out of sync");
+            }
+            let info = "";
+            if (res[3])
+                info = "; info=" + res[3];
+            switch (res[2]) {
+                case HF2_STATUS_OK:
+                    return res.slice(4);
+                case HF2_STATUS_INVALID_CMD:
+                    this.error("invalid command" + info);
+                    break;
+                case HF2_STATUS_EXEC_ERR:
+                    this.error("execution error" + info);
+                    break;
+                default:
+                    this.error("error " + res[2] + info);
+                    break;
+            }
+            return null;
+        })
+            .catch(e => {
+            this.error(e);
+            return null;
+        });
+        return this.lock.enqueue("talk", () => this.sendMsgAsync(pkt).then(handleReturnAsync));
+    }
+    sendMsgAsync(buf, serial = 0) {
+        // Util.assert(buf.length <= this.maxMsgSize)
+        const frame = new Uint8Array(64);
+        const loop = (pos) => {
+            let len = buf.length - pos;
+            if (len <= 0)
+                return Promise.resolve();
+            if (len > 63) {
+                len = 63;
+                frame[0] = HF2_FLAG_CMDPKT_BODY;
+            }
+            else {
+                frame[0] = HF2_FLAG_CMDPKT_LAST;
+            }
+            if (serial)
+                frame[0] =
+                    serial == 1 ? HF2_FLAG_SERIAL_OUT : HF2_FLAG_SERIAL_ERR;
+            frame[0] |= len;
+            for (let i = 0; i < len; ++i)
+                frame[i + 1] = buf[pos + i];
+            return this.io.sendPacketAsync(frame).then(() => loop(pos + len));
+        };
+        return loop(0);
+    }
+    onEvent(id, f) {
+        assert(!!(id & HF2_EV_MASK));
+        this.eventHandlers[id + ""] = f;
+    }
+    onJDMessage(f) {
+        this.talkAsync(HF2_CMD_JDS_CONFIG, encodeU32LE([1]));
+        this.onEvent(HF2_EV_JDS_PACKET, f);
+    }
+    sendJDMessageAsync(buf) {
+        return this.talkAsync(HF2_CMD_JDS_SEND, buf).then(() => { });
+    }
+    handleEvent(buf) {
+        const evid = read32(buf, 0);
+        const f = this.eventHandlers[evid + ""];
+        if (f) {
+            f(buf.slice(4));
+        }
+        else {
+            this.io.log("unhandled event: " + evid.toString(16));
+            // We can get these before we're ready to recv; this is fine.
+            //if (evid === 0x800020) {
+            //    this.io.onError(new Error("hf2 corrupted"))
+            //}
+        }
+    }
+    onSerial(data, iserr) {
+        const msg = `hf2 serial: ${bufferToString(data)}`;
+        if (iserr)
+            console.warn(msg);
+        else
+            console.log(msg);
+    }
+    async postConnectAsync() {
+        await this.checkMode();
+        const buf = await this.talkAsync(HF2_CMD_INFO);
+        this.io.log("Connected to: " + bufferToString(buf));
+    }
+    async checkMode() {
+        // first check that we are not talking to a bootloader
+        const info = await this.talkAsync(HF2_CMD_BININFO);
+        const mode = read32(info, 0);
+        this.io.log(`hf2 mode ${mode}`);
+        if (mode == HF2_MODE_USERSPACE) {
+            // all good
+            this.io.log(`device in user-space mode`);
+        }
+        else if (mode == HF2_MODE_BOOTLOADER) {
+            this.io.log(`device in bootloader mode, reseting into user-space mode`);
+            await this.talkAsync(HF2_CMD_RESET_INTO_APP);
+            // and fail
+            throwError("Device in bootloader mode");
+        }
+        else {
+            // unknown mdoe
+            throwError("Unknown device operation mode");
+        }
+    }
+    async disconnectAsync() {
+        if (this.io) {
+            const io = this.io;
+            this.io = undefined;
+            await io.disconnectAsync();
+        }
+    }
+}
 
 const MICROBIT_V2_VENDOR_ID = 3368;
 const MICROBIT_V2_PRODUCT_ID = 516;
@@ -5155,6 +5146,17 @@ class CMSISProto {
     }
 }
 
+class JDError extends Error {
+    constructor(message, jacdacName) {
+        super(message);
+        this.jacdacName = jacdacName;
+        this.name = JACDAC_ERROR;
+    }
+}
+function errorPath(e) {
+    return e?.jacdacName;
+}
+
 const USB_FILTERS = {
     filters: [
         {
@@ -5428,7 +5430,7 @@ class USBTransportProxy {
             });
         };
         const onJDMessage = (buf) => {
-            postMessage({
+            self.postMessage({
                 jacdac: true,
                 type: "frame",
                 payload: buf,
@@ -5454,7 +5456,7 @@ debug(`jdsw: starting...`);
 let proxy;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function handleError(resp, e) {
-    postMessage({
+    self.postMessage({
         ...resp,
         error: {
             message: e.message,
@@ -5468,7 +5470,7 @@ function handleError(resp, e) {
 async function handleCommand(resp, handler) {
     try {
         await handler();
-        postMessage(resp);
+        self.postMessage(resp);
     }
     catch (e) {
         handleError(resp, e);

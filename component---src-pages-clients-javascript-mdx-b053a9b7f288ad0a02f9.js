@@ -84,8 +84,15 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
+    "href": "https://microsoft.github.io/jacdac-ts/",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, "API Reference")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
     "href": "/jacdac-docs/clients/javascript/jdom"
-  }, "JDOM reference"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "JDOM introduction"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "npm",
     "style": {
       "position": "relative"

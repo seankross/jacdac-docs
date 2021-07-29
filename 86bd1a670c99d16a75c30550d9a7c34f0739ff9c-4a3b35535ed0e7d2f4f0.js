@@ -6931,7 +6931,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-// TODO: replicate MakeCode role manager logic
+/**
+ * A client for the role manager service.
+ * @category Clients
+ */
 var RoleManager = /*#__PURE__*/function (_JDClient) {
   (0,inheritsLoose/* default */.Z)(RoleManager, _JDClient);
 
