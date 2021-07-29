@@ -1648,6 +1648,32 @@ function _SingleRGBLEDTest() {
   return _SingleRGBLEDTest.apply(this, arguments);
 }
 
+function StatusLEDTest(_x3) {
+  return _StatusLEDTest.apply(this, arguments);
+}
+
+function _StatusLEDTest() {
+  _StatusLEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(device) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(1000);
+
+          case 2:
+            device.identify();
+
+          case 3:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _StatusLEDTest.apply(this, arguments);
+}
+
 function Commissioner() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z),
       bus = _useContext.bus;
@@ -1685,7 +1711,7 @@ function Commissioner() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              d.identify();
+              StatusLEDTest(d);
               _iterator = _createForOfIteratorHelperLoose(d.services());
 
             case 2:
@@ -1719,7 +1745,7 @@ function Commissioner() {
       }, _callee);
     }));
 
-    return function testDevice(_x3) {
+    return function testDevice(_x4) {
       return _ref.apply(this, arguments);
     };
   }();
