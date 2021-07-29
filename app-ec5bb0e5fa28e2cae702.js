@@ -69691,7 +69691,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2aa710c5629512e02f3a09792bf74857dc2064d9";
+  var sha = "43a114deb61d4f090a97381abd46cfe2c6a54d9b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81546,7 +81546,7 @@ exports.components = {
     return __webpack_require__.e(/* import() | component---src-pages-software-mdx */ 8307).then(__webpack_require__.bind(__webpack_require__, 46690));
   },
   "component---src-pages-tools-accelerometer-theremin-tsx": function componentSrcPagesToolsAccelerometerThereminTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(6559), __webpack_require__.e(1326), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 67396));
+    return Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(6559), __webpack_require__.e(1326), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 49383));
   },
   "component---src-pages-tools-azure-device-twin-designer-tsx": function componentSrcPagesToolsAzureDeviceTwinDesignerTsx() {
     return Promise.all(/* import() | component---src-pages-tools-azure-device-twin-designer-tsx */[__webpack_require__.e(9502), __webpack_require__.e(5557), __webpack_require__.e(2460), __webpack_require__.e(3420)]).then(__webpack_require__.bind(__webpack_require__, 95522));
