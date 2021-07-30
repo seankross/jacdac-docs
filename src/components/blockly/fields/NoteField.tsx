@@ -1,10 +1,7 @@
 import React, { lazy, ReactNode } from "react"
 import { createToneContext, ToneContext } from "../../ui/WebAudioContext"
 import Suspense from "../../ui/Suspense"
-import ReactField, {
-    ReactFieldJSON,
-    toShadowDefinition,
-} from "./ReactField"
+import ReactField, { ReactFieldJSON, toShadowDefinition } from "./ReactField"
 const PianoWidget = lazy(() => import("../../widgets/PianoWidget"))
 
 export default class NoteField extends ReactField<number> {
@@ -32,7 +29,7 @@ export default class NoteField extends ReactField<number> {
     renderField(): ReactNode {
         const handlePlayTone = async (newFrequency: number) => {
             this.value = newFrequency
-            if (!this.toneContext) this.toneContext = createToneContext()
+            if (!this.toneContext) this.toneContext = await createToneContext()
             this.toneContext?.playTone(newFrequency, 400, 0.5)
         }
         return (

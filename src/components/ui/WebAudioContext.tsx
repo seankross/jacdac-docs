@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useRef, useState } from "react"
-import { ResonanceAudio } from "resonance-audio"
+import loadResonanceAudio from "../sonification/resonance"
 
 const VOLUME_GAIN = 0.4
 
@@ -14,7 +14,7 @@ export interface ToneContext {
 }
 
 export interface WebAudioContextProps {
-    onClickActivateAudioContext: () => void
+    onClickActivateAudioContext: () => Promise<void>
     playTone: (
         frequency: number,
         duration: number,
@@ -26,7 +26,7 @@ export interface WebAudioContextProps {
 }
 
 const WebAudioContext = createContext<WebAudioContextProps>({
-    onClickActivateAudioContext: () => {},
+    onClickActivateAudioContext: async () => {},
     playTone: () => {},
     setVolume: () => {},
     activated: false,
@@ -35,11 +35,9 @@ WebAudioContext.displayName = "WebAudio"
 
 export default WebAudioContext
 
-const ROOM_DIM = 2
-
 let _globalCtx: ToneContext
-export function createToneContext(): ToneContext {
-    if (_globalCtx) return _globalCtx
+export async function createToneContext(): Promise<ToneContext> {
+    if (_globalCtx || typeof window === "undefined") return _globalCtx
 
     try {
         console.log(`create tone context`)
@@ -60,23 +58,7 @@ export function createToneContext(): ToneContext {
         globalVolume.gain.value = VOLUME_GAIN
 
         // resonance
-        const resonance = new ResonanceAudio(ctx)
-        const roomDimension = {
-            width: ROOM_DIM,
-            heigth: ROOM_DIM,
-            depth: ROOM_DIM,
-        }
-        const roomMaterials = {
-            left: "grass",
-            right: "grass",
-            up: "grass",
-            down: "grass",
-            back: "grass",
-            front: "grass",
-        }
-        resonance.roomDimensions(roomDimension, roomMaterials)
-        resonance.output.connect(globalVolume)
-
+        const resonance = await loadResonanceAudio(ctx, globalVolume)
         const setVolume = (v: number) => {
             if (globalVolume && !isNaN(v)) {
                 globalVolume.gain.value = v * VOLUME_GAIN
@@ -105,13 +87,7 @@ export function createToneContext(): ToneContext {
                 tone.connect(volume)
 
                 // volume -> resonance
-                const resonanceSource = resonance.createSource()
-                resonanceSource.setPosition(
-                    position?.dx || 0,
-                    position?.dy || 0,
-                    position?.dz || 0
-                )
-                volume.connect(resonanceSource.input)
+                resonance(volume, position)
 
                 tone.start() // start and stop
                 tone.stop(ctx.currentTime + duration / 1000)
@@ -133,15 +109,19 @@ export function createToneContext(): ToneContext {
 
 export function WebAudioProvider(props: { children: ReactNode }) {
     const { children } = props
-    const context = useRef<ToneContext>(createToneContext())
+    const context = useRef<ToneContext>()
     const [activated, setActivated] = useState(!!context.current)
 
     // needs to be initiated in onClick on safari mobile
-    const onClickActivateAudioContext = () => {
+    const onClickActivateAudioContext = async () => {
         if (context.current) return
 
-        context.current = createToneContext()
-        if (context.current) setActivated(true)
+        console.debug(`web audio: activating`)
+        context.current = await createToneContext()
+        if (context.current) {
+            console.debug(`web audio: activated`)
+            setActivated(true)
+        }
     }
     const setVolume = (volume: number) => context.current?.setVolume(volume)
     const playTone = (
