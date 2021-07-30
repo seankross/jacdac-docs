@@ -10202,7 +10202,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: SCATTERPLOT_BLOCK,
-      message0: "scatterplot x %1 y %2 %3 %4 %5",
+      message0: "scatterplot with x %1 y %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "x",
@@ -10229,7 +10229,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: BARCHART_BLOCK,
-      message0: "bar index %1 value %2 %3 %4 %5",
+      message0: "bar chart with index %1 value %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "index"
@@ -10255,7 +10255,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: LINEPLOT_BLOCK,
-      message0: "line x %1 y %2 %3 %4 %5",
+      message0: "line chart with x %1 y %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "x",
@@ -10305,7 +10305,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: BOX_PLOT_BLOCK,
-      message0: "box plot of %1 by %2 %3 %4 %5",
+      message0: "boxplot of %1 by %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "index"
