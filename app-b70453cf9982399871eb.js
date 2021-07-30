@@ -69036,7 +69036,7 @@ function useLocalStorage(key, initialValue) {
 /* harmony export */ });
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59355);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8129);
-/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85994);
+/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8391);
 
 
 function useMediaQueries() {
@@ -69368,7 +69368,7 @@ function TransportIcon(props) {
 
 /***/ }),
 
-/***/ 85994:
+/***/ 8391:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69494,11 +69494,15 @@ var Container = /*#__PURE__*/react.forwardRef(function Container(props, ref) {
 var makeStyles = __webpack_require__(10920);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
+var toConsumableArray = __webpack_require__(85061);
 // EXTERNAL MODULE: ./node_modules/react-helmet/es/Helmet.js
 var Helmet = __webpack_require__(35414);
 // EXTERNAL MODULE: ./.cache/gatsby-browser-entry.js
 var gatsby_browser_entry = __webpack_require__(35313);
-;// CONCATENATED MODULE: ./src/components/seo.js
+;// CONCATENATED MODULE: ./src/components/shell/SEO.tsx
+
+
 /**
  * SEO component that queries for data with
  *  Gatsby's useStaticQuery React hook
@@ -69508,12 +69512,16 @@ var gatsby_browser_entry = __webpack_require__(35313);
 
 
 
-
-function SEO(_ref) {
-  var lang = _ref.lang,
-      meta = _ref.meta,
-      description = _ref.description,
-      title = _ref.title;
+function SEO(props) {
+  var _ref = props || {},
+      _ref$lang = _ref.lang,
+      lang = _ref$lang === void 0 ? "en" : _ref$lang,
+      _ref$meta = _ref.meta,
+      meta = _ref$meta === void 0 ? [] : _ref$meta,
+      _ref$description = _ref.description,
+      description = _ref$description === void 0 ? "" : _ref$description,
+      _ref$title = _ref.title,
+      title = _ref$title === void 0 ? "" : _ref$title;
 
   var _useStaticQuery = (0,gatsby_browser_entry.useStaticQuery)("63159454"),
       site = _useStaticQuery.site;
@@ -69549,16 +69557,9 @@ function SEO(_ref) {
     }, {
       name: "twitter:description",
       content: metaDescription
-    }].concat(meta)
+    }].concat((0,toConsumableArray/* default */.Z)(meta))
   });
 }
-
-SEO.defaultProps = {
-  lang: "en",
-  meta: [],
-  description: ""
-};
-/* harmony default export */ var seo = (SEO);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
 var createStyles = __webpack_require__(70274);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createTheme.js + 14 modules
@@ -69600,7 +69601,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "14fa1ab750230b7074cc333d2041f20f5dbb0de7";
+  var sha = "fe1f7141f99b23d6700dfa650ea7fd486a880335";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -69747,8 +69748,6 @@ function ThemedMdxLayout(props) {
     components: mdxComponents
   }, children));
 }
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(85061);
 // EXTERNAL MODULE: ./node_modules/react-is/index.js
 var react_is = __webpack_require__(8812);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/colorManipulator.js
@@ -70611,7 +70610,7 @@ var pretty = __webpack_require__(10913);
 var Context = __webpack_require__(20392);
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
 var useChange = __webpack_require__(54774);
-;// CONCATENATED MODULE: ./src/components/PacketStats.tsx
+;// CONCATENATED MODULE: ./src/components/shell/PacketStats.tsx
 
 
 
@@ -70881,12 +70880,76 @@ function MainAppBar() {
     onClick: toggleToolsMenu
   }, /*#__PURE__*/react.createElement(MoreVert/* default */.Z, null))))));
 }
+;// CONCATENATED MODULE: ./src/components/shell/DataEditorAppBar.tsx
+
+
+
+
+ // tslint:disable-next-line: no-submodule-imports
+
+
+
+
+
+
+var DataEditorAppBar_useStyles = (0,makeStyles/* default */.Z)(function (theme) {
+  return (0,createStyles/* default */.Z)({
+    grow: {
+      flexGrow: 1
+    },
+    appBar: {
+      transition: theme.transitions.create(["margin", "width"], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen
+      })
+    },
+    menuButton: {
+      marginRight: theme.spacing(1)
+    }
+  });
+});
+function DataEditorAppBar() {
+  var classes = DataEditorAppBar_useStyles();
+
+  var _useContext = (0,react.useContext)(DarkModeContext/* default */.Z),
+      darkMode = _useContext.darkMode;
+
+  var appBarColor = darkMode === "dark" ? "inherit" : undefined;
+  return /*#__PURE__*/react.createElement(Box/* default */.Z, {
+    displayPrint: "none"
+  }, /*#__PURE__*/react.createElement(HideOnScroll, null, /*#__PURE__*/react.createElement(AppBar_AppBar, {
+    position: "fixed",
+    color: appBarColor,
+    className: classes.appBar
+  }, /*#__PURE__*/react.createElement(Toolbar_Toolbar, null, /*#__PURE__*/react.createElement(Hidden_Hidden, {
+    implementation: "css",
+    xsDown: true
+  }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    component: "h1",
+    variant: "h6"
+  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+    style: {
+      color: "white"
+    },
+    to: "/editors/data/"
+  }, "Data Science Editor (Experimental)"))), /*#__PURE__*/react.createElement("div", {
+    className: classes.grow
+  }), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    className: classes.menuButton,
+    "aria-label": "Discussions",
+    title: "Discussions",
+    edge: "start",
+    color: "inherit",
+    to: "https://github.com/microsoft/jacdac/discussions/categories/data-editor"
+  }, /*#__PURE__*/react.createElement(Forum/* default */.Z, null))))));
+}
 ;// CONCATENATED MODULE: ./src/components/layout.tsx
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -71056,6 +71119,9 @@ function LayoutWithContext(props) {
       _ref4$hideBreadcrumbs = _ref4.hideBreadcrumbs,
       hideBreadcrumbs = _ref4$hideBreadcrumbs === void 0 ? false : _ref4$hideBreadcrumbs;
 
+  var isDataEditor = /^\/editors\/data/.test(path);
+  var appBar = isDataEditor ? /*#__PURE__*/react.createElement(DataEditorAppBar, null) : /*#__PURE__*/react.createElement(MainAppBar, null);
+  var title = isDataEditor ? "Data Science Editor (Experimental)" : undefined;
   var classes = layout_useStyles();
 
   var _useContext3 = (0,react.useContext)(DarkModeContext/* default */.Z),
@@ -71101,9 +71167,10 @@ function LayoutWithContext(props) {
 
   return /*#__PURE__*/react.createElement("div", {
     className: (0,clsx_m/* default */.Z)(darkMode, classes.root)
-  }, /*#__PURE__*/react.createElement("header", null, /*#__PURE__*/react.createElement(seo, {
-    lang: "en"
-  })), !hideMainMenu && /*#__PURE__*/react.createElement("nav", null, /*#__PURE__*/react.createElement(MainAppBar, null), drawerType !== AppContext/* DrawerType.None */.jw.None && /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(AppDrawer, {
+  }, /*#__PURE__*/react.createElement("header", null, /*#__PURE__*/react.createElement(SEO, {
+    lang: "en",
+    title: title
+  })), !hideMainMenu && /*#__PURE__*/react.createElement("nav", null, appBar, drawerType !== AppContext/* DrawerType.None */.jw.None && /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(AppDrawer, {
     pagePath: path
   })), toolsMenu && /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(ToolsDrawer, null))), container ? /*#__PURE__*/react.createElement(Container_Container, {
     maxWidth: "xl",
@@ -84558,7 +84625,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "onServiceWorkerUpdateReady": function() { return /* binding */ onServiceWorkerUpdateReady; },
 /* harmony export */   "wrapPageElement": function() { return /* binding */ wrapPageElement; }
 /* harmony export */ });
-/* harmony import */ var _src_components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85994);
+/* harmony import */ var _src_components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8391);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(73935);
 
