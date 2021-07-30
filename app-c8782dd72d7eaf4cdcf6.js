@@ -69601,7 +69601,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "96633f870af3804cba73179204d8fac680e6b35a";
+  var sha = "b3581790c830c79c70a88d4502e9dbab8e3f223d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71971,10 +71971,15 @@ var Tooltip = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z
 /* harmony export */   "WW": function() { return /* binding */ createToneContext; },
 /* harmony export */   "IH": function() { return /* binding */ WebAudioProvider; }
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+
+
 
 var VOLUME_GAIN = 0.4;
-var WebAudioContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
+var WebAudioContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({
   onClickActivateAudioContext: function onClickActivateAudioContext() {},
   playTone: function playTone() {},
   setVolume: function setVolume() {},
@@ -72009,32 +72014,68 @@ function createToneContext() {
       }
     };
 
-    var playTone = function playTone(frequency, duration, vol) {
-      if (ctx.state !== "running") {
-        console.debug("playTone on closed context");
-        return;
-      }
+    var playTone = /*#__PURE__*/function () {
+      var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(frequency, duration, vol) {
+        var tone, toneVolume;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!(ctx.state === "suspended")) {
+                  _context.next = 3;
+                  break;
+                }
 
-      try {
-        var tone = ctx.createOscillator();
-        tone.type = "sawtooth";
-        tone.frequency.value = frequency; // update frequency
+                _context.next = 3;
+                return ctx.resume();
 
-        var _volume = ctx.createGain();
+              case 3:
+                if (!(ctx.state !== "running")) {
+                  _context.next = 6;
+                  break;
+                }
 
-        _volume.gain.value = vol; // tone -> volume -> globalVolume
+                console.debug("playTone on closed context", {
+                  ctx: ctx
+                });
+                return _context.abrupt("return");
 
-        tone.connect(_volume);
+              case 6:
+                if (!(isNaN(frequency) || isNaN(vol) || isNaN(duration))) {
+                  _context.next = 8;
+                  break;
+                }
 
-        _volume.connect(globalVolume);
+                return _context.abrupt("return");
 
-        tone.start(); // start and stop
+              case 8:
+                try {
+                  tone = ctx.createOscillator();
+                  tone.type = "sawtooth";
+                  toneVolume = ctx.createGain();
+                  tone.connect(toneVolume);
+                  toneVolume.connect(globalVolume);
+                  tone.frequency.value = frequency;
+                  toneVolume.gain.value = vol;
+                  tone.start(); // start and stop
 
-        tone.stop(ctx.currentTime + duration / 1000);
-      } catch (e) {
-        console.debug(e);
-      }
-    };
+                  tone.stop(ctx.currentTime + duration / 1000);
+                } catch (e) {
+                  console.debug(e);
+                }
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function playTone(_x, _x2, _x3) {
+        return _ref.apply(this, arguments);
+      };
+    }();
 
     console.log("tone context created");
     return _globalCtx = {
@@ -72047,9 +72088,9 @@ function createToneContext() {
 }
 function WebAudioProvider(props) {
   var children = props.children;
-  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(createToneContext());
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(createToneContext());
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(!!context.current),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!!context.current),
       activated = _useState[0],
       setActivated = _useState[1]; // needs to be initiated in onClick on safari mobile
 
@@ -72072,7 +72113,7 @@ function WebAudioProvider(props) {
     return (_context$current2 = context.current) === null || _context$current2 === void 0 ? void 0 : _context$current2.playTone(frequency, duration, volume);
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(WebAudioContext.Provider, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(WebAudioContext.Provider, {
     value: {
       onClickActivateAudioContext: onClickActivateAudioContext,
       setVolume: setVolume,

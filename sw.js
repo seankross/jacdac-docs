@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-4793b1fdca42095eb328.js"
+    "url": "webpack-runtime-54c4bf6b87a254b26c51.js"
   },
   {
     "url": "styles.93b64694aab152332397.css"
@@ -43,7 +43,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "5591af34e3b783a8da25a1e908095b13"
+    "revision": "82594e9452791844ee97e5219f59872f"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -63,11 +63,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/2307937736.json",
-    "revision": "4f7c83c7153a92b0f21275da7da34ba3"
+    "revision": "96f55804a7a3fccfff8f3954849aa3e7"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "4d7b70985e28b35c794ee8bfaf37c946"
+    "revision": "b9ea8eff8e7e6736240e7ec892a6016f"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -75,7 +75,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "9f856b9fa54038e947043edd353d6c13"
+    "revision": "644c8a69b1fc3c2496aa246e84dfaf07"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -83,7 +83,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "cdf2aeebba0e409e0020b8ff5b5c75c9"
+    "revision": "513c0fd73a5a0f6572d57ceecebaa86c"
   },
   {
     "url": "polyfill-b85ba5557898c2964643.js"
@@ -1303,10 +1303,10 @@ self.__precacheManifest = [
     "revision": "fc8bd57726b1df41cc0ec5cd57f20d3e"
   },
   {
-    "url": "4345cd43a9669cbe728debadba6874d54d45298f-d4fd67de929df448bd1c.js"
+    "url": "4345cd43a9669cbe728debadba6874d54d45298f-b707178d37cf090fd0a1.js"
   },
   {
-    "url": "component---src-pages-tools-accelerometer-theremin-tsx-72a485459f41f10e6804.js"
+    "url": "component---src-pages-tools-accelerometer-theremin-tsx-faa91b439470d2edbb8d.js"
   },
   {
     "url": "page-data/tools/accelerometer-theremin/page-data.json",
@@ -1375,7 +1375,7 @@ self.__precacheManifest = [
     "revision": "4a751e68e828ee7cd8ac85ce4b16fa03"
   },
   {
-    "url": "component---src-pages-tools-lightsensor-accessible-tsx-b079b566050864624a45.js"
+    "url": "component---src-pages-tools-lightsensor-accessible-tsx-70b8d2a91b096478cfe5.js"
   },
   {
     "url": "page-data/tools/lightsensor-accessible/page-data.json",
@@ -1570,7 +1570,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-ef77b81fb0be126772f0.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-c8782dd72d7eaf4cdcf6.js`))) {
     return await fetch(event.request)
   }
 

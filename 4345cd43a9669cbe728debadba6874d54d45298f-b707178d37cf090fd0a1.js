@@ -940,12 +940,12 @@ function DashboardDeviceItem(props) {
 
 /***/ }),
 
-/***/ 2058:
+/***/ 65611:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "v": function() { return /* binding */ usePlayTone; }
+/* harmony export */   "Z": function() { return /* binding */ useBuzzerPlayTone; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
@@ -968,7 +968,7 @@ function DashboardDeviceItem(props) {
 
 
 
-function usePlayTone() {
+function useBuzzerPlayTone() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z),
       bus = _useContext.bus;
 

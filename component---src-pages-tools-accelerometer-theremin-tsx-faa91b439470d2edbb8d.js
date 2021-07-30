@@ -29,7 +29,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(87198);
 /* harmony import */ var _components_alert_ConnectAlert__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(94431);
 /* harmony import */ var _components_DeviceCardHeader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(31477);
-/* harmony import */ var _components_hooks_usePlayTone__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(2058);
+/* harmony import */ var _components_hooks_useBuzzerPlayTone__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(65611);
 /* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(65063);
 /* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(19640);
 /* harmony import */ var react_aria_live__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(49647);
@@ -56,10 +56,10 @@ var TONE_THROTTLE = 100; // this is a React component that gets run numerous tim
 // an accelerometer
 
 function AccelerometerTheremin() {
-  var _usePlayTone = (0,_components_hooks_usePlayTone__WEBPACK_IMPORTED_MODULE_9__/* .usePlayTone */ .v)(),
-      playTone = _usePlayTone.playTone,
-      toggleBrowserAudio = _usePlayTone.toggleBrowserAudio,
-      browserAudio = _usePlayTone.browserAudio; // identifiers for accessibility
+  var _useBuzzerPlayTone = (0,_components_hooks_useBuzzerPlayTone__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)(),
+      playTone = _useBuzzerPlayTone.playTone,
+      toggleBrowserAudio = _useBuzzerPlayTone.toggleBrowserAudio,
+      browserAudio = _useBuzzerPlayTone.browserAudio; // identifiers for accessibility
 
 
   var sectionId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_11__/* .useId */ .Me)(); // useServices accepts a number of filters and returns any services that match
