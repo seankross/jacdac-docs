@@ -185,6 +185,34 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 15029:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"
+}), 'HourglassEmpty');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 8567:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -898,8 +926,8 @@ var PlayArrow = __webpack_require__(42404);
 var Stop = __webpack_require__(34257);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Save.js
 var Save = __webpack_require__(8567);
-// EXTERNAL MODULE: ./src/jacdac/useChange.ts
-var useChange = __webpack_require__(54774);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/HourglassEmpty.js
+var HourglassEmpty = __webpack_require__(15029);
 // EXTERNAL MODULE: ./src/components/FieldDataSet.ts
 var FieldDataSet = __webpack_require__(64616);
 // EXTERNAL MODULE: ./src/components/Trend.tsx
@@ -1060,6 +1088,8 @@ var IconButtonWithTooltip = __webpack_require__(79885);
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Add.js
 var Add = __webpack_require__(88880);
+// EXTERNAL MODULE: ./src/components/hooks/useLocalStorage.ts
+var useLocalStorage = __webpack_require__(34093);
 ;// CONCATENATED MODULE: ./src/pages/tools/collector.tsx
 
 
@@ -1074,10 +1104,14 @@ var Add = __webpack_require__(88880);
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
+ // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
 
 
  // tslint:disable-next-line: no-submodule-imports
+
+
+
 
 
 
@@ -1143,6 +1177,10 @@ function createDataSet(bus, registers, name, live, palette) {
   return set;
 }
 
+var COLLECTOR_PREFIX = "jacdac:collector:prefix";
+var COLLECTOR_SAMPLING_INTERVAL = "jacdac:collector:samplinginterval";
+var COLLECTOR_SAMPLING_DURATION = "jacdac:collector:samplingduration";
+var COLLECTOR_START_DELAY = "jacdac:collector:startdelay";
 function Collector() {
   var _useContext = (0,react.useContext)(Context/* default */.Z),
       bus = _useContext.bus;
@@ -1175,29 +1213,38 @@ function Collector() {
   var _useState5 = (0,react.useState)(0),
       setRecordingLength = _useState5[1];
 
-  var _useState6 = (0,react.useState)("data"),
-      prefix = _useState6[0],
-      setPrefix = _useState6[1];
+  var _useLocalStorage = (0,useLocalStorage/* default */.Z)(COLLECTOR_PREFIX, "data"),
+      prefix = _useLocalStorage[0],
+      setPrefix = _useLocalStorage[1];
 
-  var _useState7 = (0,react.useState)("100"),
-      samplingIntervalDelay = _useState7[0],
-      setSamplingIntervalDelay = _useState7[1];
+  var _useLocalStorage2 = (0,useLocalStorage/* default */.Z)(COLLECTOR_SAMPLING_INTERVAL, 100),
+      samplingIntervalDelay = _useLocalStorage2[0],
+      setSamplingIntervalDelay = _useLocalStorage2[1];
 
-  var _useState8 = (0,react.useState)("10"),
-      samplingDuration = _useState8[0],
-      setSamplingDuration = _useState8[1];
+  var _useLocalStorage3 = (0,useLocalStorage/* default */.Z)(COLLECTOR_SAMPLING_DURATION, 10),
+      samplingDuration = _useLocalStorage3[0],
+      setSamplingDuration = _useLocalStorage3[1];
 
-  var _useState9 = (0,react.useState)(undefined),
-      liveDataSet = _useState9[0],
-      setLiveDataSet = _useState9[1];
+  var _useLocalStorage4 = (0,useLocalStorage/* default */.Z)(COLLECTOR_START_DELAY, 0),
+      startDelay = _useLocalStorage4[0],
+      setStartDelay = _useLocalStorage4[1];
 
-  var _useState10 = (0,react.useState)(0),
-      setLiveDataTimestamp = _useState10[1];
+  var _useState6 = (0,react.useState)(undefined),
+      liveDataSet = _useState6[0],
+      setLiveDataSet = _useState6[1];
 
-  var _useState11 = (0,react.useState)(""),
-      triggerEventId = _useState11[0],
-      setTriggerEventId = _useState11[1];
+  var _useState7 = (0,react.useState)(0),
+      setLiveDataTimestamp = _useState7[1];
 
+  var _useState8 = (0,react.useState)(""),
+      triggerEventId = _useState8[0],
+      setTriggerEventId = _useState8[1];
+
+  var _useState9 = (0,react.useState)(-1),
+      countdown = _useState9[0],
+      setCountdown = _useState9[1];
+
+  var starting = countdown > 0;
   var chartPalette = (0,useChartPalette/* default */.Z)();
   var devices = (0,useDevices/* default */.Z)({
     ignoreSelf: true,
@@ -1218,21 +1265,15 @@ function Collector() {
   }, function (reg) {
     return reg.service.device;
   });
-  var aggregators = (0,useChange/* default */.Z)(bus, function (bus) {
-    return bus.services({
-      serviceClass: constants/* SRV_SENSOR_AGGREGATOR */.x12
-    });
+  var aggregators = (0,useServices/* default */.Z)({
+    serviceClass: constants/* SRV_SENSOR_AGGREGATOR */.x12
   });
   var aggregator = aggregators.find(function (srv) {
     return srv.id == aggregatorId;
   });
-  var samplingIntervalDelayi = parseInt(samplingIntervalDelay);
-  var samplingCount = Math.ceil(parseFloat(samplingDuration) * 1000 / samplingIntervalDelayi);
-  var errorSamplingIntervalDelay = isNaN(samplingIntervalDelayi) || !/\d+/.test(samplingIntervalDelay);
-  var errorSamplingDuration = isNaN(samplingCount);
-  var error = errorSamplingDuration || errorSamplingIntervalDelay;
+  var samplingCount = Math.ceil(samplingDuration * 1000 / samplingIntervalDelay);
   var triggerEvent = bus.node(triggerEventId);
-  var startEnabled = !!(recordingRegisters !== null && recordingRegisters !== void 0 && recordingRegisters.length);
+  var startEnabled = !starting && !!(recordingRegisters !== null && recordingRegisters !== void 0 && recordingRegisters.length);
   var events = useEvents({
     ignoreChange: true
   });
@@ -1243,6 +1284,7 @@ function Collector() {
   var dashboardId = (0,react_use_id_hook_esm/* useId */.Me)();
   var samplingIntervalId = (0,react_use_id_hook_esm/* useId */.Me)();
   var samplingDurationId = (0,react_use_id_hook_esm/* useId */.Me)();
+  var startDelayId = (0,react_use_id_hook_esm/* useId */.Me)();
   var prefixId = (0,react_use_id_hook_esm/* useId */.Me)();
   (0,react.useEffect)(function () {
     //console.log(`trigger event`, triggerEventId, triggerEvent)
@@ -1259,7 +1301,7 @@ function Collector() {
 
   var createSensorConfig = function createSensorConfig() {
     return {
-      samplingInterval: samplingIntervalDelayi,
+      samplingInterval: samplingIntervalDelay,
       samplesInWindow: 10,
       inputs: recordingRegisters.map(function (reg) {
         return {
@@ -1299,35 +1341,60 @@ function Collector() {
 
   var startRecording = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-      var client;
+      var _countdown, client;
+
       return regenerator_default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (!(!recording && recordingRegisters.length)) {
-                _context.next = 9;
+              if (!(!starting && !recording && recordingRegisters.length)) {
+                _context.next = 19;
                 break;
               }
 
+              if (!(startDelay > 0)) {
+                _context.next = 10;
+                break;
+              }
+
+              _countdown = Math.ceil(startDelay);
+
+            case 3:
+              if (!(_countdown > 0)) {
+                _context.next = 10;
+                break;
+              }
+
+              setCountdown(_countdown);
+              _context.next = 7;
+              return (0,utils/* delay */.gw)(1000);
+
+            case 7:
+              _countdown--;
+              _context.next = 3;
+              break;
+
+            case 10:
+              setCountdown(-1);
               setLiveDataSet(newDataSet(registerIdsChecked, false));
               setRecording(true);
 
               if (!aggregator) {
-                _context.next = 8;
+                _context.next = 18;
                 break;
               }
 
               client = new sensoraggregatorclient/* SensorAggregatorClient */.F(aggregator);
-              _context.next = 7;
+              _context.next = 17;
               return client.setInputs(createSensorConfig());
 
-            case 7:
+            case 17:
               client.collect(samplingCount);
 
-            case 8:
+            case 18:
               enqueueSnackbar("recording started");
 
-            case 9:
+            case 19:
             case "end":
               return _context.stop();
           }
@@ -1358,11 +1425,18 @@ function Collector() {
   };
 
   var handleSamplingIntervalChange = function handleSamplingIntervalChange(event) {
-    setSamplingIntervalDelay(event.target.value.trim());
+    var v = parseInt(event.target.value);
+    if (!isNaN(v)) setSamplingIntervalDelay(v);
   };
 
   var handleSamplingDurationChange = function handleSamplingDurationChange(event) {
-    setSamplingDuration(event.target.value.trim());
+    var v = parseInt(event.target.value);
+    if (!isNaN(v)) setSamplingDuration(v);
+  };
+
+  var handleStartDelayChange = function handleStartDelayChange(event) {
+    var v = parseInt(event.target.value);
+    if (!isNaN(v)) setStartDelay(v);
   };
 
   var handlePrefixChange = function handlePrefixChange(event) {
@@ -1416,24 +1490,23 @@ function Collector() {
 
 
   (0,react.useEffect)(function () {
-    if (error) return;
-    console.log("set interval to " + samplingIntervalDelayi);
+    console.log("set interval to " + samplingIntervalDelay);
     recordingRegisters.forEach(function (reg) {
-      return reg.sendSetIntAsync(samplingIntervalDelayi);
+      return reg.sendSetIntAsync(samplingIntervalDelay);
     });
-  }, [samplingIntervalDelayi, registerIdsChecked, errorSamplingIntervalDelay]); // collecting
+  }, [samplingIntervalDelay, registerIdsChecked]); // collecting
 
   (0,react.useEffect)(function () {
-    if (error || aggregator && recording) return undefined;
+    if (aggregator && recording) return undefined;
     var interval = setInterval(function () {
       return addRow();
-    }, samplingIntervalDelayi);
+    }, samplingIntervalDelay);
     var stopStreaming = startStreamingRegisters();
     return function () {
       clearInterval(interval);
       stopStreaming();
     };
-  }, [recording, samplingIntervalDelayi, samplingCount, registerIdsChecked, aggregator]);
+  }, [recording, samplingIntervalDelay, samplingCount, registerIdsChecked, aggregator]);
   (0,react.useEffect)(function () {
     if (aggregator) {
       var client = new sensoraggregatorclient/* SensorAggregatorClient */.F(aggregator);
@@ -1451,10 +1524,11 @@ function Collector() {
   }, /*#__PURE__*/react.createElement("h3", null, "(Optional) Choose a data aggregator"), /*#__PURE__*/react.createElement("p", null, "A ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     to: "/services/aggregator"
   }, "data aggregator"), " ", "service collects collects sensor data on the bus and returns an aggregated at regular intervals."), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    container: true
+    container: true,
+    spacing: 1
   }, aggregators.map(function (aggregator) {
     return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-      key: "aggregate" + aggregator.id,
+      key: aggregator.id,
       item: true,
       xs: 4
     }, /*#__PURE__*/react.createElement(Card/* default */.Z, null, /*#__PURE__*/react.createElement(DeviceCardHeader/* default */.Z, {
@@ -1487,11 +1561,11 @@ function Collector() {
     size: "large",
     variant: "contained",
     color: recording ? "secondary" : "primary",
-    title: recording ? "stop recording" : "start recording",
+    title: starting ? "starting in " + countdown : recording ? "stop recording" : "start recording",
     onClick: toggleRecording,
-    startIcon: recording ? /*#__PURE__*/react.createElement(Stop/* default */.Z, null) : /*#__PURE__*/react.createElement(PlayArrow/* default */.Z, null),
+    startIcon: starting ? /*#__PURE__*/react.createElement(HourglassEmpty/* default */.Z, null) : recording ? /*#__PURE__*/react.createElement(Stop/* default */.Z, null) : /*#__PURE__*/react.createElement(PlayArrow/* default */.Z, null),
     disabled: !startEnabled
-  }, recording ? "Stop" : "Start"), aggregator && /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  }, starting ? countdown + "" : recording ? "Stop" : "Start"), aggregator && /*#__PURE__*/react.createElement(Button/* default */.Z, {
     variant: "contained",
     title: "save sensor input configuration",
     onClick: saveConfig,
@@ -1502,8 +1576,8 @@ function Collector() {
   }, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: samplingIntervalId,
     className: classes.field,
-    error: errorSamplingIntervalDelay,
     disabled: recording,
+    type: "number",
     label: "Sampling interval",
     value: samplingIntervalDelay,
     variant: "outlined",
@@ -1516,7 +1590,7 @@ function Collector() {
   }), /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: samplingDurationId,
     className: classes.field,
-    error: errorSamplingDuration,
+    type: "number",
     disabled: recording,
     label: "Sampling duration",
     value: samplingDuration,
@@ -1527,6 +1601,20 @@ function Collector() {
       }, "s")
     },
     onChange: handleSamplingDurationChange
+  }), /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+    id: startDelayId,
+    className: classes.field,
+    type: "number",
+    disabled: recording,
+    label: "Start delay",
+    value: startDelay,
+    variant: "outlined",
+    InputProps: {
+      startAdornment: /*#__PURE__*/react.createElement(InputAdornment/* default */.Z, {
+        position: "start"
+      }, "s")
+    },
+    onChange: handleStartDelayChange
   }), /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: prefixId,
     className: classes.field,
