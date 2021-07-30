@@ -12078,7 +12078,6 @@ var DataPreviewField = /*#__PURE__*/function (_ReactField) {
 }(_ReactField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP);
 
 DataPreviewField.KEY = "jacdac_field_data_preview";
-DataPreviewField.EDITABLE = false;
 
 function addDataPreviewField(block) {
   var preview = block === null || block === void 0 ? void 0 : block.dataPreviewField;
@@ -12132,7 +12131,11 @@ var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function DataTableField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = DataTableField.prototype;
@@ -12156,7 +12159,6 @@ var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z);
 
 DataTableField.KEY = "jacdac_field_data_table";
-DataTableField.EDITABLE = false;
 
 
 /***/ }),
@@ -14608,7 +14610,11 @@ var GaugeWidgetField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function GaugeWidgetField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   _proto.renderInlineField = function renderInlineField() {
@@ -14619,7 +14625,6 @@ var GaugeWidgetField = /*#__PURE__*/function (_ReactInlineField) {
 }(ReactInlineField/* default */.Z);
 
 GaugeWidgetField.KEY = "jacdac_field_gauge_widget";
-GaugeWidgetField.EDITABLE = false;
 
 
 /***/ }),
@@ -14682,7 +14687,11 @@ var JDomTreeField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function JDomTreeField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = JDomTreeField.prototype;
@@ -14695,7 +14704,6 @@ var JDomTreeField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 JDomTreeField.KEY = "jacdac_field_jdom_service_tree";
-JDomTreeField.EDITABLE = false;
 
 
 /***/ }),
@@ -15161,7 +15169,11 @@ var LogViewField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function LogViewField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = LogViewField.prototype;
@@ -15174,7 +15186,6 @@ var LogViewField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 LogViewField.KEY = "jacdac_field_log_view";
-LogViewField.EDITABLE = false;
 
 
 /***/ }),
@@ -16077,7 +16088,11 @@ var TwinField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function TwinField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = TwinField.prototype;
@@ -16090,7 +16105,6 @@ var TwinField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z);
 
 TwinField.KEY = "jacdac_field_twin";
-TwinField.EDITABLE = false;
 
 
 /***/ }),
@@ -16210,7 +16224,11 @@ var VariablesField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function VariablesField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = VariablesField.prototype;
@@ -16223,7 +16241,6 @@ var VariablesField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 VariablesField.KEY = "jacdac_field_variables_view";
-VariablesField.EDITABLE = false;
 
 
 /***/ }),
@@ -16341,7 +16358,11 @@ var WatchValueField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function WatchValueField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = WatchValueField.prototype;
@@ -16361,7 +16382,6 @@ var WatchValueField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 WatchValueField.KEY = "jacdac_field_watch_value";
-WatchValueField.EDITABLE = false;
 
 
 /***/ }),
@@ -16435,7 +16455,11 @@ var BarField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function BarField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = BarField.prototype;
@@ -16448,7 +16472,6 @@ var BarField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 BarField.KEY = "jacdac_field_bar_plot";
-BarField.EDITABLE = false;
 
 
 /***/ }),
@@ -16519,7 +16542,11 @@ var BoxPlotField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function BoxPlotField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = BoxPlotField.prototype;
@@ -16532,7 +16559,6 @@ var BoxPlotField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 BoxPlotField.KEY = "jacdac_field_box_plot";
-BoxPlotField.EDITABLE = false;
 
 
 /***/ }),
@@ -16601,7 +16627,11 @@ var HistogramField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function HistogramField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = HistogramField.prototype;
@@ -16614,7 +16644,6 @@ var HistogramField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 HistogramField.KEY = "jacdac_field_histogram";
-HistogramField.EDITABLE = false;
 
 
 /***/ }),
@@ -16691,7 +16720,11 @@ var LinePlotField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function LinePlotField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = LinePlotField.prototype;
@@ -16704,7 +16737,6 @@ var LinePlotField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 LinePlotField.KEY = "jacdac_field_line_plot";
-LinePlotField.EDITABLE = false;
 
 
 /***/ }),
@@ -16781,7 +16813,11 @@ var ScatterPlotField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function ScatterPlotField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = ScatterPlotField.prototype;
@@ -16794,7 +16830,6 @@ var ScatterPlotField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 ScatterPlotField.KEY = "jacdac_field_scatter_plot";
-ScatterPlotField.EDITABLE = false;
 
 
 /***/ }),
@@ -16860,7 +16895,11 @@ var VegaChartField = /*#__PURE__*/function (_ReactInlineField) {
   ;
 
   function VegaChartField(options) {
-    return _ReactInlineField.call(this, options) || this;
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
   }
 
   var _proto = VegaChartField.prototype;
@@ -16873,7 +16912,6 @@ var VegaChartField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
 
 VegaChartField.KEY = "jacdac_field_vega_chart";
-VegaChartField.EDITABLE = false;
 
 
 /***/ }),
