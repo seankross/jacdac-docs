@@ -69036,7 +69036,7 @@ function useLocalStorage(key, initialValue) {
 /* harmony export */ });
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59355);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8129);
-/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(70439);
+/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85994);
 
 
 function useMediaQueries() {
@@ -69368,7 +69368,7 @@ function TransportIcon(props) {
 
 /***/ }),
 
-/***/ 70439:
+/***/ 85994:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69378,13 +69378,12 @@ __webpack_require__.d(__webpack_exports__, {
   "pG": function() { return /* binding */ DRAWER_WIDTH; },
   "qA": function() { return /* binding */ MEDIUM_BREAKPOINT; },
   "Gh": function() { return /* binding */ MOBILE_BREAKPOINT; },
+  "Wt": function() { return /* binding */ MOBILE_DRAWER_WIDTH; },
   "Po": function() { return /* binding */ MOBILE_TOOLS_DRAWER_WIDTH; },
   "a2": function() { return /* binding */ TOC_DRAWER_WIDTH; },
   "wW": function() { return /* binding */ TOOLS_DRAWER_WIDTH; },
   "ZP": function() { return /* binding */ Layout; }
 });
-
-// UNUSED EXPORTS: MOBILE_DRAWER_WIDTH
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
 var defineProperty = __webpack_require__(96156);
@@ -69396,412 +69395,10 @@ var clsx_m = __webpack_require__(85505);
 var esm_extends = __webpack_require__(22122);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(81253);
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(45697);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js
-var getThemeProps = __webpack_require__(61652);
-// EXTERNAL MODULE: ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(15706);
-var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/useTheme.js
-var useTheme = __webpack_require__(59355);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createBreakpoints.js
-var createBreakpoints = __webpack_require__(52507);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/useMediaQuery/useMediaQuery.js
-var useMediaQuery = __webpack_require__(8129);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/withWidth/withWidth.js
-
-
-
-
-
-
-
-
- // By default, returns true if screen width is the same or greater than the given breakpoint.
-
-var isWidthUp = function isWidthUp(breakpoint, width) {
-  var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-  if (inclusive) {
-    return createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint) <= createBreakpoints/* keys.indexOf */.X.indexOf(width);
-  }
-
-  return createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint) < createBreakpoints/* keys.indexOf */.X.indexOf(width);
-}; // By default, returns true if screen width is the same or less than the given breakpoint.
-
-var isWidthDown = function isWidthDown(breakpoint, width) {
-  var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-  if (inclusive) {
-    return createBreakpoints/* keys.indexOf */.X.indexOf(width) <= createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint);
-  }
-
-  return createBreakpoints/* keys.indexOf */.X.indexOf(width) < createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint);
-};
-var useEnhancedEffect = typeof window === 'undefined' ? react.useEffect : react.useLayoutEffect;
-
-var withWidth = function withWidth() {
-  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return function (Component) {
-    var _options$withTheme = options.withTheme,
-        withThemeOption = _options$withTheme === void 0 ? false : _options$withTheme,
-        _options$noSSR = options.noSSR,
-        noSSR = _options$noSSR === void 0 ? false : _options$noSSR,
-        initialWidthOption = options.initialWidth;
-
-    function WithWidth(props) {
-      var contextTheme = (0,useTheme/* default */.Z)();
-      var theme = props.theme || contextTheme;
-
-      var _getThemeProps = (0,getThemeProps/* default */.Z)({
-        theme: theme,
-        name: 'MuiWithWidth',
-        props: (0,esm_extends/* default */.Z)({}, props)
-      }),
-          initialWidth = _getThemeProps.initialWidth,
-          width = _getThemeProps.width,
-          other = (0,objectWithoutProperties/* default */.Z)(_getThemeProps, ["initialWidth", "width"]);
-
-      var _React$useState = react.useState(false),
-          mountedState = _React$useState[0],
-          setMountedState = _React$useState[1];
-
-      useEnhancedEffect(function () {
-        setMountedState(true);
-      }, []);
-      /**
-       * innerWidth |xs      sm      md      lg      xl
-       *            |-------|-------|-------|-------|------>
-       * width      |  xs   |  sm   |  md   |  lg   |  xl
-       */
-
-      var keys = theme.breakpoints.keys.slice().reverse();
-      var widthComputed = keys.reduce(function (output, key) {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        var matches = (0,useMediaQuery/* default */.Z)(theme.breakpoints.up(key));
-        return !output && matches ? key : output;
-      }, null);
-
-      var more = (0,esm_extends/* default */.Z)({
-        width: width || (mountedState || noSSR ? widthComputed : undefined) || initialWidth || initialWidthOption
-      }, withThemeOption ? {
-        theme: theme
-      } : {}, other); // When rendering the component on the server,
-      // we have no idea about the client browser screen width.
-      // In order to prevent blinks and help the reconciliation of the React tree
-      // we are not rendering the child component.
-      //
-      // An alternative is to use the `initialWidth` property.
-
-
-      if (more.width === undefined) {
-        return null;
-      }
-
-      return /*#__PURE__*/react.createElement(Component, more);
-    }
-
-     false ? 0 : void 0;
-
-    if (false) {}
-
-    hoist_non_react_statics_cjs_default()(WithWidth, Component);
-    return WithWidth;
-  };
-};
-
-/* harmony default export */ var withWidth_withWidth = (withWidth);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/HiddenJs.js
-
-
-
-
-/**
- * @ignore - internal component.
- */
-
-function HiddenJs(props) {
-  var children = props.children,
-      only = props.only,
-      width = props.width;
-  var theme = (0,useTheme/* default */.Z)();
-  var visible = true; // `only` check is faster to get out sooner if used.
-
-  if (only) {
-    if (Array.isArray(only)) {
-      for (var i = 0; i < only.length; i += 1) {
-        var breakpoint = only[i];
-
-        if (width === breakpoint) {
-          visible = false;
-          break;
-        }
-      }
-    } else if (only && width === only) {
-      visible = false;
-    }
-  } // Allow `only` to be combined with other props. If already hidden, no need to check others.
-
-
-  if (visible) {
-    // determine visibility based on the smallest size up
-    for (var _i = 0; _i < theme.breakpoints.keys.length; _i += 1) {
-      var _breakpoint = theme.breakpoints.keys[_i];
-      var breakpointUp = props["".concat(_breakpoint, "Up")];
-      var breakpointDown = props["".concat(_breakpoint, "Down")];
-
-      if (breakpointUp && isWidthUp(_breakpoint, width) || breakpointDown && isWidthDown(_breakpoint, width)) {
-        visible = false;
-        break;
-      }
-    }
-  }
-
-  if (!visible) {
-    return null;
-  }
-
-  return children;
-}
-
-HiddenJs.propTypes = {
-  /**
-   * The content of the component.
-   */
-  children: (prop_types_default()).node,
-
-  /**
-   * @ignore
-   */
-  className: (prop_types_default()).string,
-
-  /**
-   * Specify which implementation to use.  'js' is the default, 'css' works better for
-   * server-side rendering.
-   */
-  implementation: prop_types_default().oneOf(['js', 'css']),
-
-  /**
-   * You can use this prop when choosing the `js` implementation with server-side rendering.
-   *
-   * As `window.innerWidth` is unavailable on the server,
-   * we default to rendering an empty component during the first mount.
-   * You might want to use an heuristic to approximate
-   * the screen width of the client browser screen width.
-   *
-   * For instance, you could be using the user-agent or the client-hints.
-   * https://caniuse.com/#search=client%20hint
-   */
-  initialWidth: prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  lgDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  lgUp: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  mdDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  mdUp: (prop_types_default()).bool,
-
-  /**
-   * Hide the given breakpoint(s).
-   */
-  only: prop_types_default().oneOfType([prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']), prop_types_default().arrayOf(prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']))]),
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  smDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  smUp: (prop_types_default()).bool,
-
-  /**
-   * @ignore
-   * width prop provided by withWidth decorator.
-   */
-  width: (prop_types_default()).string.isRequired,
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  xlDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  xlUp: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  xsDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  xsUp: (prop_types_default()).bool
-};
-
-if (false) {}
-
-/* harmony default export */ var Hidden_HiddenJs = (withWidth_withWidth()(HiddenJs));
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/capitalize.js
-var capitalize = __webpack_require__(81664);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/withStyles.js
 var withStyles = __webpack_require__(34621);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/HiddenCss.js
-
-
-
-
-
-
-
-var styles = function styles(theme) {
-  var hidden = {
-    display: 'none'
-  };
-  return theme.breakpoints.keys.reduce(function (acc, key) {
-    acc["only".concat((0,capitalize/* default */.Z)(key))] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.only(key), hidden);
-    acc["".concat(key, "Up")] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.up(key), hidden);
-    acc["".concat(key, "Down")] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.down(key), hidden);
-    return acc;
-  }, {});
-};
-/**
- * @ignore - internal component.
- */
-
-
-function HiddenCss(props) {
-  var children = props.children,
-      classes = props.classes,
-      className = props.className,
-      only = props.only,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["children", "classes", "className", "only"]);
-
-  var theme = (0,useTheme/* default */.Z)();
-
-  if (false) { var unknownProps; }
-
-  var clsx = [];
-
-  if (className) {
-    clsx.push(className);
-  }
-
-  for (var i = 0; i < theme.breakpoints.keys.length; i += 1) {
-    var breakpoint = theme.breakpoints.keys[i];
-    var breakpointUp = props["".concat(breakpoint, "Up")];
-    var breakpointDown = props["".concat(breakpoint, "Down")];
-
-    if (breakpointUp) {
-      clsx.push(classes["".concat(breakpoint, "Up")]);
-    }
-
-    if (breakpointDown) {
-      clsx.push(classes["".concat(breakpoint, "Down")]);
-    }
-  }
-
-  if (only) {
-    var onlyBreakpoints = Array.isArray(only) ? only : [only];
-    onlyBreakpoints.forEach(function (breakpoint) {
-      clsx.push(classes["only".concat((0,capitalize/* default */.Z)(breakpoint))]);
-    });
-  }
-
-  return /*#__PURE__*/react.createElement("div", {
-    className: clsx.join(' ')
-  }, children);
-}
-
- false ? 0 : void 0;
-/* harmony default export */ var Hidden_HiddenCss = ((0,withStyles/* default */.Z)(styles, {
-  name: 'PrivateHiddenCss'
-})(HiddenCss));
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/Hidden.js
-
-
-
-
-
-/**
- * Responsively hides children based on the selected implementation.
- */
-
-function Hidden(props) {
-  var _props$implementation = props.implementation,
-      implementation = _props$implementation === void 0 ? 'js' : _props$implementation,
-      _props$lgDown = props.lgDown,
-      lgDown = _props$lgDown === void 0 ? false : _props$lgDown,
-      _props$lgUp = props.lgUp,
-      lgUp = _props$lgUp === void 0 ? false : _props$lgUp,
-      _props$mdDown = props.mdDown,
-      mdDown = _props$mdDown === void 0 ? false : _props$mdDown,
-      _props$mdUp = props.mdUp,
-      mdUp = _props$mdUp === void 0 ? false : _props$mdUp,
-      _props$smDown = props.smDown,
-      smDown = _props$smDown === void 0 ? false : _props$smDown,
-      _props$smUp = props.smUp,
-      smUp = _props$smUp === void 0 ? false : _props$smUp,
-      _props$xlDown = props.xlDown,
-      xlDown = _props$xlDown === void 0 ? false : _props$xlDown,
-      _props$xlUp = props.xlUp,
-      xlUp = _props$xlUp === void 0 ? false : _props$xlUp,
-      _props$xsDown = props.xsDown,
-      xsDown = _props$xsDown === void 0 ? false : _props$xsDown,
-      _props$xsUp = props.xsUp,
-      xsUp = _props$xsUp === void 0 ? false : _props$xsUp,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["implementation", "lgDown", "lgUp", "mdDown", "mdUp", "smDown", "smUp", "xlDown", "xlUp", "xsDown", "xsUp"]);
-
-  if (implementation === 'js') {
-    return /*#__PURE__*/react.createElement(Hidden_HiddenJs, (0,esm_extends/* default */.Z)({
-      lgDown: lgDown,
-      lgUp: lgUp,
-      mdDown: mdDown,
-      mdUp: mdUp,
-      smDown: smDown,
-      smUp: smUp,
-      xlDown: xlDown,
-      xlUp: xlUp,
-      xsDown: xsDown,
-      xsUp: xsUp
-    }, other));
-  }
-
-  return /*#__PURE__*/react.createElement(Hidden_HiddenCss, (0,esm_extends/* default */.Z)({
-    lgDown: lgDown,
-    lgUp: lgUp,
-    mdDown: mdDown,
-    mdUp: mdUp,
-    smDown: smDown,
-    smUp: smUp,
-    xlDown: xlDown,
-    xlUp: xlUp,
-    xsDown: xsDown,
-    xsUp: xsUp
-  }, other));
-}
-
- false ? 0 : void 0;
-/* harmony default export */ var Hidden_Hidden = (Hidden);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/capitalize.js
+var capitalize = __webpack_require__(81664);
 ;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Container/Container.js
 
 
@@ -69810,7 +69407,7 @@ function Hidden(props) {
 
 
 
-var Container_styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
     /* Styles applied to the root element. */
     root: (0,defineProperty/* default */.Z)({
@@ -69890,185 +69487,13 @@ var Container = /*#__PURE__*/react.forwardRef(function Container(props, ref) {
   }, other));
 });
  false ? 0 : void 0;
-/* harmony default export */ var Container_Container = ((0,withStyles/* default */.Z)(Container_styles, {
+/* harmony default export */ var Container_Container = ((0,withStyles/* default */.Z)(styles, {
   name: 'MuiContainer'
 })(Container));
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
 var makeStyles = __webpack_require__(10920);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Box/Box.js + 13 modules
-var Box = __webpack_require__(33287);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Paper/Paper.js
-var Paper = __webpack_require__(58063);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/AppBar/AppBar.js
-
-
-
-
-
-
-
-var AppBar_styles = function styles(theme) {
-  var backgroundColorDefault = theme.palette.type === 'light' ? theme.palette.grey[100] : theme.palette.grey[900];
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-      boxSizing: 'border-box',
-      // Prevent padding issue with the Modal and fixed positioned AppBar.
-      zIndex: theme.zIndex.appBar,
-      flexShrink: 0
-    },
-
-    /* Styles applied to the root element if `position="fixed"`. */
-    positionFixed: {
-      position: 'fixed',
-      top: 0,
-      left: 'auto',
-      right: 0,
-      '@media print': {
-        // Prevent the app bar to be visible on each printed page.
-        position: 'absolute'
-      }
-    },
-
-    /* Styles applied to the root element if `position="absolute"`. */
-    positionAbsolute: {
-      position: 'absolute',
-      top: 0,
-      left: 'auto',
-      right: 0
-    },
-
-    /* Styles applied to the root element if `position="sticky"`. */
-    positionSticky: {
-      // ⚠️ sticky is not supported by IE 11.
-      position: 'sticky',
-      top: 0,
-      left: 'auto',
-      right: 0
-    },
-
-    /* Styles applied to the root element if `position="static"`. */
-    positionStatic: {
-      position: 'static'
-    },
-
-    /* Styles applied to the root element if `position="relative"`. */
-    positionRelative: {
-      position: 'relative'
-    },
-
-    /* Styles applied to the root element if `color="default"`. */
-    colorDefault: {
-      backgroundColor: backgroundColorDefault,
-      color: theme.palette.getContrastText(backgroundColorDefault)
-    },
-
-    /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText
-    },
-
-    /* Styles applied to the root element if `color="secondary"`. */
-    colorSecondary: {
-      backgroundColor: theme.palette.secondary.main,
-      color: theme.palette.secondary.contrastText
-    },
-
-    /* Styles applied to the root element if `color="inherit"`. */
-    colorInherit: {
-      color: 'inherit'
-    },
-
-    /* Styles applied to the root element if `color="transparent"`. */
-    colorTransparent: {
-      backgroundColor: 'transparent',
-      color: 'inherit'
-    }
-  };
-};
-var AppBar = /*#__PURE__*/react.forwardRef(function AppBar(props, ref) {
-  var classes = props.classes,
-      className = props.className,
-      _props$color = props.color,
-      color = _props$color === void 0 ? 'primary' : _props$color,
-      _props$position = props.position,
-      position = _props$position === void 0 ? 'fixed' : _props$position,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["classes", "className", "color", "position"]);
-
-  return /*#__PURE__*/react.createElement(Paper/* default */.Z, (0,esm_extends/* default */.Z)({
-    square: true,
-    component: "header",
-    elevation: 4,
-    className: (0,clsx_m/* default */.Z)(classes.root, classes["position".concat((0,capitalize/* default */.Z)(position))], classes["color".concat((0,capitalize/* default */.Z)(color))], className, position === 'fixed' && 'mui-fixed'),
-    ref: ref
-  }, other));
-});
- false ? 0 : void 0;
-/* harmony default export */ var AppBar_AppBar = ((0,withStyles/* default */.Z)(AppBar_styles, {
-  name: 'MuiAppBar'
-})(AppBar));
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js
-
-
-
-
-
-
-var Toolbar_styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center'
-    },
-
-    /* Styles applied to the root element if `disableGutters={false}`. */
-    gutters: (0,defineProperty/* default */.Z)({
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
-    }, theme.breakpoints.up('sm'), {
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3)
-    }),
-
-    /* Styles applied to the root element if `variant="regular"`. */
-    regular: theme.mixins.toolbar,
-
-    /* Styles applied to the root element if `variant="dense"`. */
-    dense: {
-      minHeight: 48
-    }
-  };
-};
-var Toolbar = /*#__PURE__*/react.forwardRef(function Toolbar(props, ref) {
-  var classes = props.classes,
-      className = props.className,
-      _props$component = props.component,
-      Component = _props$component === void 0 ? 'div' : _props$component,
-      _props$disableGutters = props.disableGutters,
-      disableGutters = _props$disableGutters === void 0 ? false : _props$disableGutters,
-      _props$variant = props.variant,
-      variant = _props$variant === void 0 ? 'regular' : _props$variant,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["classes", "className", "component", "disableGutters", "variant"]);
-
-  return /*#__PURE__*/react.createElement(Component, (0,esm_extends/* default */.Z)({
-    className: (0,clsx_m/* default */.Z)(classes.root, classes[variant], className, !disableGutters && classes.gutters),
-    ref: ref
-  }, other));
-});
- false ? 0 : void 0;
-/* harmony default export */ var Toolbar_Toolbar = ((0,withStyles/* default */.Z)(Toolbar_styles, {
-  name: 'MuiToolbar'
-})(Toolbar));
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/MoreVert.js
-var MoreVert = __webpack_require__(70542);
 // EXTERNAL MODULE: ./node_modules/react-helmet/es/Helmet.js
 var Helmet = __webpack_require__(35414);
 // EXTERNAL MODULE: ./.cache/gatsby-browser-entry.js
@@ -70148,35 +69573,7 @@ var DarkModeProvider = __webpack_require__(7796);
 var DarkModeContext = __webpack_require__(91350);
 // EXTERNAL MODULE: ./src/components/ui/Alert.tsx
 var Alert = __webpack_require__(95453);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/GitHub.js
-var GitHub = __webpack_require__(14429);
-// EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
-var IconButtonWithTooltip = __webpack_require__(79885);
-;// CONCATENATED MODULE: ./src/components/buttons/GitHubButton.tsx
-// tslint:disable-next-line: match-default-export-name no-submodule-imports
-
-
-
-function GitHubButton(props) {
-  var repo = props.repo,
-      size = props.size,
-      className = props.className;
-  var url = repo;
-
-  if (!/^\//.test(url) && !/^https:\/\//.test(url) && !/^https:\/\/github.com\//.test(url)) {
-    url = "https://github.com/" + url;
-  }
-
-  return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-    title: "open " + url,
-    className: className,
-    to: url,
-    size: size,
-    color: "inherit",
-    edge: "start"
-  }, /*#__PURE__*/react.createElement(GitHub/* default */.Z, null));
-}
-;// CONCATENATED MODULE: ./src/components/ui/Footer.tsx
+;// CONCATENATED MODULE: ./src/components/shell/Footer.tsx
 
 
 var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
@@ -70203,7 +69600,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "1f47583d2506c525dab47b360a5bee0c61fd7715";
+  var sha = "14fa1ab750230b7074cc333d2041f20f5dbb0de7";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70228,88 +69625,20 @@ function Footer() {
     variant: "inherit"
   }, "\xA9 ", new Date().getFullYear(), " Microsoft Corporation"));
 }
-// EXTERNAL MODULE: ./src/components/DrawerToolsButtonGroup.tsx
-var DrawerToolsButtonGroup = __webpack_require__(95743);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
 var flags = __webpack_require__(21258);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Badge/Badge.js
-var Badge = __webpack_require__(28142);
-// EXTERNAL MODULE: ./src/components/icons/JacdacIcon.tsx
-var JacdacIcon = __webpack_require__(36656);
-// EXTERNAL MODULE: ./src/components/hooks/useDevices.ts
-var useDevices = __webpack_require__(53074);
-;// CONCATENATED MODULE: ./src/components/hooks/useDeviceCount.ts
-
-function useDeviceCount(options) {
-  var devices = (0,useDevices/* default */.Z)(options);
-  return devices.length;
-}
-;// CONCATENATED MODULE: ./src/components/buttons/OpenDashboardButton.tsx
-
-
-
-
-
-function OpenDashboardButton(props) {
-  var className = props.className;
-  var count = useDeviceCount({
-    ignoreSelf: true
-  });
-  return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-    className: className,
-    title: "Device Dashboard",
-    edge: "start",
-    color: "inherit",
-    to: "/dashboard/"
-  }, /*#__PURE__*/react.createElement(Badge/* default */.Z, {
-    color: "secondary",
-    badgeContent: count
-  }, /*#__PURE__*/react.createElement(JacdacIcon/* default */.Z, null)));
-}
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/pretty.ts
-var pretty = __webpack_require__(10913);
-// EXTERNAL MODULE: ./src/jacdac/Context.tsx
-var Context = __webpack_require__(20392);
-// EXTERNAL MODULE: ./src/jacdac/useChange.ts
-var useChange = __webpack_require__(54774);
-// EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
-var useMediaQueries = __webpack_require__(20509);
-;// CONCATENATED MODULE: ./src/components/PacketStats.tsx
-
-
-
-
-
-
-
-function PacketStats() {
-  var _useContext = (0,react.useContext)(Context/* default */.Z),
-      bus = _useContext.bus;
-
-  var stats = bus.stats;
-
-  var _useMediaQueries = (0,useMediaQueries/* default */.Z)(),
-      mobile = _useMediaQueries.mobile;
-
-  var current = (0,useChange/* default */.Z)(stats, function (s) {
-    return s.current;
-  });
-  var diagnostics = flags/* default.diagnostics */.Z.diagnostics;
-  if (mobile || !current.bytes) return null;
-  var label = current.packets + " packets per second, " + (0,pretty/* prettySize */.or)(current.bytes) + " per second";
-  var text = diagnostics ? (current.packets | 0) + "#, " + (0,pretty/* prettySize */.or)(current.bytes) + "/s" : (0,pretty/* prettySize */.or)(current.bytes) + "/s";
-  return /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-    variant: "caption",
-    component: "span",
-    "aria-label": label
-  }, text);
-}
 // EXTERNAL MODULE: ./src/components/ui/Suspense.tsx
 var Suspense = __webpack_require__(69672);
 // EXTERNAL MODULE: ./node_modules/@mdx-js/react/dist/esm.js
 var esm = __webpack_require__(64983);
 // EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
 var gatsby_theme_material_ui = __webpack_require__(36176);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/useTheme.js
+var useTheme = __webpack_require__(59355);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Box/Box.js + 13 modules
+var Box = __webpack_require__(33287);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Paper/Paper.js
+var Paper = __webpack_require__(58063);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableContainer/TableContainer.js
 var TableContainer = __webpack_require__(78475);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Table/Table.js
@@ -70642,6 +69971,676 @@ function ui_Breadcrumbs_Breadcrumbs(props) {
     }, part);
   }));
 }
+// EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
+var useMediaQueries = __webpack_require__(20509);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(45697);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js
+var getThemeProps = __webpack_require__(61652);
+// EXTERNAL MODULE: ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
+var hoist_non_react_statics_cjs = __webpack_require__(15706);
+var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createBreakpoints.js
+var createBreakpoints = __webpack_require__(52507);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/useMediaQuery/useMediaQuery.js
+var useMediaQuery = __webpack_require__(8129);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/withWidth/withWidth.js
+
+
+
+
+
+
+
+
+ // By default, returns true if screen width is the same or greater than the given breakpoint.
+
+var isWidthUp = function isWidthUp(breakpoint, width) {
+  var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  if (inclusive) {
+    return createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint) <= createBreakpoints/* keys.indexOf */.X.indexOf(width);
+  }
+
+  return createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint) < createBreakpoints/* keys.indexOf */.X.indexOf(width);
+}; // By default, returns true if screen width is the same or less than the given breakpoint.
+
+var isWidthDown = function isWidthDown(breakpoint, width) {
+  var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  if (inclusive) {
+    return createBreakpoints/* keys.indexOf */.X.indexOf(width) <= createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint);
+  }
+
+  return createBreakpoints/* keys.indexOf */.X.indexOf(width) < createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint);
+};
+var useEnhancedEffect = typeof window === 'undefined' ? react.useEffect : react.useLayoutEffect;
+
+var withWidth = function withWidth() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return function (Component) {
+    var _options$withTheme = options.withTheme,
+        withThemeOption = _options$withTheme === void 0 ? false : _options$withTheme,
+        _options$noSSR = options.noSSR,
+        noSSR = _options$noSSR === void 0 ? false : _options$noSSR,
+        initialWidthOption = options.initialWidth;
+
+    function WithWidth(props) {
+      var contextTheme = (0,useTheme/* default */.Z)();
+      var theme = props.theme || contextTheme;
+
+      var _getThemeProps = (0,getThemeProps/* default */.Z)({
+        theme: theme,
+        name: 'MuiWithWidth',
+        props: (0,esm_extends/* default */.Z)({}, props)
+      }),
+          initialWidth = _getThemeProps.initialWidth,
+          width = _getThemeProps.width,
+          other = (0,objectWithoutProperties/* default */.Z)(_getThemeProps, ["initialWidth", "width"]);
+
+      var _React$useState = react.useState(false),
+          mountedState = _React$useState[0],
+          setMountedState = _React$useState[1];
+
+      useEnhancedEffect(function () {
+        setMountedState(true);
+      }, []);
+      /**
+       * innerWidth |xs      sm      md      lg      xl
+       *            |-------|-------|-------|-------|------>
+       * width      |  xs   |  sm   |  md   |  lg   |  xl
+       */
+
+      var keys = theme.breakpoints.keys.slice().reverse();
+      var widthComputed = keys.reduce(function (output, key) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        var matches = (0,useMediaQuery/* default */.Z)(theme.breakpoints.up(key));
+        return !output && matches ? key : output;
+      }, null);
+
+      var more = (0,esm_extends/* default */.Z)({
+        width: width || (mountedState || noSSR ? widthComputed : undefined) || initialWidth || initialWidthOption
+      }, withThemeOption ? {
+        theme: theme
+      } : {}, other); // When rendering the component on the server,
+      // we have no idea about the client browser screen width.
+      // In order to prevent blinks and help the reconciliation of the React tree
+      // we are not rendering the child component.
+      //
+      // An alternative is to use the `initialWidth` property.
+
+
+      if (more.width === undefined) {
+        return null;
+      }
+
+      return /*#__PURE__*/react.createElement(Component, more);
+    }
+
+     false ? 0 : void 0;
+
+    if (false) {}
+
+    hoist_non_react_statics_cjs_default()(WithWidth, Component);
+    return WithWidth;
+  };
+};
+
+/* harmony default export */ var withWidth_withWidth = (withWidth);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/HiddenJs.js
+
+
+
+
+/**
+ * @ignore - internal component.
+ */
+
+function HiddenJs(props) {
+  var children = props.children,
+      only = props.only,
+      width = props.width;
+  var theme = (0,useTheme/* default */.Z)();
+  var visible = true; // `only` check is faster to get out sooner if used.
+
+  if (only) {
+    if (Array.isArray(only)) {
+      for (var i = 0; i < only.length; i += 1) {
+        var breakpoint = only[i];
+
+        if (width === breakpoint) {
+          visible = false;
+          break;
+        }
+      }
+    } else if (only && width === only) {
+      visible = false;
+    }
+  } // Allow `only` to be combined with other props. If already hidden, no need to check others.
+
+
+  if (visible) {
+    // determine visibility based on the smallest size up
+    for (var _i = 0; _i < theme.breakpoints.keys.length; _i += 1) {
+      var _breakpoint = theme.breakpoints.keys[_i];
+      var breakpointUp = props["".concat(_breakpoint, "Up")];
+      var breakpointDown = props["".concat(_breakpoint, "Down")];
+
+      if (breakpointUp && isWidthUp(_breakpoint, width) || breakpointDown && isWidthDown(_breakpoint, width)) {
+        visible = false;
+        break;
+      }
+    }
+  }
+
+  if (!visible) {
+    return null;
+  }
+
+  return children;
+}
+
+HiddenJs.propTypes = {
+  /**
+   * The content of the component.
+   */
+  children: (prop_types_default()).node,
+
+  /**
+   * @ignore
+   */
+  className: (prop_types_default()).string,
+
+  /**
+   * Specify which implementation to use.  'js' is the default, 'css' works better for
+   * server-side rendering.
+   */
+  implementation: prop_types_default().oneOf(['js', 'css']),
+
+  /**
+   * You can use this prop when choosing the `js` implementation with server-side rendering.
+   *
+   * As `window.innerWidth` is unavailable on the server,
+   * we default to rendering an empty component during the first mount.
+   * You might want to use an heuristic to approximate
+   * the screen width of the client browser screen width.
+   *
+   * For instance, you could be using the user-agent or the client-hints.
+   * https://caniuse.com/#search=client%20hint
+   */
+  initialWidth: prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  lgDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  lgUp: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  mdDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  mdUp: (prop_types_default()).bool,
+
+  /**
+   * Hide the given breakpoint(s).
+   */
+  only: prop_types_default().oneOfType([prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']), prop_types_default().arrayOf(prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']))]),
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  smDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  smUp: (prop_types_default()).bool,
+
+  /**
+   * @ignore
+   * width prop provided by withWidth decorator.
+   */
+  width: (prop_types_default()).string.isRequired,
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  xlDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  xlUp: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  xsDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  xsUp: (prop_types_default()).bool
+};
+
+if (false) {}
+
+/* harmony default export */ var Hidden_HiddenJs = (withWidth_withWidth()(HiddenJs));
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/HiddenCss.js
+
+
+
+
+
+
+
+var HiddenCss_styles = function styles(theme) {
+  var hidden = {
+    display: 'none'
+  };
+  return theme.breakpoints.keys.reduce(function (acc, key) {
+    acc["only".concat((0,capitalize/* default */.Z)(key))] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.only(key), hidden);
+    acc["".concat(key, "Up")] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.up(key), hidden);
+    acc["".concat(key, "Down")] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.down(key), hidden);
+    return acc;
+  }, {});
+};
+/**
+ * @ignore - internal component.
+ */
+
+
+function HiddenCss(props) {
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      only = props.only,
+      other = (0,objectWithoutProperties/* default */.Z)(props, ["children", "classes", "className", "only"]);
+
+  var theme = (0,useTheme/* default */.Z)();
+
+  if (false) { var unknownProps; }
+
+  var clsx = [];
+
+  if (className) {
+    clsx.push(className);
+  }
+
+  for (var i = 0; i < theme.breakpoints.keys.length; i += 1) {
+    var breakpoint = theme.breakpoints.keys[i];
+    var breakpointUp = props["".concat(breakpoint, "Up")];
+    var breakpointDown = props["".concat(breakpoint, "Down")];
+
+    if (breakpointUp) {
+      clsx.push(classes["".concat(breakpoint, "Up")]);
+    }
+
+    if (breakpointDown) {
+      clsx.push(classes["".concat(breakpoint, "Down")]);
+    }
+  }
+
+  if (only) {
+    var onlyBreakpoints = Array.isArray(only) ? only : [only];
+    onlyBreakpoints.forEach(function (breakpoint) {
+      clsx.push(classes["only".concat((0,capitalize/* default */.Z)(breakpoint))]);
+    });
+  }
+
+  return /*#__PURE__*/react.createElement("div", {
+    className: clsx.join(' ')
+  }, children);
+}
+
+ false ? 0 : void 0;
+/* harmony default export */ var Hidden_HiddenCss = ((0,withStyles/* default */.Z)(HiddenCss_styles, {
+  name: 'PrivateHiddenCss'
+})(HiddenCss));
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/Hidden.js
+
+
+
+
+
+/**
+ * Responsively hides children based on the selected implementation.
+ */
+
+function Hidden(props) {
+  var _props$implementation = props.implementation,
+      implementation = _props$implementation === void 0 ? 'js' : _props$implementation,
+      _props$lgDown = props.lgDown,
+      lgDown = _props$lgDown === void 0 ? false : _props$lgDown,
+      _props$lgUp = props.lgUp,
+      lgUp = _props$lgUp === void 0 ? false : _props$lgUp,
+      _props$mdDown = props.mdDown,
+      mdDown = _props$mdDown === void 0 ? false : _props$mdDown,
+      _props$mdUp = props.mdUp,
+      mdUp = _props$mdUp === void 0 ? false : _props$mdUp,
+      _props$smDown = props.smDown,
+      smDown = _props$smDown === void 0 ? false : _props$smDown,
+      _props$smUp = props.smUp,
+      smUp = _props$smUp === void 0 ? false : _props$smUp,
+      _props$xlDown = props.xlDown,
+      xlDown = _props$xlDown === void 0 ? false : _props$xlDown,
+      _props$xlUp = props.xlUp,
+      xlUp = _props$xlUp === void 0 ? false : _props$xlUp,
+      _props$xsDown = props.xsDown,
+      xsDown = _props$xsDown === void 0 ? false : _props$xsDown,
+      _props$xsUp = props.xsUp,
+      xsUp = _props$xsUp === void 0 ? false : _props$xsUp,
+      other = (0,objectWithoutProperties/* default */.Z)(props, ["implementation", "lgDown", "lgUp", "mdDown", "mdUp", "smDown", "smUp", "xlDown", "xlUp", "xsDown", "xsUp"]);
+
+  if (implementation === 'js') {
+    return /*#__PURE__*/react.createElement(Hidden_HiddenJs, (0,esm_extends/* default */.Z)({
+      lgDown: lgDown,
+      lgUp: lgUp,
+      mdDown: mdDown,
+      mdUp: mdUp,
+      smDown: smDown,
+      smUp: smUp,
+      xlDown: xlDown,
+      xlUp: xlUp,
+      xsDown: xsDown,
+      xsUp: xsUp
+    }, other));
+  }
+
+  return /*#__PURE__*/react.createElement(Hidden_HiddenCss, (0,esm_extends/* default */.Z)({
+    lgDown: lgDown,
+    lgUp: lgUp,
+    mdDown: mdDown,
+    mdUp: mdUp,
+    smDown: smDown,
+    smUp: smUp,
+    xlDown: xlDown,
+    xlUp: xlUp,
+    xsDown: xsDown,
+    xsUp: xsUp
+  }, other));
+}
+
+ false ? 0 : void 0;
+/* harmony default export */ var Hidden_Hidden = (Hidden);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/AppBar/AppBar.js
+
+
+
+
+
+
+
+var AppBar_styles = function styles(theme) {
+  var backgroundColorDefault = theme.palette.type === 'light' ? theme.palette.grey[100] : theme.palette.grey[900];
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      boxSizing: 'border-box',
+      // Prevent padding issue with the Modal and fixed positioned AppBar.
+      zIndex: theme.zIndex.appBar,
+      flexShrink: 0
+    },
+
+    /* Styles applied to the root element if `position="fixed"`. */
+    positionFixed: {
+      position: 'fixed',
+      top: 0,
+      left: 'auto',
+      right: 0,
+      '@media print': {
+        // Prevent the app bar to be visible on each printed page.
+        position: 'absolute'
+      }
+    },
+
+    /* Styles applied to the root element if `position="absolute"`. */
+    positionAbsolute: {
+      position: 'absolute',
+      top: 0,
+      left: 'auto',
+      right: 0
+    },
+
+    /* Styles applied to the root element if `position="sticky"`. */
+    positionSticky: {
+      // ⚠️ sticky is not supported by IE 11.
+      position: 'sticky',
+      top: 0,
+      left: 'auto',
+      right: 0
+    },
+
+    /* Styles applied to the root element if `position="static"`. */
+    positionStatic: {
+      position: 'static'
+    },
+
+    /* Styles applied to the root element if `position="relative"`. */
+    positionRelative: {
+      position: 'relative'
+    },
+
+    /* Styles applied to the root element if `color="default"`. */
+    colorDefault: {
+      backgroundColor: backgroundColorDefault,
+      color: theme.palette.getContrastText(backgroundColorDefault)
+    },
+
+    /* Styles applied to the root element if `color="primary"`. */
+    colorPrimary: {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText
+    },
+
+    /* Styles applied to the root element if `color="secondary"`. */
+    colorSecondary: {
+      backgroundColor: theme.palette.secondary.main,
+      color: theme.palette.secondary.contrastText
+    },
+
+    /* Styles applied to the root element if `color="inherit"`. */
+    colorInherit: {
+      color: 'inherit'
+    },
+
+    /* Styles applied to the root element if `color="transparent"`. */
+    colorTransparent: {
+      backgroundColor: 'transparent',
+      color: 'inherit'
+    }
+  };
+};
+var AppBar = /*#__PURE__*/react.forwardRef(function AppBar(props, ref) {
+  var classes = props.classes,
+      className = props.className,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'primary' : _props$color,
+      _props$position = props.position,
+      position = _props$position === void 0 ? 'fixed' : _props$position,
+      other = (0,objectWithoutProperties/* default */.Z)(props, ["classes", "className", "color", "position"]);
+
+  return /*#__PURE__*/react.createElement(Paper/* default */.Z, (0,esm_extends/* default */.Z)({
+    square: true,
+    component: "header",
+    elevation: 4,
+    className: (0,clsx_m/* default */.Z)(classes.root, classes["position".concat((0,capitalize/* default */.Z)(position))], classes["color".concat((0,capitalize/* default */.Z)(color))], className, position === 'fixed' && 'mui-fixed'),
+    ref: ref
+  }, other));
+});
+ false ? 0 : void 0;
+/* harmony default export */ var AppBar_AppBar = ((0,withStyles/* default */.Z)(AppBar_styles, {
+  name: 'MuiAppBar'
+})(AppBar));
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js
+
+
+
+
+
+
+var Toolbar_styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center'
+    },
+
+    /* Styles applied to the root element if `disableGutters={false}`. */
+    gutters: (0,defineProperty/* default */.Z)({
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2)
+    }, theme.breakpoints.up('sm'), {
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3)
+    }),
+
+    /* Styles applied to the root element if `variant="regular"`. */
+    regular: theme.mixins.toolbar,
+
+    /* Styles applied to the root element if `variant="dense"`. */
+    dense: {
+      minHeight: 48
+    }
+  };
+};
+var Toolbar = /*#__PURE__*/react.forwardRef(function Toolbar(props, ref) {
+  var classes = props.classes,
+      className = props.className,
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'div' : _props$component,
+      _props$disableGutters = props.disableGutters,
+      disableGutters = _props$disableGutters === void 0 ? false : _props$disableGutters,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'regular' : _props$variant,
+      other = (0,objectWithoutProperties/* default */.Z)(props, ["classes", "className", "component", "disableGutters", "variant"]);
+
+  return /*#__PURE__*/react.createElement(Component, (0,esm_extends/* default */.Z)({
+    className: (0,clsx_m/* default */.Z)(classes.root, classes[variant], className, !disableGutters && classes.gutters),
+    ref: ref
+  }, other));
+});
+ false ? 0 : void 0;
+/* harmony default export */ var Toolbar_Toolbar = ((0,withStyles/* default */.Z)(Toolbar_styles, {
+  name: 'MuiToolbar'
+})(Toolbar));
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/MoreVert.js
+var MoreVert = __webpack_require__(70542);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/GitHub.js
+var GitHub = __webpack_require__(14429);
+// EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
+var IconButtonWithTooltip = __webpack_require__(79885);
+;// CONCATENATED MODULE: ./src/components/buttons/GitHubButton.tsx
+// tslint:disable-next-line: match-default-export-name no-submodule-imports
+
+
+
+function GitHubButton(props) {
+  var repo = props.repo,
+      size = props.size,
+      className = props.className;
+  var url = repo;
+
+  if (!/^\//.test(url) && !/^https:\/\//.test(url) && !/^https:\/\/github.com\//.test(url)) {
+    url = "https://github.com/" + url;
+  }
+
+  return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    title: "open " + url,
+    className: className,
+    to: url,
+    size: size,
+    color: "inherit",
+    edge: "start"
+  }, /*#__PURE__*/react.createElement(GitHub/* default */.Z, null));
+}
+// EXTERNAL MODULE: ./src/components/DrawerToolsButtonGroup.tsx
+var DrawerToolsButtonGroup = __webpack_require__(95743);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Badge/Badge.js
+var Badge = __webpack_require__(28142);
+// EXTERNAL MODULE: ./src/components/icons/JacdacIcon.tsx
+var JacdacIcon = __webpack_require__(36656);
+// EXTERNAL MODULE: ./src/components/hooks/useDevices.ts
+var useDevices = __webpack_require__(53074);
+;// CONCATENATED MODULE: ./src/components/hooks/useDeviceCount.ts
+
+function useDeviceCount(options) {
+  var devices = (0,useDevices/* default */.Z)(options);
+  return devices.length;
+}
+;// CONCATENATED MODULE: ./src/components/buttons/OpenDashboardButton.tsx
+
+
+
+
+
+function OpenDashboardButton(props) {
+  var className = props.className;
+  var count = useDeviceCount({
+    ignoreSelf: true
+  });
+  return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    className: className,
+    title: "Device Dashboard",
+    edge: "start",
+    color: "inherit",
+    to: "/dashboard/"
+  }, /*#__PURE__*/react.createElement(Badge/* default */.Z, {
+    color: "secondary",
+    badgeContent: count
+  }, /*#__PURE__*/react.createElement(JacdacIcon/* default */.Z, null)));
+}
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/pretty.ts
+var pretty = __webpack_require__(10913);
+// EXTERNAL MODULE: ./src/jacdac/Context.tsx
+var Context = __webpack_require__(20392);
+// EXTERNAL MODULE: ./src/jacdac/useChange.ts
+var useChange = __webpack_require__(54774);
+;// CONCATENATED MODULE: ./src/components/PacketStats.tsx
+
+
+
+
+
+
+
+function PacketStats() {
+  var _useContext = (0,react.useContext)(Context/* default */.Z),
+      bus = _useContext.bus;
+
+  var stats = bus.stats;
+
+  var _useMediaQueries = (0,useMediaQueries/* default */.Z)(),
+      mobile = _useMediaQueries.mobile;
+
+  var current = (0,useChange/* default */.Z)(stats, function (s) {
+    return s.current;
+  });
+  var diagnostics = flags/* default.diagnostics */.Z.diagnostics;
+  if (mobile || !current.bytes) return null;
+  var label = current.packets + " packets per second, " + (0,pretty/* prettySize */.or)(current.bytes) + " per second";
+  var text = diagnostics ? (current.packets | 0) + "#, " + (0,pretty/* prettySize */.or)(current.bytes) + "/s" : (0,pretty/* prettySize */.or)(current.bytes) + "/s";
+  return /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    variant: "caption",
+    component: "span",
+    "aria-label": label
+  }, text);
+}
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Forum.js
 var Forum = __webpack_require__(22203);
 // EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 22 modules
@@ -70744,25 +70743,11 @@ function OpenVMEditorButton(props) {
     to: "/editors/vm/"
   }, /*#__PURE__*/react.createElement(Extension/* default */.Z, null));
 }
-;// CONCATENATED MODULE: ./src/components/layout.tsx
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+;// CONCATENATED MODULE: ./src/components/shell/MainAppBar.tsx
 
 
 
- // tslint:disable-next-line: no-submodule-imports
-// tslint:disable-next-line: no-submodule-imports
 
- // tslint:disable-next-line: no-submodule-imports
-
- // tslint:disable-next-line: no-submodule-imports
-
- // tslint:disable-next-line: no-submodule-imports match-default-export-name
-
- // tslint:disable-next-line: no-import-side-effect
 
 
  // tslint:disable-next-line: no-submodule-imports
@@ -70780,38 +70765,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-
-
-
-
-
-
-
-
-var WebDiagnostics = /*#__PURE__*/(0,react.lazy)(function () {
-  return __webpack_require__.e(/* import() */ 6521).then(__webpack_require__.bind(__webpack_require__, 6521));
-});
-var AppDrawer = /*#__PURE__*/(0,react.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(301)]).then(__webpack_require__.bind(__webpack_require__, 50301));
-});
-var ToolsDrawer = /*#__PURE__*/(0,react.lazy)(function () {
-  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(4706)]).then(__webpack_require__.bind(__webpack_require__, 54706));
-});
-var TOC_DRAWER_WIDTH = 18;
-var DRAWER_WIDTH = 40;
-var TOOLS_DRAWER_WIDTH = 22;
-var MOBILE_DRAWER_WIDTH = 20;
-var MOBILE_TOOLS_DRAWER_WIDTH = 18;
-var MOBILE_BREAKPOINT = "sm";
-var MEDIUM_BREAKPOINT = "md";
-var layout_useStyles = (0,makeStyles/* default */.Z)(function (theme) {
-  var _appBarShift, _toolBarShift, _hideMobile, _toolsContentShift;
+var MainAppBar_useStyles = (0,makeStyles/* default */.Z)(function (theme) {
+  var _appBarShift, _toolBarShift, _hideMobile;
 
   return (0,createStyles/* default */.Z)({
-    root: {
-      display: "flex",
-      flexGrow: 1
-    },
     grow: {
       flexGrow: 1
     },
@@ -70854,123 +70811,21 @@ var layout_useStyles = (0,makeStyles/* default */.Z)(function (theme) {
     },
     hideMobile: (_hideMobile = {}, _hideMobile[theme.breakpoints.down("md")] = {
       display: "none"
-    }, _hideMobile),
-    drawerHeader: _objectSpread(_objectSpread({
-      display: "flex",
-      alignItems: "center",
-      padding: theme.spacing(0, 1)
-    }, theme.mixins.toolbar), {}, {
-      justifyContent: "flex-end"
-    }),
-    content: {
-      display: "flex",
-      minHeight: "100vh",
-      minWidth: "10rem",
-      flexDirection: "column",
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen
-      }),
-      flexGrow: 1,
-      padding: theme.spacing(0.5)
-    },
-    contentPadding: {
-      padding: theme.spacing(3)
-    },
-    container: {
-      padding: theme.spacing(3)
-    },
-    mainContent: {
-      flexGrow: 1
-    },
-    contentShift: {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen
-      })
-    },
-    toolsContentShift: (_toolsContentShift = {
-      width: "calc(100% - 0.5rem)",
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen
-      }),
-      marginLeft: "-" + TOOLS_DRAWER_WIDTH + "rem"
-    }, _toolsContentShift[theme.breakpoints.down(MOBILE_BREAKPOINT)] = {
-      marginLeft: "-" + MOBILE_TOOLS_DRAWER_WIDTH + "rem"
-    }, _toolsContentShift),
-    fab: {
-      position: "fixed",
-      bottom: theme.spacing(3),
-      right: theme.spacing(3),
-      "& > *": {
-        margin: theme.spacing(1)
-      }
-    }
+    }, _hideMobile)
   });
 });
-function Layout(props) {
-  return /*#__PURE__*/react.createElement(DarkModeProvider/* default */.Z, null, /*#__PURE__*/react.createElement(LayoutWithDarkMode, props));
-}
-
-function LayoutWithDarkMode(props) {
-  var element = props.element,
-      pageProps = props.props;
-  var pageContext = pageProps.pageContext,
-      path = pageProps.path;
-
-  var _ref = pageContext || {},
-      frontmatter = _ref.frontmatter;
-
-  var makeCodeTool = /tools\/makecode-/.test(path);
-
-  var _ref2 = frontmatter || {
-    fullScreen: makeCodeTool
-  },
-      fullScreen = _ref2.fullScreen;
-
-  var _useContext = (0,react.useContext)(DarkModeContext/* default */.Z),
-      darkModeMounted = _useContext.darkModeMounted;
-
-  if (!darkModeMounted) return /*#__PURE__*/react.createElement("div", null);else if (fullScreen) return element;else return /*#__PURE__*/react.createElement(LayoutWithMdx, props);
-}
-
-function LayoutWithMdx(props) {
-  var _useContext2 = (0,react.useContext)(DarkModeContext/* default */.Z),
-      darkMode = _useContext2.darkMode;
-
-  var isDark = darkMode === "dark";
-  var themeDef = {
-    palette: {
-      primary: {
-        main: isDark ? "#56d364" : "#2e7d32"
-      },
-      secondary: {
-        main: "#ffc400"
-      },
-      contrastThreshold: isDark ? 5.1 : 3.1,
-      type: darkMode
-    }
-  };
-  var rawTheme = (0,createTheme/* default */.Z)(themeDef);
-  var theme = (0,responsiveFontSizes/* default */.Z)(rawTheme);
-  return /*#__PURE__*/react.createElement(ThemedMdxLayout, {
-    theme: theme
-  }, /*#__PURE__*/react.createElement(LayoutWithContext, props));
-}
-
 function MainAppBar() {
   var _clsx;
 
-  var classes = layout_useStyles();
+  var classes = MainAppBar_useStyles();
 
-  var _useContext3 = (0,react.useContext)(AppContext/* default */.ZP),
-      drawerType = _useContext3.drawerType,
-      toolsMenu = _useContext3.toolsMenu,
-      setToolsMenu = _useContext3.setToolsMenu;
+  var _useContext = (0,react.useContext)(AppContext/* default */.ZP),
+      drawerType = _useContext.drawerType,
+      toolsMenu = _useContext.toolsMenu,
+      setToolsMenu = _useContext.setToolsMenu;
 
-  var _useContext4 = (0,react.useContext)(DarkModeContext/* default */.Z),
-      darkMode = _useContext4.darkMode;
+  var _useContext2 = (0,react.useContext)(DarkModeContext/* default */.Z),
+      darkMode = _useContext2.darkMode;
 
   var drawerOpen = drawerType !== AppContext/* DrawerType.None */.jw.None;
   var appBarColor = darkMode === "dark" ? "inherit" : providerbus/* UIFlags.widget */.A.widget ? "default" : undefined;
@@ -71026,9 +70881,156 @@ function MainAppBar() {
     onClick: toggleToolsMenu
   }, /*#__PURE__*/react.createElement(MoreVert/* default */.Z, null))))));
 }
+;// CONCATENATED MODULE: ./src/components/layout.tsx
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var WebDiagnostics = /*#__PURE__*/(0,react.lazy)(function () {
+  return __webpack_require__.e(/* import() */ 3828).then(__webpack_require__.bind(__webpack_require__, 3828));
+});
+var AppDrawer = /*#__PURE__*/(0,react.lazy)(function () {
+  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(973)]).then(__webpack_require__.bind(__webpack_require__, 80973));
+});
+var ToolsDrawer = /*#__PURE__*/(0,react.lazy)(function () {
+  return Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(7086)]).then(__webpack_require__.bind(__webpack_require__, 37086));
+});
+var TOC_DRAWER_WIDTH = 18;
+var DRAWER_WIDTH = 40;
+var TOOLS_DRAWER_WIDTH = 22;
+var MOBILE_DRAWER_WIDTH = 20;
+var MOBILE_TOOLS_DRAWER_WIDTH = 18;
+var MOBILE_BREAKPOINT = "sm";
+var MEDIUM_BREAKPOINT = "md";
+var layout_useStyles = (0,makeStyles/* default */.Z)(function (theme) {
+  var _hideMobile, _toolsContentShift;
+
+  return (0,createStyles/* default */.Z)({
+    root: {
+      display: "flex",
+      flexGrow: 1
+    },
+    hideMobile: (_hideMobile = {}, _hideMobile[theme.breakpoints.down("md")] = {
+      display: "none"
+    }, _hideMobile),
+    drawerHeader: _objectSpread(_objectSpread({
+      display: "flex",
+      alignItems: "center",
+      padding: theme.spacing(0, 1)
+    }, theme.mixins.toolbar), {}, {
+      justifyContent: "flex-end"
+    }),
+    content: {
+      display: "flex",
+      minHeight: "100vh",
+      minWidth: "10rem",
+      flexDirection: "column",
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen
+      }),
+      flexGrow: 1,
+      padding: theme.spacing(0.5)
+    },
+    contentPadding: {
+      padding: theme.spacing(3)
+    },
+    container: {
+      padding: theme.spacing(3)
+    },
+    mainContent: {
+      flexGrow: 1
+    },
+    contentShift: {
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen
+      })
+    },
+    toolsContentShift: (_toolsContentShift = {
+      width: "calc(100% - 0.5rem)",
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen
+      }),
+      marginLeft: "-" + TOOLS_DRAWER_WIDTH + "rem"
+    }, _toolsContentShift[theme.breakpoints.down(MOBILE_BREAKPOINT)] = {
+      marginLeft: "-" + MOBILE_TOOLS_DRAWER_WIDTH + "rem"
+    }, _toolsContentShift)
+  });
+});
+function Layout(props) {
+  return /*#__PURE__*/react.createElement(DarkModeProvider/* default */.Z, null, /*#__PURE__*/react.createElement(LayoutWithDarkMode, props));
+}
+
+function LayoutWithDarkMode(props) {
+  var element = props.element,
+      pageProps = props.props;
+  var pageContext = pageProps.pageContext,
+      path = pageProps.path;
+
+  var _ref = pageContext || {},
+      frontmatter = _ref.frontmatter;
+
+  var makeCodeTool = /tools\/makecode-/.test(path);
+
+  var _ref2 = frontmatter || {
+    fullScreen: makeCodeTool
+  },
+      fullScreen = _ref2.fullScreen;
+
+  var _useContext = (0,react.useContext)(DarkModeContext/* default */.Z),
+      darkModeMounted = _useContext.darkModeMounted;
+
+  if (!darkModeMounted) return /*#__PURE__*/react.createElement("div", null);else if (fullScreen) return element;else return /*#__PURE__*/react.createElement(LayoutWithMdx, props);
+}
+
+function LayoutWithMdx(props) {
+  var _useContext2 = (0,react.useContext)(DarkModeContext/* default */.Z),
+      darkMode = _useContext2.darkMode;
+
+  var isDark = darkMode === "dark";
+  var themeDef = {
+    palette: {
+      primary: {
+        main: isDark ? "#56d364" : "#2e7d32"
+      },
+      secondary: {
+        main: "#ffc400"
+      },
+      contrastThreshold: isDark ? 5.1 : 3.1,
+      type: darkMode
+    }
+  };
+  var rawTheme = (0,createTheme/* default */.Z)(themeDef);
+  var theme = (0,responsiveFontSizes/* default */.Z)(rawTheme);
+  return /*#__PURE__*/react.createElement(ThemedMdxLayout, {
+    theme: theme
+  }, /*#__PURE__*/react.createElement(LayoutWithContext, props));
+}
 
 function LayoutWithContext(props) {
-  var _clsx2;
+  var _clsx;
 
   var element = props.element,
       pageProps = props.props;
@@ -71056,13 +71058,13 @@ function LayoutWithContext(props) {
 
   var classes = layout_useStyles();
 
-  var _useContext5 = (0,react.useContext)(DarkModeContext/* default */.Z),
-      darkMode = _useContext5.darkMode;
+  var _useContext3 = (0,react.useContext)(DarkModeContext/* default */.Z),
+      darkMode = _useContext3.darkMode;
 
-  var _useContext6 = (0,react.useContext)(AppContext/* default */.ZP),
-      drawerType = _useContext6.drawerType,
-      toolsMenu = _useContext6.toolsMenu,
-      enqueueSnackbar = _useContext6.enqueueSnackbar;
+  var _useContext4 = (0,react.useContext)(AppContext/* default */.ZP),
+      drawerType = _useContext4.drawerType,
+      toolsMenu = _useContext4.toolsMenu,
+      enqueueSnackbar = _useContext4.enqueueSnackbar;
 
   var drawerOpen = drawerType !== AppContext/* DrawerType.None */.jw.None;
 
@@ -71071,7 +71073,7 @@ function LayoutWithContext(props) {
 
   var container = !medium && !fullWidthTools; // && path !== "/"
 
-  var mainClasses = (0,clsx_m/* default */.Z)(classes.content, (_clsx2 = {}, _clsx2[classes.container] = container, _clsx2[classes.contentPadding] = !fullWidthTools, _clsx2[classes.contentShift] = drawerOpen, _clsx2[classes.toolsContentShift] = toolsMenu, _clsx2)); // show under construction warning
+  var mainClasses = (0,clsx_m/* default */.Z)(classes.content, (_clsx = {}, _clsx[classes.container] = container, _clsx[classes.contentPadding] = !fullWidthTools, _clsx[classes.contentShift] = drawerOpen, _clsx[classes.toolsContentShift] = toolsMenu, _clsx)); // show under construction warning
 
   (0,react.useEffect)(function () {
     if (!hideUnderConstruction) enqueueSnackbar("UNDER CONSTRUCTION - We are still working and changing the\n            Jacdac specification. Do not build devices using Jacdac.", "warning");
@@ -84556,7 +84558,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "onServiceWorkerUpdateReady": function() { return /* binding */ onServiceWorkerUpdateReady; },
 /* harmony export */   "wrapPageElement": function() { return /* binding */ wrapPageElement; }
 /* harmony export */ });
-/* harmony import */ var _src_components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(70439);
+/* harmony import */ var _src_components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85994);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(73935);
 

@@ -1,4 +1,4 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[4706],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7086],{
 
 /***/ 50144:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
@@ -197,7 +197,7 @@ exports.Z = _default;
 
 /***/ }),
 
-/***/ 54706:
+/***/ 37086:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -231,8 +231,8 @@ var List = __webpack_require__(80791);
 var Divider = __webpack_require__(62846);
 // EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
 var gatsby_theme_material_ui = __webpack_require__(36176);
-// EXTERNAL MODULE: ./src/components/layout.tsx + 22 modules
-var layout = __webpack_require__(70439);
+// EXTERNAL MODULE: ./src/components/layout.tsx + 23 modules
+var layout = __webpack_require__(85994);
 // EXTERNAL MODULE: ./src/components/AppContext.tsx
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/createSvgIcon.js
@@ -263,7 +263,7 @@ var KindIcon = __webpack_require__(50048);
 var constants = __webpack_require__(71815);
 // EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 22 modules
 var providerbus = __webpack_require__(38744);
-;// CONCATENATED MODULE: ./src/components/ToolsDrawer.tsx
+;// CONCATENATED MODULE: ./src/components/shell/ToolsDrawer.tsx
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
