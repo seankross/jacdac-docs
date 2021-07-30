@@ -35,6 +35,8 @@ WebAudioContext.displayName = "WebAudio"
 
 export default WebAudioContext
 
+const ROOM_DIM = 2
+
 let _globalCtx: ToneContext
 export function createToneContext(): ToneContext {
     if (_globalCtx) return _globalCtx
@@ -60,9 +62,9 @@ export function createToneContext(): ToneContext {
         // resonance
         const resonance = new ResonanceAudio(ctx)
         const roomDimension = {
-            width: 1,
-            heigth: 1,
-            depth: 1,
+            width: ROOM_DIM,
+            heigth: ROOM_DIM,
+            depth: ROOM_DIM,
         }
         const roomMaterials = {
             left: "grass",

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import {
     REPORT_UPDATE,
     SRV_ACCELEROMETER,
@@ -22,11 +22,11 @@ import {
 import ConnectAlert from "../../components/alert/ConnectAlert"
 import DeviceCardHeader from "../../components/DeviceCardHeader"
 import { JDService } from "../../../jacdac-ts/src/jdom/service"
-import useBuzzerPlayTone from "../../components/hooks/useBuzzerPlayTone"
 import Dashboard from "../../components/dashboard/Dashboard"
 import { JDDevice } from "../../../jacdac-ts/src/jdom/device"
 import { useId } from "react-use-id-hook"
 import { LiveMessage } from "react-aria-live"
+import WebAudioContext from "../../components/ui/WebAudioContext"
 
 const TONE_DURATION = 50
 const TONE_THROTTLE = 100
@@ -37,7 +37,11 @@ const TONE_THROTTLE = 100
 // so it will render again and update the accelerometers array whenever the bus connects/disconnects
 // an accelerometer
 export default function AccelerometerTheremin() {
-    const { playTone, toggleBrowserAudio, browserAudio } = useBuzzerPlayTone()
+    const {
+        playTone,
+        onClickActivateAudioContext,
+        activated: browserAudio,
+    } = useContext(WebAudioContext)
 
     // identifiers for accessibility
     const sectionId = useId()
@@ -106,7 +110,8 @@ export default function AccelerometerTheremin() {
                 // get all acceleration data
                 let volume = 1
                 let toneFrequencyOffset = 0
-                const [x, y, z] = accelService.readingRegister.unpackedValue
+                const [x, y, z] = accelService.readingRegister
+                    .unpackedValue as [number, number, number]
                 if (sonificationProperty == "frequency") {
                     if (axisToSonify == "x") {
                         toneFrequencyOffset = x
@@ -129,7 +134,7 @@ export default function AccelerometerTheremin() {
                     1000 + toneFrequencyOffset * 1000,
                     TONE_DURATION,
                     volume,
-                    { x, y, z }
+                    { dx: x, dy: y, dz: z }
                 )
             }, TONE_THROTTLE)
         )
@@ -140,23 +145,20 @@ export default function AccelerometerTheremin() {
 
     return (
         <>
+            <LiveMessage message={srAnnouncement} aria-live="assertive" />
             <section id={sectionId}>
                 <Grid container spacing={2}>
-                    <GridHeader title="Audio controls" />
-                    <Grid item xs={12}>
-                        <Button
-                            variant={"outlined"}
-                            onClick={toggleBrowserAudio}
-                        >
-                            {browserAudio
-                                ? "Stop browser audio"
-                                : "Start browser audio"}
-                        </Button>
-                        <LiveMessage
-                            message={srAnnouncement}
-                            aria-live="assertive"
-                        />
-                    </Grid>
+                    {!browserAudio && (
+                        <Grid item xs={12}>
+                            <Button
+                                variant={"outlined"}
+                                onClick={onClickActivateAudioContext}
+                                title="Start browser audio"
+                            >
+                                Start browser audio
+                            </Button>
+                        </Grid>
+                    )}
                     {!accelerometers.length && (
                         <>
                             <GridHeader title="Connect a device" />
