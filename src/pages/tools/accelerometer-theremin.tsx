@@ -40,7 +40,6 @@ export default function AccelerometerTheremin() {
     const {
         playTone,
         onClickActivateAudioContext,
-        activated: browserAudio,
     } = useContext(WebAudioContext)
 
     // identifiers for accessibility
@@ -80,8 +79,10 @@ export default function AccelerometerTheremin() {
     }
     // use a closure to capture accel variable
     // act as a toggle for the button the indicates streaming state.
-    const handleSelectAccelerometerService = accel => () => {
+    const handleSelectAccelerometerService = accel => async () => {
         setSRAnnouncement("") // clearing the live region for the text to be announced when streaming starts. I don't have a good feeling about this approach.
+        // enable sound within a click handler
+        await onClickActivateAudioContext()
         accelService == accel
             ? setAccelService(undefined)
             : setAccelService(accel)
@@ -148,17 +149,6 @@ export default function AccelerometerTheremin() {
             <LiveMessage message={srAnnouncement} aria-live="assertive" />
             <section id={sectionId}>
                 <Grid container spacing={2}>
-                    {!browserAudio && (
-                        <Grid item xs={12}>
-                            <Button
-                                variant={"outlined"}
-                                onClick={onClickActivateAudioContext}
-                                title="Start browser audio"
-                            >
-                                Start browser audio
-                            </Button>
-                        </Grid>
-                    )}
                     {!accelerometers.length && (
                         <>
                             <GridHeader title="Connect a device" />
