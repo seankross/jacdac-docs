@@ -10368,7 +10368,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: VEGA_ENCODING_BLOCK,
-      message0: "encoding %1 as %2",
+      message0: "encoding %1 as %2 title %3",
       args0: [{
         type: "field_dropdown",
         options: ["x", "y", "x2", "y2", "xError", "yError", "xError2", "yError2", "theta", "theta2", "radius", "radius2"].map(function (s) {
@@ -10378,6 +10378,9 @@ var chartDsl = {
       }, {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "field"
+      }, {
+        type: "field_input",
+        name: "title"
       }],
       previousStatement: VEGA_STATEMENT_TYPE,
       nextStatement: VEGA_STATEMENT_TYPE,
@@ -10451,6 +10454,9 @@ data) {
         {
           var channel = child.getFieldValue("channel");
           var field = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, child, "field");
+
+          var _title = child.getFieldValue("title");
+
           console.log({
             child: child,
             channel: channel,
@@ -10458,11 +10464,18 @@ data) {
           });
 
           if (channel && field) {
-            var type = types[headers.indexOf(field)];
-            spec.encoding[channel] = {
+            var type = types[headers.indexOf(field)]; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+            var encoding = spec.encoding[channel] = {
               field: field,
               type: type === "number" ? "quantitative" : "nominal"
             };
+
+            if (_title) {
+              encoding.axis = {
+                title: _title
+              };
+            }
           }
 
           break;

@@ -142,6 +142,7 @@ var VMServiceClient = /*#__PURE__*/function (_JDServiceClient) {
 
     _this = _JDServiceClient.call(this, service) || this;
     _this._registers = {};
+    _this._reportUpdate = {};
     _this._events = {};
     return _this;
   }
@@ -306,43 +307,53 @@ var VMServiceClient = /*#__PURE__*/function (_JDServiceClient) {
   }();
 
   _proto.lookupRegisterAsync = /*#__PURE__*/function () {
-    var _lookupRegisterAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(root, fld) {
+    var _lookupRegisterAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(root, fld, reportUpdate) {
       var _register$unpackedVal, register, field, _this$_events$root$fi, _field;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
+              if (reportUpdate === void 0) {
+                reportUpdate = false;
+              }
+
               if (!(root in this._registers)) {
-                _context5.next = 12;
+                _context5.next = 14;
                 break;
               }
 
               register = this._registers[root];
-              _context5.next = 4;
+
+              if (reportUpdate && !this._reportUpdate[root]) {
+                this._reportUpdate[root] = true;
+                this.mount(register.subscribe(_jdom_constants__WEBPACK_IMPORTED_MODULE_3__/* .REPORT_UPDATE */ .rGZ, function () {}));
+              }
+
+              _context5.next = 6;
               return register.refresh();
 
-            case 4:
+            case 6:
               if (fld) {
-                _context5.next = 8;
+                _context5.next = 10;
                 break;
               }
 
               return _context5.abrupt("return", (_register$unpackedVal = register.unpackedValue) === null || _register$unpackedVal === void 0 ? void 0 : _register$unpackedVal[0]);
 
-            case 8:
+            case 10:
               field = register.fields.find(function (f) {
                 return f.name === fld;
               });
               return _context5.abrupt("return", field === null || field === void 0 ? void 0 : field.value);
 
-            case 10:
-              _context5.next = 15;
+            case 12:
+              _context5.next = 17;
               break;
 
-            case 12:
+            case 14:
               if (!(root in this._events)) {
-                _context5.next = 15;
+                _context5.next = 17;
                 break;
               }
 
@@ -351,10 +362,10 @@ var VMServiceClient = /*#__PURE__*/function (_JDServiceClient) {
               });
               return _context5.abrupt("return", _field === null || _field === void 0 ? void 0 : _field.value);
 
-            case 15:
+            case 17:
               return _context5.abrupt("return", undefined);
 
-            case 16:
+            case 18:
             case "end":
               return _context5.stop();
           }
@@ -362,7 +373,7 @@ var VMServiceClient = /*#__PURE__*/function (_JDServiceClient) {
       }, _callee5, this);
     }));
 
-    function lookupRegisterAsync(_x7, _x8) {
+    function lookupRegisterAsync(_x7, _x8, _x9) {
       return _lookupRegisterAsync.apply(this, arguments);
     }
 
@@ -440,6 +451,7 @@ var VMExprEvaluator = /*#__PURE__*/function () {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function VMExprEvaluator(env, callEval) {
     this.exprStack = [];
+    this.reportUpdate = false;
     this.env = env;
     this.callEval = callEval;
   }
@@ -455,19 +467,24 @@ var VMExprEvaluator = /*#__PURE__*/function () {
   };
 
   _proto.evalAsync = /*#__PURE__*/function () {
-    var _evalAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+    var _evalAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e, reportUpdate) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              if (reportUpdate === void 0) {
+                reportUpdate = false;
+              }
+
               this.exprStack = [];
-              _context.next = 3;
+              this.reportUpdate = reportUpdate;
+              _context.next = 5;
               return this.visitExpressionAsync(e);
 
-            case 3:
+            case 5:
               return _context.abrupt("return", this.exprStack.pop());
 
-            case 4:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -475,7 +492,7 @@ var VMExprEvaluator = /*#__PURE__*/function () {
       }, _callee, this);
     }));
 
-    function evalAsync(_x) {
+    function evalAsync(_x, _x2) {
       return _evalAsync.apply(this, arguments);
     }
 
@@ -679,7 +696,7 @@ var VMExprEvaluator = /*#__PURE__*/function () {
 
             case 94:
               _context2.next = 96;
-              return this.env(e);
+              return this.env(e, this.reportUpdate);
 
             case 96:
               val = _context2.sent;
@@ -692,7 +709,7 @@ var VMExprEvaluator = /*#__PURE__*/function () {
             case 99:
               id = e;
               _context2.next = 102;
-              return this.env(id.name);
+              return this.env(id.name, this.reportUpdate);
 
             case 102:
               _val = _context2.sent;
@@ -714,7 +731,7 @@ var VMExprEvaluator = /*#__PURE__*/function () {
       }, _callee2, this);
     }));
 
-    function visitExpressionAsync(_x2) {
+    function visitExpressionAsync(_x3) {
       return _visitExpressionAsync.apply(this, arguments);
     }
 
@@ -1227,55 +1244,59 @@ var VMEnvironment = /*#__PURE__*/function (_JDEventSource) {
   }();
 
   _proto.lookupAsync = /*#__PURE__*/function () {
-    var _lookupAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(e) {
+    var _lookupAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(e, reportUpdate) {
       var roleName, me, _this$_globals$local, local, ep, root, fld, serviceEnv, server;
 
       return regenerator_default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
+              if (reportUpdate === void 0) {
+                reportUpdate = false;
+              }
+
               roleName = this.getRootName(e);
 
               if (!roleName.startsWith("$var")) {
-                _context2.next = 7;
+                _context2.next = 8;
                 break;
               }
 
               me = e;
 
               if (!(me.property.type === "Identifier")) {
-                _context2.next = 6;
+                _context2.next = 7;
                 break;
               }
 
               local = me.property.name;
               return _context2.abrupt("return", (_this$_globals$local = this._globals[local]) === null || _this$_globals$local === void 0 ? void 0 : _this$_globals$local.value);
 
-            case 6:
+            case 7:
               return _context2.abrupt("return", undefined);
 
-            case 7:
+            case 8:
               ep = e.property;
               root = typeof ep === "string" ? ep : ep.type === "Identifier" ? ep.name : ep.object.name;
               fld = typeof ep === "string" ? undefined : ep.type === "Identifier" ? undefined : ep.property.name;
               serviceEnv = this.getService(e);
 
               if (!serviceEnv) {
-                _context2.next = 17;
+                _context2.next = 18;
                 break;
               }
 
-              _context2.next = 14;
-              return serviceEnv.lookupRegisterAsync(root, fld);
+              _context2.next = 15;
+              return serviceEnv.lookupRegisterAsync(root, fld, reportUpdate);
 
-            case 14:
+            case 15:
               return _context2.abrupt("return", _context2.sent);
 
-            case 17:
+            case 18:
               server = this.getServer(e);
               return _context2.abrupt("return", server.lookupRegister(root, fld));
 
-            case 19:
+            case 20:
             case "end":
               return _context2.stop();
           }
@@ -1283,7 +1304,7 @@ var VMEnvironment = /*#__PURE__*/function (_JDEventSource) {
       }, _callee2, this);
     }));
 
-    function lookupAsync(_x3) {
+    function lookupAsync(_x3, _x4) {
       return _lookupAsync.apply(this, arguments);
     }
 
@@ -1331,7 +1352,7 @@ var VMEnvironment = /*#__PURE__*/function (_JDEventSource) {
       }, _callee3, this);
     }));
 
-    function writeRegisterAsync(_x4, _x5) {
+    function writeRegisterAsync(_x5, _x6) {
       return _writeRegisterAsync.apply(this, arguments);
     }
 
@@ -1416,7 +1437,7 @@ var VMEnvironment = /*#__PURE__*/function (_JDEventSource) {
       }, _callee4, this);
     }));
 
-    function completeRequest(_x6) {
+    function completeRequest(_x7) {
       return _completeRequest.apply(this, arguments);
     }
 
@@ -1996,13 +2017,13 @@ var VMCommandEvaluator = /*#__PURE__*/function () {
     var _this5 = this;
 
     return new vm_expr/* VMExprEvaluator */.W( /*#__PURE__*/function () {
-      var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(e) {
+      var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(e, reportUpdate) {
         return regenerator_default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this5.env.lookupAsync(e);
+                return _this5.env.lookupAsync(e, reportUpdate);
 
               case 2:
                 return _context.abrupt("return", _context.sent);
@@ -2015,27 +2036,31 @@ var VMCommandEvaluator = /*#__PURE__*/function () {
         }, _callee);
       }));
 
-      return function (_x) {
+      return function (_x, _x2) {
         return _ref.apply(this, arguments);
       };
     }(), this.callEval());
   };
 
   _proto.evalExpressionAsync = /*#__PURE__*/function () {
-    var _evalExpressionAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(e) {
+    var _evalExpressionAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(e, reportUpdate) {
       var expr;
       return regenerator_default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              expr = this.newEval();
-              _context2.next = 3;
-              return expr.evalAsync(e);
+              if (reportUpdate === void 0) {
+                reportUpdate = false;
+              }
 
-            case 3:
-              return _context2.abrupt("return", _context2.sent);
+              expr = this.newEval();
+              _context2.next = 4;
+              return expr.evalAsync(e, reportUpdate);
 
             case 4:
+              return _context2.abrupt("return", _context2.sent);
+
+            case 5:
             case "end":
               return _context2.stop();
           }
@@ -2043,7 +2068,7 @@ var VMCommandEvaluator = /*#__PURE__*/function () {
       }, _callee2, this);
     }));
 
-    function evalExpressionAsync(_x2) {
+    function evalExpressionAsync(_x3, _x4) {
       return _evalExpressionAsync.apply(this, arguments);
     }
 
@@ -2051,31 +2076,35 @@ var VMCommandEvaluator = /*#__PURE__*/function () {
   }();
 
   _proto.checkExpressionAsync = /*#__PURE__*/function () {
-    var _checkExpressionAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3(e) {
+    var _checkExpressionAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3(e, reportUpdate) {
       return regenerator_default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.next = 2;
-              return this.evalExpressionAsync(e);
+              if (reportUpdate === void 0) {
+                reportUpdate = false;
+              }
 
-            case 2:
+              _context3.next = 3;
+              return this.evalExpressionAsync(e, reportUpdate);
+
+            case 3:
               if (!_context3.sent) {
-                _context3.next = 6;
+                _context3.next = 7;
                 break;
               }
 
               _context3.t0 = true;
-              _context3.next = 7;
+              _context3.next = 8;
               break;
 
-            case 6:
+            case 7:
               _context3.t0 = false;
 
-            case 7:
+            case 8:
               return _context3.abrupt("return", _context3.t0);
 
-            case 8:
+            case 9:
             case "end":
               return _context3.stop();
           }
@@ -2083,7 +2112,7 @@ var VMCommandEvaluator = /*#__PURE__*/function () {
       }, _callee3, this);
     }));
 
-    function checkExpressionAsync(_x3) {
+    function checkExpressionAsync(_x5, _x6) {
       return _checkExpressionAsync.apply(this, arguments);
     }
 
@@ -2105,7 +2134,7 @@ var VMCommandEvaluator = /*#__PURE__*/function () {
               // need to capture register value for awaitChange/awaitRegister
               args = this.cmd.command.arguments;
               _context4.next = 4;
-              return this.evalExpressionAsync(args[0]);
+              return this.evalExpressionAsync(args[0], true);
 
             case 4:
               this._regSaved = _context4.sent;
@@ -2655,7 +2684,7 @@ var VMHandlerRunner = /*#__PURE__*/function (_JDEventSource) {
       }, _callee7, this);
     }));
 
-    function runToCompletionAsync(_x4) {
+    function runToCompletionAsync(_x7) {
       return _runToCompletionAsync.apply(this, arguments);
     }
 
@@ -2733,7 +2762,7 @@ var VMHandlerRunner = /*#__PURE__*/function (_JDEventSource) {
       }, _callee8, this);
     }));
 
-    function singleStepCheckBreakAsync(_x5) {
+    function singleStepCheckBreakAsync(_x8) {
       return _singleStepCheckBreakAsync.apply(this, arguments);
     }
 
@@ -2994,7 +3023,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
         }, _callee10);
       }));
 
-      return function (_x6) {
+      return function (_x9) {
         return _ref5.apply(this, arguments);
       };
     }()));
@@ -3105,7 +3134,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
       }, _callee12, this);
     }));
 
-    function setBreakpointsAsync(_x7) {
+    function setBreakpointsAsync(_x10) {
       return _setBreakpointsAsync.apply(this, arguments);
     }
 
@@ -3190,7 +3219,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
       }, _callee16, this);
     }));
 
-    function breakpointOnAsync(_x8) {
+    function breakpointOnAsync(_x11) {
       return _breakpointOnAsync.apply(this, arguments);
     }
 
@@ -3247,7 +3276,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
       }, _callee18, this);
     }));
 
-    function sleepAsync(_x9, _x10, _x11) {
+    function sleepAsync(_x12, _x13, _x14) {
       return _sleepAsync.apply(this, arguments);
     }
 
@@ -3687,7 +3716,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
       }, _callee27, this, [[1, 9]]);
     }));
 
-    function runHandlerAsync(_x12, _x13) {
+    function runHandlerAsync(_x15, _x16) {
       return _runHandlerAsync.apply(this, arguments);
     }
 
@@ -3809,7 +3838,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
       }, _callee30, this);
     }));
 
-    function postProcessHandler(_x14) {
+    function postProcessHandler(_x17) {
       return _postProcessHandler.apply(this, arguments);
     }
 
@@ -4120,7 +4149,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
       }, _callee37, this, [[0, 22]]);
     }));
 
-    function wakeSleeper(_x15) {
+    function wakeSleeper(_x18) {
       return _wakeSleeper.apply(this, arguments);
     }
 
@@ -4172,7 +4201,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
         }, _callee38);
       }));
 
-      return function (_x16) {
+      return function (_x19) {
         return _ref18.apply(this, arguments);
       };
     }()));
