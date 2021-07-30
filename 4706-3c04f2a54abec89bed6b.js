@@ -83,6 +83,36 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 95067:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("circle", {
+  cx: "12",
+  cy: "12",
+  r: "8"
+}), 'FiberManualRecord');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 80837:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -223,6 +253,8 @@ var SystemUpdateAlt = __webpack_require__(96898);
 var Wifi = __webpack_require__(14695);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Settings.js
 var Settings = __webpack_require__(88237);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/FiberManualRecord.js
+var FiberManualRecord = __webpack_require__(95067);
 // EXTERNAL MODULE: ./src/components/ui/DarkModeContext.tsx
 var DarkModeContext = __webpack_require__(91350);
 // EXTERNAL MODULE: ./src/components/KindIcon.tsx
@@ -242,6 +274,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
+ // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
@@ -349,6 +383,10 @@ function ToolsDrawer() {
     icon: /*#__PURE__*/react.createElement(KindIcon/* default */.ZP, {
       kind: constants/* VIRTUAL_DEVICE_NODE_NAME */.UX7
     })
+  }, {
+    text: "Data Collector",
+    url: "/tools/collector/",
+    icon: /*#__PURE__*/react.createElement(FiberManualRecord/* default */.Z, null)
   }, providerbus/* UIFlags.peers */.A.peers && {
     text: "Peers",
     url: "/tools/peers/",
