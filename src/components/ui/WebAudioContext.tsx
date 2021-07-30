@@ -1,15 +1,26 @@
 import React, { createContext, ReactNode, useRef, useState } from "react"
+import { ResonanceAudio } from "resonance-audio"
 
 const VOLUME_GAIN = 0.4
 
 export interface ToneContext {
-    playTone: (frequency: number, duration: number, volume: number) => void
+    playTone: (
+        frequency: number,
+        duration: number,
+        volume: number,
+        position?: { dx: number; dy: number; dz: number }
+    ) => void
     setVolume: (vol: number) => void
 }
 
 export interface WebAudioContextProps {
     onClickActivateAudioContext: () => void
-    playTone: (frequency: number, duration: number, volume: number) => void
+    playTone: (
+        frequency: number,
+        duration: number,
+        volume: number,
+        position?: { dx: number; dy: number; dz: number }
+    ) => void
     setVolume: (vol: number) => void
     activated: boolean
 }
@@ -46,13 +57,36 @@ export function createToneContext(): ToneContext {
         globalVolume.connect(ctx.destination)
         globalVolume.gain.value = VOLUME_GAIN
 
+        // resonance
+        const resonance = new ResonanceAudio(ctx)
+        const roomDimension = {
+            width: 1,
+            heigth: 1,
+            depth: 1,
+        }
+        const roomMaterials = {
+            left: "grass",
+            right: "grass",
+            up: "grass",
+            down: "grass",
+            back: "grass",
+            front: "grass",
+        }
+        resonance.roomDimensions(roomDimension, roomMaterials)
+        resonance.output.connect(globalVolume)
+
         const setVolume = (v: number) => {
             if (globalVolume && !isNaN(v)) {
                 globalVolume.gain.value = v * VOLUME_GAIN
             }
         }
 
-        const playTone = (frequency: number, duration: number, vol: number) => {
+        const playTone = (
+            frequency: number,
+            duration: number,
+            vol: number,
+            position?: { dx: number; dy: number; dz: number }
+        ) => {
             if (ctx.state !== "running") {
                 console.debug(`playTone on closed context`)
                 return
@@ -65,9 +99,17 @@ export function createToneContext(): ToneContext {
                 const volume = ctx.createGain()
                 volume.gain.value = vol
 
-                // tone -> volume -> globalVolume
+                // tone -> volume
                 tone.connect(volume)
-                volume.connect(globalVolume)
+
+                // volume -> resonance
+                const resonanceSource = resonance.createSource()
+                resonanceSource.setPosition(
+                    position?.dx || 0,
+                    position?.dy || 0,
+                    position?.dz || 0
+                )
+                volume.connect(resonanceSource.input)
 
                 tone.start() // start and stop
                 tone.stop(ctx.currentTime + duration / 1000)
@@ -100,8 +142,12 @@ export function WebAudioProvider(props: { children: ReactNode }) {
         if (context.current) setActivated(true)
     }
     const setVolume = (volume: number) => context.current?.setVolume(volume)
-    const playTone = (frequency: number, duration: number, volume: number) =>
-        context.current?.playTone(frequency, duration, volume)
+    const playTone = (
+        frequency: number,
+        duration: number,
+        volume: number,
+        position?: { dx: number; dy: number; dz: number }
+    ) => context.current?.playTone(frequency, duration, volume, position)
 
     return (
         <WebAudioContext.Provider
