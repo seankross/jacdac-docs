@@ -1840,17 +1840,38 @@ function StatusLEDTest(_x3) {
 
 function _StatusLEDTest() {
   _StatusLEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(device) {
+    var l;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
-            _context6.next = 2;
+            l = device.statusLight;
+
+          case 1:
+            if (!device.connected) {
+              _context6.next = 13;
+              break;
+            }
+
+            l.blink(0xff0000, 0x000000, 250, 3);
+            _context6.next = 5;
             return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(1000);
 
-          case 2:
-            device.identify();
+          case 5:
+            l.blink(0x00ff00, 0x000000, 250, 3);
+            _context6.next = 8;
+            return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(1000);
 
-          case 3:
+          case 8:
+            l.blink(0x0000ff, 0x000000, 250, 3);
+            _context6.next = 11;
+            return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(1000);
+
+          case 11:
+            _context6.next = 1;
+            break;
+
+          case 13:
           case "end":
             return _context6.stop();
         }
