@@ -69780,7 +69780,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "94556b95249a8d27c9337ed7bcdb44a689b068e9";
+  var sha = "51c9f8b386aec2de53f3b88bfdd9748393b44592";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74278,7 +74278,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
 
     _this = _JDNode.call(this) || this;
     _this._flashing = false;
-    _this.qos = new QualityOfService();
+    _this.qualityOfService = new QualityOfService();
     _this.bus = bus;
     _this.deviceId = deviceId;
     _this.connected = true;
@@ -74288,6 +74288,10 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     _this._replay = !!(pkt !== null && pkt !== void 0 && pkt.replay);
     return _this;
   }
+  /**
+   * Quality of service statistics for this device
+   */
+
 
   var _proto = JDDevice.prototype;
 
@@ -74300,15 +74304,24 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
 
       return s.instanceName || ((_s$specification = s.specification) === null || _s$specification === void 0 ? void 0 : _s$specification.camelName) || s.serviceClass.toString(16);
     }).join(", ");
-  };
+  }
+  /**
+   * Gets a unique identifier for this device in the bus
+   */
+  ;
 
-  _proto.hasService = function hasService(service_class) {
+  /**
+   * Indicates if the device contains at least one service matching the service class
+   * @param serviceClass service class to match
+   * @returns true if at least one service present
+   */
+  _proto.hasService = function hasService(serviceClass) {
     if (!this.announced) return false;
-    if (service_class === 0) return true; // skip first 4 bytes
+    if (serviceClass === 0) return true; // skip first 4 bytes
 
     for (var i = 4; i < this._servicesData.length; i += 4) {
       var sc = (0,buffer/* getNumber */.Dx)(this._servicesData, buffer/* NumberFormat.UInt32LE */.y4.UInt32LE, i);
-      if ((0,jdom_spec/* isInstanceOf */.V9)(sc, service_class)) return true;
+      if ((0,jdom_spec/* isInstanceOf */.V9)(sc, serviceClass)) return true;
     }
 
     return false;
@@ -74320,13 +74333,22 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     var ex = this._ports[key];
     if (!ex) return this._ports[key] = {};
     return ex;
-  };
+  }
+  /**
+   * Gets the number of services hosted by the device
+   */
+  ;
 
-  _proto.serviceClassAt = function serviceClassAt(idx) {
-    if (idx == 0) return 0;
-    idx <<= 2;
-    if (!this.announced || idx + 4 > this._servicesData.length) return undefined;
-    return (0,utils/* read32 */.Zy)(this._servicesData, idx);
+  /**
+   * Gets the service class at a given index
+   * @param index index of the service
+   * @returns service class
+   */
+  _proto.serviceClassAt = function serviceClassAt(index) {
+    if (index == 0) return 0;
+    index <<= 2;
+    if (!this.announced || index + 4 > this._servicesData.length) return undefined;
+    return (0,utils/* read32 */.Zy)(this._servicesData, index);
   };
 
   _proto.initServices = function initServices(force) {
@@ -74356,14 +74378,26 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
         });
       });
     }
-  };
+  }
+  /**
+   * Gets the service client at the given service index
+   * @param serviceIndex index of the service client
+   * @returns service client
+   */
+  ;
 
-  _proto.service = function service(service_number) {
+  _proto.service = function service(serviceIndex) {
     if (!this.announced) return undefined;
     this.initServices();
-    service_number = service_number | 0;
-    return this._services && this._services[service_number];
-  };
+    serviceIndex = serviceIndex | 0;
+    return this._services && this._services[serviceIndex];
+  }
+  /**
+   * Gets a filtered list of service clients.
+   * @param options filters for services
+   * @returns services matching the filter
+   */
+  ;
 
   _proto.services = function services(options) {
     var _this$_services2;
@@ -74400,7 +74434,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   };
 
   _proto.processAnnouncement = function processAnnouncement(pkt) {
-    this.qos.processAnnouncement(pkt);
+    this.qualityOfService.processAnnouncement(pkt);
     var changed = false;
     var w0 = this._servicesData ? (0,buffer/* getNumber */.Dx)(this._servicesData, buffer/* NumberFormat.UInt32LE */.y4.UInt32LE, 0) : 0;
     var w1 = (0,buffer/* getNumber */.Dx)(pkt.data, buffer/* NumberFormat.UInt32LE */.y4.UInt32LE, 0); // compare service data
@@ -74438,7 +74472,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   };
 
   _proto.processPacket = function processPacket(pkt) {
-    this.qos.processPacket(pkt);
+    this.qualityOfService.processPacket(pkt);
     this.lost = false;
     this.emit(constants/* PACKET_RECEIVE */.u_S, pkt);
     if (pkt.isReport) this.emit(constants/* PACKET_REPORT */.deN, pkt);else if (pkt.isEvent) this.emit(constants/* PACKET_EVENT */.F5$, pkt);
@@ -74698,11 +74732,19 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     get: function get() {
       return this.nodeKind + ":" + this.deviceId;
     }
+    /**
+     * Gets the short id of the device
+     */
+
   }, {
     key: "name",
     get: function get() {
       return this.shortId;
     }
+    /**
+     * Identifies node as a device
+     */
+
   }, {
     key: "nodeKind",
     get: function get() {
@@ -74715,7 +74757,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   }, {
     key: "physical",
     get: function get() {
-      return this._source === constants/* USB_TRANSPORT */.W3h || this._source === constants/* BLUETOOTH_TRANSPORT */.HZx || this._source === constants/* PACKETIO_TRANSPORT */.GII;
+      return this._source === constants/* USB_TRANSPORT */.W3h || this._source === constants/* BLUETOOTH_TRANSPORT */.HZx || this._source === constants/* SERIAL_TRANSPORT */.NbT || this._source === constants/* PACKETIO_TRANSPORT */.GII;
     }
     /**
      * Indicates the source of packets
@@ -74745,6 +74787,11 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     get: function get() {
       return this.shortId;
     }
+    /**
+     * Indicates if service information is available.
+     * This happens after a announce packet has been received.
+     */
+
   }, {
     key: "announced",
     get: function get() {
@@ -80603,7 +80650,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.13.106"};
+var package_namespaceObject = {"i8":"1.14.0"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
