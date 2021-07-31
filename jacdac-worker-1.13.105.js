@@ -4292,6 +4292,10 @@ Flags.diagnostics = false;
  */
 Flags.webUSB = true;
 /**
+ * Enables/disabled WebSerial
+ */
+Flags.webSerial = true;
+/**
  * Enables/disables WebBLE
  */
 Flags.webBluetooth = false;
@@ -4605,6 +4609,7 @@ class HF2Proto {
             return null;
         })
             .catch(e => {
+            console.debug(`HF2: ${e.message}; cmd=${cmd}`);
             this.error(e);
             return null;
         });
@@ -4630,6 +4635,8 @@ class HF2Proto {
             frame[0] |= len;
             for (let i = 0; i < len; ++i)
                 frame[i + 1] = buf[pos + i];
+            if (!this.io)
+                return Promise.resolve();
             return this.io.sendPacketAsync(frame).then(() => loop(pos + len));
         };
         return loop(0);
@@ -5397,7 +5404,7 @@ class USBIO {
         await this.dev.claimInterface(this.iface.interfaceNumber);
         console.debug("all connected");
         this.ready = true;
-        this.readLoop();
+        /* no await */ this.readLoop();
     }
 }
 

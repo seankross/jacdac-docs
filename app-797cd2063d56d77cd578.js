@@ -49169,6 +49169,7 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
 /* harmony export */   "vnD": function() { return /* binding */ REFRESH_REGISTER_POLL; },
 /* harmony export */   "W3h": function() { return /* binding */ USB_TRANSPORT; },
 /* harmony export */   "HZx": function() { return /* binding */ BLUETOOTH_TRANSPORT; },
+/* harmony export */   "NbT": function() { return /* binding */ SERIAL_TRANSPORT; },
 /* harmony export */   "GII": function() { return /* binding */ PACKETIO_TRANSPORT; },
 /* harmony export */   "K3O": function() { return /* binding */ META_ACK; },
 /* harmony export */   "GiR": function() { return /* binding */ META_ACK_FAILED; },
@@ -49499,6 +49500,7 @@ var ROLE_MANAGER_POLL = 1500;
 var REFRESH_REGISTER_POLL = 50;
 var USB_TRANSPORT = "USB";
 var BLUETOOTH_TRANSPORT = "Bluetooth";
+var SERIAL_TRANSPORT = "Serial";
 var PACKETIO_TRANSPORT = "packetio";
 var META_ACK = "ACK";
 var META_ACK_FAILED = "ACK_FAILED";
@@ -49821,6 +49823,7 @@ var Flags = function Flags() {};
 
 Flags.diagnostics = false;
 Flags.webUSB = true;
+Flags.webSerial = true;
 Flags.webBluetooth = false;
 Flags.storage = false;
 
@@ -65013,7 +65016,7 @@ function DeviceLostAlert(props) {
 /* harmony import */ var _jacdac_ts_src_jdom_transport_transport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27591);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(28142);
 /* harmony import */ var _ui_IconButtonWithProgress__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16845);
-/* harmony import */ var _icons_TransportIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(48245);
+/* harmony import */ var _icons_TransportIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(37564);
 /* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(54774);
 /* harmony import */ var _hooks_useMediaQueries__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20509);
 
@@ -66599,8 +66602,8 @@ var KindIcon = __webpack_require__(50048);
 var useDeviceName = __webpack_require__(5738);
 // EXTERNAL MODULE: ./src/components/devices/useDeviceImage.ts
 var useDeviceImage = __webpack_require__(81546);
-// EXTERNAL MODULE: ./src/components/icons/TransportIcon.tsx
-var TransportIcon = __webpack_require__(48245);
+// EXTERNAL MODULE: ./src/components/icons/TransportIcon.tsx + 1 modules
+var TransportIcon = __webpack_require__(37564);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
 var utils = __webpack_require__(81794);
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
@@ -69250,21 +69253,41 @@ function useThrottledValue(value, maxRate, maxCycles) {
 
 /***/ }),
 
-/***/ 48245:
+/***/ 37564:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ TransportIcon; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _material_ui_icons_Usb__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(14071);
-/* harmony import */ var _material_ui_icons_Bluetooth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(94601);
-/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(71815);
-/* harmony import */ var _KindIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(50048);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ TransportIcon; }
+});
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Usb.js
+var Usb = __webpack_require__(14071);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Bluetooth.js
+var Bluetooth = __webpack_require__(94601);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
+var constants = __webpack_require__(71815);
+// EXTERNAL MODULE: ./src/components/KindIcon.tsx
+var KindIcon = __webpack_require__(50048);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js
+var SvgIcon = __webpack_require__(46982);
+;// CONCATENATED MODULE: ./src/components/icons/SerialIcon.tsx
+
+
+function SerialIcon(props) {
+  return /*#__PURE__*/react.createElement(SvgIcon/* default */.Z, props, /*#__PURE__*/react.createElement("path", {
+    d: "M20.605,7.172l-17.21,-0c0,-0 -0.299,0.052 -0.507,0.097c-0.993,0.213 -1.745,1.03 -1.873,2.039l-0.009,0.126c-0.03,0.586 0.059,1.173 0.261,1.724c0.47,1.283 1.396,3.811 1.489,4.066l0.083,0.187l-0.004,-0.009c0.371,0.802 1.174,1.315 2.057,1.315l14.216,-0c0.883,-0 1.686,-0.513 2.057,-1.315l0.079,-0.178c0.093,-0.255 1.02,-2.783 1.489,-4.066c0.201,-0.547 0.29,-1.129 0.262,-1.711l-0.009,-0.139c-0.129,-1.009 -0.88,-1.826 -1.874,-2.039l-0.397,-0.085c-0.035,-0.008 -0.072,-0.012 -0.11,-0.012Zm-17.156,1.023l17.102,-0l0.346,0.074c0.566,0.121 0.994,0.584 1.072,1.156l0.005,0.068c0.02,0.452 -0.048,0.896 -0.201,1.314l-1.483,4.049l-0.054,0.119c-0.204,0.439 -0.644,0.719 -1.128,0.719l-14.216,0c-0.484,0 -0.925,-0.281 -1.129,-0.72l-0.053,-0.118l-1.483,-4.049c-0.154,-0.422 -0.223,-0.871 -0.2,-1.32l0.004,-0.062c0.078,-0.572 0.506,-1.035 1.072,-1.156l0.346,-0.074Zm0.326,6.805l0.002,0.008l-0.002,-0.008Zm6.531,-2.571c0.47,-0 0.852,0.382 0.852,0.852c-0,0.47 -0.382,0.852 -0.852,0.852c-0.471,0 -0.853,-0.382 -0.853,-0.852c0,-0.47 0.382,-0.852 0.853,-0.852Zm-3.389,-0c0.47,-0 0.852,0.382 0.852,0.852c-0,0.47 -0.382,0.852 -0.852,0.852c-0.471,0 -0.853,-0.382 -0.853,-0.852c0,-0.47 0.382,-0.852 0.853,-0.852Zm6.777,-0c0.471,-0 0.853,0.382 0.853,0.852c-0,0.47 -0.382,0.852 -0.853,0.852c-0.47,0 -0.852,-0.382 -0.852,-0.852c0,-0.47 0.382,-0.852 0.852,-0.852Zm3.389,-0c0.471,-0 0.853,0.382 0.853,0.852c-0,0.47 -0.382,0.852 -0.853,0.852c-0.47,0 -0.852,-0.382 -0.852,-0.852c0,-0.47 0.382,-0.852 0.852,-0.852Zm-11.861,-2.674c0.471,0 0.853,0.382 0.853,0.853c-0,0.47 -0.382,0.852 -0.853,0.852c-0.47,-0 -0.852,-0.382 -0.852,-0.852c0,-0.471 0.382,-0.853 0.852,-0.853Zm3.389,0c0.471,0 0.852,0.382 0.852,0.853c0,0.47 -0.381,0.852 -0.852,0.852c-0.47,-0 -0.852,-0.382 -0.852,-0.852c-0,-0.471 0.382,-0.853 0.852,-0.853Zm3.389,0c0.47,0 0.852,0.382 0.852,0.853c0,0.47 -0.382,0.852 -0.852,0.852c-0.47,-0 -0.852,-0.382 -0.852,-0.852c-0,-0.471 0.382,-0.853 0.852,-0.853Zm3.389,0c0.47,0 0.852,0.382 0.852,0.853c0,0.47 -0.382,0.852 -0.852,0.852c-0.47,-0 -0.852,-0.382 -0.852,-0.852c-0,-0.471 0.382,-0.853 0.852,-0.853Zm3.389,0c0.47,0 0.852,0.382 0.852,0.853c0,0.47 -0.382,0.852 -0.852,0.852c-0.471,-0 -0.852,-0.382 -0.852,-0.852c-0,-0.471 0.381,-0.853 0.852,-0.853Zm-16.752,-0.26l-0.003,0.029l0.003,-0.029Z"
+  }));
+}
+;// CONCATENATED MODULE: ./src/components/icons/TransportIcon.tsx
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -69274,20 +69297,25 @@ function TransportIcon(props) {
       className = props.className;
 
   switch (type) {
-    case _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .PACKETIO_TRANSPORT */ .GII:
-    case _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .USB_TRANSPORT */ .W3h:
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Usb__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
+    case constants/* PACKETIO_TRANSPORT */.GII:
+    case constants/* USB_TRANSPORT */.W3h:
+      return /*#__PURE__*/react.createElement(Usb/* default */.Z, {
         className: className
       });
 
-    case _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .BLUETOOTH_TRANSPORT */ .HZx:
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Bluetooth__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    case constants/* BLUETOOTH_TRANSPORT */.HZx:
+      return /*#__PURE__*/react.createElement(Bluetooth/* default */.Z, {
+        className: className
+      });
+
+    case constants/* SERIAL_TRANSPORT */.NbT:
+      return /*#__PURE__*/react.createElement(SerialIcon, {
         className: className
       });
 
     default:
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_KindIcon__WEBPACK_IMPORTED_MODULE_2__/* .default */ .ZP, {
-        kind: _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .VIRTUAL_DEVICE_NODE_NAME */ .UX7,
+      return /*#__PURE__*/react.createElement(KindIcon/* default */.ZP, {
+        kind: constants/* VIRTUAL_DEVICE_NODE_NAME */.UX7,
         className: className
       });
   }
@@ -69528,7 +69556,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "14955a80514d047bb7bf7fcc92b7fc2fa1936256";
+  var sha = "98798b0855cb94426821a4484d308e2bde324017";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70569,8 +70597,8 @@ function PacketStats() {
 }
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Forum.js
 var Forum = __webpack_require__(22203);
-// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 22 modules
-var providerbus = __webpack_require__(38744);
+// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 24 modules
+var providerbus = __webpack_require__(97555);
 ;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/useScrollTrigger/useScrollTrigger.js
 
 
@@ -72708,7 +72736,7 @@ JacdacContext.displayName = "Jacdac";
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20392);
-/* harmony import */ var _providerbus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(38744);
+/* harmony import */ var _providerbus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(97555);
 
 
 
@@ -72739,7 +72767,7 @@ function JacdacProvider(props) {
 
 /***/ }),
 
-/***/ 38744:
+/***/ 97555:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76656,6 +76684,8 @@ var HF2Proto = /*#__PURE__*/function () {
 
         return null;
       }).catch(function (e) {
+        console.debug("HF2: " + e.message + "; cmd=" + cmd);
+
         _this2.error(e);
 
         return null;
@@ -76695,6 +76725,7 @@ var HF2Proto = /*#__PURE__*/function () {
         frame[i + 1] = buf[pos + i];
       }
 
+      if (!_this3.io) return Promise.resolve();
       return _this3.io.sendPacketAsync(frame).then(function () {
         return loop(pos + len);
       });
@@ -78564,6 +78595,8 @@ var USBIO = /*#__PURE__*/function () {
             case 10:
               console.debug("all connected");
               this.ready = true;
+              /* no await */
+
               this.readLoop();
 
             case 13:
@@ -78773,12 +78806,12 @@ function defaultOptions() {
   };
 }
 
-function createUSBTransport(options) {
+function usb_createUSBTransport(options) {
   if (!options) options = defaultOptions();
   return options && new WebUSBTransport(options);
 }
 function createUSBBus(options) {
-  return new JDBus([createUSBTransport(options)]);
+  return new JDBus([usb_createUSBTransport(options)]);
 }
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/eventtargetobservable.ts
 var eventtargetobservable_EventTargetObservable = /*#__PURE__*/function () {
@@ -79031,7 +79064,7 @@ function isWebBluetoothSupported() {
 
 function bleRequestDevice(options) {
   // disabled
-  if (!flags/* default.webUSB */.Z.webUSB) return Promise.resolve(undefined);
+  if (!flags/* default.webBluetooth */.Z.webBluetooth) return Promise.resolve(undefined);
 
   try {
     var _navigator, _navigator$bluetooth, _navigator$bluetooth$;
@@ -79303,6 +79336,587 @@ var BluetoothTransport = /*#__PURE__*/function (_JDTransport) {
 
 function createBluetoothTransport() {
   return new BluetoothTransport();
+}
+;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/transport/webserialio.ts
+
+
+
+
+
+
+var WEB_SERIAL_FILTERS = {
+  filters: [{
+    usbVendorId: 0x303a // espressif
+
+  }]
+};
+
+var WebSerialIO = /*#__PURE__*/function () {
+  function WebSerialIO() {
+    this.readLoopStarted = false;
+    this.ready = false;
+
+    this.onData = function (v) {};
+
+    this.onError = function (e) {
+      console.warn("usb error: " + ((0,jdom_error/* default */.Z)(e) || "") + " " + (e ? e.stack : e));
+    };
+
+    navigator.serial;
+  } // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+
+  var _proto = WebSerialIO.prototype;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  _proto.log = function log(msg, v) {
+    if (flags/* default.diagnostics */.Z.diagnostics) {
+      if (v != undefined) console.debug("usb: " + msg, v);else console.debug("usb: " + msg);
+    }
+  };
+
+  _proto.mkProto = function mkProto() {
+    return new HF2Proto(this);
+  };
+
+  _proto.clearDev = function clearDev() {
+    if (this.dev) {
+      this.dev = null;
+
+      this.onData = function () {
+        return console.warn("rogue webserial hf2 onData");
+      };
+    }
+  };
+
+  _proto.disconnectAsync = function disconnectAsync() {
+    var _this = this;
+
+    this.ready = false;
+    if (!this.dev) return Promise.resolve();
+    console.debug("close device");
+    return this.cancelStreams().catch(function (e) {
+      // just ignore errors closing, most likely device just disconnected
+      console.debug(e);
+    }).then(function () {
+      _this.clearDev();
+
+      return (0,utils/* delay */.gw)(500);
+    });
+  };
+
+  _proto.devInfo = function devInfo() {
+    if (!this.dev) return "n/a";
+
+    var h = function h(n) {
+      return ("000" + n.toString(16)).slice(-4);
+    };
+
+    var info = this.dev.getInfo();
+    return h(info.usbVendorId) + ":" + h(info.usbProductId);
+  };
+
+  _proto.error = function error(msg, code) {
+    var e = new jdom_error/* JDError */.p("serial device " + this.devInfo() + " (" + msg + ")", code);
+    this.onError(e);
+  };
+
+  _proto.cancelStreams = /*#__PURE__*/function () {
+    var _cancelStreams = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (!this.reader) {
+                _context.next = 9;
+                break;
+              }
+
+              _context.prev = 1;
+              _context.next = 4;
+              return this.reader.cancel();
+
+            case 4:
+              this.reader.releaseLock();
+              _context.next = 9;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](1);
+
+            case 9:
+              try {
+                this.writer.releaseLock();
+              } catch (_unused2) {}
+
+              _context.next = 12;
+              return this.dev.close();
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this, [[1, 7]]);
+    }));
+
+    function cancelStreams() {
+      return _cancelStreams.apply(this, arguments);
+    }
+
+    return cancelStreams;
+  }();
+
+  _proto.readLoop = /*#__PURE__*/function () {
+    var _readLoop = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2() {
+      var _this$dev, _this$dev$readable, reader, _yield$reader$read, value, done, i;
+
+      return regenerator_default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (!this.readLoopStarted) {
+                _context2.next = 2;
+                break;
+              }
+
+              return _context2.abrupt("return");
+
+            case 2:
+              this.readLoopStarted = true;
+              console.debug("start read loop");
+
+            case 4:
+              reader = (_this$dev = this.dev) === null || _this$dev === void 0 ? void 0 : (_this$dev$readable = _this$dev.readable) === null || _this$dev$readable === void 0 ? void 0 : _this$dev$readable.getReader();
+
+              if (reader) {
+                _context2.next = 9;
+                break;
+              }
+
+              _context2.next = 8;
+              return (0,utils/* delay */.gw)(100);
+
+            case 8:
+              return _context2.abrupt("continue", 34);
+
+            case 9:
+              this.reader = reader;
+              console.debug("start new read loop round");
+              _context2.prev = 11;
+
+            case 12:
+              _context2.next = 14;
+              return reader.read();
+
+            case 14:
+              _yield$reader$read = _context2.sent;
+              value = _yield$reader$read.value;
+              done = _yield$reader$read.done;
+
+              if (!(done || !this.dev)) {
+                _context2.next = 19;
+                break;
+              }
+
+              return _context2.abrupt("break", 22);
+
+            case 19:
+              // console.log("Recv", toHex(value))
+              if (value.length > 64) for (i = 0; i < value.length; i += 64) {
+                this.onData(value.slice(i, i + 64));
+              } else this.onData(value);
+
+            case 20:
+              _context2.next = 12;
+              break;
+
+            case 22:
+              _context2.next = 29;
+              break;
+
+            case 24:
+              _context2.prev = 24;
+              _context2.t0 = _context2["catch"](11);
+              if (this.dev) this.onError(_context2.t0);
+              _context2.next = 29;
+              return (0,utils/* delay */.gw)(100);
+
+            case 29:
+              _context2.prev = 29;
+
+              try {
+                reader.releaseLock();
+              } catch (_unused3) {}
+
+              _context2.next = 33;
+              return (0,utils/* delay */.gw)(100);
+
+            case 33:
+              return _context2.finish(29);
+
+            case 34:
+              _context2.next = 4;
+              break;
+
+            case 36:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this, [[11, 24, 29, 34]]);
+    }));
+
+    function readLoop() {
+      return _readLoop.apply(this, arguments);
+    }
+
+    return readLoop;
+  }();
+
+  _proto.sendPacketAsync = function sendPacketAsync(pkt) {
+    if (!this.dev || !this.writer) return Promise.reject(new Error("Disconnected"));
+    (0,utils/* assert */.hu)(pkt.length <= 64); // console.log("Send", toHex(pkt))
+
+    if (pkt.length < 64) {
+      var p = pkt;
+      pkt = new Uint8Array(64);
+      pkt.set(p);
+    }
+
+    return this.writer.write(pkt);
+  };
+
+  _proto.tryReconnectAsync = /*#__PURE__*/function () {
+    var _tryReconnectAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3() {
+      var ports;
+      return regenerator_default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              _context3.next = 3;
+              return navigator.serial.getPorts();
+
+            case 3:
+              ports = _context3.sent;
+              this.dev = ports[0];
+              _context3.next = 11;
+              break;
+
+            case 7:
+              _context3.prev = 7;
+              _context3.t0 = _context3["catch"](0);
+              console.log(_context3.t0);
+              this.dev = undefined;
+
+            case 11:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, this, [[0, 7]]);
+    }));
+
+    function tryReconnectAsync() {
+      return _tryReconnectAsync.apply(this, arguments);
+    }
+
+    return tryReconnectAsync;
+  }();
+
+  _proto.requestDeviceAsync = /*#__PURE__*/function () {
+    var _requestDeviceAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee4() {
+      return regenerator_default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              _context4.next = 3;
+              return navigator.serial.requestPort(WEB_SERIAL_FILTERS);
+
+            case 3:
+              this.dev = _context4.sent;
+              _context4.next = 10;
+              break;
+
+            case 6:
+              _context4.prev = 6;
+              _context4.t0 = _context4["catch"](0);
+              console.log(_context4.t0);
+              this.dev = undefined;
+
+            case 10:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, this, [[0, 6]]);
+    }));
+
+    function requestDeviceAsync() {
+      return _requestDeviceAsync.apply(this, arguments);
+    }
+
+    return requestDeviceAsync;
+  }();
+
+  _proto.connectAsync = /*#__PURE__*/function () {
+    var _connectAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee5(background, deviceId) {
+      var proto;
+      return regenerator_default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return this.tryReconnectAsync();
+
+            case 2:
+              if (!(!this.dev && !background)) {
+                _context5.next = 5;
+                break;
+              }
+
+              _context5.next = 5;
+              return this.requestDeviceAsync();
+
+            case 5:
+              // background call and no device, just give up for now
+              if (!this.dev && background) (0,utils/* throwError */._y)("device not paired", true); // let's connect
+
+              _context5.next = 8;
+              return this.openDeviceAsync();
+
+            case 8:
+              proto = this.mkProto();
+              _context5.prev = 9;
+              _context5.next = 12;
+              return proto.postConnectAsync();
+
+            case 12:
+              _context5.next = 20;
+              break;
+
+            case 14:
+              _context5.prev = 14;
+              _context5.t0 = _context5["catch"](9);
+              console.debug(_context5.t0);
+              _context5.next = 19;
+              return proto.disconnectAsync();
+
+            case 19:
+              throw _context5.t0;
+
+            case 20:
+              return _context5.abrupt("return", proto);
+
+            case 21:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, this, [[9, 14]]);
+    }));
+
+    function connectAsync(_x, _x2) {
+      return _connectAsync.apply(this, arguments);
+    }
+
+    return connectAsync;
+  }();
+
+  _proto.openDeviceAsync = /*#__PURE__*/function () {
+    var _openDeviceAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee6() {
+      var _this$dev$writable;
+
+      return regenerator_default().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              if (!this.dev) (0,utils/* throwError */._y)("device not found");
+              _context6.next = 3;
+              return this.dev.open({
+                baudRate: 115200,
+                // not really
+                bufferSize: 32 * 1024
+              });
+
+            case 3:
+              this.writer = (_this$dev$writable = this.dev.writable) === null || _this$dev$writable === void 0 ? void 0 : _this$dev$writable.getWriter();
+              if (!this.writer) (0,utils/* throwError */._y)("no writer");
+              this.ready = true;
+              /* no await */
+
+              this.readLoop();
+
+            case 7:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6, this);
+    }));
+
+    function openDeviceAsync() {
+      return _openDeviceAsync.apply(this, arguments);
+    }
+
+    return openDeviceAsync;
+  }();
+
+  return WebSerialIO;
+}();
+
+
+;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/transport/webserial.ts
+
+
+
+
+
+
+
+
+
+function isWebSerialEnabled() {
+  return !!Flags.webSerial;
+}
+function isWebSerialSupported() {
+  try {
+    return typeof navigator !== "undefined" && !!navigator.serial && !!navigator.serial.getPorts;
+  } catch (e) {
+    return false;
+  }
+}
+
+var WebSerialTransport = /*#__PURE__*/function (_JDTransport) {
+  (0,inheritsLoose/* default */.Z)(WebSerialTransport, _JDTransport);
+
+  function WebSerialTransport() {
+    return _JDTransport.call(this, constants/* SERIAL_TRANSPORT */.NbT) || this;
+  }
+
+  var _proto = WebSerialTransport.prototype;
+
+  _proto.transportConnectAsync = /*#__PURE__*/function () {
+    var _transportConnectAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(background) {
+      var _this = this;
+
+      var transport;
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              transport = new WebSerialIO();
+
+              transport.onError = function (e) {
+                return _this.errorHandler(constants/* USB_TRANSPORT */.W3h, e);
+              };
+
+              _context.next = 4;
+              return transport.connectAsync(background);
+
+            case 4:
+              this.hf2 = _context.sent;
+              this.hf2.onJDMessage(this.handleFrame.bind(this));
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function transportConnectAsync(_x) {
+      return _transportConnectAsync.apply(this, arguments);
+    }
+
+    return transportConnectAsync;
+  }();
+
+  _proto.transportSendPacketAsync = /*#__PURE__*/function () {
+    var _transportSendPacketAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(p) {
+      var buf;
+      return regenerator_default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (this.hf2) {
+                _context2.next = 2;
+                break;
+              }
+
+              throw new Error("hf2 transport disconnected");
+
+            case 2:
+              buf = p.toBuffer();
+              _context2.next = 5;
+              return this.hf2.sendJDMessageAsync(buf);
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this);
+    }));
+
+    function transportSendPacketAsync(_x2) {
+      return _transportSendPacketAsync.apply(this, arguments);
+    }
+
+    return transportSendPacketAsync;
+  }() // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ;
+
+  _proto.transportDisconnectAsync =
+  /*#__PURE__*/
+  function () {
+    var _transportDisconnectAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3(background) {
+      var h;
+      return regenerator_default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              h = this.hf2;
+              this.hf2 = undefined;
+
+              if (!h) {
+                _context3.next = 5;
+                break;
+              }
+
+              _context3.next = 5;
+              return h.disconnectAsync();
+
+            case 5:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, this);
+    }));
+
+    function transportDisconnectAsync(_x3) {
+      return _transportDisconnectAsync.apply(this, arguments);
+    }
+
+    return transportDisconnectAsync;
+  }();
+
+  return WebSerialTransport;
+}(transport/* JDTransport */.P);
+
+function createWebSerialTransport() {
+  return new WebSerialTransport();
+}
+function createWebSerialBus() {
+  return new JDBus([createWebSerialTransport()]);
+}
+function createAnyUSBBus() {
+  return new JDBus([createUSBTransport(), createWebSerialTransport()]);
 }
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
 var iframeclient = __webpack_require__(9809);
@@ -79708,6 +80322,7 @@ var package_namespaceObject = {"i8":"1.13.105"};
 
 
 
+
 function sniffQueryArguments() {
   var _window$location$hash;
 
@@ -79722,6 +80337,7 @@ function sniffQueryArguments() {
     diagnostics: params.get("dbg") === "1",
     webUSB: isWebUSBSupported() && params.get("webusb") !== "0" && !toolsMakecode,
     webBluetooth: isWebBluetoothSupported() && params.get("webble") !== "0" && !toolsMakecode,
+    webSerial: isWebSerialSupported() && params.get("webserial") !== "0" && !toolsMakecode,
     peers: params.get("peers") === "1",
     parentOrigin: params.get("parentOrigin"),
     frameId: (_window$location$hash = window.location.hash) === null || _window$location$hash === void 0 ? void 0 : _window$location$hash.slice(1),
@@ -79733,6 +80349,7 @@ var args = sniffQueryArguments();
 flags/* default.diagnostics */.Z.diagnostics = args.diagnostics;
 flags/* default.webUSB */.Z.webUSB = args.webUSB;
 flags/* default.webBluetooth */.Z.webBluetooth = args.webBluetooth;
+flags/* default.webSerial */.Z.webSerial = args.webSerial;
 var UIFlags = function UIFlags() {}; // defeat react fast-refresh
 
 UIFlags.widget = args.widget;
@@ -79740,7 +80357,7 @@ UIFlags.peers = args.peers;
 
 function createBus() {
   var worker = typeof window !== "undefined" && new Worker((0,gatsby_browser_entry.withPrefix)("/jacdac-worker-" + package_namespaceObject.i8 + ".js"));
-  var b = new bus_JDBus([flags/* default.webUSB */.Z.webUSB && worker && createUSBWorkerTransport(worker), flags/* default.webBluetooth */.Z.webBluetooth && createBluetoothTransport()], {
+  var b = new bus_JDBus([flags/* default.webUSB */.Z.webUSB && worker && createUSBWorkerTransport(worker), flags/* default.webSerial */.Z.webSerial && createWebSerialTransport(), flags/* default.webBluetooth */.Z.webBluetooth && createBluetoothTransport()], {
     parentOrigin: args.parentOrigin
   }); // parentOrigin: args.parentOrigin,
   //if (Flags.webUSB) b.setBackgroundFirmwareScans(true)
