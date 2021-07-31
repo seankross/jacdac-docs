@@ -16155,12 +16155,20 @@ function VegaLiteWidget(props) {
       borderRadius: "0.25rem"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_4__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(VegaLite, {
-    actions: false,
+    actions: {
+      export: {
+        png: true
+      },
+      source: false,
+      compiled: false,
+      editor: false
+    },
     width: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_WIDTH */ .xx,
     height: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_HEIGHT */ .Fh,
     spec: spec,
     data: vegaData,
-    renderer: renderer
+    renderer: renderer,
+    tooltip: true
   })))));
 }
 
