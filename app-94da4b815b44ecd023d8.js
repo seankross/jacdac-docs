@@ -69556,7 +69556,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "98798b0855cb94426821a4484d308e2bde324017";
+  var sha = "ef8f17ca0d3f8f856833f02e6af969a9a4091c22";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -75353,9 +75353,16 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
 
     return _this;
   }
+  /**
+   * Gets the list of transports registers with the bus
+   */
+
 
   var _proto = JDBus.prototype;
 
+  /**
+   * Adds a transport to the bus
+   */
   _proto.addTransport = function addTransport(transport) {
     var _this2 = this;
 
@@ -75367,8 +75374,17 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     transport.bus.on(constants/* CONNECTING */.BS3, function () {
       return _this2.preConnect(transport);
     });
-  };
+  }
+  /**
+   * Gets the list of bridges registered with the bus
+   */
+  ;
 
+  /**
+   * Add a bridge to the bus and returns a callback to remove it.
+   * @param bridge
+   * @returns callback to remove bridge
+   */
   _proto.addBridge = function addBridge(bridge) {
     var _this3 = this;
 
@@ -75410,9 +75426,16 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }).map(function (t) {
       return t.disconnect();
     }));
-  };
+  }
+  /**
+   * Connects the bus going through the transports chronologically. Does nothing if already connected.
+   * @param background connection was triggered automatically
+   */
+  ;
 
-  _proto.connect = /*#__PURE__*/function () {
+  _proto.connect =
+  /*#__PURE__*/
+  function () {
     var _connect = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(background) {
       var _iterator, _step, transport;
 
@@ -75465,9 +75488,15 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }
 
     return connect;
-  }();
+  }()
+  /**
+   * Disconnects the bus and any connected transport.
+   */
+  ;
 
-  _proto.disconnect = /*#__PURE__*/function () {
+  _proto.disconnect =
+  /*#__PURE__*/
+  function () {
     var _disconnect = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2() {
       var _iterator2, _step2, transport;
 
@@ -75504,7 +75533,11 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }
 
     return disconnect;
-  }();
+  }()
+  /**
+   * Starts process packet and updates the JDOM nodes
+   */
+  ;
 
   _proto.start = function start() {
     var _this4 = this;
@@ -75516,9 +75549,15 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     if (!this._gcInterval) this._gcInterval = this.scheduler.setInterval(function () {
       return _this4.gcDevices();
     }, constants/* JD_DEVICE_DISCONNECTED_DELAY */.SkZ);
-  };
+  }
+  /**
+   * Stops processing packets
+   */
+  ;
 
-  _proto.stop = /*#__PURE__*/function () {
+  _proto.stop =
+  /*#__PURE__*/
+  function () {
     var _stop = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3() {
       return regenerator_default().wrap(function _callee3$(_context3) {
         while (1) {
@@ -75554,9 +75593,15 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }
 
     return stop;
-  }();
+  }()
+  /**
+   * Stops the bus and all transport connections.
+   */
+  ;
 
-  _proto.dispose = /*#__PURE__*/function () {
+  _proto.dispose =
+  /*#__PURE__*/
+  function () {
     var _dispose = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee4() {
       return regenerator_default().wrap(function _callee4$(_context4) {
         while (1) {
@@ -75584,8 +75629,17 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }
 
     return dispose;
-  }();
+  }()
+  /**
+   * Indicates that the bus is sending commands keep devices in bootloader mode.
+   * This property is signaled by CHANGE.
+   */
+  ;
 
+  /**
+   * Clears known devices and service providers (simulators). Optionally reset bus timestamp.
+   * @param timestamp
+   */
   _proto.clear = function clear(timestamp) {
     var _this$_serviceProvide,
         _this5 = this;
@@ -76337,7 +76391,12 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     key: "safeBoot",
     get: function get() {
       return !!this._safeBootInterval;
-    },
+    }
+    /**
+     * Turn on or off the safe boot mode where the bus keeps devices in bootloader mode.
+     * Triggers a CHANGE event.
+     */
+    ,
     set: function set(enabled) {
       var _this11 = this;
 
@@ -76356,6 +76415,11 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
         this.emit(constants/* CHANGE */.Ver);
       }
     }
+    /**
+     * Indicates if any of the transports is connected.
+     * Some transports might be in the process of connecting or disconnecting.
+     */
+
   }, {
     key: "connected",
     get: function get() {
@@ -76363,6 +76427,11 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
         return t.connected;
       });
     }
+    /**
+     * Indicates if any of the transports is disconnected.
+     * Some transports might be in the process of connecting or disconnecting.
+     */
+
   }, {
     key: "disconnected",
     get: function get() {
@@ -80310,7 +80379,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.13.105"};
+var package_namespaceObject = {"i8":"1.13.106"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
