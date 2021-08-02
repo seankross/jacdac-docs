@@ -62985,7 +62985,7 @@ var FielddataSet = /*#__PURE__*/function (_JDEventSource) {
 
     if (fields !== undefined && fields !== null) {
       _this.headers = fields.map(function (field) {
-        return field.dataTypeName;
+        return _this.dataTypeName(field);
       });
       _this.units = fields.map(function (field) {
         return field.unit;
@@ -62996,6 +62996,11 @@ var FielddataSet = /*#__PURE__*/function (_JDEventSource) {
   }
 
   var _proto2 = FielddataSet.prototype;
+
+  _proto2.dataTypeName = function dataTypeName(field) {
+    var parts = [field.member.service.specification.shortName, field.name];
+    return parts.join(".");
+  };
 
   _proto2.data = function data(flatten) {
     if (flatten && this.headers.length == 1) return this.rows.map(function (row) {
@@ -69780,7 +69785,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2bb4c3d8026f2c8f170264bc8d2bca3d58f6777b";
+  var sha = "8682ee7bc9253ef1ffc52b70963d52cafb091ce6";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer

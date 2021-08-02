@@ -1412,7 +1412,8 @@ function _predictRequest() {
 var MBModel = /*#__PURE__*/function (_JDEventSource) {
   (0,inheritsLoose/* default */.Z)(MBModel, _JDEventSource);
 
-  // maintain computed number of examples and input data types to avoid recomputation
+  // maintain info about the dataset this model was created for
+  // maintain training info about the model
   MBModel.createFromFile =
   /*#__PURE__*/
   function () {
@@ -1516,6 +1517,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
 var NUM_EPOCHS = 250;
 var LOSS_COLOR = "#8b0000";
 var ACC_COLOR = "#77dd77";
@@ -1583,15 +1585,20 @@ function TrainModel(props) {
   };
 
   var prepareModel = function prepareModel(mod) {
-    // Use a standard architecture for models made on this page
+    // If this is a brand new model, get it setup with a standard CNN architecture
     if (mod.modelJSON == "") {
-      // this model has no architecture, use default arch
-      mod.modelJSON = "default"; // Update model
-
+      mod.modelJSON = "default";
       mod.labels = dataset.labels;
       mod.inputShape = [dataset.length, dataset.width];
       mod.inputTypes = dataset.inputTypes;
       mod.outputShape = dataset.labels.length;
+      setModel(mod);
+      handleModelUpdate(mod);
+    } else if (!arraysEqual(mod.labels, dataset.labels) || !arraysEqual(mod.inputTypes, dataset.inputTypes)) {
+      // If there is already a model, make sure it matches the current dataset
+      //   if it does not, reset the model
+      var newModel = new MBModel(model.name);
+      prepareModel(newModel);
     }
   };
 
@@ -2392,8 +2399,8 @@ function ModelPlayground() {
     label: "2 - Train Model",
     disabled: dataset.labels.length < 2
   }), /*#__PURE__*/react.createElement(Tab/* default */.Z, {
-    label: "3 - Test and Deploy",
-    disabled: tfModel.status !== "completed"
+    label: "3 - Test Model",
+    disabled: dataset.labels.length < 2 || tfModel.status !== "completed"
   })), /*#__PURE__*/react.createElement(TabPanel/* default */.Z, {
     value: tab,
     index: 0
