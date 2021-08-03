@@ -1518,6 +1518,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
 var NUM_EPOCHS = 250;
 var LOSS_COLOR = "#8b0000";
 var ACC_COLOR = "#77dd77";
@@ -1539,7 +1540,6 @@ function TrainModel(props) {
     if (!pageReady) {
       prepareDataSet(dataset);
       prepareModel(model);
-      prepareTrainingLogs();
       setPageReady(true);
     }
   }, []);
@@ -1611,9 +1611,7 @@ function TrainModel(props) {
       units: ["/", "/"],
       colors: [LOSS_COLOR, ACC_COLOR]
     };
-    var set = FieldDataSet/* default.createFromFile */.ZP.createFromFile(trainingLogDataSet);
-    set.addData([0, 0]);
-    setTrainingLogs(set);
+    return FieldDataSet/* default.createFromFile */.ZP.createFromFile(trainingLogDataSet);
   };
 
   var deleteTFModel = function deleteTFModel() {
@@ -1631,9 +1629,8 @@ function TrainModel(props) {
       trainEnabled = _useState3[0],
       setTrainEnabled = _useState3[1];
 
-  var _useState4 = (0,react.useState)(undefined),
-      trainingLogs = _useState4[0],
-      setTrainingLogs = _useState4[1];
+  var trainingLogs = (0,react.useMemo)(prepareTrainingLogs, []);
+  (0,useChange/* default */.Z)(trainingLogs);
 
   var trainTFModel = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
