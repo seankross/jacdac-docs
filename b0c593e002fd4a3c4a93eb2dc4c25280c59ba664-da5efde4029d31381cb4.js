@@ -16355,6 +16355,19 @@ function VegaLiteWidget(props) {
     if (!settings) return spec;
     var s = clone(spec);
     jsonMergeFrom(s, settings);
+
+    if (Object.values(s.encoding || {}).some( // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function (encoding) {
+      var _encoding$scale, _encoding$scale2;
+
+      return (encoding === null || encoding === void 0 ? void 0 : (_encoding$scale = encoding.scale) === null || _encoding$scale === void 0 ? void 0 : _encoding$scale.domainMin) !== undefined || (encoding === null || encoding === void 0 ? void 0 : (_encoding$scale2 = encoding.scale) === null || _encoding$scale2 === void 0 ? void 0 : _encoding$scale2.domainMax) !== undefined;
+    })) {
+      if (typeof s.mark === "string") s.mark = {
+        type: s.mark
+      };
+      s.mark.clip = true;
+    }
+
     return s;
   }, [spec, settings]);
   console.log("vega", {
