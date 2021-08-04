@@ -10439,7 +10439,7 @@ var chartDsl = {
         kind: "sep"
       }, {
         kind: "label",
-        text: "Custom"
+        text: "Advanced"
       }, {
         kind: "block",
         type: VEGA_LAYER_BLOCK
@@ -10462,7 +10462,10 @@ data) {
   var title = sourceBlock.getFieldValue("title");
   var spec = {
     title: title,
-    mark: mark,
+    mark: {
+      type: mark,
+      tooltip: true
+    },
     encoding: {},
     data: {
       name: "values"
