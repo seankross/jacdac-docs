@@ -12725,8 +12725,8 @@ function DeviceTreeItem(props) {
       mobile = _useMediaQueries.mobile;
 
   var showActions = !mobile;
-  var dropped = (0,useChange/* default */.Z)(device.qos, function (qos) {
-    return qos.dropped;
+  var dropped = (0,useChange/* default */.Z)(device.qualityOfService, function (_) {
+    return _.dropped;
   });
   var serviceNames = (0,utils/* ellipseJoin */.VA)(services.filter(function (service) {
     return service.serviceClass !== constants/* SRV_CONTROL */.gm9 && service.serviceClass !== constants/* SRV_LOGGER */.w9j && service.serviceClass !== constants/* SRV_ROLE_MANAGER */.igi && service.serviceClass !== constants/* SRV_SETTINGS */.B9b;
