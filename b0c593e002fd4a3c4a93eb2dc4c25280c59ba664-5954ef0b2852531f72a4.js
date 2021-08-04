@@ -11261,10 +11261,12 @@ function addDataPreviewField(block) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ DataTableField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12702);
 /* harmony import */ var _DataTableWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(23785);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16582);
+
 
 
 
@@ -11272,7 +11274,7 @@ function addDataPreviewField(block) {
 var MAX_ITEMS = 256;
 
 var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(DataTableField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(DataTableField, _ReactInlineField);
 
   DataTableField.fromJson = function fromJson(options) {
     return new DataTableField(options);
@@ -11284,6 +11286,8 @@ var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
 
     _this = _ReactInlineField.call(this, options) || this;
     _this.EDITABLE = false;
+    _this.transformed = !!(options !== null && options !== void 0 && options.transformed);
+    _this.small = !!(options !== null && options !== void 0 && options.small);
     return _this;
   }
 
@@ -11299,8 +11303,11 @@ var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
   };
 
   _proto.renderInlineField = function renderInlineField() {
+    var tableHeight = this.small ? _toolbox__WEBPACK_IMPORTED_MODULE_3__/* .SMALL_TABLE_HEIGHT */ .IP : undefined;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
-      maxItems: MAX_ITEMS
+      maxItems: MAX_ITEMS,
+      tableHeight: tableHeight,
+      transformed: this.transformed
     });
   };
 
@@ -11603,7 +11610,7 @@ function DataTableWidget(props) {
     size: "small",
     className: classes.button,
     onCopy: handleCopy
-  })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  })), raw.length > 1 && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
   }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "caption"
@@ -19400,6 +19407,7 @@ function tidySlice(data, options) {
 /* harmony export */   "Fd": function() { return /* binding */ BAR_CORNER_RADIUS; },
 /* harmony export */   "KH": function() { return /* binding */ TABLE_WIDTH; },
 /* harmony export */   "U2": function() { return /* binding */ TABLE_HEIGHT; },
+/* harmony export */   "IP": function() { return /* binding */ SMALL_TABLE_HEIGHT; },
 /* harmony export */   "Sw": function() { return /* binding */ TABLE_PREVIEW_MAX_ITEMS; },
 /* harmony export */   "nY": function() { return /* binding */ VM_WARNINGS_CATEGORY; },
 /* harmony export */   "FD": function() { return /* binding */ JSON_WARNINGS_CATEGORY; },
@@ -19464,6 +19472,7 @@ var LINE_MAX_ITEMS = 1 << 10;
 var BAR_CORNER_RADIUS = 2;
 var TABLE_WIDTH = CHART_WIDTH;
 var TABLE_HEIGHT = 480;
+var SMALL_TABLE_HEIGHT = 128;
 var TABLE_PREVIEW_MAX_ITEMS = 48;
 var VM_WARNINGS_CATEGORY = "vm";
 var JSON_WARNINGS_CATEGORY = "json";
