@@ -10132,8 +10132,20 @@ var chartDsl = {
     return [{
       kind: "block",
       type: CHART_SHOW_TABLE_BLOCK,
-      message0: "show table %1 %2",
+      message0: "show table %1 %2 %3 %4 %5 %6",
       args0: [{
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "column0"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "column1"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "column2"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "column3"
+      }, {
         type: "input_dummy"
       }, {
         type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
@@ -10149,7 +10161,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: SCATTERPLOT_BLOCK,
-      message0: "scatterplot with x %1 y %2 %3 %4 %5",
+      message0: "scatterplot of x %1 y %2 size %3 group %4 %5 %6 %7",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "x",
@@ -10158,6 +10170,13 @@ var chartDsl = {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "y",
         dataType: "number"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "size",
+        dataType: "number"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "group"
       }, {
         type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
         name: "settings",
@@ -10178,7 +10197,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: BARCHART_BLOCK,
-      message0: "bar chart with index %1 value %2 %3 %4 %5",
+      message0: "bar chart of index %1 value %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "index"
@@ -10206,7 +10225,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: LINEPLOT_BLOCK,
-      message0: "line chart with x %1 y %2 %3 %4 %5",
+      message0: "line chart of x %1 y %2 group %3 %4 %5 %6",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "x",
@@ -10215,6 +10234,9 @@ var chartDsl = {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "y",
         dataType: "number"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "group"
       }, {
         type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
         name: "settings",
@@ -10235,11 +10257,14 @@ var chartDsl = {
     }, {
       kind: "block",
       type: HISTOGRAM_BLOCK,
-      message0: "histogram of %1 %2 %3 %4",
+      message0: "histogram of %1 group %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "index",
         dataType: "number"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "group"
       }, {
         type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
         name: "settings",
@@ -10260,7 +10285,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: BOX_PLOT_BLOCK,
-      message0: "boxplot of %1 by %2 %3 %4 %5",
+      message0: "boxplot of index %1 value %2 group %3 %4 %5 %6",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "index"
@@ -10268,6 +10293,9 @@ var chartDsl = {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "value",
         dataType: "number"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "group"
       }, {
         type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
         name: "settings",
@@ -10365,20 +10393,26 @@ var chartDsl = {
         type: CHART_SHOW_TABLE_BLOCK
       }, {
         kind: "sep"
-      }, {
-        kind: "label",
-        text: "Custom"
-      }, {
-        kind: "block",
-        type: VEGA_LAYER_BLOCK
-      }, {
-        kind: "block",
-        type: VEGA_ENCODING_BLOCK
       }],
       colour: colour
     }];
   }
 };
+/*
+                <LabelDefinition>{
+                    kind: "label",
+                    text: "Custom",
+                },
+                <BlockReference>{
+                    kind: "block",
+                    type: VEGA_LAYER_BLOCK,
+                },
+                <BlockReference>{
+                    kind: "block",
+                    type: VEGA_ENCODING_BLOCK,
+                },
+*/
+
 /* harmony default export */ __webpack_exports__["Z"] = (chartDsl);
 function blockToVisualizationSpec(sourceBlock, // eslint-disable-next-line @typescript-eslint/ban-types
 data) {
@@ -11475,7 +11509,14 @@ function DataTableWidget(props) {
   if (!(raw !== null && raw !== void 0 && raw.length)) return empty ? /*#__PURE__*/react.createElement("span", {
     className: classes.empty
   }, empty) : null;
-  var columns = (0,tidy/* tidyHeaders */.P2)(raw).headers;
+  var selectedColumns = [0, 1, 2, 3].map(function (i) {
+    return "column" + i;
+  }).map(function (n) {
+    return (0,tidy/* tidyResolveHeader */.gc)(raw, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue(n));
+  }).filter(function (c) {
+    return !!c;
+  });
+  var columns = selectedColumns.length ? selectedColumns : (0,tidy/* tidyHeaders */.P2)(raw).headers;
   var table = raw.length > maxItems ? [].concat((0,toConsumableArray/* default */.Z)(raw.slice(0, maxItems)), [(0,utils/* toMap */.qL)(columns, function (c) {
     return c;
   }, function () {
@@ -15788,7 +15829,11 @@ function BarWidget() {
   };
   var spec = {
     description: "Bar plot of " + index + " x " + value,
-    mark: "bar",
+    mark: {
+      type: "bar",
+      cornerRadius: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_CORNER_RADIUS */ .Fd,
+      tooltip: true
+    },
     encoding: {
       x: {
         field: index,
@@ -15846,13 +15891,15 @@ BarField.KEY = "jacdac_field_bar_plot";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ BoxPlotField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
 /* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
 /* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
 
 
 
@@ -15873,11 +15920,19 @@ function BoxPlotWidget() {
   if (!index || !value) return null;
   var spec = {
     description: "Box plot of " + index,
-    mark: "boxplot",
+    mark: {
+      type: "boxplot",
+      cornerRadius: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_CORNER_RADIUS */ .Fd,
+      tooltip: true // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+    },
     encoding: {
       x: {
         field: index,
-        type: "nominal"
+        type: "nominal",
+        scale: {
+          zero: false
+        }
       },
       y: {
         field: value,
@@ -15897,7 +15952,7 @@ function BoxPlotWidget() {
 }
 
 var BoxPlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(BoxPlotField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(BoxPlotField, _ReactInlineField);
 
   BoxPlotField.fromJson = function fromJson(options) {
     return new BoxPlotField(options);
@@ -15933,13 +15988,15 @@ BoxPlotField.KEY = "jacdac_field_box_plot";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ HistogramField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
 /* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
 /* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
 
 
 
@@ -15961,7 +16018,8 @@ function HistogramWidget() {
     description: "Histogram of " + index,
     mark: {
       type: "bar",
-      tooltip: false
+      cornerRadius: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_CORNER_RADIUS */ .Fd,
+      tooltip: true
     },
     encoding: {
       x: {
@@ -15982,7 +16040,7 @@ function HistogramWidget() {
 }
 
 var HistogramField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(HistogramField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(HistogramField, _ReactInlineField);
 
   HistogramField.fromJson = function fromJson(options) {
     return new HistogramField(options);
@@ -16050,7 +16108,11 @@ function LinePlotWidget() {
   };
   var spec = {
     description: "Line plot of " + x + "x" + y,
-    mark: "line",
+    mark: {
+      type: "line",
+      point: true,
+      tooltip: true
+    },
     encoding: {
       x: {
         field: x,
@@ -16061,7 +16123,10 @@ function LinePlotWidget() {
       },
       y: {
         field: y,
-        type: "quantitative"
+        type: "quantitative",
+        scale: {
+          zero: false
+        }
       }
     },
     data: {
@@ -16137,13 +16202,18 @@ function ScatterPlotWidget() {
 
   var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
   var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
+  var size = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("size"), "number");
   if (!x || !y) return null;
   var sliceOptions = {
     sliceSample: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .SCATTER_MAX_ITEMS */ .VN
   };
   var spec = {
     description: "Scatter plot of " + x + "x" + y,
-    mark: "point",
+    mark: {
+      type: "point",
+      filled: true,
+      tooltip: true
+    },
     encoding: {
       x: {
         field: x,
@@ -16154,11 +16224,21 @@ function ScatterPlotWidget() {
       },
       y: {
         field: y,
-        type: "quantitative"
+        type: "quantitative",
+        scale: {
+          zero: false
+        }
       }
     },
     data: {
       name: "values"
+    }
+  };
+  if (size) spec.encoding.size = {
+    field: size,
+    type: "quantitative",
+    scale: {
+      zero: false
     }
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
@@ -16349,6 +16429,7 @@ function VegaLiteWidget(props) {
       vegaData = _useState[0],
       setVegaData = _useState[1];
 
+  var group = (0,_tidy__WEBPACK_IMPORTED_MODULE_8__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("group"));
   var settings = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .JSONTryParse */ .ZZ)(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("settings")); // TODO merge json
 
   var fullSpec = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
@@ -16362,19 +16443,22 @@ function VegaLiteWidget(props) {
 
       return (encoding === null || encoding === void 0 ? void 0 : (_encoding$scale = encoding.scale) === null || _encoding$scale === void 0 ? void 0 : _encoding$scale.domainMin) !== undefined || (encoding === null || encoding === void 0 ? void 0 : (_encoding$scale2 = encoding.scale) === null || _encoding$scale2 === void 0 ? void 0 : _encoding$scale2.domainMax) !== undefined;
     })) {
-      if (typeof s.mark === "string") s.mark = {
-        type: s.mark
-      };
       s.mark.clip = true;
     }
 
+    if (group) {
+      s.encoding.color = {
+        field: group,
+        type: "nominal"
+      };
+      s.encoding.strokeDash = {
+        field: group,
+        type: "nominal"
+      };
+    }
+
     return s;
-  }, [spec, settings]);
-  console.log("vega", {
-    spec: spec,
-    settings: settings,
-    fullSpec: fullSpec
-  });
+  }, [spec, group, settings]);
   (0,_useEffectAsync__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)( /*#__PURE__*/function () {
     var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(mounted) {
       var sliced;
@@ -19177,6 +19261,7 @@ function tidySlice(data, options) {
 /* harmony export */   "kC": function() { return /* binding */ BAR_MAX_ITEMS; },
 /* harmony export */   "VN": function() { return /* binding */ SCATTER_MAX_ITEMS; },
 /* harmony export */   "bH": function() { return /* binding */ LINE_MAX_ITEMS; },
+/* harmony export */   "Fd": function() { return /* binding */ BAR_CORNER_RADIUS; },
 /* harmony export */   "KH": function() { return /* binding */ TABLE_WIDTH; },
 /* harmony export */   "U2": function() { return /* binding */ TABLE_HEIGHT; },
 /* harmony export */   "Sw": function() { return /* binding */ TABLE_PREVIEW_MAX_ITEMS; },
@@ -19234,12 +19319,13 @@ var MODEL_BLOCK_PREPROCESS_STATEMENT_TYPE = "ModelBlockPreprocessStatement";
 var MODEL_BLOCK_LAYER_STATEMENT_TYPE = "ModelBlockLayerStatement";
 var TWIN_BLOCK = "jacdac_tools_twin";
 var toolsColour = (0,_dsl_palette__WEBPACK_IMPORTED_MODULE_3__/* .paletteColorByIndex */ .W)(-1);
-var CHART_WIDTH = 388;
+var CHART_WIDTH = 468;
 var CHART_HEIGHT = 240;
 var CHART_SVG_MAX_ITEMS = 256;
 var BAR_MAX_ITEMS = 1 << 10;
 var SCATTER_MAX_ITEMS = 1 << 13;
 var LINE_MAX_ITEMS = 1 << 10;
+var BAR_CORNER_RADIUS = 2;
 var TABLE_WIDTH = CHART_WIDTH;
 var TABLE_HEIGHT = 480;
 var TABLE_PREVIEW_MAX_ITEMS = 48;
