@@ -11,7 +11,7 @@ import useEffectAsync from "../../../useEffectAsync"
 import { tidyResolveHeader, tidySlice } from "./../tidy"
 import { JSONTryParse } from "../../../../../jacdac-ts/src/jdom/utils"
 
-const VegaLite = lazy(() => import("./VegaLite"))
+const VegaLite = lazy(() => import("../../../ui/VegaLite"))
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function clone(v: any) {

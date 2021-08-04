@@ -21,24 +21,32 @@ function DSEditorWithContext() {
     const { workspaceFileHandle, setWorkspaceFileHandle } =
         useContext(BlockContext)
 
+    const showChartDeck = () => {
+        // colllect all charts
+        
+    }
+
     return (
-        <Grid container direction="column" spacing={1}>
-            {!!setWorkspaceFileHandle && (
+        <>
+            <Grid container direction="column" spacing={1}>
+                {!!setWorkspaceFileHandle && (
+                    <Grid item xs={12}>
+                        <FileTabs
+                            storageKey={DS_SOURCE_STORAGE_KEY}
+                            selectedFileHandle={workspaceFileHandle}
+                            onFileHandleSelected={setWorkspaceFileHandle}
+                            onFileHandleCreated={setWorkspaceFileHandle}
+                            newFileContent={DS_NEW_FILE_CONTENT}
+                        />
+                    </Grid>
+                )}
                 <Grid item xs={12}>
-                    <FileTabs
-                        storageKey={DS_SOURCE_STORAGE_KEY}
-                        selectedFileHandle={workspaceFileHandle}
-                        onFileHandleSelected={setWorkspaceFileHandle}
-                        onFileHandleCreated={setWorkspaceFileHandle}
-                        newFileContent={DS_NEW_FILE_CONTENT}
-                    />
+                    <BlockEditor editorId={DS_EDITOR_ID} />
                 </Grid>
-            )}
-            <Grid item xs={12}>
-                <BlockEditor editorId={DS_EDITOR_ID} />
+                {Flags.diagnostics && <BlockDiagnostics />}
             </Grid>
-            {Flags.diagnostics && <BlockDiagnostics />}
-        </Grid>
+            <VegaLiteDialog />
+        </>
     )
 }
 
