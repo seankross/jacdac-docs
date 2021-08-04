@@ -10010,11 +10010,12 @@ function WorkspaceProvider(props) {
 /* harmony import */ var _fields_chart_BarField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(95702);
 /* harmony import */ var _fields_chart_HistogramField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(76295);
 /* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(54741);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(74602);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(74602);
 /* harmony import */ var _fields_chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(62953);
 /* harmony import */ var _fields_chart_VegaChartField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(61562);
 /* harmony import */ var _fields_tidy__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(47554);
 /* harmony import */ var _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(68494);
+/* harmony import */ var _fields_chart_HeatMapField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(49211);
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -10033,8 +10034,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
 var SCATTERPLOT_BLOCK = "chart_scatterplot";
 var LINEPLOT_BLOCK = "chart_lineplot";
+var HEATMAP_BLOCK = "chart_heatmap";
 var BARCHART_BLOCK = "chart_bar";
 var HISTOGRAM_BLOCK = "chart_histogram";
 var BOX_PLOT_BLOCK = "chart_box_plot";
@@ -10125,7 +10128,7 @@ var charMapSettingsSchema = {
     }
   }
 };
-var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_12__/* .paletteColorByIndex */ .W)(4);
+var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_13__/* .paletteColorByIndex */ .W)(4);
 var chartDsl = {
   id: "chart",
   createBlocks: function createBlocks() {
@@ -10256,6 +10259,38 @@ var chartDsl = {
       transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
     }, {
       kind: "block",
+      type: HEATMAP_BLOCK,
+      message0: "heatmap of x %1 y %2 color %3 %4 %5 %6",
+      args0: [{
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "x",
+        dataType: "number"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "y",
+        dataType: "number"
+      }, {
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        name: "color"
+      }, {
+        type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
+        name: "settings",
+        schema: char2DSettingsSchema
+      }, {
+        type: "input_dummy"
+      }, {
+        type: _fields_chart_HeatMapField__WEBPACK_IMPORTED_MODULE_12__/* .default.KEY */ .Z.KEY,
+        name: "plot"
+      }],
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      colour: colour,
+      template: "meta",
+      inputsInline: false,
+      dataPreviewField: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
+    }, {
+      kind: "block",
       type: HISTOGRAM_BLOCK,
       message0: "histogram of %1 group %2 %3 %4 %5",
       args0: [{
@@ -10349,16 +10384,22 @@ var chartDsl = {
     }, {
       kind: "block",
       type: VEGA_ENCODING_BLOCK,
-      message0: "encoding %1 as %2",
+      message0: "encoding %1 as %2 type %3",
       args0: [{
         type: "field_dropdown",
-        options: ["x", "y", "x2", "y2", "xError", "yError", "xError2", "yError2", "theta", "theta2", "radius", "radius2"].map(function (s) {
+        options: ["x", "y", "x2", "y2", "xError", "yError", "xError2", "yError2", "theta", "theta2", "radius", "radius2", "color", "angle", "opacity", "fillOpacity", "strokeOpacity", "shape", "size", "strokeDash", "strokeWidth", "text"].map(function (s) {
           return [s, s];
         }),
         name: "channel"
       }, {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "field"
+      }, {
+        type: "field_dropdown",
+        options: ["quantitative", "ordinal", "nominal", "temporal"].map(function (s) {
+          return [s, s];
+        }),
+        name: "type"
       }],
       previousStatement: VEGA_STATEMENT_TYPE,
       nextStatement: VEGA_STATEMENT_TYPE,
@@ -10390,29 +10431,26 @@ var chartDsl = {
         type: LINEPLOT_BLOCK
       }, {
         kind: "block",
+        type: HEATMAP_BLOCK
+      }, {
+        kind: "block",
         type: CHART_SHOW_TABLE_BLOCK
       }, {
         kind: "sep"
+      }, {
+        kind: "label",
+        text: "Custom"
+      }, {
+        kind: "block",
+        type: VEGA_LAYER_BLOCK
+      }, {
+        kind: "block",
+        type: VEGA_ENCODING_BLOCK
       }],
       colour: colour
     }];
   }
 };
-/*
-                <LabelDefinition>{
-                    kind: "label",
-                    text: "Custom",
-                },
-                <BlockReference>{
-                    kind: "block",
-                    type: VEGA_LAYER_BLOCK,
-                },
-                <BlockReference>{
-                    kind: "block",
-                    type: VEGA_ENCODING_BLOCK,
-                },
-*/
-
 /* harmony default export */ __webpack_exports__["Z"] = (chartDsl);
 function blockToVisualizationSpec(sourceBlock, // eslint-disable-next-line @typescript-eslint/ban-types
 data) {
@@ -10438,28 +10476,15 @@ data) {
         {
           var channel = child.getFieldValue("channel");
           var field = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, child, "field");
-
-          var _title = child.getFieldValue("title");
-
-          console.log({
-            child: child,
-            channel: channel,
-            field: field
-          });
+          var type = child.getFieldValue("type");
 
           if (channel && field) {
-            var type = types[headers.indexOf(field)]; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            var fieldType = types[headers.indexOf(field)]; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-            var encoding = spec.encoding[channel] = {
+            spec.encoding[channel] = {
               field: field,
-              type: type === "number" ? "quantitative" : "nominal"
+              type: type || (fieldType === "number" ? "quantitative" : "nominal")
             };
-
-            if (_title) {
-              encoding.axis = {
-                title: _title
-              };
-            }
           }
 
           break;
@@ -15981,6 +16006,106 @@ BoxPlotField.KEY = "jacdac_field_box_plot";
 
 /***/ }),
 
+/***/ 49211:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ HeatMapPlotField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
+/* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
+/* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
+/* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
+/* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+
+
+
+
+
+
+
+
+
+function HeatMapWidget() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
+      sourceBlock = _useContext.sourceBlock;
+
+  var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
+      data = _useBlockData.data;
+
+  var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"));
+  var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"));
+  var color = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("color"), "number");
+  if (!x || !y || !color) return null;
+  var sliceOptions = {
+    sliceHead: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .LINE_MAX_ITEMS */ .bH
+  };
+  var spec = {
+    mark: {
+      type: "rect",
+      tooltip: true
+    },
+    encoding: {
+      x: {
+        field: x,
+        type: "ordinal"
+      },
+      y: {
+        field: y,
+        type: "ordinal"
+      },
+      color: {
+        field: color,
+        type: "quantitative",
+        scale: {
+          zero: false
+        }
+      }
+    },
+    data: {
+      name: "values"
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    spec: spec,
+    slice: sliceOptions
+  });
+}
+
+var HeatMapPlotField = /*#__PURE__*/function (_ReactInlineField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(HeatMapPlotField, _ReactInlineField);
+
+  HeatMapPlotField.fromJson = function fromJson(options) {
+    return new HeatMapPlotField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;
+
+  function HeatMapPlotField(options) {
+    var _this;
+
+    _this = _ReactInlineField.call(this, options) || this;
+    _this.EDITABLE = false;
+    return _this;
+  }
+
+  var _proto = HeatMapPlotField.prototype;
+
+  _proto.renderInlineField = function renderInlineField() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeatMapWidget, null);
+  };
+
+  return HeatMapPlotField;
+}(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z);
+
+HeatMapPlotField.KEY = "jacdac_field_heat_map";
+
+
+/***/ }),
+
 /***/ 76295:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -16550,29 +16675,31 @@ function VegaLiteWidget(props) {
 /* harmony import */ var _VariablesFields__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(15757);
 /* harmony import */ var _DataTableField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(54741);
 /* harmony import */ var _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(44393);
-/* harmony import */ var _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(23030);
-/* harmony import */ var _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(95548);
-/* harmony import */ var _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(69223);
-/* harmony import */ var _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(88533);
-/* harmony import */ var _chart_BarField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(95702);
-/* harmony import */ var _chart_HistogramField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(76295);
-/* harmony import */ var _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(62953);
-/* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(4383);
-/* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(39311);
-/* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(16229);
-/* harmony import */ var _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(61562);
-/* harmony import */ var _mb_ExpandModelBlockField__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(14639);
-/* harmony import */ var _mb_DataSetBlockField__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(41187);
-/* harmony import */ var _mb_RecordingBlockField__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(431);
-/* harmony import */ var _mb_SmoothingBlockField__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(94335);
-/* harmony import */ var _mb_KNNBlockField__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(60822);
-/* harmony import */ var _mb_NeuralNetworkBlockField__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(53297);
-/* harmony import */ var _mb_ConvLayerBlockField__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(66967);
-/* harmony import */ var _mb_PoolingLayerBlockField__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(36916);
-/* harmony import */ var _mb_DropoutLayerBlockField__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(63562);
-/* harmony import */ var _mb_FlattenLayerBlockField__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(82584);
-/* harmony import */ var _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(35121);
-/* harmony import */ var _JSONSettingsField__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(68494);
+/* harmony import */ var _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(69223);
+/* harmony import */ var _DataPreviewField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(16229);
+/* harmony import */ var _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(23030);
+/* harmony import */ var _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(95548);
+/* harmony import */ var _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(88533);
+/* harmony import */ var _chart_BarField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(95702);
+/* harmony import */ var _chart_HistogramField__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(76295);
+/* harmony import */ var _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(62953);
+/* harmony import */ var _chart_HeatMapField__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(49211);
+/* harmony import */ var _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(61562);
+/* harmony import */ var _FileSaveField__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(4383);
+/* harmony import */ var _FileOpenField__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(39311);
+/* harmony import */ var _mb_ExpandModelBlockField__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(14639);
+/* harmony import */ var _mb_DataSetBlockField__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(41187);
+/* harmony import */ var _mb_RecordingBlockField__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(431);
+/* harmony import */ var _mb_SmoothingBlockField__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(94335);
+/* harmony import */ var _mb_KNNBlockField__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(60822);
+/* harmony import */ var _mb_NeuralNetworkBlockField__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(53297);
+/* harmony import */ var _mb_ConvLayerBlockField__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(66967);
+/* harmony import */ var _mb_PoolingLayerBlockField__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(36916);
+/* harmony import */ var _mb_DropoutLayerBlockField__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(63562);
+/* harmony import */ var _mb_FlattenLayerBlockField__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(82584);
+/* harmony import */ var _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(35121);
+/* harmony import */ var _JSONSettingsField__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(68494);
+
 
 
 
@@ -16628,7 +16755,7 @@ function registerFields() {
     if (fieldType.SHADOW) reactFieldShadows.push(fieldType.SHADOW);
   };
 
-  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _chart_BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _chart_HistogramField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, _mb_ExpandModelBlockField__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, _mb_DataSetBlockField__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, _mb_RecordingBlockField__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, _mb_SmoothingBlockField__WEBPACK_IMPORTED_MODULE_28__/* .default */ .Z, _mb_KNNBlockField__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z, _mb_NeuralNetworkBlockField__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, _mb_ConvLayerBlockField__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, _mb_PoolingLayerBlockField__WEBPACK_IMPORTED_MODULE_32__/* .default */ .Z, _mb_DropoutLayerBlockField__WEBPACK_IMPORTED_MODULE_33__/* .default */ .Z, _mb_FlattenLayerBlockField__WEBPACK_IMPORTED_MODULE_34__/* .default */ .Z, _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_35__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, _JSONSettingsField__WEBPACK_IMPORTED_MODULE_36__/* .default */ .Z];
+  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _chart_BarField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _chart_HistogramField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, _chart_HeatMapField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _mb_ExpandModelBlockField__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, _mb_DataSetBlockField__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, _mb_RecordingBlockField__WEBPACK_IMPORTED_MODULE_28__/* .default */ .Z, _mb_SmoothingBlockField__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z, _mb_KNNBlockField__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, _mb_NeuralNetworkBlockField__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, _mb_ConvLayerBlockField__WEBPACK_IMPORTED_MODULE_32__/* .default */ .Z, _mb_PoolingLayerBlockField__WEBPACK_IMPORTED_MODULE_33__/* .default */ .Z, _mb_DropoutLayerBlockField__WEBPACK_IMPORTED_MODULE_34__/* .default */ .Z, _mb_FlattenLayerBlockField__WEBPACK_IMPORTED_MODULE_35__/* .default */ .Z, _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_36__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, _JSONSettingsField__WEBPACK_IMPORTED_MODULE_37__/* .default */ .Z];
   fieldTypes.forEach(registerType);
 }
 function fieldShadows() {
