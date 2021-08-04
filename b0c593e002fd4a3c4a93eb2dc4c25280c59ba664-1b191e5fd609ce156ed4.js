@@ -16447,11 +16447,6 @@ function VegaChartWidget() {
     });
   }, [services]);
   var spec = (0,_dsl_chartdsl__WEBPACK_IMPORTED_MODULE_5__/* .blockToVisualizationSpec */ .w)(sourceBlock, data);
-  console.log({
-    sourceBlock: sourceBlock,
-    data: data,
-    spec: spec
-  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
     spec: spec
   });
