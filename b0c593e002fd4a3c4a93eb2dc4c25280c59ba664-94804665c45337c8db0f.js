@@ -9626,6 +9626,9 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
       "& .blocklyFieldButton.blocklyEditableText": {
         cursor: "pointer"
       },
+      "& .blocklyFieldButton.blocklyEditableText > text": {
+        fill: "#ffffff"
+      },
       "& .blocklyFieldButton.blocklyEditableText > .blocklyFieldRect": {
         fill: "transparent !important"
       }
@@ -9999,18 +10002,25 @@ function WorkspaceProvider(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "w": function() { return /* binding */ blockToVisualizationSpec; }
 /* harmony export */ });
-/* harmony import */ var _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(88533);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16582);
-/* harmony import */ var _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(44393);
-/* harmony import */ var _fields_chart_LinePlotField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23030);
-/* harmony import */ var _fields_chart_BarField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(95702);
-/* harmony import */ var _fields_chart_HistogramField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(76295);
-/* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(54741);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(74602);
-/* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(16229);
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(96156);
+/* harmony import */ var _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(88533);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16582);
+/* harmony import */ var _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(44393);
+/* harmony import */ var _fields_chart_LinePlotField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(23030);
+/* harmony import */ var _fields_chart_BarField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(95702);
+/* harmony import */ var _fields_chart_HistogramField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(76295);
+/* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(54741);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(74602);
 /* harmony import */ var _fields_chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(62953);
 /* harmony import */ var _fields_chart_VegaChartField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(61562);
 /* harmony import */ var _fields_tidy__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(47554);
+/* harmony import */ var _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(68494);
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -10032,7 +10042,91 @@ var CHART_SHOW_TABLE_BLOCK = "chart_show_table";
 var VEGA_LAYER_BLOCK = "vega_layer";
 var VEGA_ENCODING_BLOCK = "vega_encoding";
 var VEGA_STATEMENT_TYPE = "vegaStatementType";
-var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_11__/* .paletteColorByIndex */ .W)(4);
+var chartSettingsSchema = {
+  type: "object",
+  properties: {
+    title: {
+      type: "string",
+      title: "Chart title"
+    }
+  }
+};
+var axisSchema = {
+  type: "object",
+  properties: {
+    title: {
+      type: "string",
+      title: "Title"
+    }
+  }
+};
+var axisNumberSchema = {
+  type: "object",
+  properties: {
+    title: {
+      type: "string",
+      title: "Title"
+    },
+    min: {
+      type: "number",
+      title: "Domain minimum"
+    },
+    max: {
+      type: "number",
+      title: "Domain maximum"
+    }
+  }
+};
+var encodingSettingsSchema = {
+  type: "object",
+  properties: {
+    axis: axisSchema
+  }
+};
+var encodingNumberSettingsSchema = {
+  type: "object",
+  properties: {
+    axis: axisNumberSchema
+  }
+};
+var char2DSettingsSchema = {
+  type: "object",
+  properties: {
+    title: {
+      type: "string",
+      title: "Chart title"
+    },
+    encoding: {
+      type: "object",
+      properties: {
+        x: _objectSpread({
+          title: "X"
+        }, encodingNumberSettingsSchema),
+        y: _objectSpread({
+          title: "Y"
+        }, encodingNumberSettingsSchema)
+      }
+    }
+  }
+};
+var charMapSettingsSchema = {
+  type: "object",
+  properties: {
+    title: {
+      type: "string",
+      title: "Chart title"
+    },
+    encoding: {
+      index: _objectSpread({
+        title: "Index"
+      }, encodingSettingsSchema),
+      value: _objectSpread({
+        title: "Value"
+      }, encodingNumberSettingsSchema)
+    }
+  }
+};
+var colour = (0,_palette__WEBPACK_IMPORTED_MODULE_12__/* .paletteColorByIndex */ .W)(4);
 var chartDsl = {
   id: "chart",
   createBlocks: function createBlocks() {
@@ -10043,148 +10137,159 @@ var chartDsl = {
       args0: [{
         type: "input_dummy"
       }, {
-        type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_6__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
         name: "table"
       }],
-      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
-      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       colour: colour,
       template: "meta",
       inputsInline: false,
-      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+      dataPreviewField: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
     }, {
       kind: "block",
       type: SCATTERPLOT_BLOCK,
       message0: "scatterplot with x %1 y %2 %3 %4 %5",
       args0: [{
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "x",
         dataType: "number"
       }, {
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "y",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
-        name: "preview"
+        type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
+        name: "settings",
+        schema: char2DSettingsSchema
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_0__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_1__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
-      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
-      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       colour: colour,
       template: "meta",
       inputsInline: false,
-      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+      dataPreviewField: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
     }, {
       kind: "block",
       type: BARCHART_BLOCK,
       message0: "bar chart with index %1 value %2 %3 %4 %5",
       args0: [{
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "index"
       }, {
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "value",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
-        name: "preview"
+        type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
+        name: "settings",
+        schema: charMapSettingsSchema
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_chart_BarField__WEBPACK_IMPORTED_MODULE_4__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_BarField__WEBPACK_IMPORTED_MODULE_5__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
-      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
-      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       colour: colour,
       template: "meta",
       inputsInline: false,
-      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+      dataPreviewField: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
     }, {
       kind: "block",
       type: LINEPLOT_BLOCK,
       message0: "line chart with x %1 y %2 %3 %4 %5",
       args0: [{
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "x",
         dataType: "number"
       }, {
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "y",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
-        name: "preview"
+        type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
+        name: "settings",
+        schema: char2DSettingsSchema
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_chart_LinePlotField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_LinePlotField__WEBPACK_IMPORTED_MODULE_4__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
-      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
-      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       colour: colour,
       template: "meta",
       inputsInline: false,
-      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+      dataPreviewField: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
     }, {
       kind: "block",
       type: HISTOGRAM_BLOCK,
       message0: "histogram of %1 %2 %3 %4",
       args0: [{
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "index",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
-        name: "preview"
+        type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
+        name: "settings",
+        schema: chartSettingsSchema
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_chart_HistogramField__WEBPACK_IMPORTED_MODULE_5__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_HistogramField__WEBPACK_IMPORTED_MODULE_6__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
-      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
-      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       colour: colour,
       template: "meta",
       inputsInline: false,
-      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+      dataPreviewField: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
     }, {
       kind: "block",
       type: BOX_PLOT_BLOCK,
       message0: "boxplot of %1 by %2 %3 %4 %5",
       args0: [{
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "index"
       }, {
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "value",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
-        name: "preview"
+        type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
+        name: "settings",
+        schema: charMapSettingsSchema
       }, {
         type: "input_dummy"
       }, {
         type: _fields_chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
         name: "plot"
       }],
-      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
-      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       colour: colour,
       template: "meta",
       inputsInline: false,
-      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+      dataPreviewField: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
     }, {
       kind: "block",
       type: VEGA_LAYER_BLOCK,
-      message0: "chart %1 title %2 %3 %4 %5 %6 %7",
+      message0: "chart %1 %2 %3 %4 %5 %6",
       args0: [{
         type: "field_dropdown",
         options: ["arc", "area", "bar", "boxplot", "circle", "errorband", "errorbar", "line", "point", "rect", "rule", "square", "text", "tick", "trail"].map(function (s) {
@@ -10192,11 +10297,9 @@ var chartDsl = {
         }),
         name: "mark"
       }, {
-        type: "field_input",
-        name: "title"
-      }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
-        name: "preview"
+        type: _fields_JSONSettingsField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
+        name: "settings",
+        schema: chartSettingsSchema
       }, {
         type: "input_dummy"
       }, {
@@ -10209,17 +10312,17 @@ var chartDsl = {
         type: _fields_chart_VegaChartField__WEBPACK_IMPORTED_MODULE_9__/* .default.KEY */ .Z.KEY,
         name: "chart"
       }],
-      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
-      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       colour: colour,
       template: "meta",
       inputsInline: false,
       dataPreviewField: false,
-      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
     }, {
       kind: "block",
       type: VEGA_ENCODING_BLOCK,
-      message0: "encoding %1 as %2 title %3",
+      message0: "encoding %1 as %2",
       args0: [{
         type: "field_dropdown",
         options: ["x", "y", "x2", "y2", "xError", "yError", "xError2", "yError2", "theta", "theta2", "radius", "radius2"].map(function (s) {
@@ -10227,11 +10330,8 @@ var chartDsl = {
         }),
         name: "channel"
       }, {
-        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "field"
-      }, {
-        type: "field_input",
-        name: "title"
       }],
       previousStatement: VEGA_STATEMENT_TYPE,
       nextStatement: VEGA_STATEMENT_TYPE,
@@ -10239,7 +10339,7 @@ var chartDsl = {
       template: "meta",
       inputsInline: false,
       dataPreviewField: false,
-      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_1__/* .identityTransformData */ .FW
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW
     }];
   },
   createCategory: function createCategory() {
@@ -13696,6 +13796,128 @@ JDomTreeField.KEY = "jacdac_field_jdom_service_tree";
 
 /***/ }),
 
+/***/ 68494:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ JSONSettingsField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5991);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(41788);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _ReactField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(77576);
+/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(69672);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81794);
+
+
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/ban-types */
+
+
+
+
+var JSONSchemaForm = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/* import() */ 2184).then(__webpack_require__.bind(__webpack_require__, 12184));
+});
+
+function JSONSettingsWidget(props) {
+  var schema = props.schema,
+      value = props.value,
+      setValue = props.setValue,
+      events = props.events;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value),
+      editValue = _useState[0],
+      setEditValue = _useState[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return events.subscribe(_ReactField__WEBPACK_IMPORTED_MODULE_1__/* .UNMOUNT */ .lo, function () {
+      return setValue(editValue);
+    });
+  }, [editValue]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    style: {
+      maxWidth: "22rem",
+      minHeight: "20rem",
+      padding: "0.5rem"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(JSONSchemaForm, {
+    schema: schema,
+    value: editValue,
+    setValue: setEditValue
+  })));
+} // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+var JSONSettingsField = /*#__PURE__*/function (_ReactField) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(JSONSettingsField, _ReactField);
+
+  JSONSettingsField.fromJson = function fromJson(options) {
+    return new JSONSettingsField(options === null || options === void 0 ? void 0 : options.value, undefined, options);
+  } // the first argument is a dummy and never used
+  ;
+
+  function JSONSettingsField(value, validator, options) {
+    var _this;
+
+    _this = _ReactField.call(this, value, validator, options) || this;
+    _this.SERIALIZABLE = true;
+    _this.schema = (options === null || options === void 0 ? void 0 : options.schema) || {};
+    _this.darkMode = "light";
+    (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__/* .assert */ .hu)(!!_this.schema, "schema missing");
+    return _this;
+  }
+
+  var _proto = JSONSettingsField.prototype;
+
+  _proto.initCustomView = function initCustomView() {
+    var group = this.fieldGroup_;
+    group.classList.add("blocklyFieldButton");
+    return undefined;
+  };
+
+  _proto.getText_ = function getText_() {
+    return "⚙️";
+  };
+
+  _proto.renderField = function renderField() {
+    var _this2 = this;
+
+    var schema = this.schema,
+        _this$value = this.value,
+        value = _this$value === void 0 ? {} : _this$value,
+        events = this.events;
+
+    var setValue = function setValue(v) {
+      return _this2.value = v;
+    };
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(JSONSettingsWidget, {
+      schema: schema,
+      value: value,
+      events: events,
+      setValue: setValue
+    });
+  };
+
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(JSONSettingsField, [{
+    key: "defaultValue",
+    get: function get() {
+      return {};
+    }
+  }]);
+
+  return JSONSettingsField;
+}(_ReactField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP);
+
+JSONSettingsField.KEY = "jacdac_field_json_settings";
+
+
+/***/ }),
+
 /***/ 90422:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -13893,11 +14115,10 @@ var utils = __webpack_require__(81794);
 var Suspense = __webpack_require__(69672);
 // EXTERNAL MODULE: ./src/components/blockly/fields/ReactField.tsx
 var ReactField = __webpack_require__(77576);
-// EXTERNAL MODULE: ./node_modules/blockly/index.js
-var blockly = __webpack_require__(74640);
-var blockly_default = /*#__PURE__*/__webpack_require__.n(blockly);
 // EXTERNAL MODULE: ./src/components/widgets/svg.ts
 var svg = __webpack_require__(41173);
+// EXTERNAL MODULE: ./node_modules/blockly/index.js
+var blockly = __webpack_require__(74640);
 ;// CONCATENATED MODULE: ./src/components/blockly/fields/ReactImageField.tsx
 
 
@@ -13925,7 +14146,7 @@ var ReactImageField = /*#__PURE__*/function (_ReactField) {
   var _proto = ReactImageField.prototype;
 
   _proto.setSize = function setSize(width, height) {
-    this.size_ = new (blockly_default()).utils.Size(width, height);
+    this.size_ = new blockly.utils.Size(width, height);
     var img = this.view;
 
     if (img) {
@@ -14371,10 +14592,11 @@ function PointerBoundary(props) {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z8": function() { return /* binding */ VALUE_CHANGE; },
+/* harmony export */   "lo": function() { return /* binding */ UNMOUNT; },
 /* harmony export */   "ZP": function() { return /* binding */ ReactField; },
 /* harmony export */   "_t": function() { return /* binding */ toShadowDefinition; }
 /* harmony export */ });
-/* unused harmony exports SOURCE_BLOCK_CHANGE, MOUNT, UNMOUNT */
+/* unused harmony exports SOURCE_BLOCK_CHANGE, MOUNT */
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(73935);
@@ -14428,6 +14650,7 @@ var ReactField = /*#__PURE__*/function (_ReactFieldBase) {
     _this = _ReactFieldBase.call.apply(_ReactFieldBase, [this].concat(args)) || this;
     _this.SERIALIZABLE = true;
     _this.events = new _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_9__/* .JDEventSource */ .aE();
+    _this.darkMode = "dark";
     return _this;
   }
 
@@ -14556,7 +14779,7 @@ var ReactField = /*#__PURE__*/function (_ReactFieldBase) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_11__/* .WorkspaceProvider */ .W5, {
       field: this
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_DarkModeProvider__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
-      fixedDarkMode: "dark"
+      fixedDarkMode: this.darkMode
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_use_id_hook__WEBPACK_IMPORTED_MODULE_4__/* .IdProvider */ .vc, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_WebAudioContext__WEBPACK_IMPORTED_MODULE_12__/* .WebAudioProvider */ .IH, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_jacdac_Provider__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_AppTheme__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ValueContext__WEBPACK_IMPORTED_MODULE_8__/* .ValueProvider */ .Lt, {
       value: this.value,
       onValueChange: onValueChange
@@ -16064,7 +16287,7 @@ VegaChartField.KEY = "jacdac_field_vega_chart";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ VegaLiteWidget; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
@@ -16072,10 +16295,12 @@ VegaChartField.KEY = "jacdac_field_vega_chart";
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
 /* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(77298);
 /* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(69672);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(42862);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(42862);
 /* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
 /* harmony import */ var _useEffectAsync__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7751);
 /* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(47554);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(81794);
+
 
 
 
@@ -16089,7 +16314,25 @@ VegaChartField.KEY = "jacdac_field_vega_chart";
 
 var VegaLite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(function () {
   return __webpack_require__.e(/* import() */ 7337).then(__webpack_require__.bind(__webpack_require__, 57337));
-});
+}); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+function clone(v) {
+  return v ? JSON.parse(JSON.stringify(v)) : v;
+} // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+function isKV(v) {
+  return !!v && typeof v === "object" && !Array.isArray(v);
+} // eslint-disable-next-line @typescript-eslint/ban-types
+
+
+function jsonMergeFrom(trg, src) {
+  if (!src) return;
+  Object.keys(src).forEach(function (k) {
+    if (isKV(trg[k]) && isKV(src[k])) jsonMergeFrom(trg[k], src[k]);else trg[k] = clone(src[k]);
+  });
+}
+
 function VegaLiteWidget(props) {
   var _vegaData$values;
 
@@ -16107,8 +16350,21 @@ function VegaLiteWidget(props) {
       vegaData = _useState[0],
       setVegaData = _useState[1];
 
+  var settings = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .JSONTryParse */ .ZZ)(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("settings")); // TODO merge json
+
+  var fullSpec = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    if (!settings) return spec;
+    var s = clone(spec);
+    jsonMergeFrom(s, settings);
+    return s;
+  }, [spec, settings]);
+  console.log("vega", {
+    spec: spec,
+    settings: settings,
+    fullSpec: fullSpec
+  });
   (0,_useEffectAsync__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)( /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(mounted) {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(mounted) {
       var sliced;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -16149,7 +16405,7 @@ function VegaLiteWidget(props) {
   }(), [data]);
   if (!(vegaData !== null && vegaData !== void 0 && (_vegaData$values = vegaData.values) !== null && _vegaData$values !== void 0 && _vegaData$values.length) || !spec) return null;
   var renderer = vegaData.values.length < _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_SVG_MAX_ITEMS */ .TP ? "svg" : "canvas";
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     style: {
       background: "#fff",
       borderRadius: "0.25rem"
@@ -16165,7 +16421,7 @@ function VegaLiteWidget(props) {
     },
     width: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_WIDTH */ .xx,
     height: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_HEIGHT */ .Fh,
-    spec: spec,
+    spec: fullSpec,
     data: vegaData,
     renderer: renderer,
     tooltip: true
@@ -16219,6 +16475,8 @@ function VegaLiteWidget(props) {
 /* harmony import */ var _mb_DropoutLayerBlockField__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(63562);
 /* harmony import */ var _mb_FlattenLayerBlockField__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(82584);
 /* harmony import */ var _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(35121);
+/* harmony import */ var _JSONSettingsField__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(68494);
+
 
 
 
@@ -16273,7 +16531,7 @@ function registerFields() {
     if (fieldType.SHADOW) reactFieldShadows.push(fieldType.SHADOW);
   };
 
-  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _chart_BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _chart_HistogramField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, _mb_ExpandModelBlockField__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, _mb_DataSetBlockField__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, _mb_RecordingBlockField__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, _mb_SmoothingBlockField__WEBPACK_IMPORTED_MODULE_28__/* .default */ .Z, _mb_KNNBlockField__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z, _mb_NeuralNetworkBlockField__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, _mb_ConvLayerBlockField__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, _mb_PoolingLayerBlockField__WEBPACK_IMPORTED_MODULE_32__/* .default */ .Z, _mb_DropoutLayerBlockField__WEBPACK_IMPORTED_MODULE_33__/* .default */ .Z, _mb_FlattenLayerBlockField__WEBPACK_IMPORTED_MODULE_34__/* .default */ .Z, _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_35__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z];
+  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, _chart_BarField__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, _chart_HistogramField__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, _mb_ExpandModelBlockField__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, _mb_DataSetBlockField__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, _mb_RecordingBlockField__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, _mb_SmoothingBlockField__WEBPACK_IMPORTED_MODULE_28__/* .default */ .Z, _mb_KNNBlockField__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z, _mb_NeuralNetworkBlockField__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, _mb_ConvLayerBlockField__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, _mb_PoolingLayerBlockField__WEBPACK_IMPORTED_MODULE_32__/* .default */ .Z, _mb_DropoutLayerBlockField__WEBPACK_IMPORTED_MODULE_33__/* .default */ .Z, _mb_FlattenLayerBlockField__WEBPACK_IMPORTED_MODULE_34__/* .default */ .Z, _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_35__/* .default */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, _JSONSettingsField__WEBPACK_IMPORTED_MODULE_36__/* .default */ .Z];
   fieldTypes.forEach(registerType);
 }
 function fieldShadows() {

@@ -69780,7 +69780,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "9e65422f576b53686c12353e742f0cc180048e16";
+  var sha = "f79a0c92f8a89c236d2c1a7beea92b44aa62a111";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74295,6 +74295,10 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
 
   var _proto = JDDevice.prototype;
 
+  /**
+   * Gets a description of the device.
+   * @returns a descriptive string for this device
+   */
   _proto.describe = function describe() {
     var ignoredServices = [constants/* SRV_CONTROL */.gm9, constants/* SRV_LOGGER */.w9j];
     return this.toString() + (this.physical ? "" : " (sim)") + ": " + this.services().filter(function (srv) {
@@ -74325,7 +74329,13 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     }
 
     return false;
-  };
+  }
+  /**
+   * Gets or allocates a pipe port
+   * @param id identifier of the port
+   * @returns a pipe port
+   */
+  ;
 
   _proto.port = function port(id) {
     if (!this._ports) this._ports = {};
@@ -74421,7 +74431,11 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
       return s.isMixin === mixins;
     });
     return r;
-  };
+  }
+  /**
+   * Gets the list of child services.
+   */
+  ;
 
   _proto.sendCtrlCommand = function sendCtrlCommand(cmd, payload) {
     if (payload === void 0) {
@@ -74799,26 +74813,47 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
 
       return !!((_this$_servicesData = this._servicesData) !== null && _this$_servicesData !== void 0 && _this$_servicesData.length);
     }
+    /**
+     * Gets the control announce flag from the annouce packet.
+     */
+
   }, {
     key: "announceFlags",
     get: function get() {
       return this._servicesData ? (0,utils/* read16 */.gI)(this._servicesData, 0) : 0;
     }
+    /**
+     * Gets the restart counter from the announce packet.
+     */
+
   }, {
     key: "restartCounter",
     get: function get() {
       return this.announceFlags & constants/* ControlAnnounceFlags.RestartCounterSteady */.P99.RestartCounterSteady;
     }
+    /**
+     * Gets the status light announce flags from the announce packet.
+     */
+
   }, {
     key: "statusLightFlags",
     get: function get() {
       return this.announceFlags & constants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade;
     }
+    /**
+     * Indicates if the device is announced as a client
+     */
+
   }, {
     key: "isClient",
     get: function get() {
       return !!(this.announceFlags & constants/* ControlAnnounceFlags.IsClient */.P99.IsClient);
     }
+    /**
+     * Gets the number of packets sent since the last announce packet,
+     * as read from the announce packet.
+     */
+
   }, {
     key: "packetCount",
     get: function get() {
@@ -74833,16 +74868,28 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
       if (!this._shortId) this._shortId = (0,pretty/* shortDeviceId */.xV)(this.deviceId);
       return this._shortId;
     }
+    /**
+     * Gets the bus instance hosting this device.
+     */
+
   }, {
     key: "parent",
     get: function get() {
       return this.bus;
     }
+    /**
+     * Gets the firmware information if any.
+     */
+
   }, {
     key: "firmwareInfo",
     get: function get() {
       return this._firmwareInfo;
-    },
+    }
+    /**
+     * Sets the firmware information.
+     */
+    ,
     set: function set(info) {
       var changed = JSON.stringify(this._firmwareInfo) !== JSON.stringify(info);
 
@@ -74854,13 +74901,21 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
         this.emit(constants/* CHANGE */.Ver);
       }
     }
+    /**
+     * Indicates if no packet from this device has been observed in a while.
+     */
+
   }, {
     key: "lost",
     get: function get() {
       return this._lost;
-    },
+    }
+    /**
+     * Sets the lost status
+     */
+    ,
     set: function set(v) {
-      if (!!v === this.lost) return; // something changed
+      if (!!v === this._lost) return; // something changed
 
       this._lost = !!v;
 
