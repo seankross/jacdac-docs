@@ -69780,7 +69780,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "9402a3deedb8c6f861500e28ed8bacf30eaf754b";
+  var sha = "9ba67bc23a7161912c6344767dccc0ccbef7573c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71069,8 +71069,6 @@ function MainAppBar() {
 
 
 
-
-
 var DataEditorAppBar_useStyles = (0,makeStyles/* default */.Z)(function (theme) {
   return (0,createStyles/* default */.Z)({
     grow: {
@@ -71113,14 +71111,13 @@ function DataEditorAppBar() {
     to: "/editors/data/"
   }, "Data Science Editor (Experimental)"))), /*#__PURE__*/react.createElement("div", {
     className: classes.grow
-  }), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+  }), /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     className: classes.menuButton,
-    "aria-label": "Discussions",
-    title: "Discussions",
-    edge: "start",
+    "aria-label": "Send feedback in our forums",
+    title: "Send feedback in our forums",
     color: "inherit",
-    to: "https://github.com/microsoft/jacdac/discussions/categories/data-editor"
-  }, /*#__PURE__*/react.createElement(Forum/* default */.Z, null))))));
+    href: "https://github.com/microsoft/jacdac/discussions/categories/data-editor"
+  }, "Feedback")))));
 }
 ;// CONCATENATED MODULE: ./src/components/layout.tsx
 
