@@ -10060,20 +10060,18 @@ var axisSchema = {
     }
   }
 };
-var axisNumberSchema = {
+var scaleSchema = {
   type: "object",
   properties: {
-    title: {
-      type: "string",
-      title: "Title"
-    },
-    min: {
+    domainMin: {
       type: "number",
-      title: "Domain minimum"
+      title: "minimum",
+      description: "Sets the minimum value in the scale domain"
     },
-    max: {
+    domainMax: {
       type: "number",
-      title: "Domain maximum"
+      title: "maximum",
+      description: "Sets the maximum value in the scale domain"
     }
   }
 };
@@ -10086,7 +10084,8 @@ var encodingSettingsSchema = {
 var encodingNumberSettingsSchema = {
   type: "object",
   properties: {
-    axis: axisNumberSchema
+    scale: scaleSchema,
+    axis: axisSchema
   }
 };
 var char2DSettingsSchema = {
