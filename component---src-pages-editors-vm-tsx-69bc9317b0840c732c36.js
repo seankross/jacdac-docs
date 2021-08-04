@@ -4537,7 +4537,12 @@ var TwinField = __webpack_require__(35361);
 var servicesbase = __webpack_require__(21910);
 // EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdspec.ts
 var jdspec = __webpack_require__(13996);
+// EXTERNAL MODULE: ./src/components/blockly/dsl/workers/data.proxy.ts
+var data_proxy = __webpack_require__(21190);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/servicesdsl.ts
+
+
+
 
 
 
@@ -4552,6 +4557,7 @@ var jdspec = __webpack_require__(13996);
 var SET_STATUS_LIGHT_BLOCK = "jacdac_set_status_light";
 var ROLE_BOUND_EVENT_BLOCK = "jacdac_role_bound_event";
 var ROLE_BOUND_BLOCK = "jacdac_role_bound";
+var RECORD_WINDOW_BLOCK = "jacdac_record_window";
 var INSPECT_BLOCK = "jacdac_tools_inspect";
 var commandColor = "#8c6a1d";
 var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDSL) {
@@ -4878,6 +4884,50 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
       tooltip: "Inspect a service",
       helpUrl: "",
       template: "meta"
+    }, {
+      kind: "block",
+      type: RECORD_WINDOW_BLOCK,
+      message0: "record last %1 s",
+      args0: [{
+        type: "field_number",
+        name: "horizon",
+        value: 10
+      }],
+      inputsInline: false,
+      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+      colour: toolbox/* toolsColour */.FR,
+      template: "meta",
+      dataPreviewField: true,
+      transformData: function () {
+        var _transformData = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(block, data, previousData) {
+          var horizon;
+          return regenerator_default().wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  horizon = block.getFieldValue("horizon") || 10;
+                  return _context.abrupt("return", (0,data_proxy/* default */.Z)({
+                    type: "record_window",
+                    data: data,
+                    previousData: previousData,
+                    horizon: horizon
+                  }));
+
+                case 2:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+
+        function transformData(_x, _x2, _x3) {
+          return _transformData.apply(this, arguments);
+        }
+
+        return transformData;
+      }()
     }];
     return [].concat((0,toConsumableArray/* default */.Z)(this._serviceBlocks), (0,toConsumableArray/* default */.Z)(this._eventFieldBlocks), (0,toConsumableArray/* default */.Z)(this._roleBlocks), toolsBlocks);
   };
@@ -4913,6 +4963,9 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
       contents: [{
         kind: "block",
         type: toolbox/* TWIN_BLOCK */.Zt
+      }, {
+        kind: "block",
+        type: RECORD_WINDOW_BLOCK
       }, {
         kind: "block",
         type: INSPECT_BLOCK
@@ -5102,12 +5155,7 @@ var LogViewField = __webpack_require__(86899);
 var VariablesFields = __webpack_require__(15757);
 // EXTERNAL MODULE: ./src/components/blockly/fields/WatchValueField.tsx
 var WatchValueField = __webpack_require__(2006);
-// EXTERNAL MODULE: ./src/components/blockly/dsl/workers/data.proxy.ts
-var data_proxy = __webpack_require__(21190);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/toolsdsl.ts
-
-
-
 
 
 
@@ -5118,7 +5166,6 @@ var WATCH_BLOCK = "tools_watch";
 var LOG_BLOCK = "tools_log";
 var VIEW_LOG_BLOCK = "tools_log_view";
 var VARIABLES_BLOCK = "tools_variables_view";
-var RECORD_WINDOW_BLOCK = "tools_record_window";
 var colour = toolbox/* toolsColour */.FR;
 var toolsDSL = {
   id: "tools",
@@ -5183,50 +5230,6 @@ var toolsDSL = {
       inputsInline: false,
       tooltip: "View console content",
       template: "meta"
-    }, {
-      kind: "block",
-      type: RECORD_WINDOW_BLOCK,
-      message0: "record last %1 s",
-      args0: [{
-        type: "field_number",
-        name: "horizon",
-        value: 10
-      }],
-      inputsInline: false,
-      previousStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
-      colour: colour,
-      template: "meta",
-      dataPreviewField: true,
-      transformData: function () {
-        var _transformData = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(block, data, previousData) {
-          var horizon;
-          return regenerator_default().wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  horizon = block.getFieldValue("horizon") || 10;
-                  return _context.abrupt("return", (0,data_proxy/* default */.Z)({
-                    type: "record_window",
-                    data: data,
-                    previousData: previousData,
-                    horizon: horizon
-                  }));
-
-                case 2:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee);
-        }));
-
-        function transformData(_x, _x2, _x3) {
-          return _transformData.apply(this, arguments);
-        }
-
-        return transformData;
-      }()
     }];
   },
   createCategory: function createCategory() {
@@ -5258,9 +5261,6 @@ var toolsDSL = {
       }, {
         kind: "block",
         type: VIEW_LOG_BLOCK
-      }, {
-        kind: "block",
-        type: RECORD_WINDOW_BLOCK
       }]
     }, {
       kind: "sep"
