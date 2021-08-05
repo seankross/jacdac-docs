@@ -11463,7 +11463,10 @@ function CopyButton(props) {
 var csv_proxy = __webpack_require__(53480);
 // EXTERNAL MODULE: ./src/components/blockly/fields/tidy.ts
 var tidy = __webpack_require__(47554);
+// EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdspec.ts
+var jdspec = __webpack_require__(13996);
 ;// CONCATENATED MODULE: ./src/components/blockly/fields/DataTableWidget.tsx
+
 
 
 
@@ -11622,7 +11625,7 @@ function DataTableWidget(props) {
   }, /*#__PURE__*/react.createElement("thead", null, /*#__PURE__*/react.createElement("tr", null, columns.map(function (c) {
     return /*#__PURE__*/react.createElement("th", {
       key: c
-    }, c);
+    }, (0,jdspec/* humanify */.lW)(c));
   }))), /*#__PURE__*/react.createElement("tbody", null, table.map(function (r, i) {
     return /*#__PURE__*/react.createElement("tr", {
       key: r.id || i

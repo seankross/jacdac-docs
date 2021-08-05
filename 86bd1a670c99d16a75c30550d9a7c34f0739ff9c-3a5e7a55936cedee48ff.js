@@ -924,6 +924,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_DATASET_BUILTIN_BLOCK,
       message0: "dataset %1",
+      tooltip: "Loads a builtin dataset",
       args0: [{
         type: _fields_BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "dataset"
