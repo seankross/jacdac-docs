@@ -69780,7 +69780,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "b96dbb079141d7f8e192af4baa5d3a3ac75a08a8";
+  var sha = "bc1bd607720f606021074e6c9c961fe15003c397";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -83313,6 +83313,7 @@ module.exports = [{
     "plugins": [],
     "name": "Jacdac - plug-n-play for microcontrollers",
     "short_name": "Jacdac",
+    "description": "Jacdac is a plug-and-play hardware and software stack for microcontrollers and their peripherals such as sensors and actuators. Jacdac is primarily designed for “modular electronics” scenarios that support rapid prototyping, creative exploration, making and learning through physical computing. Jacdac is designed to be cheap, flexible and extensible.",
     "start_url": "/",
     "background_color": "#ffc400",
     "theme_color": "#ffc400",
