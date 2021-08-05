@@ -494,7 +494,7 @@ exports.Z = _default;
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* unused harmony export resolveUsedDataVariables */
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
@@ -506,14 +506,16 @@ exports.Z = _default;
 /* harmony import */ var _fields_FileSaveField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(4383);
 /* harmony import */ var _workers_csv_proxy__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(53480);
 /* harmony import */ var _fields_FileOpenField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(39311);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(74602);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(74602);
 /* harmony import */ var _fields_tidy__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(47554);
 /* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(54741);
 /* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(16229);
+/* harmony import */ var _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(88533);
 
 
 
 /* eslint-disable @typescript-eslint/ban-types */
+
 
 
 
@@ -548,7 +550,7 @@ var DATA_LINEAR_REGRESSION_BLOCK = "data_linear_regression";
 var DATA_LOAD_FILE_BLOCK = "data_load_file";
 var DATA_SAVE_FILE_BLOCK = "data_save_file";
 
-var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z)(),
+var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z)(),
     datasetColour = _palette[0],
     operatorsColour = _palette[1],
     computeColour = _palette[2],
@@ -707,7 +709,9 @@ var dataDsl = {
         options: [[">", "gt"], ["<", "lt"], [">=", "ge"], ["<=", "le"], ["==", "eq"], ["!=", "ne"]]
       }, {
         type: "field_input",
-        name: "rhs"
+        name: "rhs",
+        spellcheck: false,
+        text: "0"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -733,7 +737,8 @@ var dataDsl = {
       colour: computeColour,
       args0: [{
         type: "field_input",
-        name: "newcolumn"
+        name: "newcolumn",
+        spellcheck: false
       }, {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "lhs",
@@ -773,7 +778,8 @@ var dataDsl = {
       colour: computeColour,
       args0: [{
         type: "field_input",
-        name: "newcolumn"
+        name: "newcolumn",
+        spellcheck: false
       }, {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
         name: "lhs",
@@ -877,7 +883,9 @@ var dataDsl = {
       args0: [{
         type: "field_number",
         name: "count",
-        min: 1
+        min: 1,
+        precision: 1,
+        value: 100
       }, {
         type: "field_dropdown",
         name: "operator",
@@ -924,6 +932,7 @@ var dataDsl = {
       kind: "block",
       type: DATA_DATASET_BUILTIN_BLOCK,
       message0: "dataset %1",
+      tooltip: "Loads a builtin dataset",
       args0: [{
         type: _fields_BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_2__/* .default.KEY */ .Z.KEY,
         name: "dataset"
@@ -1007,7 +1016,7 @@ var dataDsl = {
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
-        var _transformData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(b, data) {
+        var _transformData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(b, data) {
           var column;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
             while (1) {
@@ -1046,14 +1055,14 @@ var dataDsl = {
     }, {
       kind: "block",
       type: DATA_CORRELATION_BLOCK,
-      message0: "correlation %1 %2 %3 %4 %5",
+      message0: "correlation of %1 %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
-        name: "column1",
+        name: "x",
         dataType: "number"
       }, {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
-        name: "column2",
+        name: "y",
         dataType: "number"
       }, {
         type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
@@ -1073,15 +1082,16 @@ var dataDsl = {
       colour: statisticsColour,
       template: "meta",
       dataPreviewField: false,
+      passthroughData: true,
       transformData: function () {
-        var _transformData2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(b, data) {
+        var _transformData2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(b, data) {
           var column1, column2;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
-                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column1", "number");
-                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column2", "number");
+                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "x", "number");
+                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "y", "number");
 
                   if (!(!column1 || !column2)) {
                     _context2.next = 4;
@@ -1115,14 +1125,14 @@ var dataDsl = {
     }, {
       kind: "block",
       type: DATA_LINEAR_REGRESSION_BLOCK,
-      message0: "linear regression %1 %2 %3 %4 %5",
+      message0: "linear regression of x %1 y %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
-        name: "column1",
+        name: "x",
         dataType: "number"
       }, {
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
-        name: "column2",
+        name: "y",
         dataType: "number"
       }, {
         type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
@@ -1131,10 +1141,9 @@ var dataDsl = {
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_10__/* .default.KEY */ .Z.KEY,
-        name: "table",
-        transformed: true,
-        small: true
+        type: _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_12__/* .default.KEY */ .Z.KEY,
+        name: "plot",
+        linearRegression: true
       }],
       inputsInline: false,
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -1142,15 +1151,16 @@ var dataDsl = {
       colour: statisticsColour,
       template: "meta",
       dataPreviewField: false,
+      passthroughData: true,
       transformData: function () {
-        var _transformData3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(b, data) {
+        var _transformData3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(b, data) {
           var column1, column2;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
             while (1) {
               switch (_context3.prev = _context3.next) {
                 case 0:
-                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column1", "number");
-                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column2", "number");
+                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "x", "number");
+                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "y", "number");
 
                   if (!(!column1 || !column2)) {
                     _context3.next = 4;
@@ -1210,7 +1220,7 @@ var dataDsl = {
       inputsInline: false,
       dataPreviewField: "after",
       transformData: function () {
-        var _transformData4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(block, data) {
+        var _transformData4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(block, data) {
           var file;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
             while (1) {

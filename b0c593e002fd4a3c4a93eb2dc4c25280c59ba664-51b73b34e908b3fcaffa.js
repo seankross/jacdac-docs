@@ -7116,7 +7116,7 @@ function registerDataSolver(block) {
     var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
       var _block$nextConnection, _block$childBlocks_;
 
-      var next, nextServices, newData;
+      var next, nextServices, newData, def;
       return regenerator_default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -7151,23 +7151,26 @@ function registerDataSolver(block) {
               newData = _context.sent;
 
             case 12:
-              // propagte
-              services.transformedData = newData;
+              // propagate
+              services.transformedData = newData; // check if pass through
+
+              def = (0,toolbox/* resolveBlockDefinition */.Pq)(block.type);
+              if (def !== null && def !== void 0 && def.passthroughData) newData = services.data;
               if (nextServices) nextServices.data = newData;
-              _context.next = 19;
+              _context.next = 21;
               break;
 
-            case 16:
-              _context.prev = 16;
+            case 18:
+              _context.prev = 18;
               _context.t0 = _context["catch"](4);
               console.debug(_context.t0);
 
-            case 19:
+            case 21:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[4, 16]]);
+      }, _callee, null, [[4, 18]]);
     }));
 
     return function applyTransform() {
@@ -10135,6 +10138,7 @@ var chartDsl = {
     return [{
       kind: "block",
       type: CHART_SHOW_TABLE_BLOCK,
+      tooltip: "Displays the block data as a table",
       message0: "show table %1 %2 %3 %4 %5 %6",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
@@ -10164,6 +10168,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: SCATTERPLOT_BLOCK,
+      tooltip: "Renders the block data in a scatter plot",
       message0: "scatterplot of x %1 y %2 size %3 group %4 %5 %6 %7",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
@@ -10200,6 +10205,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: BARCHART_BLOCK,
+      tooltip: "Renders the block data in a bar chart",
       message0: "bar chart of index %1 value %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
@@ -10228,6 +10234,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: LINEPLOT_BLOCK,
+      tooltip: "Renders the block data in a line chart",
       message0: "line chart of x %1 y %2 group %3 %4 %5 %6",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
@@ -10260,6 +10267,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: HEATMAP_BLOCK,
+      tooltip: "Renders the block data in a 2D heatmap",
       message0: "heatmap of x %1 y %2 color %3 %4 %5 %6",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
@@ -10292,6 +10300,7 @@ var chartDsl = {
     }, {
       kind: "block",
       type: HISTOGRAM_BLOCK,
+      tooltip: "Renders the block data as a histogram",
       message0: "histogram of %1 group %2 %3 %4 %5",
       args0: [{
         type: _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__/* .default.KEY */ .Z.KEY,
@@ -11070,18 +11079,20 @@ BuiltinDataSetField.KEY = "jacdac_field_data_builtin_dataset";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ DataColumnChooserField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85061);
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(85061);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
 /* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(47554);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13996);
+
 
 
 
 
 
 var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(DataColumnChooserField, _FieldDropdown);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(DataColumnChooserField, _FieldDropdown);
 
   DataColumnChooserField.fromJson = function fromJson(options) {
     return new DataColumnChooserField(options);
@@ -11119,10 +11130,10 @@ var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
     var options = headers.filter(function (h, i) {
       return !_this2.dataType || types[i] === _this2.dataType;
     }).map(function (h) {
-      return [h, h];
+      return [(0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_2__/* .humanify */ .lW)(h), h];
     }) || [];
     var value = this.getValue();
-    return options.length < 1 ? [[value || "", value || ""]] : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(options), [["", ""]]);
+    return options.length < 1 ? [[(0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_2__/* .humanify */ .lW)(value || ""), value || ""]] : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(options), [["", ""]]);
   };
 
   _proto.doClassValidation_ = function doClassValidation_(newValue) {
@@ -15866,7 +15877,6 @@ function BarWidget() {
     sliceMax: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_MAX_ITEMS */ .kC
   };
   var spec = {
-    description: "Bar plot of " + index + " x " + value,
     mark: {
       type: "bar",
       cornerRadius: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_CORNER_RADIUS */ .Fd,
@@ -15957,7 +15967,6 @@ function BoxPlotWidget() {
   var value = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("value"), "number");
   if (!index || !value) return null;
   var spec = {
-    description: "Box plot of " + index,
     mark: {
       type: "boxplot",
       cornerRadius: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_CORNER_RADIUS */ .Fd,
@@ -16153,7 +16162,6 @@ function HistogramWidget() {
   var index = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("index"));
   if (!index) return null;
   var spec = {
-    description: "Histogram of " + index,
     mark: {
       type: "bar",
       cornerRadius: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .BAR_CORNER_RADIUS */ .Fd,
@@ -16245,7 +16253,6 @@ function LinePlotWidget() {
     sliceHead: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .LINE_MAX_ITEMS */ .bH
   };
   var spec = {
-    description: "Line plot of " + x + "x" + y,
     mark: {
       type: "line",
       point: true,
@@ -16314,7 +16321,7 @@ LinePlotField.KEY = "jacdac_field_line_plot";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ ScatterPlotField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(41788);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(89801);
 /* harmony import */ var _ReactInlineField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12702);
@@ -16322,6 +16329,7 @@ LinePlotField.KEY = "jacdac_field_line_plot";
 /* harmony import */ var _VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11961);
 /* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47554);
 /* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
+/* harmony import */ var _jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(13996);
 
 
 
@@ -16331,12 +16339,16 @@ LinePlotField.KEY = "jacdac_field_line_plot";
 
 
 
-function ScatterPlotWidget() {
+
+function ScatterPlotWidget(props) {
+  var linearRegression = props.linearRegression;
+
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_WorkspaceContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .ZP),
       sourceBlock = _useContext.sourceBlock;
 
   var _useBlockData = (0,_useBlockData__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(sourceBlock),
-      data = _useBlockData.data;
+      data = _useBlockData.data,
+      transformedData = _useBlockData.transformedData;
 
   var x = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("x"), "number");
   var y = (0,_tidy__WEBPACK_IMPORTED_MODULE_5__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("y"), "number");
@@ -16344,9 +16356,9 @@ function ScatterPlotWidget() {
   if (!x || !y) return null;
   var sliceOptions = {
     sliceSample: _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .SCATTER_MAX_ITEMS */ .VN
-  };
+  }; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   var spec = {
-    description: "Scatter plot of " + x + "x" + y,
     mark: {
       type: "point",
       filled: true,
@@ -16358,18 +16370,17 @@ function ScatterPlotWidget() {
         type: "quantitative",
         scale: {
           zero: false
-        }
+        },
+        title: (0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_7__/* .humanify */ .lW)(x)
       },
       y: {
         field: y,
+        title: (0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_7__/* .humanify */ .lW)(y),
         type: "quantitative",
         scale: {
           zero: false
         }
       }
-    },
-    data: {
-      name: "values"
     }
   };
   if (size) spec.encoding.size = {
@@ -16379,6 +16390,40 @@ function ScatterPlotWidget() {
       zero: false
     }
   };
+
+  if (linearRegression) {
+    var _ref = (transformedData === null || transformedData === void 0 ? void 0 : transformedData[0]) || {},
+        slope = _ref.slope,
+        intercept = _ref.intercept;
+
+    spec = {
+      title: slope !== undefined ? "slope: " + slope + ", intercept: " + intercept : undefined,
+      layer: [spec, {
+        mark: {
+          type: "line",
+          color: "firebrick"
+        },
+        transform: [{
+          regression: y,
+          on: x
+        }],
+        encoding: {
+          x: {
+            field: x,
+            type: "quantitative"
+          },
+          y: {
+            field: y,
+            type: "quantitative"
+          }
+        }
+      }]
+    };
+  }
+
+  spec.data = {
+    name: "values"
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_VegaLiteWidget__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
     spec: spec,
     slice: sliceOptions
@@ -16386,7 +16431,7 @@ function ScatterPlotWidget() {
 }
 
 var ScatterPlotField = /*#__PURE__*/function (_ReactInlineField) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(ScatterPlotField, _ReactInlineField);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)(ScatterPlotField, _ReactInlineField);
 
   ScatterPlotField.fromJson = function fromJson(options) {
     return new ScatterPlotField(options);
@@ -16398,13 +16443,16 @@ var ScatterPlotField = /*#__PURE__*/function (_ReactInlineField) {
 
     _this = _ReactInlineField.call(this, options) || this;
     _this.EDITABLE = false;
+    _this.linearRegression = !!(options !== null && options !== void 0 && options.linearRegression);
     return _this;
   }
 
   var _proto = ScatterPlotField.prototype;
 
   _proto.renderInlineField = function renderInlineField() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ScatterPlotWidget, null);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ScatterPlotWidget, {
+      linearRegression: this.linearRegression
+    });
   };
 
   return ScatterPlotField;
@@ -16499,7 +16547,7 @@ VegaChartField.KEY = "jacdac_field_vega_chart";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ VegaLiteWidget; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
@@ -16507,11 +16555,13 @@ VegaChartField.KEY = "jacdac_field_vega_chart";
 /* harmony import */ var _useBlockData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53851);
 /* harmony import */ var _PointerBoundary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(77298);
 /* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(69672);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(42862);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(42862);
 /* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16582);
 /* harmony import */ var _useEffectAsync__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7751);
 /* harmony import */ var _tidy__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(47554);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(81794);
+/* harmony import */ var _jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(13996);
+
 
 
 
@@ -16577,6 +16627,13 @@ function VegaLiteWidget(props) {
   var fullSpec = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     if (!settings) return spec;
     var s = clone(spec);
+    if (s.encoding) Object.values(s.encoding) // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .filter(function (e) {
+      return !e.title;
+    }) // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .forEach(function (e) {
+      return e.title = (0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_10__/* .humanify */ .lW)(e.field);
+    });
     jsonMergeFrom(s, settings);
 
     if (Object.values(s.encoding || {}).some( // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16602,7 +16659,7 @@ function VegaLiteWidget(props) {
     return s;
   }, [spec, group, settings]);
   (0,_useEffectAsync__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)( /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(mounted) {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(mounted) {
       var sliced;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -16643,7 +16700,7 @@ function VegaLiteWidget(props) {
   }(), [data]);
   if (!(vegaData !== null && vegaData !== void 0 && (_vegaData$values = vegaData.values) !== null && _vegaData$values !== void 0 && _vegaData$values.length) || !spec) return null;
   var renderer = vegaData.values.length < _toolbox__WEBPACK_IMPORTED_MODULE_6__/* .CHART_SVG_MAX_ITEMS */ .TP ? "svg" : "canvas";
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     style: {
       background: "#fff",
       borderRadius: "0.25rem"

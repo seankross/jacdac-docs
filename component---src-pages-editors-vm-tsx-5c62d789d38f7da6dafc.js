@@ -5830,7 +5830,8 @@ var jsonDSL = {
       message0: "%1: %2",
       args0: [{
         type: "field_input",
-        name: "name"
+        name: "name",
+        spellcheck: false
       }, {
         type: "input_value",
         name: "value",
@@ -5850,7 +5851,8 @@ var jsonDSL = {
           check: toolbox/* JSON_TYPE */.oj
         }, {
           type: "field_input",
-          name: "name"
+          name: "name",
+          spellcheck: false
         }],
         output: output,
         colour: jsondsl_colour,
@@ -5870,7 +5872,8 @@ var jsonDSL = {
         check: toolbox/* JSON_TYPE */.oj
       }, {
         type: "field_input",
-        name: "name"
+        name: "name",
+        spellcheck: false
       }],
       output: toolbox/* BOOLEAN_TYPE */.lu,
       colour: jsondsl_colour,
