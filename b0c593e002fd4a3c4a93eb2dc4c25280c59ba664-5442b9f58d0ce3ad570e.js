@@ -16648,10 +16648,12 @@ function VegaLiteWidget(props) {
     if (group) {
       s.encoding.color = {
         field: group,
+        title: (0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_10__/* .humanify */ .lW)(group),
         type: "nominal"
       };
       s.encoding.strokeDash = {
         field: group,
+        title: (0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_10__/* .humanify */ .lW)(group),
         type: "nominal"
       };
     }
