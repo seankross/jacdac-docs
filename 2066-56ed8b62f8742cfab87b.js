@@ -3091,12 +3091,15 @@ var handlers = {
         data = props.data;
     if (!column || !by || !calc) return data;
     var summarizer = summarizers[calc];
-    if (!summarizer) return data; // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
+    if (!summarizer) return data;
     var items = {};
     items[column] = summarizer(column);
-    return tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    groupBy(by, [_summarize3(summarizer)]));
+    var res = tidy(data, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    groupBy(by, [_summarize3(items)]));
+    console.debug("summarize by group", {
+      res: res
+    });
+    return res;
   },
   count: function count(props) {
     var column = props.column,
