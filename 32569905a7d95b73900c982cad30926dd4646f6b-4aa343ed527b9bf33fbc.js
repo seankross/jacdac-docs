@@ -255,7 +255,10 @@ var FileSystem = /*#__PURE__*/function (_FileSystemNode) {
     },
     set: function set(d) {
       if (d !== this._workingFile) {
+        var _this$_workingFile;
+
         this._workingFile = d;
+        this._workingDirectory = (_this$_workingFile = this._workingFile) === null || _this$_workingFile === void 0 ? void 0 : _this$_workingFile.parentDirectory;
         this.emit(constants/* CHANGE */.Ver);
       }
     }
