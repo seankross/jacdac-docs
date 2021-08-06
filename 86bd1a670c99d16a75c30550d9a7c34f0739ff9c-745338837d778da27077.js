@@ -494,7 +494,7 @@ exports.Z = _default;
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* unused harmony export resolveUsedDataVariables */
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
@@ -503,19 +503,21 @@ exports.Z = _default;
 /* harmony import */ var _fields_DataColumnChooserField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(44393);
 /* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16582);
 /* harmony import */ var _workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(21190);
-/* harmony import */ var _fields_FileSaveField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(4383);
-/* harmony import */ var _workers_csv_proxy__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(53480);
-/* harmony import */ var _fields_FileOpenField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(39311);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(74602);
-/* harmony import */ var _fields_tidy__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(47554);
-/* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(54741);
-/* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(16229);
-/* harmony import */ var _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(88533);
-/* harmony import */ var _fs_fs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(31396);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(89801);
+/* harmony import */ var _fields_FileSaveField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4383);
+/* harmony import */ var _workers_csv_proxy__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(53480);
+/* harmony import */ var _fields_FileOpenField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(39311);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(74602);
+/* harmony import */ var _fields_tidy__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(47554);
+/* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(54741);
+/* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(16229);
+/* harmony import */ var _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(88533);
+/* harmony import */ var _fs_fs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(31396);
 
 
 
 /* eslint-disable @typescript-eslint/ban-types */
+
 
 
 
@@ -553,7 +555,7 @@ var DATA_LINEAR_REGRESSION_BLOCK = "data_linear_regression";
 var DATA_LOAD_FILE_BLOCK = "data_load_file";
 var DATA_SAVE_FILE_BLOCK = "data_save_file";
 
-var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(),
+var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(),
     datasetColour = _palette[0],
     operatorsColour = _palette[1],
     computeColour = _palette[2],
@@ -584,7 +586,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
+        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
         var order = b.getFieldValue("order");
         var descending = order === "descending";
         if (!column) return Promise.resolve(data);
@@ -616,7 +618,7 @@ var dataDsl = {
       dataPreviewField: true,
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3].map(function (column) {
-          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
+          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
@@ -651,7 +653,7 @@ var dataDsl = {
       dataPreviewField: true,
       transformData: function transformData(b, data) {
         var columns = [1, 2, 3, 4].map(function (column) {
-          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
+          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
@@ -684,7 +686,7 @@ var dataDsl = {
       dataPreviewField: true,
       transformData: function transformData(b, data) {
         var columns = [1, 2].map(function (column) {
-          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
+          return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column" + column);
         }).filter(function (c) {
           return !!c;
         });
@@ -720,7 +722,7 @@ var dataDsl = {
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
       dataPreviewField: true,
       transformData: function transformData(b, data) {
-        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
+        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
         var logic = b.getFieldValue("logic");
         var rhs = b.getFieldValue("rhs");
         if (!column) return Promise.resolve(data);
@@ -760,8 +762,8 @@ var dataDsl = {
       dataPreviewField: true,
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
-        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
-        var rhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "rhs", "number");
+        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
+        var rhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "rhs", "number");
         var logic = b.getFieldValue("logic");
         if (newcolumn || !lhs || !rhs) return Promise.resolve(data);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
@@ -801,7 +803,7 @@ var dataDsl = {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
         var newcolumn = b.getFieldValue("newcolumn");
-        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
+        var lhs = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "lhs", "number");
         var rhs = b.getFieldValue("rhs");
         var logic = b.getFieldValue("logic");
         if (newcolumn || !lhs) return Promise.resolve(data);
@@ -834,7 +836,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var columns = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumns */ .QZ)(data, b, "column", "number");
+        var columns = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumns */ .QZ)(data, b, "column", "number");
         var calc = b.getFieldValue("calc");
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "summarize",
@@ -865,8 +867,8 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
-        var by = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "by");
+        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
+        var by = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "by");
         var calc = b.getFieldValue("calc");
         if (!by) return Promise.resolve([]);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
@@ -901,7 +903,7 @@ var dataDsl = {
       transformData: function transformData(b, data) {
         var count = b.getFieldValue("count");
         var operator = b.getFieldValue("operator");
-        return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidySlice */ .HA)(data, {
+        return (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidySlice */ .HA)(data, {
           sliceHead: operator === "head" ? count : undefined,
           sliceTail: operator === "tail" ? count : undefined,
           sliceSample: operator === "sample" ? count : undefined
@@ -922,7 +924,7 @@ var dataDsl = {
       dataPreviewField: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformData: function transformData(b, data) {
-        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
+        var column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column");
         if (!column) return Promise.resolve([]);
         return (0,_workers_data_proxy__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)({
           type: "count",
@@ -1019,13 +1021,13 @@ var dataDsl = {
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
-        var _transformData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(b, data) {
+        var _transformData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(b, data) {
           var column;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column", "number");
+                  column = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "column", "number");
 
                   if (column) {
                     _context.next = 3;
@@ -1068,13 +1070,13 @@ var dataDsl = {
         name: "y",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_12__/* .default.KEY */ .Z.KEY,
         name: "preview",
         compare: true
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_10__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataTableField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
         name: "table",
         transformed: true,
         small: true
@@ -1087,14 +1089,14 @@ var dataDsl = {
       dataPreviewField: false,
       passthroughData: true,
       transformData: function () {
-        var _transformData2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(b, data) {
+        var _transformData2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(b, data) {
           var column1, column2;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
-                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "x", "number");
-                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "y", "number");
+                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "x", "number");
+                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "y", "number");
 
                   if (!(!column1 || !column2)) {
                     _context2.next = 4;
@@ -1138,13 +1140,13 @@ var dataDsl = {
         name: "y",
         dataType: "number"
       }, {
-        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_11__/* .default.KEY */ .Z.KEY,
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_12__/* .default.KEY */ .Z.KEY,
         name: "preview",
         compare: true
       }, {
         type: "input_dummy"
       }, {
-        type: _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_12__/* .default.KEY */ .Z.KEY,
+        type: _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_13__/* .default.KEY */ .Z.KEY,
         name: "plot",
         linearRegression: true
       }],
@@ -1156,14 +1158,14 @@ var dataDsl = {
       dataPreviewField: false,
       passthroughData: true,
       transformData: function () {
-        var _transformData3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(b, data) {
+        var _transformData3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(b, data) {
           var column1, column2;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
             while (1) {
               switch (_context3.prev = _context3.next) {
                 case 0:
-                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "x", "number");
-                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_9__/* .tidyResolveFieldColumn */ .Fy)(data, b, "y", "number");
+                  column1 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "x", "number");
+                  column2 = (0,_fields_tidy__WEBPACK_IMPORTED_MODULE_10__/* .tidyResolveFieldColumn */ .Fy)(data, b, "y", "number");
 
                   if (!(!column1 || !column2)) {
                     _context3.next = 4;
@@ -1199,7 +1201,7 @@ var dataDsl = {
       type: DATA_LOAD_FILE_BLOCK,
       message0: "load dataset from file %1",
       args0: [{
-        type: _fields_FileOpenField__WEBPACK_IMPORTED_MODULE_8__/* .default.KEY */ .Z.KEY,
+        type: _fields_FileOpenField__WEBPACK_IMPORTED_MODULE_9__/* .default.KEY */ .Z.KEY,
         name: "file"
       }],
       nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -1213,7 +1215,7 @@ var dataDsl = {
       type: DATA_SAVE_FILE_BLOCK,
       message0: "save dataset to file %1",
       args0: [{
-        type: _fields_FileSaveField__WEBPACK_IMPORTED_MODULE_6__/* .default.KEY */ .Z.KEY,
+        type: _fields_FileSaveField__WEBPACK_IMPORTED_MODULE_7__/* .default.KEY */ .Z.KEY,
         name: "file"
       }],
       previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
@@ -1223,7 +1225,7 @@ var dataDsl = {
       inputsInline: false,
       dataPreviewField: "after",
       transformData: function () {
-        var _transformData4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(block, data) {
+        var _transformData4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(block, data) {
           var file;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
             while (1) {
@@ -1237,7 +1239,7 @@ var dataDsl = {
                   }
 
                   _context4.next = 4;
-                  return (0,_workers_csv_proxy__WEBPACK_IMPORTED_MODULE_7__/* .saveCSV */ .Eg)(file.fileHandle, data);
+                  return (0,_workers_csv_proxy__WEBPACK_IMPORTED_MODULE_8__/* .saveCSV */ .Eg)(file.fileHandle, data);
 
                 case 4:
                   return _context4.abrupt("return", data);
@@ -1279,10 +1281,10 @@ var dataDsl = {
         text: "Import dataset",
         callbackKey: DATA_ADD_DATASET_CALLBACK,
         callback: function callback(workspace) {
-          var services = workspace === null || workspace === void 0 ? void 0 : workspace.jacdacServices;
+          var services = (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_6__/* .resolveWorkspaceServices */ .O7)(workspace);
           var directory = services === null || services === void 0 ? void 0 : services.workingDirectory;
           if (!directory) (0,blockly__WEBPACK_IMPORTED_MODULE_1__.alert)("You need to open a directory to import a dataset.");else {
-            (0,_fs_fs__WEBPACK_IMPORTED_MODULE_13__/* .importCSVFilesIntoWorkspace */ .U5)(directory.handle).then(function () {
+            (0,_fs_fs__WEBPACK_IMPORTED_MODULE_14__/* .importCSVFilesIntoWorkspace */ .U5)(directory.handle).then(function () {
               return directory.sync();
             }).then(function () {
               return (0,blockly__WEBPACK_IMPORTED_MODULE_1__.alert)("Datasets imported!");

@@ -6779,6 +6779,8 @@ var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 var react = __webpack_require__(67294);
 // EXTERNAL MODULE: ./src/components/fs/fs.ts
 var fs = __webpack_require__(31396);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
+var toConsumableArray = __webpack_require__(85061);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__(5991);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
@@ -6799,8 +6801,8 @@ function _asyncIterator(iterable) {
 }
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
 var constants = __webpack_require__(71815);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/eventsource.ts
-var eventsource = __webpack_require__(45484);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/node.ts
+var node = __webpack_require__(60154);
 ;// CONCATENATED MODULE: ./src/components/fs/fsdom.ts
 
 
@@ -6810,11 +6812,15 @@ var eventsource = __webpack_require__(45484);
 
 
 
-var FileSystem = /*#__PURE__*/function (_JDEventSource) {
-  (0,inheritsLoose/* default */.Z)(FileSystem, _JDEventSource);
+
+var FILE_SYSTEM_NODE = "fs";
+var FILE_SYSTEM_DIRECTORY_NODE = "directory";
+var FILE_SYSTEM_FILE_NODE = "file";
+var FileSystem = /*#__PURE__*/function (_JDNode) {
+  (0,inheritsLoose/* default */.Z)(FileSystem, _JDNode);
 
   function FileSystem() {
-    return _JDEventSource.call(this) || this;
+    return _JDNode.call(this) || this;
   }
 
   var _proto = FileSystem.prototype;
@@ -6874,6 +6880,41 @@ var FileSystem = /*#__PURE__*/function (_JDEventSource) {
   }();
 
   (0,createClass/* default */.Z)(FileSystem, [{
+    key: "id",
+    get: function get() {
+      return FILE_SYSTEM_NODE;
+    }
+  }, {
+    key: "nodeKind",
+    get: function get() {
+      return FILE_SYSTEM_NODE;
+    }
+  }, {
+    key: "name",
+    get: function get() {
+      return FILE_SYSTEM_NODE;
+    }
+  }, {
+    key: "friendlyName",
+    get: function get() {
+      return this.name;
+    }
+  }, {
+    key: "qualifiedName",
+    get: function get() {
+      return this.name;
+    }
+  }, {
+    key: "parent",
+    get: function get() {
+      return undefined;
+    }
+  }, {
+    key: "children",
+    get: function get() {
+      return [this.root];
+    }
+  }, {
     key: "root",
     get: function get() {
       return this._root;
@@ -6899,14 +6940,15 @@ var FileSystem = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return FileSystem;
-}(eventsource/* JDEventSource */.aE);
-var FileSystemFile = /*#__PURE__*/function (_JDEventSource2) {
-  (0,inheritsLoose/* default */.Z)(FileSystemFile, _JDEventSource2);
+}(node/* JDNode */.z);
+var FileSystemFile = /*#__PURE__*/function (_JDNode2) {
+  (0,inheritsLoose/* default */.Z)(FileSystemFile, _JDNode2);
 
-  function FileSystemFile(handle) {
+  function FileSystemFile(_parent, handle) {
     var _this;
 
-    _this = _JDEventSource2.call(this) || this;
+    _this = _JDNode2.call(this) || this;
+    _this._parent = _parent;
     _this.handle = handle;
     return _this;
   }
@@ -7004,6 +7046,31 @@ var FileSystemFile = /*#__PURE__*/function (_JDEventSource2) {
   }();
 
   (0,createClass/* default */.Z)(FileSystemFile, [{
+    key: "id",
+    get: function get() {
+      return this.parent.id + "/" + this.name;
+    }
+  }, {
+    key: "nodeKind",
+    get: function get() {
+      return FILE_SYSTEM_FILE_NODE;
+    }
+  }, {
+    key: "qualifiedName",
+    get: function get() {
+      return this.id;
+    }
+  }, {
+    key: "parent",
+    get: function get() {
+      return this._parent;
+    }
+  }, {
+    key: "children",
+    get: function get() {
+      return [];
+    }
+  }, {
     key: "name",
     get: function get() {
       return this.handle.name;
@@ -7017,7 +7084,7 @@ var FileSystemFile = /*#__PURE__*/function (_JDEventSource2) {
   }]);
 
   return FileSystemFile;
-}(eventsource/* JDEventSource */.aE);
+}(node/* JDNode */.z);
 
 function sortHandles(handles) {
   handles.sort(function (l, r) {
@@ -7026,15 +7093,16 @@ function sortHandles(handles) {
   return handles;
 }
 
-var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
-  (0,inheritsLoose/* default */.Z)(FileSystemDirectory, _JDEventSource3);
+var FileSystemDirectory = /*#__PURE__*/function (_JDNode3) {
+  (0,inheritsLoose/* default */.Z)(FileSystemDirectory, _JDNode3);
 
-  function FileSystemDirectory(handle) {
+  function FileSystemDirectory(_parent, handle) {
     var _this2;
 
-    _this2 = _JDEventSource3.call(this) || this;
+    _this2 = _JDNode3.call(this) || this;
     _this2._directories = [];
     _this2._files = [];
+    _this2._parent = _parent;
     _this2.handle = handle;
 
     _this2.sync();
@@ -7058,7 +7126,7 @@ var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
       this.handle.getDirectoryHandle(name, {
         create: true
       }).then(function (nf) {
-        var nfn = new FileSystemDirectory(nf);
+        var nfn = new FileSystemDirectory(_this3, nf);
 
         _this3._directories.push(nfn);
 
@@ -7066,7 +7134,7 @@ var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
           return l.name.localeCompare(r.name);
         });
 
-        _this3.emit(constants/* CHANGE */.Ver);
+        _this3.emitPropagated(constants/* CHANGE */.Ver);
       });
     } // no file yet
 
@@ -7088,7 +7156,7 @@ var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
       this.handle.getFileHandle(name, {
         create: true
       }).then(function (nf) {
-        var nfn = new FileSystemFile(nf);
+        var nfn = new FileSystemFile(_this4, nf);
 
         _this4._files.push(nfn);
 
@@ -7096,7 +7164,7 @@ var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
           return l.name.localeCompare(r.name);
         });
 
-        _this4.emit(constants/* CHANGE */.Ver);
+        _this4.emitPropagated(constants/* CHANGE */.Ver);
       });
     } // no file yet
 
@@ -7209,7 +7277,7 @@ var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
                     return oldf.name === f.name;
                   });
 
-                  return oldf || new FileSystemFile(f);
+                  return oldf || new FileSystemFile(_this5, f);
                 });
                 this._files = patched;
                 changed = true;
@@ -7226,13 +7294,13 @@ var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
                     return oldf.name === f.name;
                   });
 
-                  return oldf || new FileSystemDirectory(f);
+                  return oldf || new FileSystemDirectory(_this5, f);
                 });
                 this._directories = _patched;
                 changed = true;
               }
 
-              if (changed) this.emit(constants/* CHANGE */.Ver);
+              if (changed) this.emitPropagated(constants/* CHANGE */.Ver);
 
             case 43:
             case "end":
@@ -7250,6 +7318,33 @@ var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
   }();
 
   (0,createClass/* default */.Z)(FileSystemDirectory, [{
+    key: "id",
+    get: function get() {
+      var _this$_parent;
+
+      return (((_this$_parent = this._parent) === null || _this$_parent === void 0 ? void 0 : _this$_parent.id) || "") + "/" + this.name;
+    }
+  }, {
+    key: "nodeKind",
+    get: function get() {
+      return FILE_SYSTEM_DIRECTORY_NODE;
+    }
+  }, {
+    key: "qualifiedName",
+    get: function get() {
+      return this.id;
+    }
+  }, {
+    key: "parent",
+    get: function get() {
+      return this._parent;
+    }
+  }, {
+    key: "children",
+    get: function get() {
+      return [].concat((0,toConsumableArray/* default */.Z)(this._directories), (0,toConsumableArray/* default */.Z)(this._files));
+    }
+  }, {
     key: "name",
     get: function get() {
       return this.handle.name;
@@ -7267,7 +7362,7 @@ var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
   }]);
 
   return FileSystemDirectory;
-}(eventsource/* JDEventSource */.aE);
+}(node/* JDNode */.z);
 ;// CONCATENATED MODULE: ./src/components/FileSystemContext.tsx
 
 
@@ -9295,9 +9390,7 @@ function BlockProvider(props) {
   useToolboxButtons(workspace, toolboxConfiguration); // role manager
 
   (0,react.useEffect)(function () {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    var ws = workspace;
-    var services = ws === null || ws === void 0 ? void 0 : ws.jacdacServices;
+    var services = (0,WorkspaceContext/* resolveWorkspaceServices */.O7)(workspace);
     if (services) services.roleManager = roleManager;
   }, [workspace, roleManager]);
   (0,react.useEffect)(function () {
@@ -9310,9 +9403,7 @@ function BlockProvider(props) {
     }
   }, [workspace]);
   (0,react.useEffect)(function () {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    var wws = workspace;
-    var services = wws === null || wws === void 0 ? void 0 : wws.jacdacServices;
+    var services = (0,WorkspaceContext/* resolveWorkspaceServices */.O7)(workspace);
     if (services) services.workingDirectory = workspaceDirectory;
   }, [workspace, workspaceDirectory]);
   (0,react.useEffect)(function () {
@@ -9427,9 +9518,7 @@ function BlockProvider(props) {
     }, _callee2);
   })), [editorId, workspaceFile, workspaceJSON]);
   (0,react.useEffect)(function () {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    var ws = workspace;
-    var services = ws === null || ws === void 0 ? void 0 : ws.jacdacServices;
+    var services = (0,WorkspaceContext/* resolveWorkspaceServices */.O7)(workspace);
     if (services) services.workspaceJSON = workspaceJSON;
   }, [workspace, workspaceJSON]); // apply errors
 
@@ -10270,7 +10359,9 @@ function BlockEditor(props) {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "yq": function() { return /* binding */ WorkspaceServices; },
+/* harmony export */   "O7": function() { return /* binding */ resolveWorkspaceServices; },
 /* harmony export */   "LL": function() { return /* binding */ BlockServices; },
+/* harmony export */   "Ys": function() { return /* binding */ resolveBlockServices; },
 /* harmony export */   "W5": function() { return /* binding */ WorkspaceProvider; }
 /* harmony export */ });
 /* unused harmony export WorkspaceContext */
@@ -10348,6 +10439,11 @@ var WorkspaceServices = /*#__PURE__*/function (_JDEventSource) {
   return WorkspaceServices;
 }(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
 WorkspaceServices.WORKSPACE_CHANGE = "workspaceChange";
+function resolveWorkspaceServices(workspace) {
+  var workspaceWithServices = workspace;
+  var services = workspaceWithServices === null || workspaceWithServices === void 0 ? void 0 : workspaceWithServices.jacdacServices;
+  return services;
+}
 var BlockServices = /*#__PURE__*/function (_JDEventSource2) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(BlockServices, _JDEventSource2);
 
@@ -10410,6 +10506,11 @@ var BlockServices = /*#__PURE__*/function (_JDEventSource2) {
 
   return BlockServices;
 }(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* .JDEventSource */ .aE);
+function resolveBlockServices(block) {
+  var blockWithServices = block;
+  var services = blockWithServices === null || blockWithServices === void 0 ? void 0 : blockWithServices.jacdacServices;
+  return services;
+}
 var WorkspaceContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({
   workspace: undefined,
   dragging: false,
@@ -10434,7 +10535,7 @@ function WorkspaceProvider(props) {
 
   var sourceId = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.id;
   var workspace = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.workspace;
-  var services = workspace === null || workspace === void 0 ? void 0 : workspace.jacdacServices;
+  var services = resolveWorkspaceServices(workspace);
   var roleManager = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(services, function (_) {
     return _ === null || _ === void 0 ? void 0 : _.roleManager;
   });
@@ -12200,14 +12301,16 @@ function DataTableWidget(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ FileOpenField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(92137);
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(85061);
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(85061);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(41788);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _dsl_workers_csv_proxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(53480);
+/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(71815);
+/* harmony import */ var _dsl_workers_csv_proxy__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53480);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(89801);
 
 
 
@@ -12217,8 +12320,10 @@ function DataTableWidget(props) {
 
 
 
+
+
 var FileOpenField = /*#__PURE__*/function (_FieldDropdown) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(FileOpenField, _FieldDropdown);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(FileOpenField, _FieldDropdown);
 
   FileOpenField.fromJson = function fromJson(options) {
     return new FileOpenField(options);
@@ -12247,7 +12352,7 @@ var FileOpenField = /*#__PURE__*/function (_FieldDropdown) {
       return [f.name, f.name];
     })) || [];
     var value = this.getValue();
-    return options.length < 1 ? [[value || "", value || ""]] : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(options), [["", ""]]);
+    return options.length < 1 ? [[value || "", value || ""]] : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(options), [["", ""]]);
   };
 
   _proto.doClassValidation_ = function doClassValidation_(newValue) {
@@ -12277,10 +12382,15 @@ var FileOpenField = /*#__PURE__*/function (_FieldDropdown) {
     this.updateData();
   };
 
+  _proto.dispose = function dispose() {
+    _FieldDropdown.prototype.dispose.call(this);
+
+    this.unmount();
+  };
+
   _proto.resolveFiles = function resolveFiles() {
     var sourceBlock = this.getSourceBlock();
-    var workspace = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.workspace;
-    var services = workspace === null || workspace === void 0 ? void 0 : workspace.jacdacServices;
+    var services = (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_4__/* .resolveWorkspaceServices */ .O7)(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.workspace);
     var directory = services === null || services === void 0 ? void 0 : services.workingDirectory;
     return directory === null || directory === void 0 ? void 0 : directory.files.filter(function (f) {
       return /\.csv$/i.test(f.name);
@@ -12288,7 +12398,7 @@ var FileOpenField = /*#__PURE__*/function (_FieldDropdown) {
   };
 
   _proto.parseSource = /*#__PURE__*/function () {
-    var _parseSource = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    var _parseSource = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var _this$resolveFiles2;
 
       var filename, file, source, csv;
@@ -12321,7 +12431,7 @@ var FileOpenField = /*#__PURE__*/function (_FieldDropdown) {
               }
 
               _context.next = 12;
-              return (0,_dsl_workers_csv_proxy__WEBPACK_IMPORTED_MODULE_2__/* .parseCSV */ .bW)(source);
+              return (0,_dsl_workers_csv_proxy__WEBPACK_IMPORTED_MODULE_3__/* .parseCSV */ .bW)(source);
 
             case 12:
               csv = _context.sent;
@@ -12354,26 +12464,30 @@ var FileOpenField = /*#__PURE__*/function (_FieldDropdown) {
   }();
 
   _proto.updateData = /*#__PURE__*/function () {
-    var _updateData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var block, services;
+    var _updateData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var _this2 = this;
+
+      var sourceBlock, blockServices, wsServices, workingDirectory;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              block = this.getSourceBlock();
-              services = block === null || block === void 0 ? void 0 : block.jacdacServices;
+              sourceBlock = this.getSourceBlock(); // update current data
 
-              if (services) {
-                _context2.next = 4;
-                break;
+              blockServices = (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_4__/* .resolveBlockServices */ .Ys)(sourceBlock);
+              if (!blockServices) blockServices.data = this._data; // register file system changes
+
+              this.unmount();
+              wsServices = (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_4__/* .resolveWorkspaceServices */ .O7)(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.workspace);
+
+              if (wsServices) {
+                workingDirectory = wsServices.workingDirectory;
+                this._unmount = workingDirectory.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .CHANGE */ .Ver, function () {
+                  return _this2.updateData();
+                });
               }
 
-              return _context2.abrupt("return");
-
-            case 4:
-              services.data = this._data;
-
-            case 5:
+            case 6:
             case "end":
               return _context2.stop();
           }
@@ -12387,6 +12501,14 @@ var FileOpenField = /*#__PURE__*/function (_FieldDropdown) {
 
     return updateData;
   }();
+
+  _proto.unmount = function unmount() {
+    if (this._unmount) {
+      this._unmount();
+
+      this._unmount = undefined;
+    }
+  };
 
   return FileOpenField;
 }(blockly__WEBPACK_IMPORTED_MODULE_1__.FieldDropdown);

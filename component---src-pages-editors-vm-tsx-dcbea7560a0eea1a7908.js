@@ -6029,7 +6029,10 @@ var vmDsls = [servicesdsl, serverservicesdsl, loopsdsl, logicdsl, mathdsl, jsond
 var FileTabs = __webpack_require__(45296);
 // EXTERNAL MODULE: ./src/components/FileSystemContext.tsx + 2 modules
 var FileSystemContext = __webpack_require__(74195);
+// EXTERNAL MODULE: ./src/components/blockly/WorkspaceContext.tsx
+var WorkspaceContext = __webpack_require__(89801);
 ;// CONCATENATED MODULE: ./src/components/vm/VMEditor.tsx
+
 
 
 
@@ -6105,9 +6108,7 @@ function VMEditorWithContext() {
     })));
   }, [program]);
   (0,react.useEffect)(function () {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    var ws = workspace;
-    var services = ws === null || ws === void 0 ? void 0 : ws.jacdacServices;
+    var services = (0,WorkspaceContext/* resolveWorkspaceServices */.O7)(workspace);
 
     if (services) {
       services.runner = runner;

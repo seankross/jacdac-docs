@@ -51174,8 +51174,10 @@ function resolveMakecodeServiceFromClassIdentifier(serviceClass) {
 /* harmony export */   "z": function() { return /* binding */ JDNode; },
 /* harmony export */   "L": function() { return /* binding */ visitNodes; }
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5991);
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41788);
 /* harmony import */ var _eventsource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(45484);
+
 
 
 /**
@@ -51209,6 +51211,21 @@ var JDNode = /*#__PURE__*/function (_JDEventSource) {
   _proto.toString = function toString() {
     return this.friendlyName;
   };
+
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(JDNode, [{
+    key: "friendlyName",
+    get:
+    /**
+     * A human friendly name
+     */
+    function get() {
+      return this.name;
+    }
+    /**
+     * Gets the name including parents
+     */
+
+  }]);
 
   return JDNode;
 }(_eventsource__WEBPACK_IMPORTED_MODULE_0__/* .JDEventSource */ .aE);
@@ -69780,7 +69797,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "09cebc9e1037eb772d832833cdef187edd98946a";
+  var sha = "7df660244e202102043d2e4c66e5812acdc2406f";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
