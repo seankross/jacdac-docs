@@ -69797,7 +69797,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "cf30a70866369243f8a92261222c374ba13b5dcb";
+  var sha = "60b5a3a35b932607f288684cfd8c139233bc401b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -83101,6 +83101,9 @@ exports.components = {
   },
   "component---src-pages-editors-data-tsx": function componentSrcPagesEditorsDataTsx() {
     return Promise.all(/* import() | component---src-pages-editors-data-tsx */[__webpack_require__.e(9978), __webpack_require__.e(3662), __webpack_require__.e(8343), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(1621)]).then(__webpack_require__.bind(__webpack_require__, 55575));
+  },
+  "component---src-pages-editors-mdx": function componentSrcPagesEditorsMdx() {
+    return __webpack_require__.e(/* import() | component---src-pages-editors-mdx */ 7668).then(__webpack_require__.bind(__webpack_require__, 90088));
   },
   "component---src-pages-editors-ml-tsx": function componentSrcPagesEditorsMlTsx() {
     return Promise.all(/* import() | component---src-pages-editors-ml-tsx */[__webpack_require__.e(9978), __webpack_require__.e(3662), __webpack_require__.e(8343), __webpack_require__.e(5901), __webpack_require__.e(61), __webpack_require__.e(4230)]).then(__webpack_require__.bind(__webpack_require__, 98899));
