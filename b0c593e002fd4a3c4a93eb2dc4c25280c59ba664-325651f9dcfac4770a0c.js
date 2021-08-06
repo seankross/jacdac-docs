@@ -16074,7 +16074,6 @@ function LinePlotWidget() {
   var spec = {
     mark: {
       type: "line",
-      point: true,
       tooltip: true
     },
     encoding: {
