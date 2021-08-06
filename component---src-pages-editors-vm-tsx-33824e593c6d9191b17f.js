@@ -6151,11 +6151,11 @@ function VMEditor() {
     var f = file;
     f.vm = (0,VMgenerator/* default */.ZP)(file.json, dsls);
   }, []);
-  return /*#__PURE__*/react.createElement(NoSsr/* default */.Z, null, /*#__PURE__*/react.createElement(FileSystemContext/* FileSystemProvider */.P, null, /*#__PURE__*/react.createElement(BlockContext/* BlockProvider */.Z, {
+  return /*#__PURE__*/react.createElement(NoSsr/* default */.Z, null, /*#__PURE__*/react.createElement(BlockContext/* BlockProvider */.Z, {
     storageKey: VM_SOURCE_STORAGE_KEY,
     dsls: dsls,
     onBeforeSaveWorkspaceFile: flags/* default.diagnostics */.Z.diagnostics ? handleOnBeforeSaveWorkspaceFile : undefined
-  }, /*#__PURE__*/react.createElement(VMEditorWithContext, null))));
+  }, /*#__PURE__*/react.createElement(VMEditorWithContext, null)));
 }
 ;// CONCATENATED MODULE: ./src/pages/editors/vm.tsx
 

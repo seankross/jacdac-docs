@@ -1,6 +1,39 @@
 "use strict";
 (self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[8814],{
 
+/***/ 32253:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* unused harmony export styles */
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(22122);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(34621);
+/* harmony import */ var _Typography__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(80453);
+
+
+
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    marginBottom: 12
+  }
+};
+var DialogContentText = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function DialogContentText(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Typography__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)({
+    component: "p",
+    variant: "body1",
+    color: "textSecondary",
+    ref: ref
+  }, props));
+});
+ false ? 0 : void 0;
+/* harmony default export */ __webpack_exports__["Z"] = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(styles, {
+  name: 'MuiDialogContentText'
+})(DialogContentText));
+
+/***/ }),
+
 /***/ 26954:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -204,6 +237,33 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"
 }), 'HourglassEmpty');
+
+exports.Z = _default;
+
+/***/ }),
+
+/***/ 95552:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"
+}), 'OpenInBrowser');
 
 exports.Z = _default;
 
@@ -699,6 +759,384 @@ function DashboardDeviceItem(props) {
 
 /***/ }),
 
+/***/ 45430:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ FileTabs; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
+var Grid = __webpack_require__(80838);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./src/components/hooks/useKeyboardNavigationProps.ts + 2 modules
+var useKeyboardNavigationProps = __webpack_require__(68786);
+// EXTERNAL MODULE: ./src/components/FileSystemContext.tsx + 2 modules
+var FileSystemContext = __webpack_require__(74195);
+// EXTERNAL MODULE: ./src/jacdac/useChange.ts
+var useChange = __webpack_require__(54774);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Chip/Chip.js + 1 modules
+var Chip = __webpack_require__(4998);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/OpenInBrowser.js
+var OpenInBrowser = __webpack_require__(95552);
+;// CONCATENATED MODULE: ./src/components/fs/FileSystemChip.tsx
+
+
+
+
+
+function FileSystemChip() {
+  var _useContext = (0,react.useContext)(FileSystemContext/* default */.Z),
+      fileSystem = _useContext.fileSystem,
+      showDirectoryPicker = _useContext.showDirectoryPicker;
+
+  var root = (0,useChange/* default */.Z)(fileSystem, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.root;
+  });
+  var handleOpenDirectory = showDirectoryPicker;
+
+  var handleCloseDirectory = function handleCloseDirectory() {
+    return fileSystem.root = undefined;
+  };
+
+  if (!fileSystem) return null;
+  return /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+    clickable: true,
+    avatar: /*#__PURE__*/react.createElement(OpenInBrowser/* default */.Z, null),
+    label: (root === null || root === void 0 ? void 0 : root.name) || "open directory",
+    onClick: handleOpenDirectory,
+    onDelete: root ? handleCloseDirectory : undefined
+  });
+}
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(92137);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
+var regenerator = __webpack_require__(87757);
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Dialog/Dialog.js
+var Dialog = __webpack_require__(52468);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogContent/DialogContent.js
+var DialogContent = __webpack_require__(65733);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogContentText/DialogContentText.js
+var DialogContentText = __webpack_require__(32253);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TextField/TextField.js
+var TextField = __webpack_require__(1059);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js
+var DialogActions = __webpack_require__(89952);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
+var Button = __webpack_require__(83332);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Add.js
+var Add = __webpack_require__(88880);
+// EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
+var react_use_id_hook_esm = __webpack_require__(19640);
+;// CONCATENATED MODULE: ./src/components/fs/FileNewFileChip.tsx
+
+
+
+
+
+
+
+function FileNewFileChip(props) {
+  var newFileName = props.name,
+      newFileContent = props.content,
+      label = props.label,
+      extension = props.extension;
+
+  var _useContext = (0,react.useContext)(FileSystemContext/* default */.Z),
+      fileSystem = _useContext.fileSystem;
+
+  var _useState = (0,react.useState)(false),
+      open = _useState[0],
+      setOpen = _useState[1];
+
+  var _useState2 = (0,react.useState)(""),
+      value = _useState2[0],
+      setValue = _useState2[1];
+
+  var valueId = (0,react_use_id_hook_esm/* useId */.Me)();
+
+  var handleOpen = function handleOpen() {
+    setValue("");
+    setOpen(true);
+  };
+
+  var handleOk = /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
+      var name, d, f;
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              setOpen(false);
+              name = value.toLocaleLowerCase().replace(/\s+/g, "");
+
+              if (!newFileName) {
+                _context.next = 7;
+                break;
+              }
+
+              _context.next = 5;
+              return fileSystem.createWorkingDirectory(name, newFileName, newFileContent);
+
+            case 5:
+              _context.next = 15;
+              break;
+
+            case 7:
+              if (extension) name += "." + extension;
+              d = fileSystem.workingDirectory || fileSystem.root;
+              _context.next = 11;
+              return d.fileAsync(name, {
+                create: true
+              });
+
+            case 11:
+              f = _context.sent;
+              _context.next = 14;
+              return f.write(newFileContent);
+
+            case 14:
+              fileSystem.workingFile = f;
+
+            case 15:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function handleOk() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var handleCancel = function handleCancel() {
+    return setOpen(false);
+  };
+
+  var handleValueChange = function handleValueChange(event) {
+    setValue(event.target.value);
+  };
+
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+    clickable: true,
+    label: label || "new...",
+    icon: /*#__PURE__*/react.createElement(Add/* default */.Z, null),
+    onClick: handleOpen
+  }), /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
+    open: open,
+    fullWidth: true
+  }, /*#__PURE__*/react.createElement(DialogContent/* default */.Z, null, /*#__PURE__*/react.createElement(DialogContentText/* default */.Z, null, "Choose a project name"), /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+    id: valueId,
+    value: value,
+    label: "Value",
+    fullWidth: true,
+    onChange: handleValueChange
+  })), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(Button/* default */.Z, {
+    variant: "contained",
+    onClick: handleCancel
+  }, "Cancel"), /*#__PURE__*/react.createElement(Button/* default */.Z, {
+    variant: "contained",
+    color: "primary",
+    disabled: !value,
+    onClick: handleOk
+  }, "Ok"))));
+}
+;// CONCATENATED MODULE: ./src/components/fs/FileSystemNodeChip.tsx
+
+
+function FileSystemNodeChip(props) {
+  var node = props.node,
+      selected = props.selected,
+      onClick = props.onClick;
+  var name = node.name;
+  return /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+    clickable: true,
+    label: name.replace(/\.json$/i, ""),
+    color: selected ? "primary" : undefined,
+    onClick: onClick
+  });
+}
+;// CONCATENATED MODULE: ./src/components/fs/FileTabs.tsx
+
+
+
+
+
+
+
+
+function FileTabs(props) {
+  var newFileName = props.newFileName,
+      newFileContent = props.newFileContent,
+      hideDirectories = props.hideDirectories,
+      hideFiles = props.hideFiles,
+      directoryFilter = props.directoryFilter,
+      fileFilter = props.fileFilter,
+      newFileLabel = props.newFileLabel,
+      newFileExtension = props.newFileExtension;
+
+  var _useContext = (0,react.useContext)(FileSystemContext/* default */.Z),
+      fileSystem = _useContext.fileSystem;
+
+  var root = (0,useChange/* default */.Z)(fileSystem, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.root;
+  });
+  var workingDirectory = (0,useChange/* default */.Z)(fileSystem, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.workingDirectory;
+  });
+  var workingFile = (0,useChange/* default */.Z)(fileSystem, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.workingFile;
+  });
+  var directories = (0,useChange/* default */.Z)(root, function (_) {
+    var _$directories;
+
+    return _ === null || _ === void 0 ? void 0 : (_$directories = _.directories) === null || _$directories === void 0 ? void 0 : _$directories.filter(function (d) {
+      return !directoryFilter || directoryFilter(d.name);
+    });
+  });
+  var files = (0,useChange/* default */.Z)(root, function (_) {
+    var _$files;
+
+    return _ === null || _ === void 0 ? void 0 : (_$files = _.files) === null || _$files === void 0 ? void 0 : _$files.filter(function (d) {
+      return !fileFilter || fileFilter(d.name);
+    });
+  });
+  var gridRef = (0,react.useRef)();
+  var keyboardProps = (0,useKeyboardNavigationProps/* default */.Z)(gridRef.current);
+
+  var handleDirectorySelected = function handleDirectorySelected(handle) {
+    return function () {
+      return fileSystem.workingDirectory = handle;
+    };
+  };
+
+  var handleFileSelected = function handleFileSelected(handle) {
+    return function () {
+      return fileSystem.workingFile = handle;
+    };
+  };
+
+  if (!fileSystem) return null;
+  return /*#__PURE__*/react.createElement(Grid/* default */.Z, Object.assign({
+    ref: gridRef,
+    container: true,
+    spacing: 1
+  }, keyboardProps), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(FileSystemChip, null)), !hideDirectories && (directories === null || directories === void 0 ? void 0 : directories.map(function (node) {
+    return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+      item: true,
+      key: node.name
+    }, /*#__PURE__*/react.createElement(FileSystemNodeChip, {
+      node: node,
+      selected: node === workingDirectory,
+      onClick: handleDirectorySelected(node)
+    }));
+  })), !hideFiles && (files === null || files === void 0 ? void 0 : files.map(function (node) {
+    return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+      item: true,
+      key: node.name
+    }, /*#__PURE__*/react.createElement(FileSystemNodeChip, {
+      node: node,
+      selected: node === workingFile,
+      onClick: handleFileSelected(node)
+    }));
+  })), root && newFileContent && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(FileNewFileChip, {
+    name: newFileName,
+    content: newFileContent,
+    label: newFileLabel,
+    extension: newFileExtension
+  })));
+}
+
+/***/ }),
+
+/***/ 68786:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ useKeyboardNavigationProps; }
+});
+
+// EXTERNAL MODULE: ./src/components/hooks/useFireKey.ts
+var useFireKey = __webpack_require__(8966);
+;// CONCATENATED MODULE: ./src/components/hooks/useArrowKeys.ts
+
+var LEFT_KEY = 37;
+var UP_KEY = 38;
+var RIGHT_KEY = 39;
+var DOWN_KEY = 40;
+function useArrowKeys(options) {
+  var _handlers;
+
+  var onLeft = options.onLeft,
+      onUp = options.onUp,
+      onRight = options.onRight,
+      onDown = options.onDown,
+      symmetric = options.symmetric;
+  if (!onLeft && !onUp && !onRight && !onDown) return undefined;
+  var handlers = (_handlers = {}, _handlers[LEFT_KEY] = onLeft, _handlers[RIGHT_KEY] = onRight, _handlers[UP_KEY] = onUp || symmetric && onRight, _handlers[DOWN_KEY] = onDown || symmetric && onLeft, _handlers);
+  return function (e) {
+    var charCode = (0,useFireKey/* keyCodeFromEvent */.$)(e);
+    var handler = handlers[charCode];
+
+    if (handler) {
+      e.preventDefault();
+      handler();
+    }
+  };
+}
+;// CONCATENATED MODULE: ./src/components/hooks/useKeyboardNavigation.ts
+function useKeyboardNavigation(parentRef) {
+  var query = '[tabindex="0"]';
+
+  var onMove = function onMove(offset) {
+    return function () {
+      console.log('keyboard move', {
+        offset: offset
+      });
+      var focusable = Array.from((parentRef === null || parentRef === void 0 ? void 0 : parentRef.querySelectorAll(query)) || []);
+
+      if (focusable.length) {
+        var me = focusable.findIndex(function (f) {
+          return f === document.activeElement;
+        });
+        var next = (me + offset + focusable.length) % focusable.length;
+        focusable[next].focus();
+      }
+    };
+  };
+
+  return onMove;
+}
+;// CONCATENATED MODULE: ./src/components/hooks/useKeyboardNavigationProps.ts
+
+
+function useKeyboardNavigationProps(parentRef, vertical) {
+  var onMove = useKeyboardNavigation(parentRef);
+  var onKeyDown = useArrowKeys({
+    onLeft: !vertical && onMove(-1),
+    onRight: !vertical && onMove(1),
+    onDown: vertical && onMove(1),
+    onUp: vertical && onMove(-1)
+  });
+  return {
+    onKeyDown: parentRef && onKeyDown
+  };
+}
+
+/***/ }),
+
 /***/ 2928:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -1076,6 +1514,12 @@ var AppContext = __webpack_require__(84377);
 var Add = __webpack_require__(88880);
 // EXTERNAL MODULE: ./src/components/hooks/useLocalStorage.ts
 var useLocalStorage = __webpack_require__(34093);
+// EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx + 3 modules
+var FileTabs = __webpack_require__(45430);
+// EXTERNAL MODULE: ./src/components/FileSystemContext.tsx + 2 modules
+var FileSystemContext = __webpack_require__(74195);
+// EXTERNAL MODULE: ./src/jacdac/useChange.ts
+var useChange = __webpack_require__(54774);
 ;// CONCATENATED MODULE: ./src/pages/tools/collector.tsx
 
 
@@ -1095,6 +1539,9 @@ var useLocalStorage = __webpack_require__(34093);
 
 
  // tslint:disable-next-line: no-submodule-imports
+
+
+
 
 
 
@@ -1177,8 +1624,15 @@ function Collector() {
 
   var classes = useStyles();
 
-  var _useContext3 = (0,react.useContext)(ServiceManagerContext/* default */.ZP),
-      fileStorage = _useContext3.fileStorage;
+  var _useContext3 = (0,react.useContext)(FileSystemContext/* default */.Z),
+      fileSystem = _useContext3.fileSystem;
+
+  var root = (0,useChange/* default */.Z)(fileSystem, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.root;
+  });
+
+  var _useContext4 = (0,react.useContext)(ServiceManagerContext/* default */.ZP),
+      fileStorage = _useContext4.fileStorage;
 
   var _useState = (0,react.useState)([]),
       registerIdsChecked = _useState[0],
@@ -1318,6 +1772,18 @@ function Collector() {
 
   var stopRecording = function stopRecording() {
     if (recording) {
+      if (root) {
+        var csv = liveDataSet.toCSV(); // write async
+
+        var now = new Date();
+        var name = "data-" + now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "-" + now.getHours() + "-" + now.getMinutes() + "-" + now.getSeconds() + ".csv";
+        root.fileAsync(name, {
+          create: true
+        }).then(function (f) {
+          return f.write(csv);
+        });
+      }
+
       setTables([liveDataSet].concat((0,toConsumableArray/* default */.Z)(tables)));
       setLiveDataSet(newDataSet(registerIdsChecked, true));
       setRecording(false);
@@ -1634,6 +2100,9 @@ function Collector() {
     horizon: LIVE_HORIZON,
     dot: true,
     gradient: true
+  }), /*#__PURE__*/react.createElement(FileTabs/* default */.Z, {
+    hideFiles: true,
+    hideDirectories: true
   }), !!tables.length && /*#__PURE__*/react.createElement("section", {
     id: recordingsId
   }, /*#__PURE__*/react.createElement("h3", null, "Recordings"), /*#__PURE__*/react.createElement(DataSetGrid, {

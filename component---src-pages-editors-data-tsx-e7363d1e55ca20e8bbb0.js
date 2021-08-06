@@ -85,10 +85,10 @@ function DSBlockEditor() {
   var dsls = (0,react.useMemo)(function () {
     return [datadsl/* default */.Z, chartdsl/* default */.Z, fieldsdsl/* default */.Z];
   }, []);
-  return /*#__PURE__*/react.createElement(NoSsr/* default */.Z, null, /*#__PURE__*/react.createElement(FileSystemContext/* FileSystemProvider */.P, null, /*#__PURE__*/react.createElement(BlockContext/* BlockProvider */.Z, {
+  return /*#__PURE__*/react.createElement(NoSsr/* default */.Z, null, /*#__PURE__*/react.createElement(BlockContext/* BlockProvider */.Z, {
     storageKey: DS_SOURCE_STORAGE_KEY,
     dsls: dsls
-  }, /*#__PURE__*/react.createElement(DSEditorWithContext, null))));
+  }, /*#__PURE__*/react.createElement(DSEditorWithContext, null)));
 }
 ;// CONCATENATED MODULE: ./src/pages/editors/data.tsx
 
