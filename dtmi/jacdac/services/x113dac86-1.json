@@ -2,7 +2,9 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x113dac86;1",
   "displayName": "Microphone",
-  "description": "A single-channel microphone.",
+  "description": {
+    "en": "A single-channel microphone."
+  },
   "contents": [
     {
       "@type": [
@@ -11,26 +13,16 @@
       ],
       "name": "sampling_period",
       "@id": "dtmi:jacdac:x113dac86:rw:samplingperiod;1",
-      "description": "Get or set microphone sampling period.\nSampling rate is `1_000_000 / sampling_period Hz`.",
+      "description": {
+        "en": "Get or set microphone sampling period.\nSampling rate is `1_000_000 / sampling_period Hz`."
+      },
       "unit": "microsecond",
       "schema": "integer",
       "writable": true
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
-  "schemas": [
-    {
-      "@id": "dtmi:jacdac:x113dac86:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    }
-  ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

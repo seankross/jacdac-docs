@@ -2,22 +2,11 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x1885dc1c;1",
   "displayName": "HID Mouse",
-  "description": "Controls a HID mouse.",
+  "description": {
+    "en": "Controls a HID mouse."
+  },
   "contents": [],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x1885dc1c:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x1885dc1c:button;1",
@@ -68,5 +57,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

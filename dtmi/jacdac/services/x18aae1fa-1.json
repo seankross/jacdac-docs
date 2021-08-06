@@ -2,50 +2,21 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x18aae1fa;1",
   "displayName": "WIFI",
-  "description": "Discovery and connection to WiFi networks. Separate TCP service is used for data transfer.",
+  "description": {
+    "en": "Discovery and connection to WiFi networks. Separate TCP service is used for data transfer."
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "connected",
       "@id": "dtmi:jacdac:x18aae1fa:ro:connected;1",
-      "description": "Indicates whether or not we currently have an IP address assigned.",
+      "description": {
+        "en": "Indicates whether or not we currently have an IP address assigned."
+      },
       "schema": "boolean"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Event"
-      ],
-      "name": "got_ip",
-      "@id": "dtmi:jacdac:x18aae1fa:event:gotip;1",
-      "description": "Emitted upon successful join and IP address assignment.",
-      "schema": "dtmi:jacdac:x18aae1fa:event;1"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Event"
-      ],
-      "name": "lost_ip",
-      "@id": "dtmi:jacdac:x18aae1fa:event:lostip;1",
-      "description": "Emitted when disconnected from network.",
-      "schema": "dtmi:jacdac:x18aae1fa:event;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x18aae1fa:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x18aae1fa:apflags;1",
@@ -109,5 +80,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

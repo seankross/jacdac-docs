@@ -2,33 +2,27 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x1fa4c95a;1",
   "displayName": "Power",
-  "description": "A power-provider service.",
+  "description": {
+    "en": "A power-provider service."
+  },
   "contents": [
     {
       "@type": "Property",
       "name": "allowed",
       "@id": "dtmi:jacdac:x1fa4c95a:rw:allowed;1",
-      "description": "Can be used to completely disable the service.\nWhen allowed, the service may still not be providing power, see \n`power_status` for the actual current state.",
+      "description": {
+        "en": "Can be used to completely disable the service.\nWhen allowed, the service may still not be providing power, see \n`power_status` for the actual current state."
+      },
       "schema": "boolean",
-      "writable": true
-    },
-    {
-      "@type": [
-        "Property",
-        "Current"
-      ],
-      "name": "max_power",
-      "@id": "dtmi:jacdac:x1fa4c95a:rw:maxpower;1",
-      "description": "Limit the power provided by the service. The actual maximum limit will depend on hardware.\nThis field may be read-only in some implementations - you should read it back after setting.",
-      "unit": "milliampere",
-      "schema": "integer",
       "writable": true
     },
     {
       "@type": "Telemetry",
       "name": "power_status",
       "@id": "dtmi:jacdac:x1fa4c95a:ro:powerstatus;1",
-      "description": "Indicates whether the power provider is currently providing power (`Powering` state), and if not, why not.\n`Overprovision` means there was another power provider, and we stopped not to overprovision the bus.",
+      "description": {
+        "en": "Indicates whether the power provider is currently providing power (`Powering` state), and if not, why not.\n`Overprovision` means there was another power provider, and we stopped not to overprovision the bus."
+      },
       "schema": "dtmi:jacdac:x1fa4c95a:powerstatus;1"
     },
     {
@@ -38,7 +32,9 @@
       ],
       "name": "current_draw",
       "@id": "dtmi:jacdac:x1fa4c95a:ro:currentdraw;1",
-      "description": "Present current draw from the bus.",
+      "description": {
+        "en": "Present current draw from the bus."
+      },
       "unit": "milliampere",
       "schema": "integer"
     },
@@ -49,7 +45,9 @@
       ],
       "name": "battery_voltage",
       "@id": "dtmi:jacdac:x1fa4c95a:ro:batteryvoltage;1",
-      "description": "Voltage on input.",
+      "description": {
+        "en": "Voltage on input."
+      },
       "unit": "millivolt",
       "schema": "integer"
     },
@@ -57,14 +55,18 @@
       "@type": "Telemetry",
       "name": "battery_charge",
       "@id": "dtmi:jacdac:x1fa4c95a:ro:batterycharge;1",
-      "description": "Fraction of charge in the battery.",
+      "description": {
+        "en": "Fraction of charge in the battery."
+      },
       "schema": "float"
     },
     {
       "@type": "Property",
       "name": "battery_capacity",
       "@id": "dtmi:jacdac:x1fa4c95a:const:batterycapacity;1",
-      "description": "Energy that can be delivered to the bus when battery is fully charged.\nThis excludes conversion overheads if any.",
+      "description": {
+        "en": "Energy that can be delivered to the bus when battery is fully charged.\nThis excludes conversion overheads if any."
+      },
       "schema": "integer"
     },
     {
@@ -74,7 +76,9 @@
       ],
       "name": "keep_on_pulse_duration",
       "@id": "dtmi:jacdac:x1fa4c95a:rw:keeponpulseduration;1",
-      "description": "Many USB power packs need current to be drawn from time to time to prevent shutdown.\nThis regulates how often and for how long such current is drawn.\nTypically a 1/8W 22 ohm resistor is used as load. This limits the duty cycle to 10%.",
+      "description": {
+        "en": "Many USB power packs need current to be drawn from time to time to prevent shutdown.\nThis regulates how often and for how long such current is drawn.\nTypically a 1/8W 22 ohm resistor is used as load. This limits the duty cycle to 10%."
+      },
       "unit": "millisecond",
       "schema": "integer",
       "writable": true
@@ -86,33 +90,15 @@
       ],
       "name": "keep_on_pulse_period",
       "@id": "dtmi:jacdac:x1fa4c95a:rw:keeponpulseperiod;1",
-      "description": "Many USB power packs need current to be drawn from time to time to prevent shutdown.\nThis regulates how often and for how long such current is drawn.\nTypically a 1/8W 22 ohm resistor is used as load. This limits the duty cycle to 10%.",
+      "description": {
+        "en": "Many USB power packs need current to be drawn from time to time to prevent shutdown.\nThis regulates how often and for how long such current is drawn.\nTypically a 1/8W 22 ohm resistor is used as load. This limits the duty cycle to 10%."
+      },
       "unit": "millisecond",
       "schema": "integer",
       "writable": true
-    },
-    {
-      "@type": "Telemetry",
-      "name": "power_status_changed",
-      "@id": "dtmi:jacdac:x1fa4c95a:event:powerstatuschanged;1",
-      "description": "Emitted whenever `power_status` changes.",
-      "schema": "dtmi:jacdac:x1fa4c95a:powerstatus;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x1fa4c95a:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x1fa4c95a:powerstatus;1",
@@ -141,5 +127,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

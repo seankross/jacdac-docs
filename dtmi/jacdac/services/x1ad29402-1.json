@@ -2,20 +2,26 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x1ad29402;1",
   "displayName": "Switch",
-  "description": "A switch, which keeps its position.",
+  "description": {
+    "en": "A switch, which keeps its position."
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "active",
       "@id": "dtmi:jacdac:x1ad29402:ro:active;1",
-      "description": "Indicates whether the switch is currently active (on).",
+      "description": {
+        "en": "Indicates whether the switch is currently active (on)."
+      },
       "schema": "boolean"
     },
     {
       "@type": "Property",
       "name": "variant",
       "@id": "dtmi:jacdac:x1ad29402:const:variant;1",
-      "description": "Describes the type of switch used.",
+      "description": {
+        "en": "Describes the type of switch used."
+      },
       "schema": "dtmi:jacdac:x1ad29402:variant;1"
     },
     {
@@ -25,46 +31,14 @@
       ],
       "name": "auto_off_delay",
       "@id": "dtmi:jacdac:x1ad29402:const:autooffdelay;1",
-      "description": "Specifies the delay without activity to automatically turn off after turning on.\nFor example, some light switches in staircases have such a capability.",
+      "description": {
+        "en": "Specifies the delay without activity to automatically turn off after turning on.\nFor example, some light switches in staircases have such a capability."
+      },
       "unit": "second",
       "schema": "float"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Event"
-      ],
-      "name": "on",
-      "@id": "dtmi:jacdac:x1ad29402:event:on;1",
-      "description": "Emitted when switch goes from ``off`` to ``on``.",
-      "schema": "dtmi:jacdac:x1ad29402:event;1"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Event"
-      ],
-      "name": "off",
-      "@id": "dtmi:jacdac:x1ad29402:event:off;1",
-      "description": "Emitted when switch goes from ``on`` to ``off``.",
-      "schema": "dtmi:jacdac:x1ad29402:event;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1",
-    "dtmi:jacdac:services:x1ffffff2;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x1ad29402:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x1ad29402:variant;1",
@@ -113,5 +87,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x1179a749;1",
   "displayName": "Motion",
-  "description": "A sensor, typically PIR, that detects object motion within a certain range",
+  "description": {
+    "en": "A sensor, typically PIR, that detects object motion within a certain range"
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "moving",
       "@id": "dtmi:jacdac:x1179a749:ro:moving;1",
-      "description": "Reports is movement is currently detected by the sensor.",
+      "description": {
+        "en": "Reports is movement is currently detected by the sensor."
+      },
       "schema": "boolean"
     },
     {
@@ -18,7 +22,9 @@
       ],
       "name": "max_distance",
       "@id": "dtmi:jacdac:x1179a749:const:maxdistance;1",
-      "description": "Maximum distance where objects can be detected.",
+      "description": {
+        "en": "Maximum distance where objects can be detected."
+      },
       "unit": "metre",
       "schema": "float"
     },
@@ -26,42 +32,22 @@
       "@type": "Property",
       "name": "angle",
       "@id": "dtmi:jacdac:x1179a749:const:angle;1",
-      "description": "Opening of the field of view",
+      "description": {
+        "en": "Opening of the field of view"
+      },
       "schema": "integer"
     },
     {
       "@type": "Property",
       "name": "variant",
       "@id": "dtmi:jacdac:x1179a749:const:variant;1",
-      "description": "Type of physical sensor",
+      "description": {
+        "en": "Type of physical sensor"
+      },
       "schema": "dtmi:jacdac:x1179a749:variant;1"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Event"
-      ],
-      "name": "movement",
-      "@id": "dtmi:jacdac:x1179a749:event:movement;1",
-      "description": "A movement was detected.",
-      "schema": "dtmi:jacdac:x1179a749:event;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1",
-    "dtmi:jacdac:services:x1ffffff2;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x1179a749:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x1179a749:variant;1",
@@ -75,5 +61,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

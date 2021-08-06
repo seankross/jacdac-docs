@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x1a8b1a28;1",
   "displayName": "Real time clock",
-  "description": "Real time clock to support collecting data with precise time stamps.",
+  "description": {
+    "en": "Real time clock to support collecting data with precise time stamps."
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "local_time",
       "@id": "dtmi:jacdac:x1a8b1a28:ro:localtime;1",
-      "description": "Current time in 24h representation. \n* ``day_of_month`` is day of the month, starting at ``1``\n* ``day_of_week`` is day of the week, starting at ``1`` as monday\nDefault streaming period is 1 second.",
+      "description": {
+        "en": "Current time in 24h representation. \n* ``day_of_month`` is day of the month, starting at ``1``\n* ``day_of_week`` is day of the week, starting at ``1`` as monday\nDefault streaming period is 1 second."
+      },
       "schema": {
         "@type": "Object",
         "fields": [
@@ -50,7 +54,9 @@
       ],
       "name": "error",
       "@id": "dtmi:jacdac:x1a8b1a28:ro:error;1",
-      "description": "Time drift since the last call to the ``set_time`` command.",
+      "description": {
+        "en": "Time drift since the last call to the ``set_time`` command."
+      },
       "unit": "second",
       "schema": "float"
     },
@@ -58,32 +64,22 @@
       "@type": "Property",
       "name": "precision",
       "@id": "dtmi:jacdac:x1a8b1a28:const:precision;1",
-      "description": "Error on the clock, in parts per million of seconds.",
+      "description": {
+        "en": "Error on the clock, in parts per million of seconds."
+      },
       "schema": "float"
     },
     {
       "@type": "Property",
       "name": "variant",
       "@id": "dtmi:jacdac:x1a8b1a28:const:variant;1",
-      "description": "The type of physical clock used by the sensor.",
+      "description": {
+        "en": "The type of physical clock used by the sensor."
+      },
       "schema": "dtmi:jacdac:x1a8b1a28:variant;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1",
-    "dtmi:jacdac:services:x1ffffff2;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x1a8b1a28:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x1a8b1a28:variant;1",
@@ -107,5 +103,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

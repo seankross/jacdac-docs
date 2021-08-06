@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[2460,274],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[2632,274],{
 
 /***/ 52377:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
@@ -71,7 +71,7 @@ exports.Z = _default;
  */
 var DTDL_REFERENCE_URL = "https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md";
 var DTDL_NAME = "Digital Twins Definition Language";
-var DTDL_CONTEXT = "dtmi:dtdl:context;2"; // warps fields into an object
+var DTDL_CONTEXT = ["dtmi:iotcentral:context;2", "dtmi:dtdl:context;2"]; // warps fields into an object
 
 function objectSchema(schemas) {
   return {
@@ -105,10 +105,11 @@ function DTDLUnits() {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "eT": function() { return /* binding */ serviceSpecificationToDTDL; },
 /* harmony export */   "xA": function() { return /* binding */ serviceSpecificationToComponent; },
 /* harmony export */   "__": function() { return /* binding */ deviceSpecificationToDTDL; }
 /* harmony export */ });
-/* unused harmony exports serviceSpecificationToDTDL, serviceSpecificationDTMI, deviceSpecificationDTMI, DTMIToRoute */
+/* unused harmony exports serviceSpecificationDTMI, deviceSpecificationDTMI, DTMIToRoute */
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(85061);
 /* harmony import */ var _jdom_spec__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13173);
 /* harmony import */ var _jdom_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81794);
@@ -272,6 +273,12 @@ function fieldType(srv, pkt, field) {
     name: field.name == "_" ? pkt.name : field.name,
     type: type
   };
+}
+
+function toLocalizedString(str) {
+  return str ? {
+    en: str
+  } : undefined;
 } // converts JADAC pkt data layout into a DTDL schema
 
 
@@ -332,7 +339,7 @@ function packetToDTDL(srv, pkt) {
     "@type": types[pkt.kind] || "Unsupported" + pkt.kind,
     name: pkt.name,
     "@id": toDTMI([srv.classIdentifier, pkt.kind, pkt.name]),
-    description: pkt.description
+    description: toLocalizedString(pkt.description)
   };
 
   switch (pkt.kind) {
@@ -382,9 +389,9 @@ function serviceSpecificationToDTDL(srv) {
     "@type": "Interface",
     "@id": serviceSpecificationDTMI(srv),
     displayName: (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .escapeDisplayName */ .n)(srv.name),
-    description: srv.notes["short"],
+    description: toLocalizedString(srv.notes["short"]),
     contents: srv.packets.filter(function (pkt) {
-      return !pkt.derived && !pkt.internal;
+      return !pkt.internal && (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .isHighLevelRegister */ .vr)(pkt);
     }).map(function (pkt) {
       try {
         return packetToDTDL(srv, pkt);
@@ -395,13 +402,11 @@ function serviceSpecificationToDTDL(srv) {
     }).filter(function (c) {
       return !!c;
     })
-  };
-  if (srv.extends.length) dtdl.extends = srv.extends.map(function (id) {
-    return serviceSpecificationDTMI((0,_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .serviceSpecificationFromName */ .kB)(id));
-  });
-  var hasEvents = srv.packets.find(function (pkt) {
-    return pkt.kind === "event";
-  });
+  }; // TODO extends support
+  // TODO events
+
+  var hasEvents = false; // srv.packets.find(pkt => pkt.kind === "event")
+
   var hasEnums = Object.keys(srv.enums).length;
 
   if (hasEvents || hasEnums) {
@@ -471,7 +476,7 @@ function deviceSpecificationToDTDL(dev, options) {
     "@type": "Interface",
     "@id": deviceSpecificationDTMI(dev),
     displayName: (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .escapeDisplayName */ .n)(dev.name),
-    description: dev.description,
+    description: toLocalizedString(dev.description),
     contents: services.map(function (srv, i) {
       return serviceSpecificationToComponent(srv, names[i]);
     }),

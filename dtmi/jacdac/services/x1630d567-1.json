@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x1630d567;1",
   "displayName": "Color",
-  "description": "Senses RGB colors",
+  "description": {
+    "en": "Senses RGB colors"
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "color",
       "@id": "dtmi:jacdac:x1630d567:ro:color;1",
-      "description": "Detected color in the RGB color space.",
+      "description": {
+        "en": "Detected color in the RGB color space."
+      },
       "schema": {
         "@type": "Object",
         "fields": [
@@ -28,21 +32,8 @@
       }
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1",
-    "dtmi:jacdac:services:x1ffffff2;1"
-  ],
-  "schemas": [
-    {
-      "@id": "dtmi:jacdac:x1630d567:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    }
-  ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

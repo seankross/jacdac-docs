@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x183fe656;1",
   "displayName": "Relay",
-  "description": "A switching relay.",
+  "description": {
+    "en": "A switching relay."
+  },
   "contents": [
     {
       "@type": "Property",
       "name": "closed",
       "@id": "dtmi:jacdac:x183fe656:rw:closed;1",
-      "description": "Indicates whether the relay circuit is currently on (closed) or off (closed).",
+      "description": {
+        "en": "Indicates whether the relay circuit is currently on (closed) or off (closed)."
+      },
       "schema": "boolean",
       "writable": true
     },
@@ -16,7 +20,9 @@
       "@type": "Property",
       "name": "variant",
       "@id": "dtmi:jacdac:x183fe656:const:variant;1",
-      "description": "Describes the type of relay used.",
+      "description": {
+        "en": "Describes the type of relay used."
+      },
       "schema": "dtmi:jacdac:x183fe656:variant;1"
     },
     {
@@ -26,45 +32,14 @@
       ],
       "name": "max_switching_current",
       "@id": "dtmi:jacdac:x183fe656:const:maxswitchingcurrent;1",
-      "description": "Maximum switching current for a resistive load.",
+      "description": {
+        "en": "Maximum switching current for a resistive load."
+      },
       "unit": "milliampere",
       "schema": "integer"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Event"
-      ],
-      "name": "on",
-      "@id": "dtmi:jacdac:x183fe656:event:on;1",
-      "description": "Emitted when relay goes from ``off`` to ``on`` state.",
-      "schema": "dtmi:jacdac:x183fe656:event;1"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Event"
-      ],
-      "name": "off",
-      "@id": "dtmi:jacdac:x183fe656:event:off;1",
-      "description": "Emitted when relay goes from ``on`` to ``off`` state.",
-      "schema": "dtmi:jacdac:x183fe656:event;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x183fe656:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x183fe656:variant;1",
@@ -88,5 +63,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

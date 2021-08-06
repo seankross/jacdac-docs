@@ -189,8 +189,8 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "/jacdac-docs/tools/azure-device-twin-designer/"
-  }, "Azure device twin designer"), ", interface to design a device or digital twins"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    "href": "/jacdac-docs/tools/azure-device-template-designer/"
+  }, "Azure device template designer"), ", interface to design a device or digital twins"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",

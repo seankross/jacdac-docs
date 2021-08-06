@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x19f4d06b;1",
   "displayName": "Rover",
-  "description": "A roving robot.",
+  "description": {
+    "en": "A roving robot."
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "kinematics",
       "@id": "dtmi:jacdac:x19f4d06b:ro:kinematics;1",
-      "description": "The current position and orientation of the robot.",
+      "description": {
+        "en": "The current position and orientation of the robot."
+      },
       "schema": {
         "@type": "Object",
         "fields": [
@@ -36,21 +40,8 @@
       }
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1",
-    "dtmi:jacdac:services:x1ffffff2;1"
-  ],
-  "schemas": [
-    {
-      "@id": "dtmi:jacdac:x19f4d06b:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    }
-  ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

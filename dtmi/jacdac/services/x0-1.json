@@ -2,7 +2,9 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x0;1",
   "displayName": "Control",
-  "description": "Control service is always service index `0`.\nIt handles actions common to all services on a device.\n\nNote: some of the optional features (including `flood_ping`, `mcu_temperature`, and all string registers)\nare not implemented in `8bit` version.",
+  "description": {
+    "en": "Control service is always service index `0`.\nIt handles actions common to all services on a device.\n\nNote: some of the optional features (including `flood_ping`, `mcu_temperature`, and all string registers)\nare not implemented in `8bit` version."
+  },
   "contents": [
     {
       "@type": [
@@ -11,7 +13,9 @@
       ],
       "name": "reset_in",
       "@id": "dtmi:jacdac:x0:rw:resetin;1",
-      "description": "When set to value other than `0`, it asks the device to reset after specified number of microseconds.\nThis is typically used to implement watchdog functionality, where a brain device sets `reset_in` to\nsay 1.6s every 0.5s.",
+      "description": {
+        "en": "When set to value other than `0`, it asks the device to reset after specified number of microseconds.\nThis is typically used to implement watchdog functionality, where a brain device sets `reset_in` to\nsay 1.6s every 0.5s."
+      },
       "unit": "microsecond",
       "schema": "integer",
       "writable": true
@@ -20,35 +24,45 @@
       "@type": "Property",
       "name": "device_description",
       "@id": "dtmi:jacdac:x0:const:devicedescription;1",
-      "description": "Identifies the type of hardware (eg., ACME Corp. Servo X-42 Rev C)",
+      "description": {
+        "en": "Identifies the type of hardware (eg., ACME Corp. Servo X-42 Rev C)"
+      },
       "schema": "string"
     },
     {
       "@type": "Property",
       "name": "firmware_identifier",
       "@id": "dtmi:jacdac:x0:const:firmwareidentifier;1",
-      "description": "A numeric code for the string above; used to identify firmware images and devices.",
+      "description": {
+        "en": "A numeric code for the string above; used to identify firmware images and devices."
+      },
       "schema": "integer"
     },
     {
       "@type": "Property",
       "name": "bootloader_firmware_identifier",
       "@id": "dtmi:jacdac:x0:const:bootloaderfirmwareidentifier;1",
-      "description": "Typically the same as `firmware_identifier` unless device was flashed by hand; the bootloader will respond to that code.",
+      "description": {
+        "en": "Typically the same as `firmware_identifier` unless device was flashed by hand; the bootloader will respond to that code."
+      },
       "schema": "integer"
     },
     {
       "@type": "Property",
       "name": "firmware_version",
       "@id": "dtmi:jacdac:x0:const:firmwareversion;1",
-      "description": "A string describing firmware version; typically semver.",
+      "description": {
+        "en": "A string describing firmware version; typically semver."
+      },
       "schema": "string"
     },
     {
       "@type": "Telemetry",
       "name": "mcu_temperature",
       "@id": "dtmi:jacdac:x0:ro:mcutemperature;1",
-      "description": "MCU temperature in degrees Celsius (approximate).",
+      "description": {
+        "en": "MCU temperature in degrees Celsius (approximate)."
+      },
       "schema": "integer"
     },
     {
@@ -58,7 +72,9 @@
       ],
       "name": "uptime",
       "@id": "dtmi:jacdac:x0:ro:uptime;1",
-      "description": "Number of microseconds since boot.",
+      "description": {
+        "en": "Number of microseconds since boot."
+      },
       "unit": "microsecond",
       "schema": "integer"
     },
@@ -66,38 +82,31 @@
       "@type": "Property",
       "name": "device_url",
       "@id": "dtmi:jacdac:x0:const:deviceurl;1",
-      "description": "Request the information web site for this device",
+      "description": {
+        "en": "Request the information web site for this device"
+      },
       "schema": "string"
     },
     {
       "@type": "Property",
       "name": "device_specification_url",
       "@id": "dtmi:jacdac:x0:const:devicespecificationurl;1",
-      "description": "URL pointing to device JSON specification.",
+      "description": {
+        "en": "URL pointing to device JSON specification."
+      },
       "schema": "string"
     },
     {
       "@type": "Property",
       "name": "firmware_url",
       "@id": "dtmi:jacdac:x0:const:firmwareurl;1",
-      "description": "URL with machine-readable metadata information about updating device firmware",
+      "description": {
+        "en": "URL with machine-readable metadata information about updating device firmware"
+      },
       "schema": "string"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x0:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x0:announceflags;1",
@@ -171,5 +180,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

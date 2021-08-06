@@ -2,50 +2,22 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x1c739e6c;1",
   "displayName": "Barcode reader",
-  "description": "A device that reads various barcodes, like QR codes. For the web, see [BarcodeDetector](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector).",
+  "description": {
+    "en": "A device that reads various barcodes, like QR codes. For the web, see [BarcodeDetector](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector)."
+  },
   "contents": [
     {
       "@type": "Property",
       "name": "enabled",
       "@id": "dtmi:jacdac:x1c739e6c:rw:enabled;1",
-      "description": "Turns on or off the detection of barcodes.",
+      "description": {
+        "en": "Turns on or off the detection of barcodes."
+      },
       "schema": "boolean",
       "writable": true
-    },
-    {
-      "@type": "Telemetry",
-      "name": "detect",
-      "@id": "dtmi:jacdac:x1c739e6c:event:detect;1",
-      "description": "Raised when a bar code is detected and decoded. If the reader detects multiple codes, it will issue multiple events.\nIn case of numeric barcodes, the `data` field should contain the ASCII (which is the same as UTF8 in that case) representation of the number.",
-      "schema": {
-        "@type": "Object",
-        "fields": [
-          {
-            "name": "format",
-            "schema": "dtmi:jacdac:x1c739e6c:format;1"
-          },
-          {
-            "name": "data",
-            "schema": "string"
-          }
-        ]
-      }
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x1c739e6c:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x1c739e6c:format;1",
@@ -119,5 +91,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

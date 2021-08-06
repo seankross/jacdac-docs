@@ -82,6 +82,33 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 14366:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"
+}), 'Cloud');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 95067:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -249,6 +276,8 @@ var Wifi = __webpack_require__(14695);
 var Settings = __webpack_require__(88237);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/FiberManualRecord.js
 var FiberManualRecord = __webpack_require__(95067);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Cloud.js
+var Cloud = __webpack_require__(14366);
 // EXTERNAL MODULE: ./src/components/ui/DarkModeContext.tsx
 var DarkModeContext = __webpack_require__(91350);
 // EXTERNAL MODULE: ./src/components/KindIcon.tsx
@@ -268,6 +297,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
+ // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
@@ -393,11 +424,13 @@ function ToolsDrawer() {
     text: "Firmware Update",
     url: "/tools/updater/",
     icon: /*#__PURE__*/react.createElement(SystemUpdateAlt/* default */.Z, null)
+  }, {// separator
+  }, {
+    text: "Azure Device Template",
+    url: "/tools/azure-device-template-designer",
+    icon: /*#__PURE__*/react.createElement(Cloud/* default */.Z, null)
   },
   /*
-  {
-      // separator
-  },
   {
       text: "MakeCode",
       url: "/tools/makecode",
@@ -412,11 +445,6 @@ function ToolsDrawer() {
           text: "Edge Impulse",
           url: "/tools/edge-impulse",
           icon: <EdgeImpulseIcon />
-      },
-      {
-      text: "Azure IoT Hub",
-              url: "/tools/azure-iot-hub",
-              icon: <CloudIcon />
       },
   */
   {// separator

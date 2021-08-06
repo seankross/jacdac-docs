@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x1e3048f8;1",
   "displayName": "LED",
-  "description": "A controller for 1 or more monochrome or RGB LEDs connected in parallel.",
+  "description": {
+    "en": "A controller for 1 or more monochrome or RGB LEDs connected in parallel."
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "color",
       "@id": "dtmi:jacdac:x1e3048f8:ro:color;1",
-      "description": "The current color of the LED.",
+      "description": {
+        "en": "The current color of the LED."
+      },
       "schema": {
         "@type": "Object",
         "fields": [
@@ -28,60 +32,43 @@
       }
     },
     {
-      "@type": [
-        "Property",
-        "Current"
-      ],
-      "name": "max_power",
-      "@id": "dtmi:jacdac:x1e3048f8:rw:maxpower;1",
-      "description": "Limit the power drawn by the light-strip (and controller).",
-      "unit": "milliampere",
-      "schema": "integer",
-      "writable": true
-    },
-    {
       "@type": "Property",
       "name": "led_count",
       "@id": "dtmi:jacdac:x1e3048f8:const:ledcount;1",
-      "description": "If known, specifies the number of LEDs in parallel on this device.",
+      "description": {
+        "en": "If known, specifies the number of LEDs in parallel on this device."
+      },
       "schema": "integer"
     },
     {
       "@type": "Property",
       "name": "wave_length",
       "@id": "dtmi:jacdac:x1e3048f8:const:wavelength;1",
-      "description": "If monochrome LED, specifies the wave length of the LED.",
+      "description": {
+        "en": "If monochrome LED, specifies the wave length of the LED."
+      },
       "schema": "integer"
     },
     {
       "@type": "Property",
       "name": "luminous_intensity",
       "@id": "dtmi:jacdac:x1e3048f8:const:luminousintensity;1",
-      "description": "The luminous intensity of the LED, at full value, in micro candella.",
+      "description": {
+        "en": "The luminous intensity of the LED, at full value, in micro candella."
+      },
       "schema": "integer"
     },
     {
       "@type": "Property",
       "name": "variant",
       "@id": "dtmi:jacdac:x1e3048f8:const:variant;1",
-      "description": "The physical type of LED.",
+      "description": {
+        "en": "The physical type of LED."
+      },
       "schema": "dtmi:jacdac:x1e3048f8:variant;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x1e3048f8:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x1e3048f8:variant;1",
@@ -110,5 +97,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

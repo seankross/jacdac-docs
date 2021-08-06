@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x171723ca;1",
   "displayName": "Solenoid",
-  "description": "A push-pull solenoid is a type of relay that pulls a coil when activated.",
+  "description": {
+    "en": "A push-pull solenoid is a type of relay that pulls a coil when activated."
+  },
   "contents": [
     {
       "@type": "Property",
       "name": "pulled",
       "@id": "dtmi:jacdac:x171723ca:rw:pulled;1",
-      "description": "Indicates whether the solenoid is energized and pulled (on) or pushed (off).",
+      "description": {
+        "en": "Indicates whether the solenoid is energized and pulled (on) or pushed (off)."
+      },
       "schema": "boolean",
       "writable": true
     },
@@ -16,24 +20,13 @@
       "@type": "Property",
       "name": "variant",
       "@id": "dtmi:jacdac:x171723ca:const:variant;1",
-      "description": "Describes the type of solenoid used.",
+      "description": {
+        "en": "Describes the type of solenoid used."
+      },
       "schema": "dtmi:jacdac:x171723ca:variant;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x171723ca:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x171723ca:variant;1",
@@ -57,5 +50,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

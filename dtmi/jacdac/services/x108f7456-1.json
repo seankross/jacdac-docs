@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x108f7456;1",
   "displayName": "Joystick",
-  "description": "A two axis directional joystick",
+  "description": {
+    "en": "A two axis directional joystick"
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "direction",
       "@id": "dtmi:jacdac:x108f7456:ro:direction;1",
-      "description": "If the joystick is analog, the directional buttons should be \"simulated\", based on joystick position\n(`Left` is `{ x = -1, y = 0 }`, `Up` is `{ x = 0, y = -1}`).\nIf the joystick is digital, then each direction will read as either `-1`, `0`, or `1` (in fixed representation).\nThe primary button on the joystick is `A`.",
+      "description": {
+        "en": "If the joystick is analog, the directional buttons should be \"simulated\", based on joystick position\n(`Left` is `{ x = -1, y = 0 }`, `Up` is `{ x = 0, y = -1}`).\nIf the joystick is digital, then each direction will read as either `-1`, `0`, or `1` (in fixed representation).\nThe primary button on the joystick is `A`."
+      },
       "schema": {
         "@type": "Object",
         "fields": [
@@ -31,39 +35,22 @@
       "@type": "Property",
       "name": "variant",
       "@id": "dtmi:jacdac:x108f7456:const:variant;1",
-      "description": "The type of physical joystick.",
+      "description": {
+        "en": "The type of physical joystick."
+      },
       "schema": "dtmi:jacdac:x108f7456:variant;1"
     },
     {
       "@type": "Property",
       "name": "buttons_available",
       "@id": "dtmi:jacdac:x108f7456:const:buttonsavailable;1",
-      "description": "Indicates a bitmask of the buttons that are mounted on the joystick.\nIf the `Left`/`Up`/`Right`/`Down` buttons are marked as available here, the joystick is digital.\nEven when marked as not available, they will still be simulated based on the analog joystick.",
-      "schema": "dtmi:jacdac:x108f7456:buttons;1"
-    },
-    {
-      "@type": "Telemetry",
-      "name": "buttons_changed",
-      "@id": "dtmi:jacdac:x108f7456:event:buttonschanged;1",
-      "description": "Emitted whenever the state of buttons changes.",
+      "description": {
+        "en": "Indicates a bitmask of the buttons that are mounted on the joystick.\nIf the `Left`/`Up`/`Right`/`Down` buttons are marked as available here, the joystick is digital.\nEven when marked as not available, they will still be simulated based on the analog joystick."
+      },
       "schema": "dtmi:jacdac:x108f7456:buttons;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1",
-    "dtmi:jacdac:services:x1ffffff2;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x108f7456:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x108f7456:buttons;1",
@@ -159,5 +146,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

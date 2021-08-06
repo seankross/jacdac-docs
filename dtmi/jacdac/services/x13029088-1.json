@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x13029088;1",
   "displayName": "Magnetometer",
-  "description": "A 3-axis magnetometer.",
+  "description": {
+    "en": "A 3-axis magnetometer."
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "forces",
       "@id": "dtmi:jacdac:x13029088:ro:forces;1",
-      "description": "Indicates the current magnetic field on magnetometer.\nFor reference: `1 mgauss` is `100 nT` (and `1 gauss` is `100 000 nT`).",
+      "description": {
+        "en": "Indicates the current magnetic field on magnetometer.\nFor reference: `1 mgauss` is `100 nT` (and `1 gauss` is `100 000 nT`)."
+      },
       "schema": {
         "@type": "Object",
         "fields": [
@@ -26,30 +30,10 @@
           }
         ]
       }
-    },
-    {
-      "@type": "Telemetry",
-      "name": "forces_error",
-      "@id": "dtmi:jacdac:x13029088:ro:forceserror;1",
-      "description": "Error on the readings.",
-      "schema": "integer"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1",
-    "dtmi:jacdac:services:x1ffffff2;1"
-  ],
-  "schemas": [
-    {
-      "@id": "dtmi:jacdac:x13029088:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    }
-  ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

@@ -2,45 +2,40 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x1d90e1c5;1",
   "displayName": "Sensor Aggregator",
-  "description": "Aggregate data from multiple sensors into a single stream\n(often used as input to machine learning models on the same device, see model runner service).",
+  "description": {
+    "en": "Aggregate data from multiple sensors into a single stream\n(often used as input to machine learning models on the same device, see model runner service)."
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "num_samples",
       "@id": "dtmi:jacdac:x1d90e1c5:ro:numsamples;1",
-      "description": "Number of input samples collected so far.",
+      "description": {
+        "en": "Number of input samples collected so far."
+      },
       "schema": "integer"
     },
     {
       "@type": "Telemetry",
       "name": "sample_size",
       "@id": "dtmi:jacdac:x1d90e1c5:ro:samplesize;1",
-      "description": "Size of a single sample.",
+      "description": {
+        "en": "Size of a single sample."
+      },
       "schema": "integer"
     },
     {
       "@type": "Property",
       "name": "streaming_samples",
       "@id": "dtmi:jacdac:x1d90e1c5:rw:streamingsamples;1",
-      "description": "When set to `N`, will stream `N` samples as `current_sample` reading.",
+      "description": {
+        "en": "When set to `N`, will stream `N` samples as `current_sample` reading."
+      },
       "schema": "integer",
       "writable": true
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x1d90e1c5:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x1d90e1c5:sampletype;1",
@@ -79,5 +74,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

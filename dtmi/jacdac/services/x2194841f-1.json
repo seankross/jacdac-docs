@@ -2,13 +2,17 @@
   "@type": "Interface",
   "@id": "dtmi:jacdac:services:x2194841f;1",
   "displayName": "Verified Telemetry",
-  "description": "A mixin service that exposes verified telemetry information for a sensor (see https://github.com/Azure/Verified-Telemetry/tree/main/PnPModel).",
+  "description": {
+    "en": "A mixin service that exposes verified telemetry information for a sensor (see https://github.com/Azure/Verified-Telemetry/tree/main/PnPModel)."
+  },
   "contents": [
     {
       "@type": "Telemetry",
       "name": "telemetry_status",
       "@id": "dtmi:jacdac:x2194841f:ro:telemetrystatus;1",
-      "description": "Reads the telemetry working status, where ``true`` is working and ``false`` is faulty.",
+      "description": {
+        "en": "Reads the telemetry working status, where ``true`` is working and ``false`` is faulty."
+      },
       "schema": "dtmi:jacdac:x2194841f:status;1"
     },
     {
@@ -18,7 +22,9 @@
       ],
       "name": "telemetry_status_interval",
       "@id": "dtmi:jacdac:x2194841f:rw:telemetrystatusinterval;1",
-      "description": "Specifies the interval between computing the fingerprint information.",
+      "description": {
+        "en": "Specifies the interval between computing the fingerprint information."
+      },
       "unit": "millisecond",
       "schema": "integer",
       "writable": true
@@ -27,14 +33,18 @@
       "@type": "Property",
       "name": "fingerprint_type",
       "@id": "dtmi:jacdac:x2194841f:const:fingerprinttype;1",
-      "description": "Type of the fingerprint.",
+      "description": {
+        "en": "Type of the fingerprint."
+      },
       "schema": "dtmi:jacdac:x2194841f:fingerprinttype;1"
     },
     {
       "@type": "Telemetry",
       "name": "fingerprint_template",
       "@id": "dtmi:jacdac:x2194841f:ro:fingerprinttemplate;1",
-      "description": "Template Fingerprint information of a working sensor.",
+      "description": {
+        "en": "Template Fingerprint information of a working sensor."
+      },
       "schema": {
         "@type": "Object",
         "fields": [
@@ -47,39 +57,9 @@
           }
         ]
       }
-    },
-    {
-      "@type": "Telemetry",
-      "name": "telemetry_status_change",
-      "@id": "dtmi:jacdac:x2194841f:event:telemetrystatuschange;1",
-      "description": "The telemetry status of the device was updated.",
-      "schema": "dtmi:jacdac:x2194841f:status;1"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Event"
-      ],
-      "name": "fingerprint_template_change",
-      "@id": "dtmi:jacdac:x2194841f:event:fingerprinttemplatechange;1",
-      "description": "The fingerprint template was updated",
-      "schema": "dtmi:jacdac:x2194841f:event;1"
     }
   ],
-  "extends": [
-    "dtmi:jacdac:services:x1ffffff3;1"
-  ],
   "schemas": [
-    {
-      "@id": "dtmi:jacdac:x2194841f:event;1",
-      "@type": "Object",
-      "fields": [
-        {
-          "name": "count",
-          "schema": "integer"
-        }
-      ]
-    },
     {
       "@type": "Enum",
       "@id": "dtmi:jacdac:x2194841f:status;1",
@@ -125,5 +105,8 @@
       ]
     }
   ],
-  "@context": "dtmi:dtdl:context;2"
+  "@context": [
+    "dtmi:iotcentral:context;2",
+    "dtmi:dtdl:context;2"
+  ]
 }

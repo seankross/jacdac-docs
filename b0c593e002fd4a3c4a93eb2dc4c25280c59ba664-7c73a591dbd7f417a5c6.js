@@ -16513,8 +16513,14 @@ function VegaLiteWidget(props) {
       vegaData = _useState[0],
       setVegaData = _useState[1];
 
+  var viewRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)();
   var group = (0,_tidy__WEBPACK_IMPORTED_MODULE_8__/* .tidyResolveHeader */ .gc)(data, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("group"));
-  var settings = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .JSONTryParse */ .ZZ)(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("settings")); // TODO merge json
+  var settings = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .JSONTryParse */ .ZZ)(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue("settings"));
+
+  var handleNewView = function handleNewView(view) {
+    return viewRef.current = view;
+  }; // TODO merge json
+
 
   var fullSpec = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     if (!settings) return spec;
@@ -16606,7 +16612,8 @@ function VegaLiteWidget(props) {
     spec: fullSpec,
     data: vegaData,
     renderer: renderer,
-    tooltip: true
+    tooltip: true,
+    onNewView: handleNewView
   })))));
 }
 /**
