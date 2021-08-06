@@ -1020,26 +1020,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ Commissioner; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(83332);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(1059);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(80838);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(83332);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(1059);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(80838);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
-/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(8567);
-/* harmony import */ var _material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(39545);
-/* harmony import */ var _material_ui_icons_Cancel__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(30263);
+/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(8567);
+/* harmony import */ var _material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(39545);
+/* harmony import */ var _material_ui_icons_Cancel__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(30263);
 /* harmony import */ var _components_hooks_useDevices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53074);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(71815);
-/* harmony import */ var _material_ui_core_Table__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(49683);
-/* harmony import */ var _material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(86300);
-/* harmony import */ var _material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(49400);
-/* harmony import */ var _material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(78475);
-/* harmony import */ var _material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(4093);
-/* harmony import */ var _material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(99395);
-/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(58063);
+/* harmony import */ var _material_ui_core_Table__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(49683);
+/* harmony import */ var _material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(86300);
+/* harmony import */ var _material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(49400);
+/* harmony import */ var _material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(78475);
+/* harmony import */ var _material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(4093);
+/* harmony import */ var _material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(99395);
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(58063);
 /* harmony import */ var _components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(95393);
 /* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(65063);
 /* harmony import */ var _components_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(99808);
@@ -1047,12 +1047,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(81794);
 /* harmony import */ var _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(45484);
 /* harmony import */ var _jacdac_ts_src_jdom_light__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(69130);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(10920);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(70274);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(70274);
 /* harmony import */ var _jacdac_ts_src_jdom_pack__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(91635);
 /* harmony import */ var _components_FileSystemContext__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(74195);
 /* harmony import */ var _components_fs_FileTabs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(45430);
 /* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(54774);
+/* harmony import */ var _components_AppContext__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(84377);
 
 
 
@@ -1102,8 +1103,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z)(function () {
-  return (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z)({
+
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z)(function () {
+  return (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z)({
     buttonFail: {
       color: "white",
       backgroundColor: "red"
@@ -1157,64 +1159,64 @@ function DataSetTable(props) {
     updateDescriptor(descriptor);
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
-    component: _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
+    component: _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, {
     "aria-label": "device table",
     size: "small"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_21__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, null, headers.map(function (header) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, null, headers.map(function (header) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
       align: "right",
       key: header
     }, header);
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, null, descriptors === null || descriptors === void 0 ? void 0 : descriptors.map(function (descriptor) {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, null, descriptors === null || descriptors === void 0 ? void 0 : descriptors.map(function (descriptor) {
     var _descriptor$services$;
 
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
       key: descriptor.deviceIdentifier
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
       align: "center"
-    }, descriptor.deviceIdentifier), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
+    }, descriptor.deviceIdentifier), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
       align: "center"
     }, descriptor.firmwareIdentifier && descriptor.firmwareIdentifier.toString(16), ((_descriptor$services$ = descriptor.services.filter(function (service) {
       return service.serviceClass == _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_ROLE_MANAGER */ .igi;
-    })) === null || _descriptor$services$ === void 0 ? void 0 : _descriptor$services$.length) && "BRAIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
+    })) === null || _descriptor$services$ === void 0 ? void 0 : _descriptor$services$.length) && "BRAIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
       align: "center"
     }, descriptor.services.map(function (service) {
       return service.name + " ";
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
       align: "center"
     }, descriptor.servicesSeen.map(function (service) {
       return service.name + " ";
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
       align: "center"
     }, serviceArrayMatched(descriptor) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
       style: {
         color: "green"
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, {
       fontSize: "small"
-    }), "PASS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
+    }), "PASS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
       align: "center"
-    }, descriptor.pass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, {
+    }, descriptor.pass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
       "aria-label": "Toggle pass state",
       variant: "contained",
       className: classes.buttonSuccess,
       onClick: setPass(descriptor, false),
-      startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z, {
+      startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, {
         fontSize: "small"
       })
-    }, "Pass"), !descriptor.pass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, {
+    }, "Pass"), !descriptor.pass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
       "aria-label": "Toggle pass state",
       variant: "contained",
       className: classes.buttonFail,
       onClick: setPass(descriptor, true),
-      startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Cancel__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
+      startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Cancel__WEBPACK_IMPORTED_MODULE_28__/* .default */ .Z, {
         fontSize: "small"
       })
-    }, "FAIL")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
+    }, "FAIL")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
       align: "center"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_28__/* .default */ .Z, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z, {
       onChange: handleCommentChange,
       id: descriptor.deviceIdentifier,
       label: "Comment",
@@ -1229,14 +1231,14 @@ function LEDTest(_x) {
 }
 
 function _LEDTest() {
-  _LEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(service) {
+  _LEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(service) {
     var i, encoded;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context6) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context7) {
       while (1) {
-        switch (_context6.prev = _context6.next) {
+        switch (_context7.prev = _context7.next) {
           case 0:
             if (!service.device.connected) {
-              _context6.next = 14;
+              _context7.next = 14;
               break;
             }
 
@@ -1244,39 +1246,39 @@ function _LEDTest() {
 
           case 2:
             if (!(i < 8)) {
-              _context6.next = 12;
+              _context7.next = 12;
               break;
             }
 
             encoded = (0,_jacdac_ts_src_jdom_light__WEBPACK_IMPORTED_MODULE_11__/* .lightEncode */ ._)("setone % #\n                    show 20", [i, 0xff0000]);
 
             if (!service.device.connected) {
-              _context6.next = 7;
+              _context7.next = 7;
               break;
             }
 
-            _context6.next = 7;
+            _context7.next = 7;
             return service === null || service === void 0 ? void 0 : service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .LedPixelCmd.Run */ .yB$.Run, encoded);
 
           case 7:
-            _context6.next = 9;
+            _context7.next = 9;
             return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(200);
 
           case 9:
             i++;
-            _context6.next = 2;
+            _context7.next = 2;
             break;
 
           case 12:
-            _context6.next = 0;
+            _context7.next = 0;
             break;
 
           case 14:
           case "end":
-            return _context6.stop();
+            return _context7.stop();
         }
       }
-    }, _callee5);
+    }, _callee6);
   }));
   return _LEDTest.apply(this, arguments);
 }
@@ -1286,11 +1288,11 @@ function SingleRGBLEDTest(_x2) {
 }
 
 function _SingleRGBLEDTest() {
-  _SingleRGBLEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(service) {
+  _SingleRGBLEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(service) {
     var pack;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context7) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context8) {
       while (1) {
-        switch (_context7.prev = _context7.next) {
+        switch (_context8.prev = _context8.next) {
           case 0:
             pack = function pack(r, g, b, animDelay) {
               var unpacked = [r, g, b, animDelay];
@@ -1299,43 +1301,43 @@ function _SingleRGBLEDTest() {
 
           case 1:
             if (!service.device.connected) {
-              _context7.next = 16;
+              _context8.next = 16;
               break;
             }
 
-            _context7.next = 4;
+            _context8.next = 4;
             return service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .LedCmd.Animate */ .tVE.Animate, pack(255, 0, 0, 200));
 
           case 4:
-            _context7.next = 6;
+            _context8.next = 6;
             return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(500);
 
           case 6:
-            _context7.next = 8;
+            _context8.next = 8;
             return service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .LedCmd.Animate */ .tVE.Animate, pack(0, 255, 0, 200));
 
           case 8:
-            _context7.next = 10;
+            _context8.next = 10;
             return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(500);
 
           case 10:
-            _context7.next = 12;
+            _context8.next = 12;
             return service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .LedCmd.Animate */ .tVE.Animate, pack(0, 0, 255, 200));
 
           case 12:
-            _context7.next = 14;
+            _context8.next = 14;
             return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(500);
 
           case 14:
-            _context7.next = 1;
+            _context8.next = 1;
             break;
 
           case 16:
           case "end":
-            return _context7.stop();
+            return _context8.stop();
         }
       }
-    }, _callee6);
+    }, _callee7);
   }));
   return _SingleRGBLEDTest.apply(this, arguments);
 }
@@ -1345,44 +1347,44 @@ function StatusLEDTest(_x3) {
 }
 
 function _StatusLEDTest() {
-  _StatusLEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(device) {
+  _StatusLEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(device) {
     var l;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context8) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context9) {
       while (1) {
-        switch (_context8.prev = _context8.next) {
+        switch (_context9.prev = _context9.next) {
           case 0:
             l = device.statusLight;
 
           case 1:
             if (!device.connected) {
-              _context8.next = 13;
+              _context9.next = 13;
               break;
             }
 
             l.blink(0xff0000, 0x000000, 250, 3);
-            _context8.next = 5;
+            _context9.next = 5;
             return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(1000);
 
           case 5:
             l.blink(0x00ff00, 0x000000, 250, 3);
-            _context8.next = 8;
+            _context9.next = 8;
             return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(1000);
 
           case 8:
             l.blink(0x0000ff, 0x000000, 250, 3);
-            _context8.next = 11;
+            _context9.next = 11;
             return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_9__/* .delay */ .gw)(1000);
 
           case 11:
-            _context8.next = 1;
+            _context9.next = 1;
             break;
 
           case 13:
           case "end":
-            return _context8.stop();
+            return _context9.stop();
         }
       }
-    }, _callee7);
+    }, _callee8);
   }));
   return _StatusLEDTest.apply(this, arguments);
 }
@@ -1395,8 +1397,12 @@ function Page() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z),
       bus = _useContext.bus;
 
-  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_components_FileSystemContext__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z),
-      fileSystem = _useContext2.fileSystem;
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_components_AppContext__WEBPACK_IMPORTED_MODULE_16__/* .default */ .ZP),
+      setError = _useContext2.setError,
+      enqueueSnackbar = _useContext2.enqueueSnackbar;
+
+  var _useContext3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_components_FileSystemContext__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z),
+      fileSystem = _useContext3.fileSystem;
 
   var workingFile = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(fileSystem, function (_) {
     return _ === null || _ === void 0 ? void 0 : _.workingFile;
@@ -1424,11 +1430,11 @@ function Page() {
 
   var tableHeaders = ["Device identifier", "Firmware identifier", "Services advertised", "Services seen", "Packets seen", "Functional test pass", "Comment"];
 
-  var _useContext3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_components_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_7__/* .default */ .ZP),
-      fileStorage = _useContext3.fileStorage;
+  var _useContext4 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_components_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_7__/* .default */ .ZP),
+      fileStorage = _useContext4.fileStorage;
 
   var testDevice = /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(d) {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(d) {
       var _iterator, _step, srv;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -1475,21 +1481,45 @@ function Page() {
   }(); // file handling
 
 
-  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    var text, newDataSet;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            console.debug("todo: load data in dataset?");
+            if (workingFile) {
+              _context2.next = 2;
+              break;
+            }
 
-          case 1:
+            return _context2.abrupt("return");
+
+          case 2:
+            _context2.prev = 2;
+            _context2.next = 5;
+            return workingFile.textAsync();
+
+          case 5:
+            text = _context2.sent;
+            newDataSet = JSON.parse(text);
+            console.debug(newDataSet);
+            enqueueSnackbar(workingFile.name + " loaded...");
+            _context2.next = 14;
+            break;
+
+          case 11:
+            _context2.prev = 11;
+            _context2.t0 = _context2["catch"](2);
+            setError(_context2.t0);
+
+          case 14:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2);
+    }, _callee2, null, [[2, 11]]);
   })), [workingFile]);
-  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
     var newDataSet, _loop, _iterator2, _step2, _ret;
 
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context4) {
@@ -1626,59 +1656,74 @@ function Page() {
     });
   }, [bus, dataSet]);
 
+  var renderCSV = function renderCSV() {
+    var sep = ",";
+    var lineEnding = "\r\n";
+    var str = "device identifier" + sep + "firmware identifier" + sep + "services" + sep + "Packets seen" + sep + "Functional test pass" + sep + "Comment" + lineEnding;
+    dataSet.forEach(function (descriptor) {
+      str += "0x" + descriptor.deviceIdentifier + sep;
+      if (descriptor.firmwareIdentifier) str += "0x" + descriptor.firmwareIdentifier.toString(16) + sep;else if (descriptor.services.find(function (service) {
+        return service.serviceClass == _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_ROLE_MANAGER */ .igi;
+      })) str += "BRAIN" + sep;else str += "UNKNOWN" + sep;
+      str += "" + descriptor.services.map(function (service) {
+        return service.name;
+      }).join(" ") + sep;
+      if (serviceArrayMatched(descriptor)) str += "YES" + sep;else str += "NO" + sep;
+      if (descriptor.pass) str += "PASS" + sep;else str += "FAIL" + sep;
+      str += descriptor.comment + lineEnding;
+    });
+    return str;
+  };
+
+  (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            if (!(!workingFile || !dataSet)) {
+              _context5.next = 2;
+              break;
+            }
+
+            return _context5.abrupt("return");
+
+          case 2:
+            _context5.next = 4;
+            return workingFile.write(JSON.stringify(dataSet));
+
+          case 4:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee4);
+  })), [workingFile, dataSet]);
+
   var handleOnClearClick = function handleOnClearClick() {
     setDataSet(undefined);
   };
 
   var handleDownloadCSV = /*#__PURE__*/function () {
-    var _ref4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-      var sep, lineEnding, str, fileTitle;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context5) {
+    var _ref5 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+      var str, fileTitle;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context6) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context6.prev = _context6.next) {
             case 0:
-              sep = ",";
-              lineEnding = "\r\n";
-              str = "device identifier" + sep + "firmware identifier" + sep + "services" + sep + "Packets seen" + sep + "Functional test pass" + sep + "Comment" + lineEnding;
-              dataSet.forEach(function (descriptor) {
-                str += "0x" + descriptor.deviceIdentifier + sep;
-                if (descriptor.firmwareIdentifier) str += "0x" + descriptor.firmwareIdentifier.toString(16) + sep;else if (descriptor.services.find(function (service) {
-                  return service.serviceClass == _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_ROLE_MANAGER */ .igi;
-                })) str += "BRAIN" + sep;else str += "UNKNOWN" + sep;
-                str += "" + descriptor.services.map(function (service) {
-                  return service.name;
-                }).join(" ") + sep;
-                if (serviceArrayMatched(descriptor)) str += "YES" + sep;else str += "NO" + sep;
-                if (descriptor.pass) str += "PASS" + sep;else str += "FAIL" + sep;
-                str += descriptor.comment + lineEnding;
-              });
-
-              if (!workingFile) {
-                _context5.next = 9;
-                break;
-              }
-
-              _context5.next = 7;
-              return workingFile.write(str);
-
-            case 7:
-              _context5.next = 11;
-              break;
-
-            case 9:
+              str = renderCSV();
               fileTitle = title.length ? title + "-" : "";
               fileStorage.saveText(fileTitle + "commissioning-" + dateString() + ".csv", str);
 
-            case 11:
+            case 3:
             case "end":
-              return _context5.stop();
+              return _context6.stop();
           }
         }
-      }, _callee4);
+      }, _callee5);
     }));
 
     return function handleDownloadCSV() {
-      return _ref4.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 
@@ -1703,6 +1748,10 @@ function Page() {
     }
   };
 
+  var fileFilter = function fileFilter(f) {
+    return /\.json$/i.test(f);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "Commissioner"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, {
     hideSimulators: true,
     showAvatar: true,
@@ -1710,51 +1759,52 @@ function Page() {
     showConnect: true,
     showStartSimulators: false,
     deviceFilter: deviceFilter
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     container: true,
     spacing: 1
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
     title: "Commissioning data"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_fs_FileTabs__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, {
-    hideDirectories: true
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, {
+    hideDirectories: true,
+    fileFilter: fileFilter
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     container: true,
     spacing: 1
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     color: "primary",
     onClick: handleOnClearClick
-  }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, {
+  }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, {
-    "aria-label": workingFile ? "Save data" : "Download data",
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
+    "aria-label": "Download data",
     variant: "contained",
     color: "secondary",
     onClick: handleDownloadCSV,
-    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, null)
-  }, workingFile ? "Save CSV" : "Download CSV")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, {
+    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_32__/* .default */ .Z, null)
+  }, "Download CSV")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, {
     "aria-label": "Clear data",
     variant: "contained",
     onClick: handleFilterBrains
-  }, filterBrains ? "Show brains" : "Hide brains")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, {
+  }, filterBrains ? "Show brains" : "Hide brains")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_28__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z, {
     onChange: handleTitleChange,
     label: "Title",
     fullWidth: true,
     value: title
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z, {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(DataSetTable, {

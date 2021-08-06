@@ -678,7 +678,9 @@ function FileTabs(props) {
   var newFileName = props.newFileName,
       newFileContent = props.newFileContent,
       hideDirectories = props.hideDirectories,
-      hideFiles = props.hideFiles;
+      hideFiles = props.hideFiles,
+      directoryFilter = props.directoryFilter,
+      fileFilter = props.fileFilter;
 
   var _useContext = (0,react.useContext)(FileSystemContext/* default */.Z),
       fileSystem = _useContext.fileSystem;
@@ -693,10 +695,18 @@ function FileTabs(props) {
     return _ === null || _ === void 0 ? void 0 : _.workingFile;
   });
   var directories = (0,useChange/* default */.Z)(root, function (_) {
-    return _ === null || _ === void 0 ? void 0 : _.directories;
+    var _$directories;
+
+    return _ === null || _ === void 0 ? void 0 : (_$directories = _.directories) === null || _$directories === void 0 ? void 0 : _$directories.filter(function (d) {
+      return !directoryFilter || directoryFilter(d.name);
+    });
   });
   var files = (0,useChange/* default */.Z)(root, function (_) {
-    return _ === null || _ === void 0 ? void 0 : _.files;
+    var _$files;
+
+    return _ === null || _ === void 0 ? void 0 : (_$files = _.files) === null || _$files === void 0 ? void 0 : _$files.filter(function (d) {
+      return !fileFilter || fileFilter(d.name);
+    });
   });
   var gridRef = (0,react.useRef)();
   var keyboardProps = (0,useKeyboardNavigationProps/* default */.Z)(gridRef.current);
