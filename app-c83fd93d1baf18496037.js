@@ -69797,7 +69797,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "7df660244e202102043d2e4c66e5812acdc2406f";
+  var sha = "cf30a70866369243f8a92261222c374ba13b5dcb";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71142,12 +71142,15 @@ function DataEditorAppBar() {
     href: "https://github.com/microsoft/jacdac/discussions/categories/data-editor"
   }, "Feedback")))));
 }
+// EXTERNAL MODULE: ./node_modules/@material-ui/lab/esm/AlertTitle/AlertTitle.js
+var AlertTitle = __webpack_require__(99330);
 ;// CONCATENATED MODULE: ./src/components/layout.tsx
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -71291,6 +71294,9 @@ function LayoutWithMdx(props) {
   }, /*#__PURE__*/react.createElement(LayoutWithContext, props));
 }
 
+var UNDER_CONSTRUCTION_BODY = "Jacdac is currently in preview. If you would like to join as a pre-release test partner, please email jacdac-tap@microsoft.com.";
+var UNDER_CONSTRUCTION_MESSAGE = "Partner Preview: " + UNDER_CONSTRUCTION_BODY + ".";
+
 function LayoutWithContext(props) {
   var _clsx;
 
@@ -71341,14 +71347,14 @@ function LayoutWithContext(props) {
   var mainClasses = (0,clsx_m/* default */.Z)(classes.content, (_clsx = {}, _clsx[classes.container] = container, _clsx[classes.contentPadding] = !fullWidthTools, _clsx[classes.contentShift] = drawerOpen, _clsx[classes.toolsContentShift] = toolsMenu, _clsx)); // show under construction warning
 
   (0,react.useEffect)(function () {
-    if (!hideUnderConstruction) enqueueSnackbar("UNDER CONSTRUCTION - We are still working and changing the\n            Jacdac specification. Do not build devices using Jacdac.", "warning");
+    if (!hideUnderConstruction) enqueueSnackbar(UNDER_CONSTRUCTION_MESSAGE, "warning");
   }, []);
 
   var InnerMainSection = function InnerMainSection() {
     return /*#__PURE__*/react.createElement(react.Fragment, null, !hideUnderConstruction && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
       closeable: true,
       severity: "warning"
-    }, "UNDER CONSTRUCTION - We are still working and changing the Jacdac specification. Do not build devices using Jacdac."), flags/* default.diagnostics */.Z.diagnostics && /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(WebDiagnostics, null)), !hideBreadcrumbs && location && /*#__PURE__*/react.createElement(ui_Breadcrumbs_Breadcrumbs, {
+    }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Partner Preview"), UNDER_CONSTRUCTION_BODY), flags/* default.diagnostics */.Z.diagnostics && /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(WebDiagnostics, null)), !hideBreadcrumbs && location && /*#__PURE__*/react.createElement(ui_Breadcrumbs_Breadcrumbs, {
       location: location
     }), fullWidthTools ? element : /*#__PURE__*/react.createElement(Typography/* default */.Z, {
       className: "markdown",
@@ -80725,7 +80731,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.14.0"};
+var package_namespaceObject = {"i8":"1.14.1"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
