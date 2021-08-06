@@ -69780,7 +69780,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a7c36d76cb820ae805bb869760dc6f7475922002";
+  var sha = "09cebc9e1037eb772d832833cdef187edd98946a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71113,6 +71113,12 @@ function DataEditorAppBar() {
     className: classes.grow
   }), /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     className: classes.menuButton,
+    "aria-label": "Learn about the data editor",
+    title: "Learn about the data editor",
+    color: "inherit",
+    to: "/editors/data/about"
+  }, "About"), /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+    className: classes.menuButton,
     "aria-label": "Send feedback in our forums",
     title: "Send feedback in our forums",
     color: "inherit",
@@ -71281,7 +71287,7 @@ function LayoutWithContext(props) {
       frontmatter = _ref3.frontmatter;
 
   var makeCodeTool = /tools\/makecode-/.test(path);
-  var fullWidthTools = /^\/(editors\/|tools\/makecode-|dashboard)/.test(path);
+  var fullWidthTools = /^\/editors\/\w+\/$/.test(path) || /^\/(tools\/makecode-|dashboard)/.test(path);
 
   var _ref4 = frontmatter || {
     hideMainMenu: makeCodeTool,
@@ -83066,6 +83072,9 @@ exports.components = {
   },
   "component---src-pages-dtmi-mdx": function componentSrcPagesDtmiMdx() {
     return __webpack_require__.e(/* import() | component---src-pages-dtmi-mdx */ 9901).then(__webpack_require__.bind(__webpack_require__, 7248));
+  },
+  "component---src-pages-editors-data-about-mdx": function componentSrcPagesEditorsDataAboutMdx() {
+    return __webpack_require__.e(/* import() | component---src-pages-editors-data-about-mdx */ 1495).then(__webpack_require__.bind(__webpack_require__, 31586));
   },
   "component---src-pages-editors-data-tsx": function componentSrcPagesEditorsDataTsx() {
     return Promise.all(/* import() | component---src-pages-editors-data-tsx */[__webpack_require__.e(9978), __webpack_require__.e(3662), __webpack_require__.e(8343), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(1621)]).then(__webpack_require__.bind(__webpack_require__, 55575));
