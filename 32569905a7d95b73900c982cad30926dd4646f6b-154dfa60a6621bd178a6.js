@@ -388,6 +388,11 @@ var FileSystemFile = /*#__PURE__*/function (_FileSystemNode2) {
       return this._parent;
     }
   }, {
+    key: "parentDirectory",
+    get: function get() {
+      return this._parent;
+    }
+  }, {
     key: "children",
     get: function get() {
       return [];

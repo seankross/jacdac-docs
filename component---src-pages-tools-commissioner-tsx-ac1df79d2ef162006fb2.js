@@ -1676,6 +1676,7 @@ function Page() {
   };
 
   (0,_components_useEffectAsync__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+    var csvFile;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
@@ -1692,6 +1693,17 @@ function Page() {
             return workingFile.write(JSON.stringify(dataSet));
 
           case 4:
+            _context5.next = 6;
+            return workingFile.parentDirectory.fileAsync(workingFile.name.replace(/\.json$/i, ".csv"), {
+              create: true
+            });
+
+          case 6:
+            csvFile = _context5.sent;
+            _context5.next = 9;
+            return csvFile.write(renderCSV());
+
+          case 9:
           case "end":
             return _context5.stop();
         }
