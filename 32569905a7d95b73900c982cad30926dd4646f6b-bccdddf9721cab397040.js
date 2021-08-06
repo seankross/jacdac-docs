@@ -233,6 +233,7 @@ var FileSystem = /*#__PURE__*/function (_FileSystemNode) {
       if (d !== this._root) {
         this._root = d;
         this._workingDirectory = undefined;
+        this._workingFile = undefined;
         this.emit(constants/* CHANGE */.Ver);
       }
     }
