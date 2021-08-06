@@ -6759,7 +6759,580 @@ function CodeBlock(props) {
 
 /***/ }),
 
-/***/ 76349:
+/***/ 74195:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "P": function() { return /* binding */ FileSystemProvider; },
+  "Z": function() { return /* binding */ components_FileSystemContext; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(92137);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
+var regenerator = __webpack_require__(87757);
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./src/components/fs/fs.ts
+var fs = __webpack_require__(31396);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
+var createClass = __webpack_require__(5991);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
+var inheritsLoose = __webpack_require__(41788);
+;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncIterator.js
+function _asyncIterator(iterable) {
+  var method;
+
+  if (typeof Symbol !== "undefined") {
+    if (Symbol.asyncIterator) method = iterable[Symbol.asyncIterator];
+    if (method == null && Symbol.iterator) method = iterable[Symbol.iterator];
+  }
+
+  if (method == null) method = iterable["@@asyncIterator"];
+  if (method == null) method = iterable["@@iterator"];
+  if (method == null) throw new TypeError("Object is not async iterable");
+  return method.call(iterable);
+}
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
+var constants = __webpack_require__(71815);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/eventsource.ts
+var eventsource = __webpack_require__(45484);
+;// CONCATENATED MODULE: ./src/components/fs/fsdom.ts
+
+
+
+
+
+
+
+
+var FileSystem = /*#__PURE__*/function (_JDEventSource) {
+  (0,inheritsLoose/* default */.Z)(FileSystem, _JDEventSource);
+
+  function FileSystem() {
+    return _JDEventSource.call(this) || this;
+  }
+
+  var _proto = FileSystem.prototype;
+
+  _proto.createWorkingDirectory = /*#__PURE__*/function () {
+    var _createWorkingDirectory = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(name, filename, content) {
+      var handle, fileHandle;
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return this.root.handle.getDirectoryHandle(name, {
+                create: true
+              });
+
+            case 2:
+              handle = _context.sent;
+
+              if (!filename) {
+                _context.next = 9;
+                break;
+              }
+
+              _context.next = 6;
+              return handle.getFileHandle(filename, {
+                create: true
+              });
+
+            case 6:
+              fileHandle = _context.sent;
+              _context.next = 9;
+              return (0,fs/* writeFileText */.$8)(fileHandle, content);
+
+            case 9:
+              _context.next = 11;
+              return this.root.sync();
+
+            case 11:
+              this.workingDirectory = this.root.directories.find(function (d) {
+                return d.name === name;
+              });
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function createWorkingDirectory(_x, _x2, _x3) {
+      return _createWorkingDirectory.apply(this, arguments);
+    }
+
+    return createWorkingDirectory;
+  }();
+
+  (0,createClass/* default */.Z)(FileSystem, [{
+    key: "root",
+    get: function get() {
+      return this._root;
+    },
+    set: function set(d) {
+      if (d !== this._root) {
+        this._root = d;
+        this._workingDirectory = undefined;
+        this.emit(constants/* CHANGE */.Ver);
+      }
+    }
+  }, {
+    key: "workingDirectory",
+    get: function get() {
+      return this._workingDirectory;
+    },
+    set: function set(d) {
+      if (d !== this._workingDirectory) {
+        this._workingDirectory = d;
+        this.emit(constants/* CHANGE */.Ver);
+      }
+    }
+  }]);
+
+  return FileSystem;
+}(eventsource/* JDEventSource */.aE);
+var FileSystemFile = /*#__PURE__*/function (_JDEventSource2) {
+  (0,inheritsLoose/* default */.Z)(FileSystemFile, _JDEventSource2);
+
+  function FileSystemFile(handle) {
+    var _this;
+
+    _this = _JDEventSource2.call(this) || this;
+    _this.handle = handle;
+    return _this;
+  }
+
+  var _proto2 = FileSystemFile.prototype;
+
+  _proto2.textAsync = /*#__PURE__*/function () {
+    var _textAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2() {
+      return regenerator_default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return this.sync();
+
+            case 2:
+              return _context2.abrupt("return", this._text);
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this);
+    }));
+
+    function textAsync() {
+      return _textAsync.apply(this, arguments);
+    }
+
+    return textAsync;
+  }();
+
+  _proto2.write = /*#__PURE__*/function () {
+    var _write = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3(text) {
+      return regenerator_default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return (0,fs/* writeFileText */.$8)(this.handle, text);
+
+            case 2:
+              if (this._text !== text) {
+                this._text = text; // don't signal
+                // this.emit(CHANGE)
+              }
+
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, this);
+    }));
+
+    function write(_x4) {
+      return _write.apply(this, arguments);
+    }
+
+    return write;
+  }();
+
+  _proto2.sync = /*#__PURE__*/function () {
+    var _sync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee4() {
+      var text;
+      return regenerator_default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return (0,fs/* readFileText */.ue)(this.handle);
+
+            case 2:
+              text = _context4.sent;
+
+              if (text !== this._text) {
+                this._text = text;
+                this.emit(constants/* CHANGE */.Ver);
+              }
+
+            case 4:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, this);
+    }));
+
+    function sync() {
+      return _sync.apply(this, arguments);
+    }
+
+    return sync;
+  }();
+
+  (0,createClass/* default */.Z)(FileSystemFile, [{
+    key: "name",
+    get: function get() {
+      return this.handle.name;
+    }
+  }, {
+    key: "text",
+    get: function get() {
+      if (this._text === undefined) this.sync();
+      return this._text;
+    }
+  }]);
+
+  return FileSystemFile;
+}(eventsource/* JDEventSource */.aE);
+
+function sortHandles(handles) {
+  handles.sort(function (l, r) {
+    return l.name.localeCompare(r.name);
+  });
+  return handles;
+}
+
+var FileSystemDirectory = /*#__PURE__*/function (_JDEventSource3) {
+  (0,inheritsLoose/* default */.Z)(FileSystemDirectory, _JDEventSource3);
+
+  function FileSystemDirectory(handle) {
+    var _this2;
+
+    _this2 = _JDEventSource3.call(this) || this;
+    _this2._directories = [];
+    _this2._files = [];
+    _this2.handle = handle;
+
+    _this2.sync();
+
+    return _this2;
+  }
+
+  var _proto3 = FileSystemDirectory.prototype;
+
+  _proto3.directory = function directory(name, options) {
+    var _this3 = this;
+
+    var existing = this._directories.find(function (f) {
+      return f.name === name;
+    });
+
+    if (existing) return existing;
+
+    if (options !== null && options !== void 0 && options.create) {
+      // create file in the background
+      this.handle.getDirectoryHandle(name, {
+        create: true
+      }).then(function (nf) {
+        var nfn = new FileSystemDirectory(nf);
+
+        _this3._directories.push(nfn);
+
+        _this3._directories.sort(function (l, r) {
+          return l.name.localeCompare(r.name);
+        });
+
+        _this3.emit(constants/* CHANGE */.Ver);
+      });
+    } // no file yet
+
+
+    return undefined;
+  };
+
+  _proto3.file = function file(name, options) {
+    var _this4 = this;
+
+    var existing = this._files.find(function (f) {
+      return f.name === name;
+    });
+
+    if (existing) return existing;
+
+    if (options !== null && options !== void 0 && options.create) {
+      // create file in the background
+      this.handle.getFileHandle(name, {
+        create: true
+      }).then(function (nf) {
+        var nfn = new FileSystemFile(nf);
+
+        _this4._files.push(nfn);
+
+        _this4._files.sort(function (l, r) {
+          return l.name.localeCompare(r.name);
+        });
+
+        _this4.emit(constants/* CHANGE */.Ver);
+      });
+    } // no file yet
+
+
+    return undefined;
+  };
+
+  _proto3.sync = /*#__PURE__*/function () {
+    var _sync2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee5() {
+      var _this5 = this;
+
+      var values, files, directories, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, _value, entry, changed, patched, _patched;
+
+      return regenerator_default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              values = this.handle.values();
+              files = [];
+              directories = [];
+
+              if (!values) {
+                _context5.next = 37;
+                break;
+              }
+
+              _iteratorNormalCompletion = true;
+              _didIteratorError = false;
+              _context5.prev = 6;
+              _iterator = _asyncIterator(values);
+
+            case 8:
+              _context5.next = 10;
+              return _iterator.next();
+
+            case 10:
+              _step = _context5.sent;
+              _iteratorNormalCompletion = _step.done;
+              _context5.next = 14;
+              return _step.value;
+
+            case 14:
+              _value = _context5.sent;
+
+              if (_iteratorNormalCompletion) {
+                _context5.next = 21;
+                break;
+              }
+
+              entry = _value;
+              if (entry.kind === "directory") directories.push(entry);else if (entry.kind === "file") files.push(entry);
+
+            case 18:
+              _iteratorNormalCompletion = true;
+              _context5.next = 8;
+              break;
+
+            case 21:
+              _context5.next = 27;
+              break;
+
+            case 23:
+              _context5.prev = 23;
+              _context5.t0 = _context5["catch"](6);
+              _didIteratorError = true;
+              _iteratorError = _context5.t0;
+
+            case 27:
+              _context5.prev = 27;
+              _context5.prev = 28;
+
+              if (!(!_iteratorNormalCompletion && _iterator.return != null)) {
+                _context5.next = 32;
+                break;
+              }
+
+              _context5.next = 32;
+              return _iterator.return();
+
+            case 32:
+              _context5.prev = 32;
+
+              if (!_didIteratorError) {
+                _context5.next = 35;
+                break;
+              }
+
+              throw _iteratorError;
+
+            case 35:
+              return _context5.finish(32);
+
+            case 36:
+              return _context5.finish(27);
+
+            case 37:
+              sortHandles(files);
+              sortHandles(directories); // did the files change?
+
+              changed = false;
+
+              if (this._files.map(function (f) {
+                return f.name;
+              }).join() !== files.map(function (f) {
+                return f.name;
+              }).join()) {
+                // some of the file changed
+                patched = files.map(function (f) {
+                  var oldf = _this5._files.find(function (oldf) {
+                    return oldf.name === f.name;
+                  });
+
+                  return oldf || new FileSystemFile(f);
+                });
+                this._files = patched;
+                changed = true;
+              }
+
+              if (this._directories.map(function (f) {
+                return f.name;
+              }).join() !== directories.map(function (f) {
+                return f.name;
+              }).join()) {
+                // some of the file changed
+                _patched = directories.map(function (f) {
+                  var oldf = _this5._directories.find(function (oldf) {
+                    return oldf.name === f.name;
+                  });
+
+                  return oldf || new FileSystemDirectory(f);
+                });
+                this._directories = _patched;
+                changed = true;
+              }
+
+              if (changed) this.emit(constants/* CHANGE */.Ver);
+
+            case 43:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, this, [[6, 23, 27, 37], [28,, 32, 36]]);
+    }));
+
+    function sync() {
+      return _sync2.apply(this, arguments);
+    }
+
+    return sync;
+  }();
+
+  (0,createClass/* default */.Z)(FileSystemDirectory, [{
+    key: "name",
+    get: function get() {
+      return this.handle.name;
+    }
+  }, {
+    key: "directories",
+    get: function get() {
+      return this._directories.slice(0) || [];
+    }
+  }, {
+    key: "files",
+    get: function get() {
+      return this._files.slice(0) || [];
+    }
+  }]);
+
+  return FileSystemDirectory;
+}(eventsource/* JDEventSource */.aE);
+;// CONCATENATED MODULE: ./src/components/FileSystemContext.tsx
+
+
+
+
+
+var FileSystemContext = /*#__PURE__*/(0,react.createContext)({
+  fileSystem: undefined,
+  showDirectoryPicker: undefined
+});
+FileSystemContext.displayName = "fs";
+/* harmony default export */ var components_FileSystemContext = (FileSystemContext); // eslint-disable-next-line react/prop-types
+
+function FileSystemProvider(props) {
+  var children = props.children;
+  var fileSystem = (0,react.useMemo)(function () {
+    return (0,fs/* fileSystemHandleSupported */.ou)() && new FileSystem();
+  }, []);
+  var supported = !!fileSystem;
+  var showDirectoryPicker = supported ? /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(options) {
+      var _fileSystem$root, handle;
+
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return window.showDirectoryPicker(options);
+
+            case 3:
+              handle = _context.sent;
+              if (handle !== ((_fileSystem$root = fileSystem.root) === null || _fileSystem$root === void 0 ? void 0 : _fileSystem$root.handle)) fileSystem.root = new FileSystemDirectory(handle);
+              _context.next = 10;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              console.debug(_context.t0);
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }() : undefined;
+  return /*#__PURE__*/react.createElement(FileSystemContext.Provider, {
+    value: {
+      fileSystem: fileSystem,
+      showDirectoryPicker: showDirectoryPicker
+    }
+  }, children);
+}
+
+/***/ }),
+
+/***/ 82393:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8538,63 +9111,12 @@ function useToolboxButtons(workspace, toolboxConfiguration) {
 var WorkspaceContext = __webpack_require__(89801);
 // EXTERNAL MODULE: ./src/components/AppContext.tsx
 var AppContext = __webpack_require__(84377);
-// EXTERNAL MODULE: ./src/components/hooks/useDirectoryHandle.ts
-var useDirectoryHandle = __webpack_require__(254);
-;// CONCATENATED MODULE: ./src/components/hooks/useFileStorage.ts
-
-
-function useFileStorage(fileHandle) {
-  // if no file, return nothing
-  if (!fileHandle) return undefined;
-
-  var save = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(value) {
-      var writable;
-      return regenerator_default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              console.debug("saving " + fileHandle.name);
-              _context.next = 4;
-              return fileHandle.createWritable();
-
-            case 4:
-              writable = _context.sent;
-              _context.next = 7;
-              return writable.write(value || "");
-
-            case 7:
-              _context.next = 9;
-              return writable.close();
-
-            case 9:
-              _context.next = 14;
-              break;
-
-            case 11:
-              _context.prev = 11;
-              _context.t0 = _context["catch"](0);
-              console.debug(_context.t0);
-
-            case 14:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[0, 11]]);
-    }));
-
-    return function save(_x) {
-      return _ref.apply(this, arguments);
-    };
-  }(); // storage values
-
-
-  return save;
-}
 // EXTERNAL MODULE: ./src/components/useEffectAsync.ts
 var useEffectAsync = __webpack_require__(7751);
+// EXTERNAL MODULE: ./src/jacdac/useChange.ts
+var useChange = __webpack_require__(54774);
+// EXTERNAL MODULE: ./src/components/FileSystemContext.tsx + 2 modules
+var FileSystemContext = __webpack_require__(74195);
 ;// CONCATENATED MODULE: ./src/components/blockly/BlockContext.tsx
 
 
@@ -8630,9 +9152,7 @@ var BlockContext = /*#__PURE__*/(0,react.createContext)({
   dragging: false,
   setWarnings: function setWarnings() {},
   setWorkspace: function setWorkspace() {},
-  setWorkspaceXml: function setWorkspaceXml() {},
-  workspaceFileHandle: undefined,
-  setWorkspaceFileHandle: undefined
+  setWorkspaceXml: function setWorkspaceXml() {}
 });
 BlockContext.displayName = "Block";
 var DEFAULT_XML = '<xml xmlns="http://www.w3.org/1999/xhtml"></xml>';
@@ -8647,40 +9167,47 @@ function BlockProvider(props) {
   var _useContext = (0,react.useContext)(AppContext/* default */.ZP),
       setError = _useContext.setError;
 
-  var _useState = (0,react.useState)(),
-      workspaceFileHandle = _useState[0],
-      setFileHandle = _useState[1];
+  var _useContext2 = (0,react.useContext)(FileSystemContext/* default */.Z),
+      fileSystem = _useContext2.fileSystem;
+
+  var workspaceDirectory = (0,useChange/* default */.Z)(fileSystem, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.workingDirectory;
+  });
+  var workspaceFile = (0,useChange/* default */.Z)(workspaceDirectory, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.file(toolbox/* WORKSPACE_FILENAME */.cR, {
+      create: true
+    });
+  });
 
   var _useLocalStorage = (0,useLocalStorage/* default */.Z)(storageKey, toolbox/* NEW_PROJET_XML */.Uz),
       storedXml = _useLocalStorage[0],
       setStoredXml = _useLocalStorage[1];
 
-  var setWorkspaceFileContent = useFileStorage(workspaceFileHandle);
   var roleManager = useRoleManager();
 
-  var _useState2 = (0,react.useState)(undefined),
-      workspace = _useState2[0],
-      setWorkspace = _useState2[1];
+  var _useState = (0,react.useState)(undefined),
+      workspace = _useState[0],
+      setWorkspace = _useState[1];
 
-  var _useState3 = (0,react.useState)(storedXml),
-      workspaceXml = _useState3[0],
-      _setWorkspaceXml = _useState3[1];
+  var _useState2 = (0,react.useState)(storedXml),
+      workspaceXml = _useState2[0],
+      _setWorkspaceXml = _useState2[1];
 
-  var _useState4 = (0,react.useState)(undefined),
-      workspaceJSON = _useState4[0],
-      setWorkspaceJSON = _useState4[1];
+  var _useState3 = (0,react.useState)(undefined),
+      workspaceJSON = _useState3[0],
+      setWorkspaceJSON = _useState3[1];
 
-  var _useState5 = (0,react.useState)([]),
-      warnings = _useState5[0],
-      _setWarnings = _useState5[1];
+  var _useState4 = (0,react.useState)([]),
+      warnings = _useState4[0],
+      _setWarnings = _useState4[1];
 
-  var _useState6 = (0,react.useState)(false),
-      dragging = _useState6[0],
-      setDragging = _useState6[1];
+  var _useState5 = (0,react.useState)(false),
+      dragging = _useState5[0],
+      setDragging = _useState5[1];
 
-  var _useState7 = (0,react.useState)(""),
-      editorId = _useState7[0],
-      setEditorId = _useState7[1];
+  var _useState6 = (0,react.useState)(""),
+      editorId = _useState6[0],
+      setEditorId = _useState6[1];
 
   var setWorkspaceXml = function setWorkspaceXml(xml) {
     _setWorkspaceXml(xml);
@@ -8704,7 +9231,7 @@ function BlockProvider(props) {
   var initializeBlockServices = function initializeBlockServices(block) {
     var _block$jacdacServices;
 
-    if ((_block$jacdacServices = block.jacdacServices) !== null && _block$jacdacServices !== void 0 && _block$jacdacServices.initialized) return;
+    if (block !== null && block !== void 0 && (_block$jacdacServices = block.jacdacServices) !== null && _block$jacdacServices !== void 0 && _block$jacdacServices.initialized) return;
     var services = block.jacdacServices;
 
     if (!services) {
@@ -8760,75 +9287,8 @@ function BlockProvider(props) {
       var _cev = event;
       handleBlockChange(_cev.blockId);
     }
-  };
+  }; // plugins
 
-  var setWorkspaceFileHandle = (0,useDirectoryHandle/* fileSystemHandleSupported */.o)() ? /*#__PURE__*/function () {
-    var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(f) {
-      var _file, text, json, _ref3, editor, xml, dom;
-
-      return regenerator_default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              if (f) {
-                _context.next = 3;
-                break;
-              }
-
-              setFileHandle(f);
-              return _context.abrupt("return");
-
-            case 3:
-              _context.prev = 3;
-              console.debug("reading " + f.name);
-              _context.next = 7;
-              return f.getFile();
-
-            case 7:
-              _file = _context.sent;
-              _context.next = 10;
-              return _file.text();
-
-            case 10:
-              text = _context.sent;
-              json = JSON.parse(text);
-              _ref3 = json || {}, editor = _ref3.editor, xml = _ref3.xml;
-
-              if (!(editor !== editorId)) {
-                _context.next = 15;
-                break;
-              }
-
-              throw new Error("Wrong block editor");
-
-            case 15:
-              // try loading xml into a dummy blockly workspace
-              dom = blockly.Xml.textToDom(xml || DEFAULT_XML); // all good, load in workspace
-
-              workspace.clear();
-              blockly.Xml.domToWorkspace(dom, workspace);
-              setFileHandle(f);
-              _context.next = 25;
-              break;
-
-            case 21:
-              _context.prev = 21;
-              _context.t0 = _context["catch"](3);
-              setError(_context.t0);
-              setFileHandle(undefined);
-
-            case 25:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[3, 21]]);
-    }));
-
-    return function (_x) {
-      return _ref2.apply(this, arguments);
-    };
-  }() : undefined; // plugins
 
   useBlocklyPlugins(workspace);
   useBlocklyEvents(workspace);
@@ -8850,19 +9310,93 @@ function BlockProvider(props) {
     }
   }, [workspace]);
   (0,react.useEffect)(function () {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    var wws = workspace;
+    var services = wws === null || wws === void 0 ? void 0 : wws.jacdacServices;
+    if (services) services.workingDirectory = workspaceDirectory;
+  }, [workspace, workspaceDirectory]);
+  (0,react.useEffect)(function () {
     if (!workspace || dragging) return;
     var newWorkspaceJSON = domToJSON(workspace, dsls);
     setWorkspaceJSON(newWorkspaceJSON);
     var newWarnings = collectWarnings(newWorkspaceJSON);
     setWarnings(toolbox/* JSON_WARNINGS_CATEGORY */.FD, newWarnings);
   }, [dsls, workspace, dragging, workspaceXml]);
+  (0,useEffectAsync/* default */.Z)( /*#__PURE__*/function () {
+    var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(mounted) {
+      var text, json, _ref3, editor, xml, dom;
+
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (workspaceFile) {
+                _context.next = 2;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 2:
+              _context.prev = 2;
+              _context.next = 5;
+              return workspaceFile.textAsync();
+
+            case 5:
+              text = _context.sent;
+
+              if (mounted()) {
+                _context.next = 8;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 8:
+              json = JSON.parse(text);
+              _ref3 = json || {}, editor = _ref3.editor, xml = _ref3.xml;
+
+              if (!(editor !== editorId)) {
+                _context.next = 12;
+                break;
+              }
+
+              throw new Error("Wrong block editor");
+
+            case 12:
+              // try loading xml into a dummy blockly workspace
+              dom = blockly.Xml.textToDom(xml || DEFAULT_XML); // all good, load in workspace
+
+              workspace.clear();
+              blockly.Xml.domToWorkspace(dom, workspace);
+              _context.next = 21;
+              break;
+
+            case 17:
+              _context.prev = 17;
+              _context.t0 = _context["catch"](2);
+              if (mounted()) setError(_context.t0);
+              if (fileSystem) fileSystem.workingDirectory = undefined;
+
+            case 21:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 17]]);
+    }));
+
+    return function (_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }(), [workspaceFile]);
   (0,useEffectAsync/* default */.Z)( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2() {
     var file, fileContent;
     return regenerator_default().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            if (workspaceFileHandle) {
+            if (workspaceFile) {
               _context2.next = 2;
               break;
             }
@@ -8883,16 +9417,15 @@ function BlockProvider(props) {
             });
             onBeforeSaveWorkspaceFile === null || onBeforeSaveWorkspaceFile === void 0 ? void 0 : onBeforeSaveWorkspaceFile(file);
             fileContent = JSON.stringify(file);
-            _context2.next = 8;
-            return setWorkspaceFileContent(fileContent);
+            workspaceFile === null || workspaceFile === void 0 ? void 0 : workspaceFile.write(fileContent);
 
-          case 8:
+          case 7:
           case "end":
             return _context2.stop();
         }
       }
     }, _callee2);
-  })), [editorId, workspaceFileHandle, workspaceJSON]);
+  })), [editorId, workspaceFile, workspaceJSON]);
   (0,react.useEffect)(function () {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     var ws = workspace;
@@ -8965,9 +9498,7 @@ function BlockProvider(props) {
       dragging: dragging,
       setWarnings: setWarnings,
       setWorkspace: setWorkspace,
-      setWorkspaceXml: setWorkspaceXml,
-      workspaceFileHandle: workspaceFileHandle,
-      setWorkspaceFileHandle: setWorkspaceFileHandle
+      setWorkspaceXml: setWorkspaceXml
     }
   }, children);
 }
@@ -8985,7 +9516,7 @@ function BlockProvider(props) {
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(80453);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _CodeBlock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(50274);
-/* harmony import */ var _BlockContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(76349);
+/* harmony import */ var _BlockContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(82393);
 
 
 
@@ -9309,8 +9840,8 @@ var clsx_m = __webpack_require__(85505);
 var gatsby_browser_entry = __webpack_require__(35313);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
 var flags = __webpack_require__(21258);
-// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 17 modules
-var BlockContext = __webpack_require__(76349);
+// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 16 modules
+var BlockContext = __webpack_require__(82393);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
 var toConsumableArray = __webpack_require__(85061);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/useTheme.js
@@ -9800,6 +10331,16 @@ var WorkspaceServices = /*#__PURE__*/function (_JDEventSource) {
       if (this._roleManager !== value) {
         this._roleManager = value;
         this.emit(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .CHANGE */ .Ver);
+      }
+    }
+  }, {
+    key: "workingDirectory",
+    get: function get() {
+      return this._directory;
+    },
+    set: function set(value) {
+      if (this._directory !== value) {
+        this._directory = value; // don't notify
       }
     }
   }]);
@@ -11023,7 +11564,7 @@ var BuiltinDataSetField = /*#__PURE__*/function (_FieldDropdown) {
               _yield$downloadCSV = _context.sent;
               data = _yield$downloadCSV.data;
               errors = _yield$downloadCSV.errors;
-              console.debug("csv parse", {
+              if (errors) console.debug("csv parse errors", {
                 id: sourceBlock.id,
                 marker: marker,
                 data: data,
@@ -11096,16 +11637,17 @@ var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
 
   DataColumnChooserField.fromJson = function fromJson(options) {
     return new DataColumnChooserField(options);
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
   // the first argument is a dummy and never used
+  ;
+
   function DataColumnChooserField(options) {
     var _this;
 
     _this = _FieldDropdown.call(this, function () {
       return [["", ""]];
     }, undefined, options) || this;
+    _this.SERIALIZABLE = true;
     _this.dataType = options === null || options === void 0 ? void 0 : options.dataType;
     return _this;
   }
@@ -11133,7 +11675,8 @@ var DataColumnChooserField = /*#__PURE__*/function (_FieldDropdown) {
       return [(0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_2__/* .humanify */ .lW)(h), h];
     }) || [];
     var value = this.getValue();
-    return options.length < 1 ? [[(0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_2__/* .humanify */ .lW)(value || ""), value || ""]] : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(options), [["", ""]]);
+    var r = options.length < 1 ? [[(0,_jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_2__/* .humanify */ .lW)(value || ""), value || ""]] : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(options), [["", ""]]);
+    return r;
   };
 
   _proto.doClassValidation_ = function doClassValidation_(newValue) {
@@ -11657,8 +12200,9 @@ function DataTableWidget(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ FileOpenField; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(41788);
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(85061);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41788);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
@@ -11668,160 +12212,63 @@ function DataTableWidget(props) {
 
 
 
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
-// inline browser-fs-access until issue of ssr is fixed
-var getFileWithHandle = /*#__PURE__*/function () {
-  var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(handle) {
-    var file;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return handle.getFile();
-
-          case 2:
-            file = _context.sent;
-            file.handle = handle;
-            return _context.abrupt("return", file);
-
-          case 5:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function getFileWithHandle(_x) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var fileOpen = /*#__PURE__*/function () {
-  var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(options) {
-    var accept, handleOrHandles, files;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            if (options === void 0) {
-              options = {};
-            }
-
-            accept = {};
-
-            if (options.mimeTypes) {
-              options.mimeTypes.map(function (mimeType) {
-                accept[mimeType] = options.extensions || [];
-              });
-            } else {
-              accept["*/*"] = options.extensions || [];
-            }
-
-            _context2.next = 5;
-            return window.showOpenFilePicker({
-              types: [{
-                description: options.description || "",
-                accept: accept
-              }],
-              multiple: options.multiple || false
-            });
-
-          case 5:
-            handleOrHandles = _context2.sent;
-            _context2.next = 8;
-            return Promise.all(handleOrHandles.map(getFileWithHandle));
-
-          case 8:
-            files = _context2.sent;
-
-            if (!options.multiple) {
-              _context2.next = 11;
-              break;
-            }
-
-            return _context2.abrupt("return", files);
-
-          case 11:
-            return _context2.abrupt("return", files[0]);
-
-          case 12:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-
-  return function fileOpen(_x2) {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-var MAX_SIZE = 100000; // 100kb
-
-var FileOpenField = /*#__PURE__*/function (_Field) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(FileOpenField, _Field);
-
-  function FileOpenField(options) {
-    var _this;
-
-    _this = _Field.call(this, "...", null, options) || this;
-    _this.SERIALIZABLE = true;
-    _this.initialized = false;
-    return _this;
-  }
+var FileOpenField = /*#__PURE__*/function (_FieldDropdown) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(FileOpenField, _FieldDropdown);
 
   FileOpenField.fromJson = function fromJson(options) {
     return new FileOpenField(options);
   };
 
+  function FileOpenField(options) {
+    var _this;
+
+    _this = _FieldDropdown.call(this, function () {
+      return [["", ""]];
+    }, undefined, options) || this;
+    _this.SERIALIZABLE = true;
+    return _this;
+  }
+
   var _proto = FileOpenField.prototype;
 
-  _proto.toXml = function toXml(fieldElement) {
-    var text = JSON.stringify(this.value_);
-    if ((text === null || text === void 0 ? void 0 : text.length) < MAX_SIZE) fieldElement.textContent = text;else fieldElement.textContent = "";
-    return fieldElement;
-  };
-
   _proto.fromXml = function fromXml(fieldElement) {
-    try {
-      var v = JSON.parse(fieldElement.textContent);
-      this.value_ = v;
-      this.parseSource();
-    } catch (e) {
-      console.log(e, {
-        text: fieldElement.textContent
-      });
-      this.value_ = undefined;
-    }
+    this.setValue(fieldElement.textContent);
   };
 
-  _proto.getText_ = function getText_() {
-    var _this$value_;
+  _proto.getOptions = function getOptions() {
+    var _this$resolveFiles;
 
-    return ((_this$value_ = this.value_) === null || _this$value_ === void 0 ? void 0 : _this$value_.name) || "...";
+    var options = ((_this$resolveFiles = this.resolveFiles()) === null || _this$resolveFiles === void 0 ? void 0 : _this$resolveFiles.map(function (f) {
+      return [f.name, f.name];
+    })) || [];
+    var value = this.getValue();
+    return options.length < 1 ? [[value || "", value || ""]] : [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(options), [["", ""]]);
+  };
+
+  _proto.doClassValidation_ = function doClassValidation_(newValue) {
+    // skip super class validationervices chan
+    return newValue;
   };
 
   _proto.init = function init() {
-    _Field.prototype.init.call(this);
+    _FieldDropdown.prototype.init.call(this);
 
-    this.initialized = true;
     this.updateData();
   };
 
   _proto.setSourceBlock = function setSourceBlock(block) {
-    _Field.prototype.setSourceBlock.call(this, block);
+    _FieldDropdown.prototype.setSourceBlock.call(this, block);
 
     this.updateData();
   };
 
   _proto.doValueUpdate_ = function doValueUpdate_(newValue) {
-    _Field.prototype.doValueUpdate_.call(this, newValue);
+    _FieldDropdown.prototype.doValueUpdate_.call(this, newValue);
 
     this.parseSource();
   };
@@ -11830,36 +12277,73 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
     this.updateData();
   };
 
+  _proto.resolveFiles = function resolveFiles() {
+    var sourceBlock = this.getSourceBlock();
+    var workspace = sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.workspace;
+    var services = workspace === null || workspace === void 0 ? void 0 : workspace.jacdacServices;
+    var directory = services === null || services === void 0 ? void 0 : services.workingDirectory;
+    return directory === null || directory === void 0 ? void 0 : directory.files.filter(function (f) {
+      return /\.csv$/i.test(f.name);
+    });
+  };
+
   _proto.parseSource = /*#__PURE__*/function () {
-    var _parseSource = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var _this$value_2;
+    var _parseSource = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var _this$resolveFiles2;
 
-      var source, csv;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      var filename, file, source, csv;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context.prev = _context.next) {
             case 0:
-              source = (_this$value_2 = this.value_) === null || _this$value_2 === void 0 ? void 0 : _this$value_2.source;
+              filename = this.getValue();
+              file = (_this$resolveFiles2 = this.resolveFiles()) === null || _this$resolveFiles2 === void 0 ? void 0 : _this$resolveFiles2.find(function (f) {
+                return f.name === filename;
+              });
 
-              if (!source) {
-                _context3.next = 7;
+              if (!file) {
+                _context.next = 21;
                 break;
               }
 
-              _context3.next = 4;
+              _context.prev = 3;
+              console.debug("file: loading " + file.name);
+              _context.next = 7;
+              return file.textAsync();
+
+            case 7:
+              source = _context.sent;
+              console.debug("file: loaded " + ((source === null || source === void 0 ? void 0 : source.length) || 0) / 1024 + "kb");
+
+              if (!source) {
+                _context.next = 15;
+                break;
+              }
+
+              _context.next = 12;
               return (0,_dsl_workers_csv_proxy__WEBPACK_IMPORTED_MODULE_2__/* .parseCSV */ .bW)(source);
 
-            case 4:
-              csv = _context3.sent;
+            case 12:
+              csv = _context.sent;
               this._data = csv === null || csv === void 0 ? void 0 : csv.data;
               this.updateData();
 
-            case 7:
+            case 15:
+              _context.next = 21;
+              break;
+
+            case 17:
+              _context.prev = 17;
+              _context.t0 = _context["catch"](3);
+              console.log(_context.t0);
+              this.value_ = undefined;
+
+            case 21:
             case "end":
-              return _context3.stop();
+              return _context.stop();
           }
         }
-      }, _callee3, this);
+      }, _callee, this, [[3, 17]]);
     }));
 
     function parseSource() {
@@ -11870,31 +12354,31 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
   }();
 
   _proto.updateData = /*#__PURE__*/function () {
-    var _updateData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+    var _updateData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       var block, services;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context4.prev = _context4.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
               block = this.getSourceBlock();
               services = block === null || block === void 0 ? void 0 : block.jacdacServices;
 
               if (services) {
-                _context4.next = 4;
+                _context2.next = 4;
                 break;
               }
 
-              return _context4.abrupt("return");
+              return _context2.abrupt("return");
 
             case 4:
               services.data = this._data;
 
             case 5:
             case "end":
-              return _context4.stop();
+              return _context2.stop();
           }
         }
-      }, _callee4, this);
+      }, _callee2, this);
     }));
 
     function updateData() {
@@ -11904,65 +12388,8 @@ var FileOpenField = /*#__PURE__*/function (_Field) {
     return updateData;
   }();
 
-  _proto.showEditor_ = function showEditor_() {
-    this.openFileHandle();
-  };
-
-  _proto.openFileHandle = /*#__PURE__*/function () {
-    var _openFileHandle = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
-      var file, source;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
-        while (1) {
-          switch (_context5.prev = _context5.next) {
-            case 0:
-              _context5.next = 2;
-              return fileOpen({
-                mimeTypes: ["text/csv"],
-                extensions: [".csv"],
-                description: "CSV data sets",
-                multiple: false
-              });
-
-            case 2:
-              file = _context5.sent;
-
-              if (file) {
-                _context5.next = 5;
-                break;
-              }
-
-              return _context5.abrupt("return");
-
-            case 5:
-              console.debug("file: loading " + file.name);
-              _context5.next = 8;
-              return file.text();
-
-            case 8:
-              source = _context5.sent;
-              console.debug("file: loaded " + ((source === null || source === void 0 ? void 0 : source.length) || 0) / 1024 + "kb");
-              this.setValue({
-                name: file.name,
-                source: source
-              });
-
-            case 11:
-            case "end":
-              return _context5.stop();
-          }
-        }
-      }, _callee5, this);
-    }));
-
-    function openFileHandle() {
-      return _openFileHandle.apply(this, arguments);
-    }
-
-    return openFileHandle;
-  }();
-
   return FileOpenField;
-}(blockly__WEBPACK_IMPORTED_MODULE_1__.Field);
+}(blockly__WEBPACK_IMPORTED_MODULE_1__.FieldDropdown);
 
 FileOpenField.KEY = "jacdac_field_file_open";
 
@@ -19473,6 +19900,7 @@ function tidySlice(data, options) {
 /* harmony export */   "Sw": function() { return /* binding */ TABLE_PREVIEW_MAX_ITEMS; },
 /* harmony export */   "nY": function() { return /* binding */ VM_WARNINGS_CATEGORY; },
 /* harmony export */   "FD": function() { return /* binding */ JSON_WARNINGS_CATEGORY; },
+/* harmony export */   "cR": function() { return /* binding */ WORKSPACE_FILENAME; },
 /* harmony export */   "j2": function() { return /* binding */ visitToolbox; }
 /* harmony export */ });
 /* unused harmony export MB_WARNINGS_CATEGORY */
@@ -19539,6 +19967,7 @@ var TABLE_PREVIEW_MAX_ITEMS = 48;
 var VM_WARNINGS_CATEGORY = "vm";
 var JSON_WARNINGS_CATEGORY = "json";
 var MB_WARNINGS_CATEGORY = "mb";
+var WORKSPACE_FILENAME = "blocks.json";
 function visitToolbox(node, visitor) {
   var visitContents = function visitContents(contents) {
     contents === null || contents === void 0 ? void 0 : contents.forEach(function (content) {
@@ -19752,6 +20181,480 @@ function useWorkspaceEvent(workspace, handler) {
 
 /***/ }),
 
+/***/ 31396:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ou": function() { return /* binding */ fileSystemHandleSupported; },
+/* harmony export */   "$8": function() { return /* binding */ writeFileText; },
+/* harmony export */   "ue": function() { return /* binding */ readFileText; },
+/* harmony export */   "U5": function() { return /* binding */ importCSVFilesIntoWorkspace; }
+/* harmony export */ });
+/* unused harmony exports listDirectories, listFiles, fileOpen, importFiles */
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+
+function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+function fileSystemHandleSupported() {
+  return typeof window !== "undefined" && !!window.showDirectoryPicker;
+}
+function writeFileText(_x, _x2) {
+  return _writeFileText.apply(this, arguments);
+}
+
+function _writeFileText() {
+  _writeFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(fileHandle, content) {
+    var file;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return fileHandle.createWritable({
+              keepExistingData: false
+            });
+
+          case 2:
+            file = _context.sent;
+            _context.prev = 3;
+            _context.next = 6;
+            return file.write(content);
+
+          case 6:
+            _context.prev = 6;
+            _context.prev = 7;
+            _context.next = 10;
+            return file.close();
+
+          case 10:
+            _context.next = 15;
+            break;
+
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context["catch"](7);
+            console.debug("file close error", {
+              e: _context.t0
+            });
+
+          case 15:
+            return _context.finish(6);
+
+          case 16:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[3,, 6, 16], [7, 12]]);
+  }));
+  return _writeFileText.apply(this, arguments);
+}
+
+function readFileText(_x3) {
+  return _readFileText.apply(this, arguments);
+}
+
+function _readFileText() {
+  _readFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(fileHandle) {
+    var file;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return fileHandle.getFile();
+
+          case 2:
+            file = _context2.sent;
+            _context2.prev = 3;
+            _context2.next = 6;
+            return file.text();
+
+          case 6:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 9:
+            _context2.prev = 9;
+            _context2.t0 = _context2["catch"](3);
+            console.debug("file read error", {
+              e: _context2.t0
+            });
+            return _context2.abrupt("return", undefined);
+
+          case 13:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[3, 9]]);
+  }));
+  return _readFileText.apply(this, arguments);
+}
+
+function listDirectories(_x4) {
+  return _listDirectories.apply(this, arguments);
+}
+
+function _listDirectories() {
+  _listDirectories = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3(directory) {
+    var values, r, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, _value, entry;
+
+    return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            values = directory === null || directory === void 0 ? void 0 : directory.values();
+            r = [];
+
+            if (!values) {
+              _context3.next = 36;
+              break;
+            }
+
+            _iteratorNormalCompletion = true;
+            _didIteratorError = false;
+            _context3.prev = 5;
+            _iterator = _asyncIterator(values);
+
+          case 7:
+            _context3.next = 9;
+            return _iterator.next();
+
+          case 9:
+            _step = _context3.sent;
+            _iteratorNormalCompletion = _step.done;
+            _context3.next = 13;
+            return _step.value;
+
+          case 13:
+            _value = _context3.sent;
+
+            if (_iteratorNormalCompletion) {
+              _context3.next = 20;
+              break;
+            }
+
+            entry = _value;
+            if (entry.kind === "directory") r.push(entry);
+
+          case 17:
+            _iteratorNormalCompletion = true;
+            _context3.next = 7;
+            break;
+
+          case 20:
+            _context3.next = 26;
+            break;
+
+          case 22:
+            _context3.prev = 22;
+            _context3.t0 = _context3["catch"](5);
+            _didIteratorError = true;
+            _iteratorError = _context3.t0;
+
+          case 26:
+            _context3.prev = 26;
+            _context3.prev = 27;
+
+            if (!(!_iteratorNormalCompletion && _iterator.return != null)) {
+              _context3.next = 31;
+              break;
+            }
+
+            _context3.next = 31;
+            return _iterator.return();
+
+          case 31:
+            _context3.prev = 31;
+
+            if (!_didIteratorError) {
+              _context3.next = 34;
+              break;
+            }
+
+            throw _iteratorError;
+
+          case 34:
+            return _context3.finish(31);
+
+          case 35:
+            return _context3.finish(26);
+
+          case 36:
+            return _context3.abrupt("return", r);
+
+          case 37:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[5, 22, 26, 36], [27,, 31, 35]]);
+  }));
+  return _listDirectories.apply(this, arguments);
+}
+
+function listFiles(_x5, _x6) {
+  return _listFiles.apply(this, arguments);
+}
+
+function _listFiles() {
+  _listFiles = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(directory, extension) {
+    var values, r, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, _value2, entry;
+
+    return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            values = directory === null || directory === void 0 ? void 0 : directory.values();
+            r = [];
+
+            if (!values) {
+              _context4.next = 36;
+              break;
+            }
+
+            _iteratorNormalCompletion2 = true;
+            _didIteratorError2 = false;
+            _context4.prev = 5;
+            _iterator2 = _asyncIterator(values);
+
+          case 7:
+            _context4.next = 9;
+            return _iterator2.next();
+
+          case 9:
+            _step2 = _context4.sent;
+            _iteratorNormalCompletion2 = _step2.done;
+            _context4.next = 13;
+            return _step2.value;
+
+          case 13:
+            _value2 = _context4.sent;
+
+            if (_iteratorNormalCompletion2) {
+              _context4.next = 20;
+              break;
+            }
+
+            entry = _value2;
+            if (entry.kind === "file") r.push(entry);
+
+          case 17:
+            _iteratorNormalCompletion2 = true;
+            _context4.next = 7;
+            break;
+
+          case 20:
+            _context4.next = 26;
+            break;
+
+          case 22:
+            _context4.prev = 22;
+            _context4.t0 = _context4["catch"](5);
+            _didIteratorError2 = true;
+            _iteratorError2 = _context4.t0;
+
+          case 26:
+            _context4.prev = 26;
+            _context4.prev = 27;
+
+            if (!(!_iteratorNormalCompletion2 && _iterator2.return != null)) {
+              _context4.next = 31;
+              break;
+            }
+
+            _context4.next = 31;
+            return _iterator2.return();
+
+          case 31:
+            _context4.prev = 31;
+
+            if (!_didIteratorError2) {
+              _context4.next = 34;
+              break;
+            }
+
+            throw _iteratorError2;
+
+          case 34:
+            return _context4.finish(31);
+
+          case 35:
+            return _context4.finish(26);
+
+          case 36:
+            if (extension) r = r.filter(function (f) {
+              return f.name.endsWith(extension);
+            });
+            return _context4.abrupt("return", r);
+
+          case 38:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4, null, [[5, 22, 26, 36], [27,, 31, 35]]);
+  }));
+  return _listFiles.apply(this, arguments);
+}
+
+function fileOpen(_x7) {
+  return _fileOpen.apply(this, arguments);
+}
+
+function _fileOpen() {
+  _fileOpen = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(options) {
+    var accept, files;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            if (options === void 0) {
+              options = {};
+            }
+
+            accept = {};
+
+            if (options.mimeTypes) {
+              Object.keys(options.mimeTypes).map(function (mimeType) {
+                accept[mimeType] = options.mimeTypes[mimeType];
+              });
+            } else {
+              accept["*/*"] = options.extensions || [];
+            }
+
+            _context5.next = 5;
+            return window.showOpenFilePicker({
+              types: [{
+                description: options.description || "",
+                accept: accept
+              }],
+              multiple: options.multiple || false,
+              excludeAcceptAllOption: true
+            });
+
+          case 5:
+            files = _context5.sent;
+            console.debug("open file picker", {
+              files: files
+            });
+            return _context5.abrupt("return", files);
+
+          case 8:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _fileOpen.apply(this, arguments);
+}
+
+function importFiles(_x8, _x9) {
+  return _importFiles.apply(this, arguments);
+}
+
+function _importFiles() {
+  _importFiles = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(directory, files) {
+    var _iterator3, _step3, file, content, to;
+
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            if (!(!directory || !(files !== null && files !== void 0 && files.length))) {
+              _context6.next = 2;
+              break;
+            }
+
+            return _context6.abrupt("return");
+
+          case 2:
+            _iterator3 = _createForOfIteratorHelperLoose(files);
+
+          case 3:
+            if ((_step3 = _iterator3()).done) {
+              _context6.next = 16;
+              break;
+            }
+
+            file = _step3.value;
+            console.debug("importing " + file.name + " -> " + directory.name);
+            _context6.next = 8;
+            return readFileText(file);
+
+          case 8:
+            content = _context6.sent;
+            _context6.next = 11;
+            return directory.getFileHandle(file.name, {
+              create: true
+            });
+
+          case 11:
+            to = _context6.sent;
+            _context6.next = 14;
+            return writeFileText(to, content);
+
+          case 14:
+            _context6.next = 3;
+            break;
+
+          case 16:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+  return _importFiles.apply(this, arguments);
+}
+
+function importCSVFilesIntoWorkspace(_x10) {
+  return _importCSVFilesIntoWorkspace.apply(this, arguments);
+}
+
+function _importCSVFilesIntoWorkspace() {
+  _importCSVFilesIntoWorkspace = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(directory) {
+    var _mimeTypes;
+
+    var files;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.next = 2;
+            return fileOpen({
+              multiple: true,
+              mimeTypes: (_mimeTypes = {}, _mimeTypes["text/csv"] = [".csv"], _mimeTypes)
+            });
+
+          case 2:
+            files = _context7.sent;
+            _context7.next = 5;
+            return importFiles(directory, files);
+
+          case 5:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+  return _importCSVFilesIntoWorkspace.apply(this, arguments);
+}
+
+/***/ }),
+
 /***/ 39687:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -19782,207 +20685,6 @@ function useBestRegister(service) {
     if (hasIntensity) return service.register(_jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_1__/* .SystemReg.Intensity */ .ZJq.Intensity);
     return undefined;
   }, [service]);
-}
-
-/***/ }),
-
-/***/ 254:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "o": function() { return /* binding */ fileSystemHandleSupported; },
-/* harmony export */   "Z": function() { return /* binding */ useDirectoryHandle; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(92137);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
-/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(54774);
-/* harmony import */ var _DbContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(94904);
-
-
-
-
-
-
-function verifyPermission(_x) {
-  return _verifyPermission.apply(this, arguments);
-}
-
-function _verifyPermission() {
-  _verifyPermission = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(fileHandle) {
-    var options;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            if (fileHandle) {
-              _context3.next = 2;
-              break;
-            }
-
-            return _context3.abrupt("return", false);
-
-          case 2:
-            options = {
-              mode: "readwrite"
-            }; // Check if permission was already granted. If so, return true.
-
-            _context3.next = 5;
-            return fileHandle.queryPermission(options);
-
-          case 5:
-            _context3.t0 = _context3.sent;
-
-            if (!(_context3.t0 === "granted")) {
-              _context3.next = 8;
-              break;
-            }
-
-            return _context3.abrupt("return", true);
-
-          case 8:
-            _context3.next = 10;
-            return fileHandle.requestPermission(options);
-
-          case 10:
-            _context3.t1 = _context3.sent;
-
-            if (!(_context3.t1 === "granted")) {
-              _context3.next = 13;
-              break;
-            }
-
-            return _context3.abrupt("return", true);
-
-          case 13:
-            return _context3.abrupt("return", false);
-
-          case 14:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _verifyPermission.apply(this, arguments);
-}
-
-function fileSystemHandleSupported() {
-  return typeof window !== "undefined" && !!window.showDirectoryPicker;
-}
-function useDirectoryHandle(storageKey) {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_DbContext__WEBPACK_IMPORTED_MODULE_3__/* .default */ .ZP),
-      db = _useContext.db;
-
-  var directories = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return db === null || db === void 0 ? void 0 : db.directories;
-  }, [db]);
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
-      directory = _useState[0],
-      setDirectory = _useState[1];
-
-  var supported = fileSystemHandleSupported();
-  var showDirectoryPicker = supported ? /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(options) {
-      var dir;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return window.showDirectoryPicker(options);
-
-            case 3:
-              dir = _context.sent;
-              if (dir !== directory) directories.set(storageKey, dir);
-              _context.next = 10;
-              break;
-
-            case 7:
-              _context.prev = 7;
-              _context.t0 = _context["catch"](0);
-              console.debug(_context.t0);
-
-            case 10:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[0, 7]]);
-    }));
-
-    return function (_x2) {
-      return _ref.apply(this, arguments);
-    };
-  }() : undefined;
-
-  var clearDirectory = function clearDirectory() {
-    return directories === null || directories === void 0 ? void 0 : directories.set(storageKey, undefined);
-  }; // reload directory from DB
-
-
-  (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* .useChangeAsync */ .R)(directories, /*#__PURE__*/function () {
-    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(_) {
-      var dir, perm;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return _ === null || _ === void 0 ? void 0 : _.get(storageKey);
-
-            case 2:
-              dir = _context2.sent;
-              console.debug("load directory", {
-                storageKey: storageKey,
-                _: _,
-                dir: dir
-              });
-
-              if (!dir) {
-                _context2.next = 9;
-                break;
-              }
-
-              _context2.next = 7;
-              return verifyPermission(dir);
-
-            case 7:
-              perm = _context2.sent;
-
-              if (!perm) {
-                console.debug("permission verification failed"); // clear from db
-
-                _.set(storageKey, undefined);
-
-                dir = undefined;
-              }
-
-            case 9:
-              if (dir !== directory) setDirectory(dir);
-
-            case 10:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-
-    return function (_x3) {
-      return _ref2.apply(this, arguments);
-    };
-  }(), [storageKey]);
-  return {
-    supported: supported,
-    showDirectoryPicker: showDirectoryPicker,
-    directory: directory,
-    clearDirectory: clearDirectory
-  };
 }
 
 /***/ }),

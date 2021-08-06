@@ -4073,8 +4073,8 @@ function VMDiagnostics(props) {
 }
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
 var useChange = __webpack_require__(54774);
-// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 17 modules
-var BlockContext = __webpack_require__(76349);
+// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 16 modules
+var BlockContext = __webpack_require__(82393);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
 // EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 3 modules
@@ -6025,9 +6025,12 @@ var widgetDSL = {
 
 var vmDsls = [servicesdsl, serverservicesdsl, loopsdsl, logicdsl, mathdsl, jsondsl, variablesdsl/* default */.Z, toolsdsl, widgetdsl, datadsl/* default */.Z, chartdsl/* default */.Z, shadowdsl/* default */.Z, fieldsdsl/* default */.Z];
 /* harmony default export */ var vmdsls = (vmDsls);
-// EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx + 2 modules
-var FileTabs = __webpack_require__(69469);
+// EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx
+var FileTabs = __webpack_require__(45296);
+// EXTERNAL MODULE: ./src/components/FileSystemContext.tsx + 2 modules
+var FileSystemContext = __webpack_require__(74195);
 ;// CONCATENATED MODULE: ./src/components/vm/VMEditor.tsx
+
 
 
 
@@ -6058,9 +6061,10 @@ function VMEditorWithContext() {
       workspaceJSON = _useContext.workspaceJSON,
       roleManager = _useContext.roleManager,
       setWarnings = _useContext.setWarnings,
-      dragging = _useContext.dragging,
-      workspaceFileHandle = _useContext.workspaceFileHandle,
-      setWorkspaceFileHandle = _useContext.setWorkspaceFileHandle;
+      dragging = _useContext.dragging;
+
+  var _useContext2 = (0,react.useContext)(FileSystemContext/* default */.Z),
+      fileSystem = _useContext2.fileSystem;
 
   var _useState = (0,react.useState)(),
       program = _useState[0],
@@ -6113,14 +6117,11 @@ function VMEditorWithContext() {
     container: true,
     direction: "column",
     spacing: 1
-  }, !!setWorkspaceFileHandle && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, !!fileSystem && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react.createElement(FileTabs/* default */.Z, {
-    storageKey: VM_SOURCE_STORAGE_KEY,
-    selectedFileHandle: workspaceFileHandle,
-    onFileHandleSelected: setWorkspaceFileHandle,
-    onFileHandleCreated: setWorkspaceFileHandle,
+    newFileName: toolbox/* WORKSPACE_FILENAME */.cR,
     newFileContent: VM_NEW_FILE_CONTENT
   })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
@@ -6148,11 +6149,11 @@ function VMEditor() {
     var f = file;
     f.vm = (0,VMgenerator/* default */.ZP)(file.json, dsls);
   }, []);
-  return /*#__PURE__*/react.createElement(NoSsr/* default */.Z, null, /*#__PURE__*/react.createElement(BlockContext/* BlockProvider */.Z, {
+  return /*#__PURE__*/react.createElement(NoSsr/* default */.Z, null, /*#__PURE__*/react.createElement(FileSystemContext/* FileSystemProvider */.P, null, /*#__PURE__*/react.createElement(BlockContext/* BlockProvider */.Z, {
     storageKey: VM_SOURCE_STORAGE_KEY,
     dsls: dsls,
     onBeforeSaveWorkspaceFile: flags/* default.diagnostics */.Z.diagnostics ? handleOnBeforeSaveWorkspaceFile : undefined
-  }, /*#__PURE__*/react.createElement(VMEditorWithContext, null)));
+  }, /*#__PURE__*/react.createElement(VMEditorWithContext, null))));
 }
 ;// CONCATENATED MODULE: ./src/pages/editors/vm.tsx
 

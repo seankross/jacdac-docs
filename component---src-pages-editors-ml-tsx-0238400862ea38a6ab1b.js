@@ -16,8 +16,8 @@ __webpack_require__.d(__webpack_exports__, {
 var react = __webpack_require__(67294);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/NoSsr/NoSsr.js
 var NoSsr = __webpack_require__(42862);
-// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 17 modules
-var BlockContext = __webpack_require__(76349);
+// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 16 modules
+var BlockContext = __webpack_require__(82393);
 // EXTERNAL MODULE: ./src/components/blockly/BlockEditor.tsx + 4 modules
 var BlockEditor = __webpack_require__(81753);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/variablesdsl.ts

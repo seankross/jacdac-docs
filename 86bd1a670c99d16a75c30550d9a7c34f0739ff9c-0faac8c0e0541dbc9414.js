@@ -494,7 +494,7 @@ exports.Z = _default;
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* unused harmony export resolveUsedDataVariables */
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(74640);
@@ -506,15 +506,17 @@ exports.Z = _default;
 /* harmony import */ var _fields_FileSaveField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(4383);
 /* harmony import */ var _workers_csv_proxy__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(53480);
 /* harmony import */ var _fields_FileOpenField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(39311);
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(74602);
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(74602);
 /* harmony import */ var _fields_tidy__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(47554);
 /* harmony import */ var _fields_DataTableField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(54741);
 /* harmony import */ var _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(16229);
 /* harmony import */ var _fields_chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(88533);
+/* harmony import */ var _fs_fs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(31396);
 
 
 
 /* eslint-disable @typescript-eslint/ban-types */
+
 
 
 
@@ -543,6 +545,7 @@ var DATA_ADD_VARIABLE_CALLBACK = "data_add_variable";
 var DATA_DATAVARIABLE_READ_BLOCK = "data_dataset_read";
 var DATA_DATAVARIABLE_WRITE_BLOCK = "data_dataset_write";
 var DATA_DATASET_BUILTIN_BLOCK = "data_dataset_builtin";
+var DATA_ADD_DATASET_CALLBACK = "data_add_dataset_variable";
 var DATA_TABLE_TYPE = "DataTable";
 var DATA_BIN_BLOCK = "data_bin";
 var DATA_CORRELATION_BLOCK = "data_correlation";
@@ -550,14 +553,14 @@ var DATA_LINEAR_REGRESSION_BLOCK = "data_linear_regression";
 var DATA_LOAD_FILE_BLOCK = "data_load_file";
 var DATA_SAVE_FILE_BLOCK = "data_save_file";
 
-var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z)(),
+var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(),
     datasetColour = _palette[0],
     operatorsColour = _palette[1],
     computeColour = _palette[2],
     statisticsColour = _palette[3];
 
 var dataVariablesColour = "%{BKY_VARIABLES_HUE}";
-var calcOptions = ["average", "median", "min", "max", "sum", "deviation", "variance"].map(function (n) {
+var calcOptions = ["mean", "median", "min", "max", "sum", "deviation", "variance"].map(function (n) {
   return [n, n];
 });
 var dataDsl = {
@@ -1016,7 +1019,7 @@ var dataDsl = {
       template: "meta",
       dataPreviewField: true,
       transformData: function () {
-        var _transformData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(b, data) {
+        var _transformData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(b, data) {
           var column;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
             while (1) {
@@ -1084,7 +1087,7 @@ var dataDsl = {
       dataPreviewField: false,
       passthroughData: true,
       transformData: function () {
-        var _transformData2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(b, data) {
+        var _transformData2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(b, data) {
           var column1, column2;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
             while (1) {
@@ -1153,7 +1156,7 @@ var dataDsl = {
       dataPreviewField: false,
       passthroughData: true,
       transformData: function () {
-        var _transformData3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(b, data) {
+        var _transformData3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(b, data) {
           var column1, column2;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
             while (1) {
@@ -1220,7 +1223,7 @@ var dataDsl = {
       inputsInline: false,
       dataPreviewField: "after",
       transformData: function () {
-        var _transformData4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(block, data) {
+        var _transformData4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(block, data) {
           var file;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
             while (1) {
@@ -1271,6 +1274,21 @@ var dataDsl = {
       }, {
         kind: "block",
         type: DATA_SAVE_FILE_BLOCK
+      }, {
+        kind: "button",
+        text: "Import dataset",
+        callbackKey: DATA_ADD_DATASET_CALLBACK,
+        callback: function callback(workspace) {
+          var services = workspace === null || workspace === void 0 ? void 0 : workspace.jacdacServices;
+          var directory = services === null || services === void 0 ? void 0 : services.workingDirectory;
+          if (!directory) (0,blockly__WEBPACK_IMPORTED_MODULE_1__.alert)("You need to open a directory to import a dataset.");else {
+            (0,_fs_fs__WEBPACK_IMPORTED_MODULE_13__/* .importCSVFilesIntoWorkspace */ .U5)(directory.handle).then(function () {
+              return directory.sync();
+            }).then(function () {
+              return (0,blockly__WEBPACK_IMPORTED_MODULE_1__.alert)("Datasets imported!");
+            });
+          }
+        }
       }]
     }, {
       kind: "category",
@@ -1419,281 +1437,30 @@ function resolveUsedDataVariables(block) {
 
 /***/ }),
 
-/***/ 69469:
+/***/ 45296:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": function() { return /* binding */ FileTabs; }
-});
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(92137);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(87757);
-var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Chip/Chip.js + 1 modules
-var Chip = __webpack_require__(4998);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Dialog/Dialog.js
-var Dialog = __webpack_require__(52468);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogContent/DialogContent.js
-var DialogContent = __webpack_require__(65733);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogContentText/DialogContentText.js
-var DialogContentText = __webpack_require__(32253);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TextField/TextField.js
-var TextField = __webpack_require__(1059);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js
-var DialogActions = __webpack_require__(89952);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
-var Button = __webpack_require__(83332);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
-var Grid = __webpack_require__(80838);
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
-var defineProperty = __webpack_require__(96156);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-var objectWithoutPropertiesLoose = __webpack_require__(19756);
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncIterator.js
-function _asyncIterator(iterable) {
-  var method;
-
-  if (typeof Symbol !== "undefined") {
-    if (Symbol.asyncIterator) method = iterable[Symbol.asyncIterator];
-    if (method == null && Symbol.iterator) method = iterable[Symbol.iterator];
-  }
-
-  if (method == null) method = iterable["@@asyncIterator"];
-  if (method == null) method = iterable["@@iterator"];
-  if (method == null) throw new TypeError("Object is not async iterable");
-  return method.call(iterable);
-}
-// EXTERNAL MODULE: ./src/components/AppContext.tsx
-var AppContext = __webpack_require__(84377);
-// EXTERNAL MODULE: ./src/components/useEffectAsync.ts
-var useEffectAsync = __webpack_require__(7751);
-// EXTERNAL MODULE: ./src/components/hooks/useDirectoryHandle.ts
-var useDirectoryHandle = __webpack_require__(254);
-;// CONCATENATED MODULE: ./src/components/hooks/useDirectoryFileHandles.ts
-
-
-
-
-var _excluded = ["directory"];
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
-
-
-
-function useDirectoryFileHandles(storageKey) {
-  var _useDirectoryHandle = (0,useDirectoryHandle/* default */.Z)(storageKey),
-      directory = _useDirectoryHandle.directory,
-      rest = (0,objectWithoutPropertiesLoose/* default */.Z)(_useDirectoryHandle, _excluded);
-
-  var _useContext = (0,react.useContext)(AppContext/* default */.ZP),
-      setError = _useContext.setError;
-
-  var _useState = (0,react.useState)([]),
-      files = _useState[0],
-      setFiles = _useState[1];
-
-  var refresh = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-      var values, newFiles, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, _value, entry;
-
-      return regenerator_default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              values = directory === null || directory === void 0 ? void 0 : directory.values();
-              newFiles = [];
-
-              if (!values) {
-                _context.next = 36;
-                break;
-              }
-
-              _iteratorNormalCompletion = true;
-              _didIteratorError = false;
-              _context.prev = 5;
-              _iterator = _asyncIterator(values);
-
-            case 7:
-              _context.next = 9;
-              return _iterator.next();
-
-            case 9:
-              _step = _context.sent;
-              _iteratorNormalCompletion = _step.done;
-              _context.next = 13;
-              return _step.value;
-
-            case 13:
-              _value = _context.sent;
-
-              if (_iteratorNormalCompletion) {
-                _context.next = 20;
-                break;
-              }
-
-              entry = _value;
-              if (entry.kind === "file") newFiles.push(entry);
-
-            case 17:
-              _iteratorNormalCompletion = true;
-              _context.next = 7;
-              break;
-
-            case 20:
-              _context.next = 26;
-              break;
-
-            case 22:
-              _context.prev = 22;
-              _context.t0 = _context["catch"](5);
-              _didIteratorError = true;
-              _iteratorError = _context.t0;
-
-            case 26:
-              _context.prev = 26;
-              _context.prev = 27;
-
-              if (!(!_iteratorNormalCompletion && _iterator.return != null)) {
-                _context.next = 31;
-                break;
-              }
-
-              _context.next = 31;
-              return _iterator.return();
-
-            case 31:
-              _context.prev = 31;
-
-              if (!_didIteratorError) {
-                _context.next = 34;
-                break;
-              }
-
-              throw _iteratorError;
-
-            case 34:
-              return _context.finish(31);
-
-            case 35:
-              return _context.finish(26);
-
-            case 36:
-              setFiles(newFiles);
-              return _context.abrupt("return", newFiles);
-
-            case 38:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[5, 22, 26, 36], [27,, 31, 35]]);
-    }));
-
-    return function refresh() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-
-  var createFile = /*#__PURE__*/function () {
-    var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(filename, content) {
-      var fileHandle, file, newFiles;
-      return regenerator_default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.prev = 0;
-              _context2.next = 3;
-              return directory.getFileHandle(filename, {
-                create: true
-              });
-
-            case 3:
-              fileHandle = _context2.sent;
-              _context2.next = 6;
-              return fileHandle.createWritable({
-                keepExistingData: false
-              });
-
-            case 6:
-              file = _context2.sent;
-              _context2.next = 9;
-              return file.write(content);
-
-            case 9:
-              _context2.next = 11;
-              return file.close();
-
-            case 11:
-              _context2.next = 13;
-              return refresh();
-
-            case 13:
-              newFiles = _context2.sent;
-              return _context2.abrupt("return", newFiles.find(function (f) {
-                return f.name === filename;
-              }));
-
-            case 17:
-              _context2.prev = 17;
-              _context2.t0 = _context2["catch"](0);
-              setError(_context2.t0);
-              return _context2.abrupt("return", undefined);
-
-            case 21:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2, null, [[0, 17]]);
-    }));
-
-    return function createFile(_x, _x2) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
-  (0,useEffectAsync/* default */.Z)( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3() {
-    return regenerator_default().wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return refresh();
-
-          case 2:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  })), [directory]);
-  return _objectSpread({
-    directory: directory,
-    files: files,
-    createFile: createFile,
-    refresh: refresh
-  }, rest);
-}
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/OpenInBrowser.js
-var OpenInBrowser = __webpack_require__(95552);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Add.js
-var Add = __webpack_require__(88880);
-// EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
-var react_use_id_hook_esm = __webpack_require__(19640);
-// EXTERNAL MODULE: ./src/components/hooks/useKeyboardNavigationProps.ts + 2 modules
-var useKeyboardNavigationProps = __webpack_require__(68786);
-;// CONCATENATED MODULE: ./src/components/fs/FileTabs.tsx
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ FileTabs; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4998);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(52468);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(65733);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(32253);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(1059);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(89952);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(83332);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(80838);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_icons_OpenInBrowser__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(95552);
+/* harmony import */ var _material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(88880);
+/* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19640);
+/* harmony import */ var _hooks_useKeyboardNavigationProps__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(68786);
+/* harmony import */ var _FileSystemContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(74195);
+/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(54774);
 
 
 
@@ -1704,12 +1471,13 @@ var useKeyboardNavigationProps = __webpack_require__(68786);
 
 
 
-function FileChip(props) {
-  var file = props.file,
+
+function FileSystemHandleChip(props) {
+  var directory = props.directory,
       selected = props.selected,
       onClick = props.onClick;
-  var name = file.name;
-  return /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+  var name = directory.name;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
     clickable: true,
     label: name.replace(/\.json$/i, ""),
     color: selected ? "primary" : undefined,
@@ -1718,19 +1486,21 @@ function FileChip(props) {
 }
 
 function NewFileDialogButton(props) {
-  var createFile = props.createFile,
-      newFileContent = props.newFileContent,
-      onFileHandleCreated = props.onFileHandleCreated;
+  var newFileName = props.newFileName,
+      newFileContent = props.newFileContent;
 
-  var _useState = (0,react.useState)(false),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_FileSystemContext__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z),
+      fileSystem = _useContext.fileSystem;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       open = _useState[0],
       setOpen = _useState[1];
 
-  var _useState2 = (0,react.useState)(""),
+  var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       value = _useState2[0],
       setValue = _useState2[1];
 
-  var valueId = (0,react_use_id_hook_esm/* useId */.Me)();
+  var valueId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_2__/* .useId */ .Me)();
 
   var handleOpen = function handleOpen() {
     setValue("");
@@ -1738,22 +1508,18 @@ function NewFileDialogButton(props) {
   };
 
   var handleOk = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-      var filename, fileHandle;
-      return regenerator_default().wrap(function _callee$(_context) {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var name;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               setOpen(false);
-              filename = value.toLocaleLowerCase().replace(/\s+/g, "") + ".json";
+              name = value.toLocaleLowerCase().replace(/\s+/g, "");
               _context.next = 4;
-              return createFile(filename, newFileContent);
+              return fileSystem.createWorkingDirectory(name, newFileName, newFileContent);
 
             case 4:
-              fileHandle = _context.sent;
-              if (fileHandle) onFileHandleCreated(fileHandle);
-
-            case 6:
             case "end":
               return _context.stop();
           }
@@ -1774,23 +1540,24 @@ function NewFileDialogButton(props) {
     setValue(event.target.value);
   };
 
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
     clickable: true,
-    label: "new file...",
-    icon: /*#__PURE__*/react.createElement(Add/* default */.Z, null),
+    label: "new project...",
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, null),
     onClick: handleOpen
-  }), /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
-    open: open
-  }, /*#__PURE__*/react.createElement(DialogContent/* default */.Z, null, /*#__PURE__*/react.createElement(DialogContentText/* default */.Z, null, "Choose a file name"), /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, {
+    open: open,
+    fullWidth: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, null, "Choose a project name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, {
     id: valueId,
     value: value,
     label: "Value",
     fullWidth: true,
     onChange: handleValueChange
-  })), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, {
     variant: "contained",
     onClick: handleCancel
-  }, "Cancel"), /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, {
     variant: "contained",
     color: "primary",
     disabled: !value,
@@ -1799,65 +1566,63 @@ function NewFileDialogButton(props) {
 }
 
 function FileTabs(props) {
-  var storageKey = props.storageKey,
-      selectedFileHandle = props.selectedFileHandle,
-      onFileHandleSelected = props.onFileHandleSelected,
-      newFileContent = props.newFileContent,
-      onFileHandleCreated = props.onFileHandleCreated;
+  var newFileName = props.newFileName,
+      newFileContent = props.newFileContent;
 
-  var _useDirectoryFileHand = useDirectoryFileHandles(storageKey),
-      files = _useDirectoryFileHand.files,
-      directory = _useDirectoryFileHand.directory,
-      supported = _useDirectoryFileHand.supported,
-      showDirectoryPicker = _useDirectoryFileHand.showDirectoryPicker,
-      clearDirectory = _useDirectoryFileHand.clearDirectory,
-      createFile = _useDirectoryFileHand.createFile;
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_FileSystemContext__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z),
+      fileSystem = _useContext2.fileSystem,
+      showDirectoryPicker = _useContext2.showDirectoryPicker;
 
-  var gridRef = (0,react.useRef)();
-  var keyboardProps = (0,useKeyboardNavigationProps/* default */.Z)(gridRef.current);
-
-  var handleOpenDirectory = function handleOpenDirectory() {
-    return showDirectoryPicker();
-  };
+  var root = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(fileSystem, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.root;
+  });
+  var workingDirectory = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(fileSystem, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.workingDirectory;
+  });
+  var directories = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(root, function (_) {
+    return _ === null || _ === void 0 ? void 0 : _.directories;
+  });
+  var gridRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)();
+  var keyboardProps = (0,_hooks_useKeyboardNavigationProps__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z)(gridRef.current);
+  var handleOpenDirectory = showDirectoryPicker;
 
   var handleCloseDirectory = function handleCloseDirectory() {
-    return clearDirectory();
+    return fileSystem.root = undefined;
   };
 
-  var handleFileHandleSelected = function handleFileHandleSelected(file) {
+  var handleDirectoryHandleSelected = function handleDirectoryHandleSelected(handle) {
     return function () {
-      return onFileHandleSelected(file);
+      return fileSystem.workingDirectory = handle;
     };
   };
 
-  if (!supported) return null;
-  return /*#__PURE__*/react.createElement(Grid/* default */.Z, Object.assign({
+  if (!fileSystem) return null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, Object.assign({
     ref: gridRef,
     container: true,
     spacing: 1
-  }, keyboardProps), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, keyboardProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
     item: true
-  }, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
     clickable: true,
-    avatar: /*#__PURE__*/react.createElement(OpenInBrowser/* default */.Z, null),
-    label: (directory === null || directory === void 0 ? void 0 : directory.name) || "open directory",
+    avatar: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_OpenInBrowser__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, null),
+    label: (root === null || root === void 0 ? void 0 : root.name) || "open directory",
     onClick: handleOpenDirectory,
-    onDelete: directory ? handleCloseDirectory : undefined
-  })), files === null || files === void 0 ? void 0 : files.map(function (file) {
-    return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    onDelete: root ? handleCloseDirectory : undefined
+  })), directories === null || directories === void 0 ? void 0 : directories.map(function (directory) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
       item: true,
-      key: file.name
-    }, /*#__PURE__*/react.createElement(FileChip, {
-      file: file,
-      selected: file === selectedFileHandle,
-      onClick: handleFileHandleSelected(file)
+      key: directory.name
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(FileSystemHandleChip, {
+      directory: directory,
+      selected: directory === workingDirectory,
+      onClick: handleDirectoryHandleSelected(directory)
     }));
-  }), directory && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }), root && newFileName && newFileContent && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
     item: true
-  }, /*#__PURE__*/react.createElement(NewFileDialogButton, {
-    createFile: createFile,
-    newFileContent: newFileContent,
-    onFileHandleCreated: onFileHandleCreated
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(NewFileDialogButton, {
+    newFileName: newFileName,
+    newFileContent: newFileContent
   })));
 }
 

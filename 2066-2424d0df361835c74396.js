@@ -2783,7 +2783,6 @@ function sampleCorrelation(x, y) {
 
 var _excluded = ["id", "worker", "data", "previousData"];
 var summarizers = {
-  average: mean$1,
   mean: mean$1,
   median: median,
   min: min,

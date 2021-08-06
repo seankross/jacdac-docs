@@ -68287,7 +68287,7 @@ function Home() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
     right: true,
     subtitle: "Client Software.",
-    description: "Integrate Jacdac in your web or Node.JS using our Javascript/TypeScript library.",
+    description: "Integrate Jacdac in the Web or Node.JS using our Javascript/TypeScript library.",
     buttonText: "Add Jacdac to your apps",
     buttonVariant: "link",
     buttonUrl: "/software/",
@@ -69780,7 +69780,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "00bfbff7ff2b8e4b505db3236f648ce6bfc9f611";
+  var sha = "a7c36d76cb820ae805bb869760dc6f7475922002";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -83074,7 +83074,7 @@ exports.components = {
     return Promise.all(/* import() | component---src-pages-editors-ml-tsx */[__webpack_require__.e(9978), __webpack_require__.e(3662), __webpack_require__.e(8343), __webpack_require__.e(5901), __webpack_require__.e(61), __webpack_require__.e(4230)]).then(__webpack_require__.bind(__webpack_require__, 98899));
   },
   "component---src-pages-editors-vm-tsx": function componentSrcPagesEditorsVmTsx() {
-    return Promise.all(/* import() | component---src-pages-editors-vm-tsx */[__webpack_require__.e(9978), __webpack_require__.e(3662), __webpack_require__.e(8343), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(61), __webpack_require__.e(2186)]).then(__webpack_require__.bind(__webpack_require__, 90815));
+    return Promise.all(/* import() | component---src-pages-editors-vm-tsx */[__webpack_require__.e(9978), __webpack_require__.e(3662), __webpack_require__.e(8343), __webpack_require__.e(5901), __webpack_require__.e(61), __webpack_require__.e(4128), __webpack_require__.e(2186)]).then(__webpack_require__.bind(__webpack_require__, 90815));
   },
   "component---src-pages-errors-mdx": function componentSrcPagesErrorsMdx() {
     return __webpack_require__.e(/* import() | component---src-pages-errors-mdx */ 4198).then(__webpack_require__.bind(__webpack_require__, 31502));
