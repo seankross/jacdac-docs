@@ -26,8 +26,8 @@ var BlockContext = __webpack_require__(82393);
 var BlockDiagnostics = __webpack_require__(9370);
 // EXTERNAL MODULE: ./src/components/blockly/BlockEditor.tsx + 4 modules
 var BlockEditor = __webpack_require__(81753);
-// EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx
-var FileTabs = __webpack_require__(45296);
+// EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx + 3 modules
+var FileTabs = __webpack_require__(45430);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/datadsl.ts
 var datadsl = __webpack_require__(73595);
 // EXTERNAL MODULE: ./src/components/blockly/dsl/chartdsl.ts
@@ -71,7 +71,8 @@ function DSEditorWithContext() {
     xs: 12
   }, /*#__PURE__*/react.createElement(FileTabs/* default */.Z, {
     newFileName: toolbox/* WORKSPACE_FILENAME */.cR,
-    newFileContent: DS_NEW_FILE_CONTENT
+    newFileContent: DS_NEW_FILE_CONTENT,
+    hideFiles: true
   })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12

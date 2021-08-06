@@ -481,7 +481,7 @@ function createDataWorker() {
 ;// CONCATENATED MODULE: ./src/workers/tf/workerloader.js
 function createTFWorker() {
   return typeof Window !== "undefined" && new Worker(new URL( // gatsby fast-refresh ignores files with node_modules in path
-  /* worker import */ __webpack_require__.p + __webpack_require__.u(2619), __webpack_require__.b // syntax not supported in typescript
+  /* worker import */ __webpack_require__.p + __webpack_require__.u(3460), __webpack_require__.b // syntax not supported in typescript
   ));
 }
 ;// CONCATENATED MODULE: ./src/workers/vm/workerloader.js

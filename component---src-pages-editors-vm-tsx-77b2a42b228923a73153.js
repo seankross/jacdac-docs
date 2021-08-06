@@ -6025,8 +6025,8 @@ var widgetDSL = {
 
 var vmDsls = [servicesdsl, serverservicesdsl, loopsdsl, logicdsl, mathdsl, jsondsl, variablesdsl/* default */.Z, toolsdsl, widgetdsl, datadsl/* default */.Z, chartdsl/* default */.Z, shadowdsl/* default */.Z, fieldsdsl/* default */.Z];
 /* harmony default export */ var vmdsls = (vmDsls);
-// EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx
-var FileTabs = __webpack_require__(45296);
+// EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx + 3 modules
+var FileTabs = __webpack_require__(45430);
 // EXTERNAL MODULE: ./src/components/FileSystemContext.tsx + 2 modules
 var FileSystemContext = __webpack_require__(74195);
 // EXTERNAL MODULE: ./src/components/blockly/WorkspaceContext.tsx
@@ -6123,7 +6123,8 @@ function VMEditorWithContext() {
     xs: 12
   }, /*#__PURE__*/react.createElement(FileTabs/* default */.Z, {
     newFileName: toolbox/* WORKSPACE_FILENAME */.cR,
-    newFileContent: VM_NEW_FILE_CONTENT
+    newFileContent: VM_NEW_FILE_CONTENT,
+    hideFiles: true
   })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
