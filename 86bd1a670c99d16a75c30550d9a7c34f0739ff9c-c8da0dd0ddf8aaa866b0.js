@@ -964,8 +964,8 @@ var dataDsl = {
       colour: dataVariablesColour,
       template: "meta",
       dataPreviewField: "after",
-      transformData: function transformData(block) {
-        var services = block.jacdacServices;
+      transformData: function transformData(b) {
+        var services = (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_6__/* .resolveBlockServices */ .Ys)(b);
         var data = services === null || services === void 0 ? void 0 : services.data;
         return Promise.resolve(data);
       }

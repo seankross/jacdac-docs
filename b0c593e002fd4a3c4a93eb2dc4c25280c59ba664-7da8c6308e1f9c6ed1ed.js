@@ -11275,6 +11275,7 @@ var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
     _this.EDITABLE = false;
     _this.transformed = !!(options !== null && options !== void 0 && options.transformed);
     _this.small = !!(options !== null && options !== void 0 && options.small);
+    _this.selectColumns = !!(options !== null && options !== void 0 && options.selectColumns);
     return _this;
   }
 
@@ -11294,7 +11295,8 @@ var DataTableField = /*#__PURE__*/function (_ReactInlineField) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DataTableWidget__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
       maxItems: MAX_ITEMS,
       tableHeight: tableHeight,
-      transformed: this.transformed
+      transformed: this.transformed,
+      selectColumns: this.selectColumns
     });
   };
 
@@ -11518,7 +11520,8 @@ function DataTableWidget(props) {
       _props$tableHeight = props.tableHeight,
       tableHeight = _props$tableHeight === void 0 ? toolbox/* TABLE_HEIGHT */.U2 : _props$tableHeight,
       empty = props.empty,
-      maxItems = props.maxItems;
+      maxItems = props.maxItems,
+      selectColumns = props.selectColumns;
 
   var _useContext = (0,react.useContext)(WorkspaceContext/* default */.ZP),
       sourceBlock = _useContext.sourceBlock;
@@ -11534,19 +11537,28 @@ function DataTableWidget(props) {
   if (!(raw !== null && raw !== void 0 && raw.length)) return empty ? /*#__PURE__*/react.createElement("span", {
     className: classes.empty
   }, empty) : null;
-  var selectedColumns = [0, 1, 2, 3].map(function (i) {
+  var selectedColumns = selectColumns ? [0, 1, 2, 3].map(function (i) {
     return "column" + i;
   }).map(function (n) {
     return (0,tidy/* tidyResolveHeader */.gc)(raw, sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.getFieldValue(n));
   }).filter(function (c) {
     return !!c;
-  });
+  }) : [];
   var columns = selectedColumns.length ? selectedColumns : (0,tidy/* tidyHeaders */.P2)(raw).headers;
   var table = raw.length > maxItems ? [].concat((0,toConsumableArray/* default */.Z)(raw.slice(0, maxItems)), [(0,utils/* toMap */.qL)(columns, function (c) {
     return c;
   }, function () {
     return "...";
-  })]) : raw; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  })]) : raw;
+  console.log({
+    raw: raw,
+    transformed: transformed,
+    transformedData: transformedData,
+    data: data,
+    table: table,
+    selectedColumns: selectedColumns,
+    columns: columns
+  }); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
   var renderCell = function renderCell(v) {
     return typeof v === "boolean" ? v ? "true" : "false" : typeof v === "number" ? (0,utils/* roundWithPrecision */.JI)(v, 3) : v + "";
