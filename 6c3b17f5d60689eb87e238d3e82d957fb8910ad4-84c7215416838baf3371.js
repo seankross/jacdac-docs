@@ -572,8 +572,10 @@ var react_use_id_hook_esm = __webpack_require__(19640);
 
 
 function FileNewFileChip(props) {
-  var newFileName = props.newFileName,
-      newFileContent = props.newFileContent;
+  var newFileName = props.name,
+      newFileContent = props.content,
+      label = props.label,
+      extension = props.extension;
 
   var _useContext = (0,react.useContext)(FileSystemContext/* default */.Z),
       fileSystem = _useContext.fileSystem;
@@ -595,17 +597,43 @@ function FileNewFileChip(props) {
 
   var handleOk = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-      var name;
+      var name, d, f;
       return regenerator_default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               setOpen(false);
               name = value.toLocaleLowerCase().replace(/\s+/g, "");
-              _context.next = 4;
+
+              if (!newFileName) {
+                _context.next = 7;
+                break;
+              }
+
+              _context.next = 5;
               return fileSystem.createWorkingDirectory(name, newFileName, newFileContent);
 
-            case 4:
+            case 5:
+              _context.next = 15;
+              break;
+
+            case 7:
+              if (extension) name += "." + extension;
+              d = fileSystem.workingDirectory || fileSystem.root;
+              _context.next = 11;
+              return d.fileAsync(name, {
+                create: true
+              });
+
+            case 11:
+              f = _context.sent;
+              _context.next = 14;
+              return f.write(newFileContent);
+
+            case 14:
+              fileSystem.workingFile = f;
+
+            case 15:
             case "end":
               return _context.stop();
           }
@@ -628,7 +656,7 @@ function FileNewFileChip(props) {
 
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     clickable: true,
-    label: "new project...",
+    label: label || "new...",
     icon: /*#__PURE__*/react.createElement(Add/* default */.Z, null),
     onClick: handleOpen
   }), /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
@@ -680,7 +708,9 @@ function FileTabs(props) {
       hideDirectories = props.hideDirectories,
       hideFiles = props.hideFiles,
       directoryFilter = props.directoryFilter,
-      fileFilter = props.fileFilter;
+      fileFilter = props.fileFilter,
+      newFileLabel = props.newFileLabel,
+      newFileExtension = props.newFileExtension;
 
   var _useContext = (0,react.useContext)(FileSystemContext/* default */.Z),
       fileSystem = _useContext.fileSystem;
@@ -748,11 +778,13 @@ function FileTabs(props) {
       selected: node === workingFile,
       onClick: handleFileSelected(node)
     }));
-  })), root && newFileName && newFileContent && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  })), root && newFileContent && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
   }, /*#__PURE__*/react.createElement(FileNewFileChip, {
-    newFileName: newFileName,
-    newFileContent: newFileContent
+    name: newFileName,
+    content: newFileContent,
+    label: newFileLabel,
+    extension: newFileExtension
   })));
 }
 

@@ -1769,7 +1769,9 @@ function Page() {
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_fs_FileTabs__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, {
     hideDirectories: true,
-    fileFilter: fileFilter
+    fileFilter: fileFilter,
+    newFileContent: "[]",
+    newFileExtension: "json"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* .default */ .Z, {
     item: true,
     xs: 12

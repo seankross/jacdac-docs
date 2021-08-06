@@ -464,75 +464,109 @@ var FileSystemDirectory = /*#__PURE__*/function (_FileSystemNode3) {
     return undefined;
   };
 
-  _proto3.file = function file(name, options) {
-    var _this4 = this;
-
-    var existing = this._files.find(function (f) {
-      return f.name === name;
-    });
-
-    if (existing) return existing;
-
-    if (options !== null && options !== void 0 && options.create) {
-      // create file in the background
-      this.handle.getFileHandle(name, {
-        create: true
-      }).then(function (nf) {
-        var nfn = new FileSystemFile(_this4, nf);
-
-        _this4._files.push(nfn);
-
-        _this4._files.sort(function (l, r) {
-          return l.name.localeCompare(r.name);
-        });
-
-        _this4.emitPropagated(constants/* CHANGE */.Ver);
-      });
-    } // no file yet
-
-
-    return undefined;
-  };
-
-  _proto3.sync = /*#__PURE__*/function () {
-    var _sync2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee5() {
-      var _this5 = this;
-
-      var values, files, directories, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, _value, entry, changed, patched, _patched;
+  _proto3.fileAsync = /*#__PURE__*/function () {
+    var _fileAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee5(name, options) {
+      var f, _handle;
 
       return regenerator_default().wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
+            case 0:
+              f = this._files.find(function (f) {
+                return f.name === name;
+              });
+
+              if (!(!f && options !== null && options !== void 0 && options.create)) {
+                _context5.next = 9;
+                break;
+              }
+
+              _context5.next = 4;
+              return this.handle.getFileHandle(name, {
+                create: true
+              });
+
+            case 4:
+              _handle = _context5.sent;
+              f = new FileSystemFile(this, _handle);
+
+              this._files.push(f);
+
+              this._files.sort(function (l, r) {
+                return l.name.localeCompare(r.name);
+              });
+
+              this.emitPropagated(constants/* CHANGE */.Ver);
+
+            case 9:
+              return _context5.abrupt("return", f);
+
+            case 10:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, this);
+    }));
+
+    function fileAsync(_x5, _x6) {
+      return _fileAsync.apply(this, arguments);
+    }
+
+    return fileAsync;
+  }();
+
+  _proto3.file = function file(name, options) {
+    var existing = this._files.find(function (f) {
+      return f.name === name;
+    });
+
+    if (!existing) {
+      if (options !== null && options !== void 0 && options.create) this.fileAsync(name, options);
+    }
+
+    return existing;
+  };
+
+  _proto3.sync = /*#__PURE__*/function () {
+    var _sync2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee6() {
+      var _this4 = this;
+
+      var values, files, directories, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, _value, entry, changed, patched, _patched;
+
+      return regenerator_default().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
             case 0:
               values = this.handle.values();
               files = [];
               directories = [];
 
               if (!values) {
-                _context5.next = 37;
+                _context6.next = 37;
                 break;
               }
 
               _iteratorNormalCompletion = true;
               _didIteratorError = false;
-              _context5.prev = 6;
+              _context6.prev = 6;
               _iterator = _asyncIterator(values);
 
             case 8:
-              _context5.next = 10;
+              _context6.next = 10;
               return _iterator.next();
 
             case 10:
-              _step = _context5.sent;
+              _step = _context6.sent;
               _iteratorNormalCompletion = _step.done;
-              _context5.next = 14;
+              _context6.next = 14;
               return _step.value;
 
             case 14:
-              _value = _context5.sent;
+              _value = _context6.sent;
 
               if (_iteratorNormalCompletion) {
-                _context5.next = 21;
+                _context6.next = 21;
                 break;
               }
 
@@ -541,46 +575,46 @@ var FileSystemDirectory = /*#__PURE__*/function (_FileSystemNode3) {
 
             case 18:
               _iteratorNormalCompletion = true;
-              _context5.next = 8;
+              _context6.next = 8;
               break;
 
             case 21:
-              _context5.next = 27;
+              _context6.next = 27;
               break;
 
             case 23:
-              _context5.prev = 23;
-              _context5.t0 = _context5["catch"](6);
+              _context6.prev = 23;
+              _context6.t0 = _context6["catch"](6);
               _didIteratorError = true;
-              _iteratorError = _context5.t0;
+              _iteratorError = _context6.t0;
 
             case 27:
-              _context5.prev = 27;
-              _context5.prev = 28;
+              _context6.prev = 27;
+              _context6.prev = 28;
 
               if (!(!_iteratorNormalCompletion && _iterator.return != null)) {
-                _context5.next = 32;
+                _context6.next = 32;
                 break;
               }
 
-              _context5.next = 32;
+              _context6.next = 32;
               return _iterator.return();
 
             case 32:
-              _context5.prev = 32;
+              _context6.prev = 32;
 
               if (!_didIteratorError) {
-                _context5.next = 35;
+                _context6.next = 35;
                 break;
               }
 
               throw _iteratorError;
 
             case 35:
-              return _context5.finish(32);
+              return _context6.finish(32);
 
             case 36:
-              return _context5.finish(27);
+              return _context6.finish(27);
 
             case 37:
               sortHandles(files);
@@ -595,11 +629,11 @@ var FileSystemDirectory = /*#__PURE__*/function (_FileSystemNode3) {
               }).join()) {
                 // some of the file changed
                 patched = files.map(function (f) {
-                  var oldf = _this5._files.find(function (oldf) {
+                  var oldf = _this4._files.find(function (oldf) {
                     return oldf.name === f.name;
                   });
 
-                  return oldf || new FileSystemFile(_this5, f);
+                  return oldf || new FileSystemFile(_this4, f);
                 });
                 this._files = patched;
                 changed = true;
@@ -612,11 +646,11 @@ var FileSystemDirectory = /*#__PURE__*/function (_FileSystemNode3) {
               }).join()) {
                 // some of the file changed
                 _patched = directories.map(function (f) {
-                  var oldf = _this5._directories.find(function (oldf) {
+                  var oldf = _this4._directories.find(function (oldf) {
                     return oldf.name === f.name;
                   });
 
-                  return oldf || new FileSystemDirectory(_this5, f);
+                  return oldf || new FileSystemDirectory(_this4, f);
                 });
                 this._directories = _patched;
                 changed = true;
@@ -626,10 +660,10 @@ var FileSystemDirectory = /*#__PURE__*/function (_FileSystemNode3) {
 
             case 43:
             case "end":
-              return _context5.stop();
+              return _context6.stop();
           }
         }
-      }, _callee5, this, [[6, 23, 27, 37], [28,, 32, 36]]);
+      }, _callee6, this, [[6, 23, 27, 37], [28,, 32, 36]]);
     }));
 
     function sync() {
