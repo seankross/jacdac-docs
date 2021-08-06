@@ -12475,7 +12475,7 @@ var FileOpenField = /*#__PURE__*/function (_FieldDropdown) {
               sourceBlock = this.getSourceBlock(); // update current data
 
               blockServices = (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_4__/* .resolveBlockServices */ .Ys)(sourceBlock);
-              if (!blockServices) blockServices.data = this._data; // register file system changes
+              if (blockServices) blockServices.data = this._data; // register file system changes
 
               this.unmount();
               wsServices = (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_4__/* .resolveWorkspaceServices */ .O7)(sourceBlock === null || sourceBlock === void 0 ? void 0 : sourceBlock.workspace);
