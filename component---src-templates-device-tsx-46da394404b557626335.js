@@ -1,215 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[5092],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[8323],{
 
-/***/ 99809:
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ _toArray; }
-/* harmony export */ });
-/* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(59968);
-/* harmony import */ var _iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(96410);
-/* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(82961);
-/* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(28970);
-
-
-
-
-function _toArray(arr) {
-  return (0,_arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z)(arr) || (0,_iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(arr) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(arr) || (0,_nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)();
-}
-
-/***/ }),
-
-/***/ 31296:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* unused harmony export styles */
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(22122);
-/* harmony import */ var _babel_runtime_helpers_esm_toArray__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(99809);
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(28481);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81253);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8812);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(85505);
-/* harmony import */ var _Collapse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(39055);
-/* harmony import */ var _Paper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(58063);
-/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(34621);
-/* harmony import */ var _AccordionContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(9866);
-/* harmony import */ var _utils_useControlled__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(12933);
-
-
-
-
-
-
-
-
-
-
-
-
-
-var styles = function styles(theme) {
-  var transition = {
-    duration: theme.transitions.duration.shortest
-  };
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      position: 'relative',
-      transition: theme.transitions.create(['margin'], transition),
-      '&:before': {
-        position: 'absolute',
-        left: 0,
-        top: -1,
-        right: 0,
-        height: 1,
-        content: '""',
-        opacity: 1,
-        backgroundColor: theme.palette.divider,
-        transition: theme.transitions.create(['opacity', 'background-color'], transition)
-      },
-      '&:first-child': {
-        '&:before': {
-          display: 'none'
-        }
-      },
-      '&$expanded': {
-        margin: '16px 0',
-        '&:first-child': {
-          marginTop: 0
-        },
-        '&:last-child': {
-          marginBottom: 0
-        },
-        '&:before': {
-          opacity: 0
-        }
-      },
-      '&$expanded + &': {
-        '&:before': {
-          display: 'none'
-        }
-      },
-      '&$disabled': {
-        backgroundColor: theme.palette.action.disabledBackground
-      }
-    },
-
-    /* Styles applied to the root element if `square={false}`. */
-    rounded: {
-      borderRadius: 0,
-      '&:first-child': {
-        borderTopLeftRadius: theme.shape.borderRadius,
-        borderTopRightRadius: theme.shape.borderRadius
-      },
-      '&:last-child': {
-        borderBottomLeftRadius: theme.shape.borderRadius,
-        borderBottomRightRadius: theme.shape.borderRadius,
-        // Fix a rendering issue on Edge
-        '@supports (-ms-ime-align: auto)': {
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0
-        }
-      }
-    },
-
-    /* Styles applied to the root element if `expanded={true}`. */
-    expanded: {},
-
-    /* Styles applied to the root element if `disabled={true}`. */
-    disabled: {}
-  };
-};
-var Accordion = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function Accordion(props, ref) {
-  var childrenProp = props.children,
-      classes = props.classes,
-      className = props.className,
-      _props$defaultExpande = props.defaultExpanded,
-      defaultExpanded = _props$defaultExpande === void 0 ? false : _props$defaultExpande,
-      _props$disabled = props.disabled,
-      disabled = _props$disabled === void 0 ? false : _props$disabled,
-      expandedProp = props.expanded,
-      onChange = props.onChange,
-      _props$square = props.square,
-      square = _props$square === void 0 ? false : _props$square,
-      _props$TransitionComp = props.TransitionComponent,
-      TransitionComponent = _props$TransitionComp === void 0 ? _Collapse__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z : _props$TransitionComp,
-      TransitionProps = props.TransitionProps,
-      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(props, ["children", "classes", "className", "defaultExpanded", "disabled", "expanded", "onChange", "square", "TransitionComponent", "TransitionProps"]);
-
-  var _useControlled = (0,_utils_useControlled__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)({
-    controlled: expandedProp,
-    default: defaultExpanded,
-    name: 'Accordion',
-    state: 'expanded'
-  }),
-      _useControlled2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(_useControlled, 2),
-      expanded = _useControlled2[0],
-      setExpandedState = _useControlled2[1];
-
-  var handleChange = react__WEBPACK_IMPORTED_MODULE_0__.useCallback(function (event) {
-    setExpandedState(!expanded);
-
-    if (onChange) {
-      onChange(event, !expanded);
-    }
-  }, [expanded, onChange, setExpandedState]);
-
-  var _React$Children$toArr = react__WEBPACK_IMPORTED_MODULE_0__.Children.toArray(childrenProp),
-      _React$Children$toArr2 = (0,_babel_runtime_helpers_esm_toArray__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(_React$Children$toArr),
-      summary = _React$Children$toArr2[0],
-      children = _React$Children$toArr2.slice(1);
-
-  var contextValue = react__WEBPACK_IMPORTED_MODULE_0__.useMemo(function () {
-    return {
-      expanded: expanded,
-      disabled: disabled,
-      toggle: handleChange
-    };
-  }, [expanded, disabled, handleChange]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Paper__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)({
-    className: (0,clsx__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z)(classes.root, className, expanded && classes.expanded, disabled && classes.disabled, !square && classes.rounded),
-    ref: ref,
-    square: square
-  }, other), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AccordionContext__WEBPACK_IMPORTED_MODULE_10__/* .default.Provider */ .Z.Provider, {
-    value: contextValue
-  }, summary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)({
-    in: expanded,
-    timeout: "auto"
-  }, TransitionProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    "aria-labelledby": summary.props.id,
-    id: summary.props['aria-controls'],
-    role: "region"
-  }, children)));
-});
- false ? 0 : void 0;
-/* harmony default export */ __webpack_exports__["Z"] = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z)(styles, {
-  name: 'MuiAccordion'
-})(Accordion));
-
-/***/ }),
-
-/***/ 9866:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-
-/**
- * @ignore - internal component.
- * @type {React.Context<{} | {expanded: boolean, disabled: boolean, toggle: () => void}>}
- */
-
-var AccordionContext = react__WEBPACK_IMPORTED_MODULE_0__.createContext({});
-
-if (false) {}
-
-/* harmony default export */ __webpack_exports__["Z"] = (AccordionContext);
-
-/***/ }),
-
-/***/ 37171:
+/***/ 31186:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* unused harmony export styles */
@@ -223,171 +15,37 @@ if (false) {}
 
 
 
-var styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      display: 'flex',
-      padding: theme.spacing(1, 2, 2)
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: 8
+  },
+
+  /* Styles applied to the root element if `disableSpacing={false}`. */
+  spacing: {
+    '& > :not(:first-child)': {
+      marginLeft: 8
     }
-  };
+  }
 };
-var AccordionDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function AccordionDetails(props, ref) {
-  var classes = props.classes,
+var CardActions = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function CardActions(props, ref) {
+  var _props$disableSpacing = props.disableSpacing,
+      disableSpacing = _props$disableSpacing === void 0 ? false : _props$disableSpacing,
+      classes = props.classes,
       className = props.className,
-      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(props, ["classes", "className"]);
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(props, ["disableSpacing", "classes", "className"]);
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)({
-    className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(classes.root, className),
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(classes.root, className, !disableSpacing && classes.spacing),
     ref: ref
   }, other));
 });
  false ? 0 : void 0;
 /* harmony default export */ __webpack_exports__["Z"] = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)(styles, {
-  name: 'MuiAccordionDetails'
-})(AccordionDetails));
-
-/***/ }),
-
-/***/ 95371:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* unused harmony export styles */
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(22122);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81253);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(85505);
-/* harmony import */ var _ButtonBase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(67055);
-/* harmony import */ var _IconButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(23729);
-/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(34621);
-/* harmony import */ var _Accordion_AccordionContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9866);
-
-
-/* eslint-disable jsx-a11y/aria-role */
-
-
-
-
-
-
-
-
-var styles = function styles(theme) {
-  var transition = {
-    duration: theme.transitions.duration.shortest
-  };
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      display: 'flex',
-      minHeight: 8 * 6,
-      transition: theme.transitions.create(['min-height', 'background-color'], transition),
-      padding: theme.spacing(0, 2),
-      '&:hover:not($disabled)': {
-        cursor: 'pointer'
-      },
-      '&$expanded': {
-        minHeight: 64
-      },
-      '&$focused, &$focusVisible': {
-        backgroundColor: theme.palette.action.focus
-      },
-      '&$disabled': {
-        opacity: theme.palette.action.disabledOpacity
-      }
-    },
-
-    /* Pseudo-class applied to the root element, children wrapper element and `IconButton` component if `expanded={true}`. */
-    expanded: {},
-
-    /* Pseudo-class applied to the ButtonBase root element if the button is keyboard focused. */
-    focused: {},
-
-    /* Pseudo-class applied to the ButtonBase root element if the button is keyboard focused. */
-    focusVisible: {},
-
-    /* Pseudo-class applied to the root element if `disabled={true}`. */
-    disabled: {},
-
-    /* Styles applied to the children wrapper element. */
-    content: {
-      display: 'flex',
-      flexGrow: 1,
-      transition: theme.transitions.create(['margin'], transition),
-      margin: '12px 0',
-      '&$expanded': {
-        margin: '20px 0'
-      }
-    },
-
-    /* Styles applied to the `IconButton` component when `expandIcon` is supplied. */
-    expandIcon: {
-      transform: 'rotate(0deg)',
-      transition: theme.transitions.create('transform', transition),
-      '&:hover': {
-        // Disable the hover effect for the IconButton,
-        // because a hover effect should apply to the entire Expand button and
-        // not only to the IconButton.
-        backgroundColor: 'transparent'
-      },
-      '&$expanded': {
-        transform: 'rotate(180deg)'
-      }
-    }
-  };
-};
-var AccordionSummary = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function AccordionSummary(props, ref) {
-  var children = props.children,
-      classes = props.classes,
-      className = props.className,
-      expandIcon = props.expandIcon,
-      focusVisibleClassName = props.focusVisibleClassName,
-      _props$IconButtonProp = props.IconButtonProps,
-      IconButtonProps = _props$IconButtonProp === void 0 ? {} : _props$IconButtonProp,
-      onClick = props.onClick,
-      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(props, ["children", "classes", "className", "expandIcon", "focusVisibleClassName", "IconButtonProps", "onClick"]);
-
-  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_Accordion_AccordionContext__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z),
-      _React$useContext$dis = _React$useContext.disabled,
-      disabled = _React$useContext$dis === void 0 ? false : _React$useContext$dis,
-      expanded = _React$useContext.expanded,
-      toggle = _React$useContext.toggle;
-
-  var handleChange = function handleChange(event) {
-    if (toggle) {
-      toggle(event);
-    }
-
-    if (onClick) {
-      onClick(event);
-    }
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ButtonBase__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)({
-    focusRipple: false,
-    disableRipple: true,
-    disabled: disabled,
-    component: "div",
-    "aria-expanded": expanded,
-    className: (0,clsx__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(classes.root, className, disabled && classes.disabled, expanded && classes.expanded),
-    focusVisibleClassName: (0,clsx__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(classes.focusVisible, classes.focused, focusVisibleClassName),
-    onClick: handleChange,
-    ref: ref
-  }, other), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: (0,clsx__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(classes.content, expanded && classes.expanded)
-  }, children), expandIcon && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_IconButton__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z)({
-    className: (0,clsx__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(classes.expandIcon, expanded && classes.expanded),
-    edge: "end",
-    component: "div",
-    tabIndex: null,
-    role: null,
-    "aria-hidden": true
-  }, IconButtonProps), expandIcon));
-});
- false ? 0 : void 0;
-/* harmony default export */ __webpack_exports__["Z"] = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(styles, {
-  name: 'MuiAccordionSummary'
-})(AccordionSummary));
+  name: 'MuiCardActions'
+})(CardActions));
 
 /***/ }),
 
@@ -582,6 +240,190 @@ function GithubRepositoryCardHeader(props) {
     avatar: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_GitHub__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, null)
   });
 }
+
+/***/ }),
+
+/***/ 92681:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ IDChip; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_icons_Fingerprint__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(52995);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4998);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(23729);
+/* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(69882);
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(84377);
+/* harmony import */ var _ui_Tooltip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(60102);
+ // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
+
+
+
+
+
+function IDChip(props) {
+  var id = props.id,
+      className = props.className,
+      filter = props.filter;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_PacketsContext__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z),
+      packetFilter = _useContext.filter,
+      setPacketFilter = _useContext.setFilter;
+
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_2__/* .default */ .ZP),
+      setDrawerType = _useContext2.setDrawerType;
+
+  var ids = typeof id === "string" ? id : "0x" + (id !== undefined ? id.toString(16) : "???");
+  var filtered = packetFilter && packetFilter.indexOf(filter) > -1;
+
+  var handleFilterClick = function handleFilterClick() {
+    var _packetFilter$replace;
+
+    if (filtered) setPacketFilter(packetFilter === null || packetFilter === void 0 ? void 0 : (_packetFilter$replace = packetFilter.replace(filter, '')) === null || _packetFilter$replace === void 0 ? void 0 : _packetFilter$replace.trim());else setPacketFilter((packetFilter === null || packetFilter === void 0 ? void 0 : packetFilter.trim()) + ' ' + filter);
+    setDrawerType(_AppContext__WEBPACK_IMPORTED_MODULE_2__/* .DrawerType.Packets */ .jw.Packets);
+  };
+
+  var icon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Fingerprint__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, null);
+  var title = filtered ? "remove filter " + filter : "add filter " + filter;
+  if (filter) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Tooltip__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
+    title: filtered ? "remove filter " + filter : "add filter " + filter
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
+    className: className,
+    size: "small",
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, {
+      "aria-label": title,
+      onClick: handleFilterClick
+    }, icon),
+    label: ids
+  })));else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
+    "aria-label": title,
+    className: className,
+    size: "small",
+    icon: icon,
+    title: "identifier " + ids,
+    label: ids
+  });
+}
+
+/***/ }),
+
+/***/ 31921:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ ServiceSpecificationCard; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(85420);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(95823);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(4998);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(29114);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(80453);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(31186);
+/* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13173);
+/* harmony import */ var _IDChip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(92681);
+/* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(36176);
+/* harmony import */ var _ui_Markdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(98784);
+/* harmony import */ var _ServiceSpecificationStatusAlert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(49102);
+/* harmony import */ var _jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(48363);
+/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(20392);
+/* harmony import */ var _KindIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(50048);
+/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(71815);
+/* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(35313);
+
+
+
+
+
+
+
+
+
+
+
+
+function ServiceSpecificationCard(props) {
+  var _spec, _spec2, _spec3, _spec4, _spec5;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z),
+      bus = _useContext.bus;
+
+  var serviceClass = props.serviceClass,
+      specification = props.specification,
+      showReleaseStatus = props.showReleaseStatus,
+      showServiceClass = props.showServiceClass;
+  var spec = specification;
+  if (!spec && serviceClass !== undefined) spec = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecificationFromClassIdentifier */ .d5)(serviceClass);
+  var sc = ((_spec = spec) === null || _spec === void 0 ? void 0 : _spec.classIdentifier) || serviceClass;
+  var srv = ((_spec2 = spec) === null || _spec2 === void 0 ? void 0 : _spec2.shortId) || (sc === null || sc === void 0 ? void 0 : sc.toString(16));
+  var hostDefinition = (0,_jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_6__/* .serviceProviderDefinitionFromServiceClass */ .vd)(sc);
+
+  var handleSimulatorClick = function handleSimulatorClick() {
+    (0,_jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_6__/* .addServiceProvider */ .Q6)(bus, hostDefinition);
+    (0,gatsby__WEBPACK_IMPORTED_MODULE_10__.navigate)("/dashboard/");
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, {
+    title: ((_spec3 = spec) === null || _spec3 === void 0 ? void 0 : _spec3.name) || "???",
+    subheader: showServiceClass && srv && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_IDChip__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
+      id: sc,
+      filter: "srv:" + srv
+    }),
+    action: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, hostDefinition && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* .default */ .Z, {
+      size: "small",
+      onClick: handleSimulatorClick,
+      avatar: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_KindIcon__WEBPACK_IMPORTED_MODULE_8__/* .default */ .ZP, {
+        kind: _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_9__/* .VIRTUAL_DEVICE_NODE_NAME */ .UX7
+      }),
+      "aria-label": "start simulator and open dashboard",
+      label: "simulator"
+    }))
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, null, ((_spec4 = spec) === null || _spec4 === void 0 ? void 0 : _spec4.notes["short"]) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z, {
+    variant: "body2",
+    component: "div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Markdown__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    source: ((_spec5 = spec) === null || _spec5 === void 0 ? void 0 : _spec5.notes["short"].split(".", 1)[0]) + "."
+  })), showReleaseStatus && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ServiceSpecificationStatusAlert__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
+    specification: spec
+  })), spec && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    variant: "outlined",
+    "aria-label": "open service " + spec.shortId + " page",
+    to: "/services/" + spec.shortId + "/"
+  }, "More...")));
+}
+
+/***/ }),
+
+/***/ 49102:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* unused harmony export StatusAlert */
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _ui_Alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(95453);
+
+
+function StatusAlert(props) {
+  var specification = props.specification;
+
+  switch (specification === null || specification === void 0 ? void 0 : specification.status) {
+    case "deprecated":
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Alert__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, {
+        severity: "error"
+      }, "Deprecated");
+
+    case "experimental":
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Alert__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z, {
+        severity: "info"
+      }, "Experimental");
+
+    default:
+      return null;
+  }
+}
+var ServiceSpecificationStatusAlert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.memo(StatusAlert);
+/* harmony default export */ __webpack_exports__["Z"] = (ServiceSpecificationStatusAlert);
 
 /***/ }),
 
@@ -910,6 +752,232 @@ function useGridBreakpoints(itemCount) {
     lg: 4,
     xl: 3
   };
+}
+
+/***/ }),
+
+/***/ 10454:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": function() { return /* binding */ Page; }
+});
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
+var spec = __webpack_require__(13173);
+// EXTERNAL MODULE: ./src/components/IDChip.tsx
+var IDChip = __webpack_require__(92681);
+// EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
+var gatsby_theme_material_ui = __webpack_require__(36176);
+// EXTERNAL MODULE: ./src/components/ServiceSpecificationCard.tsx
+var ServiceSpecificationCard = __webpack_require__(31921);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
+var Typography = __webpack_require__(80453);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
+var Grid = __webpack_require__(80838);
+// EXTERNAL MODULE: ./src/components/useGridBreakpoints.ts
+var useGridBreakpoints = __webpack_require__(7746);
+// EXTERNAL MODULE: ./src/components/ui/Markdown.tsx
+var Markdown = __webpack_require__(98784);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tabs/Tabs.js + 7 modules
+var Tabs = __webpack_require__(44942);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tab/Tab.js
+var Tab = __webpack_require__(342);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
+var makeStyles = __webpack_require__(10920);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
+var createStyles = __webpack_require__(70274);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Paper/Paper.js
+var Paper = __webpack_require__(58063);
+// EXTERNAL MODULE: ./src/components/ui/TabPanel.tsx
+var TabPanel = __webpack_require__(3263);
+// EXTERNAL MODULE: ./src/components/ui/Snippet.tsx
+var Snippet = __webpack_require__(34276);
+// EXTERNAL MODULE: ./jacdac-ts/src/azure-iot/dtdlspec.ts
+var dtdlspec = __webpack_require__(5443);
+;// CONCATENATED MODULE: ./src/components/DeviceDTDLSnippet.tsx
+
+
+
+
+function DeviceDTDLSnippet(props) {
+  var dev = props.dev,
+      inlineServices = props.inlineServices;
+  var dtdl = (0,react.useMemo)(function () {
+    return JSON.stringify((0,dtdlspec/* deviceSpecificationToDTDL */.__)(dev, {
+      inlineServices: inlineServices
+    }), null, 2);
+  }, [dev]);
+  return /*#__PURE__*/react.createElement(Snippet/* default */.Z, {
+    value: dtdl,
+    mode: "json",
+    download: dev.name + ".json",
+    caption: /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+      to: "/dtmi"
+    }, "DTDL"), " is an open source modelling language developed by Microsoft Azure.")
+  });
+}
+;// CONCATENATED MODULE: ./src/components/DeviceSpecificationSource.tsx
+ // tslint:disable-next-line: no-submodule-imports
+
+ // tslint:disable-next-line: no-submodule-imports
+
+
+
+
+
+
+
+var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
+  return (0,createStyles/* default */.Z)({
+    root: {
+      flexGrow: 1,
+      backgroundColor: theme.palette.background.paper,
+      marginBottom: theme.spacing(1)
+    },
+    pre: {
+      margin: "0",
+      padding: "0",
+      backgroundColor: "transparent",
+      whiteSpec: "pre-wrap"
+    }
+  });
+});
+function DeviceSpecificationSource(props) {
+  var deviceSpecification = props.deviceSpecification,
+      showSpecification = props.showSpecification,
+      showDTDL = props.showDTDL,
+      showJSON = props.showJSON;
+  var classes = useStyles();
+
+  var _useState = (0,react.useState)(0),
+      tab = _useState[0],
+      setTab = _useState[1];
+
+  var spec = deviceSpecification;
+
+  var handleTabChange = function handleTabChange(event, newValue) {
+    setTab(newValue);
+  };
+
+  var index = 0;
+  return /*#__PURE__*/react.createElement("div", {
+    className: classes.root
+  }, /*#__PURE__*/react.createElement(Paper/* default */.Z, {
+    square: true
+  }, /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
+    value: tab,
+    onChange: handleTabChange,
+    "aria-label": "View specification formats"
+  }, [showSpecification && "Specification", showJSON && "JSON", showDTDL && "Device Twin"].filter(function (n) {
+    return !!n;
+  }).map(function (n, i) {
+    return /*#__PURE__*/react.createElement(Tab/* default */.Z, {
+      key: n,
+      label: n
+    });
+  })), showSpecification && /*#__PURE__*/react.createElement(TabPanel/* default */.Z, {
+    key: "spec",
+    value: tab,
+    index: index++
+  }, /*#__PURE__*/react.createElement(DeviceSpecification, {
+    device: spec
+  })), showJSON && /*#__PURE__*/react.createElement(TabPanel/* default */.Z, {
+    key: "convjson",
+    value: tab,
+    index: index++
+  }, /*#__PURE__*/react.createElement(Snippet/* default */.Z, {
+    value: JSON.stringify(spec, null, 2),
+    mode: "json"
+  })), showDTDL && /*#__PURE__*/react.createElement(TabPanel/* default */.Z, {
+    key: "dtdl",
+    value: tab,
+    index: index++
+  }, /*#__PURE__*/react.createElement(DeviceDTDLSnippet, {
+    dev: deviceSpecification
+  }))));
+}
+// EXTERNAL MODULE: ./src/components/firmware/FirmwareCard.tsx
+var FirmwareCard = __webpack_require__(54272);
+// EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdspec.ts
+var jdspec = __webpack_require__(13996);
+// EXTERNAL MODULE: ./src/components/devices/useDeviceImage.ts
+var useDeviceImage = __webpack_require__(81546);
+;// CONCATENATED MODULE: ./src/components/DeviceSpecification.tsx
+
+
+
+
+
+
+
+
+
+
+
+
+function DeviceSpecification(props) {
+  var device = props.device,
+      showSource = props.showSource;
+  var gridBreakpoints = (0,useGridBreakpoints/* default */.Z)();
+  var imageUrl = (0,useDeviceImage/* default */.Z)(device);
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h2", {
+    key: "title"
+  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+    to: device.link
+  }, device.name)), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    variant: "subtitle1"
+  }, "by", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+    to: "/devices/" + (0,spec/* identifierToUrlPath */.uM)((0,jdspec/* escapeDeviceIdentifier */.o9)(device.company))
+  }, device.company)), /*#__PURE__*/react.createElement("img", {
+    alt: "device " + device.name,
+    src: imageUrl,
+    loading: "lazy"
+  }), device.description && /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
+    source: device.description
+  }), device.repo && /*#__PURE__*/react.createElement(FirmwareCard/* default */.Z, {
+    slug: device.repo
+  }), !!device.firmwares.length && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Firmware identifiers"), /*#__PURE__*/react.createElement("ul", null, device.firmwares.map(function (firmware) {
+    return /*#__PURE__*/react.createElement("li", {
+      key: firmware
+    }, /*#__PURE__*/react.createElement(IDChip/* default */.Z, {
+      id: firmware,
+      filter: "fw:0x" + firmware.toString(16)
+    }));
+  }))), /*#__PURE__*/react.createElement("h3", null, "Services"), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    container: true,
+    spacing: 2
+  }, device.services.map(function (sc) {
+    return (0,spec/* serviceSpecificationFromClassIdentifier */.d5)(sc);
+  }).map(function (spec) {
+    return /*#__PURE__*/react.createElement(Grid/* default */.Z, Object.assign({
+      item: true,
+      key: spec.shortId
+    }, gridBreakpoints), /*#__PURE__*/react.createElement(ServiceSpecificationCard/* default */.Z, {
+      specification: spec
+    }));
+  })), showSource && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h2", null, "Specification"), /*#__PURE__*/react.createElement(DeviceSpecificationSource, {
+    deviceSpecification: device,
+    showJSON: true,
+    showDTDL: true
+  })));
+}
+;// CONCATENATED MODULE: ./src/templates/device.tsx
+
+
+
+function Page(props) {
+  var id = props.pageContext.node.id;
+  var specification = (0,spec/* deviceSpecificationFromIdentifier */.Io)(id);
+  return /*#__PURE__*/react.createElement(DeviceSpecification, {
+    device: specification
+  });
 }
 
 /***/ })

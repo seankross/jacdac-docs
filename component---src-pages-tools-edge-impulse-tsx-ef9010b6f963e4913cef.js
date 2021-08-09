@@ -582,8 +582,8 @@ var AppContext = __webpack_require__(84377);
 function ApiKeyAccordion(props) {
   var apiName = props.apiName,
       validateKey = props.validateKey,
-      instructions = props.instructions,
-      title = props.title;
+      title = props.title,
+      children = props.children;
 
   var _useSecret = (0,useSecret/* useSecret */.$)(apiName),
       apiKey = _useSecret.value,
@@ -608,7 +608,7 @@ function ApiKeyAccordion(props) {
 
   (0,useEffectAsync/* default */.Z)( /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(mounted) {
-      var _ref2, statusCode;
+      var _ref2, status;
 
       return regenerator_default().wrap(function _callee$(_context) {
         while (1) {
@@ -639,12 +639,12 @@ function ApiKeyAccordion(props) {
 
             case 10:
               _context.t0 = {
-                statusCode: 200
+                status: 200
               };
 
             case 11:
               _ref2 = _context.t0;
-              statusCode = _ref2.statusCode;
+              status = _ref2.status;
 
               if (mounted()) {
                 _context.next = 15;
@@ -654,12 +654,12 @@ function ApiKeyAccordion(props) {
               return _context.abrupt("return");
 
             case 15:
-              if (statusCode === 200) {
+              if (status === 200) {
                 setValidated(true);
                 setExpanded(false);
               } else {
                 setValidated(false);
-                if (statusCode === 403) setApiKey(undefined);
+                if (status === 403) setApiKey(undefined);
               }
 
             case 16:
@@ -710,7 +710,10 @@ function ApiKeyAccordion(props) {
     }
   }, validated && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "success"
-  }, "API key ready!"), instructions, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+  }, "API key ready!"), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    component: "span",
+    variant: "caption"
+  }, children), /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: apiKeyId,
     label: "API key",
     fullWidth: true,
@@ -1619,7 +1622,7 @@ function ApiKeyManager() {
             case 2:
               r = _context8.sent;
               return _context8.abrupt("return", {
-                statusCode: (r === null || r === void 0 ? void 0 : r.valid) && 200 || (r === null || r === void 0 ? void 0 : r.errorStatus) || 500
+                status: (r === null || r === void 0 ? void 0 : r.valid) && 200 || (r === null || r === void 0 ? void 0 : r.errorStatus) || 500
               });
 
             case 4:
@@ -1637,12 +1640,11 @@ function ApiKeyManager() {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_components_ApiKeyAccordion__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, {
     apiName: EDGE_IMPULSE_API_KEY,
-    validateKey: validateKey,
-    instructions: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "To get an ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("b", null, "API key"), ", navigate to \xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__.Link, {
-      to: "https://studio.edgeimpulse.com/studio/8698/keys",
-      target: "_blank"
-    }, "https://studio.edgeimpulse.com/studio/8698/keys"), "\xA0 and generate a new key.")
-  });
+    validateKey: validateKey
+  }, "To get an ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("b", null, "API key"), ", navigate to \xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    to: "https://studio.edgeimpulse.com/studio/8698/keys",
+    target: "_blank"
+  }, "https://studio.edgeimpulse.com/studio/8698/keys"), "\xA0 and generate a new key.");
 }
 
 function useEdgeImpulseProjectInfo(apiKey) {

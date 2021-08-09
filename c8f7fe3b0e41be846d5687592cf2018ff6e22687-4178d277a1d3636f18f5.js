@@ -9529,8 +9529,8 @@ var AppContext = __webpack_require__(84377);
 function ApiKeyAccordion(props) {
   var apiName = props.apiName,
       validateKey = props.validateKey,
-      instructions = props.instructions,
-      title = props.title;
+      title = props.title,
+      children = props.children;
 
   var _useSecret = (0,useSecret/* useSecret */.$)(apiName),
       apiKey = _useSecret.value,
@@ -9555,7 +9555,7 @@ function ApiKeyAccordion(props) {
 
   (0,useEffectAsync/* default */.Z)( /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(mounted) {
-      var _ref2, statusCode;
+      var _ref2, status;
 
       return regenerator_default().wrap(function _callee$(_context) {
         while (1) {
@@ -9586,12 +9586,12 @@ function ApiKeyAccordion(props) {
 
             case 10:
               _context.t0 = {
-                statusCode: 200
+                status: 200
               };
 
             case 11:
               _ref2 = _context.t0;
-              statusCode = _ref2.statusCode;
+              status = _ref2.status;
 
               if (mounted()) {
                 _context.next = 15;
@@ -9601,12 +9601,12 @@ function ApiKeyAccordion(props) {
               return _context.abrupt("return");
 
             case 15:
-              if (statusCode === 200) {
+              if (status === 200) {
                 setValidated(true);
                 setExpanded(false);
               } else {
                 setValidated(false);
-                if (statusCode === 403) setApiKey(undefined);
+                if (status === 403) setApiKey(undefined);
               }
 
             case 16:
@@ -9657,7 +9657,10 @@ function ApiKeyAccordion(props) {
     }
   }, validated && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "success"
-  }, "API key ready!"), instructions, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+  }, "API key ready!"), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    component: "span",
+    variant: "caption"
+  }, children), /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: apiKeyId,
     label: "API key",
     fullWidth: true,
@@ -11716,16 +11719,12 @@ function GithubPullRequestButton(props) {
     rel: "noreferrer nofollower"
   }, "microsoft/jacdac"), " ", "with your files. If needed, we will fork", " ", /*#__PURE__*/react.createElement("code", null, "microsoft/jacdac"), " under your account and create a Pull Request in that repository."), /*#__PURE__*/react.createElement(ApiKeyAccordion/* default */.Z, {
     apiName: github/* GITHUB_API_KEY */.nJ,
-    title: "GitHub Developer Token",
-    instructions: /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-      component: "span",
-      variant: "caption"
-    }, "Open", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
-      target: "_blank",
-      href: "https://github.com/settings/tokens/new",
-      rel: "noreferrer nofollower"
-    }, "https://github.com/settings/tokens/new"), " ", "and generate a new personal access token with **repo** scope.")
-  })), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
+    title: "GitHub Developer Token"
+  }, "Open", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+    target: "_blank",
+    href: "https://github.com/settings/tokens/new",
+    rel: "noreferrer nofollower"
+  }, "https://github.com/settings/tokens/new"), " ", "and generate a new personal access token with **repo** scope.")), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
     variant: "contained",
     color: "primary",
     onClick: handleCreatePullRequest,
