@@ -1153,7 +1153,7 @@ function CollectData(props) {
     var matchingInputs = true;
 
     if (dataset && liveRecording) {
-      if (dataset.inputTypes) {
+      if (dataset.inputTypes && dataset.inputTypes.length) {
         if (!arraysEqual(dataset.inputTypes, liveRecording.headers)) matchingInputs = false;
       }
     }
