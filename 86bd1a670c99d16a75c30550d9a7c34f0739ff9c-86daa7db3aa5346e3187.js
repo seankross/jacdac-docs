@@ -554,6 +554,7 @@ var DATA_CORRELATION_BLOCK = "data_correlation";
 var DATA_LINEAR_REGRESSION_BLOCK = "data_linear_regression";
 var DATA_LOAD_FILE_BLOCK = "data_load_file";
 var DATA_SAVE_FILE_BLOCK = "data_save_file";
+var DATA_COMMENT_BLOCK = "data_comment_block";
 
 var _palette = (0,_palette__WEBPACK_IMPORTED_MODULE_15__/* .default */ .Z)(),
     datasetColour = _palette[0],
@@ -1258,6 +1259,28 @@ var dataDsl = {
 
         return transformData;
       }()
+    }, {
+      kind: "block",
+      type: DATA_COMMENT_BLOCK,
+      message0: "comment %1 %2 %3",
+      args0: [{
+        type: _fields_DataPreviewField__WEBPACK_IMPORTED_MODULE_12__/* .default.KEY */ .Z.KEY,
+        name: "preview"
+      }, {
+        type: "input_dummy"
+      }, {
+        type: "field_multilinetext",
+        name: "text",
+        text: "And then...",
+        spellcheck: true
+      }],
+      previousStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      nextStatement: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .DATA_SCIENCE_STATEMENT_TYPE */ .zN,
+      colour: operatorsColour,
+      template: "meta",
+      inputsInline: false,
+      dataPreviewField: false,
+      transformData: _toolbox__WEBPACK_IMPORTED_MODULE_4__/* .identityTransformData */ .FW
     }];
   },
   createCategory: function createCategory() {
@@ -1297,6 +1320,9 @@ var dataDsl = {
       name: "Organize",
       colour: operatorsColour,
       contents: [{
+        kind: "block",
+        type: DATA_COMMENT_BLOCK
+      }, {
         kind: "block",
         type: DATA_ARRANGE_BLOCK
       }, {
