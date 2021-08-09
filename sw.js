@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-292e70e33c1333865859.js"
+    "url": "webpack-runtime-22505086b678cda3a1b9.js"
   },
   {
     "url": "styles.a81b20fc77bc17f00761.css"
@@ -43,7 +43,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "19a7e28888504d790fc5c9ce18edc030"
+    "revision": "df19bc87571b9c3c60fb01d5cbedabf5"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -63,11 +63,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/2307937736.json",
-    "revision": "5bb6de327fe706f88356731a592b5bed"
+    "revision": "32186887c6a1b9bacced69dcacc51e2c"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "14d3946766e7032bf62e720359cdaaac"
+    "revision": "67649fa3be1873a3ad9eda964cdf83f7"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -75,7 +75,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "cab0fd12558c82c4370732ac8ccacda4"
+    "revision": "7ec06a7dd0cac29fa38ca628b5168d25"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -83,7 +83,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "f92bbc0a16eb535bde63d25fb8af7309"
+    "revision": "3efdb37d1a741b82fc30210f6c5efc33"
   },
   {
     "url": "polyfill-8c03f202f8dd531a0df3.js"
@@ -1229,7 +1229,7 @@ self.__precacheManifest = [
     "url": "5cb7c78286c5fcecf4d3c60360196e55585b6a15-f1a857e3b8fe06a8f544.js"
   },
   {
-    "url": "31e8e451019a4552907e258d162f8eb6fe706fb6-fd3b13f21e9c603451f1.js"
+    "url": "31e8e451019a4552907e258d162f8eb6fe706fb6-5cf6b8c78881db77f671.js"
   },
   {
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-ce30b6ad006e22166b98.js"
@@ -1392,7 +1392,7 @@ self.__precacheManifest = [
     "revision": "a6f4722029aadb5af6d8a830cfee3268"
   },
   {
-    "url": "component---src-pages-tools-makecode-editor-extension-tsx-253e410c48b992230210.js"
+    "url": "component---src-pages-tools-makecode-editor-extension-tsx-6907a85d2298826b6283.js"
   },
   {
     "url": "page-data/tools/makecode-editor-extension/page-data.json",
@@ -1590,7 +1590,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-05366a8f35aea5050387.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-192214dd3a00a114495e.js`))) {
     return await fetch(event.request)
   }
 

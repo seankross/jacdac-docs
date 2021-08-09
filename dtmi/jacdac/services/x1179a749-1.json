@@ -45,6 +45,18 @@
         "en": "Type of physical sensor"
       },
       "schema": "dtmi:jacdac:x1179a749:variant;1"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "movement",
+      "@id": "dtmi:jacdac:x1179a749:event:movement;1",
+      "description": {
+        "en": "A movement was detected."
+      },
+      "schema": "integer"
     }
   ],
   "schemas": [
@@ -62,7 +74,6 @@
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

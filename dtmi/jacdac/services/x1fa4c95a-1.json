@@ -96,6 +96,18 @@
       "unit": "millisecond",
       "schema": "integer",
       "writable": true
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "power_status_changed",
+      "@id": "dtmi:jacdac:x1fa4c95a:event:powerstatuschanged;1",
+      "description": {
+        "en": "Emitted whenever `power_status` changes."
+      },
+      "schema": "dtmi:jacdac:x1fa4c95a:powerstatus;1"
     }
   ],
   "schemas": [
@@ -128,7 +140,6 @@
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

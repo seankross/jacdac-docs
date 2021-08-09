@@ -14,6 +14,30 @@
         "en": "Indicates whether or not we currently have an IP address assigned."
       },
       "schema": "boolean"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "got_ip",
+      "@id": "dtmi:jacdac:x18aae1fa:event:gotip;1",
+      "description": {
+        "en": "Emitted upon successful join and IP address assignment."
+      },
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "lost_ip",
+      "@id": "dtmi:jacdac:x18aae1fa:event:lostip;1",
+      "description": {
+        "en": "Emitted when disconnected from network."
+      },
+      "schema": "integer"
     }
   ],
   "schemas": [
@@ -81,7 +105,6 @@
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

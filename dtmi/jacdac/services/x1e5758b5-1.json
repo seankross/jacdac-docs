@@ -25,10 +25,21 @@
       },
       "schema": "integer",
       "writable": true
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "changed",
+      "@id": "dtmi:jacdac:x1e5758b5:event:changed;1",
+      "description": {
+        "en": "Event that notifies clients that the server has swapped to a new configuration or changed key bindings."
+      },
+      "schema": "integer"
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

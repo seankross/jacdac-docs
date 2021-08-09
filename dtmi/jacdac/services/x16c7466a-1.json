@@ -183,10 +183,125 @@
           }
         ]
       }
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "e_bool",
+      "@id": "dtmi:jacdac:x16c7466a:event:ebool;1",
+      "description": {
+        "en": "An event raised when rw_bool is modified"
+      },
+      "schema": "boolean"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "e_u32",
+      "@id": "dtmi:jacdac:x16c7466a:event:eu32;1",
+      "description": {
+        "en": "An event raised when rw_u32 is modified"
+      },
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "e_i32",
+      "@id": "dtmi:jacdac:x16c7466a:event:ei32;1",
+      "description": {
+        "en": "An event raised when rw_i32 is modified"
+      },
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "e_string",
+      "@id": "dtmi:jacdac:x16c7466a:event:estring;1",
+      "description": {
+        "en": "An event raised when rw_string is modified"
+      },
+      "schema": "string"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "e_bytes",
+      "@id": "dtmi:jacdac:x16c7466a:event:ebytes;1",
+      "description": {
+        "en": "An event raised when rw_bytes is modified"
+      },
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "e_i8_u8_u16_i32",
+      "@id": "dtmi:jacdac:x16c7466a:event:ei8u8u16i32;1",
+      "description": {
+        "en": "An event raised when rw_i8_u8_u16_i32 is modified"
+      },
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "i8",
+            "schema": "integer"
+          },
+          {
+            "name": "u8",
+            "schema": "integer"
+          },
+          {
+            "name": "u16",
+            "schema": "integer"
+          },
+          {
+            "name": "i32",
+            "schema": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "e_u8_string",
+      "@id": "dtmi:jacdac:x16c7466a:event:eu8string;1",
+      "description": {
+        "en": "An event raised when rw_u8_string is modified"
+      },
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "u8",
+            "schema": "integer"
+          },
+          {
+            "name": "string",
+            "schema": "string"
+          }
+        ]
+      }
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

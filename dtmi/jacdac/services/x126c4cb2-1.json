@@ -23,6 +23,30 @@
         "en": "Type of physical sensor used"
       },
       "schema": "dtmi:jacdac:x126c4cb2:variant;1"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "dark",
+      "@id": "dtmi:jacdac:x126c4cb2:event:dark;1",
+      "description": {
+        "en": "The sensor detected a transition from light to dark"
+      },
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "light",
+      "@id": "dtmi:jacdac:x126c4cb2:event:light;1",
+      "description": {
+        "en": "The sensor detected a transition from dark to light"
+      },
+      "schema": "integer"
     }
   ],
   "schemas": [
@@ -45,7 +69,6 @@
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

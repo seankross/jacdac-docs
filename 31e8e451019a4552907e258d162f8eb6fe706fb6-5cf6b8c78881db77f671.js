@@ -70,8 +70,9 @@ exports.Z = _default;
  *  DTDL specification: https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md.
  */
 var DTDL_REFERENCE_URL = "https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md";
-var DTDL_NAME = "Digital Twins Definition Language";
-var DTDL_CONTEXT = ["dtmi:iotcentral:context;2", "dtmi:dtdl:context;2"]; // warps fields into an object
+var DTDL_NAME = "Digital Twins Definition Language"; // "dtmi:iotcentral:context;2",  needed?
+
+var DTDL_CONTEXT = ["dtmi:dtdl:context;2"]; // warps fields into an object
 
 function objectSchema(schemas) {
   return {
@@ -362,10 +363,9 @@ function packetToDTDL(srv, pkt) {
         dtdl.schema = toSchema(srv, pkt, false);
         if (pkt.kind === "rw") dtdl.writable = true;
 
-        if (!dtdl.schema && pkt.kind === "event") {
-          // keep a count of the events
+        if (pkt.kind === "event") {
           dtdl["@type"] = [dtdl["@type"], "Event"];
-          dtdl.schema = toDTMI([srv.classIdentifier, "event"]);
+          if (!dtdl.schema) dtdl.schema = "integer";
         } else if (unit && unit.semantic) dtdl["@type"] = [dtdl["@type"], unit.semantic];
 
         break;
@@ -385,14 +385,18 @@ function packetToDTDL(srv, pkt) {
 }
 
 function serviceSpecificationToDTDL(srv) {
+  var registers = srv.packets.filter(function (pkt) {
+    return (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .isHighLevelRegister */ .vr)(pkt) && !pkt.client;
+  });
+  var events = srv.packets.filter(function (pkt) {
+    return (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .isHighLevelEvent */ .jl)(pkt) && !pkt.client;
+  });
   var dtdl = {
     "@type": "Interface",
     "@id": serviceSpecificationDTMI(srv),
     displayName: (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .escapeDisplayName */ .n)(srv.name),
     description: toLocalizedString(srv.notes["short"]),
-    contents: srv.packets.filter(function (pkt) {
-      return !pkt.internal && (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .isHighLevelRegister */ .vr)(pkt);
-    }).map(function (pkt) {
+    contents: [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(registers), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(events)).map(function (pkt) {
       try {
         return packetToDTDL(srv, pkt);
       } catch (e) {
@@ -403,22 +407,11 @@ function serviceSpecificationToDTDL(srv) {
       return !!c;
     })
   }; // TODO extends support
-  // TODO events
-
-  var hasEvents = false; // srv.packets.find(pkt => pkt.kind === "event")
 
   var hasEnums = Object.keys(srv.enums).length;
 
-  if (hasEvents || hasEnums) {
+  if (hasEnums) {
     dtdl.schemas = [];
-    if (hasEvents) dtdl.schemas.push({
-      "@id": toDTMI([srv.classIdentifier, "event"]),
-      "@type": "Object",
-      fields: [{
-        name: "count",
-        schema: "integer"
-      }]
-    });
     if (hasEnums) dtdl.schemas = dtdl.schemas.concat(Object.keys(srv.enums).map(function (en) {
       return enumSchema(srv, srv.enums[en]);
     }));

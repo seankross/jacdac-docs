@@ -16,17 +16,45 @@
       "schema": "boolean"
     },
     {
-      "@type": "Telemetry",
-      "name": "pressed",
-      "@id": "dtmi:jacdac:x1473a263:ro:pressed;1",
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "down",
+      "@id": "dtmi:jacdac:x1473a263:event:down;1",
       "description": {
-        "en": "Determines if the button is pressed currently.\n\nIf the event ``down`` is observed, ``pressed`` is true; if ``up`` or ``hold`` are observed, ``pressed`` is false.\nTo initialize, wait for any event or timeout to ``pressed`` is true after 750ms (1.5x hold time)."
+        "en": "Emitted when button goes from inactive to active."
       },
-      "schema": "boolean"
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "up",
+      "@id": "dtmi:jacdac:x1473a263:event:up;1",
+      "description": {
+        "en": "Emitted when button goes from active to inactive. The 'time' parameter \nrecords the amount of time between the down and up events."
+      },
+      "unit": "millisecond",
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "hold",
+      "@id": "dtmi:jacdac:x1473a263:event:hold;1",
+      "description": {
+        "en": "Emitted when the press time is greater than 500ms, and then at least every 500ms \nas long as the button remains pressed. The 'time' parameter records the the amount of time\nthat the button has been held (since the down event)."
+      },
+      "unit": "millisecond",
+      "schema": "integer"
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

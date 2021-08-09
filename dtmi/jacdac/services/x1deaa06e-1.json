@@ -5,7 +5,32 @@
   "description": {
     "en": "This service is deprecated in favor or `joystick`; it is currently used by the micro:bit Arcade smart shield though.\nA gamepad with direction and action buttons for one player.\nIf a device has multiple controllers, it should have multiple gamepad services, using consecutive service identifiers."
   },
-  "contents": [],
+  "contents": [
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "down",
+      "@id": "dtmi:jacdac:x1deaa06e:event:down;1",
+      "description": {
+        "en": "Emitted when button goes from inactive to active."
+      },
+      "schema": "dtmi:jacdac:x1deaa06e:button;1"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "up",
+      "@id": "dtmi:jacdac:x1deaa06e:event:up;1",
+      "description": {
+        "en": "Emitted when button goes from active to inactive."
+      },
+      "schema": "dtmi:jacdac:x1deaa06e:button;1"
+    }
+  ],
   "schemas": [
     {
       "@type": "Enum",
@@ -66,7 +91,6 @@
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

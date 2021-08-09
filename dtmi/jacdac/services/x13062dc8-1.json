@@ -32,6 +32,54 @@
         "en": "The type of physical keypad. If the variant is ``ElastomerLEDPixel``\nand the next service on the device is a ``LEDPixel`` service, it is considered\nas the service controlling the LED pixel on the keypad."
       },
       "schema": "dtmi:jacdac:x13062dc8:variant;1"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "down",
+      "@id": "dtmi:jacdac:x13062dc8:event:down;1",
+      "description": {
+        "en": "Emitted when a key, at the given index, goes from inactive (`pressed == 0`) to active."
+      },
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "up",
+      "@id": "dtmi:jacdac:x13062dc8:event:up;1",
+      "description": {
+        "en": "Emitted when a key, at the given index, goes from active (`pressed == 1`) to inactive."
+      },
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "click",
+      "@id": "dtmi:jacdac:x13062dc8:event:click;1",
+      "description": {
+        "en": "Emitted together with `up` when the press time was not longer than 500ms."
+      },
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "long_click",
+      "@id": "dtmi:jacdac:x13062dc8:event:longclick;1",
+      "description": {
+        "en": "Emitted together with `up` when the press time was more than 500ms."
+      },
+      "schema": "integer"
     }
   ],
   "schemas": [
@@ -64,7 +112,6 @@
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

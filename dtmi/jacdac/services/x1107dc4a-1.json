@@ -5,9 +5,21 @@
   "description": {
     "en": "Non-volatile key-value storage interface for storing settings."
   },
-  "contents": [],
+  "contents": [
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "change",
+      "@id": "dtmi:jacdac:x1107dc4a:event:change;1",
+      "description": {
+        "en": "Notifies that some setting have been modified."
+      },
+      "schema": "integer"
+    }
+  ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

@@ -8,7 +8,6 @@
     },
     "contents": [],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -21,7 +20,6 @@
     },
     "contents": [],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -71,10 +69,153 @@
         "unit": "gForce",
         "schema": "float",
         "writable": true
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "tilt_up",
+        "@id": "dtmi:jacdac:x1f140409:event:tiltup;1",
+        "description": {
+          "en": "Emitted when accelerometer is tilted in the given direction."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "tilt_down",
+        "@id": "dtmi:jacdac:x1f140409:event:tiltdown;1",
+        "description": {
+          "en": "Emitted when accelerometer is tilted in the given direction."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "tilt_left",
+        "@id": "dtmi:jacdac:x1f140409:event:tiltleft;1",
+        "description": {
+          "en": "Emitted when accelerometer is tilted in the given direction."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "tilt_right",
+        "@id": "dtmi:jacdac:x1f140409:event:tiltright;1",
+        "description": {
+          "en": "Emitted when accelerometer is tilted in the given direction."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "face_up",
+        "@id": "dtmi:jacdac:x1f140409:event:faceup;1",
+        "description": {
+          "en": "Emitted when accelerometer is laying flat in the given direction."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "face_down",
+        "@id": "dtmi:jacdac:x1f140409:event:facedown;1",
+        "description": {
+          "en": "Emitted when accelerometer is laying flat in the given direction."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "freefall",
+        "@id": "dtmi:jacdac:x1f140409:event:freefall;1",
+        "description": {
+          "en": "Emitted when total force acting on accelerometer is much less than 1g."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "shake",
+        "@id": "dtmi:jacdac:x1f140409:event:shake;1",
+        "description": {
+          "en": "Emitted when forces change violently a few times."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "force_2g",
+        "@id": "dtmi:jacdac:x1f140409:event:force2g;1",
+        "description": {
+          "en": "Emitted when force in any direction exceeds given threshold."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "force_3g",
+        "@id": "dtmi:jacdac:x1f140409:event:force3g;1",
+        "description": {
+          "en": "Emitted when force in any direction exceeds given threshold."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "force_6g",
+        "@id": "dtmi:jacdac:x1f140409:event:force6g;1",
+        "description": {
+          "en": "Emitted when force in any direction exceeds given threshold."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "force_8g",
+        "@id": "dtmi:jacdac:x1f140409:event:force8g;1",
+        "description": {
+          "en": "Emitted when force in any direction exceeds given threshold."
+        },
+        "schema": "integer"
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -85,7 +226,32 @@
     "description": {
       "en": "This service is deprecated in favor or `joystick`; it is currently used by the micro:bit Arcade smart shield though.\nA gamepad with direction and action buttons for one player.\nIf a device has multiple controllers, it should have multiple gamepad services, using consecutive service identifiers."
     },
-    "contents": [],
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "down",
+        "@id": "dtmi:jacdac:x1deaa06e:event:down;1",
+        "description": {
+          "en": "Emitted when button goes from inactive to active."
+        },
+        "schema": "dtmi:jacdac:x1deaa06e:button;1"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "up",
+        "@id": "dtmi:jacdac:x1deaa06e:event:up;1",
+        "description": {
+          "en": "Emitted when button goes from active to inactive."
+        },
+        "schema": "dtmi:jacdac:x1deaa06e:button;1"
+      }
+    ],
     "schemas": [
       {
         "@type": "Enum",
@@ -146,7 +312,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -188,7 +353,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -226,10 +390,45 @@
           "en": "Something like `my-dev-007`; empty string when `connection_string` is not set."
         },
         "schema": "string"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "message",
+        "@id": "dtmi:jacdac:x19ed364c:event:message;1",
+        "description": {
+          "en": "This event is emitted upon reception of a cloud to device message, that is a string\n(doesn't contain NUL bytes) and fits in a single event packet."
+        },
+        "schema": "string"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "connected",
+        "@id": "dtmi:jacdac:x19ed364c:event:connected;1",
+        "description": {
+          "en": "Raised when the device is connected to the hub."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "disconnected",
+        "@id": "dtmi:jacdac:x19ed364c:event:disconnected;1",
+        "description": {
+          "en": "Raised when the device is disconnected to the hub. ``connection_status`` may contain information about the error."
+        },
+        "schema": "integer"
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -250,6 +449,30 @@
         },
         "schema": "boolean",
         "writable": true
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "detect",
+        "@id": "dtmi:jacdac:x1c739e6c:event:detect;1",
+        "description": {
+          "en": "Raised when a bar code is detected and decoded. If the reader detects multiple codes, it will issue multiple events.\nIn case of numeric barcodes, the `data` field should contain the ASCII (which is the same as UTF8 in that case) representation of the number."
+        },
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "format",
+              "schema": "dtmi:jacdac:x1c739e6c:format;1"
+            },
+            {
+              "name": "data",
+              "schema": "string"
+            }
+          ]
+        }
       }
     ],
     "schemas": [
@@ -327,7 +550,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -350,7 +572,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -404,7 +625,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -451,7 +671,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -473,17 +692,45 @@
         "schema": "boolean"
       },
       {
-        "@type": "Telemetry",
-        "name": "pressed",
-        "@id": "dtmi:jacdac:x1473a263:ro:pressed;1",
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "down",
+        "@id": "dtmi:jacdac:x1473a263:event:down;1",
         "description": {
-          "en": "Determines if the button is pressed currently.\n\nIf the event ``down`` is observed, ``pressed`` is true; if ``up`` or ``hold`` are observed, ``pressed`` is false.\nTo initialize, wait for any event or timeout to ``pressed`` is true after 750ms (1.5x hold time)."
+          "en": "Emitted when button goes from inactive to active."
         },
-        "schema": "boolean"
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "up",
+        "@id": "dtmi:jacdac:x1473a263:event:up;1",
+        "description": {
+          "en": "Emitted when button goes from active to inactive. The 'time' parameter \nrecords the amount of time between the down and up events."
+        },
+        "unit": "millisecond",
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "hold",
+        "@id": "dtmi:jacdac:x1473a263:event:hold;1",
+        "description": {
+          "en": "Emitted when the press time is greater than 500ms, and then at least every 500ms \nas long as the button remains pressed. The 'time' parameter records the the amount of time\nthat the button has been held (since the down event)."
+        },
+        "unit": "millisecond",
+        "schema": "integer"
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -507,7 +754,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -531,7 +777,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -628,7 +873,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -667,7 +911,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -700,7 +943,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -887,7 +1129,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -952,7 +1193,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -976,7 +1216,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1040,7 +1279,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1089,7 +1327,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1155,7 +1392,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1186,10 +1422,21 @@
         },
         "schema": "integer",
         "writable": true
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "changed",
+        "@id": "dtmi:jacdac:x1e5758b5:event:changed;1",
+        "description": {
+          "en": "Event that notifies clients that the server has swapped to a new configuration or changed key bindings."
+        },
+        "schema": "integer"
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1278,7 +1525,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1342,7 +1588,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1365,7 +1610,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1388,7 +1632,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1469,7 +1712,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1521,6 +1763,18 @@
         "@id": "dtmi:jacdac:x108f7456:const:buttonsavailable;1",
         "description": {
           "en": "Indicates a bitmask of the buttons that are mounted on the joystick.\nIf the `Left`/`Up`/`Right`/`Down` buttons are marked as available here, the joystick is digital.\nEven when marked as not available, they will still be simulated based on the analog joystick."
+        },
+        "schema": "dtmi:jacdac:x108f7456:buttons;1"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "buttons_changed",
+        "@id": "dtmi:jacdac:x108f7456:event:buttonschanged;1",
+        "description": {
+          "en": "Emitted whenever the state of buttons changes."
         },
         "schema": "dtmi:jacdac:x108f7456:buttons;1"
       }
@@ -1622,7 +1876,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1726,7 +1979,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1768,7 +2020,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1915,7 +2166,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -1971,7 +2221,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2029,7 +2278,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2068,7 +2316,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2106,6 +2353,54 @@
           "en": "The type of physical keypad. If the variant is ``ElastomerLEDPixel``\nand the next service on the device is a ``LEDPixel`` service, it is considered\nas the service controlling the LED pixel on the keypad."
         },
         "schema": "dtmi:jacdac:x13062dc8:variant;1"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "down",
+        "@id": "dtmi:jacdac:x13062dc8:event:down;1",
+        "description": {
+          "en": "Emitted when a key, at the given index, goes from inactive (`pressed == 0`) to active."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "up",
+        "@id": "dtmi:jacdac:x13062dc8:event:up;1",
+        "description": {
+          "en": "Emitted when a key, at the given index, goes from active (`pressed == 1`) to inactive."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "click",
+        "@id": "dtmi:jacdac:x13062dc8:event:click;1",
+        "description": {
+          "en": "Emitted together with `up` when the press time was not longer than 500ms."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "long_click",
+        "@id": "dtmi:jacdac:x13062dc8:event:longclick;1",
+        "description": {
+          "en": "Emitted together with `up` when the press time was more than 500ms."
+        },
+        "schema": "integer"
       }
     ],
     "schemas": [
@@ -2138,7 +2433,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2166,7 +2460,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2190,7 +2483,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2305,7 +2597,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2356,6 +2647,18 @@
           "en": "Type of physical sensor"
         },
         "schema": "dtmi:jacdac:x1179a749:variant;1"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "movement",
+        "@id": "dtmi:jacdac:x1179a749:event:movement;1",
+        "description": {
+          "en": "A movement was detected."
+        },
+        "schema": "integer"
       }
     ],
     "schemas": [
@@ -2373,7 +2676,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2425,7 +2727,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2436,9 +2737,81 @@
     "description": {
       "en": "A capacitive touch sensor with multiple inputs."
     },
-    "contents": [],
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "touch",
+        "@id": "dtmi:jacdac:x18d55e2b:event:touch;1",
+        "description": {
+          "en": "Emitted when an input is touched."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "release",
+        "@id": "dtmi:jacdac:x18d55e2b:event:release;1",
+        "description": {
+          "en": "Emitted when an input is no longer touched."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "tap",
+        "@id": "dtmi:jacdac:x18d55e2b:event:tap;1",
+        "description": {
+          "en": "Emitted when an input is briefly touched. TODO Not implemented."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "long_press",
+        "@id": "dtmi:jacdac:x18d55e2b:event:longpress;1",
+        "description": {
+          "en": "Emitted when an input is touched for longer than 500ms. TODO Not implemented."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "swipe_pos",
+        "@id": "dtmi:jacdac:x18d55e2b:event:swipepos;1",
+        "description": {
+          "en": "Emitted when input channels are successively touched in order of increasing channel numbers."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "swipe_neg",
+        "@id": "dtmi:jacdac:x18d55e2b:event:swipeneg;1",
+        "description": {
+          "en": "Emitted when input channels are successively touched in order of decreasing channel numbers."
+        },
+        "schema": "integer"
+      }
+    ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2489,7 +2862,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2591,6 +2963,18 @@
         "unit": "millisecond",
         "schema": "integer",
         "writable": true
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "power_status_changed",
+        "@id": "dtmi:jacdac:x1fa4c95a:event:powerstatuschanged;1",
+        "description": {
+          "en": "Emitted whenever `power_status` changes."
+        },
+        "schema": "dtmi:jacdac:x1fa4c95a:powerstatus;1"
       }
     ],
     "schemas": [
@@ -2623,7 +3007,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2647,7 +3030,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2836,10 +3218,125 @@
             }
           ]
         }
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "e_bool",
+        "@id": "dtmi:jacdac:x16c7466a:event:ebool;1",
+        "description": {
+          "en": "An event raised when rw_bool is modified"
+        },
+        "schema": "boolean"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "e_u32",
+        "@id": "dtmi:jacdac:x16c7466a:event:eu32;1",
+        "description": {
+          "en": "An event raised when rw_u32 is modified"
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "e_i32",
+        "@id": "dtmi:jacdac:x16c7466a:event:ei32;1",
+        "description": {
+          "en": "An event raised when rw_i32 is modified"
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "e_string",
+        "@id": "dtmi:jacdac:x16c7466a:event:estring;1",
+        "description": {
+          "en": "An event raised when rw_string is modified"
+        },
+        "schema": "string"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "e_bytes",
+        "@id": "dtmi:jacdac:x16c7466a:event:ebytes;1",
+        "description": {
+          "en": "An event raised when rw_bytes is modified"
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "e_i8_u8_u16_i32",
+        "@id": "dtmi:jacdac:x16c7466a:event:ei8u8u16i32;1",
+        "description": {
+          "en": "An event raised when rw_i8_u8_u16_i32 is modified"
+        },
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "i8",
+              "schema": "integer"
+            },
+            {
+              "name": "u8",
+              "schema": "integer"
+            },
+            {
+              "name": "u16",
+              "schema": "integer"
+            },
+            {
+              "name": "i32",
+              "schema": "integer"
+            }
+          ]
+        }
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "e_u8_string",
+        "@id": "dtmi:jacdac:x16c7466a:event:eu8string;1",
+        "description": {
+          "en": "An event raised when rw_u8_string is modified"
+        },
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "u8",
+              "schema": "integer"
+            },
+            {
+              "name": "string",
+              "schema": "string"
+            }
+          ]
+        }
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2862,7 +3359,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2885,7 +3381,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -2995,7 +3490,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3024,6 +3518,30 @@
           "en": "Type of physical sensor used"
         },
         "schema": "dtmi:jacdac:x126c4cb2:variant;1"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "dark",
+        "@id": "dtmi:jacdac:x126c4cb2:event:dark;1",
+        "description": {
+          "en": "The sensor detected a transition from light to dark"
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "light",
+        "@id": "dtmi:jacdac:x126c4cb2:event:light;1",
+        "description": {
+          "en": "The sensor detected a transition from dark to light"
+        },
+        "schema": "integer"
       }
     ],
     "schemas": [
@@ -3046,7 +3564,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3089,6 +3606,30 @@
         },
         "unit": "milliampere",
         "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "on",
+        "@id": "dtmi:jacdac:x183fe656:event:on;1",
+        "description": {
+          "en": "Emitted when relay goes from ``off`` to ``on`` state."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "off",
+        "@id": "dtmi:jacdac:x183fe656:event:off;1",
+        "description": {
+          "en": "Emitted when relay goes from ``on`` to ``off`` state."
+        },
+        "schema": "integer"
       }
     ],
     "schemas": [
@@ -3116,7 +3657,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3163,7 +3703,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3193,10 +3732,21 @@
           "en": "Indicates if all required roles have been allocated to devices."
         },
         "schema": "boolean"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "change",
+        "@id": "dtmi:jacdac:x1e4b7e66:event:change;1",
+        "description": {
+          "en": "Emit notifying that the internal state of the service changed."
+        },
+        "schema": "integer"
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3228,7 +3778,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3275,7 +3824,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3356,7 +3904,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3446,7 +3993,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3457,9 +4003,21 @@
     "description": {
       "en": "Non-volatile key-value storage interface for storing settings."
     },
-    "contents": [],
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "change",
+        "@id": "dtmi:jacdac:x1107dc4a:event:change;1",
+        "description": {
+          "en": "Notifies that some setting have been modified."
+        },
+        "schema": "integer"
+      }
+    ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3511,7 +4069,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3562,7 +4119,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3619,7 +4175,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3689,10 +4244,33 @@
         },
         "schema": "float",
         "writable": true
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "loud",
+        "@id": "dtmi:jacdac:x14ad1a5d:event:loud;1",
+        "description": {
+          "en": "Raised when a loud sound is detected"
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "quiet",
+        "@id": "dtmi:jacdac:x14ad1a5d:event:quiet;1",
+        "description": {
+          "en": "Raised when a period of quietness is detected"
+        },
+        "schema": "integer"
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3716,7 +4294,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3780,7 +4357,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3844,7 +4420,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3886,6 +4461,30 @@
         },
         "unit": "second",
         "schema": "float"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "on",
+        "@id": "dtmi:jacdac:x1ad29402:event:on;1",
+        "description": {
+          "en": "Emitted when switch goes from ``off`` to ``on``."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "off",
+        "@id": "dtmi:jacdac:x1ad29402:event:off;1",
+        "description": {
+          "en": "Emitted when switch goes from ``on`` to ``off``."
+        },
+        "schema": "integer"
       }
     ],
     "schemas": [
@@ -3938,7 +4537,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -3970,7 +4568,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4051,7 +4648,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4107,7 +4703,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4151,7 +4746,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4187,7 +4781,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4238,7 +4831,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4301,6 +4893,30 @@
             }
           ]
         }
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "telemetry_status_change",
+        "@id": "dtmi:jacdac:x2194841f:event:telemetrystatuschange;1",
+        "description": {
+          "en": "The telemetry status of the device was updated."
+        },
+        "schema": "dtmi:jacdac:x2194841f:status;1"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "fingerprint_template_change",
+        "@id": "dtmi:jacdac:x2194841f:event:fingerprinttemplatechange;1",
+        "description": {
+          "en": "The fingerprint template was updated"
+        },
+        "schema": "integer"
       }
     ],
     "schemas": [
@@ -4350,7 +4966,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4374,7 +4989,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4430,7 +5044,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4506,7 +5119,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4526,6 +5138,30 @@
           "en": "Indicates whether or not we currently have an IP address assigned."
         },
         "schema": "boolean"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "got_ip",
+        "@id": "dtmi:jacdac:x18aae1fa:event:gotip;1",
+        "description": {
+          "en": "Emitted upon successful join and IP address assignment."
+        },
+        "schema": "integer"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Event"
+        ],
+        "name": "lost_ip",
+        "@id": "dtmi:jacdac:x18aae1fa:event:lostip;1",
+        "description": {
+          "en": "Emitted when disconnected from network."
+        },
+        "schema": "integer"
       }
     ],
     "schemas": [
@@ -4593,7 +5229,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4625,7 +5260,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   },
@@ -4648,7 +5282,6 @@
       }
     ],
     "@context": [
-      "dtmi:iotcentral:context;2",
       "dtmi:dtdl:context;2"
     ]
   }

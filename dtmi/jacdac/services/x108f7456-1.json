@@ -48,6 +48,18 @@
         "en": "Indicates a bitmask of the buttons that are mounted on the joystick.\nIf the `Left`/`Up`/`Right`/`Down` buttons are marked as available here, the joystick is digital.\nEven when marked as not available, they will still be simulated based on the analog joystick."
       },
       "schema": "dtmi:jacdac:x108f7456:buttons;1"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "buttons_changed",
+      "@id": "dtmi:jacdac:x108f7456:event:buttonschanged;1",
+      "description": {
+        "en": "Emitted whenever the state of buttons changes."
+      },
+      "schema": "dtmi:jacdac:x108f7456:buttons;1"
     }
   ],
   "schemas": [
@@ -147,7 +159,6 @@
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

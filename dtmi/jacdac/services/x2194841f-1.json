@@ -57,6 +57,30 @@
           }
         ]
       }
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "telemetry_status_change",
+      "@id": "dtmi:jacdac:x2194841f:event:telemetrystatuschange;1",
+      "description": {
+        "en": "The telemetry status of the device was updated."
+      },
+      "schema": "dtmi:jacdac:x2194841f:status;1"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "fingerprint_template_change",
+      "@id": "dtmi:jacdac:x2194841f:event:fingerprinttemplatechange;1",
+      "description": {
+        "en": "The fingerprint template was updated"
+      },
+      "schema": "integer"
     }
   ],
   "schemas": [
@@ -106,7 +130,6 @@
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

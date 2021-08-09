@@ -36,6 +36,30 @@
       },
       "unit": "second",
       "schema": "float"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "on",
+      "@id": "dtmi:jacdac:x1ad29402:event:on;1",
+      "description": {
+        "en": "Emitted when switch goes from ``off`` to ``on``."
+      },
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "off",
+      "@id": "dtmi:jacdac:x1ad29402:event:off;1",
+      "description": {
+        "en": "Emitted when switch goes from ``on`` to ``off``."
+      },
+      "schema": "integer"
     }
   ],
   "schemas": [
@@ -88,7 +112,6 @@
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

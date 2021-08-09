@@ -24,10 +24,21 @@
         "en": "Indicates if all required roles have been allocated to devices."
       },
       "schema": "boolean"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Event"
+      ],
+      "name": "change",
+      "@id": "dtmi:jacdac:x1e4b7e66:event:change;1",
+      "description": {
+        "en": "Emit notifying that the internal state of the service changed."
+      },
+      "schema": "integer"
     }
   ],
   "@context": [
-    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

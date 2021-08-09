@@ -54561,11 +54561,11 @@ function isReading(pkt) {
 }
 var ignoredRegister = [constants/* SystemReg.StatusCode */.ZJq.StatusCode, constants/* SystemReg.InstanceName */.ZJq.InstanceName, constants/* SystemReg.StreamingInterval */.ZJq.StreamingInterval, constants/* SystemReg.StreamingPreferredInterval */.ZJq.StreamingPreferredInterval, constants/* SystemReg.StreamingSamples */.ZJq.StreamingSamples, constants/* SystemReg.ReadingError */.ZJq.ReadingError, constants/* SystemReg.ReadingResolution */.ZJq.ReadingResolution, constants/* SystemReg.MinReading */.ZJq.MinReading, constants/* SystemReg.MaxReading */.ZJq.MaxReading, constants/* SystemReg.MinValue */.ZJq.MinValue, constants/* SystemReg.MaxValue */.ZJq.MaxValue, constants/* SystemReg.MaxPower */.ZJq.MaxPower];
 function isHighLevelRegister(pkt) {
-  return isRegister(pkt) && !pkt.lowLevel && ignoredRegister.indexOf(pkt.identifier) < 0;
+  return isRegister(pkt) && !pkt.lowLevel && !pkt.internal && ignoredRegister.indexOf(pkt.identifier) < 0;
 }
 var ignoredEvents = [constants/* SystemEvent.StatusCodeChanged */.nSK.StatusCodeChanged];
 function isHighLevelEvent(pkt) {
-  return isEvent(pkt) && !pkt.lowLevel && ignoredEvents.indexOf(pkt.identifier) < 0;
+  return isEvent(pkt) && !pkt.lowLevel && !pkt.internal && ignoredEvents.indexOf(pkt.identifier) < 0;
 }
 function isOptionalReadingRegisterCode(code) {
   var regs = [constants/* SystemReg.MinReading */.ZJq.MinReading, constants/* SystemReg.MaxReading */.ZJq.MaxReading, constants/* SystemReg.ReadingError */.ZJq.ReadingError, constants/* SystemReg.ReadingResolution */.ZJq.ReadingResolution, constants/* SystemReg.StreamingPreferredInterval */.ZJq.StreamingPreferredInterval];
@@ -70847,7 +70847,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "7b6e25a9ad915bcfd1badbff1024e01af261c67d";
+  var sha = "61ec7e6c9a860ef61cb6a2086a353171896b1458";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
