@@ -14,15 +14,6 @@
         "en": "Ultraviolet index, typically refreshed every second."
       },
       "schema": "float"
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x1f6e0d90:const:variant;1",
-      "description": {
-        "en": "The type of physical sensor and capabilities."
-      },
-      "schema": "dtmi:jacdac:x1f6e0d90:variant;1"
     }
   ],
   "schemas": [

@@ -813,15 +813,6 @@
       },
       {
         "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1f37c56a:const:variant;1",
-        "description": {
-          "en": "Describes the type of character LED screen."
-        },
-        "schema": "dtmi:jacdac:x1f37c56a:variant;1"
-      },
-      {
-        "@type": "Property",
         "name": "text_direction",
         "@id": "dtmi:jacdac:x1f37c56a:rw:textdirection;1",
         "description": {
@@ -1169,15 +1160,6 @@
         },
         "unit": "metre",
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x141a6b8a:const:variant;1",
-        "description": {
-          "en": "Determines the type of sensor used."
-        },
-        "schema": "dtmi:jacdac:x141a6b8a:variant;1"
       }
     ],
     "schemas": [
@@ -1267,15 +1249,6 @@
         },
         "unit": "second",
         "schema": "integer"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x169c9dc6:const:variant;1",
-        "description": {
-          "en": "Type of physical sensor and capabilities."
-        },
-        "schema": "dtmi:jacdac:x169c9dc6:variant;1"
       }
     ],
     "schemas": [
@@ -1367,15 +1340,6 @@
           "en": "The estimated heart rate."
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x166c6dc4:const:variant;1",
-        "description": {
-          "en": "The type of physical sensor"
-        },
-        "schema": "dtmi:jacdac:x166c6dc4:variant;1"
       }
     ],
     "schemas": [
@@ -1778,15 +1742,6 @@
       },
       {
         "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x108f7456:const:variant;1",
-        "description": {
-          "en": "The type of physical joystick."
-        },
-        "schema": "dtmi:jacdac:x108f7456:variant;1"
-      },
-      {
-        "@type": "Property",
         "name": "buttons_available",
         "@id": "dtmi:jacdac:x108f7456:const:buttonsavailable;1",
         "description": {
@@ -1967,15 +1922,6 @@
           "en": "The luminous intensity of the LED, at full value, in micro candella."
         },
         "schema": "integer"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1e3048f8:const:variant;1",
-        "description": {
-          "en": "The physical type of LED."
-        },
-        "schema": "dtmi:jacdac:x1e3048f8:variant;1"
       }
     ],
     "schemas": [
@@ -2129,15 +2075,6 @@
         },
         "schema": "integer",
         "writable": true
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x126f00e0:const:variant;1",
-        "description": {
-          "en": "Specifies the shape of the light strip."
-        },
-        "schema": "dtmi:jacdac:x126f00e0:variant;1"
       }
     ],
     "schemas": [
@@ -2217,15 +2154,6 @@
           "en": "Detect light level"
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x17dc9a1c:const:variant;1",
-        "description": {
-          "en": "The type of physical sensor."
-        },
-        "schema": "dtmi:jacdac:x17dc9a1c:variant;1"
       }
     ],
     "schemas": [
@@ -2379,15 +2307,6 @@
           "en": "Number of columns in the matrix"
         },
         "schema": "integer"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x13062dc8:const:variant;1",
-        "description": {
-          "en": "The type of physical keypad. If the variant is ``ElastomerLEDPixel``\nand the next service on the device is a ``LEDPixel`` service, it is considered\nas the service controlling the LED pixel on the keypad."
-        },
-        "schema": "dtmi:jacdac:x13062dc8:variant;1"
       },
       {
         "@type": [
@@ -2679,15 +2598,6 @@
         "schema": "integer"
       },
       {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1179a749:const:variant;1",
-        "description": {
-          "en": "Type of physical sensor"
-        },
-        "schema": "dtmi:jacdac:x1179a749:variant;1"
-      },
-      {
         "@type": [
           "Telemetry",
           "Event"
@@ -2873,15 +2783,6 @@
           "en": "The relative position of the slider between `0` and `1`."
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1f274746:const:variant;1",
-        "description": {
-          "en": "Specifies the physical layout of the potentiometer."
-        },
-        "schema": "dtmi:jacdac:x1f274746:variant;1"
       }
     ],
     "schemas": [
@@ -3502,15 +3403,6 @@
           "en": "Error on the clock, in parts per million of seconds."
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1a8b1a28:const:variant;1",
-        "description": {
-          "en": "The type of physical clock used by the sensor."
-        },
-        "schema": "dtmi:jacdac:x1a8b1a28:variant;1"
       }
     ],
     "schemas": [
@@ -3558,15 +3450,6 @@
           "en": "Reports the reflected brightness. It may be a digital value or, for some sensor, analog value."
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x126c4cb2:const:variant;1",
-        "description": {
-          "en": "Type of physical sensor used"
-        },
-        "schema": "dtmi:jacdac:x126c4cb2:variant;1"
       },
       {
         "@type": [
@@ -3634,15 +3517,6 @@
         },
         "schema": "boolean",
         "writable": true
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x183fe656:const:variant;1",
-        "description": {
-          "en": "Describes the type of relay used."
-        },
-        "schema": "dtmi:jacdac:x183fe656:variant;1"
       },
       {
         "@type": [
@@ -3718,17 +3592,7 @@
     "description": {
       "en": "Generates random numbers using entropy sourced from physical processes.\n\nThis typically uses a cryptographical pseudo-random number generator (for example [Fortuna](https://en.wikipedia.org/wiki/Fortuna_(PRNG))),\nwhich is periodically re-seeded with entropy coming from some hardware source."
     },
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1789f0a2:const:variant;1",
-        "description": {
-          "en": "The type of algorithm/technique used to generate the number.\n`Quantum` refers to dedicated hardware device generating random noise due to quantum effects.\n`ADCNoise` is the noise from quick readings of analog-digital converter, which reads temperature of the MCU or some floating pin.\n`WebCrypto` refers is used in simulators, where the source of randomness comes from an advanced operating system."
-        },
-        "schema": "dtmi:jacdac:x1789f0a2:variant;1"
-      }
-    ],
+    "contents": [],
     "schemas": [
       {
         "@type": "Enum",
@@ -4147,15 +4011,6 @@
           "en": "Indicates the wetness of the soil, from ``dry`` to ``wet``."
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1d4aa3b3:const:variant;1",
-        "description": {
-          "en": "Describe the type of physical sensor."
-        },
-        "schema": "dtmi:jacdac:x1d4aa3b3:variant;1"
       }
     ],
     "schemas": [
@@ -4199,15 +4054,6 @@
         },
         "schema": "boolean",
         "writable": true
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x171723ca:const:variant;1",
-        "description": {
-          "en": "Describes the type of solenoid used."
-        },
-        "schema": "dtmi:jacdac:x171723ca:variant;1"
       }
     ],
     "schemas": [
@@ -4506,15 +4352,6 @@
         "schema": "boolean"
       },
       {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1ad29402:const:variant;1",
-        "description": {
-          "en": "Describes the type of switch used."
-        },
-        "schema": "dtmi:jacdac:x1ad29402:variant;1"
-      },
-      {
         "@type": [
           "Property",
           "TimeSpan"
@@ -4654,15 +4491,6 @@
           "en": "The temperature."
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x143ac061:const:variant;1",
-        "description": {
-          "en": "Specifies the type of thermometer."
-        },
-        "schema": "dtmi:jacdac:x143ac061:variant;1"
       }
     ],
     "schemas": [
@@ -4735,15 +4563,6 @@
           "en": "The temperature."
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1421bac7:const:variant;1",
-        "description": {
-          "en": "Specifies the type of thermometer."
-        },
-        "schema": "dtmi:jacdac:x1421bac7:variant;1"
       }
     ],
     "schemas": [
@@ -4871,15 +4690,6 @@
           "en": "Ultraviolet index, typically refreshed every second."
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1f6e0d90:const:variant;1",
-        "description": {
-          "en": "The type of physical sensor and capabilities."
-        },
-        "schema": "dtmi:jacdac:x1f6e0d90:variant;1"
       }
     ],
     "schemas": [
@@ -5082,15 +4892,6 @@
           "en": "The reported water level."
         },
         "schema": "float"
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x147b62ed:const:variant;1",
-        "description": {
-          "en": "The type of physical sensor."
-        },
-        "schema": "dtmi:jacdac:x147b62ed:variant;1"
       }
     ],
     "schemas": [
@@ -5158,15 +4959,6 @@
         },
         "schema": "float",
         "writable": true
-      },
-      {
-        "@type": "Property",
-        "name": "variant",
-        "@id": "dtmi:jacdac:x1f4d5040:const:variant;1",
-        "description": {
-          "en": "The type of physical scale"
-        },
-        "schema": "dtmi:jacdac:x1f4d5040:variant;1"
       }
     ],
     "schemas": [

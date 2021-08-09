@@ -15,15 +15,6 @@
       },
       "schema": "boolean",
       "writable": true
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x171723ca:const:variant;1",
-      "description": {
-        "en": "Describes the type of solenoid used."
-      },
-      "schema": "dtmi:jacdac:x171723ca:variant;1"
     }
   ],
   "schemas": [

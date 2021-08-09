@@ -14,15 +14,6 @@
         "en": "The reported water level."
       },
       "schema": "float"
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x147b62ed:const:variant;1",
-      "description": {
-        "en": "The type of physical sensor."
-      },
-      "schema": "dtmi:jacdac:x147b62ed:variant;1"
     }
   ],
   "schemas": [

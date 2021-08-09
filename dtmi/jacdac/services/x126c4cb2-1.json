@@ -16,15 +16,6 @@
       "schema": "float"
     },
     {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x126c4cb2:const:variant;1",
-      "description": {
-        "en": "Type of physical sensor used"
-      },
-      "schema": "dtmi:jacdac:x126c4cb2:variant;1"
-    },
-    {
       "@type": [
         "Telemetry",
         "Event"

@@ -14,15 +14,6 @@
         "en": "The relative position of the slider between `0` and `1`."
       },
       "schema": "float"
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x1f274746:const:variant;1",
-      "description": {
-        "en": "Specifies the physical layout of the potentiometer."
-      },
-      "schema": "dtmi:jacdac:x1f274746:variant;1"
     }
   ],
   "schemas": [

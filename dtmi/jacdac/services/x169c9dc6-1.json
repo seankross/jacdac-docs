@@ -27,15 +27,6 @@
       },
       "unit": "second",
       "schema": "integer"
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x169c9dc6:const:variant;1",
-      "description": {
-        "en": "Type of physical sensor and capabilities."
-      },
-      "schema": "dtmi:jacdac:x169c9dc6:variant;1"
     }
   ],
   "schemas": [

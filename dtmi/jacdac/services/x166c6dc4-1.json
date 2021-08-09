@@ -14,15 +14,6 @@
         "en": "The estimated heart rate."
       },
       "schema": "float"
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x166c6dc4:const:variant;1",
-      "description": {
-        "en": "The type of physical sensor"
-      },
-      "schema": "dtmi:jacdac:x166c6dc4:variant;1"
     }
   ],
   "schemas": [

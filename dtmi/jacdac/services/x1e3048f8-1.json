@@ -57,15 +57,6 @@
         "en": "The luminous intensity of the LED, at full value, in micro candella."
       },
       "schema": "integer"
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x1e3048f8:const:variant;1",
-      "description": {
-        "en": "The physical type of LED."
-      },
-      "schema": "dtmi:jacdac:x1e3048f8:variant;1"
     }
   ],
   "schemas": [

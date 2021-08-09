@@ -18,15 +18,6 @@
     },
     {
       "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x1f37c56a:const:variant;1",
-      "description": {
-        "en": "Describes the type of character LED screen."
-      },
-      "schema": "dtmi:jacdac:x1f37c56a:variant;1"
-    },
-    {
-      "@type": "Property",
       "name": "text_direction",
       "@id": "dtmi:jacdac:x1f37c56a:rw:textdirection;1",
       "description": {

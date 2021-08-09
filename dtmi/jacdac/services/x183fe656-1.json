@@ -17,15 +17,6 @@
       "writable": true
     },
     {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x183fe656:const:variant;1",
-      "description": {
-        "en": "Describes the type of relay used."
-      },
-      "schema": "dtmi:jacdac:x183fe656:variant;1"
-    },
-    {
       "@type": [
         "Property",
         "Current"

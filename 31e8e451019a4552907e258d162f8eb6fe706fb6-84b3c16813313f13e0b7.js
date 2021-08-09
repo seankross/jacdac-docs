@@ -502,10 +502,11 @@ function DTDLUnits() {
 /* harmony export */   "__": function() { return /* binding */ deviceSpecificationToDTDL; }
 /* harmony export */ });
 /* unused harmony exports deviceSpecificationDTMI, DTMIToRoute */
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(85061);
-/* harmony import */ var _jdom_spec__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13173);
-/* harmony import */ var _jdom_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81794);
-/* harmony import */ var _dtdl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2864);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85061);
+/* harmony import */ var _jdom_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
+/* harmony import */ var _jdom_spec__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13173);
+/* harmony import */ var _jdom_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81794);
+/* harmony import */ var _dtdl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2864);
 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -517,11 +518,12 @@ function DTDLUnits() {
  */
 
 
+
  // https://github.com/Azure/digital-twin-model-identifier
 // ^dtmi:(?:_+[A-Za-z0-9]|[A-Za-z])(?:[A-Za-z0-9_]*[A-Za-z0-9])?(?::(?:_+[A-Za-z0-9]|[A-Za-z])(?:[A-Za-z0-9_]*[A-Za-z0-9])?)*;[1-9][0-9]{0,8}$
 
 function toDTMI(segments, version) {
-  return ("dtmi:jacdac:" + (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(segments).map(function (seg) {
+  return ("dtmi:jacdac:" + (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(segments).map(function (seg) {
     return seg === undefined ? "???" : typeof seg === "string" ? seg : "x" + seg.toString(16);
   }).map(function (seg) {
     return seg.replace(/(-|_)/g, "");
@@ -640,7 +642,7 @@ function enumSchema(srv, en) {
     valueSchema: "integer",
     enumValues: Object.keys(en.members).map(function (k) {
       return {
-        name: (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .escapeName */ .Jg)(k),
+        name: (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .escapeName */ .Jg)(k),
         displayName: k,
         enumValue: en.members[k]
       };
@@ -696,7 +698,7 @@ function toSchema(srv, pkt, supportsArray) {
   if (repeatIndex < 0) {
     // no array
     // wrap schemas into an object
-    return (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .objectSchema */ .d_)(schemas);
+    return (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .objectSchema */ .d_)(schemas);
   } // check if arrays are supported
 
 
@@ -707,14 +709,14 @@ function toSchema(srv, pkt, supportsArray) {
 
   if (repeatIndex == 0) {
     // the whole structure is an array
-    return (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .arraySchema */ .yP)((0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .objectSchema */ .d_)(schemas));
+    return (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .arraySchema */ .yP)((0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .objectSchema */ .d_)(schemas));
   } else {
     // split fields into prelude and array data
     var nonRepeat = schemas.slice(0, repeatIndex);
     var repeats = schemas.slice(repeatIndex);
-    return (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .objectSchema */ .d_)([].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(nonRepeat), [{
+    return (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .objectSchema */ .d_)([].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(nonRepeat), [{
       name: "repeat",
-      schema: (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .arraySchema */ .yP)(repeats.length > 1 ? (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .objectSchema */ .d_)(repeats) : repeats[0])
+      schema: (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .arraySchema */ .yP)(repeats.length > 1 ? (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .objectSchema */ .d_)(repeats) : repeats[0])
     }]));
   }
 }
@@ -777,17 +779,17 @@ function packetToDTDL(srv, pkt) {
 
 function serviceSpecificationToDTDL(srv) {
   var registers = srv.packets.filter(function (pkt) {
-    return (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .isHighLevelRegister */ .vr)(pkt) && !pkt.client;
+    return (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .isHighLevelRegister */ .vr)(pkt) && !pkt.client && pkt.identifier !== _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .SystemReg.Variant */ .ZJq.Variant;
   });
   var events = srv.packets.filter(function (pkt) {
-    return (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .isHighLevelEvent */ .jl)(pkt) && !pkt.client;
+    return (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .isHighLevelEvent */ .jl)(pkt) && !pkt.client;
   });
   var dtdl = {
     "@type": "Interface",
     "@id": serviceSpecificationDTMI(srv),
-    displayName: (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .escapeDisplayName */ .n)(srv.name),
+    displayName: (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .escapeDisplayName */ .n)(srv.name),
     description: toLocalizedString(srv.notes["short"]),
-    contents: [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(registers), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(events)).map(function (pkt) {
+    contents: [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(registers), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(events)).map(function (pkt) {
       try {
         return packetToDTDL(srv, pkt);
       } catch (e) {
@@ -808,14 +810,14 @@ function serviceSpecificationToDTDL(srv) {
     }));
   }
 
-  dtdl["@context"] = _dtdl__WEBPACK_IMPORTED_MODULE_3__/* .DTDL_CONTEXT */ .LM;
+  dtdl["@context"] = _dtdl__WEBPACK_IMPORTED_MODULE_4__/* .DTDL_CONTEXT */ .LM;
   return dtdl;
 }
 function serviceSpecificationToComponent(srv, name) {
   var dtdl = {
     "@type": "Component",
     name: name,
-    displayName: (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .escapeDisplayName */ .n)(srv.name),
+    displayName: (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .escapeDisplayName */ .n)(srv.name),
     schema: serviceSpecificationDTMI(srv)
   };
   return dtdl;
@@ -832,9 +834,9 @@ function DTMIToRoute(dtmi) {
 }
 function deviceSpecificationToDTDL(dev, options) {
   var services = dev.services.map(function (srv) {
-    return (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .serviceSpecificationFromClassIdentifier */ .d5)(srv);
+    return (0,_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecificationFromClassIdentifier */ .d5)(srv);
   });
-  var uniqueServices = (0,_jdom_utils__WEBPACK_IMPORTED_MODULE_1__/* .uniqueMap */ .EM)(services, function (srv) {
+  var uniqueServices = (0,_jdom_utils__WEBPACK_IMPORTED_MODULE_2__/* .uniqueMap */ .EM)(services, function (srv) {
     return srv.classIdentifier.toString();
   }, function (srv) {
     return srv;
@@ -845,7 +847,7 @@ function deviceSpecificationToDTDL(dev, options) {
 
   var names = [];
   services.forEach(function (srv) {
-    var name = (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .escapeName */ .Jg)(srv.shortId || srv.shortName);
+    var name = (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .escapeName */ .Jg)(srv.shortId || srv.shortName);
     if (names.indexOf(name) < 0) names.push(name);else {
       var count = 2;
 
@@ -859,14 +861,14 @@ function deviceSpecificationToDTDL(dev, options) {
   var dtdl = {
     "@type": "Interface",
     "@id": deviceSpecificationDTMI(dev),
-    displayName: (0,_dtdl__WEBPACK_IMPORTED_MODULE_3__/* .escapeDisplayName */ .n)(dev.name),
+    displayName: (0,_dtdl__WEBPACK_IMPORTED_MODULE_4__/* .escapeDisplayName */ .n)(dev.name),
     description: toLocalizedString(dev.description),
     contents: services.map(function (srv, i) {
       return serviceSpecificationToComponent(srv, names[i]);
     }),
-    "@context": _dtdl__WEBPACK_IMPORTED_MODULE_3__/* .DTDL_CONTEXT */ .LM
+    "@context": _dtdl__WEBPACK_IMPORTED_MODULE_4__/* .DTDL_CONTEXT */ .LM
   };
-  if (options !== null && options !== void 0 && options.inlineServices) return [dtdl].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)(schemas));else return dtdl;
+  if (options !== null && options !== void 0 && options.inlineServices) return [dtdl].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(schemas));else return dtdl;
 }
 
 /***/ }),

@@ -38,15 +38,6 @@
       "schema": "integer"
     },
     {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x1179a749:const:variant;1",
-      "description": {
-        "en": "Type of physical sensor"
-      },
-      "schema": "dtmi:jacdac:x1179a749:variant;1"
-    },
-    {
       "@type": [
         "Telemetry",
         "Event"

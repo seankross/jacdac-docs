@@ -73,15 +73,6 @@
       },
       "schema": "integer",
       "writable": true
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x126f00e0:const:variant;1",
-      "description": {
-        "en": "Specifies the shape of the light strip."
-      },
-      "schema": "dtmi:jacdac:x126f00e0:variant;1"
     }
   ],
   "schemas": [

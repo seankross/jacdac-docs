@@ -14,15 +14,6 @@
         "en": "The temperature."
       },
       "schema": "float"
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x1421bac7:const:variant;1",
-      "description": {
-        "en": "Specifies the type of thermometer."
-      },
-      "schema": "dtmi:jacdac:x1421bac7:variant;1"
     }
   ],
   "schemas": [

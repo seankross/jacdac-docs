@@ -34,15 +34,6 @@
       },
       "schema": "float",
       "writable": true
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x1f4d5040:const:variant;1",
-      "description": {
-        "en": "The type of physical scale"
-      },
-      "schema": "dtmi:jacdac:x1f4d5040:variant;1"
     }
   ],
   "schemas": [

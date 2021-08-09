@@ -14,15 +14,6 @@
         "en": "Indicates the wetness of the soil, from ``dry`` to ``wet``."
       },
       "schema": "float"
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x1d4aa3b3:const:variant;1",
-      "description": {
-        "en": "Describe the type of physical sensor."
-      },
-      "schema": "dtmi:jacdac:x1d4aa3b3:variant;1"
     }
   ],
   "schemas": [

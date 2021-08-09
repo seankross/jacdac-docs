@@ -33,15 +33,6 @@
     },
     {
       "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x108f7456:const:variant;1",
-      "description": {
-        "en": "The type of physical joystick."
-      },
-      "schema": "dtmi:jacdac:x108f7456:variant;1"
-    },
-    {
-      "@type": "Property",
       "name": "buttons_available",
       "@id": "dtmi:jacdac:x108f7456:const:buttonsavailable;1",
       "description": {

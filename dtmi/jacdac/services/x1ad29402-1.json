@@ -16,15 +16,6 @@
       "schema": "boolean"
     },
     {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x1ad29402:const:variant;1",
-      "description": {
-        "en": "Describes the type of switch used."
-      },
-      "schema": "dtmi:jacdac:x1ad29402:variant;1"
-    },
-    {
       "@type": [
         "Property",
         "TimeSpan"

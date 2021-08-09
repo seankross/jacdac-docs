@@ -18,15 +18,6 @@
       },
       "unit": "metre",
       "schema": "float"
-    },
-    {
-      "@type": "Property",
-      "name": "variant",
-      "@id": "dtmi:jacdac:x141a6b8a:const:variant;1",
-      "description": {
-        "en": "Determines the type of sensor used."
-      },
-      "schema": "dtmi:jacdac:x141a6b8a:variant;1"
     }
   ],
   "schemas": [
