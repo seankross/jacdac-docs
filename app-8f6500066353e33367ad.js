@@ -46201,13 +46201,14 @@ var WindSpeedReg;
 /* harmony export */   "Dl": function() { return /* binding */ units; },
 /* harmony export */   "ml": function() { return /* binding */ parseServiceSpecificationMarkdownToJSON; },
 /* harmony export */   "_A": function() { return /* binding */ camelize; },
+/* harmony export */   "P1": function() { return /* binding */ dashify; },
 /* harmony export */   "lW": function() { return /* binding */ humanify; },
 /* harmony export */   "dj": function() { return /* binding */ normalizeDeviceSpecification; },
 /* harmony export */   "o9": function() { return /* binding */ escapeDeviceIdentifier; },
 /* harmony export */   "qh": function() { return /* binding */ escapeDeviceNameIdentifier; },
 /* harmony export */   "FV": function() { return /* binding */ isNumericType; }
 /* harmony export */ });
-/* unused harmony exports unitDescription, secondaryUnitConverters, encodings, capitalize, snakify, dashify, TYPESCRIPT_STATIC_NAMESPACE, packFormat, packInfo, converters */
+/* unused harmony exports unitDescription, secondaryUnitConverters, encodings, capitalize, snakify, TYPESCRIPT_STATIC_NAMESPACE, packFormat, packInfo, converters */
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(85061);
 /* harmony import */ var _jdutils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30055);
 
@@ -47817,7 +47818,7 @@ function snakify(name) {
 }
 function dashify(name) {
   if (!name) return name;
-  return snakify(name.replace(/^_+/, "")).replace(/_/g, "-").toLowerCase();
+  return snakify(name.replace(/^_+/, "")).replace(/(_|\s)+/g, "-").toLowerCase();
 }
 function humanify(name) {
   return name === null || name === void 0 ? void 0 : name.replace(/([a-z])([A-Z])/g, function (_, a, b) {
@@ -70851,7 +70852,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "6a00bf4560064571bcc94042e979fc059130ef13";
+  var sha = "00a4aa7f7c23bb91a3cd733756a0c9af98908ff4";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
