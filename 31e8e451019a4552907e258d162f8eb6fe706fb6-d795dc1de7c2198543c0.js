@@ -462,7 +462,7 @@ exports.Z = _default;
 var DTDL_REFERENCE_URL = "https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md";
 var DTDL_NAME = "Digital Twins Definition Language"; //   needed?
 
-var DTDL_CONTEXT = ["dtmi:iotcentral:context;2", "dtmi:dtdl:context;2"]; // warps fields into an object
+var DTDL_CONTEXT = ["dtmi:dtdl:context;2"]; // warps fields into an object
 
 function objectSchema(schemas) {
   return {
@@ -498,10 +498,9 @@ function DTDLUnits() {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "eT": function() { return /* binding */ serviceSpecificationToDTDL; },
 /* harmony export */   "xA": function() { return /* binding */ serviceSpecificationToComponent; },
-/* harmony export */   "tH": function() { return /* binding */ serviceSpecificationDTMI; },
 /* harmony export */   "__": function() { return /* binding */ deviceSpecificationToDTDL; }
 /* harmony export */ });
-/* unused harmony exports deviceSpecificationDTMI, DTMIToRoute */
+/* unused harmony exports serviceSpecificationDTMI, deviceSpecificationDTMI, DTMIToRoute */
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85061);
 /* harmony import */ var _jdom_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
 /* harmony import */ var _jdom_spec__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13173);

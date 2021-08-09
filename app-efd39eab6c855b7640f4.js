@@ -46201,14 +46201,13 @@ var WindSpeedReg;
 /* harmony export */   "Dl": function() { return /* binding */ units; },
 /* harmony export */   "ml": function() { return /* binding */ parseServiceSpecificationMarkdownToJSON; },
 /* harmony export */   "_A": function() { return /* binding */ camelize; },
-/* harmony export */   "P1": function() { return /* binding */ dashify; },
 /* harmony export */   "lW": function() { return /* binding */ humanify; },
 /* harmony export */   "dj": function() { return /* binding */ normalizeDeviceSpecification; },
 /* harmony export */   "o9": function() { return /* binding */ escapeDeviceIdentifier; },
 /* harmony export */   "qh": function() { return /* binding */ escapeDeviceNameIdentifier; },
 /* harmony export */   "FV": function() { return /* binding */ isNumericType; }
 /* harmony export */ });
-/* unused harmony exports unitDescription, secondaryUnitConverters, encodings, capitalize, snakify, TYPESCRIPT_STATIC_NAMESPACE, packFormat, packInfo, converters */
+/* unused harmony exports unitDescription, secondaryUnitConverters, encodings, capitalize, snakify, dashify, TYPESCRIPT_STATIC_NAMESPACE, packFormat, packInfo, converters */
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(85061);
 /* harmony import */ var _jdutils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30055);
 
@@ -70852,7 +70851,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "6c17d8f11afe7941695ba54b43805569c8674965";
+  var sha = "ddcd846a60bc83e1cfd5b563be1a6777e48c54ca";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
