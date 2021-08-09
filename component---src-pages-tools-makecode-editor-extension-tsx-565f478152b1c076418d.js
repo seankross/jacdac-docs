@@ -97,9 +97,9 @@ exports.Z = _default;
  *  DTDL specification: https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md.
  */
 var DTDL_REFERENCE_URL = "https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md";
-var DTDL_NAME = "Digital Twins Definition Language"; // "dtmi:iotcentral:context;2",  needed?
+var DTDL_NAME = "Digital Twins Definition Language"; //   needed?
 
-var DTDL_CONTEXT = ["dtmi:dtdl:context;2"]; // warps fields into an object
+var DTDL_CONTEXT = ["dtmi:iotcentral:context;2", "dtmi:dtdl:context;2"]; // warps fields into an object
 
 function objectSchema(schemas) {
   return {

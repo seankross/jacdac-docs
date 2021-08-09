@@ -6669,6 +6669,7 @@ function HighlightedCode(props) {
       className = props.className,
       downloadName = props.downloadName,
       downloadText = props.downloadText,
+      actions = props.actions,
       url = props.url;
 
   var _useContext = (0,react.useContext)(DarkModeContext/* default */.Z),
@@ -6711,7 +6712,11 @@ function HighlightedCode(props) {
       }
     }, /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(CodeSandboxButton, {
       source: children
-    }))), tokens === null || tokens === void 0 ? void 0 : tokens.map(function (line, index) {
+    }))), actions && /*#__PURE__*/react.createElement("div", {
+      style: {
+        float: "right"
+      }
+    }, actions), tokens === null || tokens === void 0 ? void 0 : tokens.map(function (line, index) {
       var lineProps = getLineProps({
         line: line,
         key: index

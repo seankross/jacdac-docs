@@ -529,6 +529,7 @@ function HighlightedCode(props) {
       className = props.className,
       downloadName = props.downloadName,
       downloadText = props.downloadText,
+      actions = props.actions,
       url = props.url;
 
   var _useContext = (0,react.useContext)(DarkModeContext/* default */.Z),
@@ -571,7 +572,11 @@ function HighlightedCode(props) {
       }
     }, /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(CodeSandboxButton, {
       source: children
-    }))), tokens === null || tokens === void 0 ? void 0 : tokens.map(function (line, index) {
+    }))), actions && /*#__PURE__*/react.createElement("div", {
+      style: {
+        float: "right"
+      }
+    }, actions), tokens === null || tokens === void 0 ? void 0 : tokens.map(function (line, index) {
       var lineProps = getLineProps({
         line: line,
         key: index
@@ -746,13 +751,15 @@ function Snippet(props) {
       mode = props.mode,
       download = props.download,
       url = props.url,
-      caption = props.caption;
+      caption = props.caption,
+      actions = props.actions;
   var v = typeof value === "function" ? value() : value;
   var className = mode && "language-" + (mode === "sts" ? "ts" : mode);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CodeBlock__WEBPACK_IMPORTED_MODULE_1__.default, {
     className: className,
     downloadName: download,
     downloadText: download && v,
+    actions: actions,
     url: url
   }, v), caption && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
     variant: "caption"

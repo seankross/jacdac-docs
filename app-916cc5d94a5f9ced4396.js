@@ -61027,25 +61027,29 @@ var AppProvider = function AppProvider(_ref) {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z),
       bus = _useContext.bus;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(DrawerType.None),
-      type = _useState[0],
-      setType = _useState[1];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({}),
+      secrets = _useState[0],
+      setSecrets = _useState[1];
 
-  var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
-      searchQuery = _useState2[0],
-      setSearchQuery = _useState2[1];
+  var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(DrawerType.None),
+      type = _useState2[0],
+      setType = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
-      toolsMenu = _useState3[0],
-      _setToolsMenu = _useState3[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+      searchQuery = _useState3[0],
+      setSearchQuery = _useState3[1];
 
   var _useState4 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
-      showDeviceHostsDialog = _useState4[0],
-      setShowDeviceHostsDialog = _useState4[1];
+      toolsMenu = _useState4[0],
+      _setToolsMenu = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(undefined),
-      showSelectRoleDialogService = _useState5[0],
-      setShowSelectRoleDialogService = _useState5[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+      showDeviceHostsDialog = _useState5[0],
+      setShowDeviceHostsDialog = _useState5[1];
+
+  var _useState6 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(undefined),
+      showSelectRoleDialogService = _useState6[0],
+      setShowSelectRoleDialogService = _useState6[1];
 
   var _useSnackbar = (0,notistack__WEBPACK_IMPORTED_MODULE_1__/* .useSnackbar */ .Ds)(),
       _enqueueSnackbar = _useSnackbar.enqueueSnackbar; // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -70847,7 +70851,7 @@ var useStyles = (0,makeStyles/* default */.Z)(function (theme) {
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c550d6ef6b062aee96e0f6ff8355303245a098c5";
+  var sha = "6a00bf4560064571bcc94042e979fc059130ef13";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74725,6 +74729,39 @@ var JDService = /*#__PURE__*/function (_JDNode) {
     });
   };
 
+  _proto.resolveInstanceName = /*#__PURE__*/function () {
+    var _resolveInstanceName = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
+      var r;
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              r = this.register(specconstants/* SystemReg.InstanceName */.ZJq.InstanceName);
+              _context.next = 3;
+              return r === null || r === void 0 ? void 0 : r.refresh();
+
+            case 3:
+              return _context.abrupt("return", r === null || r === void 0 ? void 0 : r.stringValue);
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function resolveInstanceName() {
+      return _resolveInstanceName.apply(this, arguments);
+    }
+
+    return resolveInstanceName;
+  }()
+  /**
+   * Gets the specification of the service. Undefined if unknown
+   */
+  ;
+
   _proto.registers = function registers() {
     var _this2 = this;
 
@@ -74788,29 +74825,29 @@ var JDService = /*#__PURE__*/function (_JDNode) {
   };
 
   _proto.sendPacketAsync = /*#__PURE__*/function () {
-    var _sendPacketAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(pkt, ack) {
-      return regenerator_default().wrap(function _callee$(_context) {
+    var _sendPacketAsync = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(pkt, ack) {
+      return regenerator_default().wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
               pkt.device = this.device;
               pkt.serviceIndex = this.serviceIndex;
               if (ack !== undefined) pkt.requiresAck = !!ack;
 
               if (!pkt.requiresAck) {
-                _context.next = 8;
+                _context2.next = 8;
                 break;
               }
 
-              _context.next = 6;
+              _context2.next = 6;
               return this.device.sendPktWithAck(pkt);
 
             case 6:
-              _context.next = 10;
+              _context2.next = 10;
               break;
 
             case 8:
-              _context.next = 10;
+              _context2.next = 10;
               return pkt.sendCmdAsync(this.device);
 
             case 10:
@@ -74820,10 +74857,10 @@ var JDService = /*#__PURE__*/function (_JDNode) {
 
             case 12:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee, this);
+      }, _callee2, this);
     }));
 
     function sendPacketAsync(_x, _x2) {
@@ -74934,30 +74971,30 @@ var JDService = /*#__PURE__*/function (_JDNode) {
   };
 
   _proto.receiveWithInPipe = /*#__PURE__*/function () {
-    var _receiveWithInPipe = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(cmd, packFormat, timeout) {
+    var _receiveWithInPipe = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3(cmd, packFormat, timeout) {
       var inp, recv, _iterator, _step, buf, values;
 
-      return regenerator_default().wrap(function _callee2$(_context2) {
+      return regenerator_default().wrap(function _callee3$(_context3) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context3.prev = _context3.next) {
             case 0:
               inp = new pipes/* InPipeReader */.oI(this.device.bus);
-              _context2.next = 3;
+              _context3.next = 3;
               return this.sendPacketAsync(inp.openCommand(cmd), true);
 
             case 3:
               recv = [];
-              _context2.t0 = _createForOfIteratorHelperLoose;
-              _context2.next = 7;
+              _context3.t0 = _createForOfIteratorHelperLoose;
+              _context3.next = 7;
               return inp.readData(timeout);
 
             case 7:
-              _context2.t1 = _context2.sent;
-              _iterator = (0, _context2.t0)(_context2.t1);
+              _context3.t1 = _context3.sent;
+              _iterator = (0, _context3.t0)(_context3.t1);
 
             case 9:
               if ((_step = _iterator()).done) {
-                _context2.next = 15;
+                _context3.next = 15;
                 break;
               }
 
@@ -74966,18 +75003,18 @@ var JDService = /*#__PURE__*/function (_JDNode) {
               recv.push(values);
 
             case 13:
-              _context2.next = 9;
+              _context3.next = 9;
               break;
 
             case 15:
-              return _context2.abrupt("return", recv);
+              return _context3.abrupt("return", recv);
 
             case 16:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
         }
-      }, _callee2, this);
+      }, _callee3, this);
     }));
 
     function receiveWithInPipe(_x3, _x4, _x5) {
@@ -75139,10 +75176,6 @@ var JDService = /*#__PURE__*/function (_JDNode) {
       var r = this.register(specconstants/* SystemReg.InstanceName */.ZJq.InstanceName);
       return r === null || r === void 0 ? void 0 : r.stringValue;
     }
-    /**
-     * Gets the specification of the service. Undefined if unknown
-     */
-
   }, {
     key: "specification",
     get: function get() {
@@ -84209,34 +84242,34 @@ exports.components = {
     return __webpack_require__.e(/* import() | component---src-pages-software-mdx */ 8307).then(__webpack_require__.bind(__webpack_require__, 46690));
   },
   "component---src-pages-tools-accelerometer-theremin-tsx": function componentSrcPagesToolsAccelerometerThereminTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(6559), __webpack_require__.e(1326), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 67396));
+    return Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(3531), __webpack_require__.e(1326), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 67396));
   },
   "component---src-pages-tools-azure-device-template-designer-tsx": function componentSrcPagesToolsAzureDeviceTemplateDesignerTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-azure-device-template-designer-tsx */[__webpack_require__.e(4606), __webpack_require__.e(3424), __webpack_require__.e(2632), __webpack_require__.e(3145)]).then(__webpack_require__.bind(__webpack_require__, 20651));
+    return Promise.all(/* import() | component---src-pages-tools-azure-device-template-designer-tsx */[__webpack_require__.e(3531), __webpack_require__.e(4606), __webpack_require__.e(3424), __webpack_require__.e(2632), __webpack_require__.e(3145)]).then(__webpack_require__.bind(__webpack_require__, 20651));
   },
   "component---src-pages-tools-collector-tsx": function componentSrcPagesToolsCollectorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-collector-tsx */[__webpack_require__.e(6559), __webpack_require__.e(8814)]).then(__webpack_require__.bind(__webpack_require__, 21586));
+    return Promise.all(/* import() | component---src-pages-tools-collector-tsx */[__webpack_require__.e(3531), __webpack_require__.e(8814)]).then(__webpack_require__.bind(__webpack_require__, 21586));
   },
   "component---src-pages-tools-commissioner-tsx": function componentSrcPagesToolsCommissionerTsx() {
     return __webpack_require__.e(/* import() | component---src-pages-tools-commissioner-tsx */ 1322).then(__webpack_require__.bind(__webpack_require__, 7877));
   },
   "component---src-pages-tools-device-registration-tsx": function componentSrcPagesToolsDeviceRegistrationTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-device-registration-tsx */[__webpack_require__.e(6559), __webpack_require__.e(8270), __webpack_require__.e(7788), __webpack_require__.e(9231)]).then(__webpack_require__.bind(__webpack_require__, 50151));
+    return Promise.all(/* import() | component---src-pages-tools-device-registration-tsx */[__webpack_require__.e(3531), __webpack_require__.e(8270), __webpack_require__.e(7788), __webpack_require__.e(9231)]).then(__webpack_require__.bind(__webpack_require__, 50151));
   },
   "component---src-pages-tools-edge-impulse-tsx": function componentSrcPagesToolsEdgeImpulseTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-edge-impulse-tsx */[__webpack_require__.e(6559), __webpack_require__.e(5637), __webpack_require__.e(3382)]).then(__webpack_require__.bind(__webpack_require__, 2649));
+    return Promise.all(/* import() | component---src-pages-tools-edge-impulse-tsx */[__webpack_require__.e(3531), __webpack_require__.e(5637), __webpack_require__.e(3382)]).then(__webpack_require__.bind(__webpack_require__, 2649));
   },
   "component---src-pages-tools-flood-test-tsx": function componentSrcPagesToolsFloodTestTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-flood-test-tsx */[__webpack_require__.e(6559), __webpack_require__.e(5356)]).then(__webpack_require__.bind(__webpack_require__, 79410));
+    return Promise.all(/* import() | component---src-pages-tools-flood-test-tsx */[__webpack_require__.e(3531), __webpack_require__.e(5356)]).then(__webpack_require__.bind(__webpack_require__, 79410));
   },
   "component---src-pages-tools-hid-events-tsx": function componentSrcPagesToolsHidEventsTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-hid-events-tsx */[__webpack_require__.e(532), __webpack_require__.e(7919), __webpack_require__.e(6559), __webpack_require__.e(5444)]).then(__webpack_require__.bind(__webpack_require__, 24180));
+    return Promise.all(/* import() | component---src-pages-tools-hid-events-tsx */[__webpack_require__.e(532), __webpack_require__.e(7919), __webpack_require__.e(3531), __webpack_require__.e(5444)]).then(__webpack_require__.bind(__webpack_require__, 24180));
   },
   "component---src-pages-tools-jupyterlab-mdx": function componentSrcPagesToolsJupyterlabMdx() {
     return __webpack_require__.e(/* import() | component---src-pages-tools-jupyterlab-mdx */ 6394).then(__webpack_require__.bind(__webpack_require__, 95844));
   },
   "component---src-pages-tools-lightsensor-accessible-tsx": function componentSrcPagesToolsLightsensorAccessibleTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-lightsensor-accessible-tsx */[__webpack_require__.e(6559), __webpack_require__.e(1326), __webpack_require__.e(3801)]).then(__webpack_require__.bind(__webpack_require__, 55389));
+    return Promise.all(/* import() | component---src-pages-tools-lightsensor-accessible-tsx */[__webpack_require__.e(3531), __webpack_require__.e(1326), __webpack_require__.e(3801)]).then(__webpack_require__.bind(__webpack_require__, 55389));
   },
   "component---src-pages-tools-makecode-editor-extension-tsx": function componentSrcPagesToolsMakecodeEditorExtensionTsx() {
     return __webpack_require__.e(/* import() | component---src-pages-tools-makecode-editor-extension-tsx */ 6456).then(__webpack_require__.bind(__webpack_require__, 25900));
@@ -84251,10 +84284,10 @@ exports.components = {
     return Promise.all(/* import() | component---src-pages-tools-model-editor-tsx */[__webpack_require__.e(3424), __webpack_require__.e(8270), __webpack_require__.e(7476), __webpack_require__.e(372)]).then(__webpack_require__.bind(__webpack_require__, 70438));
   },
   "component---src-pages-tools-model-uploader-tsx": function componentSrcPagesToolsModelUploaderTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-model-uploader-tsx */[__webpack_require__.e(6559), __webpack_require__.e(5637)]).then(__webpack_require__.bind(__webpack_require__, 46905));
+    return Promise.all(/* import() | component---src-pages-tools-model-uploader-tsx */[__webpack_require__.e(3531), __webpack_require__.e(5637)]).then(__webpack_require__.bind(__webpack_require__, 46905));
   },
   "component---src-pages-tools-packet-inspector-tsx": function componentSrcPagesToolsPacketInspectorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-packet-inspector-tsx */[__webpack_require__.e(6559), __webpack_require__.e(4606), __webpack_require__.e(3424), __webpack_require__.e(7617), __webpack_require__.e(2937)]).then(__webpack_require__.bind(__webpack_require__, 55662));
+    return Promise.all(/* import() | component---src-pages-tools-packet-inspector-tsx */[__webpack_require__.e(3531), __webpack_require__.e(4606), __webpack_require__.e(3424), __webpack_require__.e(7617), __webpack_require__.e(2937)]).then(__webpack_require__.bind(__webpack_require__, 55662));
   },
   "component---src-pages-tools-peers-tsx": function componentSrcPagesToolsPeersTsx() {
     return __webpack_require__.e(/* import() | component---src-pages-tools-peers-tsx */ 6992).then(__webpack_require__.bind(__webpack_require__, 27238));
@@ -84272,19 +84305,19 @@ exports.components = {
     return __webpack_require__.e(/* import() | component---src-pages-tools-release-assets-tsx */ 9225).then(__webpack_require__.bind(__webpack_require__, 71044));
   },
   "component---src-pages-tools-service-editor-tsx": function componentSrcPagesToolsServiceEditorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-service-editor-tsx */[__webpack_require__.e(6559), __webpack_require__.e(4606), __webpack_require__.e(7617), __webpack_require__.e(2219)]).then(__webpack_require__.bind(__webpack_require__, 37207));
+    return Promise.all(/* import() | component---src-pages-tools-service-editor-tsx */[__webpack_require__.e(3531), __webpack_require__.e(4606), __webpack_require__.e(7617), __webpack_require__.e(2219)]).then(__webpack_require__.bind(__webpack_require__, 37207));
   },
   "component---src-pages-tools-service-test-editor-tsx": function componentSrcPagesToolsServiceTestEditorTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-service-test-editor-tsx */[__webpack_require__.e(6559), __webpack_require__.e(4606), __webpack_require__.e(9871), __webpack_require__.e(5910), __webpack_require__.e(6091)]).then(__webpack_require__.bind(__webpack_require__, 21838));
+    return Promise.all(/* import() | component---src-pages-tools-service-test-editor-tsx */[__webpack_require__.e(3531), __webpack_require__.e(4606), __webpack_require__.e(9871), __webpack_require__.e(5910), __webpack_require__.e(6091)]).then(__webpack_require__.bind(__webpack_require__, 21838));
   },
   "component---src-pages-tools-service-test-tsx": function componentSrcPagesToolsServiceTestTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-service-test-tsx */[__webpack_require__.e(6559), __webpack_require__.e(9871), __webpack_require__.e(5910), __webpack_require__.e(3919)]).then(__webpack_require__.bind(__webpack_require__, 26651));
+    return Promise.all(/* import() | component---src-pages-tools-service-test-tsx */[__webpack_require__.e(3531), __webpack_require__.e(9871), __webpack_require__.e(5910), __webpack_require__.e(3919)]).then(__webpack_require__.bind(__webpack_require__, 26651));
   },
   "component---src-pages-tools-settings-tsx": function componentSrcPagesToolsSettingsTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-settings-tsx */[__webpack_require__.e(6559), __webpack_require__.e(5560)]).then(__webpack_require__.bind(__webpack_require__, 360));
+    return Promise.all(/* import() | component---src-pages-tools-settings-tsx */[__webpack_require__.e(3531), __webpack_require__.e(5560)]).then(__webpack_require__.bind(__webpack_require__, 360));
   },
   "component---src-pages-tools-updater-tsx": function componentSrcPagesToolsUpdaterTsx() {
-    return Promise.all(/* import() | component---src-pages-tools-updater-tsx */[__webpack_require__.e(6559), __webpack_require__.e(3424), __webpack_require__.e(7788), __webpack_require__.e(6366)]).then(__webpack_require__.bind(__webpack_require__, 5179));
+    return Promise.all(/* import() | component---src-pages-tools-updater-tsx */[__webpack_require__.e(3531), __webpack_require__.e(3424), __webpack_require__.e(7788), __webpack_require__.e(6366)]).then(__webpack_require__.bind(__webpack_require__, 5179));
   },
   "component---src-pages-traces-mdx": function componentSrcPagesTracesMdx() {
     return __webpack_require__.e(/* import() | component---src-pages-traces-mdx */ 1356).then(__webpack_require__.bind(__webpack_require__, 23478));
@@ -84296,10 +84329,10 @@ exports.components = {
     return Promise.all(/* import() | component---src-templates-device-tsx */[__webpack_require__.e(4606), __webpack_require__.e(3424), __webpack_require__.e(7788), __webpack_require__.e(2632), __webpack_require__.e(8323)]).then(__webpack_require__.bind(__webpack_require__, 10454));
   },
   "component---src-templates-service-playground-tsx": function componentSrcTemplatesServicePlaygroundTsx() {
-    return Promise.all(/* import() | component---src-templates-service-playground-tsx */[__webpack_require__.e(6559), __webpack_require__.e(7617), __webpack_require__.e(6540)]).then(__webpack_require__.bind(__webpack_require__, 97230));
+    return Promise.all(/* import() | component---src-templates-service-playground-tsx */[__webpack_require__.e(3531), __webpack_require__.e(7617), __webpack_require__.e(6540)]).then(__webpack_require__.bind(__webpack_require__, 97230));
   },
   "component---src-templates-service-test-tsx": function componentSrcTemplatesServiceTestTsx() {
-    return Promise.all(/* import() | component---src-templates-service-test-tsx */[__webpack_require__.e(6559), __webpack_require__.e(9871), __webpack_require__.e(5910), __webpack_require__.e(636)]).then(__webpack_require__.bind(__webpack_require__, 88387));
+    return Promise.all(/* import() | component---src-templates-service-test-tsx */[__webpack_require__.e(3531), __webpack_require__.e(9871), __webpack_require__.e(5910), __webpack_require__.e(636)]).then(__webpack_require__.bind(__webpack_require__, 88387));
   },
   "component---src-templates-service-tsx": function componentSrcTemplatesServiceTsx() {
     return Promise.all(/* import() | component---src-templates-service-tsx */[__webpack_require__.e(9871), __webpack_require__.e(3133)]).then(__webpack_require__.bind(__webpack_require__, 59828));

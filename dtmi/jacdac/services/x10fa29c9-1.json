@@ -26,6 +26,7 @@
     }
   ],
   "@context": [
+    "dtmi:iotcentral:context;2",
     "dtmi:dtdl:context;2"
   ]
 }

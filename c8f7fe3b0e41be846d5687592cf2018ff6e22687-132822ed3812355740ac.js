@@ -9507,8 +9507,8 @@ var ExpandMore = __webpack_require__(47739);
 var CheckCircleOutline = __webpack_require__(41212);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
 var react_use_id_hook_esm = __webpack_require__(19640);
-// EXTERNAL MODULE: ./src/components/hooks/useSecret.ts
-var useSecret = __webpack_require__(31066);
+// EXTERNAL MODULE: ./src/components/hooks/useSecret.ts + 1 modules
+var useSecret = __webpack_require__(21984);
 // EXTERNAL MODULE: ./src/components/AppContext.tsx
 var AppContext = __webpack_require__(84377);
 ;// CONCATENATED MODULE: ./src/components/ApiKeyAccordion.tsx
@@ -11545,8 +11545,8 @@ var LoadingProgress = __webpack_require__(2285);
 var utils = __webpack_require__(81794);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
 var random = __webpack_require__(80303);
-// EXTERNAL MODULE: ./src/components/hooks/useSecret.ts
-var useSecret = __webpack_require__(31066);
+// EXTERNAL MODULE: ./src/components/hooks/useSecret.ts + 1 modules
+var useSecret = __webpack_require__(21984);
 ;// CONCATENATED MODULE: ./src/components/buttons/GithubPullRequestButton.tsx
 
 
@@ -11998,20 +11998,155 @@ function useKeyboardNavigationProps(parentRef, vertical) {
 
 /***/ }),
 
-/***/ 31066:
+/***/ 21984:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "$": function() { return /* binding */ useSecret; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
- // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "$": function() { return /* binding */ useSecret; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(92137);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
+var regenerator = __webpack_require__(87757);
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./src/jacdac/useChange.ts
+var useChange = __webpack_require__(54774);
+// EXTERNAL MODULE: ./src/components/DbContext.tsx
+var DbContext = __webpack_require__(94904);
+// EXTERNAL MODULE: ./src/components/useEffectAsync.ts
+var useEffectAsync = __webpack_require__(7751);
+;// CONCATENATED MODULE: ./src/components/useDbValue.ts
+
+
+
+
+
+
+function useDbValue(id, initialValue) {
+  var _useContext = (0,react.useContext)(DbContext/* default */.ZP),
+      db = _useContext.db;
+
+  var _useState = (0,react.useState)(undefined),
+      _value = _useState[0],
+      _setValue = _useState[1];
+
+  var values = (0,useChange/* default */.Z)(db, function (d) {
+    return d === null || d === void 0 ? void 0 : d.values;
+  });
+  var _mounted = true;
+
+  var setValue = /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(value) {
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return values === null || values === void 0 ? void 0 : values.set(id, value);
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function setValue(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }(); // listen to change
+
+
+  (0,react.useEffect)(function () {
+    return values === null || values === void 0 ? void 0 : values.subscribe(DbContext/* DB_VALUE_CHANGE */.TB, /*#__PURE__*/function () {
+      var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(changed) {
+        var v;
+        return regenerator_default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (!(changed === id)) {
+                  _context2.next = 5;
+                  break;
+                }
+
+                _context2.next = 3;
+                return values.get(id);
+
+              case 3:
+                v = _context2.sent;
+
+                if (_mounted) {
+                  _setValue(v);
+                }
+
+              case 5:
+                return _context2.abrupt("return", function () {
+                  _mounted = false;
+                });
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+  }, [db, values]); // load intial value
+
+  (0,useEffectAsync/* default */.Z)( /*#__PURE__*/function () {
+    var _ref3 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3(mounted) {
+      var v;
+      return regenerator_default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return values === null || values === void 0 ? void 0 : values.get(id);
+
+            case 2:
+              v = _context3.sent;
+
+              if (mounted()) {
+                //      console.log(`load dbvalue ${id}`, values, v)
+                _setValue(v || initialValue);
+              }
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function (_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }(), [db, values]);
+  return {
+    value: _value,
+    setValue: setValue
+  };
+}
+;// CONCATENATED MODULE: ./src/components/hooks/useSecret.ts
 
 function useSecret(id) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-      value = _useState[0],
-      setValue = _useState[1];
+  var _useDbValue = useDbValue("secret:" + id, ""),
+      value = _useDbValue.value,
+      setValue = _useDbValue.setValue;
 
   return {
     value: value,

@@ -250,8 +250,8 @@ var ExpandMore = __webpack_require__(47739);
 var CheckCircleOutline = __webpack_require__(41212);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
 var react_use_id_hook_esm = __webpack_require__(19640);
-// EXTERNAL MODULE: ./src/components/hooks/useSecret.ts
-var useSecret = __webpack_require__(31066);
+// EXTERNAL MODULE: ./src/components/hooks/useSecret.ts + 1 modules
+var useSecret = __webpack_require__(21984);
 // EXTERNAL MODULE: ./src/components/AppContext.tsx
 var AppContext = __webpack_require__(84377);
 ;// CONCATENATED MODULE: ./src/components/ApiKeyAccordion.tsx
@@ -492,19 +492,154 @@ function ServiceSpecificationSelect(props) {
 
 /***/ }),
 
-/***/ 31066:
+/***/ 21984:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "$": function() { return /* binding */ useSecret; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
- // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "$": function() { return /* binding */ useSecret; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(92137);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
+var regenerator = __webpack_require__(87757);
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./src/jacdac/useChange.ts
+var useChange = __webpack_require__(54774);
+// EXTERNAL MODULE: ./src/components/DbContext.tsx
+var DbContext = __webpack_require__(94904);
+// EXTERNAL MODULE: ./src/components/useEffectAsync.ts
+var useEffectAsync = __webpack_require__(7751);
+;// CONCATENATED MODULE: ./src/components/useDbValue.ts
+
+
+
+
+
+
+function useDbValue(id, initialValue) {
+  var _useContext = (0,react.useContext)(DbContext/* default */.ZP),
+      db = _useContext.db;
+
+  var _useState = (0,react.useState)(undefined),
+      _value = _useState[0],
+      _setValue = _useState[1];
+
+  var values = (0,useChange/* default */.Z)(db, function (d) {
+    return d === null || d === void 0 ? void 0 : d.values;
+  });
+  var _mounted = true;
+
+  var setValue = /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee(value) {
+      return regenerator_default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return values === null || values === void 0 ? void 0 : values.set(id, value);
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function setValue(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }(); // listen to change
+
+
+  (0,react.useEffect)(function () {
+    return values === null || values === void 0 ? void 0 : values.subscribe(DbContext/* DB_VALUE_CHANGE */.TB, /*#__PURE__*/function () {
+      var _ref2 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(changed) {
+        var v;
+        return regenerator_default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (!(changed === id)) {
+                  _context2.next = 5;
+                  break;
+                }
+
+                _context2.next = 3;
+                return values.get(id);
+
+              case 3:
+                v = _context2.sent;
+
+                if (_mounted) {
+                  _setValue(v);
+                }
+
+              case 5:
+                return _context2.abrupt("return", function () {
+                  _mounted = false;
+                });
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+  }, [db, values]); // load intial value
+
+  (0,useEffectAsync/* default */.Z)( /*#__PURE__*/function () {
+    var _ref3 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee3(mounted) {
+      var v;
+      return regenerator_default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return values === null || values === void 0 ? void 0 : values.get(id);
+
+            case 2:
+              v = _context3.sent;
+
+              if (mounted()) {
+                //      console.log(`load dbvalue ${id}`, values, v)
+                _setValue(v || initialValue);
+              }
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function (_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }(), [db, values]);
+  return {
+    value: _value,
+    setValue: setValue
+  };
+}
+;// CONCATENATED MODULE: ./src/components/hooks/useSecret.ts
 
 function useSecret(id) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-      value = _useState[0],
-      setValue = _useState[1];
+  var _useDbValue = useDbValue("secret:" + id, ""),
+      value = _useDbValue.value,
+      setValue = _useDbValue.setValue;
 
   return {
     value: value,
@@ -591,19 +726,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ AzureDeviceTemplateDesigner; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(92137);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(85061);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(92137);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87757);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(80838);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(1059);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(80838);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(1059);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(85420);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(29114);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(31186);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81794);
 /* harmony import */ var _components_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(34093);
-/* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(94500);
+/* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(94500);
 /* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13173);
 /* harmony import */ var _components_AddServiceIconButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(27498);
 /* harmony import */ var _components_ServiceSpecificationSelect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(14247);
-/* harmony import */ var _jacdac_ts_src_azure_iot_dtdl__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(2864);
+/* harmony import */ var _jacdac_ts_src_azure_iot_dtdl__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(2864);
 /* harmony import */ var _components_ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(79885);
 /* harmony import */ var _components_ui_Snippet__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(34276);
 /* harmony import */ var _components_ui_PaperBox__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(79739);
@@ -612,13 +751,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jacdac_ts_src_azure_iot_dtdlspec__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(5443);
 /* harmony import */ var _components_ApiKeyAccordion__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(42495);
 /* harmony import */ var _components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(95393);
-/* harmony import */ var _components_hooks_useSecret__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(31066);
+/* harmony import */ var _components_hooks_useSecret__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(21984);
+/* harmony import */ var _components_ui_Alert__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(95453);
+/* harmony import */ var _components_AppContext__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(84377);
+/* harmony import */ var _components_hooks_useDevices__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(53074);
+/* harmony import */ var _components_DeviceCardHeader__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(31477);
+/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(71815);
+
 
 
 
 
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
+
+
+
+
 
 
 
@@ -651,7 +801,7 @@ function ComponentRow(props) {
   var nameId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_10__/* .useId */ .Me)();
 
   var handleComponentNameChange = function handleComponentNameChange(ev) {
-    component.name = (0,_jacdac_ts_src_azure_iot_dtdl__WEBPACK_IMPORTED_MODULE_16__/* .escapeName */ .Jg)(ev.target.value);
+    component.name = (0,_jacdac_ts_src_azure_iot_dtdl__WEBPACK_IMPORTED_MODULE_21__/* .escapeName */ .Jg)(ev.target.value);
     onUpdate();
   };
 
@@ -665,16 +815,16 @@ function ComponentRow(props) {
     onUpdate();
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     container: true,
     spacing: 2
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     item: true,
     xs: 6
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
     id: nameId,
     fullWidth: true,
     error: !!nameError,
@@ -683,7 +833,7 @@ function ComponentRow(props) {
     helperText: nameError,
     value: name,
     onChange: handleComponentNameChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ServiceSpecificationSelect__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, {
     variant: "outlined",
@@ -691,12 +841,12 @@ function ComponentRow(props) {
     serviceClass: service.classIdentifier,
     setServiceClass: handleSetService,
     error: serviceError
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, {
     title: "Remove service",
     onClick: handleComponentDelete
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, null)))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_24__/* .default */ .Z, null)))));
 }
 
 function validateTwinComponent(twin, component) {
@@ -714,13 +864,14 @@ function validateTwinComponent(twin, component) {
 
 var AZURE_IOT_CENTRAL_DOMAIN = "azureiotcentraldomain";
 var AZURE_IOT_CENTRAL_API_KEY = "azureiotcentraliotkey";
+var AZURE_IOT_API_VERSION = "?api-version=1.0";
 
 function ApiKeyManager() {
   var _useLocalStorage = (0,_components_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(AZURE_IOT_CENTRAL_DOMAIN),
       domain = _useLocalStorage[0];
 
   var validateKey = /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_20__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(key) {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(key) {
       var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -760,11 +911,49 @@ function ApiKeyManager() {
   }, "API tokens") : "API tokens"), ", create a new Token and copy the value here.");
 }
 
+function twinToDTDL(twin, merged) {
+  var dtdl = {
+    "@type": "Interface",
+    "@id": "dtmi:jacdac:device:" + (0,_jacdac_ts_src_azure_iot_dtdl__WEBPACK_IMPORTED_MODULE_21__/* .escapeName */ .Jg)(twin.displayName) + ";1",
+    displayName: twin.displayName,
+    contents: [],
+    "@context": _jacdac_ts_src_azure_iot_dtdl__WEBPACK_IMPORTED_MODULE_21__/* .DTDL_CONTEXT */ .LM
+  };
+
+  if (merged) {
+    twin.components.forEach(function (_ref2) {
+      var name = _ref2.name,
+          service = _ref2.service;
+      var srvDTDL = (0,_jacdac_ts_src_azure_iot_dtdlspec__WEBPACK_IMPORTED_MODULE_12__/* .serviceSpecificationToDTDL */ .eT)(service);
+      srvDTDL.contents.forEach(function (ctn) {
+        ctn.name = "" + name + ctn.name;
+      });
+      dtdl.contents = [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z)(dtdl.contents), [srvDTDL.contents]);
+    });
+  } else {
+    dtdl.contents = [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z)(dtdl.contents), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_26__/* .default */ .Z)(twin.components.map(function (c) {
+      return (0,_jacdac_ts_src_azure_iot_dtdlspec__WEBPACK_IMPORTED_MODULE_12__/* .serviceSpecificationToComponent */ .xA)(c.service, c.name);
+    })));
+  }
+
+  return dtdl;
+}
+
+var ignoredServices = [_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_20__/* .SRV_CONTROL */ .gm9, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_20__/* .SRV_LOGGER */ .w9j, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_20__/* .SRV_ROLE_MANAGER */ .igi, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_20__/* .SRV_PROTO_TEST */ .$Bn, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_20__/* .SRV_BOOTLOADER */ .PWm];
 function AzureDeviceTemplateDesigner() {
   var _twin$components;
 
   var variant = "outlined";
+  var merged = true;
   var domainId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_10__/* .useId */ .Me)();
+  var devices = (0,_components_hooks_useDevices__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z)({
+    ignoreSelf: true,
+    announced: true
+  });
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_components_AppContext__WEBPACK_IMPORTED_MODULE_17__/* .default */ .ZP),
+      enqueueSnackbar = _useContext.enqueueSnackbar,
+      setError = _useContext.setError;
 
   var _useLocalStorage2 = (0,_components_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z)(AZURE_IOT_CENTRAL_DOMAIN, ""),
       domain = _useLocalStorage2[0],
@@ -780,15 +969,15 @@ function AzureDeviceTemplateDesigner() {
       twin = _useLocalStorage3[0],
       setTwin = _useLocalStorage3[1];
 
-  var dtdl = {
-    "@type": "Interface",
-    "@id": "dtmi:jacdac:devices:" + (0,_jacdac_ts_src_azure_iot_dtdl__WEBPACK_IMPORTED_MODULE_16__/* .escapeName */ .Jg)(twin.displayName) + ";1",
-    displayName: twin.displayName,
-    contents: twin.components.map(function (c) {
-      return (0,_jacdac_ts_src_azure_iot_dtdlspec__WEBPACK_IMPORTED_MODULE_12__/* .serviceSpecificationToComponent */ .xA)(c.service, c.name);
-    }),
-    "@context": _jacdac_ts_src_azure_iot_dtdl__WEBPACK_IMPORTED_MODULE_16__/* .DTDL_CONTEXT */ .LM
-  };
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      apiWorking = _useState[0],
+      setApiWorking = _useState[1];
+
+  var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      apiError = _useState2[0],
+      setApiError = _useState2[1];
+
+  var dtdl = twinToDTDL(twin, merged);
   var dtdlSource = JSON.stringify(dtdl, null, 2);
 
   var handleDomainChange = function handleDomainChange(ev) {
@@ -815,20 +1004,204 @@ function AzureDeviceTemplateDesigner() {
     update();
   };
 
+  var apiFetch = /*#__PURE__*/function () {
+    var _ref3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(method, path, body) {
+      var url, options, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              url = domain + "api/" + path + AZURE_IOT_API_VERSION;
+              options = {
+                method: method,
+                headers: {
+                  authorization: apiToken,
+                  Accept: "application/json"
+                },
+                body: body && JSON.stringify(body)
+              };
+              if (options.method === "POST" || options.method === "PUT" || options.method === "PATCH") options.headers["Content-Type"] = "application/json";
+              _context2.next = 5;
+              return fetch(url, options);
+
+            case 5:
+              res = _context2.sent;
+              return _context2.abrupt("return", res);
+
+            case 7:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function apiFetch(_x2, _x3, _x4) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var uploadTemplate = /*#__PURE__*/function () {
+    var _ref4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dtmi, displayName, capabilityModel) {
+      var path, current, exists, body, res, success, resj, _resj$error, _resj$error2;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              setApiWorking(true);
+              setApiError("");
+              setError("");
+              path = "deviceTemplates/" + dtmi;
+              _context3.next = 7;
+              return apiFetch("GET", path);
+
+            case 7:
+              current = _context3.sent;
+              exists = current.status === 200;
+              console.log("iotc: template " + dtmi + " " + (exists ? "exists" : "missing"));
+              body = {
+                "@type": ["ModelDefinition", "DeviceModel"],
+                displayName: displayName,
+                capabilityModel: capabilityModel
+              };
+              _context3.next = 13;
+              return apiFetch(exists ? "PATCH" : "PUT", path, body);
+
+            case 13:
+              res = _context3.sent;
+              success = res.status === 200;
+              _context3.next = 17;
+              return res.json();
+
+            case 17:
+              resj = _context3.sent;
+              console.log("iotc: upload template " + res.status, {
+                resj: resj,
+                body: body
+              });
+
+              if (!success) {
+                setApiError((_resj$error = resj.error) === null || _resj$error === void 0 ? void 0 : _resj$error.message);
+                setError((_resj$error2 = resj.error) === null || _resj$error2 === void 0 ? void 0 : _resj$error2.message);
+              } else {
+                enqueueSnackbar("Device imported!");
+              }
+
+            case 20:
+              _context3.prev = 20;
+              setApiWorking(false);
+              return _context3.finish(20);
+
+            case 23:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[0,, 20, 23]]);
+    }));
+
+    return function uploadTemplate(_x5, _x6, _x7) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  var handleUploadModel = /*#__PURE__*/function () {
+    var _ref5 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return uploadTemplate("dtmi:jacdac:devicemodel:" + (0,_jacdac_ts_src_azure_iot_dtdl__WEBPACK_IMPORTED_MODULE_21__/* .escapeName */ .Jg)(twin.displayName) + ";1", twin.displayName, dtdl);
+
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function handleUploadModel() {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+
+  var handleUploadTemplate = function handleUploadTemplate(template) {
+    return /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+      var service, shortId, dtmi, capabilityModel;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              service = template.service;
+              shortId = service.shortId;
+              dtmi = (0,_jacdac_ts_src_azure_iot_dtdlspec__WEBPACK_IMPORTED_MODULE_12__/* .serviceSpecificationDTMI */ .tH)(service, "servicemodel");
+              capabilityModel = (0,_jacdac_ts_src_azure_iot_dtdlspec__WEBPACK_IMPORTED_MODULE_12__/* .serviceSpecificationToDTDL */ .eT)(service);
+              _context5.next = 6;
+              return uploadTemplate(dtmi, shortId, capabilityModel);
+
+            case 6:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+  };
+
+  var handleSelectDevice = function handleSelectDevice(device) {
+    return /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_25__/* .default */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+      var services, newTwin;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              services = device.services().filter(function (srv) {
+                return ignoredServices.indexOf(srv.serviceClass) < 0;
+              });
+              _context6.next = 3;
+              return Promise.all(services.map(function (srv) {
+                return srv.resolveInstanceName();
+              }));
+
+            case 3:
+              newTwin = {
+                displayName: twin.displayName,
+                components: services.map(function (service) {
+                  return {
+                    name: service.instanceName,
+                    service: service.specification
+                  };
+                })
+              };
+              setTwin(newTwin);
+
+            case 5:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }));
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "Azure Device Template Designer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", null, "An", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_11__.Link, {
     href: "https://github.com/Azure/opendigitaltwins-dtdl/"
   }, "device twin"), " ", "is to be used in Azure IoT Central. The repository of", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_11__.Link, {
     to: "/dtmi/"
-  }, "Azure IoT Plug And Play models"), " for services can be used to resolve models."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  }, "Azure IoT Plug And Play models"), " for services can be used to resolve models."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     container: true,
     direction: "row",
     spacing: 2
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, {
     title: "Connection"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
     id: domainId,
     value: domain,
     fullWidth: true,
@@ -836,15 +1209,33 @@ function AzureDeviceTemplateDesigner() {
     onChange: handleDomainChange,
     helperText: "Azure IoT Central domain",
     placeholder: "https://.....azureiotcentral.com/"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(ApiKeyManager, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, {
+    title: "Devices"
+  }), devices.map(function (device) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
+      key: device.id,
+      item: true,
+      xs: 4
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_27__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_DeviceCardHeader__WEBPACK_IMPORTED_MODULE_19__/* .default */ .Z, {
+      device: device,
+      showAvatar: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_28__/* .default */ .Z, null, device.services().filter(function (srv) {
+      return ignoredServices.indexOf(srv.serviceClass) < 0;
+    }).map(function (srv) {
+      return srv.name;
+    }).join(", ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_29__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_11__.Button, {
+      variant: "outlined",
+      onClick: handleSelectDevice(device)
+    }, "import services"))));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_14__/* .default */ .Z, {
     title: "Model"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_18__/* .default */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* .default */ .Z, {
     required: true,
     fullWidth: true,
     label: "Display name",
@@ -859,21 +1250,32 @@ function AzureDeviceTemplateDesigner() {
       component: c,
       onUpdate: update
     });
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AddServiceIconButton__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
     onAdd: handleAddService
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+  })), apiError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_Alert__WEBPACK_IMPORTED_MODULE_16__/* .default */ .Z, {
+    severity: "error"
+  }, apiError)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_PaperBox__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_Snippet__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, {
     caption: "template",
     value: dtdlSource,
     mode: "json",
-    download: "model"
-  }))), (_twin$components = twin.components) === null || _twin$components === void 0 ? void 0 : _twin$components.map(function (c) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* .default */ .Z, {
+    actions: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_11__.Button, {
+      variant: "outlined",
+      size: "small",
+      disabled: apiWorking || !domain || !apiToken,
+      onClick: handleUploadModel,
+      title: "Import the device template into your Azure IoT Central application (requires domain and API token)."
+    }, "Import template")
+  }))), !merged && ((_twin$components = twin.components) === null || _twin$components === void 0 ? void 0 : _twin$components.map(function (c) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* .default */ .Z, {
       item: true,
       xs: 12,
       key: c.name
@@ -881,9 +1283,15 @@ function AzureDeviceTemplateDesigner() {
       caption: c.name,
       value: JSON.stringify((0,_jacdac_ts_src_azure_iot_dtdlspec__WEBPACK_IMPORTED_MODULE_12__/* .serviceSpecificationToDTDL */ .eT)(c.service), null, 4),
       mode: "json",
-      download: c.name
+      actions: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_11__.Button, {
+        variant: "outlined",
+        size: "small",
+        disabled: !domain || !apiToken,
+        onClick: handleUploadTemplate(c),
+        title: "Import the service template into your Azure IoT Central application (requires domain and API token)."
+      }, "Import template")
     })));
-  })));
+  }))));
 }
 
 /***/ })
